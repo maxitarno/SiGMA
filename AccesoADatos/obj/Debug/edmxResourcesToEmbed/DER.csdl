@@ -1,0 +1,255 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SiGMAModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="SiGMAEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Barrios" EntityType="SiGMAModel.Barrios" />
+    <EntitySet Name="Duenios" EntityType="SiGMAModel.Duenios" />
+    <EntitySet Name="Localidades" EntityType="SiGMAModel.Localidades" />
+    <EntitySet Name="Permisos" EntityType="SiGMAModel.Permisos" />
+    <EntitySet Name="Personas" EntityType="SiGMAModel.Personas" />
+    <EntitySet Name="Roles" EntityType="SiGMAModel.Roles" />
+    <EntitySet Name="Sesiones" EntityType="SiGMAModel.Sesiones" />
+    <EntitySet Name="TipoDocumentos" EntityType="SiGMAModel.TipoDocumentos" />
+    <EntitySet Name="Usuarios" EntityType="SiGMAModel.Usuarios" />
+    <EntitySet Name="Voluntarios" EntityType="SiGMAModel.Voluntarios" />
+    <AssociationSet Name="FK_Barrios_Localidades" Association="SiGMAModel.FK_Barrios_Localidades">
+      <End Role="Localidades" EntitySet="Localidades" />
+      <End Role="Barrios" EntitySet="Barrios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Personas_Barrios" Association="SiGMAModel.FK_Personas_Barrios">
+      <End Role="Barrios" EntitySet="Barrios" />
+      <End Role="Personas" EntitySet="Personas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Duenios_Personas" Association="SiGMAModel.FK_Duenios_Personas">
+      <End Role="Personas" EntitySet="Personas" />
+      <End Role="Duenios" EntitySet="Duenios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Personas_TipoDocumentos" Association="SiGMAModel.FK_Personas_TipoDocumentos">
+      <End Role="TipoDocumentos" EntitySet="TipoDocumentos" />
+      <End Role="Personas" EntitySet="Personas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Voluntarios_Personas" Association="SiGMAModel.FK_Voluntarios_Personas">
+      <End Role="Personas" EntitySet="Personas" />
+      <End Role="Voluntarios" EntitySet="Voluntarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuarios_Roles" Association="SiGMAModel.FK_Usuarios_Roles">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Usuarios" EntitySet="Usuarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sesiones_Usuarios" Association="SiGMAModel.FK_Sesiones_Usuarios">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Sesiones" EntitySet="Sesiones" />
+    </AssociationSet>
+    <AssociationSet Name="PermisosXRoles" Association="SiGMAModel.PermisosXRoles">
+      <End Role="Permisos" EntitySet="Permisos" />
+      <End Role="Roles" EntitySet="Roles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Personas_Usuarios" Association="SiGMAModel.FK_Personas_Usuarios">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Personas" EntitySet="Personas" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Barrios">
+    <Key>
+      <PropertyRef Name="idBarrio" />
+    </Key>
+    <Property Name="idBarrio" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="idLocalidad" Type="Int32" />
+    <NavigationProperty Name="Localidades" Relationship="SiGMAModel.FK_Barrios_Localidades" FromRole="Barrios" ToRole="Localidades" />
+    <NavigationProperty Name="Personas" Relationship="SiGMAModel.FK_Personas_Barrios" FromRole="Barrios" ToRole="Personas" />
+  </EntityType>
+  <EntityType Name="Duenios">
+    <Key>
+      <PropertyRef Name="idDuenio" />
+    </Key>
+    <Property Name="idDuenio" Type="Int32" Nullable="false" />
+    <Property Name="idPersona" Type="Int32" />
+    <NavigationProperty Name="Personas" Relationship="SiGMAModel.FK_Duenios_Personas" FromRole="Duenios" ToRole="Personas" />
+  </EntityType>
+  <EntityType Name="Localidades">
+    <Key>
+      <PropertyRef Name="idLocalidad" />
+    </Key>
+    <Property Name="idLocalidad" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Barrios" Relationship="SiGMAModel.FK_Barrios_Localidades" FromRole="Localidades" ToRole="Barrios" />
+  </EntityType>
+  <EntityType Name="Permisos">
+    <Key>
+      <PropertyRef Name="idPermiso" />
+    </Key>
+    <Property Name="idPermiso" Type="Int32" Nullable="false" />
+    <Property Name="tipoPermiso" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="modulo" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Roles" Relationship="SiGMAModel.PermisosXRoles" FromRole="Permisos" ToRole="Roles" />
+  </EntityType>
+  <EntityType Name="Personas">
+    <Key>
+      <PropertyRef Name="idPersona" />
+    </Key>
+    <Property Name="idPersona" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="apellido" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="idTipoDocumento" Type="Int32" />
+    <Property Name="nroDocumento" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="email" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="domicilio" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="idBarrio" Type="Int32" />
+    <Property Name="telefonoFijo" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="telefonoCelular" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="fechaNacimiento" Type="DateTime" />
+    <NavigationProperty Name="Barrios" Relationship="SiGMAModel.FK_Personas_Barrios" FromRole="Personas" ToRole="Barrios" />
+    <NavigationProperty Name="Duenios" Relationship="SiGMAModel.FK_Duenios_Personas" FromRole="Personas" ToRole="Duenios" />
+    <NavigationProperty Name="TipoDocumentos" Relationship="SiGMAModel.FK_Personas_TipoDocumentos" FromRole="Personas" ToRole="TipoDocumentos" />
+    <NavigationProperty Name="Voluntarios" Relationship="SiGMAModel.FK_Voluntarios_Personas" FromRole="Personas" ToRole="Voluntarios" />
+    <Property Type="String" Name="user" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Usuarios" Relationship="SiGMAModel.FK_Personas_Usuarios" FromRole="Personas" ToRole="Usuarios" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="idRol" />
+    </Key>
+    <Property Name="idRol" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="descripcion" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Usuarios" Relationship="SiGMAModel.FK_Usuarios_Roles" FromRole="Roles" ToRole="Usuarios" />
+    <NavigationProperty Name="Permisos" Relationship="SiGMAModel.PermisosXRoles" FromRole="Roles" ToRole="Permisos" />
+  </EntityType>
+  <EntityType Name="Sesiones">
+    <Key>
+      <PropertyRef Name="idSesion" />
+    </Key>
+    <Property Name="idSesion" Type="Int32" Nullable="false" />
+    <Property Name="fechaHoraInicio" Type="DateTime" />
+    <Property Name="fechaHoraFin" Type="DateTime" />
+    <Property Name="user" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Usuarios" Relationship="SiGMAModel.FK_Sesiones_Usuarios" FromRole="Sesiones" ToRole="Usuarios" />
+  </EntityType>
+  <EntityType Name="TipoDocumentos">
+    <Key>
+      <PropertyRef Name="idTipoDocumento" />
+    </Key>
+    <Property Name="idTipoDocumento" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Personas" Relationship="SiGMAModel.FK_Personas_TipoDocumentos" FromRole="TipoDocumentos" ToRole="Personas" />
+  </EntityType>
+  <EntityType Name="Usuarios">
+    <Key>
+      <PropertyRef Name="user" />
+    </Key>
+    <Property Name="user" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="password" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="idRol" Type="Int32" />
+    <NavigationProperty Name="Roles" Relationship="SiGMAModel.FK_Usuarios_Roles" FromRole="Usuarios" ToRole="Roles" />
+    <NavigationProperty Name="Sesiones" Relationship="SiGMAModel.FK_Sesiones_Usuarios" FromRole="Usuarios" ToRole="Sesiones" />
+    <NavigationProperty Name="Personas" Relationship="SiGMAModel.FK_Personas_Usuarios" FromRole="Usuarios" ToRole="Personas" />
+  </EntityType>
+  <EntityType Name="Voluntarios">
+    <Key>
+      <PropertyRef Name="idVoluntario" />
+    </Key>
+    <Property Name="idVoluntario" Type="Int32" Nullable="false" />
+    <Property Name="idPersona" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Personas" Relationship="SiGMAModel.FK_Voluntarios_Personas" FromRole="Voluntarios" ToRole="Personas" />
+  </EntityType>
+  <Association Name="FK_Barrios_Localidades">
+    <End Role="Localidades" Type="SiGMAModel.Localidades" Multiplicity="0..1" />
+    <End Role="Barrios" Type="SiGMAModel.Barrios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Localidades">
+        <PropertyRef Name="idLocalidad" />
+      </Principal>
+      <Dependent Role="Barrios">
+        <PropertyRef Name="idLocalidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Personas_Barrios">
+    <End Role="Barrios" Type="SiGMAModel.Barrios" Multiplicity="0..1" />
+    <End Role="Personas" Type="SiGMAModel.Personas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Barrios">
+        <PropertyRef Name="idBarrio" />
+      </Principal>
+      <Dependent Role="Personas">
+        <PropertyRef Name="idBarrio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Duenios_Personas">
+    <End Role="Personas" Type="SiGMAModel.Personas" Multiplicity="0..1" />
+    <End Role="Duenios" Type="SiGMAModel.Duenios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Personas">
+        <PropertyRef Name="idPersona" />
+      </Principal>
+      <Dependent Role="Duenios">
+        <PropertyRef Name="idPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Personas_TipoDocumentos">
+    <End Role="TipoDocumentos" Type="SiGMAModel.TipoDocumentos" Multiplicity="0..1" />
+    <End Role="Personas" Type="SiGMAModel.Personas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoDocumentos">
+        <PropertyRef Name="idTipoDocumento" />
+      </Principal>
+      <Dependent Role="Personas">
+        <PropertyRef Name="idTipoDocumento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Voluntarios_Personas">
+    <End Role="Personas" Type="SiGMAModel.Personas" Multiplicity="1" />
+    <End Role="Voluntarios" Type="SiGMAModel.Voluntarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Personas">
+        <PropertyRef Name="idPersona" />
+      </Principal>
+      <Dependent Role="Voluntarios">
+        <PropertyRef Name="idPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuarios_Roles">
+    <End Role="Roles" Type="SiGMAModel.Roles" Multiplicity="0..1" />
+    <End Role="Usuarios" Type="SiGMAModel.Usuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="idRol" />
+      </Principal>
+      <Dependent Role="Usuarios">
+        <PropertyRef Name="idRol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sesiones_Usuarios">
+    <End Role="Usuarios" Type="SiGMAModel.Usuarios" Multiplicity="1" />
+    <End Role="Sesiones" Type="SiGMAModel.Sesiones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="user" />
+      </Principal>
+      <Dependent Role="Sesiones">
+        <PropertyRef Name="user" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PermisosXRoles">
+    <End Role="Permisos" Type="SiGMAModel.Permisos" Multiplicity="*" />
+    <End Role="Roles" Type="SiGMAModel.Roles" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_Personas_Usuarios">
+    <End Type="SiGMAModel.Usuarios" Role="Usuarios" Multiplicity="0..1" />
+    <End Type="SiGMAModel.Personas" Role="Personas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="user" />
+      </Principal>
+      <Dependent Role="Personas">
+        <PropertyRef Name="user" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

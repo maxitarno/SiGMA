@@ -1,0 +1,18 @@
+E:\Documentos(NO BORRAR)\Documentos de GonDC\Facu\SiGMA\SiGMA\SiGMA\bin\SiGMA.dll
+E:\Documentos(NO BORRAR)\Documentos de GonDC\Facu\SiGMA\SiGMA\SiGMA\bin\SiGMA.pdb
+E:\Documentos(NO BORRAR)\Documentos de GonDC\Facu\SiGMA\SiGMA\SiGMA\obj\Debug\SiGMA.dll
+E:\Documentos(NO BORRAR)\Documentos de GonDC\Facu\SiGMA\SiGMA\SiGMA\obj\Debug\SiGMA.pdb
+E:\Documentos(NO BORRAR)\Documentos de GonDC\Facu\SiGMA\SiGMA\SiGMA\bin\AccesoADatos.dll
+E:\Documentos(NO BORRAR)\Documentos de GonDC\Facu\SiGMA\SiGMA\SiGMA\bin\Entidades.dll
+E:\Documentos(NO BORRAR)\Documentos de GonDC\Facu\SiGMA\SiGMA\SiGMA\bin\AccesoADatos.pdb
+E:\Documentos(NO BORRAR)\Documentos de GonDC\Facu\SiGMA\SiGMA\SiGMA\bin\Entidades.pdb
+E:\Documentos(NO BORRAR)\Documentos de GonDC\Facu\SiGMA\SiGMA\SiGMA\obj\Debug\SiGMA.csprojResolveAssemblyReference.cache
+D:\SiGMA\SiGMA\SiGMA\bin\SiGMA.dll
+D:\SiGMA\SiGMA\SiGMA\bin\SiGMA.pdb
+D:\SiGMA\SiGMA\SiGMA\bin\AccesoADatos.dll
+D:\SiGMA\SiGMA\SiGMA\bin\Entidades.dll
+D:\SiGMA\SiGMA\SiGMA\bin\AccesoADatos.pdb
+D:\SiGMA\SiGMA\SiGMA\bin\Entidades.pdb
+D:\SiGMA\SiGMA\SiGMA\obj\Debug\SiGMA.csprojResolveAssemblyReference.cache
+D:\SiGMA\SiGMA\SiGMA\obj\Debug\SiGMA.dll
+D:\SiGMA\SiGMA\SiGMA\obj\Debug\SiGMA.pdb

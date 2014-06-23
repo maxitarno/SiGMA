@@ -1,0 +1,16 @@
+E:\Documentos(NO BORRAR)\Documentos de GonDC\Facu\SiGMA\SiGMA\AccesoADatos\bin\Debug\AccesoADatos.dll.config
+E:\Documentos(NO BORRAR)\Documentos de GonDC\Facu\SiGMA\SiGMA\AccesoADatos\bin\Debug\AccesoADatos.dll
+E:\Documentos(NO BORRAR)\Documentos de GonDC\Facu\SiGMA\SiGMA\AccesoADatos\bin\Debug\AccesoADatos.pdb
+E:\Documentos(NO BORRAR)\Documentos de GonDC\Facu\SiGMA\SiGMA\AccesoADatos\bin\Debug\Entidades.dll
+E:\Documentos(NO BORRAR)\Documentos de GonDC\Facu\SiGMA\SiGMA\AccesoADatos\bin\Debug\Entidades.pdb
+E:\Documentos(NO BORRAR)\Documentos de GonDC\Facu\SiGMA\SiGMA\AccesoADatos\obj\Debug\AccesoADatos.csprojResolveAssemblyReference.cache
+E:\Documentos(NO BORRAR)\Documentos de GonDC\Facu\SiGMA\SiGMA\AccesoADatos\obj\Debug\AccesoADatos.dll
+E:\Documentos(NO BORRAR)\Documentos de GonDC\Facu\SiGMA\SiGMA\AccesoADatos\obj\Debug\AccesoADatos.pdb
+D:\SiGMA\SiGMA\AccesoADatos\bin\Debug\AccesoADatos.dll.config
+D:\SiGMA\SiGMA\AccesoADatos\bin\Debug\AccesoADatos.dll
+D:\SiGMA\SiGMA\AccesoADatos\bin\Debug\AccesoADatos.pdb
+D:\SiGMA\SiGMA\AccesoADatos\bin\Debug\Entidades.dll
+D:\SiGMA\SiGMA\AccesoADatos\bin\Debug\Entidades.pdb
+D:\SiGMA\SiGMA\AccesoADatos\obj\Debug\AccesoADatos.csprojResolveAssemblyReference.cache
+D:\SiGMA\SiGMA\AccesoADatos\obj\Debug\AccesoADatos.dll
+D:\SiGMA\SiGMA\AccesoADatos\obj\Debug\AccesoADatos.pdb

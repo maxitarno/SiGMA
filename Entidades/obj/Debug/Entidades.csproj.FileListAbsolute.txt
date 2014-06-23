@@ -1,0 +1,4 @@
+E:\Documentos(NO BORRAR)\Documentos de GonDC\Facu\SiGMA\SiGMA\Entidades\bin\Debug\Entidades.dll
+E:\Documentos(NO BORRAR)\Documentos de GonDC\Facu\SiGMA\SiGMA\Entidades\bin\Debug\Entidades.pdb
+E:\Documentos(NO BORRAR)\Documentos de GonDC\Facu\SiGMA\SiGMA\Entidades\obj\Debug\Entidades.dll
+E:\Documentos(NO BORRAR)\Documentos de GonDC\Facu\SiGMA\SiGMA\Entidades\obj\Debug\Entidades.pdb

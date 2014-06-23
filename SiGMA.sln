@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiGMA", "SiGMA\SiGMA.csproj", "{95F5EE3D-9DC6-4718-A405-01C65C491BBB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccesoADatos", "AccesoADatos\AccesoADatos.csproj", "{259CC0A2-FCF7-4BA7-B96C-40FB448E928E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entidades", "Entidades\Entidades.csproj", "{EDC509B3-6360-4D01-888D-9769BC43A3B0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{95F5EE3D-9DC6-4718-A405-01C65C491BBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95F5EE3D-9DC6-4718-A405-01C65C491BBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95F5EE3D-9DC6-4718-A405-01C65C491BBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95F5EE3D-9DC6-4718-A405-01C65C491BBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{259CC0A2-FCF7-4BA7-B96C-40FB448E928E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{259CC0A2-FCF7-4BA7-B96C-40FB448E928E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{259CC0A2-FCF7-4BA7-B96C-40FB448E928E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{259CC0A2-FCF7-4BA7-B96C-40FB448E928E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDC509B3-6360-4D01-888D-9769BC43A3B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDC509B3-6360-4D01-888D-9769BC43A3B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDC509B3-6360-4D01-888D-9769BC43A3B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDC509B3-6360-4D01-888D-9769BC43A3B0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
