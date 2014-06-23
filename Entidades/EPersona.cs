@@ -13,6 +13,7 @@ namespace Entidades
         public int idTipoDocumento { get; set; }
         public string nroDocumento { get; set; }
         public string email { get; set; }
+		public string emailAlternativo { get; set; }
         public string domicilio { get; set; }
         public int idBarrio { get; set; }
         public string telefonoFijo { get; set; }
