@@ -18,12 +18,14 @@
     <form runat="server">
     <div class="page">
         <div class="header">
-            <div class="title">
+            <!-- encabezado -->
+            <div class="jumbotron">
                 <h1>
-                    Mi aplicación ASP.NET
-                </h1>
-            </div>
-            <div class="loginDisplay">
+                    SIGMA</h1>
+                <p>
+                    Sistema Integral de Gestion de Mascotas</p>
+                <p>
+                
                 <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
                     <AnonymousTemplate>
                         [ <a href="~/Account/Login.aspx" ID="HeadLoginStatus" runat="server">Iniciar sesión</a> ]
@@ -34,6 +36,10 @@
                     </LoggedInTemplate>
                 </asp:LoginView>
             </div>
+            <!-- fin de encabezado -->
+            <!-- <div class="loginDisplay">
+                
+            </div> -->
             <div class="clear hideSkiplink">
                 <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
                     <Items>
