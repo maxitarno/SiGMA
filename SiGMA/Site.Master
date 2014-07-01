@@ -20,18 +20,17 @@
         <div class="header">
             <!-- encabezado -->
             <div class="has-success">
-            <div class="panel-primary">
-                <div class="panel-title">
-                    <h1>SIGMA</h1>
-                </div>
-                <div class="panel-body">
-                    Sistema Integral de Gestion de Mascotas
-                </div>
-            </div>
-                    
+                <div class="panel-primary">
+                    <div class="panel-title">
+                        <h1>SIGMA</h1>
+                    </div>
+                    <div class="panel-body alert alert-dismissable alert-success">
+                        <h1>Sistema Integral de Gestion de Mascotas</h1>
+                    </div>
+                </div> 
                 <br />
                 <!-- menu -->
-                <div class="navbar navbar-inverse">
+                <div class="navbar navbar-default">
                     <div class="navbar-header">
                         <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-inverse-collapse">
                             <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar">
@@ -39,7 +38,7 @@
                         </button>
                         <a class="navbar-brand" href="Inicio.aspx">Inicio <span class="glyphicon glyphicon-home"></span></a>
                     </div>
-                    <div class="navbar-collapse collapse navbar-inverse-collapse">
+                    <div class="navbar-collapse collapse navbar-responsive-collapse">
                         <!-- mascotas -->
                         <ul class="nav navbar-nav">
                             <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">Mascotas <span class="glyphicon glyphicon-tree-conifer"></span>
