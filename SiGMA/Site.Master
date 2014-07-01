@@ -32,7 +32,8 @@
                 <!-- menu -->
                 <div class="navbar navbar-default">
                     <div class="navbar-header">
-                        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-inverse-collapse">
+                        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+
                             <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar">
                             </span>
                         </button>
@@ -87,6 +88,8 @@
                         <!-- fin -->
                         <!-- fin -->
                         <br />
+                    </div>
+                </div>
             </div>   
         </div>
         <!-- fin de encabezado -->

@@ -40,8 +40,8 @@ p
 
 h1, h2, h3, h4, h5, h6
 {
-    font-size: 1.5em;
-    color: #666666;
+    font-sizeant: small-caps;
+    text-tr;
     font-variant: small-caps;
     text-transform: none;
     font-weight: 200;
@@ -50,10 +50,24 @@ h1, h2, h3, h4, h5, h6
 
 h1
 {
-    font-size: 1.6em;
-    padding-bottom: 0px;
-    margin-bottom: 0px;
-    text-align:center;
+    font-size 0px;
+     text-align:center;
+}
+
+h2
+{
+    font-size: 1.5em;
+    font-weight:
+
+
+
+
+ 600;
+}}
+
+
+}
+
 }
 
 h2
