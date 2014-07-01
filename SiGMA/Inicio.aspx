@@ -5,7 +5,7 @@
 </asp:Content>
 <asp:Content ContentPlaceHolderID=MainContent runat="server">
     <div class="panel-heading">
-        <h1 class="panel-title">
+        <h1 class="panel-primary">
            Hola </h1>
     </div>
     <div class="panel-body">
