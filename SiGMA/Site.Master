@@ -37,7 +37,7 @@
                             <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar">
                             </span>
                         </button>
-                        <a class="navbar-brand" href="Inicio.aspx">Inicio <span class="glyphicon glyphicon-home"></span></a>
+                        <a class="navbar-brand" href="Inicio.aspx" id="inicio">Inicio <span class="glyphicon glyphicon-home"></span></a>
                     </div>
                     <div class="navbar-collapse collapse navbar-responsive-collapse">
                         <!-- mascotas -->
@@ -72,7 +72,7 @@
                             <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">Usuarios <span class="glyphicon glyphicon-user"></span>
                                 <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="RegistrarUsuario.aspx">Registrar usuarios</a></li>
+                                    <li><a href="RegistrarUsuario.aspx" id="registrar usuarios">Registrar usuarios</a></li>
                                 </ul>
                             </li>
                         </ul>
