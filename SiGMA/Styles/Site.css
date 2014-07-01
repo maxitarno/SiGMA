@@ -9,6 +9,7 @@ body
     margin: 0px;
     padding: 0px;
     color: #696969;
+    
 }
 
 a:link, a:visited
@@ -52,6 +53,7 @@ h1
     font-size: 1.6em;
     padding-bottom: 0px;
     margin-bottom: 0px;
+    text-align:center;
 }
 
 h2
@@ -291,4 +293,28 @@ div.accountInfo
 {
     text-align: right;
     padding-right: 10px;
+}
+/* mis estilos */
+asp:Content
+{
+    background-color:#5DC1B9;
+}
+table
+{
+    background-color:#5DC1B9;
+}
+tr
+{
+    background-color: #5DC1B9;
+    color:Navy;
+    border-color:Blue;
+}
+td
+{
+    background-color: #5DC1B9;
+    color:Navy;
+}
+DropDownList
+{
+    background-color:#5DC1B9;
 }
