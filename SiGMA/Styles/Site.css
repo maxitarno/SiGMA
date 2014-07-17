@@ -48,7 +48,7 @@ h1, h2, h3, h4, h5, h6
 
 h1
 {
-    font-size: 10px;
+    font-size: 10em;
     text-align:center;
     vertical-align:middle;
     outline-style:solid;
@@ -300,20 +300,21 @@ asp:Content
 }
 table
 {
-    background-color:#5DC1B9;
+    
 }
 tr
 {
-    background-color: #5DC1B9;
-    color:Navy;
-    border-color:Blue;
+    
 }
 td
 {
-    background-color: #5DC1B9;
-    color:Navy;
+    
 }
 DropDownList
 {
     background-color:#5DC1B9;
+}
+table, tr, td
+{
+    background-color:#0000FF;
 }
