@@ -9,7 +9,7 @@ body
     margin: 0px;
     padding: 0px;
     color: #696969;
-    
+    border-style:groove;
 }
 
 a:link, a:visited
@@ -44,6 +44,8 @@ h1, h2, h3, h4, h5, h6
     text-transform: none;
     font-weight: 200;
     margin-bottom: 0px;
+    border-style:groove;
+    border-color:Navy;
 }
 
 h1
@@ -51,7 +53,6 @@ h1
     font-size: 10em;
     text-align:center;
     vertical-align:middle;
-    outline-style:solid;
 }
 
 h2
@@ -92,7 +93,8 @@ first child of the left and right table columns */
     width: 960px;
     background-color:Navy;
     margin: 20px auto 0px auto;
-    border: 1px solid #496077;
+    border: 1px #496077;
+    border-style:groove;
 }
 
 .header
@@ -317,4 +319,7 @@ DropDownList
 table, tr, td
 {
     background-color:#0000FF;
+    text-align:justify;
+    vertical-align:middle;
+    border-style:groove;
 }
