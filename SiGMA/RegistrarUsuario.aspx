@@ -4,12 +4,13 @@
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
-    <div class="panel panel-primary">
+        <div class="panel panel-primary">
         <div class="panel-heading">
             <h3 class="panel-title">
                 Registrar usuarios</h3>
         </div>
         <div class="panel-body">
+            <div class="almedio">
             <table>
                 <tr>
                     <td>
@@ -36,7 +37,7 @@
                         Tipo de Documento:
                     </td>
                     <td>
-                        <asp:DropDownList ID="ddlTipoDocumento" runat="server">
+                        <asp:DropDownList class="DropDownList" ID="ddlTipoDocumento" runat="server">
                             <asp:ListItem>Seleccionar</asp:ListItem>
                             <asp:ListItem Value="1">D.N.I.</asp:ListItem>
                             <asp:ListItem Value="2">Pasaporte</asp:ListItem>
@@ -114,6 +115,7 @@
                     </td>
                 </tr>
             </table>
+            </div>
         </div>
     </div>
 </asp:Content>

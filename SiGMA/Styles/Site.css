@@ -95,7 +95,7 @@ first child of the left and right table columns */
 {
     width:100%;
     background-color:White;
-    margin: 20px auto 0px auto;
+    margin: auto auto auto auto;
     border: 1px #496077;
     border-style:none;
     display:inline-block;
@@ -320,9 +320,12 @@ td
 {
     vertical-align:middle;
 }
-DropDownList
+.DropDownList
 {
     background-color:White;
+    border-color:#0066FF;
+    border-style:groove;
+    border-width:8px;
 }
 table, tr, td
 {
@@ -350,4 +353,10 @@ asp:Login
 {
     border-color:#0066FF;
     border-style:groove;
-}   
+    border-width:8px;
+}
+.almedio
+{
+    margin-left:35%;
+    margin-right: 35%;
+}
