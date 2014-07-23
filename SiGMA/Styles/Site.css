@@ -269,6 +269,7 @@ div.accountInfo
     text-align: right;
     padding: 10px;
     color: White;
+    vertical-align:middle;
 }
 
 .loginDisplay a:link
@@ -305,17 +306,11 @@ div.accountInfo
 /* mis estilos */
 asp:Content
 {
-    background-color:White;
-    display:block;
-    height:100%;
-    width:100%;
-    text-align:center;
-    vertical-align:middle;
+    
 }
 table
 {
-    text-align:justify;
-    vertical-align:middle;
+    
 }
 tr
 {
@@ -323,9 +318,7 @@ tr
 }
 td
 {
-   display:inline; 
-   text-align:justify center;
-   vertical-align:middle;
+    vertical-align:middle;
 }
 DropDownList
 {
@@ -333,13 +326,28 @@ DropDownList
 }
 table, tr, td
 {
-    background-color:White;
-    text-align:justify center;
-    vertical-align:middle;
-    border-style:none;
+    
 }
+/* los que agregue */
 div
 {
     text-align:center;
     vertical-align:middle;
 }
+asp:Login
+{
+    position:absolute;
+}
+.Button
+{
+    background-color:#0066FF;
+    color:White;
+    border-style:groove;
+    border-width:8px;
+    border-color:#0066FF;
+}
+.TextBox
+{
+    border-color:#0066FF;
+    border-style:groove;
+}   

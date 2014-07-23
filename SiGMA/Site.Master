@@ -120,12 +120,18 @@
         </div>
     <!-- fin menu -->
     </div>
+    <!-- cuerpo -->
     <div>
         <br />
         <asp:ContentPlaceHolder ID="MainContent" runat="server" />
         <br />
     </div>
-       
+    <!-- fin cuerpo -->
+    <!-- fin pagina -->
+    <div>
+    
+    </div>
+    <!-- finpagina -->
     </form>
     <!-- scripts -->
     <script src="Scripts/jquery-2.1.1.js" type="text/javascript"></script>

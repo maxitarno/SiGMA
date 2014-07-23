@@ -4,6 +4,18 @@
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
-    <asp:Login ID="login" runat="server" onauthenticate="login_Authenticate">
-    </asp:Login>
+   <div>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                Inicar sesion</h3>
+        </div>
+        <div class="panel-body">
+            <div>
+                <asp:Login ID="login" runat="server" onauthenticate="login_Authenticate">
+                </asp:Login>
+            </div>
+        </div>
+    </div>
+   </div>
 </asp:Content>
