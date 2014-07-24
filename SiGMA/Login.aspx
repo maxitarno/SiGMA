@@ -11,8 +11,12 @@
         </div>
         <div class="panel-body">
             <div>
-                <div class="almedio"><asp:Login ID="login" runat="server" onauthenticate="login_Authenticate">
-                </asp:Login></div>
+                <div class="almedio">
+                    <asp:Login ID="login" runat="server" onauthenticate="login_Authenticate">
+                        <LoginButtonStyle CssClass="Button" />
+                        <TextBoxStyle CssClass="TextBox" />
+                    </asp:Login>
+                </div>
             </div>
         </div>
    </div>
