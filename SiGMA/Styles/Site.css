@@ -325,7 +325,7 @@ td
     background-color:White;
     border-color:#0066FF;
     border-style:groove;
-    border-width:8px;
+    border-width:3px;
 }
 table, tr, td
 {
@@ -354,7 +354,7 @@ asp:Login
 {
     border-color:#0066FF;
     border-style:groove;
-    border-width:8px;
+    border-width:3px;
 }
 .almedio
 {
