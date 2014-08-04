@@ -4,6 +4,7 @@
 <!-- fin encabezado -->
 </asp:Content>
 <asp:Content ContentPlaceHolderID=MainContent runat="server">
+
     <div>
         <div class="panel panel-primary">
             <div class="panel-heading">
@@ -20,6 +21,12 @@
                     adopta por sus dueños. Ademas facilita el control de la gente que ayuda al refugio
                     y la difución de solicitudes de busqueda asi como tambien de campañas.
                 </h2>
+                <input value="Aceptar" type="button" class="btn-primary" onclick="IniciarSesion()"/>
+                <script type="text/javascript" >
+                    function IniciarSesion() {
+                        location.href = "Login.aspx";
+                    }
+                </script>
             </div>
         </div>
     </div>
