@@ -55,15 +55,6 @@
     </div>
     <div>
     <!-- menu -->
-        <!-- Inicio -->
-        <div class="btn-group">
-            <button onclick="inicio()" class="btn btn-primary" type="button">
-                Inicio</button>
-            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-                <span class="caret"></span>
-            </button>
-        </div>
-        <!-- fin inicio -->
         <!-- mascotas -->
         <div class="btn-group">
             <button class="btn btn-danger" type="button">

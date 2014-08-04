@@ -15,10 +15,10 @@
                 <h1>
                     Hola</h1>
                 <h2>
-                    Bienbenidos a sigma nuestro sistema integral de gestion de mascotas, este sistema
-                    permite la administracion desde que la mascota es encotrada, atendida, cuidad y
-                    adopta por sus dueños. Ademas facilita elcontrol de la gente que ayuda al refugio
-                    y la difuion de solicitudes de busqueda asi tambien de campañas.
+                    Bienvenidos a sigma nuestro sistema integral de gestión de mascotas, este sistema
+                    permite la administración desde que la mascota es encotrada, atendida, cuidada y
+                    adopta por sus dueños. Ademas facilita el control de la gente que ayuda al refugio
+                    y la difución de solicitudes de busqueda asi como tambien de campañas.
                 </h2>
             </div>
         </div>
