@@ -94,12 +94,13 @@ first child of the left and right table columns */
 .page
 {
     width:100%;
-    background-color:White;
+    background-color:white;
     margin: auto auto auto auto;
     border: 1px #496077;
     border-style:none;
-    display:inline-block;
+    display:inline block;
     height:100%;
+    background:linear-gradient(blue;green);
 }
 
 .header
@@ -360,4 +361,12 @@ asp:Login
 {
     margin-left:35%;
     margin-right: 35%;
+}
+.RadioButtonList
+{
+    display:inline-table;
+}
+.ListItem
+{
+    display:inline-table;
 }

@@ -96,6 +96,7 @@
                 <span class="caret"></span>
             </button>
             <ul class="dropdown-menu">
+                
             </ul>
         </div>
         <!-- Usuarios -->
@@ -107,6 +108,7 @@
             </button>
             <ul class="dropdown-menu">
                 <li><a href=RegistrarUsuario.aspx>Registrar usuario</a></li>
+                <li><a href="ConsultarUsuario.aspx">Consultar usuario</a></li>
             </ul>
         </div>
     <!-- fin menu -->
