@@ -52,13 +52,13 @@ namespace AccesoADatos
         public static List<ETipoDeDocumento> TiposDNI(){
             List<ETipoDeDocumento> tiposDNI = new List<ETipoDeDocumento>();
             SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
-            var query = from tipoDocumentos in mapaEntidades.TipoDocumentos
-                        select tipoDocumentos.nombre;
-            for (int j = 0; j < query.Count(); j++)
-            {
-                ETipoDeDocumento tipoDNI = new ETipoDeDocumento();
-                tipoDNI.tipoDNI = query.ElementAt(j).ToString();
-                tiposDNI.Add(tipoDNI);
+            IQueryable<TipoDocumentos> tiposDeDocumentos = from tipoDocumentos in mapaEntidades.TipoDocumentos
+                                                             select tipoDocumentos;
+            foreach(var tipoDocumento in tiposDeDocumentos){
+                ETipoDeDocumento tipo = new ETipoDeDocumento();
+                tipo.tipoDNI = tipoDocumento.nombre;
+                tipo.idTipoDeDocumento = tipoDocumento.idTipoDocumento;
+                tiposDNI.Add(tipo);
             }
             return tiposDNI;
         }
