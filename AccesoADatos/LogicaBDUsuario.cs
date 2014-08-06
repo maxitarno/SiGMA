@@ -48,5 +48,19 @@ namespace AccesoADatos
                 return b;
             }
         }
+        //Mi metodo para buscr los tipos dedocumentos
+        public static List<ETipoDeDocumento> TiposDNI(){
+            List<ETipoDeDocumento> tiposDNI = new List<ETipoDeDocumento>();
+            SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+            var query = from tipoDocumentos in mapaEntidades.TipoDocumentos
+                        select tipoDocumentos.nombre;
+            for (int j = 0; j < query.Count(); j++)
+            {
+                ETipoDeDocumento tipoDNI = new ETipoDeDocumento();
+                tipoDNI.tipoDNI = query.ElementAt(j).ToString();
+                tiposDNI.Add(tipoDNI);
+            }
+            return tiposDNI;
+        }
     }
 }

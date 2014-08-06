@@ -315,11 +315,15 @@ table
 }
 tr
 {
-    
+    display:inline;
+    text-align:center;
 }
 td
 {
     vertical-align:middle;
+    position:relative;
+    display:table-row;
+    text-align:center;
 }
 .DropDownList
 {
@@ -356,6 +360,8 @@ asp:Login
     border-color:#0066FF;
     border-style:groove;
     border-width:3px;
+    width:100px;
+    height:100px;
 }
 .almedio
 {
