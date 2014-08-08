@@ -315,14 +315,12 @@ table
 }
 tr
 {
-    display:table-column-group;
     text-align:center;
 }
 td
 {
     vertical-align:middle;
     text-align:center;
-    display:
 }
 .DropDownList
 {

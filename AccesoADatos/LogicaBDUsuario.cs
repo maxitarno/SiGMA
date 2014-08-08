@@ -130,5 +130,23 @@ namespace AccesoADatos
                 user.idRol = usuario.rol;
             }
         }
+        //Metodo para busar roles
+        public static List<ERoles> Roles()
+        {
+            List<ERoles> roles = new List<ERoles>();
+            SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+            IQueryable<Roles> consulta = from rolesDB in mapaEntidades.Roles
+                                         select rolesDB;
+            foreach (var registro in consulta)
+            {
+                ERoles rol = new ERoles();
+                rol.idRol = registro.idRol;
+                rol.nombre = registro.nombre;
+                rol.descripcion = registro.descripcion;
+                roles.Add(rol);
+            }
+            return roles;
+        }
+        //fin metodo
     }
 }
