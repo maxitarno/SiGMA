@@ -48,7 +48,7 @@ namespace AccesoADatos
                 return b;
             }
         }
-        //Mi metodo para buscr los tipos dedocumentos
+        //Mi metodo para buscar los tipos dedocumentos
         public static List<ETipoDeDocumento> TiposDNI(){
             List<ETipoDeDocumento> tiposDNI = new List<ETipoDeDocumento>();
             SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
@@ -61,6 +61,74 @@ namespace AccesoADatos
                 tiposDNI.Add(tipo);
             }
             return tiposDNI;
+        }
+        //fin del metodo
+        //metodo para buscar el usuario por usuarios
+        public static List<EUsuario> BuscarUsuarios(string nombre)
+        {
+            List<EUsuario> usuarios = new List<EUsuario>();
+            SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+            IQueryable<Usuarios> aux = from usuariosBuscados in mapaEntidades.Usuarios
+                                       where (usuariosBuscados.user.Contains(nombre)) 
+                                       select usuariosBuscados;
+            foreach (var usuarioBD in aux)
+            {
+                EUsuario usuario = new EUsuario();
+                usuario.user = usuarioBD.user;
+                usuarios.Add(usuario);
+            }
+            return usuarios;
+        }
+        //fin del metodo
+        //metodo para busca usuarios por tipo y nº de documento
+        public static List<EUsuario> BuscarUsuarios(int tipo, string dni)
+        {
+            List<EUsuario> usuarios = new List<EUsuario>();
+            SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+            IQueryable<Usuarios> consulta = from personasBD in mapaEntidades.Personas
+                                                from usuariosBD in mapaEntidades.Usuarios
+                                                where ( personasBD.user == usuariosBD.user && personasBD.nroDocumento == dni && personasBD.idTipoDocumento == tipo )
+                                                select usuariosBD;
+            foreach (var usuarioBD in consulta)
+            {
+                EUsuario usuario = new EUsuario();
+                usuario.user = usuarioBD.user;
+                usuarios.Add(usuario);
+            }
+            return usuarios;
+        }
+        //fin metodo
+        public static void BuscarUsuarios(string nombre, EUsuario user, EPersona persona){
+            SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+            var consulta = from personasBD in mapaEntidades.Personas
+                           from usuariosBD in mapaEntidades.Usuarios
+                           from rolesBD in mapaEntidades.Roles   
+                           where (personasBD.user == usuariosBD.user && rolesBD.idRol == usuariosBD.idRol && personasBD.user == nombre)
+                           select new{
+                           apellido = personasBD.apellido,
+                           nombre = personasBD.nombre,
+                           tipoDNI = personasBD.idTipoDocumento,
+                           dNI = personasBD.nroDocumento,
+                           domicilio = personasBD.domicilio,
+                           tEF = personasBD.telefonoFijo,
+                           tEC = personasBD.telefonoCelular,
+                           mail = personasBD.email,
+                           usuario = usuariosBD.user,
+                           rol = rolesBD.idRol,
+                           };
+            foreach (var usuario in consulta)
+            {
+                persona.apellido = usuario.apellido;
+                persona.nombre = usuario.nombre;
+                persona.idTipoDocumento = (int)usuario.tipoDNI;
+                persona.nroDocumento = usuario.dNI;
+                persona.domicilio = usuario.domicilio;
+                persona.telefonoFijo = usuario.tEF;
+                persona.telefonoCelular = usuario.tEC;
+                persona.email = usuario.mail;
+                user.user = usuario.usuario;
+                user.idRol = usuario.rol;
+            }
         }
     }
 }
