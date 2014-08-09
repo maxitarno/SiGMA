@@ -328,6 +328,7 @@ td
     border-color:#0066FF;
     border-style:groove;
     border-width:3px;
+    width:100%;
 }
 table, tr, td
 {
@@ -357,17 +358,17 @@ asp:Login
     border-color:#0066FF;
     border-style:groove;
     border-width:3px;
+    width:100%;
 }
 .almedio
 {
     margin-left:35%;
     margin-right: 35%;
 }
-.RadioButtonList
+.ListBox
 {
-    display:inline-table;
-}
-.ListItem
-{
-    display:inline-table;
+    border-color:#0066FF;
+    border-style:groove;
+    border-width:3px;
+    width:100%;
 }

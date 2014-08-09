@@ -56,7 +56,7 @@ namespace AccesoADatos
                                                              select tipoDocumentos;
             foreach(var tipoDocumento in tiposDeDocumentos){
                 ETipoDeDocumento tipo = new ETipoDeDocumento();
-                tipo.tipoDNI = tipoDocumento.nombre;
+                tipo.nombre = tipoDocumento.nombre;
                 tipo.idTipoDeDocumento = tipoDocumento.idTipoDocumento;
                 tiposDNI.Add(tipo);
             }
@@ -71,11 +71,18 @@ namespace AccesoADatos
             IQueryable<Usuarios> aux = from usuariosBuscados in mapaEntidades.Usuarios
                                        where (usuariosBuscados.user.Contains(nombre)) 
                                        select usuariosBuscados;
-            foreach (var usuarioBD in aux)
+            try
             {
-                EUsuario usuario = new EUsuario();
-                usuario.user = usuarioBD.user;
-                usuarios.Add(usuario);
+                foreach (var usuarioBD in aux)
+                {
+                    EUsuario usuario = new EUsuario();
+                    usuario.user = usuarioBD.user;
+                    usuarios.Add(usuario);
+                }
+            }
+            catch (System.Data.EntityCommandCompilationException exc)
+            {
+                throw exc;
             }
             return usuarios;
         }
@@ -89,11 +96,18 @@ namespace AccesoADatos
                                                 from usuariosBD in mapaEntidades.Usuarios
                                                 where ( personasBD.user == usuariosBD.user && personasBD.nroDocumento == dni && personasBD.idTipoDocumento == tipo )
                                                 select usuariosBD;
-            foreach (var usuarioBD in consulta)
+            try
             {
-                EUsuario usuario = new EUsuario();
-                usuario.user = usuarioBD.user;
-                usuarios.Add(usuario);
+                foreach (var usuarioBD in consulta)
+                {
+                    EUsuario usuario = new EUsuario();
+                    usuario.user = usuarioBD.user;
+                    usuarios.Add(usuario);
+                }
+            }
+            catch (System.Data.EntityCommandCompilationException exc)
+            {
+                throw exc;
             }
             return usuarios;
         }
@@ -116,18 +130,25 @@ namespace AccesoADatos
                            usuario = usuariosBD.user,
                            rol = rolesBD.idRol,
                            };
-            foreach (var usuario in consulta)
+            try
             {
-                persona.apellido = usuario.apellido;
-                persona.nombre = usuario.nombre;
-                persona.idTipoDocumento = (int)usuario.tipoDNI;
-                persona.nroDocumento = usuario.dNI;
-                persona.domicilio = usuario.domicilio;
-                persona.telefonoFijo = usuario.tEF;
-                persona.telefonoCelular = usuario.tEC;
-                persona.email = usuario.mail;
-                user.user = usuario.usuario;
-                user.idRol = usuario.rol;
+                foreach (var usuario in consulta)
+                {
+                    persona.apellido = usuario.apellido;
+                    persona.nombre = usuario.nombre;
+                    persona.idTipoDocumento = (int)usuario.tipoDNI;
+                    persona.nroDocumento = usuario.dNI;
+                    persona.domicilio = usuario.domicilio;
+                    persona.telefonoFijo = usuario.tEF;
+                    persona.telefonoCelular = usuario.tEC;
+                    persona.email = usuario.mail;
+                    user.user = usuario.usuario;
+                    user.idRol = usuario.rol;
+                }
+            }
+            catch (System.Data.EntityCommandCompilationException exc)
+            {
+                throw exc;
             }
         }
         //Metodo para busar roles
@@ -137,13 +158,20 @@ namespace AccesoADatos
             SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
             IQueryable<Roles> consulta = from rolesDB in mapaEntidades.Roles
                                          select rolesDB;
-            foreach (var registro in consulta)
+            try
             {
-                ERoles rol = new ERoles();
-                rol.idRol = registro.idRol;
-                rol.nombre = registro.nombre;
-                rol.descripcion = registro.descripcion;
-                roles.Add(rol);
+                foreach (var registro in consulta)
+                {
+                    ERoles rol = new ERoles();
+                    rol.idRol = registro.idRol;
+                    rol.nombre = registro.nombre;
+                    rol.descripcion = registro.descripcion;
+                    roles.Add(rol);
+                }
+            }
+            catch (System.Data.EntityCommandCompilationException exc)
+            {
+                throw exc;
             }
             return roles;
         }
