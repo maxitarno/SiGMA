@@ -13,7 +13,7 @@ namespace AccesoADatos
         {
             using (TransactionScope transaction = new TransactionScope())
             {
-                bool b;
+                bool b = true;
                 try
                 {
                     SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();

@@ -152,9 +152,9 @@ namespace AccesoADatos
             }
         }
         //Metodo para busar roles
-        public static List<ERoles> Roles()
+        public static List<ERol> Roles()
         {
-            List<ERoles> roles = new List<ERoles>();
+            List<ERol> roles = new List<ERol>();
             SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
             IQueryable<Roles> consulta = from rolesDB in mapaEntidades.Roles
                                          select rolesDB;
@@ -162,10 +162,10 @@ namespace AccesoADatos
             {
                 foreach (var registro in consulta)
                 {
-                    ERoles rol = new ERoles();
+                    ERol rol = new ERol();
                     rol.idRol = registro.idRol;
-                    rol.nombre = registro.nombre;
-                    rol.descripcion = registro.descripcion;
+                    rol.nombreRol = registro.nombre;
+                    rol.descripcionRol = registro.descripcion;
                     roles.Add(rol);
                 }
             }
