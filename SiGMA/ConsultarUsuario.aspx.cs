@@ -20,6 +20,13 @@ namespace SiGMA
                 ddlTipoDeDocumento.DataTextField = "nombre";
                 ddlTipoDeDocumento.DataValueField = "idTipoDeDocumento";
                 ddlTipoDeDocumento.DataBind();
+                List<ERol> roles = new List<ERol>();
+                roles = LogicaBDUsuario.Roles();
+                ddlRoles.DataSource = roles;
+                ddlRoles.DataTextField = "nombreRol";
+                ddlRoles.DataValueField = "idRol";
+                ddlRoles.DataBind();
+                rbPorPersona.Checked = true;
             }
         }
     }
