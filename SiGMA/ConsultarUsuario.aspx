@@ -77,6 +77,55 @@
                     </tr>
                     <tr>
                         <td>
+                            Domicilio:&nbsp
+                        </td>
+                        <td>
+                            <asp:TextBox ID="txtDomicilio" runat="server" CssClass="TextBox"></asp:TextBox>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Barrios:&nbsp
+                        </td>
+                        <td>
+                            <asp:DropDownList ID="ddlBarrios" runat="server" CssClass="DropDownList">
+                            </asp:DropDownList>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Fecha de nacimiento:&nbsp
+                        </td>
+                        <td>
+                            <asp:TextBox ID="txtFecha" runat="server" CssClass="TextBox"></asp:TextBox>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Telefono fijo:&nbsp
+                        </td>
+                        <td>
+                            <asp:TextBox ID="txtTelefonoFijo" runat="server" CssClass="TextBox"></asp:TextBox>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td>
+                                Telefono celular:&nbsp
+                            </td>
+                        <td>
+                            <asp:TextBox ID="txtTelefonoCelular" runat="server" CssClass="TextBox"></asp:TextBox>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Mail:&nbsp
+                        </td>
+                        <td>
+                            <asp:TextBox ID="txtMail" runat="server" CssClass="TextBox"></asp:TextBox>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
                             Rol:&nbsp
                         </td>
                         <td>
@@ -86,7 +135,7 @@
                     </tr>
                     <tr>
                         <td colspan="3" align="center">
-                            <asp:Button ID="btnAceptar" runat="server" Text="Aceptar" CssClass="Button" />
+                            <asp:Button ID="btnAceptar" runat="server" Text="Aceptar" CssClass="Button" OnClick="btnAceptarClick" />
                         </td>
                     </tr>
                 </table>

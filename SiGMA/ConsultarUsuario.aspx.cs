@@ -33,13 +33,13 @@ namespace SiGMA
             if (rbPorPersona.Checked == true)
             {
                 List<EUsuario> usuarios = new List<EUsuario>();
-                usuarios = LogicaBDUsuario.BuscarUsuarios(ddlTipoDeDocumento.SelectedIndex, txtNºDeDocumento.Text);
+                usuarios = LogicaBDUsuario.BuscarUsuarios(ddlTipoDeDocumento.SelectedIndex + 1, txtNºDeDocumento.Text);
                 lstResultados.DataSource = usuarios;
                 lstResultados.DataTextField = "user";
                 lstResultados.DataValueField = "user";
                 lstResultados.DataBind();
             }
-            else
+            else if(rbPorUsuario.Checked == true)
             {
                 List<EUsuario> usuarios = new List<EUsuario>();
                 usuarios = LogicaBDUsuario.BuscarUsuarios(txtUsuario.Text);
@@ -48,6 +48,18 @@ namespace SiGMA
                 lstResultados.DataValueField = "user";
                 lstResultados.DataBind();
             }
+        }
+        public void btnAceptarClick(object sender, EventArgs e)
+        {
+            EPersona persona = new EPersona();
+            EUsuario usuario = new EUsuario();
+            LogicaBDUsuario.BuscarUsuarios(lstResultados.SelectedValue, usuario, persona);
+            txtUsuario.Text = usuario.user;
+            ddlTipoDeDocumento.SelectedIndex = persona.idTipoDocumento - 1;
+            txtNºDeDocumento.Text = persona.nroDocumento;
+            txtApellido.Text = persona.apellido;
+            txtNombre.Text = persona.nombre;
+            ddlRoles.SelectedIndex = usuario.idRol - 1;
         }
     }
 }
