@@ -57,15 +57,20 @@ namespace SiGMA
         }
         public void btnAceptarClick(object sender, EventArgs e)
         {
+            EBarrio barrio = new EBarrio();
+            ELocalidad localidad = new ELocalidad();
             EPersona persona = new EPersona();
             EUsuario usuario = new EUsuario();
-            LogicaBDUsuario.BuscarUsuarios(lstResultados.SelectedValue, usuario, persona);
+            txtUsuario.Text = lstResultados.SelectedValue;
+            LogicaBDUsuario.BuscarUsuarios(txtUsuario.Text, usuario, persona, barrio, localidad);
             txtUsuario.Text = usuario.user;
-            ddlTipoDeDocumento.SelectedIndex = persona.idTipoDocumento - 1;
+            /*ddlTipoDeDocumento.SelectedIndex = persona.idTipoDocumento - 1;
             txtNºDeDocumento.Text = persona.nroDocumento;
             txtApellido.Text = persona.apellido;
             txtNombre.Text = persona.nombre;
             ddlRoles.SelectedIndex = usuario.idRol - 1;
+            ddlLocalidades.SelectedIndex = localidad.idLocalidad - 1;
+            ddlBarrios.SelectedIndex = barrio.idBarrio - 1;*/
         }
         public void ddlLocalidadSelected(object sender, EventArgs e)
         {

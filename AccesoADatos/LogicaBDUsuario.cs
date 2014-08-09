@@ -119,12 +119,15 @@ namespace AccesoADatos
             return usuarios;
         }
         //fin metodo
-        public static void BuscarUsuarios(string nombre, EUsuario user, EPersona persona){
+        //metodo para buscar persona
+        public static void BuscarUsuarios(string nombre, EUsuario user, EPersona persona, EBarrio barrio, ELocalidad localidad){
             SIGMAEntitiesContainer mapaEntidades = Conexion.crearSegunServidor();
             var consulta = from personasBD in mapaEntidades.Personas
                            from usuariosBD in mapaEntidades.Usuarios
-                           from rolesBD in mapaEntidades.Roles   
-                           where (personasBD.user == usuariosBD.user && rolesBD.idRol == usuariosBD.idRol && personasBD.user == nombre)
+                           from rolesBD in mapaEntidades.Roles
+                           from BarriosBD in mapaEntidades.Barrios
+                           from LocalidadesBD in mapaEntidades.Localidades
+                           where (personasBD.user == usuariosBD.user && rolesBD.idRol == usuariosBD.idRol && personasBD.idBarrio == BarriosBD.idBarrio && LocalidadesBD.idLocalidad == BarriosBD.idLocalidad && personasBD.user == nombre)
                            select new{
                            apellido = personasBD.apellido,
                            nombre = personasBD.nombre,
@@ -136,6 +139,8 @@ namespace AccesoADatos
                            mail = personasBD.email,
                            usuario = usuariosBD.user,
                            rol = rolesBD.idRol,
+                           barrio = persona.idBarrio,
+                           localidad = LocalidadesBD.idLocalidad
                            };
             try
             {
@@ -151,6 +156,8 @@ namespace AccesoADatos
                     persona.email = usuario.mail;
                     user.user = usuario.usuario;
                     user.idRol = usuario.rol;
+                    barrio.idBarrio = usuario.barrio;
+                    localidad.idLocalidad = usuario.localidad;
                 }
             }
             catch (System.Data.EntityCommandCompilationException exc)

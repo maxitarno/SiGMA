@@ -40,7 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EBarrio.cs" />
     <Compile Include="EDuenio.cs" />
+    <Compile Include="ELocalidad.cs" />
     <Compile Include="EPersona.cs" />
     <Compile Include="ETipoDeDocumento.cs" />
     <Compile Include="EUsuario.cs" />
