@@ -61,16 +61,20 @@ namespace SiGMA
             ELocalidad localidad = new ELocalidad();
             EPersona persona = new EPersona();
             EUsuario usuario = new EUsuario();
-            txtUsuario.Text = lstResultados.SelectedValue;
-            LogicaBDUsuario.BuscarUsuarios(txtUsuario.Text, usuario, persona, barrio, localidad);
+            LogicaBDUsuario.BuscarUsuarios(lstResultados.SelectedValue, usuario, persona, barrio, localidad);
             txtUsuario.Text = usuario.user;
-            /*ddlTipoDeDocumento.SelectedIndex = persona.idTipoDocumento - 1;
+            ddlTipoDeDocumento.SelectedIndex = persona.idTipoDocumento - 1;
             txtNºDeDocumento.Text = persona.nroDocumento;
             txtApellido.Text = persona.apellido;
             txtNombre.Text = persona.nombre;
+            txtDomicilio.Text = persona.domicilio;
             ddlRoles.SelectedIndex = usuario.idRol - 1;
             ddlLocalidades.SelectedIndex = localidad.idLocalidad - 1;
-            ddlBarrios.SelectedIndex = barrio.idBarrio - 1;*/
+            ddlBarrios.SelectedIndex = barrio.idBarrio;
+            txtTelefonoFijo.Text = persona.telefonoFijo;
+            txtTelefonoCelular.Text = persona.telefonoCelular;
+            txtMail.Text = persona.email;
+            txtFecha.Text = persona.fechaNacimiento.ToString();
         }
         public void ddlLocalidadSelected(object sender, EventArgs e)
         {
