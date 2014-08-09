@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Transactions;
 using Entidades;
-
 namespace AccesoADatos
 {
     public class LogicaBDUsuario
@@ -16,7 +15,7 @@ namespace AccesoADatos
                 bool b;
                 try
                 {
-                    SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+                    SIGMAEntitiesContainer mapaEntidades = Conexion.crearSegunServidor();
                     Usuarios userBD = new Usuarios();
                     userBD.user = usuario.user;
                     userBD.password = usuario.password;
@@ -48,10 +47,10 @@ namespace AccesoADatos
                 return b;
             }
         }
-        //Mi metodo para buscar los tipos dedocumentos
+        //Mi metodo para buscar los tipos de documentos
         public static List<ETipoDeDocumento> TiposDNI(){
             List<ETipoDeDocumento> tiposDNI = new List<ETipoDeDocumento>();
-            SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+            SIGMAEntitiesContainer mapaEntidades = Conexion.crearSegunServidor();
             IQueryable<TipoDocumentos> tiposDeDocumentos = from tipoDeDocumentos in mapaEntidades.TipoDocumentos
                                                            select tipoDeDocumentos;
             try
@@ -75,7 +74,7 @@ namespace AccesoADatos
         public static List<EUsuario> BuscarUsuarios(string nombre)
         {
             List<EUsuario> usuarios = new List<EUsuario>();
-            SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+            SIGMAEntitiesContainer mapaEntidades = Conexion.crearSegunServidor();
             IQueryable<Usuarios> aux = from usuariosBuscados in mapaEntidades.Usuarios
                                        where (usuariosBuscados.user.Contains(nombre)) 
                                        select usuariosBuscados;
@@ -99,7 +98,7 @@ namespace AccesoADatos
         public static List<EUsuario> BuscarUsuarios(int tipo, string dni)
         {
             List<EUsuario> usuarios = new List<EUsuario>();
-            SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+            SIGMAEntitiesContainer mapaEntidades = Conexion.crearSegunServidor();
             IQueryable<Usuarios> consulta = from personasBD in mapaEntidades.Personas
                                                 from usuariosBD in mapaEntidades.Usuarios
                                                 where ( personasBD.user == usuariosBD.user && personasBD.nroDocumento == dni && personasBD.idTipoDocumento == tipo )
@@ -121,7 +120,7 @@ namespace AccesoADatos
         }
         //fin metodo
         public static void BuscarUsuarios(string nombre, EUsuario user, EPersona persona){
-            SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+            SIGMAEntitiesContainer mapaEntidades = Conexion.crearSegunServidor();
             var consulta = from personasBD in mapaEntidades.Personas
                            from usuariosBD in mapaEntidades.Usuarios
                            from rolesBD in mapaEntidades.Roles   
@@ -163,7 +162,7 @@ namespace AccesoADatos
         public static List<ERol> Roles()
         {
             List<ERol> roles = new List<ERol>();
-            SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+            SIGMAEntitiesContainer mapaEntidades = Conexion.crearSegunServidor();
             IQueryable<Roles> consulta = from rolesDB in mapaEntidades.Roles
                                          select rolesDB;
             try

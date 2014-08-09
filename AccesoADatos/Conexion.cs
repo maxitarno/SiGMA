@@ -8,7 +8,7 @@ namespace AccesoADatos
 {
     public class Conexion
     {
-        public static SiGMAEntities crearSegunServidor()
+        public static SIGMAEntitiesContainer crearSegunServidor()
         {
             string nombrePC = System.Environment.MachineName;
             string cadenaConexion="";
@@ -22,9 +22,9 @@ namespace AccesoADatos
             }
              if(nombrePC.Equals("EUROCASE"))
             {
-                cadenaConexion = "metadata=res://*/DER.csdl|res://*/DER.ssdl|res://*/DER.msl;provider=System.Data.SqlClient;provider connection string=\"Data Source=EUROCASE\\SQLEXPRESS;Initial Catalog=SiGMA;Integrated Security=True;App=EntityFramework\"";
-            } 
-            return new SiGMAEntities(cadenaConexion);
+                cadenaConexion = "metadata=res://*/DER.csdl|res://*/DER.ssdl|res://*/DER.msl;provider=System.Data.SqlClient;provider connection string= \"Data Source=EUROCASE\\SQLEXPRESS;Initial catalog=SIGMA;Integrated Security=True;MultipleActiveResultSets=True\"";
+            }
+             return new SIGMAEntitiesContainer(cadenaConexion);
         }
     }
 }

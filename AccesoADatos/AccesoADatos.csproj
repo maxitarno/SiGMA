@@ -45,26 +45,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Conexion.cs" />
+    <Compile Include="LogicaBDLogin.cs" />
+    <Compile Include="LogicaBDRol.cs" />
+    <Compile Include="LogicaBDUsuario.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DER.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DER.edmx</DependentUpon>
     </Compile>
-    <Compile Include="LogicaBDLogin.cs" />
-    <Compile Include="LogicaBDRol.cs" />
-    <Compile Include="LogicaBDUsuario.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EntityDeploy Include="DER.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DER.Designer.cs</LastGenOutput>
-    </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config">
       <SubType>Designer</SubType>
     </None>
+    <EntityDeploy Include="DER.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DER.Designer.cs</LastGenOutput>
+    </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Entidades\Entidades.csproj">
@@ -74,7 +72,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Script_BD_V3.sql" />
-    <Content Include="Script_BD_V4.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
