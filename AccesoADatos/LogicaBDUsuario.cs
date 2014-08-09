@@ -183,5 +183,54 @@ namespace AccesoADatos
             return roles;
         }
         //fin metodo
+        //Metodo para buscar barrios y localidades
+        public static List<EBarrio> BuscarBarrios(int idLocalidad)
+        {
+            List<EBarrio> barrios = new List<EBarrio>();
+            SIGMAEntitiesContainer mapaEntidades = Conexion.crearSegunServidor();
+            IQueryable<Barrios> consulta = from BarriosDB in mapaEntidades.Barrios
+                                           where (BarriosDB.idLocalidad == idLocalidad)
+                                           select BarriosDB;                                           
+            try
+            {
+                foreach (var registro in consulta)
+                {
+                    EBarrio barrio = new EBarrio();
+                    barrio.idBarrio = registro.idBarrio;
+                    barrio.nombre = registro.nombre;
+                    barrio.idLocalidad = (int)registro.idLocalidad;
+                    barrios.Add(barrio);
+                }
+            }
+            catch (System.Data.EntityCommandCompilationException exc)
+            {
+                throw exc;
+            }
+            return barrios;
+        }
+        //fin metodo
+        //metodo para buscar una localidad
+        public static List<ELocalidad> BuscarLocalidades()
+        {
+            List<ELocalidad> localidades = new List<ELocalidad>();
+            SIGMAEntitiesContainer mapaEntidades = Conexion.crearSegunServidor();
+            IQueryable<Localidades> consulta = from LocalidadesDB in mapaEntidades.Localidades
+                                               select LocalidadesDB;
+            try
+            {
+                foreach (var registro in consulta)
+                {
+                    ELocalidad localidad = new ELocalidad();
+                    localidad.idLocalidad = registro.idLocalidad;
+                    localidad.nombre = registro.nombre;
+                    localidades.Add(localidad);
+                }
+            }
+            catch (System.Data.EntityCommandCompilationException exc)
+            {
+                throw exc;
+            }
+            return localidades;
+        }
     }
 }
