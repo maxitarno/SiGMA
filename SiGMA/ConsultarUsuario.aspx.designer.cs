@@ -103,6 +103,24 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.TextBox txtDomicilio;
         
         /// <summary>
+        /// Control ddlLocalidades.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlLocalidades;
+        
+        /// <summary>
+        /// Control btnBuscarLocalidades.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnBuscarLocalidades;
+        
+        /// <summary>
         /// Control ddlBarrios.
         /// </summary>
         /// <remarks>

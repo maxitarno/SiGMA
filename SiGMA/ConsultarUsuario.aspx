@@ -85,6 +85,18 @@
                     </tr>
                     <tr>
                         <td>
+                            Localidades:&nbsp
+                        </td>
+                        <td>
+                            <asp:DropDownList ID="ddlLocalidades" runat="server" CssClass="DropDownList">
+                            </asp:DropDownList>
+                        </td>
+                        <td>
+                            <asp:Button ID="btnBuscarLocalidades" runat="server" Text="BuscarLocalidades" OnClick="ddlLocalidadSelected" CssClass="Button" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
                             Barrios:&nbsp
                         </td>
                         <td>

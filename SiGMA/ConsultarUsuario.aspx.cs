@@ -27,6 +27,12 @@ namespace SiGMA
                 ddlRoles.DataValueField = "idRol";
                 ddlRoles.DataBind();
                 rbPorPersona.Checked = true;
+                List<ELocalidad> localidades = new List<ELocalidad>();
+                localidades = LogicaBDUsuario.BuscarLocalidades();
+                ddlLocalidades.DataSource = localidades;
+                ddlLocalidades.DataTextField = "nombre";
+                ddlLocalidades.DataValueField = "idLocalidad";
+                ddlLocalidades.DataBind();
             }
         }
         public void btnBuscarClick(object sender, EventArgs e){
@@ -60,6 +66,15 @@ namespace SiGMA
             txtApellido.Text = persona.apellido;
             txtNombre.Text = persona.nombre;
             ddlRoles.SelectedIndex = usuario.idRol - 1;
+        }
+        public void ddlLocalidadSelected(object sender, EventArgs e)
+        {
+            List<EBarrio> barrios = new List<EBarrio>();
+            barrios = LogicaBDUsuario.BuscarBarrios(ddlLocalidades.SelectedIndex + 1);
+            ddlBarrios.DataSource = barrios;
+            ddlBarrios.DataTextField = "nombre";
+            ddlBarrios.DataValueField = "idBarrio";
+            ddlBarrios.DataBind();
         }
     }
 }
