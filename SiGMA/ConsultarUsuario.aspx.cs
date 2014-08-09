@@ -29,5 +29,25 @@ namespace SiGMA
                 rbPorPersona.Checked = true;
             }
         }
+        public void btnBuscarClick(object sender, EventArgs e){
+            if (rbPorPersona.Checked == true)
+            {
+                List<EUsuario> usuarios = new List<EUsuario>();
+                usuarios = LogicaBDUsuario.BuscarUsuarios(ddlTipoDeDocumento.SelectedIndex, txtNºDeDocumento.Text);
+                lstResultados.DataSource = usuarios;
+                lstResultados.DataTextField = "user";
+                lstResultados.DataValueField = "user";
+                lstResultados.DataBind();
+            }
+            else
+            {
+                List<EUsuario> usuarios = new List<EUsuario>();
+                usuarios = LogicaBDUsuario.BuscarUsuarios(txtUsuario.Text);
+                lstResultados.DataSource = usuarios;
+                lstResultados.DataTextField = "user";
+                lstResultados.DataValueField = "user";
+                lstResultados.DataBind();
+            }
+        }
     }
 }

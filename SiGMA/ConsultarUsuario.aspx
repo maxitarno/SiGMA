@@ -40,7 +40,7 @@
                             &nbsp
                         </td>
                         <td rowspan="2" align="center">
-                            <asp:Button CssClass="Button" ID="btnBuscar" runat="server" Text="Buscar" />
+                            <asp:Button CssClass="Button" ID="btnBuscar" runat="server" Text="Buscar" OnClick="btnBuscarClick" />
                         </td>
                     </tr>
                     <tr>
