@@ -42,10 +42,9 @@
   <ItemGroup>
     <Compile Include="EDuenio.cs" />
     <Compile Include="EPersona.cs" />
-<Compile Include="ERoles.cs" />
     <Compile Include="ETipoDeDocumento.cs" />
-    <Compile Include="EUsuario.cs" 
-	<Compile Include="EPermiso.cs" />
+    <Compile Include="EUsuario.cs"/> 
+    <Compile Include="EPermiso.cs" />
 	<Compile Include="ERol.cs" />    
 <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
