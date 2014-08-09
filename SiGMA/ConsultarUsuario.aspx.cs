@@ -16,7 +16,7 @@ namespace SiGMA
             {
                 List<ETipoDeDocumento> tipos = new List<ETipoDeDocumento>();
                 tipos = LogicaBDUsuario.TiposDNI();
-                ddlTipoDeDocumento.DataSource = "nombre";
+                ddlTipoDeDocumento.DataSource = tipos;
                 ddlTipoDeDocumento.DataTextField = "nombre";
                 ddlTipoDeDocumento.DataValueField = "idTipoDeDocumento";
                 ddlTipoDeDocumento.DataBind();
