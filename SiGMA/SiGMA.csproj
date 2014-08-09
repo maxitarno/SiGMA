@@ -51,6 +51,7 @@
     <Reference Include="System.Web.ApplicationServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AsignarPermisos.aspx" />
     <Content Include="ConsultarUsuario.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -83,6 +84,13 @@
     <Content Include="Inicio.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AsignarPermisos.aspx.cs">
+      <DependentUpon>AsignarPermisos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AsignarPermisos.aspx.designer.cs">
+      <DependentUpon>AsignarPermisos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ConsultarUsuario.aspx.cs">
       <DependentUpon>ConsultarUsuario.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
