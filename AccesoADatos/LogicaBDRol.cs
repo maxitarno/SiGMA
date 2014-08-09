@@ -7,9 +7,9 @@ using System.Transactions;
 
 namespace AccesoADatos
 {
-    class LogicaBDRol
+    public class LogicaBDRol
     {
-        public static bool guardarRol(ERol rol, EPermiso permiso, string pantalla)
+        public static bool guardarPermisoRol(List<EPermisoRol> ListadoPermisos)
         {
             using (TransactionScope transaction = new TransactionScope())
             {
@@ -17,20 +17,17 @@ namespace AccesoADatos
                 try
                 {
                     SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
-                    Roles rolBD = new Roles();
-                    rolBD.nombre = rol.nombreRol;
-                    rolBD.descripcion = rol.descripcionRol;
-                    mapaEntidades.AddToRoles(rolBD);
-                    mapaEntidades.SaveChanges();
-                    Permisos permisoBD = new Permisos();
-                    permisoBD.idPermiso = permiso.idPermiso;
-                    permisoBD.tipoPermiso = permiso.tipoPermiso;
-                    mapaEntidades.AddToPermisos(permisoBD);
-                    mapaEntidades.SaveChanges();
-                    PermisosRoles perRolesBD = new PermisosRoles();
-                    perRolesBD.idPermiso = permiso.idPermiso;
-                    perRolesBD.idRol = rol.idRol;
-                    perRolesBD.pantalla = pantalla;                    
+                    foreach (var item in ListadoPermisos)
+                    {
+                        PermisosRoles perRolesBD = new PermisosRoles();
+                        perRolesBD.idPermiso = item.idPermiso;
+                        perRolesBD.idRol = item.idRol;
+                        perRolesBD.pantalla = item.pantalla;
+                        mapaEntidades.AddToPermisosRoles(perRolesBD);
+                        mapaEntidades.SaveChanges();
+                    }
+                    transaction.Complete();
+                    b = true;
                 }
                 catch (Exception exc)
                 {
