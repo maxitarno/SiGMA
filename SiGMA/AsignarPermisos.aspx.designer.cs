@@ -13,13 +13,22 @@ namespace SiGMA {
     public partial class AsignarPermisos {
         
         /// <summary>
-        /// pnlUsuario control.
+        /// pnlRol control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlUsuario;
+        protected global::System.Web.UI.WebControls.Panel pnlRol;
+        
+        /// <summary>
+        /// ddlRol control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlRol;
         
         /// <summary>
         /// pnlPermisos control.
@@ -31,13 +40,13 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.Panel pnlPermisos;
         
         /// <summary>
-        /// lblUsuario control.
+        /// lblRol control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblUsuario;
+        protected global::System.Web.UI.WebControls.Label lblRol;
         
         /// <summary>
         /// chkConsultarUsuarioL control.
@@ -119,5 +128,14 @@ namespace SiGMA {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox chkAsignarPermisosE;
+        
+        /// <summary>
+        /// btnGuardar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnGuardar;
     }
 }

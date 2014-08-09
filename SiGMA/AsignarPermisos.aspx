@@ -10,11 +10,15 @@
         </div>
         <div class="panel-body">
             <div class="almedio">
-            <asp:Panel ID="pnlUsuario" runat="server">
-            <%--busqueda del usuario asignar permisos--%>
+            <asp:Panel ID="pnlRol" runat="server">
+                <%--ddlRol para que elija el rol que desea modificarle los permisos--%>
+                <asp:DropDownList ID="ddlRol" runat="server" 
+                    onselectedindexchanged="ddlRol_SelectedIndexChanged">
+                </asp:DropDownList>
             </asp:Panel>
                 <asp:Panel ID="pnlPermisos" runat="server" Visible="false">
-                    <asp:Label ID="lblUsuario" runat="server" Text=""></asp:Label>
+                    <asp:Label ID="lblRol" runat="server" Text=""></asp:Label>
+                    <br />
                     <br />
                     <table>
                         <tr>
@@ -26,7 +30,7 @@
                         <tr>
                             <td>ConsutarUsuario</td>
                             <td>
-                                <asp:CheckBox ID="chkConsultarUsuarioL" runat="server" /></td>
+                                <asp:CheckBox ID="chkConsultarUsuarioL" runat="server"  /></td>
                             <td><asp:CheckBox ID="chkConsultarUsuarioG" runat="server" /></td>
                             <td><asp:CheckBox ID="chkConsultarUsuarioE" runat="server" /></td>
                         </tr>
@@ -43,6 +47,9 @@
                             <td><asp:CheckBox ID="chkAsignarPermisosE" runat="server" /></td>
                         </tr>
                     </table>
+                    <br />
+                    <asp:Button ID="btnGuardar" runat="server" Text="Guardar" 
+                        onclick="btnGuardar_Click" />
                 </asp:Panel>
                 
             </div>
