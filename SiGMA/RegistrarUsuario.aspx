@@ -108,7 +108,7 @@
                     <td>
                     </td>
                     <td>
-                        <asp:Button ID="btnRegistrar" runat="server" Text="Registrar" OnClick="btnRegistrar_Click" class="Button"/>
+                        <asp:Button ID="btnRegistrar" runat="server" Text="Registrar" OnClick="btnRegistrar_Click" class="btn-primary"/>
                     </td>
                     <td>
                         <asp:Label ID="lblResultado" runat="server" Text="Label" Visible="False"></asp:Label>

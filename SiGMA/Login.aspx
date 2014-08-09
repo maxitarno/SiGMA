@@ -13,11 +13,18 @@
             <div>
                 <div class="almedio">
                     <asp:Login ID="login" runat="server" onauthenticate="login_Authenticate">
-                        <LoginButtonStyle CssClass="Button" />
+                        <LoginButtonStyle CssClass="btn-primary" />
                         <TextBoxStyle CssClass="TextBox" />
                     </asp:Login>
+                    <br />
+                    No tiene un usuario? <input value="Crear Usuario" type="button" class="btn-primary" onclick="RegistrarUsuario()"/>
                 </div>
             </div>
+            <script type="text/javascript" >
+                function RegistrarUsuario() {
+                    location.href = "RegistrarUsuario.aspx";
+                }
+                </script>
         </div>
    </div>
 </asp:Content>
