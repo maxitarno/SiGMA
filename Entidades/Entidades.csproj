@@ -46,6 +46,7 @@
     <Compile Include="EUsuario.cs" />
     <Compile Include="EPermiso.cs" />
     <Compile Include="ERol.cs" />
+    <Compile Include="EPermisoRol.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
