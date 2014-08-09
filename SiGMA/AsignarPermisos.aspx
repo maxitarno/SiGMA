@@ -15,6 +15,8 @@
                 <asp:DropDownList ID="ddlRol" runat="server" 
                     onselectedindexchanged="ddlRol_SelectedIndexChanged">
                 </asp:DropDownList>
+                <br />
+                <br />
             </asp:Panel>
                 <asp:Panel ID="pnlPermisos" runat="server" Visible="false">
                     <asp:Label ID="lblRol" runat="server" Text=""></asp:Label>
@@ -29,22 +31,21 @@
                         </tr>
                         <tr>
                             <td>ConsutarUsuario</td>
-                            <td>
-                                <asp:CheckBox ID="chkConsultarUsuarioL" runat="server"  /></td>
-                            <td><asp:CheckBox ID="chkConsultarUsuarioG" runat="server" /></td>
-                            <td><asp:CheckBox ID="chkConsultarUsuarioE" runat="server" /></td>
+                            <td align="center"><asp:CheckBox ID="chkConsultarUsuarioL" runat="server" /></td>
+                            <td align="center"><asp:CheckBox ID="chkConsultarUsuarioG" runat="server" /></td>
+                            <td align="center"><asp:CheckBox ID="chkConsultarUsuarioE" runat="server" /></td>
                         </tr>
                         <tr>
                             <td>RegistrarUsuario</td>
-                            <td><asp:CheckBox ID="chkRegistrarUsuarioL" runat="server" /></td>
-                            <td><asp:CheckBox ID="chkRegistrarUsuarioG" runat="server" /></td>
-                            <td><asp:CheckBox ID="chkRegistrarUsuarioE" runat="server" /></td>
+                            <td align="center"><asp:CheckBox ID="chkRegistrarUsuarioL" runat="server" /></td>
+                            <td align="center"><asp:CheckBox ID="chkRegistrarUsuarioG" runat="server" /></td>
+                            <td align="center"><asp:CheckBox ID="chkRegistrarUsuarioE" runat="server" /></td>
                         </tr>
                         <tr>
                             <td>AsignarPermisos</td>
-                            <td><asp:CheckBox ID="chkAsignarPermisosL" runat="server" /></td>
-                            <td><asp:CheckBox ID="chkAsignarPermisosG" runat="server" /></td>
-                            <td><asp:CheckBox ID="chkAsignarPermisosE" runat="server" /></td>
+                            <td align="center"><asp:CheckBox ID="chkAsignarPermisosL" runat="server" /></td>
+                            <td align="center"><asp:CheckBox ID="chkAsignarPermisosG" runat="server" /></td>
+                            <td align="center"><asp:CheckBox ID="chkAsignarPermisosE" runat="server" /></td>
                         </tr>
                     </table>
                     <br />

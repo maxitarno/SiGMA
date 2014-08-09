@@ -69,7 +69,7 @@
         <!-- Difucion -->
         <div class="btn-group">
             <button class="btn btn-success" type="button">
-                Difucion</button>
+                Difusión</button>
             <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown">
                 <span class="caret"></span>
             </button>
@@ -80,7 +80,7 @@
         <!-- voluntario -->
         <div class="btn-group">
             <button class="btn btn-primary" type="button">
-                voluntario</button>
+                Voluntarios</button>
             <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
                 <span class="caret"></span>
             </button>
@@ -99,6 +99,7 @@
                 
             </ul>
         </div>
+        <!-- fin especialistas -->
         <!-- Usuarios -->
         <div class="btn-group">
             <button class="btn btn-success" type="button">
@@ -107,11 +108,21 @@
                 <span class="caret"></span>
             </button>
             <ul class="dropdown-menu">
-                <li><a href=RegistrarUsuario.aspx>Registrar usuario</a></li>
+                <li><a href="RegistrarUsuario.aspx">Registrar usuario</a></li>
                 <li><a href="ConsultarUsuario.aspx">Consultar usuario</a></li>
             </ul>
         </div>
     <!-- fin menu -->
+    <div class="btn-group">
+            <button class="btn btn-danger" type="button">
+                Administracion</button>
+            <button class="btn btn-danger dropdown-toggle" type="button" data-toggle="dropdown">
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a href="AsignarPermisos.aspx">Asignar Permisos a Rol</a></li>
+            </ul>
+        </div>
     </div>
     <!-- cuerpo -->
     <div>

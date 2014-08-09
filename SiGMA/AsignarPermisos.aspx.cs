@@ -35,7 +35,7 @@ namespace SiGMA
                 List<EPermisoRol> ListadoPermisos = new List<EPermisoRol>();
                 EPermisoRol permisoRol = new EPermisoRol();
 
-                //RegistrarUsuario
+                // --------------- RegistrarUsuario --------------- //
                 permisoRol.idPermiso = chkRegistrarUsuarioL.Checked ? 1 : 0;
                 permisoRol.idRol = Convert.ToInt32(ddlRol.SelectedItem.Value);
                 permisoRol.pantalla = "RegistrarUsuario.aspx";
@@ -52,7 +52,7 @@ namespace SiGMA
                 if (permisoRol.idPermiso != 0)
                     ListadoPermisos.Add(permisoRol);
 
-                //ConsultarUsuario
+                // --------------- ConsultarUsuario --------------- //
                 permisoRol.idPermiso = chkConsultarUsuarioL.Checked ? 1 : 0;
                 permisoRol.idRol = Convert.ToInt32(ddlRol.SelectedItem.Value);
                 permisoRol.pantalla = "ConsultarUsuario.aspx";
@@ -69,7 +69,7 @@ namespace SiGMA
                 if (permisoRol.idPermiso != 0)
                     ListadoPermisos.Add(permisoRol);
 
-                //AsignarPermisos
+                // --------------- AsignarPermisos --------------- //
                 permisoRol.idPermiso = chkAsignarPermisosL.Checked ? 1 : 0;
                 permisoRol.idRol = Convert.ToInt32(ddlRol.SelectedItem.Value);
                 permisoRol.pantalla = "AsignarPermisos.aspx";
