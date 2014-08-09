@@ -1,8 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AsignarPermisos.aspx.cs" Inherits="SiGMA.AsignarPermisos" %>
-<asp:Content ID="Content1" ContentPlaceHolderID=HeadContent runat=server>
+<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID=MainContent runat=server>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
      <div class="panel panel-primary">
         <div class="panel-heading">
             <h3 class="panel-title">
@@ -13,7 +13,8 @@
             <asp:Panel ID="pnlRol" runat="server">
                 <%--ddlRol para que elija el rol que desea modificarle los permisos--%>
                 <asp:DropDownList ID="ddlRol" runat="server" 
-                    onselectedindexchanged="ddlRol_SelectedIndexChanged">
+                    onselectedindexchanged="ddlRol_SelectedIndexChanged" AutoPostBack="true" AppendDataBoundItems="true"> 
+                    <asp:ListItem Value="0" Text="---Seleccione un rol ---"></asp:ListItem>
                 </asp:DropDownList>
                 <br />
                 <br />

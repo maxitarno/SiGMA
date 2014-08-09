@@ -286,10 +286,11 @@
           <Key>
             <PropertyRef Name="idRol" />
             <PropertyRef Name="idPermiso" />
+            <PropertyRef Name="pantalla" />
           </Key>
           <Property Name="idRol" Type="int" Nullable="false" />
           <Property Name="idPermiso" Type="int" Nullable="false" />
-          <Property Name="pantalla" Type="varchar" MaxLength="100" />
+          <Property Name="pantalla" Type="varchar" Nullable="false" MaxLength="100" />
         </EntityType>
         <EntityType Name="Personas">
           <Key>
@@ -602,7 +603,7 @@
               <PropertyRef Name="idRol" />
             </Principal>
             <Dependent Role="PermisosXRoles">
-              <PropertyRef Name="idRol" />
+              <PropertyRef Name="idPermiso" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -757,7 +758,6 @@
           <EntitySet Name="Mascotas" EntityType="SIGMAEntities.Mascotas" />
           <EntitySet Name="Perdidas" EntityType="SIGMAEntities.Perdidas" />
           <EntitySet Name="Permisos" EntityType="SIGMAEntities.Permisos" />
-          <EntitySet Name="PermisosXRoles" EntityType="SIGMAEntities.PermisosXRoles" />
           <EntitySet Name="Personas" EntityType="SIGMAEntities.Personas" />
           <EntitySet Name="Razas" EntityType="SIGMAEntities.Razas" />
           <EntitySet Name="Roles" EntityType="SIGMAEntities.Roles" />
@@ -853,14 +853,6 @@
             <End Role="Sesiones" EntitySet="Sesiones" />
             <End Role="Perdidas" EntitySet="Perdidas" />
           </AssociationSet>
-          <AssociationSet Name="FK_PermisosXRoles_Permisos" Association="SIGMAEntities.FK_PermisosXRoles_Permisos">
-            <End Role="Permisos" EntitySet="Permisos" />
-            <End Role="PermisosXRoles" EntitySet="PermisosXRoles" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PermisosXRoles_Roles" Association="SIGMAEntities.FK_PermisosXRoles_Roles">
-            <End Role="Roles" EntitySet="Roles" />
-            <End Role="PermisosXRoles" EntitySet="PermisosXRoles" />
-          </AssociationSet>
           <AssociationSet Name="FK_Personas_TipoDocumentos" Association="SIGMAEntities.FK_Personas_TipoDocumentos">
             <End Role="TipoDocumentos" EntitySet="TipoDocumentos" />
             <End Role="Personas" EntitySet="Personas" />
@@ -884,6 +876,15 @@
           <AssociationSet Name="RolesXUsuario" Association="SIGMAEntities.RolesXUsuario">
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+          <EntitySet Name="PermisosXRoles" EntityType="SIGMAEntities.PermisosXRoles" />
+          <AssociationSet Name="FK_PermisosXRoles_Permisos" Association="SIGMAEntities.FK_PermisosXRoles_Permisos">
+            <End Role="Permisos" EntitySet="Permisos" />
+            <End Role="PermisosXRoles" EntitySet="PermisosXRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PermisosXRoles_Roles" Association="SIGMAEntities.FK_PermisosXRoles_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="PermisosXRoles" EntitySet="PermisosXRoles" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Adopciones">
@@ -1050,17 +1051,6 @@
           <Property Type="String" Name="tipoPermiso" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="PermisosXRoles" Relationship="SIGMAEntities.FK_PermisosXRoles_Permisos" FromRole="Permisos" ToRole="PermisosXRoles" />
         </EntityType>
-        <EntityType Name="PermisosXRoles">
-          <Key>
-            <PropertyRef Name="idRol" />
-            <PropertyRef Name="idPermiso" />
-          </Key>
-          <Property Type="Int32" Name="idRol" Nullable="false" />
-          <Property Type="Int32" Name="idPermiso" Nullable="false" />
-          <Property Type="String" Name="pantalla" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Permisos" Relationship="SIGMAEntities.FK_PermisosXRoles_Permisos" FromRole="PermisosXRoles" ToRole="Permisos" />
-          <NavigationProperty Name="Roles" Relationship="SIGMAEntities.FK_PermisosXRoles_Roles" FromRole="PermisosXRoles" ToRole="Roles" />
-        </EntityType>
         <EntityType Name="Personas">
           <Key>
             <PropertyRef Name="idPersona" />
@@ -1105,9 +1095,9 @@
           <Property Type="Int32" Name="idRol" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="nombre" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="descripcion" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="PermisosXRoles" Relationship="SIGMAEntities.FK_PermisosXRoles_Roles" FromRole="Roles" ToRole="PermisosXRoles" />
           <NavigationProperty Name="Usuarios" Relationship="SIGMAEntities.FK_Usuarios_Roles" FromRole="Roles" ToRole="Usuarios" />
           <NavigationProperty Name="Usuarios1" Relationship="SIGMAEntities.RolesXUsuario" FromRole="Roles" ToRole="Usuarios" />
+          <NavigationProperty Name="PermisosXRoles" Relationship="SIGMAEntities.FK_PermisosXRoles_Roles" FromRole="Roles" ToRole="PermisosXRoles" />
         </EntityType>
         <EntityType Name="Sesiones">
           <Key>
@@ -1414,30 +1404,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_PermisosXRoles_Permisos">
-          <End Type="SIGMAEntities.Permisos" Role="Permisos" Multiplicity="1" />
-          <End Type="SIGMAEntities.PermisosXRoles" Role="PermisosXRoles" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Permisos">
-              <PropertyRef Name="idPermiso" />
-            </Principal>
-            <Dependent Role="PermisosXRoles">
-              <PropertyRef Name="idPermiso" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PermisosXRoles_Roles">
-          <End Type="SIGMAEntities.Roles" Role="Roles" Multiplicity="1" />
-          <End Type="SIGMAEntities.PermisosXRoles" Role="PermisosXRoles" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Roles">
-              <PropertyRef Name="idRol" />
-            </Principal>
-            <Dependent Role="PermisosXRoles">
-              <PropertyRef Name="idRol" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Personas_TipoDocumentos">
           <End Type="SIGMAEntities.TipoDocumentos" Role="TipoDocumentos" Multiplicity="0..1" />
           <End Type="SIGMAEntities.Personas" Role="Personas" Multiplicity="*" />
@@ -1501,6 +1467,42 @@
         <Association Name="RolesXUsuario">
           <End Type="SIGMAEntities.Roles" Role="Roles" Multiplicity="*" />
           <End Type="SIGMAEntities.Usuarios" Role="Usuarios" Multiplicity="*" />
+        </Association>
+        <EntityType Name="PermisosXRoles">
+          <Key>
+            <PropertyRef Name="idRol" />
+            <PropertyRef Name="idPermiso" />
+            <PropertyRef Name="pantalla" />
+          </Key>
+          <Property Type="Int32" Name="idRol" Nullable="false" />
+          <Property Type="Int32" Name="idPermiso" Nullable="false" />
+          <Property Type="String" Name="pantalla" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Permisos" Relationship="SIGMAEntities.FK_PermisosXRoles_Permisos" FromRole="PermisosXRoles" ToRole="Permisos" />
+          <NavigationProperty Name="Roles" Relationship="SIGMAEntities.FK_PermisosXRoles_Roles" FromRole="PermisosXRoles" ToRole="Roles" />
+        </EntityType>
+        <Association Name="FK_PermisosXRoles_Permisos">
+          <End Type="SIGMAEntities.Permisos" Role="Permisos" Multiplicity="1" />
+          <End Type="SIGMAEntities.PermisosXRoles" Role="PermisosXRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Permisos">
+              <PropertyRef Name="idPermiso" />
+            </Principal>
+            <Dependent Role="PermisosXRoles">
+              <PropertyRef Name="idPermiso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PermisosXRoles_Roles">
+          <End Type="SIGMAEntities.Roles" Role="Roles" Multiplicity="1" />
+          <End Type="SIGMAEntities.PermisosXRoles" Role="PermisosXRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="idRol" />
+            </Principal>
+            <Dependent Role="PermisosXRoles">
+              <PropertyRef Name="idPermiso" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -1652,15 +1654,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="PermisosXRoles">
-            <EntityTypeMapping TypeName="SIGMAEntities.PermisosXRoles">
-              <MappingFragment StoreEntitySet="PermisosXRoles">
-                <ScalarProperty Name="pantalla" ColumnName="pantalla" />
-                <ScalarProperty Name="idPermiso" ColumnName="idPermiso" />
-                <ScalarProperty Name="idRol" ColumnName="idRol" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Personas">
             <EntityTypeMapping TypeName="SIGMAEntities.Personas">
               <MappingFragment StoreEntitySet="Personas">
@@ -1743,6 +1736,15 @@
               <ScalarProperty Name="idRol" ColumnName="idRol" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="PermisosXRoles">
+            <EntityTypeMapping TypeName="SIGMAEntities.PermisosXRoles">
+              <MappingFragment StoreEntitySet="PermisosXRoles">
+                <ScalarProperty Name="pantalla" ColumnName="pantalla" />
+                <ScalarProperty Name="idPermiso" ColumnName="idPermiso" />
+                <ScalarProperty Name="idRol" ColumnName="idRol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -1778,7 +1780,6 @@
         <EntityTypeShape EntityType="SIGMAEntities.Mascotas" Width="1.5" PointX="12.75" PointY="10.125" Height="5.6340136718750031" />
         <EntityTypeShape EntityType="SIGMAEntities.Perdidas" Width="1.5" PointX="18" PointY="13.625" Height="3.3263964843750014" />
         <EntityTypeShape EntityType="SIGMAEntities.Permisos" Width="1.5" PointX="0.75" PointY="7.625" Height="1.5956835937500031" />
-        <EntityTypeShape EntityType="SIGMAEntities.PermisosXRoles" Width="1.5" PointX="3" PointY="9.5" Height="1.9802864583333388" />
         <EntityTypeShape EntityType="SIGMAEntities.Personas" Width="1.5" PointX="5.25" PointY="12" Height="4.2879036458333406" />
         <EntityTypeShape EntityType="SIGMAEntities.Razas" Width="1.5" PointX="10.5" PointY="22.25" Height="2.9417936197916674" />
         <EntityTypeShape EntityType="SIGMAEntities.Roles" Width="1.5" PointX="0.75" PointY="10.375" Height="2.1725878906250031" />
@@ -1944,15 +1945,6 @@
           <ConnectorPoint PointX="18.3437475" PointY="18.840986269531257" />
           <ConnectorPoint PointX="18.3437475" PointY="16.951396484375003" />
         </AssociationConnector>
-        <AssociationConnector Association="SIGMAEntities.FK_PermisosXRoles_Permisos" >
-          <ConnectorPoint PointX="2.25" PointY="8.4228417968750016" />
-          <ConnectorPoint PointX="3.75" PointY="8.4228417968750016" />
-          <ConnectorPoint PointX="3.75" PointY="9.5" />
-        </AssociationConnector>
-        <AssociationConnector Association="SIGMAEntities.FK_PermisosXRoles_Roles" >
-          <ConnectorPoint PointX="2.25" PointY="10.927643229166669" />
-          <ConnectorPoint PointX="3" PointY="10.927643229166669" />
-        </AssociationConnector>
         <AssociationConnector Association="SIGMAEntities.FK_Personas_TipoDocumentos" >
           <ConnectorPoint PointX="4.5" PointY="19.938460538461534" />
           <ConnectorPoint PointX="5.0625" PointY="19.375960538461534" />
@@ -1970,7 +1962,7 @@
           <ConnectorPoint PointX="7.5" PointY="15.456451822916669" />
         </AssociationConnector>
         <AssociationConnector Association="SIGMAEntities.FK_Usuarios_Roles" >
-          <ConnectorPoint PointX="1.5" PointY="12.547587890625003" />
+          <ConnectorPoint PointX="1.5" PointY="12.547587890625" />
           <ConnectorPoint PointX="1.5" PointY="14.182444661458334" />
           <ConnectorPoint PointX="3" PointY="14.182444661458334" />
         </AssociationConnector>
@@ -1981,9 +1973,19 @@
           <ConnectorPoint PointX="5.25" PointY="19.432444661458334" />
         </AssociationConnector>
         <AssociationConnector Association="SIGMAEntities.RolesXUsuario" >
-          <ConnectorPoint PointX="1.9062525" PointY="12.547587890625003" />
+          <ConnectorPoint PointX="1.9062525" PointY="12.547587890625" />
           <ConnectorPoint PointX="1.9062525" PointY="13.559969830729173" />
           <ConnectorPoint PointX="3" PointY="13.559969830729173" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="SIGMAEntities.PermisosXRoles" Width="1.5" PointX="3" PointY="9.125" Height="1.9802864583333388" />
+        <AssociationConnector Association="SIGMAEntities.FK_PermisosXRoles_Permisos" >
+          <ConnectorPoint PointX="2.25" PointY="8.3749995000000013" />
+          <ConnectorPoint PointX="3.75" PointY="8.3749995000000013" />
+          <ConnectorPoint PointX="3.75" PointY="9.125" />
+        </AssociationConnector>
+        <AssociationConnector Association="SIGMAEntities.FK_PermisosXRoles_Roles" >
+          <ConnectorPoint PointX="2.25" PointY="10.740143229166669" />
+          <ConnectorPoint PointX="3" PointY="10.740143229166669" />
         </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>
