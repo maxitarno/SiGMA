@@ -11,7 +11,6 @@
         <div class="panel-body">
             <div class="almedio">
             <asp:Panel ID="pnlRol" runat="server">
-                <%--ddlRol para que elija el rol que desea modificarle los permisos--%>
                 <asp:DropDownList ID="ddlRol" runat="server" 
                     onselectedindexchanged="ddlRol_SelectedIndexChanged" AutoPostBack="true" AppendDataBoundItems="true"> 
                     <asp:ListItem Value="0" Text="---Seleccione un rol ---"></asp:ListItem>
@@ -23,15 +22,15 @@
                     <asp:Label ID="lblRol" runat="server" Text=""></asp:Label>
                     <br />
                     <br />
-                    <table>
+                    <table border="1px">
                         <tr>
-                            <td>Pantallas</td>
-                            <td>Visualizacion</td>
-                            <td>Grabacion</td>
-                            <td>Eliminacion</td>
+                            <td width="300">Pantallas</td>
+                            <td width="300">Visualización</td>
+                            <td width="300">Grabación</td>
+                            <td width="300">Eliminación</td>
                         </tr>
                         <tr>
-                            <td>ConsutarUsuario</td>
+                            <td >ConsutarUsuario</td>
                             <td align="center"><asp:CheckBox ID="chkConsultarUsuarioL" runat="server" /></td>
                             <td align="center"><asp:CheckBox ID="chkConsultarUsuarioG" runat="server" /></td>
                             <td align="center"><asp:CheckBox ID="chkConsultarUsuarioE" runat="server" /></td>

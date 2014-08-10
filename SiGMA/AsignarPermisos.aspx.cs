@@ -136,17 +136,56 @@ namespace SiGMA
             chkRegistrarUsuarioG.Checked = false;
             chkRegistrarUsuarioE.Checked = false;
             pnlPermisos.Visible = false;
+            ddlRol.SelectedValue = "0";
             lblRol.Text = "";
         }
 
-        //carga el lbl con el nombre del rol seleccionado
+        //Cargar los checkbox segun el Rol seleccionado
         protected void ddlRol_SelectedIndexChanged(object sender, EventArgs e)
         {
-            lblRol.Text = ddlRol.SelectedItem.Text;
+            string nombreRol = ddlRol.SelectedItem.Text;
+            int idRol = Convert.ToInt32(ddlRol.SelectedValue);
+            List<EPermisoRol> permisosRol = new List<EPermisoRol>();
             if (ddlRol.SelectedItem.Value == "0")
                 pnlPermisos.Visible = false;
             else
+            {
+                limpiarPagina();
+                lblRol.Text = nombreRol;
+                ddlRol.SelectedValue = idRol.ToString();
                 pnlPermisos.Visible = true;
+                permisosRol = LogicaBDRol.cargarPermisosRol(idRol);
+                for (int i = 0; i < permisosRol.Count; i++)
+                {
+                    if (permisosRol[i].pantalla == "ConsultarUsuario.aspx")
+                    {
+                        if (permisosRol[i].idPermiso == 1)
+                            chkConsultarUsuarioL.Checked = true;
+                        if (permisosRol[i].idPermiso == 2)
+                            chkConsultarUsuarioG.Checked = true;
+                        if (permisosRol[i].idPermiso == 3)
+                            chkConsultarUsuarioE.Checked = true;
+                    }
+                    if (permisosRol[i].pantalla == "RegistrarUsuario.aspx")
+                    {
+                        if (permisosRol[i].idPermiso == 1)
+                            chkRegistrarUsuarioL.Checked = true;
+                        if (permisosRol[i].idPermiso == 2)
+                            chkRegistrarUsuarioG.Checked = true;
+                        if (permisosRol[i].idPermiso == 3)
+                            chkRegistrarUsuarioE.Checked = true;
+                    }
+                    if (permisosRol[i].pantalla == "AsignarPermisos.aspx")
+                    {
+                        if (permisosRol[i].idPermiso == 1)
+                            chkAsignarPermisosL.Checked = true;
+                        if (permisosRol[i].idPermiso == 2)
+                            chkAsignarPermisosG.Checked = true;
+                        if (permisosRol[i].idPermiso == 3)
+                            chkAsignarPermisosE.Checked = true;
+                    }
+                }
+            }
         }
     }
 }

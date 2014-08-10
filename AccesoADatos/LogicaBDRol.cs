@@ -29,8 +29,8 @@ namespace AccesoADatos
                         perRolesBD.idRol = item.idRol;
                         perRolesBD.pantalla = item.pantalla;
                         mapaEntidades.AddToPermisosXRoles(perRolesBD);
-                        mapaEntidades.SaveChanges();
                     }
+                    mapaEntidades.SaveChanges();
                     transaction.Complete();
                     b = true;
                 }
@@ -68,6 +68,31 @@ namespace AccesoADatos
                 }
                 return b;
             }
+        }
+
+        public static List<EPermisoRol> cargarPermisosRol(int idRol)
+        {
+            List<EPermisoRol> perRol = new List<EPermisoRol>();
+            SIGMAEntitiesContainer mapaEntidades = Conexion.crearSegunServidor();
+            IQueryable<PermisosXRoles> ListaPermisos = from permisos in mapaEntidades.PermisosXRoles
+                                                       where (permisos.idRol == idRol)
+                                                       select permisos;
+            try
+            {
+                foreach (var permisos in ListaPermisos)
+                {
+                    EPermisoRol per = new EPermisoRol();
+                    per.idPermiso = permisos.idPermiso;
+                    per.idRol = permisos.idRol;
+                    per.pantalla = permisos.pantalla;
+                    perRol.Add(per);
+                }
+            }
+            catch (System.Data.EntityCommandCompilationException exc)
+            {
+                throw exc;
+            }
+            return perRol;
         }
     }
 }
