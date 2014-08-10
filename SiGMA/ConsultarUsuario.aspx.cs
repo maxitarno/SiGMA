@@ -112,12 +112,16 @@ namespace SiGMA
                 txtUsuario.Focus();
             }
         }
-        /*public void pausa(object sender, EventArgs e)
+        public void btnEliminarClick(object sender, EventArgs e)
         {
-            Timer timer = new Timer();
-            timer.FindControl("lblResultado");
-            timer.Interval 
-            lblResultado.Text = "";
-        }*/
+            if (LogicaBDUsuario.EliminarUsuario(txtUsuario.Text))
+            {
+                lblResultado.Text = "Se elimino corretamente";
+            }
+            else
+            {
+                lblResultado.Text = "No se pudo eliminar";
+            }
+        }
     }
 }

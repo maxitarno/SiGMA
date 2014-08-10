@@ -251,5 +251,18 @@ namespace AccesoADatos
             }
             return b;
         }
-    }
+        public static bool EliminarUsuario(string usuario){
+            SIGMAEntitiesContainer mapaEntidades = Conexion.crearSegunServidor();
+            var personas = mapaEntidades.Personas.Where(personaBuscada => PersonaBuscada.user == usuario);
+            var usuarios = mapaEntidades.Usuarios.Where(usuarioBuscado => usuarioBuscado.user == usuario);
+            try{
+                mapaEntidades.DeleteObject(personas);
+                mapaEntidades.DeleteObject(usuarios);
+            }
+            catch (Exception exc){
+                throw exc;
+                return false;
+            }
+            return true;
+        }
 }

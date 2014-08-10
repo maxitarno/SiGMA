@@ -14,19 +14,16 @@
                 <table>
                     <tr>
                         <td>
-                            <asp:Label ID="lblResultado" runat="server" Text="" OnDisposed="Resultado"></asp:Label>
+                            <asp:Label ID="lblResultado" runat="server" Text=""></asp:Label>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            Por persona:&nbsp<asp:RadioButton ID="rbPorPersona" runat="server" GroupName="1"
-                                ValidationGroup="1" />
-                            <br />
+                            Por persona:&nbsp<asp:RadioButton ID="rbPorPersona" runat="server" GroupName="1" ValidationGroup="1" />
                         </td>
                         <td>
-                            Por usuario:&nbsp<asp:RadioButton ID="rbPorUsuario" runat="server" GroupName="1"
-                                ValidationGroup="1" />
-                            <br />
+                            Por usuario:&nbsp<asp:RadioButton ID="rbPorUsuario" runat="server" GroupName="1" ValidationGroup="1" />
+
                         </td>
                     </tr>
                     <tr>
@@ -155,11 +152,13 @@
                     </tr>
                     <tr>
                         <td colspan="3" align="center">
-                            <asp:Button ID="btnSeleccionar" runat="server" Text="Seleccionar" CssClass="Button"
-                                OnClick="btnAceptarClick" />
+                            <asp:Button ID="btnSeleccionar" runat="server" Text="Seleccionar" CssClass="Button" OnClick="btnAceptarClick" OnClientClick="pausa"/>
                         </td>
                         <td>
                             <asp:Button ID="Modificar" runat="server" Text="Modificar" CssClass="Button" OnClick="btnModificarClick" />
+                        </td>
+                        <td>
+                            <asp:Button ID="Elimiar" runat="server" Text="Eliminar" CssClass="Button" onClick="btnEliminarClick"/>
                         </td>
                     </tr>
                 </table>
