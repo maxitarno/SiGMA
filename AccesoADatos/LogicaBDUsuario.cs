@@ -22,7 +22,7 @@ namespace AccesoADatos
                     userBD.idRol = 1;
                     mapaEntidades.AddToUsuarios(userBD);
                     mapaEntidades.SaveChanges();
-                    Personas personBD = new Personas();                    
+                    Personas personBD = new Personas();
                     personBD.nombre = duenio.nombre;
                     personBD.apellido = duenio.apellido;
                     personBD.idTipoDocumento = duenio.idTipoDocumento;
@@ -48,7 +48,8 @@ namespace AccesoADatos
             }
         }
         //Mi metodo para buscar los tipos de documentos
-        public static List<ETipoDeDocumento> TiposDNI(){
+        public static List<ETipoDeDocumento> TiposDNI()
+        {
             List<ETipoDeDocumento> tiposDNI = new List<ETipoDeDocumento>();
             SIGMAEntitiesContainer mapaEntidades = Conexion.crearSegunServidor();
             IQueryable<TipoDocumentos> tiposDeDocumentos = from tipoDeDocumentos in mapaEntidades.TipoDocumentos
@@ -76,7 +77,7 @@ namespace AccesoADatos
             List<EUsuario> usuarios = new List<EUsuario>();
             SIGMAEntitiesContainer mapaEntidades = Conexion.crearSegunServidor();
             IQueryable<Usuarios> aux = from usuariosBuscados in mapaEntidades.Usuarios
-                                       where (usuariosBuscados.user.Contains(nombre)) 
+                                       where (usuariosBuscados.user.Contains(nombre))
                                        select usuariosBuscados;
             try
             {
@@ -100,9 +101,9 @@ namespace AccesoADatos
             List<EUsuario> usuarios = new List<EUsuario>();
             SIGMAEntitiesContainer mapaEntidades = Conexion.crearSegunServidor();
             IQueryable<Usuarios> consulta = from personasBD in mapaEntidades.Personas
-                                                from usuariosBD in mapaEntidades.Usuarios
-                                                where ( personasBD.user == usuariosBD.user && personasBD.nroDocumento == dni && personasBD.idTipoDocumento == tipo )
-                                                select usuariosBD;
+                                            from usuariosBD in mapaEntidades.Usuarios
+                                            where (personasBD.user == usuariosBD.user && personasBD.nroDocumento == dni && personasBD.idTipoDocumento == tipo)
+                                            select usuariosBD;
             try
             {
                 foreach (var usuarioBD in consulta)
@@ -120,7 +121,8 @@ namespace AccesoADatos
         }
         //fin metodo
         //metodo para buscar persona
-        public static void BuscarUsuarios(string nombre, EUsuario user, EPersona persona, EBarrio barrio, ELocalidad localidad){
+        public static void BuscarUsuarios(string nombre, EUsuario user, EPersona persona, EBarrio barrio, ELocalidad localidad)
+        {
             SIGMAEntitiesContainer mapaEntidades = Conexion.crearSegunServidor();
             var consulta = from personasBD in mapaEntidades.Personas
                            from usuariosBD in mapaEntidades.Usuarios
@@ -128,7 +130,8 @@ namespace AccesoADatos
                            from BarriosBD in mapaEntidades.Barrios
                            from LocalidadesBD in mapaEntidades.Localidades
                            where (personasBD.user == usuariosBD.user && rolesBD.idRol == usuariosBD.idRol && personasBD.idBarrio == BarriosBD.idBarrio && LocalidadesBD.idLocalidad == BarriosBD.idLocalidad && personasBD.user == nombre)
-                           select new{
+                           select new
+                           {
                                apellido = personasBD.apellido,
                                nombre = personasBD.nombre,
                                tipoDNI = personasBD.idTipoDocumento,
@@ -142,7 +145,7 @@ namespace AccesoADatos
                                barrio = persona.idBarrio,
                                localidad = LocalidadesBD.idLocalidad,
                                idPersona = personasBD.idPersona
-                            };
+                           };
             try
             {
                 foreach (var usuario in consulta)
@@ -173,7 +176,7 @@ namespace AccesoADatos
             SIGMAEntitiesContainer mapaEntidades = Conexion.crearSegunServidor();
             IQueryable<Barrios> consulta = from BarriosDB in mapaEntidades.Barrios
                                            where (BarriosDB.idLocalidad == idLocalidad)
-                                           select BarriosDB;                                           
+                                           select BarriosDB;
             try
             {
                 foreach (var registro in consulta)
@@ -251,18 +254,22 @@ namespace AccesoADatos
             }
             return b;
         }
-        public static bool EliminarUsuario(string usuario){
+        public static bool EliminarUsuario(string usuario)
+        {
             SIGMAEntitiesContainer mapaEntidades = Conexion.crearSegunServidor();
-            var personas = mapaEntidades.Personas.Where(personaBuscada => PersonaBuscada.user == usuario);
             var usuarios = mapaEntidades.Usuarios.Where(usuarioBuscado => usuarioBuscado.user == usuario);
-            try{
-                mapaEntidades.DeleteObject(personas);
-                mapaEntidades.DeleteObject(usuarios);
+            var personas = mapaEntidades.Personas.Where(personaBuscada => personaBuscada.user == usuario);
+            try
+            {
+                mapaEntidades.DeleteObject(usuario);
+                mapaEntidades.DetectChanges();
+                mapaEntidades.SaveChanges();
             }
-            catch (Exception exc){
-                throw exc;
+            catch (Exception)
+            {
                 return false;
             }
             return true;
         }
+    }
 }
