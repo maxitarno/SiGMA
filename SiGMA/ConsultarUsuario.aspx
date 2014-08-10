@@ -14,7 +14,7 @@
                 <table>
                     <tr>
                         <td>
-                            <asp:Label ID="lblResultado" runat="server" Text=""></asp:Label>
+                            <asp:Label ID="lblResultado" runat="server" Text="" OnDisposed="Resultado"></asp:Label>
                         </td>
                     </tr>
                     <tr>

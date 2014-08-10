@@ -93,8 +93,8 @@ namespace SiGMA
             persona.domicilio = txtDomicilio.Text;
             persona.email = txtMail.Text;
             persona.fechaNacimiento = DateTime.Parse(txtFecha.Text);
-            persona.idBarrio = int.Parse(ddlBarrios.SelectedValue);
-            persona.idTipoDocumento = int.Parse(ddlTipoDeDocumento.SelectedValue);
+            persona.idBarrio = ddlBarrios.SelectedIndex + 1;
+            persona.idTipoDocumento = ddlTipoDeDocumento.SelectedIndex + 1;
             persona.nombre = txtNombre.Text;
             persona.nroDocumento = txtNºDeDocumento.Text;
             persona.telefonoCelular = txtTelefonoCelular.Text;
@@ -102,22 +102,22 @@ namespace SiGMA
             EUsuario usuario = new EUsuario();
             usuario.idRol = int.Parse(ddlRoles.SelectedValue);
             usuario.user = txtUsuario.Text;
-            persona.idPersona = (int)Session["persona"];
             if (LogicaBDUsuario.ModificarUsuario(persona, usuario))
             {
                 lblResultado.Text = "Se modifico correctamente";
-                Timer esperar = new Timer();
-                esperar.Interval = 8000;
-                lblResultado.Text = "";
             }
             else
             {
                 lblResultado.Text = "No se pudo modificar";
-                Timer esperar = new Timer();
-                esperar.Interval = 8000;
-                lblResultado.Text = "";
                 txtUsuario.Focus();
             }
         }
+        /*public void pausa(object sender, EventArgs e)
+        {
+            Timer timer = new Timer();
+            timer.FindControl("lblResultado");
+            timer.Interval 
+            lblResultado.Text = "";
+        }*/
     }
 }

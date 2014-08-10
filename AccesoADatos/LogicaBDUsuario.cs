@@ -140,7 +140,7 @@ namespace AccesoADatos
                                usuario = usuariosBD.user,
                                rol = rolesBD.idRol,
                                barrio = persona.idBarrio,
-                               localidad = LocalidadesBD.idLocalidad
+                               localidad = LocalidadesBD.idLocalidad,
                                idPersona = personasBD.idPersona
                             };
             try
@@ -223,26 +223,28 @@ namespace AccesoADatos
             try
             {
                 SIGMAEntitiesContainer mapaEntidades = Conexion.crearSegunServidor();
-                Personas personas = new Personas();
-                Usuarios usuarios = new Usuarios();
-                personas.apellido = persona.apellido;
-                personas.domicilio = persona.domicilio;
-                personas.idBarrio = persona.idBarrio;
-                personas.idTipoDocumento = persona.idTipoDocumento;
-                personas.nombre = persona.nombre;
-                personas.nroDocumento = persona.nroDocumento;
-                personas.telefonoCelular = persona.telefonoCelular;
-                personas.telefonoFijo = persona.telefonoFijo;
-                personas.idTipoDocumento = persona.idTipoDocumento;
-                personas.email = persona.email;
-                usuarios.user = usuario.user;
-                usuarios.idRol = usuario.idRol;
-                personas.user = usuario.user;
-                mapaEntidades.ApplyCurrentValues("Usuarios", usuarios);
-                mapaEntidades.ApplyCurrentValues("Personas", personas);
+                var personas = mapaEntidades.Personas.Where(personaBuscada => personaBuscada.user.StartsWith(usuario.user));
+                var usuarios = mapaEntidades.Usuarios.Where(usuariobuscado => usuariobuscado.user.StartsWith(usuario.user));
+                foreach (var registro in personas)
+                {
+                    registro.apellido = registro.apellido.Replace(registro.apellido, persona.apellido);
+                    registro.domicilio = registro.domicilio.Replace(registro.domicilio, persona.domicilio);
+                    registro.email = registro.email.Replace(registro.email, persona.email);
+                    registro.fechaNacimiento = persona.fechaNacimiento;
+                    registro.idBarrio = persona.idBarrio;
+                    registro.idTipoDocumento = persona.idTipoDocumento;
+                    registro.nombre = registro.nombre.Replace(registro.nombre, persona.nombre);
+                    registro.nroDocumento = registro.nroDocumento.Replace(registro.nroDocumento, persona.nroDocumento);
+                    registro.telefonoCelular = registro.telefonoCelular.Replace(registro.telefonoCelular, persona.telefonoCelular);
+                    registro.telefonoFijo = registro.telefonoFijo.Replace(registro.telefonoFijo, persona.telefonoFijo);
+                }
+                foreach (var registro in usuarios)
+                {
+                    registro.idRol = usuario.idRol;
+                }
                 mapaEntidades.SaveChanges();
             }
-            catch (Exception exc)
+            catch (InvalidOperationException exc)
             {
                 b = false;
                 throw exc;
