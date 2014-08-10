@@ -50,7 +50,7 @@
                     </table>
                     <br />
                     <asp:Button ID="btnGuardar" runat="server" Text="Guardar" 
-                        onclick="btnGuardar_Click" />
+                        onclick="btnGuardar_Click" class="btn-primary"/>
                 </asp:Panel>
                 
             </div>
