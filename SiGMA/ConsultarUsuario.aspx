@@ -14,11 +14,18 @@
                 <table>
                     <tr>
                         <td>
-                            Por persona:&nbsp<asp:RadioButton ID="rbPorPersona" runat="server" GroupName="1" ValidationGroup="1" />
+                            <asp:Label ID="lblResultado" runat="server" Text=""></asp:Label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Por persona:&nbsp<asp:RadioButton ID="rbPorPersona" runat="server" GroupName="1"
+                                ValidationGroup="1" />
                             <br />
                         </td>
                         <td>
-                            Por usuario:&nbsp<asp:RadioButton ID="rbPorUsuario" runat="server" GroupName="1" ValidationGroup="1" />
+                            Por usuario:&nbsp<asp:RadioButton ID="rbPorUsuario" runat="server" GroupName="1"
+                                ValidationGroup="1" />
                             <br />
                         </td>
                     </tr>
@@ -64,7 +71,7 @@
                             Apellido:&nbsp
                         </td>
                         <td>
-                            <asp:TextBox ID="txtApellido" runat="server" CssClass="TextBox" Width=100%></asp:TextBox>
+                            <asp:TextBox ID="txtApellido" runat="server" CssClass="TextBox" Width="100%"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
@@ -72,7 +79,7 @@
                             Nombre:&nbsp
                         </td>
                         <td>
-                            <asp:TextBox ID="txtNombre" runat="server" CssClass="TextBox" Width=100%></asp:TextBox>
+                            <asp:TextBox ID="txtNombre" runat="server" CssClass="TextBox" Width="100%"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
@@ -92,7 +99,8 @@
                             </asp:DropDownList>
                         </td>
                         <td>
-                            <asp:Button ID="btnBuscarLocalidades" runat="server" Text="BuscarLocalidades" OnClick="ddlLocalidadSelected" CssClass="Button" />
+                            <asp:Button ID="btnBuscarLocalidades" runat="server" Text="BuscarLocalidades" OnClick="ddlLocalidadSelected"
+                                CssClass="Button" />
                         </td>
                     </tr>
                     <tr>
@@ -120,10 +128,10 @@
                             <asp:TextBox ID="txtTelefonoFijo" runat="server" CssClass="TextBox"></asp:TextBox>
                         </td>
                     </tr>
-                        <tr>
-                            <td>
-                                Telefono celular:&nbsp
-                            </td>
+                    <tr>
+                        <td>
+                            Telefono celular:&nbsp
+                        </td>
                         <td>
                             <asp:TextBox ID="txtTelefonoCelular" runat="server" CssClass="TextBox"></asp:TextBox>
                         </td>
@@ -141,13 +149,17 @@
                             Rol:&nbsp
                         </td>
                         <td>
-                            <asp:DropDownList ID="ddlRoles" runat="server" CssClass="DropDownList" Width=100%>
+                            <asp:DropDownList ID="ddlRoles" runat="server" CssClass="DropDownList" Width="100%">
                             </asp:DropDownList>
                         </td>
                     </tr>
                     <tr>
                         <td colspan="3" align="center">
-                            <asp:Button ID="btnAceptar" runat="server" Text="Aceptar" CssClass="Button" OnClick="btnAceptarClick" />
+                            <asp:Button ID="btnSeleccionar" runat="server" Text="Seleccionar" CssClass="Button"
+                                OnClick="btnAceptarClick" />
+                        </td>
+                        <td>
+                            <asp:Button ID="Modificar" runat="server" Text="Modificar" CssClass="Button" OnClick="btnModificarClick" />
                         </td>
                     </tr>
                 </table>

@@ -129,19 +129,20 @@ namespace AccesoADatos
                            from LocalidadesBD in mapaEntidades.Localidades
                            where (personasBD.user == usuariosBD.user && rolesBD.idRol == usuariosBD.idRol && personasBD.idBarrio == BarriosBD.idBarrio && LocalidadesBD.idLocalidad == BarriosBD.idLocalidad && personasBD.user == nombre)
                            select new{
-                           apellido = personasBD.apellido,
-                           nombre = personasBD.nombre,
-                           tipoDNI = personasBD.idTipoDocumento,
-                           dNI = personasBD.nroDocumento,
-                           domicilio = personasBD.domicilio,
-                           tEF = personasBD.telefonoFijo,
-                           tEC = personasBD.telefonoCelular,
-                           mail = personasBD.email,
-                           usuario = usuariosBD.user,
-                           rol = rolesBD.idRol,
-                           barrio = persona.idBarrio,
-                           localidad = LocalidadesBD.idLocalidad
-                           };
+                               apellido = personasBD.apellido,
+                               nombre = personasBD.nombre,
+                               tipoDNI = personasBD.idTipoDocumento,
+                               dNI = personasBD.nroDocumento,
+                               domicilio = personasBD.domicilio,
+                               tEF = personasBD.telefonoFijo,
+                               tEC = personasBD.telefonoCelular,
+                               mail = personasBD.email,
+                               usuario = usuariosBD.user,
+                               rol = rolesBD.idRol,
+                               barrio = persona.idBarrio,
+                               localidad = LocalidadesBD.idLocalidad
+                               idPersona = personasBD.idPersona
+                            };
             try
             {
                 foreach (var usuario in consulta)
@@ -213,6 +214,40 @@ namespace AccesoADatos
                 throw exc;
             }
             return localidades;
+        }
+        //fin metodo
+        //metodo para modificar un usuario
+        public static bool ModificarUsuario(EPersona persona, EUsuario usuario)
+        {
+            bool b = true;
+            try
+            {
+                SIGMAEntitiesContainer mapaEntidades = Conexion.crearSegunServidor();
+                Personas personas = new Personas();
+                Usuarios usuarios = new Usuarios();
+                personas.apellido = persona.apellido;
+                personas.domicilio = persona.domicilio;
+                personas.idBarrio = persona.idBarrio;
+                personas.idTipoDocumento = persona.idTipoDocumento;
+                personas.nombre = persona.nombre;
+                personas.nroDocumento = persona.nroDocumento;
+                personas.telefonoCelular = persona.telefonoCelular;
+                personas.telefonoFijo = persona.telefonoFijo;
+                personas.idTipoDocumento = persona.idTipoDocumento;
+                personas.email = persona.email;
+                usuarios.user = usuario.user;
+                usuarios.idRol = usuario.idRol;
+                personas.user = usuario.user;
+                mapaEntidades.ApplyCurrentValues("Usuarios", usuarios);
+                mapaEntidades.ApplyCurrentValues("Personas", personas);
+                mapaEntidades.SaveChanges();
+            }
+            catch (Exception exc)
+            {
+                b = false;
+                throw exc;
+            }
+            return b;
         }
     }
 }

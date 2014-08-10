@@ -75,6 +75,7 @@ namespace SiGMA
             txtTelefonoCelular.Text = persona.telefonoCelular;
             txtMail.Text = persona.email;
             txtFecha.Text = persona.fechaNacimiento.ToString();
+            Session["persona"] = persona.idPersona;
         }
         public void ddlLocalidadSelected(object sender, EventArgs e)
         {
@@ -84,6 +85,39 @@ namespace SiGMA
             ddlBarrios.DataTextField = "nombre";
             ddlBarrios.DataValueField = "idBarrio";
             ddlBarrios.DataBind();
+        }
+        public void btnModificarClick(object sender, EventArgs e)
+        {
+            EPersona persona = new EPersona();
+            persona.apellido = txtApellido.Text;
+            persona.domicilio = txtDomicilio.Text;
+            persona.email = txtMail.Text;
+            persona.fechaNacimiento = DateTime.Parse(txtFecha.Text);
+            persona.idBarrio = int.Parse(ddlBarrios.SelectedValue);
+            persona.idTipoDocumento = int.Parse(ddlTipoDeDocumento.SelectedValue);
+            persona.nombre = txtNombre.Text;
+            persona.nroDocumento = txtNºDeDocumento.Text;
+            persona.telefonoCelular = txtTelefonoCelular.Text;
+            persona.telefonoFijo = txtTelefonoFijo.Text;
+            EUsuario usuario = new EUsuario();
+            usuario.idRol = int.Parse(ddlRoles.SelectedValue);
+            usuario.user = txtUsuario.Text;
+            persona.idPersona = (int)Session["persona"];
+            if (LogicaBDUsuario.ModificarUsuario(persona, usuario))
+            {
+                lblResultado.Text = "Se modifico correctamente";
+                Timer esperar = new Timer();
+                esperar.Interval = 8000;
+                lblResultado.Text = "";
+            }
+            else
+            {
+                lblResultado.Text = "No se pudo modificar";
+                Timer esperar = new Timer();
+                esperar.Interval = 8000;
+                lblResultado.Text = "";
+                txtUsuario.Focus();
+            }
         }
     }
 }
