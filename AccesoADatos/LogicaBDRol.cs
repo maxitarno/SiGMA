@@ -17,6 +17,11 @@ namespace AccesoADatos
                 try
                 {
                     SIGMAEntitiesContainer mapaEntidades = Conexion.crearSegunServidor();
+                    var rol = ListadoPermisos[1].idRol;
+                    var list = mapaEntidades.PermisosXRoles.Where(m => m.idRol == rol);
+                    foreach (PermisosXRoles per in list)
+                        mapaEntidades.PermisosXRoles.DeleteObject(per);
+                        mapaEntidades.SaveChanges(); 
                     foreach (var item in ListadoPermisos)
                     {
                         PermisosXRoles perRolesBD = new PermisosXRoles();
