@@ -21,7 +21,7 @@ namespace SiGMA
                 ddlTipoDeDocumento.DataValueField = "idTipoDeDocumento";
                 ddlTipoDeDocumento.DataBind();
                 List<ERol> roles = new List<ERol>();
-                roles = LogicaBDUsuario.Roles();
+                roles = LogicaBDRol.Roles();
                 ddlRoles.DataSource = roles;
                 ddlRoles.DataTextField = "nombreRol";
                 ddlRoles.DataValueField = "idRol";
