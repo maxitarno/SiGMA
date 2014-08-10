@@ -37,6 +37,8 @@ namespace SiGMA
             ERol rol = LogicaBDRol.cargarRol(idRol);
             txtRol.Text = rol.nombreRol;
             txtDescripcionRol.Text = rol.descripcionRol;
+            if (ddlRol.SelectedValue == "0")
+                limpiarPagina();
         }
 
         protected void btnGuardarRol_Click(object sender, EventArgs e)
