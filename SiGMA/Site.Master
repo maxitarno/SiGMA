@@ -121,6 +121,8 @@
             </button>
             <ul class="dropdown-menu">
                 <li><a href="AsignarPermisos.aspx">Asignar Permisos a Rol</a></li>
+                 <li><a href="RegistrarRoles.aspx">Gestionar Roles</a></li>
+                
             </ul>
         </div>
     </div>
