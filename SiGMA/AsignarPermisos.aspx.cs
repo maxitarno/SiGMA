@@ -25,7 +25,7 @@ namespace SiGMA
         {
             ddlRol.DataTextField = "nombreRol";
             ddlRol.DataValueField = "idRol";
-            ddlRol.DataSource = LogicaBDUsuario.Roles();
+            ddlRol.DataSource = LogicaBDRol.Roles();
             ddlRol.DataBind();
         }
 
