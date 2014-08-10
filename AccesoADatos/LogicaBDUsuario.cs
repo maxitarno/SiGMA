@@ -165,31 +165,6 @@ namespace AccesoADatos
                 throw exc;
             }
         }
-        //Metodo para busar roles
-        public static List<ERol> Roles()
-        {
-            List<ERol> roles = new List<ERol>();
-            SIGMAEntitiesContainer mapaEntidades = Conexion.crearSegunServidor();
-            IQueryable<Roles> consulta = from rolesDB in mapaEntidades.Roles
-                                         select rolesDB;
-            try
-            {
-                foreach (var registro in consulta)
-                {
-                    ERol rol = new ERol();
-                    rol.idRol = registro.idRol;
-                    rol.nombreRol = registro.nombre;
-                    rol.descripcionRol = registro.descripcion;
-                    roles.Add(rol);
-                }
-            }
-            catch (System.Data.EntityCommandCompilationException exc)
-            {
-                throw exc;
-            }
-            return roles;
-        }
-        //fin metodo
         //Metodo para buscar barrios y localidades
         public static List<EBarrio> BuscarBarrios(int idLocalidad)
         {
