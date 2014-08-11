@@ -372,3 +372,16 @@ asp:Login
     border-width:3px;
     width:100%;
 }
+.Validator
+{
+    color: Red;
+}
+.Validator:After
+{
+    color: Red;
+}
+.Validator:Before
+{
+    visibility: hidden;
+    color: #FFFFFF;
+}
