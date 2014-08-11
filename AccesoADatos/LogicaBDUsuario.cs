@@ -257,19 +257,24 @@ namespace AccesoADatos
         public static bool EliminarUsuario(string usuario)
         {
             SIGMAEntitiesContainer mapaEntidades = Conexion.crearSegunServidor();
-            var usuarios = mapaEntidades.Usuarios.Where(usuarioBuscado => usuarioBuscado.user == usuario);
-            var personas = mapaEntidades.Personas.Where(personaBuscada => personaBuscada.user == usuario);
+            var usuarios = mapaEntidades.Usuarios.Where(usuarioBuscado => usuarioBuscado.user == usuario).Single();
+            var personas = mapaEntidades.Personas.Where(personaBuscada => personaBuscada.user == usuario).Single();
+            var duenios = mapaEntidades.Duenios.Where(dueniosBuscado => dueniosBuscado.idPersona == personas.idPersona && personas.user == usuario).Single();
+            bool b = true;
             try
             {
-                mapaEntidades.DeleteObject(usuario);
+                mapaEntidades.DeleteObject(duenios);
+                mapaEntidades.DeleteObject(usuarios);
+                mapaEntidades.DeleteObject(personas);
                 mapaEntidades.DetectChanges();
-                mapaEntidades.SaveChanges();
+                mapaEntidades.SaveChanges(System.Data.Objects.SaveOptions.DetectChangesBeforeSave);
             }
-            catch (Exception)
+            catch(System.Data.UpdateException exc)
             {
-                return false;
+                b = false;
+                throw exc;
             }
-            return true;
+            return b;
         }
     }
 }
