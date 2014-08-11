@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ConsultarUsuario.aspx.cs"
-    Inherits="SiGMA.ConsultarUsuario" MasterPageFile="Site.Master" %>
+    Inherits="SiGMA.ConsultarUsuario" MasterPageFile="~/Site.Master" %>
 
 <asp:Content ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
