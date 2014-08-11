@@ -36,7 +36,6 @@
                             <asp:RequiredFieldValidator ID="rfvUsuarion" runat="server" ErrorMessage=" Debe ingresar un usuario" ControlToValidate="txtUsuario" CssClass="Validator" Display="Dynamic" ValidationGroup="3" SetFocusOnError="True"></asp:RequiredFieldValidator>
                             <asp:RequiredFieldValidator ID="rfvUsuario" runat="server" ControlToValidate="txtUsuario" CssClass="Validator" Display="Dynamic" ErrorMessage="Debe ingresar un usuario" SetFocusOnError="True" ValidationGroup="2"></asp:RequiredFieldValidator>
                         </td>
-                        <td></td>
                     </tr>
                     <tr>
                         <td>
@@ -47,8 +46,8 @@
                             </asp:DropDownList>
                             &nbsp
                         </td>
-                        <td align="center">
-                            <asp:Button CssClass="Button" ID="btnBuscar" runat="server" Text="Buscar" OnClick="btnBuscarClick" />
+                        <td colspan="2" align="center">
+                            <asp:Button CssClass="Button" ID="btnBuscar" runat="server" Text="Buscar" OnClick="btnBuscarClick" width=100%/>
                         </td>
                     </tr>
                     <tr>
@@ -106,10 +105,10 @@
                         </td>
                         <td>
                             <asp:DropDownList ID="ddlLocalidades" runat="server" CssClass="DropDownList">
-                            </asp:DropDownList>
+                            </asp:DropDownList>&nbsp
                         </td>
-                        <td>
-                            <asp:Button ID="btnBuscarLocalidades" runat="server" Text="BuscarLocalidades" OnClick="ddlLocalidadSelected"
+                        <td colspan="2">
+                            <asp:Button ID="btnBuscarLocalidades" runat="server" Text="Buscar Localidades" OnClick="ddlLocalidadSelected"
                                 CssClass="Button" />
                         </td>
                     </tr>
@@ -185,6 +184,9 @@
                         </td>
                         <td>
                             <asp:Button ID="Elimiar" runat="server" Text="Eliminar" CssClass="Button" onClick="btnEliminarClick" Width=100% ValidationGroup="3" />
+                        </td>
+                        <td>
+                            <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar" CssClass="Button" OnClick="btnLimpiarClick"/>
                         </td>
                     </tr>
                 </table>

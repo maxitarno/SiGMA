@@ -123,5 +123,17 @@ namespace SiGMA
                 lblResultado.Text = "No se pudo eliminar";
             }
         }
+        public void btnLimpiarClick(object sender, EventArgs e)
+        {
+            txtApellido.Text = " ";
+            txtDomicilio.Text = " ";
+            txtFecha.Text = " ";
+            txtMail.Text = " ";
+            txtNºDeDocumento.Text = " ";
+            txtNombre.Text = " ";
+            txtTelefonoCelular.Text = " ";
+            txtTelefonoFijo.Text = " ";
+            txtUsuario.Text = " ";
+        }
     }
 }

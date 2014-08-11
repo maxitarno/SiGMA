@@ -352,6 +352,7 @@ asp:Login
     border-style:groove;
     border-width:8px;
     border-color:#0066FF;
+    width:100%;
 }
 .TextBox
 {
