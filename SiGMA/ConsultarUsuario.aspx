@@ -11,7 +11,7 @@
         </div>
         <div class="panel-body">
             <div class="almedio">
-                <table>
+                <table >
                     <tr>
                         <td>
                             <asp:Label ID="lblResultado" runat="server" Text=""></asp:Label>
