@@ -30,7 +30,7 @@
                             Usuario:&nbsp
                         </td>
                         <td>
-                            <asp:TextBox CssClass="TextBox" ID="txtUsuario" runat="server"></asp:TextBox>
+                            <asp:TextBox CssClass="text-primary" ID="txtUsuario" runat="server"></asp:TextBox>
                         </td>
                         <td>
                             <asp:RequiredFieldValidator ID="rfvUsuarion" runat="server" ErrorMessage=" Debe ingresar un usuario" ControlToValidate="txtUsuario" CssClass="Validator" Display="Dynamic" ValidationGroup="3" SetFocusOnError="True"></asp:RequiredFieldValidator>
@@ -42,12 +42,12 @@
                             Tipo de documento:&nbsp
                         </td>
                         <td>
-                            <asp:DropDownList CssClass="DropDownList" ID="ddlTipoDeDocumento" runat="server">
+                            <asp:DropDownList ID="ddlTipoDeDocumento" runat="server">
                             </asp:DropDownList>
                             &nbsp
                         </td>
                         <td colspan="2" align="center">
-                            <asp:Button CssClass="Button" ID="btnBuscar" runat="server" Text="Buscar" OnClick="btnBuscarClick" width=100%/>
+                            <asp:Button CssClass="btn-primary" ID="btnBuscar" runat="server" Text="Buscar" OnClick="btnBuscarClick" width=100%/>
                         </td>
                     </tr>
                     <tr>
@@ -55,7 +55,7 @@
                             Nº de documento:&nbsp
                         </td>
                         <td>
-                            <asp:TextBox CssClass="TextBox" ID="txtNºDeDocumento" runat="server"></asp:TextBox>&nbsp
+                            <asp:TextBox CssClass="text-primary" ID="txtNºDeDocumento" runat="server"></asp:TextBox>&nbsp
                         </td>
                         <td>
                             <asp:RequiredFieldValidator ID="rfvNºDeDocumento" runat="server" ErrorMessage="debe ingresar un numero de documento" ControlToValidate="txtNºDeDocumento" CssClass="Validator" Display="Dynamic" ValidationGroup="2"></asp:RequiredFieldValidator>
@@ -66,7 +66,7 @@
                             Resultados:
                         </td>
                         <td>
-                            <asp:ListBox ID="lstResultados" runat="server" CssClass="ListBox" Width="100%"></asp:ListBox>
+                            <asp:ListBox ID="lstResultados" runat="server" Width="100%"></asp:ListBox>
                         </td>
                     </tr>
                     <tr>
@@ -74,7 +74,7 @@
                             Apellido:&nbsp
                         </td>
                         <td>
-                            <asp:TextBox ID="txtApellido" runat="server" CssClass="TextBox" Width="100%"></asp:TextBox>
+                            <asp:TextBox ID="txtApellido" runat="server" CssClass="text-primary" Width="100%"></asp:TextBox>
                         </td>
                         <td>
                             <asp:RequiredFieldValidator ID="rfvApellido" runat="server" ErrorMessage="Debe ingresar un apellido" ControlToValidate="txtApellido" CssClass="Validator" ValidationGroup="2" SetFocusOnError="True" Display="Dynamic"></asp:RequiredFieldValidator>
@@ -85,7 +85,7 @@
                             Nombre:&nbsp
                         </td>
                         <td>
-                            <asp:TextBox ID="txtNombre" runat="server" CssClass="TextBox" Width="100%"></asp:TextBox>
+                            <asp:TextBox ID="txtNombre" runat="server" CssClass="text-primary" Width="100%"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
@@ -93,7 +93,7 @@
                             Domicilio:&nbsp
                         </td>
                         <td>
-                            <asp:TextBox ID="txtDomicilio" runat="server" CssClass="TextBox"></asp:TextBox>
+                            <asp:TextBox ID="txtDomicilio" runat="server" CssClass="text-primary"></asp:TextBox>
                         </td>
                         <td>
                             <asp:RequiredFieldValidator ID="rfvDomicilio" runat="server" ErrorMessage="Debe ingresar un domicilio" CssClass="Validator" ControlToValidate="txtDomicilio" Display="Dynamic" SetFocusOnError="True" ValidationGroup="2"></asp:RequiredFieldValidator>
@@ -104,12 +104,12 @@
                             Localidades:&nbsp
                         </td>
                         <td>
-                            <asp:DropDownList ID="ddlLocalidades" runat="server" CssClass="DropDownList">
+                            <asp:DropDownList ID="ddlLocalidades" runat="server">
                             </asp:DropDownList>&nbsp
                         </td>
                         <td colspan="2">
                             <asp:Button ID="btnBuscarLocalidades" runat="server" Text="Buscar Localidades" OnClick="ddlLocalidadSelected"
-                                CssClass="Button" />
+                                CssClass="btn-primary" />
                         </td>
                     </tr>
                     <tr>
@@ -117,7 +117,7 @@
                             Barrios:&nbsp
                         </td>
                         <td>
-                            <asp:DropDownList ID="ddlBarrios" runat="server" CssClass="DropDownList">
+                            <asp:DropDownList ID="ddlBarrios" runat="server">
                             </asp:DropDownList>
                         </td>
                     </tr>
@@ -126,7 +126,7 @@
                             Fecha de nacimiento:&nbsp
                         </td>
                         <td>
-                            <asp:TextBox ID="txtFecha" runat="server" CssClass="TextBox"></asp:TextBox>
+                            <asp:TextBox ID="txtFecha" runat="server" CssClass="text-primary"></asp:TextBox>
                         </td>
                         <td>
                             <asp:RequiredFieldValidator ID="rfvFechaDeNacimiento" runat="server" ErrorMessage="Debe ingresar una fecha" CssClass="Validator" Display="Dynamic" ControlToValidate="txtFecha" SetFocusOnError="True" ValidationGroup="2"></asp:RequiredFieldValidator>
@@ -137,7 +137,7 @@
                             Telefono fijo:&nbsp
                         </td>
                         <td>
-                            <asp:TextBox ID="txtTelefonoFijo" runat="server" CssClass="TextBox"></asp:TextBox>
+                            <asp:TextBox ID="txtTelefonoFijo" runat="server" CssClass="text-primary"></asp:TextBox>
                         </td>
                         <td>
                             <asp:RequiredFieldValidator ID="rfvTelefonoFijo" runat="server" ErrorMessage="Debe ingresar un telefono fijo" ControlToValidate="txtTelefonoFijo" Display="Dynamic" ValidationGroup="2" CssClass="Validator"></asp:RequiredFieldValidator>
@@ -148,7 +148,7 @@
                             Telefono celular:&nbsp
                         </td>
                         <td>
-                            <asp:TextBox ID="txtTelefonoCelular" runat="server" CssClass="TextBox"></asp:TextBox>
+                            <asp:TextBox ID="txtTelefonoCelular" runat="server" CssClass="text-primary"></asp:TextBox>
                         </td>
                         <td>
                             <asp:RequiredFieldValidator ID="rfvTelefonoCelular" runat="server" ErrorMessage="Debe ingresar un telefono celular" ControlToValidate="txtTelefonoCelular" CssClass="Validator" ValidationGroup="2" SetFocusOnError="True" Display="Dynamic"></asp:RequiredFieldValidator>
@@ -159,7 +159,7 @@
                             Mail:&nbsp
                         </td>
                         <td>
-                            <asp:TextBox ID="txtMail" runat="server" CssClass="TextBox" CausesValidation="True"></asp:TextBox>
+                            <asp:TextBox ID="txtMail" runat="server" CssClass="text-primary" CausesValidation="True"></asp:TextBox>
                         </td>
                         <td>
                             <asp:RequiredFieldValidator ID="rfvMail" runat="server" ErrorMessage="Debe ingresar un mail" ControlToValidate="txtMail" Display="Dynamic" ValidationGroup="2" SetFocusOnError="True" CssClass="Validator"></asp:RequiredFieldValidator>
@@ -171,22 +171,22 @@
                             Rol:&nbsp
                         </td>
                         <td>
-                            <asp:DropDownList ID="ddlRoles" runat="server" CssClass="DropDownList" Width="100%">
+                            <asp:DropDownList ID="ddlRoles" runat="server" Width="100%">
                             </asp:DropDownList>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <asp:Button ID="btnSeleccionar" runat="server" Text="Seleccionar" CssClass="Button" OnClick="btnAceptarClick" Width=100%/>
+                            <asp:Button ID="btnSeleccionar" runat="server" Text="Seleccionar" CssClass="btn-primary" OnClick="btnAceptarClick" Width=100%/>
                         </td>
                         <td>
-                            <asp:Button ID="Modificar" runat="server" Text="Modificar" CssClass="Button" OnClick="btnModificarClick" width=100% ValidationGroup="2" />
+                            <asp:Button ID="Modificar" runat="server" Text="Modificar" CssClass="btn-primary" OnClick="btnModificarClick" width=100% ValidationGroup="2" />
                         </td>
                         <td>
-                            <asp:Button ID="Elimiar" runat="server" Text="Eliminar" CssClass="Button" onClick="btnEliminarClick" Width=100% ValidationGroup="3" />
+                            <asp:Button ID="Elimiar" runat="server" Text="Eliminar" CssClass="btn-primary" onClick="btnEliminarClick" Width=100% ValidationGroup="3" />
                         </td>
                         <td>
-                            <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar" CssClass="Button" OnClick="btnLimpiarClick"/>
+                            <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar" CssClass="btn-primary" OnClick="btnLimpiarClick"/>
                         </td>
                     </tr>
                 </table>
