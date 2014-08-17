@@ -15,7 +15,7 @@ namespace SiGMA
             if (!Page.IsPostBack)
             {
                 List<ETipoDeDocumento> tipos = new List<ETipoDeDocumento>();
-                tipos = LogicaBDUsuario.TiposDNI();
+                tipos = Datos.TiposDNI();
                 ddlTipoDeDocumento.DataSource = tipos;
                 ddlTipoDeDocumento.DataTextField = "nombre";
                 ddlTipoDeDocumento.DataValueField = "idTipoDeDocumento";
@@ -28,11 +28,17 @@ namespace SiGMA
                 ddlRoles.DataBind();
                 rbPorPersona.Checked = true;
                 List<ELocalidad> localidades = new List<ELocalidad>();
-                localidades = LogicaBDUsuario.BuscarLocalidades();
+                localidades = Datos.BuscarLocalidades();
                 ddlLocalidades.DataSource = localidades;
                 ddlLocalidades.DataTextField = "nombre";
                 ddlLocalidades.DataValueField = "idLocalidad";
                 ddlLocalidades.DataBind();
+                List<EBarrio> barrios = new List<EBarrio>();
+                barrios = Datos.BuscarBarrios();
+                ddlBarrios.DataSource = barrios;
+                ddlBarrios.DataTextField = "nombre";
+                ddlBarrios.DataValueField = "idBarrio";
+                ddlBarrios.DataBind();
             }
         }
         public void btnBuscarClick(object sender, EventArgs e){
@@ -76,15 +82,6 @@ namespace SiGMA
             txtMail.Text = persona.email;
             txtFecha.Text = persona.fechaNacimiento.ToString();
             Session["persona"] = persona.idPersona;
-        }
-        public void ddlLocalidadSelected(object sender, EventArgs e)
-        {
-            List<EBarrio> barrios = new List<EBarrio>();
-            barrios = LogicaBDUsuario.BuscarBarrios(ddlLocalidades.SelectedIndex + 1);
-            ddlBarrios.DataSource = barrios;
-            ddlBarrios.DataTextField = "nombre";
-            ddlBarrios.DataValueField = "idBarrio";
-            ddlBarrios.DataBind();
         }
         public void btnModificarClick(object sender, EventArgs e)
         {

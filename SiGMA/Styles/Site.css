@@ -377,12 +377,3 @@ asp:Login
 {
     color: Red;
 }
-.Validator:After
-{
-    color: Red;
-}
-.Validator:Before
-{
-    visibility: hidden;
-    color: #FFFFFF;
-}

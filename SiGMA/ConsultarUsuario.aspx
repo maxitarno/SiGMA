@@ -19,7 +19,7 @@
                     </tr>
                     <tr>
                         <td colspan="2" align="left">
-                            Por persona:&nbsp<asp:RadioButton ID="rbPorPersona" runat="server" GroupName="1" ValidationGroup="1" with=100%/>
+                            Por persona:&nbsp<asp:RadioButton ID="rbPorPersona" runat="server" GroupName="1" ValidationGroup="1" witdh=100%/>
                         </td>
                         <td colspan="2" align="right">
                             Por usuario:&nbsp<asp:RadioButton ID="rbPorUsuario" runat="server" GroupName="1" ValidationGroup="1" />
@@ -106,10 +106,6 @@
                         <td>
                             <asp:DropDownList ID="ddlLocalidades" runat="server">
                             </asp:DropDownList>&nbsp
-                        </td>
-                        <td colspan="2">
-                            <asp:Button ID="btnBuscarLocalidades" runat="server" Text="Buscar Localidades" OnClick="ddlLocalidadSelected"
-                                CssClass="btn-primary" />
                         </td>
                     </tr>
                     <tr>

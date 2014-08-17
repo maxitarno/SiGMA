@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Conexion.cs" />
+    <Compile Include="Datos.cs" />
     <Compile Include="LogicaBDLogin.cs" />
     <Compile Include="LogicaBDRol.cs" />
     <Compile Include="LogicaBDUsuario.cs" />
