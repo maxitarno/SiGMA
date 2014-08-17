@@ -13,8 +13,22 @@
             <div class="almedio">
                 <table >
                     <tr>
-                        <td>
-                            <asp:Label ID="lblResultado" runat="server" Text=""></asp:Label>
+                        <td colspan="4">
+                            <asp:Panel runat=server id="pnlCorrecto" class="alert alert-dismissable alert-success" Visible=false>
+                                <button class="close" type="button" data-dismiss="alert">
+                                    ×</button>
+                                    <asp:Label ID="lblResultado1" runat="server" Text=""></asp:Label>
+                            </asp:Panel>
+                            <asp:Panel runat=server id="pnlInfo" class="alert alert-dismissable alert-info" Visible=false>
+                                <button class="close" type="button" data-dismiss="alert">
+                                    ×</button>
+                                    <asp:Label ID="lblResultado2" runat="server" Text=""></asp:Label>
+                            </asp:Panel>
+                            <asp:Panel runat=server id="pnlAtento" class="alert alert-dismissable alert-danger" Visible=false>
+                                <button class="close" type="button" data-dismiss="alert">
+                                    ×</button>
+                                    <asp:Label ID="lblResultado3" runat="server" Text=""></asp:Label>
+                            </asp:Panel>
                         </td>
                     </tr>
                     <tr>
@@ -176,10 +190,10 @@
                             <asp:Button ID="btnSeleccionar" runat="server" Text="Seleccionar" CssClass="btn-primary" OnClick="btnAceptarClick" Width=100%/>
                         </td>
                         <td>
-                            <asp:Button ID="Modificar" runat="server" Text="Modificar" CssClass="btn-primary" OnClick="btnModificarClick" width=100% ValidationGroup="2" />
+                            <asp:Button ID="btnModificar" runat="server" Text="Modificar" CssClass="btn-primary" OnClick="btnModificarClick" width=100% ValidationGroup="2" OnClientClick="mensaje()" />
                         </td>
                         <td>
-                            <asp:Button ID="Elimiar" runat="server" Text="Eliminar" CssClass="btn-primary" onClick="btnEliminarClick" Width=100% ValidationGroup="3" />
+                            <asp:Button ID="btnElimiar" runat="server" Text="Eliminar" CssClass="btn-primary" onClick="btnEliminarClick" Width=100% ValidationGroup="3" />
                         </td>
                         <td>
                             <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar" CssClass="btn-primary" OnClick="btnLimpiarClick"/>

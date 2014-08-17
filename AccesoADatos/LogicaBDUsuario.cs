@@ -47,8 +47,7 @@ namespace AccesoADatos
                 }
                 return b;
             }
-        }
-        
+        }       
         //fin del metodo
         //metodo para buscar el usuario por usuarios
         public static List<EUsuario> BuscarUsuarios(string nombre)
@@ -150,8 +149,6 @@ namespace AccesoADatos
                 throw exc;
             }
         }
-        
-        
         //fin metodo
         //metodo para modificar un usuario
         public static bool ModificarUsuario(EPersona persona, EUsuario usuario)
@@ -191,22 +188,30 @@ namespace AccesoADatos
         public static bool EliminarUsuario(string usuario)
         {
             SIGMAEntitiesContainer mapaEntidades = Conexion.crearSegunServidor();
-            var usuarios = mapaEntidades.Usuarios.Where(usuarioBuscado => usuarioBuscado.user == usuario).Single();
-            var personas = mapaEntidades.Personas.Where(personaBuscada => personaBuscada.user == usuario).Single();
-            var duenios = mapaEntidades.Duenios.Where(dueniosBuscado => dueniosBuscado.idPersona == personas.idPersona && personas.user == usuario).Single();
             bool b = true;
-            try
-            {
-                mapaEntidades.DeleteObject(duenios);
-                mapaEntidades.DeleteObject(usuarios);
-                mapaEntidades.DeleteObject(personas);
-                mapaEntidades.DetectChanges();
-                mapaEntidades.SaveChanges(System.Data.Objects.SaveOptions.DetectChangesBeforeSave);
+            IQueryable<Usuarios> aux = from usuariosBD in mapaEntidades.Usuarios
+                                       where (usuariosBD.user.Contains(usuario))
+                                       select usuariosBD;
+            if(aux.Count<Usuarios>() != 0){
+                try
+                {
+                    var usuarios = mapaEntidades.Usuarios.Where(usuarioBuscado => usuarioBuscado.user == usuario).Single();
+                    var personas = mapaEntidades.Personas.Where(personaBuscada => personaBuscada.user == usuario).Single();
+                    var duenios = mapaEntidades.Duenios.Where(dueniosBuscado => dueniosBuscado.idPersona == personas.idPersona && personas.user == usuario).Single();
+                    mapaEntidades.DeleteObject(duenios);
+                    mapaEntidades.DeleteObject(usuarios);
+                    mapaEntidades.DeleteObject(personas);
+                    mapaEntidades.DetectChanges();
+                    mapaEntidades.SaveChanges(System.Data.Objects.SaveOptions.DetectChangesBeforeSave);
+                }
+                catch(System.Data.UpdateException exc)
+                {
+                    b = false;
+                    throw exc;
+                }
             }
-            catch(System.Data.UpdateException exc)
-            {
+            else{
                 b = false;
-                throw exc;
             }
             return b;
         }

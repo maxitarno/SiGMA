@@ -46,19 +46,35 @@ namespace SiGMA
             {
                 List<EUsuario> usuarios = new List<EUsuario>();
                 usuarios = LogicaBDUsuario.BuscarUsuarios(ddlTipoDeDocumento.SelectedIndex + 1, txtNºDeDocumento.Text);
-                lstResultados.DataSource = usuarios;
-                lstResultados.DataTextField = "user";
-                lstResultados.DataValueField = "user";
-                lstResultados.DataBind();
+                if (usuarios.Count != 0)
+                {
+                    lstResultados.DataSource = usuarios;
+                    lstResultados.DataTextField = "user";
+                    lstResultados.DataValueField = "user";
+                    lstResultados.DataBind();
+                }
+                else
+                {
+                    pnlInfo.Visible = true;
+                    lblResultado2.Text = "No se encontraron usuarios";
+                }
             }
             else if(rbPorUsuario.Checked == true)
             {
                 List<EUsuario> usuarios = new List<EUsuario>();
                 usuarios = LogicaBDUsuario.BuscarUsuarios(txtUsuario.Text);
-                lstResultados.DataSource = usuarios;
-                lstResultados.DataTextField = "user";
-                lstResultados.DataValueField = "user";
-                lstResultados.DataBind();
+                if (usuarios.Count != 0)
+                {
+                    lstResultados.DataSource = usuarios;
+                    lstResultados.DataTextField = "user";
+                    lstResultados.DataValueField = "user";
+                    lstResultados.DataBind();
+                }
+                else
+                {
+                    pnlInfo.Visible = true;
+                    lblResultado2.Text = "No se encontraron usuarios";
+                }
             }
         }
         public void btnAceptarClick(object sender, EventArgs e)
@@ -101,11 +117,13 @@ namespace SiGMA
             usuario.user = txtUsuario.Text;
             if (LogicaBDUsuario.ModificarUsuario(persona, usuario))
             {
-                lblResultado.Text = "Se modifico correctamente";
+                pnlCorrecto.Visible = true;
+                lblResultado1.Text = "Se modifico corretamente";
             }
             else
             {
-                lblResultado.Text = "No se pudo modificar";
+                pnlAtento.Visible = true;
+                lblResultado3.Text = "No se pudo modificar";
                 txtUsuario.Focus();
             }
         }
@@ -113,11 +131,13 @@ namespace SiGMA
         {
             if (LogicaBDUsuario.EliminarUsuario(txtUsuario.Text))
             {
-                lblResultado.Text = "Se elimino corretamente";
+                pnlCorrecto.Visible = true;
+                lblResultado1.Text = "Se elimino corretamente";
             }
             else
             {
-                lblResultado.Text = "No se pudo eliminar";
+                pnlAtento.Visible = true;
+                lblResultado3.Text = "No se elimino correctamente";
             }
         }
         public void btnLimpiarClick(object sender, EventArgs e)
@@ -132,5 +152,6 @@ namespace SiGMA
             txtTelefonoFijo.Text = " ";
             txtUsuario.Text = " ";
         }
+        
     }
 }
