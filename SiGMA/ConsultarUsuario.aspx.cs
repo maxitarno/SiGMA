@@ -80,7 +80,7 @@ namespace SiGMA
             txtTelefonoFijo.Text = persona.telefonoFijo;
             txtTelefonoCelular.Text = persona.telefonoCelular;
             txtMail.Text = persona.email;
-            txtFecha.Text = persona.fechaNacimiento.ToString();
+            txtFecha.Text = persona.fechaNacimiento.ToShortDateString();
             Session["persona"] = persona.idPersona;
         }
         public void btnModificarClick(object sender, EventArgs e)

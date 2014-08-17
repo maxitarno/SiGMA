@@ -123,7 +123,8 @@ namespace AccesoADatos
                                rol = rolesBD.idRol,
                                barrio = persona.idBarrio,
                                localidad = LocalidadesBD.idLocalidad,
-                               idPersona = personasBD.idPersona
+                               idPersona = personasBD.idPersona,
+                               fecha = personasBD.fechaNacimiento
                            };
             try
             {
@@ -141,6 +142,7 @@ namespace AccesoADatos
                     user.idRol = usuario.rol;
                     barrio.idBarrio = usuario.barrio;
                     localidad.idLocalidad = usuario.localidad;
+                    persona.fechaNacimiento = DateTime.Parse(usuario.fecha.ToString());
                 }
             }
             catch (System.Data.EntityCommandCompilationException exc)
