@@ -52,8 +52,13 @@ namespace SiGMA
                     lstResultados.DataTextField = "user";
                     lstResultados.DataValueField = "user";
                     lstResultados.DataBind();
+                    pnlSeleccionar.Visible = true;
+                    pnlResultados.Visible = true;
+                    pnlInfo.Visible = false;
+                    pnlEliminar.Visible = false;
+                    pnlAtento.Visible = false;
                 }
-                else
+                else if(usuarios.Count == 0)
                 {
                     pnlInfo.Visible = true;
                     lblResultado2.Text = "No se encontraron usuarios";
@@ -69,8 +74,13 @@ namespace SiGMA
                     lstResultados.DataTextField = "user";
                     lstResultados.DataValueField = "user";
                     lstResultados.DataBind();
+                    pnlSeleccionar.Visible = true;
+                    pnlResultados.Visible = true;
+                    pnlInfo.Visible = false;
+                    pnlEliminar.Visible = false;
+                    pnlAtento.Visible = false;
                 }
-                else
+                else if(usuarios.Count == 0)
                 {
                     pnlInfo.Visible = true;
                     lblResultado2.Text = "No se encontraron usuarios";
@@ -98,6 +108,43 @@ namespace SiGMA
             txtMail.Text = persona.email;
             txtFecha.Text = persona.fechaNacimiento.ToShortDateString();
             Session["persona"] = persona.idPersona;
+            pnlUser.Visible = true;
+            pnlBuscar.Visible = false;
+            pnlUsuario.Visible = true;
+            pnlType.Visible = true;
+            pnlNºDeDocumento.Visible = true;
+            pnlTipoDeDocumento.Visible = true;
+            pnlnumber.Visible = true;
+            pnlTipoDeDocumento.Visible = true;
+            pnlApellido.Visible = true;
+            pnladress.Visible = true;
+            pnlbarrio.Visible = true;
+            pnlBarrios.Visible = true;
+            pnldate.Visible = true;
+            pnlDomicilio.Visible = true;
+            pnlEliminar.Visible = true;
+            pnlestate.Visible = true;
+            pnlFecha.Visible = true;
+            pnlLimpiar.Visible = true;
+            pnlLocalidades.Visible = true;
+            pnlMail.Visible = true;
+            pnlmails.Visible = true;
+            pnlModificar.Visible = true;
+            pnlname.Visible = true;
+            pnlNombre.Visible = true;
+            pnlphone.Visible = true;
+            pnlphonefixed.Visible = true;
+            pnlresult.Visible = true;
+            pnlResultados.Visible = true;
+            pnlrol.Visible = true;
+            pnlRoles.Visible = true;
+            pnlSeleccionar.Visible = true;
+            pnlsurname.Visible = true;
+            pnlTelefonFijo.Visible = true;
+            pnlTelefonoCelular.Visible = true;
+            pnlLimpiar.Visible = true;
+            pnlModificar.Visible = true;
+            pnlEliminar.Visible = true;
         }
         public void btnModificarClick(object sender, EventArgs e)
         {
@@ -105,7 +152,16 @@ namespace SiGMA
             persona.apellido = txtApellido.Text;
             persona.domicilio = txtDomicilio.Text;
             persona.email = txtMail.Text;
-            persona.fechaNacimiento = DateTime.Parse(txtFecha.Text);
+            try
+            {
+                persona.fechaNacimiento = DateTime.Parse(txtFecha.Text);
+            }
+            catch (System.FormatException)
+            {
+                pnlAtento.Visible = true;
+                lblResultado3.Text = "No se pudo modificar";
+                pnlCorrecto.Visible = false;
+            }
             persona.idBarrio = ddlBarrios.SelectedIndex + 1;
             persona.idTipoDocumento = ddlTipoDeDocumento.SelectedIndex + 1;
             persona.nombre = txtNombre.Text;
@@ -115,24 +171,42 @@ namespace SiGMA
             EUsuario usuario = new EUsuario();
             usuario.idRol = int.Parse(ddlRoles.SelectedValue);
             usuario.user = txtUsuario.Text;
-            if (LogicaBDUsuario.ModificarUsuario(persona, usuario))
+            if (usuario.user != "")
             {
-                pnlCorrecto.Visible = true;
-                lblResultado1.Text = "Se modifico corretamente";
+                if (LogicaBDUsuario.ModificarUsuario(persona, usuario))
+                {
+                    pnlCorrecto.Visible = true;
+                    lblResultado1.Text = "Se modifico corretamente";
+                }
+                else
+                {
+                    pnlAtento.Visible = true;
+                    lblResultado3.Text = "No se pudo modificar";
+                    pnlCorrecto.Visible = false;
+                }
             }
             else
             {
                 pnlAtento.Visible = true;
                 lblResultado3.Text = "No se pudo modificar";
-                txtUsuario.Focus();
+                pnlCorrecto.Visible = false;
             }
         }
         public void btnEliminarClick(object sender, EventArgs e)
         {
-            if (LogicaBDUsuario.EliminarUsuario(txtUsuario.Text))
+            string usuario = txtUsuario.Text;
+            if (usuario != "")
             {
-                pnlCorrecto.Visible = true;
-                lblResultado1.Text = "Se elimino corretamente";
+                if (LogicaBDUsuario.EliminarUsuario(txtUsuario.Text))
+                {
+                    pnlCorrecto.Visible = true;
+                    lblResultado1.Text = "Se elimino corretamente";
+                }
+                else
+                {
+                    pnlAtento.Visible = true;
+                    lblResultado3.Text = "No se elimino correctamente";
+                }
             }
             else
             {
@@ -142,16 +216,101 @@ namespace SiGMA
         }
         public void btnLimpiarClick(object sender, EventArgs e)
         {
-            txtApellido.Text = " ";
-            txtDomicilio.Text = " ";
-            txtFecha.Text = " ";
-            txtMail.Text = " ";
-            txtNºDeDocumento.Text = " ";
-            txtNombre.Text = " ";
-            txtTelefonoCelular.Text = " ";
-            txtTelefonoFijo.Text = " ";
-            txtUsuario.Text = " ";
+            pnlAtento.Visible = false;
+            pnlCorrecto.Visible = false;
+            pnlInfo.Visible = false;
+            txtApellido.Text = "";
+            txtDomicilio.Text = "";
+            txtFecha.Text = "";
+            txtMail.Text = "";
+            txtNºDeDocumento.Text = "";
+            txtNombre.Text = "";
+            txtTelefonoCelular.Text = "";
+            txtTelefonoFijo.Text = "";
+            txtUsuario.Text = "";
+            
         }
-        
+        public void RdbPorUsuario(object sender, EventArgs e)
+        {
+            if (rbPorUsuario.Checked)
+            {
+                pnlUser.Visible = true;
+                pnlBuscar.Visible = true;
+                pnlUsuario.Visible = true;
+                pnlType.Visible = false;
+                pnlNºDeDocumento.Visible = false;
+                pnlTipoDeDocumento.Visible = false;
+                pnlnumber.Visible = false;
+                pnlTipoDeDocumento.Visible = false;
+                pnlApellido.Visible = false;
+                pnladress.Visible = false;
+                pnlbarrio.Visible = false;
+                pnlBarrios.Visible = false;
+                pnldate.Visible = false;
+                pnlDomicilio.Visible = false;
+                pnlEliminar.Visible = false;
+                pnlestate.Visible = false;
+                pnlFecha.Visible = false;
+                pnlLimpiar.Visible = false;
+                pnlLocalidades.Visible = false;
+                pnlMail.Visible = false;
+                pnlmails.Visible = false;
+                pnlModificar.Visible = false;
+                pnlname.Visible = false;
+                pnlNombre.Visible = false;
+                pnlphone.Visible = false;
+                pnlphonefixed.Visible = false;
+                pnlresult.Visible = false;
+                pnlResultados.Visible = false;
+                pnlrol.Visible = false;
+                pnlRoles.Visible = false;
+                pnlSeleccionar.Visible = false;
+                pnlsurname.Visible = false;
+                pnlTelefonFijo.Visible = false;
+                pnlTelefonoCelular.Visible = false;
+                pnlAtento.Visible = false;
+                pnlCorrecto.Visible = false;
+                pnlEliminar.Visible = false;
+            }
+        }
+        public void RdbPorPersona(object sender, EventArgs e)
+        {
+            pnlType.Visible = true;
+            pnlTipoDeDocumento.Visible = true;
+            pnlnumber.Visible = true;
+            pnlNºDeDocumento.Visible = true;
+            pnlBuscar.Visible = true;
+            pnlUser.Visible = false;
+            pnlUsuario.Visible = false;
+            pnlApellido.Visible = false;
+            pnladress.Visible = false;
+            pnlbarrio.Visible = false;
+            pnlBarrios.Visible = false;
+            pnldate.Visible = false;
+            pnlDomicilio.Visible = false;
+            pnlEliminar.Visible = false;
+            pnlestate.Visible = false;
+            pnlFecha.Visible = false;
+            pnlLimpiar.Visible = false;
+            pnlLocalidades.Visible = false;
+            pnlMail.Visible = false;
+            pnlmails.Visible = false;
+            pnlModificar.Visible = false;
+            pnlname.Visible = false;
+            pnlNombre.Visible = false;
+            pnlphone.Visible = false;
+            pnlphonefixed.Visible = false;
+            pnlresult.Visible = false;
+            pnlResultados.Visible = false;
+            pnlrol.Visible = false;
+            pnlRoles.Visible = false;
+            pnlSeleccionar.Visible = false;
+            pnlsurname.Visible = false;
+            pnlTelefonFijo.Visible = false;
+            pnlTelefonoCelular.Visible = false;
+            pnlAtento.Visible = false;
+            pnlCorrecto.Visible = false;
+            pnlEliminar.Visible = false;
+        }
     }
 }

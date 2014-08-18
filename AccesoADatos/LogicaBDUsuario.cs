@@ -153,12 +153,12 @@ namespace AccesoADatos
         //metodo para modificar un usuario
         public static bool ModificarUsuario(EPersona persona, EUsuario usuario)
         {
-            bool b = true;
+            bool b = false;
             try
             {
                 SIGMAEntitiesContainer mapaEntidades = Conexion.crearSegunServidor();
-                var personas = mapaEntidades.Personas.Where(personaBuscada => personaBuscada.user.StartsWith(usuario.user));
-                var usuarios = mapaEntidades.Usuarios.Where(usuariobuscado => usuariobuscado.user.StartsWith(usuario.user));
+                var personas = mapaEntidades.Personas.Where(personaBuscada => personaBuscada.user == usuario.user);
+                var usuarios = mapaEntidades.Usuarios.Where(usuariobuscado => usuariobuscado.user == usuario.user);
                 foreach (var registro in personas)
                 {
                     registro.apellido = registro.apellido.Replace(registro.apellido, persona.apellido);
@@ -176,6 +176,7 @@ namespace AccesoADatos
                 {
                     registro.idRol = usuario.idRol;
                 }
+                b = true;
                 mapaEntidades.SaveChanges();
             }
             catch (InvalidOperationException exc)
@@ -188,9 +189,9 @@ namespace AccesoADatos
         public static bool EliminarUsuario(string usuario)
         {
             SIGMAEntitiesContainer mapaEntidades = Conexion.crearSegunServidor();
-            bool b = true;
+            bool b = false;
             IQueryable<Usuarios> aux = from usuariosBD in mapaEntidades.Usuarios
-                                       where (usuariosBD.user.Contains(usuario))
+                                       where (usuariosBD.user == usuario)
                                        select usuariosBD;
             if(aux.Count<Usuarios>() != 0){
                 try
@@ -203,8 +204,14 @@ namespace AccesoADatos
                     mapaEntidades.DeleteObject(personas);
                     mapaEntidades.DetectChanges();
                     mapaEntidades.SaveChanges(System.Data.Objects.SaveOptions.DetectChangesBeforeSave);
+                    b = true;
                 }
-                catch(System.Data.UpdateException exc)
+                catch (System.Data.UpdateException exc)
+                {
+                    b = false;
+                    throw exc;
+                }
+                catch (System.InvalidOperationException exc)
                 {
                     b = false;
                     throw exc;
