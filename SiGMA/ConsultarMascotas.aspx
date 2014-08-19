@@ -206,6 +206,8 @@
                                         </td>
                                         <td>
                                             <asp:DropDownList ID="ddlSexo" runat="server" Width=100% CssClass="DropDownList">
+                                                <asp:ListItem Text="Hembra" Value="1"></asp:ListItem>
+                                                <asp:ListItem Value="2" Text="Macho"></asp:ListItem>
                                             </asp:DropDownList>
                                         </td>
                                     </tr>

@@ -102,28 +102,6 @@ namespace AccesoADatos
             return estados;
         }
         //fin metodo
-        //metodopara buscar los sexos
-        public static List<EEstados> BuscarEstados()
-        {
-            List<EEstados> estados = new List<EEstados>();
-            SIGMAEntitiesContainer mapaEntidades = Conexion.crearSegunServidor();
-            IQueryable<Estados> consulta = from EstadosDB in mapaEntidades.Estados
-                                           select EstadosDB;
-            try
-            {
-                foreach (var registro in consulta)
-                {
-                    EEstados estado = new EEstados();
-                    estado.idEstado = registro.idEstado;
-                    estado.nombreEstado = registro.nombreEstado;
-                    estados.Add(estado);
-                }
-            }
-            catch (System.Data.EntityCommandCompilationException exc)
-            {
-                throw exc;
-            }
-            return estados;
-        }
+        
     }
 }
