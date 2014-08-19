@@ -32,7 +32,29 @@ namespace SiGMA
                 ddlEspecie.DataTextField = "nombreEspecie";
                 ddlEspecie.DataValueField = "idEspecie";
                 ddlEspecie.DataBind();
+                List<EEdad> edades = new List<EEdad>();
+                edades = Datos.BuscarEdades();
+                ddlEdad.DataSource = edades;
+                ddlEdad.DataTextField = "nombreEdad";
+                ddlEdad.DataValueField = "idEdad";
+                ddlEdad.DataBind();
+                List<ECategoriaRaza> categoriasDeRaza = new List<ECategoriaRaza>();
+                categoriasDeRaza = Datos.BuscarCategoriasDeRazas();
+                ddlCategoria.DataSource = categoriasDeRaza;
+                ddlCategoria.DataTextField = "idCategoriaRaza";
+                ddlCategoria.DataValueField = "nombreCategoriaRaza";
+                ddlCategoria.DataBind();
             }
+        }
+        public void ddlRaza_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            List<ERaza> razas = new List<ERaza>();
+            int aux = int.Parse(ddlEspecie.SelectedValue);
+            razas = Datos.BuscarRazas(aux);
+            ddlRaza.DataSource = razas;
+            ddlRaza.DataTextField = "nombreRaza";
+            ddlRaza.DataValueField = "idRaza";
+            ddlRaza.DataBind();
         }
     }
 }

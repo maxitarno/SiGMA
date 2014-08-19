@@ -41,13 +41,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EBarrio.cs" />
+    <Compile Include="ECategoriaRaza.cs" />
     <Compile Include="EColor.cs" />
     <Compile Include="EDuenio.cs" />
+    <Compile Include="EEdad.cs" />
     <Compile Include="EEspecie.cs" />
     <Compile Include="ELocalidad.cs" />
     <Compile Include="EMascota.cs" />
     <Compile Include="EPersona.cs" />
     <Compile Include="EEstados.cs" />
+    <Compile Include="ERaza.cs" />
     <Compile Include="ETipoDeDocumento.cs" />
     <Compile Include="EUsuario.cs" />
     <Compile Include="EPermiso.cs" />

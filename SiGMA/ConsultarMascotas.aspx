@@ -120,7 +120,8 @@
                                             Estado:&nbsp
                                         </td>
                                         <td>
-                                            <asp:DropDownList ID="ddlEstado" runat="server" CssClass="DropDownList" Width=100%>
+                                            <asp:DropDownList ID="ddlEstado" runat="server" CssClass="DropDownList" Width=100% AppendDataBoundItems=true>
+                                                <asp:ListItem Selected=True Value=0 Text="-- seleccione --"></asp:ListItem>
                                             </asp:DropDownList>
                                         </td>
                                     </tr>
@@ -129,7 +130,8 @@
                                             Especie:&nbsp
                                         </td>
                                         <td>
-                                            <asp:DropDownList ID="ddlEspecie" runat="server" Width=100% CssClass="DropDownList">
+                                            <asp:DropDownList ID="ddlEspecie" runat="server" Width=100% CssClass="DropDownList" onselectedindexchanged="ddlRaza_SelectedIndexChanged" AutoPostBack="True" AppendDataBoundItems=true>
+                                                <asp:ListItem Selected=True Value=0 Text="-- seleccione --"></asp:ListItem>
                                             </asp:DropDownList>
                                         </td>
                                     </tr>
@@ -138,7 +140,8 @@
                                             Edad:
                                         </td>
                                         <td>
-                                            <asp:DropDownList ID="ddlEdad" runat="server" Width=100% CssClass="DropDownList">
+                                            <asp:DropDownList ID="ddlEdad" runat="server" Width=100% CssClass="DropDownList" AppendDataBoundItems="True">
+                                                <asp:ListItem Selected=True Value=0 Text="-- seleccione --"></asp:ListItem>
                                             </asp:DropDownList>
                                         </td>
                                     </tr>
@@ -147,7 +150,7 @@
                                             Raza:&nbsp
                                         </td>
                                         <td>
-                                            <asp:DropDownList ID="ddlRaza" runat="server" Width=100% CssClass="DropDownList">
+                                            <asp:DropDownList ID="ddlRaza" runat="server" Width=100% CssClass="DropDownList" AppendDataBoundItems="False">
                                             </asp:DropDownList>
                                         </td>
                                     </tr>
@@ -156,7 +159,8 @@
                                             Categoria:&nbsp
                                         </td>
                                         <td>
-                                            <asp:DropDownList ID="ddlCategoria" runat="server" Width=100% CssClass="DropDownList">
+                                            <asp:DropDownList ID="ddlCategoria" runat="server" Width=100% CssClass="DropDownList" AppendDataBoundItems="False">
+                                                
                                             </asp:DropDownList>
                                         </td>
                                     </tr>
@@ -173,7 +177,8 @@
                                             Color:&nbsp
                                         </td>
                                         <td>
-                                            <asp:DropDownList ID="ddlColor" runat="server" Width=100% CssClass="DropDownList">
+                                            <asp:DropDownList ID="ddlColor" runat="server" Width=100% CssClass="DropDownList" AppendDataBoundItems="True">
+                                                <asp:ListItem Selected=True Value=0 Text="-- seleccione --"></asp:ListItem>
                                             </asp:DropDownList>
                                         </td>
                                     </tr>
@@ -223,6 +228,7 @@
                                         </td>
                                         <td>
                                             <asp:DropDownList ID="ddlSexo" runat="server" Width=100% CssClass="DropDownList">
+                                                <asp:ListItem Selected=True Value=0 Text="-- seleccione --"></asp:ListItem>
                                                 <asp:ListItem Text="Hembra" Value="1"></asp:ListItem>
                                                 <asp:ListItem Value="2" Text="Macho"></asp:ListItem>
                                             </asp:DropDownList>

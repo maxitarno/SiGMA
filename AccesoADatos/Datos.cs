@@ -150,5 +150,77 @@ namespace AccesoADatos
             return especies;
         }
         //fin metodo
+        //metodo para buscar razas
+        public static List<ERaza> BuscarRazas(int idRaza){
+            List<ERaza> razas = new List<ERaza>();
+            SIGMAEntitiesContainer mapaEntidades = Conexion.crearSegunServidor();
+            IQueryable<Razas> consulta = from razaDB in mapaEntidades.Razas
+                                         where(razaDB.idEspecie == idRaza)
+                                         select razaDB;
+            try
+            {
+                foreach (var registro in consulta)
+                {
+                    ERaza raza = new ERaza();
+                    raza.idRaza = registro.idRaza;
+                    raza.nombreRaza = registro.nombreRaza;
+                    razas.Add(raza);
+                }
+            }
+            catch (System.Data.EntityCommandCompilationException exc)
+            {
+                throw exc;
+            }
+            return razas;
+        }
+        //fin metodo
+        //metodo para bucar las edades
+        public static List<EEdad> BuscarEdades()
+        {
+            List<EEdad> edades = new List<EEdad>();
+            SIGMAEntitiesContainer mapaEntidades = Conexion.crearSegunServidor();
+            IQueryable<Edades> consulta = from edadDB in mapaEntidades.Edades
+                                          select edadDB;
+            try
+            {
+                foreach (var registro in consulta)
+                {
+                    EEdad edad = new EEdad();
+                    edad.idEdad = registro.idEdad;
+                    edad.nombreEdad = registro.nombreEdad;
+                    edades.Add(edad);
+                }
+            }
+            catch (System.Data.EntityCommandCompilationException exc)
+            {
+                throw exc;
+            }
+            return edades;
+        }
+        //fin metodo
+        //metodo para buscar categorias
+        public static List<ECategoriaRaza> BuscarCategoriasDeRazas()
+        {
+            List<ECategoriaRaza> categorias = new List<ECategoriaRaza>();
+            SIGMAEntitiesContainer mapaEntidades = Conexion.crearSegunServidor();
+            IQueryable<CategoriaRazas> consulta = from categoriazRazaDB in mapaEntidades.CategoriaRazas
+                                                  select categoriazRazaDB;
+            try
+            {
+                foreach (var registro in consulta)
+                {
+                    ECategoriaRaza categoriaRaza = new ECategoriaRaza();
+                    categoriaRaza.idCategoriaRaza = registro.idCategoriaRazas;
+                    categoriaRaza.nombreCategoriaRaza = registro.nombreCategoriaRaza;
+                    categorias.Add(categoriaRaza);
+                }
+            }
+            catch (System.Data.EntityCommandCompilationException exc)
+            {
+                throw exc;
+            }
+            return categorias;
+        }
+        //fin metodo
     }
 }
