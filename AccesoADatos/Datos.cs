@@ -102,6 +102,29 @@ namespace AccesoADatos
             return estados;
         }
         //fin metodo
-        
+        //metodo para buscar colores
+        public static List<EColor> BuscarColores()
+        {
+            List<EColor> colores = new List<EColor>();
+            SIGMAEntitiesContainer mapaEntidades = Conexion.crearSegunServidor();
+            IQueryable<Colores> consulta = from coloresDB in mapaEntidades.Colores
+                                           select coloresDB;
+            try
+            {
+                foreach (var registro in consulta)
+                {
+                    EColor color = new EColor();
+                    color.idColor = registro.idColor;
+                    color.nombreColor = registro.nombreColor;
+                    colores.Add(color);
+                }
+            }
+            catch (System.Data.EntityCommandCompilationException exc)
+            {
+                throw exc;
+            }
+            return colores;
+        }
+        //fin metodo
     }
 }

@@ -153,6 +153,23 @@
                                     </tr>
                                     <tr>
                                         <td>
+                                            Categoria:&nbsp
+                                        </td>
+                                        <td>
+                                            <asp:DropDownList ID="ddlCategoria" runat="server" Width=100% CssClass="DropDownList">
+                                            </asp:DropDownList>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Cuidado especial:&nbsp
+                                        </td>
+                                        <td>
+                                            <asp:TextBox ID="txtCuidadoEspecial" runat="server" CssClass="TextBox"  Width="100%"></asp:TextBox>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
                                             Color:&nbsp
                                         </td>
                                         <td>

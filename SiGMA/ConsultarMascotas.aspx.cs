@@ -20,6 +20,12 @@ namespace SiGMA
                 ddlEstado.DataTextField = "nombreEstado";
                 ddlEstado.DataValueField = "idEstado";
                 ddlEstado.DataBind();
+                List<EColor> colores = new List<EColor>();
+                colores = Datos.BuscarColores();
+                ddlColor.DataSource = colores;
+                ddlColor.DataTextField = "nombreColor";
+                ddlColor.DataValueField = "idColor";
+                ddlColor.DataBind();
             }
         }
     }
