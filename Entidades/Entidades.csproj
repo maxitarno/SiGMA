@@ -41,7 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EBarrio.cs" />
+    <Compile Include="EColor.cs" />
     <Compile Include="EDuenio.cs" />
+    <Compile Include="EEspecie.cs" />
     <Compile Include="ELocalidad.cs" />
     <Compile Include="EMascota.cs" />
     <Compile Include="EPersona.cs" />

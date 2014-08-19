@@ -126,5 +126,29 @@ namespace AccesoADatos
             return colores;
         }
         //fin metodo
+        //metodo para buscar especies
+        public static List<EEspecie> BuscarEspecies()
+        {
+            List<EEspecie> especies = new List<EEspecie>();
+            SIGMAEntitiesContainer mapaEntidades = Conexion.crearSegunServidor();
+            IQueryable<Especies> consulta = from especiesDB in mapaEntidades.Especies
+                                           select especiesDB;
+            try
+            {
+                foreach (var registro in consulta)
+                {
+                    EEspecie especie = new EEspecie();
+                    especie.idEspecie = registro.idEspecie;
+                    especie.nombreEspecie = registro.nombreEspecie;
+                    especies.Add(especie);
+                }
+            }
+            catch (System.Data.EntityCommandCompilationException exc)
+            {
+                throw exc;
+            }
+            return especies;
+        }
+        //fin metodo
     }
 }

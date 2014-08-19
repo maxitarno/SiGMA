@@ -26,6 +26,12 @@ namespace SiGMA
                 ddlColor.DataTextField = "nombreColor";
                 ddlColor.DataValueField = "idColor";
                 ddlColor.DataBind();
+                List<EEspecie> especies = new List<EEspecie>();
+                especies = Datos.BuscarEspecies();
+                ddlEspecie.DataSource = especies;
+                ddlEspecie.DataTextField = "nombreEspecie";
+                ddlEspecie.DataValueField = "idEspecie";
+                ddlEspecie.DataBind();
             }
         }
     }
