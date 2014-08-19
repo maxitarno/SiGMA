@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AsignarPermisos.aspx" />
+    <Content Include="ConsultarMascotas.aspx" />
     <Content Include="ConsultarUsuario.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -91,6 +92,13 @@
     </Compile>
     <Compile Include="AsignarPermisos.aspx.designer.cs">
       <DependentUpon>AsignarPermisos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ConsultarMascotas.aspx.cs">
+      <DependentUpon>ConsultarMascotas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ConsultarMascotas.aspx.designer.cs">
+      <DependentUpon>ConsultarMascotas.aspx</DependentUpon>
     </Compile>
     <Compile Include="ConsultarUsuario.aspx.cs">
       <DependentUpon>ConsultarUsuario.aspx</DependentUpon>
