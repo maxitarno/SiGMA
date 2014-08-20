@@ -9,9 +9,7 @@ namespace Entidades
     {
         public string user { get; set; }
         public string password { get; set; }
-        public int idRol { get; set; }
-
-        
+        public List<ERol> rolesUsuario { get; set; }      
         
     }
 }

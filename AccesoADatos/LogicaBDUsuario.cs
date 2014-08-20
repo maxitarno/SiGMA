@@ -8,20 +8,23 @@ namespace AccesoADatos
 {
     public class LogicaBDUsuario
     {
-        public static bool guardarUsuario(EDuenio duenio, EUsuario usuario)
+        public static void guardarUsuario(EDuenio duenio, EUsuario usuario)
         {
             using (TransactionScope transaction = new TransactionScope())
-            {
-                bool b;
+            {               
                 try
                 {
-                    SIGMAEntitiesContainer mapaEntidades = Conexion.crearSegunServidor();
+                    SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
                     Usuarios userBD = new Usuarios();
                     userBD.user = usuario.user;
-                    userBD.password = usuario.password;
-                    //Reflejar el rol 
-                    userBD.idRol = 1;
+                    userBD.password = usuario.password;                  
                     mapaEntidades.AddToUsuarios(userBD);
+                    mapaEntidades.SaveChanges();
+                    ERol rolDuenio = LogicaBDRol.ObtenerRol("Duenio");
+                    RolesXUsuario rolesXUserBD = new RolesXUsuario();
+                    rolesXUserBD.idRol = rolDuenio.idRol;
+                    rolesXUserBD.user = usuario.user;
+                    mapaEntidades.AddToRolesXUsuario(rolesXUserBD);
                     mapaEntidades.SaveChanges();
                     Personas personBD = new Personas();
                     personBD.nombre = duenio.nombre;
@@ -36,24 +39,20 @@ namespace AccesoADatos
                     duenioBD.idPersona = personBD.idPersona;
                     mapaEntidades.AddToDuenios(duenioBD);
                     mapaEntidades.SaveChanges();
-                    transaction.Complete();
-                    b = true;
+                    transaction.Complete();                    
                 }
                 catch (Exception exc)
                 {
-                    transaction.Dispose();
-                    b = false;
+                    transaction.Dispose();                    
                     throw exc;
-                }
-                return b;
+                }                
             }
-        }       
-        //fin del metodo
+        }
         //metodo para buscar el usuario por usuarios
         public static List<EUsuario> BuscarUsuarios(string nombre)
         {
             List<EUsuario> usuarios = new List<EUsuario>();
-            SIGMAEntitiesContainer mapaEntidades = Conexion.crearSegunServidor();
+            SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
             IQueryable<Usuarios> aux = from usuariosBuscados in mapaEntidades.Usuarios
                                        where (usuariosBuscados.user.Contains(nombre))
                                        select usuariosBuscados;
@@ -77,7 +76,7 @@ namespace AccesoADatos
         public static List<EUsuario> BuscarUsuarios(int tipo, string dni)
         {
             List<EUsuario> usuarios = new List<EUsuario>();
-            SIGMAEntitiesContainer mapaEntidades = Conexion.crearSegunServidor();
+            SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
             IQueryable<Usuarios> consulta = from personasBD in mapaEntidades.Personas
                                             from usuariosBD in mapaEntidades.Usuarios
                                             where (personasBD.user == usuariosBD.user && personasBD.nroDocumento == dni && personasBD.idTipoDocumento == tipo)
@@ -101,7 +100,7 @@ namespace AccesoADatos
         //metodo para buscar persona
         public static void BuscarUsuarios(string nombre, EUsuario user, EPersona persona, EBarrio barrio, ELocalidad localidad)
         {
-            SIGMAEntitiesContainer mapaEntidades = Conexion.crearSegunServidor();
+            SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
             var consulta = from personasBD in mapaEntidades.Personas
                            from usuariosBD in mapaEntidades.Usuarios
                            from rolesBD in mapaEntidades.Roles
@@ -156,7 +155,7 @@ namespace AccesoADatos
             bool b = false;
             try
             {
-                SIGMAEntitiesContainer mapaEntidades = Conexion.crearSegunServidor();
+                SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
                 var personas = mapaEntidades.Personas.Where(personaBuscada => personaBuscada.user == usuario.user);
                 var usuarios = mapaEntidades.Usuarios.Where(usuariobuscado => usuariobuscado.user == usuario.user);
                 foreach (var registro in personas)
@@ -188,12 +187,13 @@ namespace AccesoADatos
         }
         public static bool EliminarUsuario(string usuario)
         {
-            SIGMAEntitiesContainer mapaEntidades = Conexion.crearSegunServidor();
+            SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
             bool b = false;
             IQueryable<Usuarios> aux = from usuariosBD in mapaEntidades.Usuarios
                                        where (usuariosBD.user == usuario)
                                        select usuariosBD;
-            if(aux.Count<Usuarios>() != 0){
+            if (aux.Count<Usuarios>() != 0)
+            {
                 try
                 {
                     var usuarios = mapaEntidades.Usuarios.Where(usuarioBuscado => usuarioBuscado.user == usuario).Single();
@@ -217,7 +217,8 @@ namespace AccesoADatos
                     throw exc;
                 }
             }
-            else{
+            else
+            {
                 b = false;
             }
             return b;

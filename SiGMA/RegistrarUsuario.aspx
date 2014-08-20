@@ -38,9 +38,6 @@
                     </td>
                     <td>
                         <asp:DropDownList ID="ddlTipoDocumento" runat="server">
-                            <asp:ListItem>Seleccionar</asp:ListItem>
-                            <asp:ListItem Value="1">D.N.I.</asp:ListItem>
-                            <asp:ListItem Value="2">Pasaporte</asp:ListItem>
                         </asp:DropDownList>
                         <asp:RequiredFieldValidator ID="rfvTipoDocumento" runat="server" ErrorMessage="*"
                             ForeColor="Red" ControlToValidate="ddlTipoDocumento" Display="Dynamic"></asp:RequiredFieldValidator>
@@ -55,7 +52,8 @@
                         <asp:RequiredFieldValidator ID="rfvDocumento" runat="server" ErrorMessage="*" ForeColor="Red"
                             ControlToValidate="txtDocumento" Display="Dynamic"></asp:RequiredFieldValidator>
                         <asp:CustomValidator ID="cuvDocumento" runat="server" ErrorMessage="Solo numeros"
-                            ControlToValidate="txtDocumento" ForeColor="Red" Display="Dynamic"></asp:CustomValidator>
+                            ControlToValidate="txtDocumento" ForeColor="Red" Display="Dynamic" 
+                            onservervalidate="cuvDocumento_ServerValidate"></asp:CustomValidator>
                     </td>
                 </tr>
                 <tr>

@@ -9,6 +9,7 @@ namespace Entidades
     {
         public int idRol { get; set; }
         public string nombreRol { get; set; }
+        public List<EPermiso> listaPermisos { get; set; }
         public string descripcionRol { get; set; }
     }
 }

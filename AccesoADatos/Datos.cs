@@ -11,7 +11,7 @@ namespace AccesoADatos
         public static List<ETipoDeDocumento> TiposDNI()
         {
             List<ETipoDeDocumento> tiposDNI = new List<ETipoDeDocumento>();
-            SIGMAEntitiesContainer mapaEntidades = Conexion.crearSegunServidor();
+            SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
             IQueryable<TipoDocumentos> tiposDeDocumentos = from tipoDeDocumentos in mapaEntidades.TipoDocumentos
                                                            select tipoDeDocumentos;
             try
@@ -34,7 +34,7 @@ namespace AccesoADatos
         public static List<EBarrio> BuscarBarrios()
         {
             List<EBarrio> barrios = new List<EBarrio>();
-            SIGMAEntitiesContainer mapaEntidades = Conexion.crearSegunServidor();
+            SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
             IQueryable<Barrios> consulta = from BarriosDB in mapaEntidades.Barrios
                                            select BarriosDB;
             try
@@ -59,7 +59,7 @@ namespace AccesoADatos
         public static List<ELocalidad> BuscarLocalidades()
         {
             List<ELocalidad> localidades = new List<ELocalidad>();
-            SIGMAEntitiesContainer mapaEntidades = Conexion.crearSegunServidor();
+            SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
             IQueryable<Localidades> consulta = from LocalidadesDB in mapaEntidades.Localidades
                                                select LocalidadesDB;
             try
@@ -82,7 +82,7 @@ namespace AccesoADatos
         public static List<EEstados> BuscarEstados()
         {
             List<EEstados> estados = new List<EEstados>();
-            SIGMAEntitiesContainer mapaEntidades = Conexion.crearSegunServidor();
+            SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
             IQueryable<Estados> consulta = from EstadosDB in mapaEntidades.Estados
                                            select EstadosDB;
             try
@@ -106,7 +106,7 @@ namespace AccesoADatos
         public static List<EColor> BuscarColores()
         {
             List<EColor> colores = new List<EColor>();
-            SIGMAEntitiesContainer mapaEntidades = Conexion.crearSegunServidor();
+            SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
             IQueryable<Colores> consulta = from coloresDB in mapaEntidades.Colores
                                            select coloresDB;
             try
@@ -130,7 +130,7 @@ namespace AccesoADatos
         public static List<EEspecie> BuscarEspecies()
         {
             List<EEspecie> especies = new List<EEspecie>();
-            SIGMAEntitiesContainer mapaEntidades = Conexion.crearSegunServidor();
+            SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
             IQueryable<Especies> consulta = from especiesDB in mapaEntidades.Especies
                                            select especiesDB;
             try
@@ -153,7 +153,7 @@ namespace AccesoADatos
         //metodo para buscar razas
         public static List<ERaza> BuscarRazas(int idRaza){
             List<ERaza> razas = new List<ERaza>();
-            SIGMAEntitiesContainer mapaEntidades = Conexion.crearSegunServidor();
+            SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
             IQueryable<Razas> consulta = from razaDB in mapaEntidades.Razas
                                          where(razaDB.idEspecie == idRaza)
                                          select razaDB;
@@ -178,7 +178,7 @@ namespace AccesoADatos
         public static List<EEdad> BuscarEdades()
         {
             List<EEdad> edades = new List<EEdad>();
-            SIGMAEntitiesContainer mapaEntidades = Conexion.crearSegunServidor();
+            SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
             IQueryable<Edades> consulta = from edadDB in mapaEntidades.Edades
                                           select edadDB;
             try
@@ -202,7 +202,7 @@ namespace AccesoADatos
         public static List<ECategoriaRaza> BuscarCategoriasDeRazas()
         {
             List<ECategoriaRaza> categorias = new List<ECategoriaRaza>();
-            SIGMAEntitiesContainer mapaEntidades = Conexion.crearSegunServidor();
+            SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
             IQueryable<CategoriaRazas> consulta = from categoriazRazaDB in mapaEntidades.CategoriaRazas
                                                   select categoriazRazaDB;
             try

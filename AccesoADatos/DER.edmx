@@ -4,152 +4,148 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="SIGMAEntities.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
-        <EntityContainer Name="SIGMAEntitiesStoreContainer">
-          <EntitySet Name="Adopciones" EntityType="SIGMAEntities.Store.Adopciones" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Barrios" EntityType="SIGMAEntities.Store.Barrios" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="CategoriaRazas" EntityType="SIGMAEntities.Store.CategoriaRazas" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Colores" EntityType="SIGMAEntities.Store.Colores" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="CuidadosEspeciales" EntityType="SIGMAEntities.Store.CuidadosEspeciales" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Duenios" EntityType="SIGMAEntities.Store.Duenios" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Edades" EntityType="SIGMAEntities.Store.Edades" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Especies" EntityType="SIGMAEntities.Store.Especies" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Estados" EntityType="SIGMAEntities.Store.Estados" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Hallazgos" EntityType="SIGMAEntities.Store.Hallazgos" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Localidades" EntityType="SIGMAEntities.Store.Localidades" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Mascotas" EntityType="SIGMAEntities.Store.Mascotas" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Perdidas" EntityType="SIGMAEntities.Store.Perdidas" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Permisos" EntityType="SIGMAEntities.Store.Permisos" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="PermisosXRoles" EntityType="SIGMAEntities.Store.PermisosXRoles" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Personas" EntityType="SIGMAEntities.Store.Personas" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Razas" EntityType="SIGMAEntities.Store.Razas" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Roles" EntityType="SIGMAEntities.Store.Roles" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="RolesXUsuario" EntityType="SIGMAEntities.Store.RolesXUsuario" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Sesiones" EntityType="SIGMAEntities.Store.Sesiones" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="TipoDocumentos" EntityType="SIGMAEntities.Store.TipoDocumentos" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Usuarios" EntityType="SIGMAEntities.Store.Usuarios" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Voluntarios" EntityType="SIGMAEntities.Store.Voluntarios" store:Type="Tables" Schema="dbo" />
-          <AssociationSet Name="FK_Adopciones_Duenios" Association="SIGMAEntities.Store.FK_Adopciones_Duenios">
+    <Schema Namespace="SiGMAModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="SiGMAModelStoreContainer">
+          <EntitySet Name="Adopciones" EntityType="SiGMAModel.Store.Adopciones" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Barrios" EntityType="SiGMAModel.Store.Barrios" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CategoriaRazas" EntityType="SiGMAModel.Store.CategoriaRazas" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Colores" EntityType="SiGMAModel.Store.Colores" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CuidadosEspeciales" EntityType="SiGMAModel.Store.CuidadosEspeciales" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Duenios" EntityType="SiGMAModel.Store.Duenios" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Edades" EntityType="SiGMAModel.Store.Edades" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Especies" EntityType="SiGMAModel.Store.Especies" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Estados" EntityType="SiGMAModel.Store.Estados" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Hallazgos" EntityType="SiGMAModel.Store.Hallazgos" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Localidades" EntityType="SiGMAModel.Store.Localidades" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Mascotas" EntityType="SiGMAModel.Store.Mascotas" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Perdidas" EntityType="SiGMAModel.Store.Perdidas" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Permisos" EntityType="SiGMAModel.Store.Permisos" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PermisosXRoles" EntityType="SiGMAModel.Store.PermisosXRoles" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Personas" EntityType="SiGMAModel.Store.Personas" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Razas" EntityType="SiGMAModel.Store.Razas" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Roles" EntityType="SiGMAModel.Store.Roles" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="RolesXUsuario" EntityType="SiGMAModel.Store.RolesXUsuario" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Sesiones" EntityType="SiGMAModel.Store.Sesiones" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TipoDocumentos" EntityType="SiGMAModel.Store.TipoDocumentos" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Usuarios" EntityType="SiGMAModel.Store.Usuarios" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Voluntarios" EntityType="SiGMAModel.Store.Voluntarios" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Adopciones_Duenios" Association="SiGMAModel.Store.FK_Adopciones_Duenios">
             <End Role="Duenios" EntitySet="Duenios" />
             <End Role="Adopciones" EntitySet="Adopciones" />
           </AssociationSet>
-          <AssociationSet Name="FK_Adopciones_Mascotas" Association="SIGMAEntities.Store.FK_Adopciones_Mascotas">
+          <AssociationSet Name="FK_Adopciones_Mascotas" Association="SiGMAModel.Store.FK_Adopciones_Mascotas">
             <End Role="Mascotas" EntitySet="Mascotas" />
             <End Role="Adopciones" EntitySet="Adopciones" />
           </AssociationSet>
-          <AssociationSet Name="FK_Adopciones_Voluntarios" Association="SIGMAEntities.Store.FK_Adopciones_Voluntarios">
+          <AssociationSet Name="FK_Adopciones_Voluntarios" Association="SiGMAModel.Store.FK_Adopciones_Voluntarios">
             <End Role="Voluntarios" EntitySet="Voluntarios" />
             <End Role="Adopciones" EntitySet="Adopciones" />
           </AssociationSet>
-          <AssociationSet Name="FK_Barrios_Localidades" Association="SIGMAEntities.Store.FK_Barrios_Localidades">
+          <AssociationSet Name="FK_Barrios_Localidades" Association="SiGMAModel.Store.FK_Barrios_Localidades">
             <End Role="Localidades" EntitySet="Localidades" />
             <End Role="Barrios" EntitySet="Barrios" />
           </AssociationSet>
-          <AssociationSet Name="FK_Duenios_Personas" Association="SIGMAEntities.Store.FK_Duenios_Personas">
+          <AssociationSet Name="FK_Duenios_Personas" Association="SiGMAModel.Store.FK_Duenios_Personas">
             <End Role="Personas" EntitySet="Personas" />
             <End Role="Duenios" EntitySet="Duenios" />
           </AssociationSet>
-          <AssociationSet Name="FK_Hallazgos_Barrios" Association="SIGMAEntities.Store.FK_Hallazgos_Barrios">
+          <AssociationSet Name="FK_Hallazgos_Barrios" Association="SiGMAModel.Store.FK_Hallazgos_Barrios">
             <End Role="Barrios" EntitySet="Barrios" />
             <End Role="Hallazgos" EntitySet="Hallazgos" />
           </AssociationSet>
-          <AssociationSet Name="FK_Hallazgos_Mascotas" Association="SIGMAEntities.Store.FK_Hallazgos_Mascotas">
+          <AssociationSet Name="FK_Hallazgos_Mascotas" Association="SiGMAModel.Store.FK_Hallazgos_Mascotas">
             <End Role="Mascotas" EntitySet="Mascotas" />
             <End Role="Hallazgos" EntitySet="Hallazgos" />
           </AssociationSet>
-          <AssociationSet Name="FK_Hallazgos_Perdidas" Association="SIGMAEntities.Store.FK_Hallazgos_Perdidas">
+          <AssociationSet Name="FK_Hallazgos_Perdidas" Association="SiGMAModel.Store.FK_Hallazgos_Perdidas">
             <End Role="Perdidas" EntitySet="Perdidas" />
             <End Role="Hallazgos" EntitySet="Hallazgos" />
           </AssociationSet>
-          <AssociationSet Name="FK_Hallazgos_Sesiones" Association="SIGMAEntities.Store.FK_Hallazgos_Sesiones">
+          <AssociationSet Name="FK_Hallazgos_Sesiones" Association="SiGMAModel.Store.FK_Hallazgos_Sesiones">
             <End Role="Sesiones" EntitySet="Sesiones" />
             <End Role="Hallazgos" EntitySet="Hallazgos" />
           </AssociationSet>
-          <AssociationSet Name="FK_Mascotas_Colores" Association="SIGMAEntities.Store.FK_Mascotas_Colores">
+          <AssociationSet Name="FK_Mascotas_Colores" Association="SiGMAModel.Store.FK_Mascotas_Colores">
             <End Role="Colores" EntitySet="Colores" />
             <End Role="Mascotas" EntitySet="Mascotas" />
           </AssociationSet>
-          <AssociationSet Name="FK_Mascotas_Duenios" Association="SIGMAEntities.Store.FK_Mascotas_Duenios">
+          <AssociationSet Name="FK_Mascotas_Duenios" Association="SiGMAModel.Store.FK_Mascotas_Duenios">
             <End Role="Duenios" EntitySet="Duenios" />
             <End Role="Mascotas" EntitySet="Mascotas" />
           </AssociationSet>
-          <AssociationSet Name="FK_Mascotas_Edades" Association="SIGMAEntities.Store.FK_Mascotas_Edades">
+          <AssociationSet Name="FK_Mascotas_Edades" Association="SiGMAModel.Store.FK_Mascotas_Edades">
             <End Role="Edades" EntitySet="Edades" />
             <End Role="Mascotas" EntitySet="Mascotas" />
           </AssociationSet>
-          <AssociationSet Name="FK_Mascotas_Especies" Association="SIGMAEntities.Store.FK_Mascotas_Especies">
+          <AssociationSet Name="FK_Mascotas_Especies" Association="SiGMAModel.Store.FK_Mascotas_Especies">
             <End Role="Especies" EntitySet="Especies" />
             <End Role="Mascotas" EntitySet="Mascotas" />
           </AssociationSet>
-          <AssociationSet Name="FK_Mascotas_Estados" Association="SIGMAEntities.Store.FK_Mascotas_Estados">
+          <AssociationSet Name="FK_Mascotas_Estados" Association="SiGMAModel.Store.FK_Mascotas_Estados">
             <End Role="Estados" EntitySet="Estados" />
             <End Role="Mascotas" EntitySet="Mascotas" />
           </AssociationSet>
-          <AssociationSet Name="FK_Mascotas_Razas" Association="SIGMAEntities.Store.FK_Mascotas_Razas">
+          <AssociationSet Name="FK_Mascotas_Razas" Association="SiGMAModel.Store.FK_Mascotas_Razas">
             <End Role="Razas" EntitySet="Razas" />
             <End Role="Mascotas" EntitySet="Mascotas" />
           </AssociationSet>
-          <AssociationSet Name="FK_Perdidas_Barrios" Association="SIGMAEntities.Store.FK_Perdidas_Barrios">
+          <AssociationSet Name="FK_Perdidas_Barrios" Association="SiGMAModel.Store.FK_Perdidas_Barrios">
             <End Role="Barrios" EntitySet="Barrios" />
             <End Role="Perdidas" EntitySet="Perdidas" />
           </AssociationSet>
-          <AssociationSet Name="FK_Perdidas_Mascotas" Association="SIGMAEntities.Store.FK_Perdidas_Mascotas">
+          <AssociationSet Name="FK_Perdidas_Mascotas" Association="SiGMAModel.Store.FK_Perdidas_Mascotas">
             <End Role="Mascotas" EntitySet="Mascotas" />
             <End Role="Perdidas" EntitySet="Perdidas" />
           </AssociationSet>
-          <AssociationSet Name="FK_Perdidas_Sesiones" Association="SIGMAEntities.Store.FK_Perdidas_Sesiones">
+          <AssociationSet Name="FK_Perdidas_Sesiones" Association="SiGMAModel.Store.FK_Perdidas_Sesiones">
             <End Role="Sesiones" EntitySet="Sesiones" />
             <End Role="Perdidas" EntitySet="Perdidas" />
           </AssociationSet>
-          <AssociationSet Name="FK_PermisosXRoles_Permisos" Association="SIGMAEntities.Store.FK_PermisosXRoles_Permisos">
+          <AssociationSet Name="FK_PermisosXRoles_Permisos" Association="SiGMAModel.Store.FK_PermisosXRoles_Permisos">
             <End Role="Permisos" EntitySet="Permisos" />
             <End Role="PermisosXRoles" EntitySet="PermisosXRoles" />
           </AssociationSet>
-          <AssociationSet Name="FK_PermisosXRoles_Roles" Association="SIGMAEntities.Store.FK_PermisosXRoles_Roles">
+          <AssociationSet Name="FK_PermisosXRoles_Roles" Association="SiGMAModel.Store.FK_PermisosXRoles_Roles">
             <End Role="Roles" EntitySet="Roles" />
             <End Role="PermisosXRoles" EntitySet="PermisosXRoles" />
           </AssociationSet>
-          <AssociationSet Name="FK_Personas_Barrios" Association="SIGMAEntities.Store.FK_Personas_Barrios">
+          <AssociationSet Name="FK_Personas_Barrios" Association="SiGMAModel.Store.FK_Personas_Barrios">
             <End Role="Barrios" EntitySet="Barrios" />
             <End Role="Personas" EntitySet="Personas" />
           </AssociationSet>
-          <AssociationSet Name="FK_Personas_TipoDocumentos" Association="SIGMAEntities.Store.FK_Personas_TipoDocumentos">
+          <AssociationSet Name="FK_Personas_TipoDocumentos" Association="SiGMAModel.Store.FK_Personas_TipoDocumentos">
             <End Role="TipoDocumentos" EntitySet="TipoDocumentos" />
             <End Role="Personas" EntitySet="Personas" />
           </AssociationSet>
-          <AssociationSet Name="FK_Personas_Usuarios" Association="SIGMAEntities.Store.FK_Personas_Usuarios">
+          <AssociationSet Name="FK_Personas_Usuarios" Association="SiGMAModel.Store.FK_Personas_Usuarios">
             <End Role="Usuarios" EntitySet="Usuarios" />
             <End Role="Personas" EntitySet="Personas" />
           </AssociationSet>
-          <AssociationSet Name="FK_Razas_CategoriaRazas" Association="SIGMAEntities.Store.FK_Razas_CategoriaRazas">
+          <AssociationSet Name="FK_Razas_CategoriaRazas" Association="SiGMAModel.Store.FK_Razas_CategoriaRazas">
             <End Role="CategoriaRazas" EntitySet="CategoriaRazas" />
             <End Role="Razas" EntitySet="Razas" />
           </AssociationSet>
-          <AssociationSet Name="FK_Razas_CuidadosEspeciales" Association="SIGMAEntities.Store.FK_Razas_CuidadosEspeciales">
+          <AssociationSet Name="FK_Razas_CuidadosEspeciales" Association="SiGMAModel.Store.FK_Razas_CuidadosEspeciales">
             <End Role="CuidadosEspeciales" EntitySet="CuidadosEspeciales" />
             <End Role="Razas" EntitySet="Razas" />
           </AssociationSet>
-          <AssociationSet Name="FK_Razas_Especies" Association="SIGMAEntities.Store.FK_Razas_Especies">
+          <AssociationSet Name="FK_Razas_Especies" Association="SiGMAModel.Store.FK_Razas_Especies">
             <End Role="Especies" EntitySet="Especies" />
             <End Role="Razas" EntitySet="Razas" />
           </AssociationSet>
-          <AssociationSet Name="FK_RolesXUsuario_Roles" Association="SIGMAEntities.Store.FK_RolesXUsuario_Roles">
+          <AssociationSet Name="FK_RolesXUsuario_Roles" Association="SiGMAModel.Store.FK_RolesXUsuario_Roles">
             <End Role="Roles" EntitySet="Roles" />
             <End Role="RolesXUsuario" EntitySet="RolesXUsuario" />
           </AssociationSet>
-          <AssociationSet Name="FK_RolesXUsuario_Usuarios" Association="SIGMAEntities.Store.FK_RolesXUsuario_Usuarios">
+          <AssociationSet Name="FK_RolesXUsuario_Usuarios" Association="SiGMAModel.Store.FK_RolesXUsuario_Usuarios">
             <End Role="Usuarios" EntitySet="Usuarios" />
             <End Role="RolesXUsuario" EntitySet="RolesXUsuario" />
           </AssociationSet>
-          <AssociationSet Name="FK_Sesiones_Usuarios" Association="SIGMAEntities.Store.FK_Sesiones_Usuarios">
+          <AssociationSet Name="FK_Sesiones_Usuarios" Association="SiGMAModel.Store.FK_Sesiones_Usuarios">
             <End Role="Usuarios" EntitySet="Usuarios" />
             <End Role="Sesiones" EntitySet="Sesiones" />
           </AssociationSet>
-          <AssociationSet Name="FK_Usuarios_Roles" Association="SIGMAEntities.Store.FK_Usuarios_Roles">
-            <End Role="Roles" EntitySet="Roles" />
-            <End Role="Usuarios" EntitySet="Usuarios" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Voluntarios_Personas" Association="SIGMAEntities.Store.FK_Voluntarios_Personas">
+          <AssociationSet Name="FK_Voluntarios_Personas" Association="SiGMAModel.Store.FK_Voluntarios_Personas">
             <End Role="Personas" EntitySet="Personas" />
             <End Role="Voluntarios" EntitySet="Voluntarios" />
           </AssociationSet>
@@ -286,11 +282,10 @@
           <Key>
             <PropertyRef Name="idRol" />
             <PropertyRef Name="idPermiso" />
-            <PropertyRef Name="pantalla" />
           </Key>
           <Property Name="idRol" Type="int" Nullable="false" />
           <Property Name="idPermiso" Type="int" Nullable="false" />
-          <Property Name="pantalla" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="pantalla" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="Personas">
           <Key>
@@ -335,6 +330,7 @@
           </Key>
           <Property Name="user" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="idRol" Type="int" Nullable="false" />
+          <Property Name="test" Type="nchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="Sesiones">
           <Key>
@@ -358,7 +354,6 @@
           </Key>
           <Property Name="user" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="password" Type="nvarchar" Nullable="false" MaxLength="50" />
-          <Property Name="idRol" Type="int" />
         </EntityType>
         <EntityType Name="Voluntarios">
           <Key>
@@ -368,8 +363,8 @@
           <Property Name="idPersona" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_Adopciones_Duenios">
-          <End Role="Duenios" Type="SIGMAEntities.Store.Duenios" Multiplicity="1" />
-          <End Role="Adopciones" Type="SIGMAEntities.Store.Adopciones" Multiplicity="*" />
+          <End Role="Duenios" Type="SiGMAModel.Store.Duenios" Multiplicity="1" />
+          <End Role="Adopciones" Type="SiGMAModel.Store.Adopciones" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Duenios">
               <PropertyRef Name="idDuenio" />
@@ -380,8 +375,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Adopciones_Mascotas">
-          <End Role="Mascotas" Type="SIGMAEntities.Store.Mascotas" Multiplicity="1" />
-          <End Role="Adopciones" Type="SIGMAEntities.Store.Adopciones" Multiplicity="*" />
+          <End Role="Mascotas" Type="SiGMAModel.Store.Mascotas" Multiplicity="1" />
+          <End Role="Adopciones" Type="SiGMAModel.Store.Adopciones" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Mascotas">
               <PropertyRef Name="idMascota" />
@@ -392,8 +387,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Adopciones_Voluntarios">
-          <End Role="Voluntarios" Type="SIGMAEntities.Store.Voluntarios" Multiplicity="1" />
-          <End Role="Adopciones" Type="SIGMAEntities.Store.Adopciones" Multiplicity="*" />
+          <End Role="Voluntarios" Type="SiGMAModel.Store.Voluntarios" Multiplicity="1" />
+          <End Role="Adopciones" Type="SiGMAModel.Store.Adopciones" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Voluntarios">
               <PropertyRef Name="idVoluntario" />
@@ -404,8 +399,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Barrios_Localidades">
-          <End Role="Localidades" Type="SIGMAEntities.Store.Localidades" Multiplicity="0..1" />
-          <End Role="Barrios" Type="SIGMAEntities.Store.Barrios" Multiplicity="*" />
+          <End Role="Localidades" Type="SiGMAModel.Store.Localidades" Multiplicity="0..1" />
+          <End Role="Barrios" Type="SiGMAModel.Store.Barrios" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Localidades">
               <PropertyRef Name="idLocalidad" />
@@ -416,8 +411,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Duenios_Personas">
-          <End Role="Personas" Type="SIGMAEntities.Store.Personas" Multiplicity="0..1" />
-          <End Role="Duenios" Type="SIGMAEntities.Store.Duenios" Multiplicity="*" />
+          <End Role="Personas" Type="SiGMAModel.Store.Personas" Multiplicity="0..1" />
+          <End Role="Duenios" Type="SiGMAModel.Store.Duenios" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Personas">
               <PropertyRef Name="idPersona" />
@@ -428,8 +423,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Hallazgos_Barrios">
-          <End Role="Barrios" Type="SIGMAEntities.Store.Barrios" Multiplicity="0..1" />
-          <End Role="Hallazgos" Type="SIGMAEntities.Store.Hallazgos" Multiplicity="*" />
+          <End Role="Barrios" Type="SiGMAModel.Store.Barrios" Multiplicity="0..1" />
+          <End Role="Hallazgos" Type="SiGMAModel.Store.Hallazgos" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Barrios">
               <PropertyRef Name="idBarrio" />
@@ -440,8 +435,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Hallazgos_Mascotas">
-          <End Role="Mascotas" Type="SIGMAEntities.Store.Mascotas" Multiplicity="1" />
-          <End Role="Hallazgos" Type="SIGMAEntities.Store.Hallazgos" Multiplicity="*" />
+          <End Role="Mascotas" Type="SiGMAModel.Store.Mascotas" Multiplicity="1" />
+          <End Role="Hallazgos" Type="SiGMAModel.Store.Hallazgos" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Mascotas">
               <PropertyRef Name="idMascota" />
@@ -452,8 +447,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Hallazgos_Perdidas">
-          <End Role="Perdidas" Type="SIGMAEntities.Store.Perdidas" Multiplicity="0..1" />
-          <End Role="Hallazgos" Type="SIGMAEntities.Store.Hallazgos" Multiplicity="*" />
+          <End Role="Perdidas" Type="SiGMAModel.Store.Perdidas" Multiplicity="0..1" />
+          <End Role="Hallazgos" Type="SiGMAModel.Store.Hallazgos" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Perdidas">
               <PropertyRef Name="idPerdida" />
@@ -464,8 +459,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Hallazgos_Sesiones">
-          <End Role="Sesiones" Type="SIGMAEntities.Store.Sesiones" Multiplicity="1" />
-          <End Role="Hallazgos" Type="SIGMAEntities.Store.Hallazgos" Multiplicity="*" />
+          <End Role="Sesiones" Type="SiGMAModel.Store.Sesiones" Multiplicity="1" />
+          <End Role="Hallazgos" Type="SiGMAModel.Store.Hallazgos" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Sesiones">
               <PropertyRef Name="idSesion" />
@@ -476,8 +471,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Mascotas_Colores">
-          <End Role="Colores" Type="SIGMAEntities.Store.Colores" Multiplicity="1" />
-          <End Role="Mascotas" Type="SIGMAEntities.Store.Mascotas" Multiplicity="*" />
+          <End Role="Colores" Type="SiGMAModel.Store.Colores" Multiplicity="1" />
+          <End Role="Mascotas" Type="SiGMAModel.Store.Mascotas" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Colores">
               <PropertyRef Name="idColor" />
@@ -488,8 +483,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Mascotas_Duenios">
-          <End Role="Duenios" Type="SIGMAEntities.Store.Duenios" Multiplicity="0..1" />
-          <End Role="Mascotas" Type="SIGMAEntities.Store.Mascotas" Multiplicity="*" />
+          <End Role="Duenios" Type="SiGMAModel.Store.Duenios" Multiplicity="0..1" />
+          <End Role="Mascotas" Type="SiGMAModel.Store.Mascotas" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Duenios">
               <PropertyRef Name="idDuenio" />
@@ -500,8 +495,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Mascotas_Edades">
-          <End Role="Edades" Type="SIGMAEntities.Store.Edades" Multiplicity="1" />
-          <End Role="Mascotas" Type="SIGMAEntities.Store.Mascotas" Multiplicity="*" />
+          <End Role="Edades" Type="SiGMAModel.Store.Edades" Multiplicity="1" />
+          <End Role="Mascotas" Type="SiGMAModel.Store.Mascotas" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Edades">
               <PropertyRef Name="idEdad" />
@@ -512,8 +507,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Mascotas_Especies">
-          <End Role="Especies" Type="SIGMAEntities.Store.Especies" Multiplicity="1" />
-          <End Role="Mascotas" Type="SIGMAEntities.Store.Mascotas" Multiplicity="*" />
+          <End Role="Especies" Type="SiGMAModel.Store.Especies" Multiplicity="1" />
+          <End Role="Mascotas" Type="SiGMAModel.Store.Mascotas" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Especies">
               <PropertyRef Name="idEspecie" />
@@ -524,8 +519,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Mascotas_Estados">
-          <End Role="Estados" Type="SIGMAEntities.Store.Estados" Multiplicity="1" />
-          <End Role="Mascotas" Type="SIGMAEntities.Store.Mascotas" Multiplicity="*" />
+          <End Role="Estados" Type="SiGMAModel.Store.Estados" Multiplicity="1" />
+          <End Role="Mascotas" Type="SiGMAModel.Store.Mascotas" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Estados">
               <PropertyRef Name="idEstado" />
@@ -536,8 +531,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Mascotas_Razas">
-          <End Role="Razas" Type="SIGMAEntities.Store.Razas" Multiplicity="1" />
-          <End Role="Mascotas" Type="SIGMAEntities.Store.Mascotas" Multiplicity="*" />
+          <End Role="Razas" Type="SiGMAModel.Store.Razas" Multiplicity="1" />
+          <End Role="Mascotas" Type="SiGMAModel.Store.Mascotas" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Razas">
               <PropertyRef Name="idRaza" />
@@ -548,8 +543,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Perdidas_Barrios">
-          <End Role="Barrios" Type="SIGMAEntities.Store.Barrios" Multiplicity="0..1" />
-          <End Role="Perdidas" Type="SIGMAEntities.Store.Perdidas" Multiplicity="*" />
+          <End Role="Barrios" Type="SiGMAModel.Store.Barrios" Multiplicity="0..1" />
+          <End Role="Perdidas" Type="SiGMAModel.Store.Perdidas" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Barrios">
               <PropertyRef Name="idBarrio" />
@@ -560,8 +555,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Perdidas_Mascotas">
-          <End Role="Mascotas" Type="SIGMAEntities.Store.Mascotas" Multiplicity="1" />
-          <End Role="Perdidas" Type="SIGMAEntities.Store.Perdidas" Multiplicity="*" />
+          <End Role="Mascotas" Type="SiGMAModel.Store.Mascotas" Multiplicity="1" />
+          <End Role="Perdidas" Type="SiGMAModel.Store.Perdidas" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Mascotas">
               <PropertyRef Name="idMascota" />
@@ -572,8 +567,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Perdidas_Sesiones">
-          <End Role="Sesiones" Type="SIGMAEntities.Store.Sesiones" Multiplicity="1" />
-          <End Role="Perdidas" Type="SIGMAEntities.Store.Perdidas" Multiplicity="*" />
+          <End Role="Sesiones" Type="SiGMAModel.Store.Sesiones" Multiplicity="1" />
+          <End Role="Perdidas" Type="SiGMAModel.Store.Perdidas" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Sesiones">
               <PropertyRef Name="idSesion" />
@@ -584,8 +579,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PermisosXRoles_Permisos">
-          <End Role="Permisos" Type="SIGMAEntities.Store.Permisos" Multiplicity="1" />
-          <End Role="PermisosXRoles" Type="SIGMAEntities.Store.PermisosXRoles" Multiplicity="*" />
+          <End Role="Permisos" Type="SiGMAModel.Store.Permisos" Multiplicity="1" />
+          <End Role="PermisosXRoles" Type="SiGMAModel.Store.PermisosXRoles" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Permisos">
               <PropertyRef Name="idPermiso" />
@@ -596,20 +591,20 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PermisosXRoles_Roles">
-          <End Role="Roles" Type="SIGMAEntities.Store.Roles" Multiplicity="1" />
-          <End Role="PermisosXRoles" Type="SIGMAEntities.Store.PermisosXRoles" Multiplicity="*" />
+          <End Role="Roles" Type="SiGMAModel.Store.Roles" Multiplicity="1" />
+          <End Role="PermisosXRoles" Type="SiGMAModel.Store.PermisosXRoles" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Roles">
               <PropertyRef Name="idRol" />
             </Principal>
             <Dependent Role="PermisosXRoles">
-              <PropertyRef Name="idPermiso" />
+              <PropertyRef Name="idRol" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Personas_Barrios">
-          <End Role="Barrios" Type="SIGMAEntities.Store.Barrios" Multiplicity="0..1" />
-          <End Role="Personas" Type="SIGMAEntities.Store.Personas" Multiplicity="*" />
+          <End Role="Barrios" Type="SiGMAModel.Store.Barrios" Multiplicity="0..1" />
+          <End Role="Personas" Type="SiGMAModel.Store.Personas" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Barrios">
               <PropertyRef Name="idBarrio" />
@@ -620,8 +615,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Personas_TipoDocumentos">
-          <End Role="TipoDocumentos" Type="SIGMAEntities.Store.TipoDocumentos" Multiplicity="0..1" />
-          <End Role="Personas" Type="SIGMAEntities.Store.Personas" Multiplicity="*" />
+          <End Role="TipoDocumentos" Type="SiGMAModel.Store.TipoDocumentos" Multiplicity="0..1" />
+          <End Role="Personas" Type="SiGMAModel.Store.Personas" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TipoDocumentos">
               <PropertyRef Name="idTipoDocumento" />
@@ -632,8 +627,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Personas_Usuarios">
-          <End Role="Usuarios" Type="SIGMAEntities.Store.Usuarios" Multiplicity="0..1" />
-          <End Role="Personas" Type="SIGMAEntities.Store.Personas" Multiplicity="*" />
+          <End Role="Usuarios" Type="SiGMAModel.Store.Usuarios" Multiplicity="0..1" />
+          <End Role="Personas" Type="SiGMAModel.Store.Personas" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Usuarios">
               <PropertyRef Name="user" />
@@ -644,8 +639,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Razas_CategoriaRazas">
-          <End Role="CategoriaRazas" Type="SIGMAEntities.Store.CategoriaRazas" Multiplicity="0..1" />
-          <End Role="Razas" Type="SIGMAEntities.Store.Razas" Multiplicity="*" />
+          <End Role="CategoriaRazas" Type="SiGMAModel.Store.CategoriaRazas" Multiplicity="0..1" />
+          <End Role="Razas" Type="SiGMAModel.Store.Razas" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CategoriaRazas">
               <PropertyRef Name="idCategoriaRazas" />
@@ -656,8 +651,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Razas_CuidadosEspeciales">
-          <End Role="CuidadosEspeciales" Type="SIGMAEntities.Store.CuidadosEspeciales" Multiplicity="0..1" />
-          <End Role="Razas" Type="SIGMAEntities.Store.Razas" Multiplicity="*" />
+          <End Role="CuidadosEspeciales" Type="SiGMAModel.Store.CuidadosEspeciales" Multiplicity="0..1" />
+          <End Role="Razas" Type="SiGMAModel.Store.Razas" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CuidadosEspeciales">
               <PropertyRef Name="idCuidadoEspecial" />
@@ -668,8 +663,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Razas_Especies">
-          <End Role="Especies" Type="SIGMAEntities.Store.Especies" Multiplicity="1" />
-          <End Role="Razas" Type="SIGMAEntities.Store.Razas" Multiplicity="*" />
+          <End Role="Especies" Type="SiGMAModel.Store.Especies" Multiplicity="1" />
+          <End Role="Razas" Type="SiGMAModel.Store.Razas" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Especies">
               <PropertyRef Name="idEspecie" />
@@ -680,8 +675,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_RolesXUsuario_Roles">
-          <End Role="Roles" Type="SIGMAEntities.Store.Roles" Multiplicity="1" />
-          <End Role="RolesXUsuario" Type="SIGMAEntities.Store.RolesXUsuario" Multiplicity="*" />
+          <End Role="Roles" Type="SiGMAModel.Store.Roles" Multiplicity="1" />
+          <End Role="RolesXUsuario" Type="SiGMAModel.Store.RolesXUsuario" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Roles">
               <PropertyRef Name="idRol" />
@@ -692,8 +687,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_RolesXUsuario_Usuarios">
-          <End Role="Usuarios" Type="SIGMAEntities.Store.Usuarios" Multiplicity="1" />
-          <End Role="RolesXUsuario" Type="SIGMAEntities.Store.RolesXUsuario" Multiplicity="*" />
+          <End Role="Usuarios" Type="SiGMAModel.Store.Usuarios" Multiplicity="1" />
+          <End Role="RolesXUsuario" Type="SiGMAModel.Store.RolesXUsuario" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Usuarios">
               <PropertyRef Name="user" />
@@ -704,8 +699,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Sesiones_Usuarios">
-          <End Role="Usuarios" Type="SIGMAEntities.Store.Usuarios" Multiplicity="1" />
-          <End Role="Sesiones" Type="SIGMAEntities.Store.Sesiones" Multiplicity="*" />
+          <End Role="Usuarios" Type="SiGMAModel.Store.Usuarios" Multiplicity="1" />
+          <End Role="Sesiones" Type="SiGMAModel.Store.Sesiones" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Usuarios">
               <PropertyRef Name="user" />
@@ -715,21 +710,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Usuarios_Roles">
-          <End Role="Roles" Type="SIGMAEntities.Store.Roles" Multiplicity="0..1" />
-          <End Role="Usuarios" Type="SIGMAEntities.Store.Usuarios" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Roles">
-              <PropertyRef Name="idRol" />
-            </Principal>
-            <Dependent Role="Usuarios">
-              <PropertyRef Name="idRol" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Voluntarios_Personas">
-          <End Role="Personas" Type="SIGMAEntities.Store.Personas" Multiplicity="1" />
-          <End Role="Voluntarios" Type="SIGMAEntities.Store.Voluntarios" Multiplicity="*" />
+          <End Role="Personas" Type="SiGMAModel.Store.Personas" Multiplicity="1" />
+          <End Role="Voluntarios" Type="SiGMAModel.Store.Voluntarios" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Personas">
               <PropertyRef Name="idPersona" />
@@ -742,407 +725,406 @@
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="SIGMAEntities" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
-        <EntityContainer Name="SIGMAEntitiesContainer" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Adopciones" EntityType="SIGMAEntities.Adopciones" />
-          <EntitySet Name="Barrios" EntityType="SIGMAEntities.Barrios" />
-          <EntitySet Name="CategoriaRazas" EntityType="SIGMAEntities.CategoriaRazas" />
-          <EntitySet Name="Colores" EntityType="SIGMAEntities.Colores" />
-          <EntitySet Name="CuidadosEspeciales" EntityType="SIGMAEntities.CuidadosEspeciales" />
-          <EntitySet Name="Duenios" EntityType="SIGMAEntities.Duenios" />
-          <EntitySet Name="Edades" EntityType="SIGMAEntities.Edades" />
-          <EntitySet Name="Especies" EntityType="SIGMAEntities.Especies" />
-          <EntitySet Name="Estados" EntityType="SIGMAEntities.Estados" />
-          <EntitySet Name="Hallazgos" EntityType="SIGMAEntities.Hallazgos" />
-          <EntitySet Name="Localidades" EntityType="SIGMAEntities.Localidades" />
-          <EntitySet Name="Mascotas" EntityType="SIGMAEntities.Mascotas" />
-          <EntitySet Name="Perdidas" EntityType="SIGMAEntities.Perdidas" />
-          <EntitySet Name="Permisos" EntityType="SIGMAEntities.Permisos" />
-          <EntitySet Name="Personas" EntityType="SIGMAEntities.Personas" />
-          <EntitySet Name="Razas" EntityType="SIGMAEntities.Razas" />
-          <EntitySet Name="Roles" EntityType="SIGMAEntities.Roles" />
-          <EntitySet Name="Sesiones" EntityType="SIGMAEntities.Sesiones" />
-          <EntitySet Name="TipoDocumentos" EntityType="SIGMAEntities.TipoDocumentos" />
-          <EntitySet Name="Usuarios" EntityType="SIGMAEntities.Usuarios" />
-          <EntitySet Name="Voluntarios" EntityType="SIGMAEntities.Voluntarios" />
-          <AssociationSet Name="FK_Adopciones_Duenios" Association="SIGMAEntities.FK_Adopciones_Duenios">
+      <Schema Namespace="SiGMAModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="SiGMAEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Adopciones" EntityType="SiGMAModel.Adopciones" />
+          <EntitySet Name="Barrios" EntityType="SiGMAModel.Barrios" />
+          <EntitySet Name="CategoriaRazas" EntityType="SiGMAModel.CategoriaRazas" />
+          <EntitySet Name="Colores" EntityType="SiGMAModel.Colores" />
+          <EntitySet Name="CuidadosEspeciales" EntityType="SiGMAModel.CuidadosEspeciales" />
+          <EntitySet Name="Duenios" EntityType="SiGMAModel.Duenios" />
+          <EntitySet Name="Edades" EntityType="SiGMAModel.Edades" />
+          <EntitySet Name="Especies" EntityType="SiGMAModel.Especies" />
+          <EntitySet Name="Estados" EntityType="SiGMAModel.Estados" />
+          <EntitySet Name="Hallazgos" EntityType="SiGMAModel.Hallazgos" />
+          <EntitySet Name="Localidades" EntityType="SiGMAModel.Localidades" />
+          <EntitySet Name="Mascotas" EntityType="SiGMAModel.Mascotas" />
+          <EntitySet Name="Perdidas" EntityType="SiGMAModel.Perdidas" />
+          <EntitySet Name="Permisos" EntityType="SiGMAModel.Permisos" />
+          <EntitySet Name="PermisosXRoles" EntityType="SiGMAModel.PermisosXRoles" />
+          <EntitySet Name="Personas" EntityType="SiGMAModel.Personas" />
+          <EntitySet Name="Razas" EntityType="SiGMAModel.Razas" />
+          <EntitySet Name="Roles" EntityType="SiGMAModel.Roles" />
+          <EntitySet Name="Sesiones" EntityType="SiGMAModel.Sesiones" />
+          <EntitySet Name="TipoDocumentos" EntityType="SiGMAModel.TipoDocumentos" />
+          <EntitySet Name="Voluntarios" EntityType="SiGMAModel.Voluntarios" />
+          <AssociationSet Name="FK_Adopciones_Duenios" Association="SiGMAModel.FK_Adopciones_Duenios">
             <End Role="Duenios" EntitySet="Duenios" />
             <End Role="Adopciones" EntitySet="Adopciones" />
           </AssociationSet>
-          <AssociationSet Name="FK_Adopciones_Mascotas" Association="SIGMAEntities.FK_Adopciones_Mascotas">
+          <AssociationSet Name="FK_Adopciones_Mascotas" Association="SiGMAModel.FK_Adopciones_Mascotas">
             <End Role="Mascotas" EntitySet="Mascotas" />
             <End Role="Adopciones" EntitySet="Adopciones" />
           </AssociationSet>
-          <AssociationSet Name="FK_Adopciones_Voluntarios" Association="SIGMAEntities.FK_Adopciones_Voluntarios">
+          <AssociationSet Name="FK_Adopciones_Voluntarios" Association="SiGMAModel.FK_Adopciones_Voluntarios">
             <End Role="Voluntarios" EntitySet="Voluntarios" />
             <End Role="Adopciones" EntitySet="Adopciones" />
           </AssociationSet>
-          <AssociationSet Name="FK_Barrios_Localidades" Association="SIGMAEntities.FK_Barrios_Localidades">
+          <AssociationSet Name="FK_Barrios_Localidades" Association="SiGMAModel.FK_Barrios_Localidades">
             <End Role="Localidades" EntitySet="Localidades" />
             <End Role="Barrios" EntitySet="Barrios" />
           </AssociationSet>
-          <AssociationSet Name="FK_Hallazgos_Barrios" Association="SIGMAEntities.FK_Hallazgos_Barrios">
+          <AssociationSet Name="FK_Hallazgos_Barrios" Association="SiGMAModel.FK_Hallazgos_Barrios">
             <End Role="Barrios" EntitySet="Barrios" />
             <End Role="Hallazgos" EntitySet="Hallazgos" />
           </AssociationSet>
-          <AssociationSet Name="FK_Perdidas_Barrios" Association="SIGMAEntities.FK_Perdidas_Barrios">
+          <AssociationSet Name="FK_Perdidas_Barrios" Association="SiGMAModel.FK_Perdidas_Barrios">
             <End Role="Barrios" EntitySet="Barrios" />
             <End Role="Perdidas" EntitySet="Perdidas" />
           </AssociationSet>
-          <AssociationSet Name="FK_Personas_Barrios" Association="SIGMAEntities.FK_Personas_Barrios">
+          <AssociationSet Name="FK_Personas_Barrios" Association="SiGMAModel.FK_Personas_Barrios">
             <End Role="Barrios" EntitySet="Barrios" />
             <End Role="Personas" EntitySet="Personas" />
           </AssociationSet>
-          <AssociationSet Name="FK_Razas_CategoriaRazas" Association="SIGMAEntities.FK_Razas_CategoriaRazas">
+          <AssociationSet Name="FK_Razas_CategoriaRazas" Association="SiGMAModel.FK_Razas_CategoriaRazas">
             <End Role="CategoriaRazas" EntitySet="CategoriaRazas" />
             <End Role="Razas" EntitySet="Razas" />
           </AssociationSet>
-          <AssociationSet Name="FK_Mascotas_Colores" Association="SIGMAEntities.FK_Mascotas_Colores">
+          <AssociationSet Name="FK_Mascotas_Colores" Association="SiGMAModel.FK_Mascotas_Colores">
             <End Role="Colores" EntitySet="Colores" />
             <End Role="Mascotas" EntitySet="Mascotas" />
           </AssociationSet>
-          <AssociationSet Name="FK_Razas_CuidadosEspeciales" Association="SIGMAEntities.FK_Razas_CuidadosEspeciales">
+          <AssociationSet Name="FK_Razas_CuidadosEspeciales" Association="SiGMAModel.FK_Razas_CuidadosEspeciales">
             <End Role="CuidadosEspeciales" EntitySet="CuidadosEspeciales" />
             <End Role="Razas" EntitySet="Razas" />
           </AssociationSet>
-          <AssociationSet Name="FK_Duenios_Personas" Association="SIGMAEntities.FK_Duenios_Personas">
+          <AssociationSet Name="FK_Duenios_Personas" Association="SiGMAModel.FK_Duenios_Personas">
             <End Role="Personas" EntitySet="Personas" />
             <End Role="Duenios" EntitySet="Duenios" />
           </AssociationSet>
-          <AssociationSet Name="FK_Mascotas_Duenios" Association="SIGMAEntities.FK_Mascotas_Duenios">
+          <AssociationSet Name="FK_Mascotas_Duenios" Association="SiGMAModel.FK_Mascotas_Duenios">
             <End Role="Duenios" EntitySet="Duenios" />
             <End Role="Mascotas" EntitySet="Mascotas" />
           </AssociationSet>
-          <AssociationSet Name="FK_Mascotas_Edades" Association="SIGMAEntities.FK_Mascotas_Edades">
+          <AssociationSet Name="FK_Mascotas_Edades" Association="SiGMAModel.FK_Mascotas_Edades">
             <End Role="Edades" EntitySet="Edades" />
             <End Role="Mascotas" EntitySet="Mascotas" />
           </AssociationSet>
-          <AssociationSet Name="FK_Mascotas_Especies" Association="SIGMAEntities.FK_Mascotas_Especies">
+          <AssociationSet Name="FK_Mascotas_Especies" Association="SiGMAModel.FK_Mascotas_Especies">
             <End Role="Especies" EntitySet="Especies" />
             <End Role="Mascotas" EntitySet="Mascotas" />
           </AssociationSet>
-          <AssociationSet Name="FK_Razas_Especies" Association="SIGMAEntities.FK_Razas_Especies">
+          <AssociationSet Name="FK_Razas_Especies" Association="SiGMAModel.FK_Razas_Especies">
             <End Role="Especies" EntitySet="Especies" />
             <End Role="Razas" EntitySet="Razas" />
           </AssociationSet>
-          <AssociationSet Name="FK_Mascotas_Estados" Association="SIGMAEntities.FK_Mascotas_Estados">
+          <AssociationSet Name="FK_Mascotas_Estados" Association="SiGMAModel.FK_Mascotas_Estados">
             <End Role="Estados" EntitySet="Estados" />
             <End Role="Mascotas" EntitySet="Mascotas" />
           </AssociationSet>
-          <AssociationSet Name="FK_Hallazgos_Mascotas" Association="SIGMAEntities.FK_Hallazgos_Mascotas">
+          <AssociationSet Name="FK_Hallazgos_Mascotas" Association="SiGMAModel.FK_Hallazgos_Mascotas">
             <End Role="Mascotas" EntitySet="Mascotas" />
             <End Role="Hallazgos" EntitySet="Hallazgos" />
           </AssociationSet>
-          <AssociationSet Name="FK_Hallazgos_Perdidas" Association="SIGMAEntities.FK_Hallazgos_Perdidas">
+          <AssociationSet Name="FK_Hallazgos_Perdidas" Association="SiGMAModel.FK_Hallazgos_Perdidas">
             <End Role="Perdidas" EntitySet="Perdidas" />
             <End Role="Hallazgos" EntitySet="Hallazgos" />
           </AssociationSet>
-          <AssociationSet Name="FK_Hallazgos_Sesiones" Association="SIGMAEntities.FK_Hallazgos_Sesiones">
+          <AssociationSet Name="FK_Hallazgos_Sesiones" Association="SiGMAModel.FK_Hallazgos_Sesiones">
             <End Role="Sesiones" EntitySet="Sesiones" />
             <End Role="Hallazgos" EntitySet="Hallazgos" />
           </AssociationSet>
-          <AssociationSet Name="FK_Mascotas_Razas" Association="SIGMAEntities.FK_Mascotas_Razas">
+          <AssociationSet Name="FK_Mascotas_Razas" Association="SiGMAModel.FK_Mascotas_Razas">
             <End Role="Razas" EntitySet="Razas" />
             <End Role="Mascotas" EntitySet="Mascotas" />
           </AssociationSet>
-          <AssociationSet Name="FK_Perdidas_Mascotas" Association="SIGMAEntities.FK_Perdidas_Mascotas">
+          <AssociationSet Name="FK_Perdidas_Mascotas" Association="SiGMAModel.FK_Perdidas_Mascotas">
             <End Role="Mascotas" EntitySet="Mascotas" />
             <End Role="Perdidas" EntitySet="Perdidas" />
           </AssociationSet>
-          <AssociationSet Name="FK_Perdidas_Sesiones" Association="SIGMAEntities.FK_Perdidas_Sesiones">
+          <AssociationSet Name="FK_Perdidas_Sesiones" Association="SiGMAModel.FK_Perdidas_Sesiones">
             <End Role="Sesiones" EntitySet="Sesiones" />
             <End Role="Perdidas" EntitySet="Perdidas" />
           </AssociationSet>
-          <AssociationSet Name="FK_Personas_TipoDocumentos" Association="SIGMAEntities.FK_Personas_TipoDocumentos">
-            <End Role="TipoDocumentos" EntitySet="TipoDocumentos" />
-            <End Role="Personas" EntitySet="Personas" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Personas_Usuarios" Association="SIGMAEntities.FK_Personas_Usuarios">
-            <End Role="Usuarios" EntitySet="Usuarios" />
-            <End Role="Personas" EntitySet="Personas" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Voluntarios_Personas" Association="SIGMAEntities.FK_Voluntarios_Personas">
-            <End Role="Personas" EntitySet="Personas" />
-            <End Role="Voluntarios" EntitySet="Voluntarios" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Usuarios_Roles" Association="SIGMAEntities.FK_Usuarios_Roles">
-            <End Role="Roles" EntitySet="Roles" />
-            <End Role="Usuarios" EntitySet="Usuarios" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Sesiones_Usuarios" Association="SIGMAEntities.FK_Sesiones_Usuarios">
-            <End Role="Usuarios" EntitySet="Usuarios" />
-            <End Role="Sesiones" EntitySet="Sesiones" />
-          </AssociationSet>
-          <AssociationSet Name="RolesXUsuario" Association="SIGMAEntities.RolesXUsuario">
-            <End Role="Roles" EntitySet="Roles" />
-            <End Role="Usuarios" EntitySet="Usuarios" />
-          </AssociationSet>
-          <EntitySet Name="PermisosXRoles" EntityType="SIGMAEntities.PermisosXRoles" />
-          <AssociationSet Name="FK_PermisosXRoles_Permisos" Association="SIGMAEntities.FK_PermisosXRoles_Permisos">
+          <AssociationSet Name="FK_PermisosXRoles_Permisos" Association="SiGMAModel.FK_PermisosXRoles_Permisos">
             <End Role="Permisos" EntitySet="Permisos" />
             <End Role="PermisosXRoles" EntitySet="PermisosXRoles" />
           </AssociationSet>
-          <AssociationSet Name="FK_PermisosXRoles_Roles" Association="SIGMAEntities.FK_PermisosXRoles_Roles">
+          <AssociationSet Name="FK_PermisosXRoles_Roles" Association="SiGMAModel.FK_PermisosXRoles_Roles">
             <End Role="Roles" EntitySet="Roles" />
             <End Role="PermisosXRoles" EntitySet="PermisosXRoles" />
           </AssociationSet>
-        </EntityContainer>
+          <AssociationSet Name="FK_Personas_TipoDocumentos" Association="SiGMAModel.FK_Personas_TipoDocumentos">
+            <End Role="TipoDocumentos" EntitySet="TipoDocumentos" />
+            <End Role="Personas" EntitySet="Personas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Voluntarios_Personas" Association="SiGMAModel.FK_Voluntarios_Personas">
+            <End Role="Personas" EntitySet="Personas" />
+            <End Role="Voluntarios" EntitySet="Voluntarios" />
+          </AssociationSet>
+          <EntitySet Name="RolesXUsuario" EntityType="SiGMAModel.RolesXUsuario" />
+          <EntitySet Name="Usuarios" EntityType="SiGMAModel.Usuarios" />
+          <AssociationSet Name="FK_Personas_Usuarios" Association="SiGMAModel.FK_Personas_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Personas" EntitySet="Personas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RolesXUsuario_Roles" Association="SiGMAModel.FK_RolesXUsuario_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="RolesXUsuario" EntitySet="RolesXUsuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RolesXUsuario_Usuarios" Association="SiGMAModel.FK_RolesXUsuario_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="RolesXUsuario" EntitySet="RolesXUsuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sesiones_Usuarios" Association="SiGMAModel.FK_Sesiones_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Sesiones" EntitySet="Sesiones" />
+          </AssociationSet>
+          </EntityContainer>
         <EntityType Name="Adopciones">
           <Key>
             <PropertyRef Name="idAdopcion" />
           </Key>
-          <Property Type="Int32" Name="idAdopcion" Nullable="false" />
-          <Property Type="Int32" Name="idMascota" Nullable="false" />
-          <Property Type="Int32" Name="idDuenio" Nullable="false" />
-          <Property Type="Int32" Name="idVoluntario" Nullable="false" />
-          <Property Type="DateTime" Name="fechaAdopcion" Nullable="false" />
-          <Property Type="String" Name="observaciones" MaxLength="500" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Duenios" Relationship="SIGMAEntities.FK_Adopciones_Duenios" FromRole="Adopciones" ToRole="Duenios" />
-          <NavigationProperty Name="Mascotas" Relationship="SIGMAEntities.FK_Adopciones_Mascotas" FromRole="Adopciones" ToRole="Mascotas" />
-          <NavigationProperty Name="Voluntarios" Relationship="SIGMAEntities.FK_Adopciones_Voluntarios" FromRole="Adopciones" ToRole="Voluntarios" />
+          <Property Name="idAdopcion" Type="Int32" Nullable="false" />
+          <Property Name="idMascota" Type="Int32" Nullable="false" />
+          <Property Name="idDuenio" Type="Int32" Nullable="false" />
+          <Property Name="idVoluntario" Type="Int32" Nullable="false" />
+          <Property Name="fechaAdopcion" Type="DateTime" Nullable="false" />
+          <Property Name="observaciones" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Duenios" Relationship="SiGMAModel.FK_Adopciones_Duenios" FromRole="Adopciones" ToRole="Duenios" />
+          <NavigationProperty Name="Mascotas" Relationship="SiGMAModel.FK_Adopciones_Mascotas" FromRole="Adopciones" ToRole="Mascotas" />
+          <NavigationProperty Name="Voluntarios" Relationship="SiGMAModel.FK_Adopciones_Voluntarios" FromRole="Adopciones" ToRole="Voluntarios" />
         </EntityType>
         <EntityType Name="Barrios">
           <Key>
             <PropertyRef Name="idBarrio" />
           </Key>
-          <Property Type="Int32" Name="idBarrio" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="nombre" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="idLocalidad" />
-          <NavigationProperty Name="Localidades" Relationship="SIGMAEntities.FK_Barrios_Localidades" FromRole="Barrios" ToRole="Localidades" />
-          <NavigationProperty Name="Hallazgos" Relationship="SIGMAEntities.FK_Hallazgos_Barrios" FromRole="Barrios" ToRole="Hallazgos" />
-          <NavigationProperty Name="Perdidas" Relationship="SIGMAEntities.FK_Perdidas_Barrios" FromRole="Barrios" ToRole="Perdidas" />
-          <NavigationProperty Name="Personas" Relationship="SIGMAEntities.FK_Personas_Barrios" FromRole="Barrios" ToRole="Personas" />
+          <Property Name="idBarrio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="idLocalidad" Type="Int32" />
+          <NavigationProperty Name="Localidades" Relationship="SiGMAModel.FK_Barrios_Localidades" FromRole="Barrios" ToRole="Localidades" />
+          <NavigationProperty Name="Hallazgos" Relationship="SiGMAModel.FK_Hallazgos_Barrios" FromRole="Barrios" ToRole="Hallazgos" />
+          <NavigationProperty Name="Perdidas" Relationship="SiGMAModel.FK_Perdidas_Barrios" FromRole="Barrios" ToRole="Perdidas" />
+          <NavigationProperty Name="Personas" Relationship="SiGMAModel.FK_Personas_Barrios" FromRole="Barrios" ToRole="Personas" />
         </EntityType>
         <EntityType Name="CategoriaRazas">
           <Key>
             <PropertyRef Name="idCategoriaRazas" />
           </Key>
-          <Property Type="Int32" Name="idCategoriaRazas" Nullable="false" />
-          <Property Type="String" Name="nombreCategoriaRaza" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Razas" Relationship="SIGMAEntities.FK_Razas_CategoriaRazas" FromRole="CategoriaRazas" ToRole="Razas" />
+          <Property Name="idCategoriaRazas" Type="Int32" Nullable="false" />
+          <Property Name="nombreCategoriaRaza" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Razas" Relationship="SiGMAModel.FK_Razas_CategoriaRazas" FromRole="CategoriaRazas" ToRole="Razas" />
         </EntityType>
         <EntityType Name="Colores">
           <Key>
             <PropertyRef Name="idColor" />
           </Key>
-          <Property Type="Int32" Name="idColor" Nullable="false" />
-          <Property Type="String" Name="nombreColor" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Mascotas" Relationship="SIGMAEntities.FK_Mascotas_Colores" FromRole="Colores" ToRole="Mascotas" />
+          <Property Name="idColor" Type="Int32" Nullable="false" />
+          <Property Name="nombreColor" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Mascotas" Relationship="SiGMAModel.FK_Mascotas_Colores" FromRole="Colores" ToRole="Mascotas" />
         </EntityType>
         <EntityType Name="CuidadosEspeciales">
           <Key>
             <PropertyRef Name="idCuidadoEspecial" />
           </Key>
-          <Property Type="Int32" Name="idCuidadoEspecial" Nullable="false" />
-          <Property Type="String" Name="descripcion" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Razas" Relationship="SIGMAEntities.FK_Razas_CuidadosEspeciales" FromRole="CuidadosEspeciales" ToRole="Razas" />
+          <Property Name="idCuidadoEspecial" Type="Int32" Nullable="false" />
+          <Property Name="descripcion" Type="String" Nullable="false" MaxLength="250" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Razas" Relationship="SiGMAModel.FK_Razas_CuidadosEspeciales" FromRole="CuidadosEspeciales" ToRole="Razas" />
         </EntityType>
         <EntityType Name="Duenios">
           <Key>
             <PropertyRef Name="idDuenio" />
           </Key>
-          <Property Type="Int32" Name="idDuenio" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="idPersona" />
-          <NavigationProperty Name="Adopciones" Relationship="SIGMAEntities.FK_Adopciones_Duenios" FromRole="Duenios" ToRole="Adopciones" />
-          <NavigationProperty Name="Personas" Relationship="SIGMAEntities.FK_Duenios_Personas" FromRole="Duenios" ToRole="Personas" />
-          <NavigationProperty Name="Mascotas" Relationship="SIGMAEntities.FK_Mascotas_Duenios" FromRole="Duenios" ToRole="Mascotas" />
+          <Property Name="idDuenio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idPersona" Type="Int32" />
+          <NavigationProperty Name="Adopciones" Relationship="SiGMAModel.FK_Adopciones_Duenios" FromRole="Duenios" ToRole="Adopciones" />
+          <NavigationProperty Name="Personas" Relationship="SiGMAModel.FK_Duenios_Personas" FromRole="Duenios" ToRole="Personas" />
+          <NavigationProperty Name="Mascotas" Relationship="SiGMAModel.FK_Mascotas_Duenios" FromRole="Duenios" ToRole="Mascotas" />
         </EntityType>
         <EntityType Name="Edades">
           <Key>
             <PropertyRef Name="idEdad" />
           </Key>
-          <Property Type="Int32" Name="idEdad" Nullable="false" />
-          <Property Type="String" Name="nombreEdad" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Mascotas" Relationship="SIGMAEntities.FK_Mascotas_Edades" FromRole="Edades" ToRole="Mascotas" />
+          <Property Name="idEdad" Type="Int32" Nullable="false" />
+          <Property Name="nombreEdad" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Mascotas" Relationship="SiGMAModel.FK_Mascotas_Edades" FromRole="Edades" ToRole="Mascotas" />
         </EntityType>
         <EntityType Name="Especies">
           <Key>
             <PropertyRef Name="idEspecie" />
           </Key>
-          <Property Type="Int32" Name="idEspecie" Nullable="false" />
-          <Property Type="String" Name="nombreEspecie" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Mascotas" Relationship="SIGMAEntities.FK_Mascotas_Especies" FromRole="Especies" ToRole="Mascotas" />
-          <NavigationProperty Name="Razas" Relationship="SIGMAEntities.FK_Razas_Especies" FromRole="Especies" ToRole="Razas" />
+          <Property Name="idEspecie" Type="Int32" Nullable="false" />
+          <Property Name="nombreEspecie" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Mascotas" Relationship="SiGMAModel.FK_Mascotas_Especies" FromRole="Especies" ToRole="Mascotas" />
+          <NavigationProperty Name="Razas" Relationship="SiGMAModel.FK_Razas_Especies" FromRole="Especies" ToRole="Razas" />
         </EntityType>
         <EntityType Name="Estados">
           <Key>
             <PropertyRef Name="idEstado" />
           </Key>
-          <Property Type="Int32" Name="idEstado" Nullable="false" />
-          <Property Type="String" Name="nombreEstado" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Mascotas" Relationship="SIGMAEntities.FK_Mascotas_Estados" FromRole="Estados" ToRole="Mascotas" />
+          <Property Name="idEstado" Type="Int32" Nullable="false" />
+          <Property Name="nombreEstado" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Mascotas" Relationship="SiGMAModel.FK_Mascotas_Estados" FromRole="Estados" ToRole="Mascotas" />
         </EntityType>
         <EntityType Name="Hallazgos">
           <Key>
             <PropertyRef Name="idHallazgo" />
           </Key>
-          <Property Type="Int32" Name="idHallazgo" Nullable="false" />
-          <Property Type="Int32" Name="idSesion" Nullable="false" />
-          <Property Type="Int32" Name="idMascota" Nullable="false" />
-          <Property Type="String" Name="ubicacionHallazgo" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Type="DateTime" Name="fechaHoraHallazgo" Nullable="false" />
-          <Property Type="Int32" Name="idBarrioHallazgo" />
-          <Property Type="String" Name="observaciones" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Type="Int32" Name="idPerdida" />
-          <NavigationProperty Name="Barrios" Relationship="SIGMAEntities.FK_Hallazgos_Barrios" FromRole="Hallazgos" ToRole="Barrios" />
-          <NavigationProperty Name="Mascotas" Relationship="SIGMAEntities.FK_Hallazgos_Mascotas" FromRole="Hallazgos" ToRole="Mascotas" />
-          <NavigationProperty Name="Perdidas" Relationship="SIGMAEntities.FK_Hallazgos_Perdidas" FromRole="Hallazgos" ToRole="Perdidas" />
-          <NavigationProperty Name="Sesiones" Relationship="SIGMAEntities.FK_Hallazgos_Sesiones" FromRole="Hallazgos" ToRole="Sesiones" />
+          <Property Name="idHallazgo" Type="Int32" Nullable="false" />
+          <Property Name="idSesion" Type="Int32" Nullable="false" />
+          <Property Name="idMascota" Type="Int32" Nullable="false" />
+          <Property Name="ubicacionHallazgo" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="fechaHoraHallazgo" Type="DateTime" Nullable="false" />
+          <Property Name="idBarrioHallazgo" Type="Int32" />
+          <Property Name="observaciones" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="idPerdida" Type="Int32" />
+          <NavigationProperty Name="Barrios" Relationship="SiGMAModel.FK_Hallazgos_Barrios" FromRole="Hallazgos" ToRole="Barrios" />
+          <NavigationProperty Name="Mascotas" Relationship="SiGMAModel.FK_Hallazgos_Mascotas" FromRole="Hallazgos" ToRole="Mascotas" />
+          <NavigationProperty Name="Perdidas" Relationship="SiGMAModel.FK_Hallazgos_Perdidas" FromRole="Hallazgos" ToRole="Perdidas" />
+          <NavigationProperty Name="Sesiones" Relationship="SiGMAModel.FK_Hallazgos_Sesiones" FromRole="Hallazgos" ToRole="Sesiones" />
         </EntityType>
         <EntityType Name="Localidades">
           <Key>
             <PropertyRef Name="idLocalidad" />
           </Key>
-          <Property Type="Int32" Name="idLocalidad" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="nombre" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Barrios" Relationship="SIGMAEntities.FK_Barrios_Localidades" FromRole="Localidades" ToRole="Barrios" />
+          <Property Name="idLocalidad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Barrios" Relationship="SiGMAModel.FK_Barrios_Localidades" FromRole="Localidades" ToRole="Barrios" />
         </EntityType>
         <EntityType Name="Mascotas">
           <Key>
             <PropertyRef Name="idMascota" />
           </Key>
-          <Property Type="Int32" Name="idMascota" Nullable="false" />
-          <Property Type="String" Name="nombreMascota" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Type="Int32" Name="idEstado" Nullable="false" />
-          <Property Type="Int32" Name="idEspecie" Nullable="false" />
-          <Property Type="Int32" Name="idEdad" Nullable="false" />
-          <Property Type="Int32" Name="idRaza" Nullable="false" />
-          <Property Type="Int32" Name="idColor" Nullable="false" />
-          <Property Type="String" Name="tratoAnimales" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="tratoNinios" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="caracter" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="observaciones" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="alimentacionEspecial" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Type="DateTime" Name="fechaNacimiento" />
-          <Property Type="Int32" Name="sexo" Nullable="false" />
-          <Property Type="Int32" Name="idDuenio" />
-          <NavigationProperty Name="Adopciones" Relationship="SIGMAEntities.FK_Adopciones_Mascotas" FromRole="Mascotas" ToRole="Adopciones" />
-          <NavigationProperty Name="Colores" Relationship="SIGMAEntities.FK_Mascotas_Colores" FromRole="Mascotas" ToRole="Colores" />
-          <NavigationProperty Name="Duenios" Relationship="SIGMAEntities.FK_Mascotas_Duenios" FromRole="Mascotas" ToRole="Duenios" />
-          <NavigationProperty Name="Edades" Relationship="SIGMAEntities.FK_Mascotas_Edades" FromRole="Mascotas" ToRole="Edades" />
-          <NavigationProperty Name="Especies" Relationship="SIGMAEntities.FK_Mascotas_Especies" FromRole="Mascotas" ToRole="Especies" />
-          <NavigationProperty Name="Estados" Relationship="SIGMAEntities.FK_Mascotas_Estados" FromRole="Mascotas" ToRole="Estados" />
-          <NavigationProperty Name="Hallazgos" Relationship="SIGMAEntities.FK_Hallazgos_Mascotas" FromRole="Mascotas" ToRole="Hallazgos" />
-          <NavigationProperty Name="Razas" Relationship="SIGMAEntities.FK_Mascotas_Razas" FromRole="Mascotas" ToRole="Razas" />
-          <NavigationProperty Name="Perdidas" Relationship="SIGMAEntities.FK_Perdidas_Mascotas" FromRole="Mascotas" ToRole="Perdidas" />
+          <Property Name="idMascota" Type="Int32" Nullable="false" />
+          <Property Name="nombreMascota" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="idEstado" Type="Int32" Nullable="false" />
+          <Property Name="idEspecie" Type="Int32" Nullable="false" />
+          <Property Name="idEdad" Type="Int32" Nullable="false" />
+          <Property Name="idRaza" Type="Int32" Nullable="false" />
+          <Property Name="idColor" Type="Int32" Nullable="false" />
+          <Property Name="tratoAnimales" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="tratoNinios" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="caracter" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="observaciones" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="alimentacionEspecial" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="fechaNacimiento" Type="DateTime" />
+          <Property Name="sexo" Type="Int32" Nullable="false" />
+          <Property Name="idDuenio" Type="Int32" />
+          <NavigationProperty Name="Adopciones" Relationship="SiGMAModel.FK_Adopciones_Mascotas" FromRole="Mascotas" ToRole="Adopciones" />
+          <NavigationProperty Name="Colores" Relationship="SiGMAModel.FK_Mascotas_Colores" FromRole="Mascotas" ToRole="Colores" />
+          <NavigationProperty Name="Duenios" Relationship="SiGMAModel.FK_Mascotas_Duenios" FromRole="Mascotas" ToRole="Duenios" />
+          <NavigationProperty Name="Edades" Relationship="SiGMAModel.FK_Mascotas_Edades" FromRole="Mascotas" ToRole="Edades" />
+          <NavigationProperty Name="Especies" Relationship="SiGMAModel.FK_Mascotas_Especies" FromRole="Mascotas" ToRole="Especies" />
+          <NavigationProperty Name="Estados" Relationship="SiGMAModel.FK_Mascotas_Estados" FromRole="Mascotas" ToRole="Estados" />
+          <NavigationProperty Name="Hallazgos" Relationship="SiGMAModel.FK_Hallazgos_Mascotas" FromRole="Mascotas" ToRole="Hallazgos" />
+          <NavigationProperty Name="Razas" Relationship="SiGMAModel.FK_Mascotas_Razas" FromRole="Mascotas" ToRole="Razas" />
+          <NavigationProperty Name="Perdidas" Relationship="SiGMAModel.FK_Perdidas_Mascotas" FromRole="Mascotas" ToRole="Perdidas" />
         </EntityType>
         <EntityType Name="Perdidas">
           <Key>
             <PropertyRef Name="idPerdida" />
           </Key>
-          <Property Type="Int32" Name="idPerdida" Nullable="false" />
-          <Property Type="Int32" Name="idSesion" Nullable="false" />
-          <Property Type="Int32" Name="idMascota" Nullable="false" />
-          <Property Type="DateTime" Name="FechaHoraPerdida" />
-          <Property Type="String" Name="mapaPerdida" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="ubicacionPerdida" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Type="Int32" Name="idBarrioPerdida" />
-          <Property Type="String" Name="observaciones" MaxLength="10" FixedLength="true" Unicode="true" />
-          <NavigationProperty Name="Barrios" Relationship="SIGMAEntities.FK_Perdidas_Barrios" FromRole="Perdidas" ToRole="Barrios" />
-          <NavigationProperty Name="Hallazgos" Relationship="SIGMAEntities.FK_Hallazgos_Perdidas" FromRole="Perdidas" ToRole="Hallazgos" />
-          <NavigationProperty Name="Mascotas" Relationship="SIGMAEntities.FK_Perdidas_Mascotas" FromRole="Perdidas" ToRole="Mascotas" />
-          <NavigationProperty Name="Sesiones" Relationship="SIGMAEntities.FK_Perdidas_Sesiones" FromRole="Perdidas" ToRole="Sesiones" />
+          <Property Name="idPerdida" Type="Int32" Nullable="false" />
+          <Property Name="idSesion" Type="Int32" Nullable="false" />
+          <Property Name="idMascota" Type="Int32" Nullable="false" />
+          <Property Name="FechaHoraPerdida" Type="DateTime" />
+          <Property Name="mapaPerdida" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+          <Property Name="ubicacionPerdida" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="idBarrioPerdida" Type="Int32" />
+          <Property Name="observaciones" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <NavigationProperty Name="Barrios" Relationship="SiGMAModel.FK_Perdidas_Barrios" FromRole="Perdidas" ToRole="Barrios" />
+          <NavigationProperty Name="Hallazgos" Relationship="SiGMAModel.FK_Hallazgos_Perdidas" FromRole="Perdidas" ToRole="Hallazgos" />
+          <NavigationProperty Name="Mascotas" Relationship="SiGMAModel.FK_Perdidas_Mascotas" FromRole="Perdidas" ToRole="Mascotas" />
+          <NavigationProperty Name="Sesiones" Relationship="SiGMAModel.FK_Perdidas_Sesiones" FromRole="Perdidas" ToRole="Sesiones" />
         </EntityType>
         <EntityType Name="Permisos">
           <Key>
             <PropertyRef Name="idPermiso" />
           </Key>
-          <Property Type="Int32" Name="idPermiso" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="tipoPermiso" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="PermisosXRoles" Relationship="SIGMAEntities.FK_PermisosXRoles_Permisos" FromRole="Permisos" ToRole="PermisosXRoles" />
+          <Property Name="idPermiso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tipoPermiso" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="PermisosXRoles" Relationship="SiGMAModel.FK_PermisosXRoles_Permisos" FromRole="Permisos" ToRole="PermisosXRoles" />
+        </EntityType>
+        <EntityType Name="PermisosXRoles">
+          <Key>
+            <PropertyRef Name="idRol" />
+            <PropertyRef Name="idPermiso" />
+          </Key>
+          <Property Name="idRol" Type="Int32" Nullable="false" />
+          <Property Name="idPermiso" Type="Int32" Nullable="false" />
+          <Property Name="pantalla" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Permisos" Relationship="SiGMAModel.FK_PermisosXRoles_Permisos" FromRole="PermisosXRoles" ToRole="Permisos" />
+          <NavigationProperty Name="Roles" Relationship="SiGMAModel.FK_PermisosXRoles_Roles" FromRole="PermisosXRoles" ToRole="Roles" />
         </EntityType>
         <EntityType Name="Personas">
           <Key>
             <PropertyRef Name="idPersona" />
           </Key>
-          <Property Type="Int32" Name="idPersona" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="nombre" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="apellido" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="idTipoDocumento" />
-          <Property Type="String" Name="nroDocumento" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="email" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="domicilio" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="idBarrio" />
-          <Property Type="String" Name="telefonoFijo" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="telefonoCelular" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="DateTime" Name="fechaNacimiento" />
-          <Property Type="String" Name="user" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Barrios" Relationship="SIGMAEntities.FK_Personas_Barrios" FromRole="Personas" ToRole="Barrios" />
-          <NavigationProperty Name="Duenios" Relationship="SIGMAEntities.FK_Duenios_Personas" FromRole="Personas" ToRole="Duenios" />
-          <NavigationProperty Name="TipoDocumentos" Relationship="SIGMAEntities.FK_Personas_TipoDocumentos" FromRole="Personas" ToRole="TipoDocumentos" />
-          <NavigationProperty Name="Usuarios" Relationship="SIGMAEntities.FK_Personas_Usuarios" FromRole="Personas" ToRole="Usuarios" />
-          <NavigationProperty Name="Voluntarios" Relationship="SIGMAEntities.FK_Voluntarios_Personas" FromRole="Personas" ToRole="Voluntarios" />
+          <Property Name="idPersona" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="apellido" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="idTipoDocumento" Type="Int32" />
+          <Property Name="nroDocumento" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="email" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="domicilio" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="idBarrio" Type="Int32" />
+          <Property Name="telefonoFijo" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="telefonoCelular" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fechaNacimiento" Type="DateTime" />
+          <Property Name="user" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Barrios" Relationship="SiGMAModel.FK_Personas_Barrios" FromRole="Personas" ToRole="Barrios" />
+          <NavigationProperty Name="Duenios" Relationship="SiGMAModel.FK_Duenios_Personas" FromRole="Personas" ToRole="Duenios" />
+          <NavigationProperty Name="TipoDocumentos" Relationship="SiGMAModel.FK_Personas_TipoDocumentos" FromRole="Personas" ToRole="TipoDocumentos" />
+          <NavigationProperty Name="Voluntarios" Relationship="SiGMAModel.FK_Voluntarios_Personas" FromRole="Personas" ToRole="Voluntarios" />
+          <NavigationProperty Name="Usuarios" Relationship="SiGMAModel.FK_Personas_Usuarios" FromRole="Personas" ToRole="Usuarios" />
         </EntityType>
         <EntityType Name="Razas">
           <Key>
             <PropertyRef Name="idRaza" />
           </Key>
-          <Property Type="Int32" Name="idRaza" Nullable="false" />
-          <Property Type="Int32" Name="idEspecie" Nullable="false" />
-          <Property Type="String" Name="nombreRaza" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Type="Int32" Name="idCategoriaRaza" />
-          <Property Type="Int32" Name="idCuidadoEspecial" />
-          <Property Type="String" Name="PesoRaza" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="CategoriaRazas" Relationship="SIGMAEntities.FK_Razas_CategoriaRazas" FromRole="Razas" ToRole="CategoriaRazas" />
-          <NavigationProperty Name="CuidadosEspeciales" Relationship="SIGMAEntities.FK_Razas_CuidadosEspeciales" FromRole="Razas" ToRole="CuidadosEspeciales" />
-          <NavigationProperty Name="Especies" Relationship="SIGMAEntities.FK_Razas_Especies" FromRole="Razas" ToRole="Especies" />
-          <NavigationProperty Name="Mascotas" Relationship="SIGMAEntities.FK_Mascotas_Razas" FromRole="Razas" ToRole="Mascotas" />
+          <Property Name="idRaza" Type="Int32" Nullable="false" />
+          <Property Name="idEspecie" Type="Int32" Nullable="false" />
+          <Property Name="nombreRaza" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="idCategoriaRaza" Type="Int32" />
+          <Property Name="idCuidadoEspecial" Type="Int32" />
+          <Property Name="PesoRaza" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="CategoriaRazas" Relationship="SiGMAModel.FK_Razas_CategoriaRazas" FromRole="Razas" ToRole="CategoriaRazas" />
+          <NavigationProperty Name="CuidadosEspeciales" Relationship="SiGMAModel.FK_Razas_CuidadosEspeciales" FromRole="Razas" ToRole="CuidadosEspeciales" />
+          <NavigationProperty Name="Especies" Relationship="SiGMAModel.FK_Razas_Especies" FromRole="Razas" ToRole="Especies" />
+          <NavigationProperty Name="Mascotas" Relationship="SiGMAModel.FK_Mascotas_Razas" FromRole="Razas" ToRole="Mascotas" />
         </EntityType>
         <EntityType Name="Roles">
           <Key>
             <PropertyRef Name="idRol" />
           </Key>
-          <Property Type="Int32" Name="idRol" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="nombre" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="descripcion" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Usuarios" Relationship="SIGMAEntities.FK_Usuarios_Roles" FromRole="Roles" ToRole="Usuarios" />
-          <NavigationProperty Name="Usuarios1" Relationship="SIGMAEntities.RolesXUsuario" FromRole="Roles" ToRole="Usuarios" />
-          <NavigationProperty Name="PermisosXRoles" Relationship="SIGMAEntities.FK_PermisosXRoles_Roles" FromRole="Roles" ToRole="PermisosXRoles" />
+          <Property Name="idRol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="descripcion" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="PermisosXRoles" Relationship="SiGMAModel.FK_PermisosXRoles_Roles" FromRole="Roles" ToRole="PermisosXRoles" />
+          <NavigationProperty Name="RolesXUsuario" Relationship="SiGMAModel.FK_RolesXUsuario_Roles" FromRole="Roles" ToRole="RolesXUsuario" />
         </EntityType>
         <EntityType Name="Sesiones">
           <Key>
             <PropertyRef Name="idSesion" />
           </Key>
-          <Property Type="Int32" Name="idSesion" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="DateTime" Name="fechaHoraInicio" />
-          <Property Type="DateTime" Name="fechaHoraFin" />
-          <Property Type="String" Name="user" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Hallazgos" Relationship="SIGMAEntities.FK_Hallazgos_Sesiones" FromRole="Sesiones" ToRole="Hallazgos" />
-          <NavigationProperty Name="Perdidas" Relationship="SIGMAEntities.FK_Perdidas_Sesiones" FromRole="Sesiones" ToRole="Perdidas" />
-          <NavigationProperty Name="Usuarios" Relationship="SIGMAEntities.FK_Sesiones_Usuarios" FromRole="Sesiones" ToRole="Usuarios" />
+          <Property Name="idSesion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fechaHoraInicio" Type="DateTime" />
+          <Property Name="fechaHoraFin" Type="DateTime" />
+          <Property Name="user" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Hallazgos" Relationship="SiGMAModel.FK_Hallazgos_Sesiones" FromRole="Sesiones" ToRole="Hallazgos" />
+          <NavigationProperty Name="Perdidas" Relationship="SiGMAModel.FK_Perdidas_Sesiones" FromRole="Sesiones" ToRole="Perdidas" />
+          <NavigationProperty Name="Usuarios" Relationship="SiGMAModel.FK_Sesiones_Usuarios" FromRole="Sesiones" ToRole="Usuarios" />
         </EntityType>
         <EntityType Name="TipoDocumentos">
           <Key>
             <PropertyRef Name="idTipoDocumento" />
           </Key>
-          <Property Type="Int32" Name="idTipoDocumento" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="nombre" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Personas" Relationship="SIGMAEntities.FK_Personas_TipoDocumentos" FromRole="TipoDocumentos" ToRole="Personas" />
-        </EntityType>
-        <EntityType Name="Usuarios">
-          <Key>
-            <PropertyRef Name="user" />
-          </Key>
-          <Property Type="String" Name="user" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="password" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="idRol" />
-          <NavigationProperty Name="Personas" Relationship="SIGMAEntities.FK_Personas_Usuarios" FromRole="Usuarios" ToRole="Personas" />
-          <NavigationProperty Name="Roles" Relationship="SIGMAEntities.FK_Usuarios_Roles" FromRole="Usuarios" ToRole="Roles" />
-          <NavigationProperty Name="Sesiones" Relationship="SIGMAEntities.FK_Sesiones_Usuarios" FromRole="Usuarios" ToRole="Sesiones" />
-          <NavigationProperty Name="Roles1" Relationship="SIGMAEntities.RolesXUsuario" FromRole="Usuarios" ToRole="Roles" />
+          <Property Name="idTipoDocumento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Personas" Relationship="SiGMAModel.FK_Personas_TipoDocumentos" FromRole="TipoDocumentos" ToRole="Personas" />
         </EntityType>
         <EntityType Name="Voluntarios">
           <Key>
             <PropertyRef Name="idVoluntario" />
           </Key>
-          <Property Type="Int32" Name="idVoluntario" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="idPersona" Nullable="false" />
-          <NavigationProperty Name="Adopciones" Relationship="SIGMAEntities.FK_Adopciones_Voluntarios" FromRole="Voluntarios" ToRole="Adopciones" />
-          <NavigationProperty Name="Personas" Relationship="SIGMAEntities.FK_Voluntarios_Personas" FromRole="Voluntarios" ToRole="Personas" />
+          <Property Name="idVoluntario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idPersona" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Adopciones" Relationship="SiGMAModel.FK_Adopciones_Voluntarios" FromRole="Voluntarios" ToRole="Adopciones" />
+          <NavigationProperty Name="Personas" Relationship="SiGMAModel.FK_Voluntarios_Personas" FromRole="Voluntarios" ToRole="Personas" />
         </EntityType>
         <Association Name="FK_Adopciones_Duenios">
-          <End Type="SIGMAEntities.Duenios" Role="Duenios" Multiplicity="1" />
-          <End Type="SIGMAEntities.Adopciones" Role="Adopciones" Multiplicity="*" />
+          <End Role="Duenios" Type="SiGMAModel.Duenios" Multiplicity="1" />
+          <End Role="Adopciones" Type="SiGMAModel.Adopciones" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Duenios">
               <PropertyRef Name="idDuenio" />
@@ -1153,8 +1135,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Adopciones_Mascotas">
-          <End Type="SIGMAEntities.Mascotas" Role="Mascotas" Multiplicity="1" />
-          <End Type="SIGMAEntities.Adopciones" Role="Adopciones" Multiplicity="*" />
+          <End Role="Mascotas" Type="SiGMAModel.Mascotas" Multiplicity="1" />
+          <End Role="Adopciones" Type="SiGMAModel.Adopciones" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Mascotas">
               <PropertyRef Name="idMascota" />
@@ -1165,8 +1147,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Adopciones_Voluntarios">
-          <End Type="SIGMAEntities.Voluntarios" Role="Voluntarios" Multiplicity="1" />
-          <End Type="SIGMAEntities.Adopciones" Role="Adopciones" Multiplicity="*" />
+          <End Role="Voluntarios" Type="SiGMAModel.Voluntarios" Multiplicity="1" />
+          <End Role="Adopciones" Type="SiGMAModel.Adopciones" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Voluntarios">
               <PropertyRef Name="idVoluntario" />
@@ -1177,8 +1159,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Barrios_Localidades">
-          <End Type="SIGMAEntities.Localidades" Role="Localidades" Multiplicity="0..1" />
-          <End Type="SIGMAEntities.Barrios" Role="Barrios" Multiplicity="*" />
+          <End Role="Localidades" Type="SiGMAModel.Localidades" Multiplicity="0..1" />
+          <End Role="Barrios" Type="SiGMAModel.Barrios" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Localidades">
               <PropertyRef Name="idLocalidad" />
@@ -1189,8 +1171,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Hallazgos_Barrios">
-          <End Type="SIGMAEntities.Barrios" Role="Barrios" Multiplicity="0..1" />
-          <End Type="SIGMAEntities.Hallazgos" Role="Hallazgos" Multiplicity="*" />
+          <End Role="Barrios" Type="SiGMAModel.Barrios" Multiplicity="0..1" />
+          <End Role="Hallazgos" Type="SiGMAModel.Hallazgos" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Barrios">
               <PropertyRef Name="idBarrio" />
@@ -1201,8 +1183,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Perdidas_Barrios">
-          <End Type="SIGMAEntities.Barrios" Role="Barrios" Multiplicity="0..1" />
-          <End Type="SIGMAEntities.Perdidas" Role="Perdidas" Multiplicity="*" />
+          <End Role="Barrios" Type="SiGMAModel.Barrios" Multiplicity="0..1" />
+          <End Role="Perdidas" Type="SiGMAModel.Perdidas" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Barrios">
               <PropertyRef Name="idBarrio" />
@@ -1213,8 +1195,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Personas_Barrios">
-          <End Type="SIGMAEntities.Barrios" Role="Barrios" Multiplicity="0..1" />
-          <End Type="SIGMAEntities.Personas" Role="Personas" Multiplicity="*" />
+          <End Role="Barrios" Type="SiGMAModel.Barrios" Multiplicity="0..1" />
+          <End Role="Personas" Type="SiGMAModel.Personas" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Barrios">
               <PropertyRef Name="idBarrio" />
@@ -1225,8 +1207,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Razas_CategoriaRazas">
-          <End Type="SIGMAEntities.CategoriaRazas" Role="CategoriaRazas" Multiplicity="0..1" />
-          <End Type="SIGMAEntities.Razas" Role="Razas" Multiplicity="*" />
+          <End Role="CategoriaRazas" Type="SiGMAModel.CategoriaRazas" Multiplicity="0..1" />
+          <End Role="Razas" Type="SiGMAModel.Razas" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CategoriaRazas">
               <PropertyRef Name="idCategoriaRazas" />
@@ -1237,8 +1219,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Mascotas_Colores">
-          <End Type="SIGMAEntities.Colores" Role="Colores" Multiplicity="1" />
-          <End Type="SIGMAEntities.Mascotas" Role="Mascotas" Multiplicity="*" />
+          <End Role="Colores" Type="SiGMAModel.Colores" Multiplicity="1" />
+          <End Role="Mascotas" Type="SiGMAModel.Mascotas" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Colores">
               <PropertyRef Name="idColor" />
@@ -1249,8 +1231,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Razas_CuidadosEspeciales">
-          <End Type="SIGMAEntities.CuidadosEspeciales" Role="CuidadosEspeciales" Multiplicity="0..1" />
-          <End Type="SIGMAEntities.Razas" Role="Razas" Multiplicity="*" />
+          <End Role="CuidadosEspeciales" Type="SiGMAModel.CuidadosEspeciales" Multiplicity="0..1" />
+          <End Role="Razas" Type="SiGMAModel.Razas" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CuidadosEspeciales">
               <PropertyRef Name="idCuidadoEspecial" />
@@ -1261,8 +1243,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Duenios_Personas">
-          <End Type="SIGMAEntities.Personas" Role="Personas" Multiplicity="0..1" />
-          <End Type="SIGMAEntities.Duenios" Role="Duenios" Multiplicity="*" />
+          <End Role="Personas" Type="SiGMAModel.Personas" Multiplicity="0..1" />
+          <End Role="Duenios" Type="SiGMAModel.Duenios" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Personas">
               <PropertyRef Name="idPersona" />
@@ -1273,8 +1255,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Mascotas_Duenios">
-          <End Type="SIGMAEntities.Duenios" Role="Duenios" Multiplicity="0..1" />
-          <End Type="SIGMAEntities.Mascotas" Role="Mascotas" Multiplicity="*" />
+          <End Role="Duenios" Type="SiGMAModel.Duenios" Multiplicity="0..1" />
+          <End Role="Mascotas" Type="SiGMAModel.Mascotas" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Duenios">
               <PropertyRef Name="idDuenio" />
@@ -1285,8 +1267,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Mascotas_Edades">
-          <End Type="SIGMAEntities.Edades" Role="Edades" Multiplicity="1" />
-          <End Type="SIGMAEntities.Mascotas" Role="Mascotas" Multiplicity="*" />
+          <End Role="Edades" Type="SiGMAModel.Edades" Multiplicity="1" />
+          <End Role="Mascotas" Type="SiGMAModel.Mascotas" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Edades">
               <PropertyRef Name="idEdad" />
@@ -1297,8 +1279,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Mascotas_Especies">
-          <End Type="SIGMAEntities.Especies" Role="Especies" Multiplicity="1" />
-          <End Type="SIGMAEntities.Mascotas" Role="Mascotas" Multiplicity="*" />
+          <End Role="Especies" Type="SiGMAModel.Especies" Multiplicity="1" />
+          <End Role="Mascotas" Type="SiGMAModel.Mascotas" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Especies">
               <PropertyRef Name="idEspecie" />
@@ -1309,8 +1291,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Razas_Especies">
-          <End Type="SIGMAEntities.Especies" Role="Especies" Multiplicity="1" />
-          <End Type="SIGMAEntities.Razas" Role="Razas" Multiplicity="*" />
+          <End Role="Especies" Type="SiGMAModel.Especies" Multiplicity="1" />
+          <End Role="Razas" Type="SiGMAModel.Razas" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Especies">
               <PropertyRef Name="idEspecie" />
@@ -1321,8 +1303,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Mascotas_Estados">
-          <End Type="SIGMAEntities.Estados" Role="Estados" Multiplicity="1" />
-          <End Type="SIGMAEntities.Mascotas" Role="Mascotas" Multiplicity="*" />
+          <End Role="Estados" Type="SiGMAModel.Estados" Multiplicity="1" />
+          <End Role="Mascotas" Type="SiGMAModel.Mascotas" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Estados">
               <PropertyRef Name="idEstado" />
@@ -1333,8 +1315,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Hallazgos_Mascotas">
-          <End Type="SIGMAEntities.Mascotas" Role="Mascotas" Multiplicity="1" />
-          <End Type="SIGMAEntities.Hallazgos" Role="Hallazgos" Multiplicity="*" />
+          <End Role="Mascotas" Type="SiGMAModel.Mascotas" Multiplicity="1" />
+          <End Role="Hallazgos" Type="SiGMAModel.Hallazgos" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Mascotas">
               <PropertyRef Name="idMascota" />
@@ -1345,8 +1327,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Hallazgos_Perdidas">
-          <End Type="SIGMAEntities.Perdidas" Role="Perdidas" Multiplicity="0..1" />
-          <End Type="SIGMAEntities.Hallazgos" Role="Hallazgos" Multiplicity="*" />
+          <End Role="Perdidas" Type="SiGMAModel.Perdidas" Multiplicity="0..1" />
+          <End Role="Hallazgos" Type="SiGMAModel.Hallazgos" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Perdidas">
               <PropertyRef Name="idPerdida" />
@@ -1357,8 +1339,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Hallazgos_Sesiones">
-          <End Type="SIGMAEntities.Sesiones" Role="Sesiones" Multiplicity="1" />
-          <End Type="SIGMAEntities.Hallazgos" Role="Hallazgos" Multiplicity="*" />
+          <End Role="Sesiones" Type="SiGMAModel.Sesiones" Multiplicity="1" />
+          <End Role="Hallazgos" Type="SiGMAModel.Hallazgos" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Sesiones">
               <PropertyRef Name="idSesion" />
@@ -1369,8 +1351,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Mascotas_Razas">
-          <End Type="SIGMAEntities.Razas" Role="Razas" Multiplicity="1" />
-          <End Type="SIGMAEntities.Mascotas" Role="Mascotas" Multiplicity="*" />
+          <End Role="Razas" Type="SiGMAModel.Razas" Multiplicity="1" />
+          <End Role="Mascotas" Type="SiGMAModel.Mascotas" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Razas">
               <PropertyRef Name="idRaza" />
@@ -1381,8 +1363,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Perdidas_Mascotas">
-          <End Type="SIGMAEntities.Mascotas" Role="Mascotas" Multiplicity="1" />
-          <End Type="SIGMAEntities.Perdidas" Role="Perdidas" Multiplicity="*" />
+          <End Role="Mascotas" Type="SiGMAModel.Mascotas" Multiplicity="1" />
+          <End Role="Perdidas" Type="SiGMAModel.Perdidas" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Mascotas">
               <PropertyRef Name="idMascota" />
@@ -1393,8 +1375,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Perdidas_Sesiones">
-          <End Type="SIGMAEntities.Sesiones" Role="Sesiones" Multiplicity="1" />
-          <End Type="SIGMAEntities.Perdidas" Role="Perdidas" Multiplicity="*" />
+          <End Role="Sesiones" Type="SiGMAModel.Sesiones" Multiplicity="1" />
+          <End Role="Perdidas" Type="SiGMAModel.Perdidas" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Sesiones">
               <PropertyRef Name="idSesion" />
@@ -1404,85 +1386,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Personas_TipoDocumentos">
-          <End Type="SIGMAEntities.TipoDocumentos" Role="TipoDocumentos" Multiplicity="0..1" />
-          <End Type="SIGMAEntities.Personas" Role="Personas" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TipoDocumentos">
-              <PropertyRef Name="idTipoDocumento" />
-            </Principal>
-            <Dependent Role="Personas">
-              <PropertyRef Name="idTipoDocumento" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Personas_Usuarios">
-          <End Type="SIGMAEntities.Usuarios" Role="Usuarios" Multiplicity="0..1" />
-          <End Type="SIGMAEntities.Personas" Role="Personas" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Usuarios">
-              <PropertyRef Name="user" />
-            </Principal>
-            <Dependent Role="Personas">
-              <PropertyRef Name="user" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Voluntarios_Personas">
-          <End Type="SIGMAEntities.Personas" Role="Personas" Multiplicity="1" />
-          <End Type="SIGMAEntities.Voluntarios" Role="Voluntarios" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Personas">
-              <PropertyRef Name="idPersona" />
-            </Principal>
-            <Dependent Role="Voluntarios">
-              <PropertyRef Name="idPersona" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Usuarios_Roles">
-          <End Type="SIGMAEntities.Roles" Role="Roles" Multiplicity="0..1" />
-          <End Type="SIGMAEntities.Usuarios" Role="Usuarios" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Roles">
-              <PropertyRef Name="idRol" />
-            </Principal>
-            <Dependent Role="Usuarios">
-              <PropertyRef Name="idRol" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Sesiones_Usuarios">
-          <End Type="SIGMAEntities.Usuarios" Role="Usuarios" Multiplicity="1" />
-          <End Type="SIGMAEntities.Sesiones" Role="Sesiones" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Usuarios">
-              <PropertyRef Name="user" />
-            </Principal>
-            <Dependent Role="Sesiones">
-              <PropertyRef Name="user" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="RolesXUsuario">
-          <End Type="SIGMAEntities.Roles" Role="Roles" Multiplicity="*" />
-          <End Type="SIGMAEntities.Usuarios" Role="Usuarios" Multiplicity="*" />
-        </Association>
-        <EntityType Name="PermisosXRoles">
-          <Key>
-            <PropertyRef Name="idRol" />
-            <PropertyRef Name="idPermiso" />
-            <PropertyRef Name="pantalla" />
-          </Key>
-          <Property Type="Int32" Name="idRol" Nullable="false" />
-          <Property Type="Int32" Name="idPermiso" Nullable="false" />
-          <Property Type="String" Name="pantalla" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Permisos" Relationship="SIGMAEntities.FK_PermisosXRoles_Permisos" FromRole="PermisosXRoles" ToRole="Permisos" />
-          <NavigationProperty Name="Roles" Relationship="SIGMAEntities.FK_PermisosXRoles_Roles" FromRole="PermisosXRoles" ToRole="Roles" />
-        </EntityType>
         <Association Name="FK_PermisosXRoles_Permisos">
-          <End Type="SIGMAEntities.Permisos" Role="Permisos" Multiplicity="1" />
-          <End Type="SIGMAEntities.PermisosXRoles" Role="PermisosXRoles" Multiplicity="*" />
+          <End Role="Permisos" Type="SiGMAModel.Permisos" Multiplicity="1" />
+          <End Role="PermisosXRoles" Type="SiGMAModel.PermisosXRoles" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Permisos">
               <PropertyRef Name="idPermiso" />
@@ -1493,255 +1399,346 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PermisosXRoles_Roles">
-          <End Type="SIGMAEntities.Roles" Role="Roles" Multiplicity="1" />
-          <End Type="SIGMAEntities.PermisosXRoles" Role="PermisosXRoles" Multiplicity="*" />
+          <End Role="Roles" Type="SiGMAModel.Roles" Multiplicity="1" />
+          <End Role="PermisosXRoles" Type="SiGMAModel.PermisosXRoles" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Roles">
               <PropertyRef Name="idRol" />
             </Principal>
             <Dependent Role="PermisosXRoles">
-              <PropertyRef Name="idPermiso" />
+              <PropertyRef Name="idRol" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        <Association Name="FK_Personas_TipoDocumentos">
+          <End Role="TipoDocumentos" Type="SiGMAModel.TipoDocumentos" Multiplicity="0..1" />
+          <End Role="Personas" Type="SiGMAModel.Personas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoDocumentos">
+              <PropertyRef Name="idTipoDocumento" />
+            </Principal>
+            <Dependent Role="Personas">
+              <PropertyRef Name="idTipoDocumento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Voluntarios_Personas">
+          <End Role="Personas" Type="SiGMAModel.Personas" Multiplicity="1" />
+          <End Role="Voluntarios" Type="SiGMAModel.Voluntarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personas">
+              <PropertyRef Name="idPersona" />
+            </Principal>
+            <Dependent Role="Voluntarios">
+              <PropertyRef Name="idPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="RolesXUsuario">
+          <Key>
+            <PropertyRef Name="user" />
+            <PropertyRef Name="idRol" />
+          </Key>
+          <Property Type="String" Name="user" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="idRol" Nullable="false" />
+          <Property Type="String" Name="test" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Roles" Relationship="SiGMAModel.FK_RolesXUsuario_Roles" FromRole="RolesXUsuario" ToRole="Roles" />
+          <NavigationProperty Name="Usuarios" Relationship="SiGMAModel.FK_RolesXUsuario_Usuarios" FromRole="RolesXUsuario" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="user" />
+          </Key>
+          <Property Type="String" Name="user" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="password" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Personas" Relationship="SiGMAModel.FK_Personas_Usuarios" FromRole="Usuarios" ToRole="Personas" />
+          <NavigationProperty Name="RolesXUsuario" Relationship="SiGMAModel.FK_RolesXUsuario_Usuarios" FromRole="Usuarios" ToRole="RolesXUsuario" />
+          <NavigationProperty Name="Sesiones" Relationship="SiGMAModel.FK_Sesiones_Usuarios" FromRole="Usuarios" ToRole="Sesiones" />
+        </EntityType>
+        <Association Name="FK_Personas_Usuarios">
+          <End Type="SiGMAModel.Usuarios" Role="Usuarios" Multiplicity="0..1" />
+          <End Type="SiGMAModel.Personas" Role="Personas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="user" />
+            </Principal>
+            <Dependent Role="Personas">
+              <PropertyRef Name="user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RolesXUsuario_Roles">
+          <End Type="SiGMAModel.Roles" Role="Roles" Multiplicity="1" />
+          <End Type="SiGMAModel.RolesXUsuario" Role="RolesXUsuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="idRol" />
+            </Principal>
+            <Dependent Role="RolesXUsuario">
+              <PropertyRef Name="idRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RolesXUsuario_Usuarios">
+          <End Type="SiGMAModel.Usuarios" Role="Usuarios" Multiplicity="1" />
+          <End Type="SiGMAModel.RolesXUsuario" Role="RolesXUsuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="user" />
+            </Principal>
+            <Dependent Role="RolesXUsuario">
+              <PropertyRef Name="user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sesiones_Usuarios">
+          <End Type="SiGMAModel.Usuarios" Role="Usuarios" Multiplicity="1" />
+          <End Type="SiGMAModel.Sesiones" Role="Sesiones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="user" />
+            </Principal>
+            <Dependent Role="Sesiones">
+              <PropertyRef Name="user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs" Space="C-S">
-        <Alias Key="Model" Value="SIGMAEntities" />
-        <Alias Key="Target" Value="SIGMAEntities.Store" />
-        <EntityContainerMapping CdmEntityContainer="SIGMAEntitiesContainer" StorageEntityContainer="SIGMAEntitiesStoreContainer">
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SiGMAModelStoreContainer" CdmEntityContainer="SiGMAEntities">
           <EntitySetMapping Name="Adopciones">
-            <EntityTypeMapping TypeName="SIGMAEntities.Adopciones">
+            <EntityTypeMapping TypeName="SiGMAModel.Adopciones">
               <MappingFragment StoreEntitySet="Adopciones">
-                <ScalarProperty Name="observaciones" ColumnName="observaciones" />
-                <ScalarProperty Name="fechaAdopcion" ColumnName="fechaAdopcion" />
-                <ScalarProperty Name="idVoluntario" ColumnName="idVoluntario" />
-                <ScalarProperty Name="idDuenio" ColumnName="idDuenio" />
-                <ScalarProperty Name="idMascota" ColumnName="idMascota" />
                 <ScalarProperty Name="idAdopcion" ColumnName="idAdopcion" />
+                <ScalarProperty Name="idMascota" ColumnName="idMascota" />
+                <ScalarProperty Name="idDuenio" ColumnName="idDuenio" />
+                <ScalarProperty Name="idVoluntario" ColumnName="idVoluntario" />
+                <ScalarProperty Name="fechaAdopcion" ColumnName="fechaAdopcion" />
+                <ScalarProperty Name="observaciones" ColumnName="observaciones" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Barrios">
-            <EntityTypeMapping TypeName="SIGMAEntities.Barrios">
+            <EntityTypeMapping TypeName="SiGMAModel.Barrios">
               <MappingFragment StoreEntitySet="Barrios">
-                <ScalarProperty Name="idLocalidad" ColumnName="idLocalidad" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="idBarrio" ColumnName="idBarrio" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="idLocalidad" ColumnName="idLocalidad" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CategoriaRazas">
-            <EntityTypeMapping TypeName="SIGMAEntities.CategoriaRazas">
+            <EntityTypeMapping TypeName="SiGMAModel.CategoriaRazas">
               <MappingFragment StoreEntitySet="CategoriaRazas">
-                <ScalarProperty Name="nombreCategoriaRaza" ColumnName="nombreCategoriaRaza" />
                 <ScalarProperty Name="idCategoriaRazas" ColumnName="idCategoriaRazas" />
+                <ScalarProperty Name="nombreCategoriaRaza" ColumnName="nombreCategoriaRaza" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Colores">
-            <EntityTypeMapping TypeName="SIGMAEntities.Colores">
+            <EntityTypeMapping TypeName="SiGMAModel.Colores">
               <MappingFragment StoreEntitySet="Colores">
-                <ScalarProperty Name="nombreColor" ColumnName="nombreColor" />
                 <ScalarProperty Name="idColor" ColumnName="idColor" />
+                <ScalarProperty Name="nombreColor" ColumnName="nombreColor" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CuidadosEspeciales">
-            <EntityTypeMapping TypeName="SIGMAEntities.CuidadosEspeciales">
+            <EntityTypeMapping TypeName="SiGMAModel.CuidadosEspeciales">
               <MappingFragment StoreEntitySet="CuidadosEspeciales">
-                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
                 <ScalarProperty Name="idCuidadoEspecial" ColumnName="idCuidadoEspecial" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Duenios">
-            <EntityTypeMapping TypeName="SIGMAEntities.Duenios">
+            <EntityTypeMapping TypeName="SiGMAModel.Duenios">
               <MappingFragment StoreEntitySet="Duenios">
-                <ScalarProperty Name="idPersona" ColumnName="idPersona" />
                 <ScalarProperty Name="idDuenio" ColumnName="idDuenio" />
+                <ScalarProperty Name="idPersona" ColumnName="idPersona" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Edades">
-            <EntityTypeMapping TypeName="SIGMAEntities.Edades">
+            <EntityTypeMapping TypeName="SiGMAModel.Edades">
               <MappingFragment StoreEntitySet="Edades">
-                <ScalarProperty Name="nombreEdad" ColumnName="nombreEdad" />
                 <ScalarProperty Name="idEdad" ColumnName="idEdad" />
+                <ScalarProperty Name="nombreEdad" ColumnName="nombreEdad" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Especies">
-            <EntityTypeMapping TypeName="SIGMAEntities.Especies">
+            <EntityTypeMapping TypeName="SiGMAModel.Especies">
               <MappingFragment StoreEntitySet="Especies">
-                <ScalarProperty Name="nombreEspecie" ColumnName="nombreEspecie" />
                 <ScalarProperty Name="idEspecie" ColumnName="idEspecie" />
+                <ScalarProperty Name="nombreEspecie" ColumnName="nombreEspecie" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Estados">
-            <EntityTypeMapping TypeName="SIGMAEntities.Estados">
+            <EntityTypeMapping TypeName="SiGMAModel.Estados">
               <MappingFragment StoreEntitySet="Estados">
-                <ScalarProperty Name="nombreEstado" ColumnName="nombreEstado" />
                 <ScalarProperty Name="idEstado" ColumnName="idEstado" />
+                <ScalarProperty Name="nombreEstado" ColumnName="nombreEstado" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Hallazgos">
-            <EntityTypeMapping TypeName="SIGMAEntities.Hallazgos">
+            <EntityTypeMapping TypeName="SiGMAModel.Hallazgos">
               <MappingFragment StoreEntitySet="Hallazgos">
-                <ScalarProperty Name="idPerdida" ColumnName="idPerdida" />
-                <ScalarProperty Name="observaciones" ColumnName="observaciones" />
-                <ScalarProperty Name="idBarrioHallazgo" ColumnName="idBarrioHallazgo" />
-                <ScalarProperty Name="fechaHoraHallazgo" ColumnName="fechaHoraHallazgo" />
-                <ScalarProperty Name="ubicacionHallazgo" ColumnName="ubicacionHallazgo" />
-                <ScalarProperty Name="idMascota" ColumnName="idMascota" />
-                <ScalarProperty Name="idSesion" ColumnName="idSesion" />
                 <ScalarProperty Name="idHallazgo" ColumnName="idHallazgo" />
+                <ScalarProperty Name="idSesion" ColumnName="idSesion" />
+                <ScalarProperty Name="idMascota" ColumnName="idMascota" />
+                <ScalarProperty Name="ubicacionHallazgo" ColumnName="ubicacionHallazgo" />
+                <ScalarProperty Name="fechaHoraHallazgo" ColumnName="fechaHoraHallazgo" />
+                <ScalarProperty Name="idBarrioHallazgo" ColumnName="idBarrioHallazgo" />
+                <ScalarProperty Name="observaciones" ColumnName="observaciones" />
+                <ScalarProperty Name="idPerdida" ColumnName="idPerdida" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Localidades">
-            <EntityTypeMapping TypeName="SIGMAEntities.Localidades">
+            <EntityTypeMapping TypeName="SiGMAModel.Localidades">
               <MappingFragment StoreEntitySet="Localidades">
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="idLocalidad" ColumnName="idLocalidad" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Mascotas">
-            <EntityTypeMapping TypeName="SIGMAEntities.Mascotas">
+            <EntityTypeMapping TypeName="SiGMAModel.Mascotas">
               <MappingFragment StoreEntitySet="Mascotas">
-                <ScalarProperty Name="idDuenio" ColumnName="idDuenio" />
-                <ScalarProperty Name="sexo" ColumnName="sexo" />
-                <ScalarProperty Name="fechaNacimiento" ColumnName="fechaNacimiento" />
-                <ScalarProperty Name="alimentacionEspecial" ColumnName="alimentacionEspecial" />
-                <ScalarProperty Name="observaciones" ColumnName="observaciones" />
-                <ScalarProperty Name="caracter" ColumnName="caracter" />
-                <ScalarProperty Name="tratoNinios" ColumnName="tratoNinios" />
-                <ScalarProperty Name="tratoAnimales" ColumnName="tratoAnimales" />
-                <ScalarProperty Name="idColor" ColumnName="idColor" />
-                <ScalarProperty Name="idRaza" ColumnName="idRaza" />
-                <ScalarProperty Name="idEdad" ColumnName="idEdad" />
-                <ScalarProperty Name="idEspecie" ColumnName="idEspecie" />
-                <ScalarProperty Name="idEstado" ColumnName="idEstado" />
-                <ScalarProperty Name="nombreMascota" ColumnName="nombreMascota" />
                 <ScalarProperty Name="idMascota" ColumnName="idMascota" />
+                <ScalarProperty Name="nombreMascota" ColumnName="nombreMascota" />
+                <ScalarProperty Name="idEstado" ColumnName="idEstado" />
+                <ScalarProperty Name="idEspecie" ColumnName="idEspecie" />
+                <ScalarProperty Name="idEdad" ColumnName="idEdad" />
+                <ScalarProperty Name="idRaza" ColumnName="idRaza" />
+                <ScalarProperty Name="idColor" ColumnName="idColor" />
+                <ScalarProperty Name="tratoAnimales" ColumnName="tratoAnimales" />
+                <ScalarProperty Name="tratoNinios" ColumnName="tratoNinios" />
+                <ScalarProperty Name="caracter" ColumnName="caracter" />
+                <ScalarProperty Name="observaciones" ColumnName="observaciones" />
+                <ScalarProperty Name="alimentacionEspecial" ColumnName="alimentacionEspecial" />
+                <ScalarProperty Name="fechaNacimiento" ColumnName="fechaNacimiento" />
+                <ScalarProperty Name="sexo" ColumnName="sexo" />
+                <ScalarProperty Name="idDuenio" ColumnName="idDuenio" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Perdidas">
-            <EntityTypeMapping TypeName="SIGMAEntities.Perdidas">
+            <EntityTypeMapping TypeName="SiGMAModel.Perdidas">
               <MappingFragment StoreEntitySet="Perdidas">
-                <ScalarProperty Name="observaciones" ColumnName="observaciones" />
-                <ScalarProperty Name="idBarrioPerdida" ColumnName="idBarrioPerdida" />
-                <ScalarProperty Name="ubicacionPerdida" ColumnName="ubicacionPerdida" />
-                <ScalarProperty Name="mapaPerdida" ColumnName="mapaPerdida" />
-                <ScalarProperty Name="FechaHoraPerdida" ColumnName="FechaHoraPerdida" />
-                <ScalarProperty Name="idMascota" ColumnName="idMascota" />
-                <ScalarProperty Name="idSesion" ColumnName="idSesion" />
                 <ScalarProperty Name="idPerdida" ColumnName="idPerdida" />
+                <ScalarProperty Name="idSesion" ColumnName="idSesion" />
+                <ScalarProperty Name="idMascota" ColumnName="idMascota" />
+                <ScalarProperty Name="FechaHoraPerdida" ColumnName="FechaHoraPerdida" />
+                <ScalarProperty Name="mapaPerdida" ColumnName="mapaPerdida" />
+                <ScalarProperty Name="ubicacionPerdida" ColumnName="ubicacionPerdida" />
+                <ScalarProperty Name="idBarrioPerdida" ColumnName="idBarrioPerdida" />
+                <ScalarProperty Name="observaciones" ColumnName="observaciones" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Permisos">
-            <EntityTypeMapping TypeName="SIGMAEntities.Permisos">
+            <EntityTypeMapping TypeName="SiGMAModel.Permisos">
               <MappingFragment StoreEntitySet="Permisos">
-                <ScalarProperty Name="tipoPermiso" ColumnName="tipoPermiso" />
                 <ScalarProperty Name="idPermiso" ColumnName="idPermiso" />
+                <ScalarProperty Name="tipoPermiso" ColumnName="tipoPermiso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PermisosXRoles">
+            <EntityTypeMapping TypeName="SiGMAModel.PermisosXRoles">
+              <MappingFragment StoreEntitySet="PermisosXRoles">
+                <ScalarProperty Name="idRol" ColumnName="idRol" />
+                <ScalarProperty Name="idPermiso" ColumnName="idPermiso" />
+                <ScalarProperty Name="pantalla" ColumnName="pantalla" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Personas">
-            <EntityTypeMapping TypeName="SIGMAEntities.Personas">
+            <EntityTypeMapping TypeName="SiGMAModel.Personas">
               <MappingFragment StoreEntitySet="Personas">
-                <ScalarProperty Name="user" ColumnName="user" />
-                <ScalarProperty Name="fechaNacimiento" ColumnName="fechaNacimiento" />
-                <ScalarProperty Name="telefonoCelular" ColumnName="telefonoCelular" />
-                <ScalarProperty Name="telefonoFijo" ColumnName="telefonoFijo" />
-                <ScalarProperty Name="idBarrio" ColumnName="idBarrio" />
-                <ScalarProperty Name="domicilio" ColumnName="domicilio" />
-                <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="nroDocumento" ColumnName="nroDocumento" />
-                <ScalarProperty Name="idTipoDocumento" ColumnName="idTipoDocumento" />
-                <ScalarProperty Name="apellido" ColumnName="apellido" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="idPersona" ColumnName="idPersona" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="idTipoDocumento" ColumnName="idTipoDocumento" />
+                <ScalarProperty Name="nroDocumento" ColumnName="nroDocumento" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="domicilio" ColumnName="domicilio" />
+                <ScalarProperty Name="idBarrio" ColumnName="idBarrio" />
+                <ScalarProperty Name="telefonoFijo" ColumnName="telefonoFijo" />
+                <ScalarProperty Name="telefonoCelular" ColumnName="telefonoCelular" />
+                <ScalarProperty Name="fechaNacimiento" ColumnName="fechaNacimiento" />
+                <ScalarProperty Name="user" ColumnName="user" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Razas">
-            <EntityTypeMapping TypeName="SIGMAEntities.Razas">
+            <EntityTypeMapping TypeName="SiGMAModel.Razas">
               <MappingFragment StoreEntitySet="Razas">
-                <ScalarProperty Name="PesoRaza" ColumnName="PesoRaza" />
-                <ScalarProperty Name="idCuidadoEspecial" ColumnName="idCuidadoEspecial" />
-                <ScalarProperty Name="idCategoriaRaza" ColumnName="idCategoriaRaza" />
-                <ScalarProperty Name="nombreRaza" ColumnName="nombreRaza" />
-                <ScalarProperty Name="idEspecie" ColumnName="idEspecie" />
                 <ScalarProperty Name="idRaza" ColumnName="idRaza" />
+                <ScalarProperty Name="idEspecie" ColumnName="idEspecie" />
+                <ScalarProperty Name="nombreRaza" ColumnName="nombreRaza" />
+                <ScalarProperty Name="idCategoriaRaza" ColumnName="idCategoriaRaza" />
+                <ScalarProperty Name="idCuidadoEspecial" ColumnName="idCuidadoEspecial" />
+                <ScalarProperty Name="PesoRaza" ColumnName="PesoRaza" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Roles">
-            <EntityTypeMapping TypeName="SIGMAEntities.Roles">
+            <EntityTypeMapping TypeName="SiGMAModel.Roles">
               <MappingFragment StoreEntitySet="Roles">
-                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="idRol" ColumnName="idRol" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Sesiones">
-            <EntityTypeMapping TypeName="SIGMAEntities.Sesiones">
+            <EntityTypeMapping TypeName="SiGMAModel.Sesiones">
               <MappingFragment StoreEntitySet="Sesiones">
-                <ScalarProperty Name="user" ColumnName="user" />
-                <ScalarProperty Name="fechaHoraFin" ColumnName="fechaHoraFin" />
-                <ScalarProperty Name="fechaHoraInicio" ColumnName="fechaHoraInicio" />
                 <ScalarProperty Name="idSesion" ColumnName="idSesion" />
+                <ScalarProperty Name="fechaHoraInicio" ColumnName="fechaHoraInicio" />
+                <ScalarProperty Name="fechaHoraFin" ColumnName="fechaHoraFin" />
+                <ScalarProperty Name="user" ColumnName="user" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TipoDocumentos">
-            <EntityTypeMapping TypeName="SIGMAEntities.TipoDocumentos">
+            <EntityTypeMapping TypeName="SiGMAModel.TipoDocumentos">
               <MappingFragment StoreEntitySet="TipoDocumentos">
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="idTipoDocumento" ColumnName="idTipoDocumento" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Usuarios">
-            <EntityTypeMapping TypeName="SIGMAEntities.Usuarios">
-              <MappingFragment StoreEntitySet="Usuarios">
-                <ScalarProperty Name="idRol" ColumnName="idRol" />
-                <ScalarProperty Name="password" ColumnName="password" />
-                <ScalarProperty Name="user" ColumnName="user" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Voluntarios">
-            <EntityTypeMapping TypeName="SIGMAEntities.Voluntarios">
+            <EntityTypeMapping TypeName="SiGMAModel.Voluntarios">
               <MappingFragment StoreEntitySet="Voluntarios">
-                <ScalarProperty Name="idPersona" ColumnName="idPersona" />
                 <ScalarProperty Name="idVoluntario" ColumnName="idVoluntario" />
+                <ScalarProperty Name="idPersona" ColumnName="idPersona" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="RolesXUsuario" TypeName="SIGMAEntities.RolesXUsuario" StoreEntitySet="RolesXUsuario">
-            <EndProperty Name="Usuarios">
-              <ScalarProperty Name="user" ColumnName="user" />
-            </EndProperty>
-            <EndProperty Name="Roles">
-              <ScalarProperty Name="idRol" ColumnName="idRol" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <EntitySetMapping Name="PermisosXRoles">
-            <EntityTypeMapping TypeName="SIGMAEntities.PermisosXRoles">
-              <MappingFragment StoreEntitySet="PermisosXRoles">
-                <ScalarProperty Name="pantalla" ColumnName="pantalla" />
-                <ScalarProperty Name="idPermiso" ColumnName="idPermiso" />
+          <EntitySetMapping Name="RolesXUsuario">
+            <EntityTypeMapping TypeName="SiGMAModel.RolesXUsuario">
+              <MappingFragment StoreEntitySet="RolesXUsuario">
+                <ScalarProperty Name="test" ColumnName="test" />
                 <ScalarProperty Name="idRol" ColumnName="idRol" />
+                <ScalarProperty Name="user" ColumnName="user" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="SiGMAModel.Usuarios">
+              <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="user" ColumnName="user" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1750,65 +1747,65 @@
     </edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
-  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
-    <edmx:Connection>
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
       </DesignerInfoPropertySet>
-    </edmx:Connection>
-    <edmx:Options>
+    </Connection>
+    <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="False" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
       </DesignerInfoPropertySet>
-    </edmx:Options>
+    </Options>
     <!-- Diagram content (shape and connector positions) -->
-    <edmx:Diagrams>
-      <Diagram Name="SIGMAEntities" >
-        <EntityTypeShape EntityType="SIGMAEntities.Adopciones" Width="1.5" PointX="9.75" PointY="12.75" Height="2.7494921874999996" />
-        <EntityTypeShape EntityType="SIGMAEntities.Barrios" Width="1.5" PointX="3" PointY="16.75" Height="2.3648893229166674" />
-        <EntityTypeShape EntityType="SIGMAEntities.CategoriaRazas" Width="1.5" PointX="8.25" PointY="21.75" Height="1.595683593749996" />
-        <EntityTypeShape EntityType="SIGMAEntities.Colores" Width="1.5" PointX="10.5" PointY="6.125" Height="1.5956835937499996" />
-        <EntityTypeShape EntityType="SIGMAEntities.CuidadosEspeciales" Width="1.5" PointX="8.25" PointY="24" Height="1.595683593749996" />
-        <EntityTypeShape EntityType="SIGMAEntities.Duenios" Width="1.5" PointX="7.5" PointY="11.875" Height="1.9802864583333317" />
-        <EntityTypeShape EntityType="SIGMAEntities.Edades" Width="1.5" PointX="10.5" PointY="8.5" Height="1.5956835937499996" />
-        <EntityTypeShape EntityType="SIGMAEntities.Especies" Width="1.5" PointX="10.5" PointY="16.875" Height="1.7879850260416674" />
-        <EntityTypeShape EntityType="SIGMAEntities.Estados" Width="1.5" PointX="10.5" PointY="19.375" Height="1.595683593749996" />
-        <EntityTypeShape EntityType="SIGMAEntities.Hallazgos" Width="1.5" PointX="15" PointY="13.625" Height="3.3263964843750014" />
-        <EntityTypeShape EntityType="SIGMAEntities.Localidades" Width="1.5" PointX="0.75" PointY="17.25" Height="1.5956835937500031" />
-        <EntityTypeShape EntityType="SIGMAEntities.Mascotas" Width="1.5" PointX="12.75" PointY="10.125" Height="5.6340136718750031" />
-        <EntityTypeShape EntityType="SIGMAEntities.Perdidas" Width="1.5" PointX="18" PointY="13.625" Height="3.3263964843750014" />
-        <EntityTypeShape EntityType="SIGMAEntities.Permisos" Width="1.5" PointX="0.75" PointY="7.625" Height="1.5956835937500031" />
-        <EntityTypeShape EntityType="SIGMAEntities.Personas" Width="1.5" PointX="5.25" PointY="12" Height="4.2879036458333406" />
-        <EntityTypeShape EntityType="SIGMAEntities.Razas" Width="1.5" PointX="10.5" PointY="22.25" Height="2.9417936197916674" />
-        <EntityTypeShape EntityType="SIGMAEntities.Roles" Width="1.5" PointX="0.75" PointY="10.375" Height="2.1725878906250031" />
-        <EntityTypeShape EntityType="SIGMAEntities.Sesiones" Width="1.5" PointX="5.25" PointY="18.25" Height="2.3648893229166674" />
-        <EntityTypeShape EntityType="SIGMAEntities.TipoDocumentos" Width="1.5" PointX="3" PointY="19.875" Height="1.5956835937500031" />
-        <EntityTypeShape EntityType="SIGMAEntities.Usuarios" Width="1.5" PointX="3" PointY="13" Height="2.3648893229166674" />
-        <EntityTypeShape EntityType="SIGMAEntities.Voluntarios" Width="1.5" PointX="7.5" PointY="14.625" Height="1.7879850260416674" />
-        <AssociationConnector Association="SIGMAEntities.FK_Adopciones_Duenios" >
+    <Diagrams>
+      <Diagram Name="Model1">
+        <EntityTypeShape EntityType="SiGMAModel.Adopciones" Width="1.5" PointX="9.75" PointY="12.75" Height="2.7494921874999996" IsExpanded="true" />
+        <EntityTypeShape EntityType="SiGMAModel.Barrios" Width="1.5" PointX="3" PointY="16.75" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="SiGMAModel.CategoriaRazas" Width="1.5" PointX="8.25" PointY="21.75" Height="1.595683593749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="SiGMAModel.Colores" Width="1.5" PointX="10.5" PointY="6.125" Height="1.5956835937499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="SiGMAModel.CuidadosEspeciales" Width="1.5" PointX="8.25" PointY="24" Height="1.595683593749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="SiGMAModel.Duenios" Width="1.5" PointX="7.5" PointY="11.875" Height="1.9802864583333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="SiGMAModel.Edades" Width="1.5" PointX="10.5" PointY="8.5" Height="1.5956835937499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="SiGMAModel.Especies" Width="1.5" PointX="10.5" PointY="16.875" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="SiGMAModel.Estados" Width="1.5" PointX="10.5" PointY="19.375" Height="1.595683593749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="SiGMAModel.Hallazgos" Width="1.5" PointX="15" PointY="13.625" Height="3.3263964843750014" IsExpanded="true" />
+        <EntityTypeShape EntityType="SiGMAModel.Localidades" Width="1.5" PointX="0.75" PointY="17.25" Height="1.5956835937500031" IsExpanded="true" />
+        <EntityTypeShape EntityType="SiGMAModel.Mascotas" Width="1.5" PointX="12.75" PointY="10.125" Height="5.6340136718750031" IsExpanded="true" />
+        <EntityTypeShape EntityType="SiGMAModel.Perdidas" Width="1.5" PointX="18" PointY="13.625" Height="3.3263964843750014" IsExpanded="true" />
+        <EntityTypeShape EntityType="SiGMAModel.Permisos" Width="1.5" PointX="0.75" PointY="7.625" Height="1.5956835937500031" IsExpanded="true" />
+        <EntityTypeShape EntityType="SiGMAModel.PermisosXRoles" Width="1.5" PointX="3" PointY="10.5" Height="1.9802864583333388" IsExpanded="true" />
+        <EntityTypeShape EntityType="SiGMAModel.Personas" Width="1.5" PointX="5.25" PointY="12" Height="4.2879036458333406" IsExpanded="true" />
+        <EntityTypeShape EntityType="SiGMAModel.Razas" Width="1.5" PointX="10.5" PointY="22.25" Height="2.9417936197916674" IsExpanded="true" />
+        <EntityTypeShape EntityType="SiGMAModel.Roles" Width="1.5" PointX="0.75" PointY="10.5" Height="1.7879850260416657" IsExpanded="true" />
+        <EntityTypeShape EntityType="SiGMAModel.Sesiones" Width="1.5" PointX="5.25" PointY="18.25" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="SiGMAModel.TipoDocumentos" Width="1.5" PointX="3" PointY="19.875" Height="1.5956835937500031" IsExpanded="true" />
+        <EntityTypeShape EntityType="SiGMAModel.Voluntarios" Width="1.5" PointX="7.5" PointY="14.625" Height="1.7879850260416674" IsExpanded="true" />
+        <AssociationConnector Association="SiGMAModel.FK_Adopciones_Duenios" ManuallyRouted="false">
           <ConnectorPoint PointX="9" PointY="13.302643229166666" />
           <ConnectorPoint PointX="9.75" PointY="13.302643229166666" />
         </AssociationConnector>
-        <AssociationConnector Association="SIGMAEntities.FK_Adopciones_Mascotas" >
+        <AssociationConnector Association="SiGMAModel.FK_Adopciones_Mascotas" ManuallyRouted="false">
           <ConnectorPoint PointX="12.75" PointY="14.12474609375" />
           <ConnectorPoint PointX="11.739583333333334" PointY="14.12474609375" />
           <ConnectorPoint PointX="11.572916666666666" PointY="14.12474609375" />
           <ConnectorPoint PointX="11.25" PointY="14.12474609375" />
         </AssociationConnector>
-        <AssociationConnector Association="SIGMAEntities.FK_Adopciones_Voluntarios" >
+        <AssociationConnector Association="SiGMAModel.FK_Adopciones_Voluntarios" ManuallyRouted="false">
           <ConnectorPoint PointX="9" PointY="15.06224609375" />
           <ConnectorPoint PointX="9.75" PointY="15.06224609375" />
         </AssociationConnector>
-        <AssociationConnector Association="SIGMAEntities.FK_Barrios_Localidades" >
+        <AssociationConnector Association="SiGMAModel.FK_Barrios_Localidades" ManuallyRouted="false">
           <ConnectorPoint PointX="2.25" PointY="18.047841796875" />
           <ConnectorPoint PointX="3" PointY="18.047841796875" />
         </AssociationConnector>
-        <AssociationConnector Association="SIGMAEntities.FK_Hallazgos_Barrios" >
+        <AssociationConnector Association="SiGMAModel.FK_Hallazgos_Barrios" ManuallyRouted="false">
           <ConnectorPoint PointX="4.5" PointY="17.4687505" />
           <ConnectorPoint PointX="4.854166666666667" PointY="17.4687505" />
-          <ConnectorPoint PointX="5.145833333333333" PointY="17.4687505" />
+          <ConnectorPoint PointX="5.114583333333333" PointY="17.4687505" />
           <ConnectorPoint PointX="10.25" PointY="17.4687505" />
           <ConnectorPoint PointX="10.25" PointY="16.625" />
           <ConnectorPoint PointX="11.572916666666666" PointY="16.625" />
@@ -1826,10 +1823,10 @@
           <ConnectorPoint PointX="15.75" PointY="17.201396484375003" />
           <ConnectorPoint PointX="15.75" PointY="16.951396484375003" />
         </AssociationConnector>
-        <AssociationConnector Association="SIGMAEntities.FK_Perdidas_Barrios" >
+        <AssociationConnector Association="SiGMAModel.FK_Perdidas_Barrios" ManuallyRouted="false">
           <ConnectorPoint PointX="4.5" PointY="17.078123249999997" />
           <ConnectorPoint PointX="4.854166666666667" PointY="17.078123249999997" />
-          <ConnectorPoint PointX="5.145833333333333" PointY="17.078123249999997" />
+          <ConnectorPoint PointX="5.114583333333333" PointY="17.078123249999997" />
           <ConnectorPoint PointX="10" PointY="17.078123249999997" />
           <ConnectorPoint PointX="10" PointY="16.375" />
           <ConnectorPoint PointX="11.572916666666666" PointY="16.375" />
@@ -1847,56 +1844,54 @@
           <ConnectorPoint PointX="18.75" PointY="17.451396484375003" />
           <ConnectorPoint PointX="18.75" PointY="16.951396484375003" />
         </AssociationConnector>
-        <AssociationConnector Association="SIGMAEntities.FK_Personas_Barrios" >
+        <AssociationConnector Association="SiGMAModel.FK_Personas_Barrios" ManuallyRouted="false">
           <ConnectorPoint PointX="4.5" PointY="16.751152846153843" />
           <ConnectorPoint PointX="4.875" PointY="16.376152846153843" />
-          <ConnectorPoint PointX="4.875" PointY="16.664056491987186" />
-          <ConnectorPoint PointX="4.8785744349011209" PointY="16.660482057086064" />
-          <ConnectorPoint PointX="4.9964255650988791" PointY="16.542630926888307" />
-          <ConnectorPoint PointX="5.0035744349011209" PointY="16.535482057086064" />
-          <ConnectorPoint PointX="5.1214255650988791" PointY="16.417630926888307" />
-          <ConnectorPoint PointX="5.2511528461538441" PointY="16.287903645833339" />
+          <ConnectorPoint PointX="4.875" PointY="16.664056491987182" />
+          <ConnectorPoint PointX="4.8785744349011209" PointY="16.66048205708606" />
+          <ConnectorPoint PointX="5.0901755650988791" PointY="16.448880926888304" />
+          <ConnectorPoint PointX="5.2511528461538459" PointY="16.287903645833335" />
         </AssociationConnector>
-        <AssociationConnector Association="SIGMAEntities.FK_Razas_CategoriaRazas" >
+        <AssociationConnector Association="SiGMAModel.FK_Razas_CategoriaRazas" ManuallyRouted="false">
           <ConnectorPoint PointX="9.75" PointY="22.797841796874998" />
           <ConnectorPoint PointX="10.5" PointY="22.797841796874998" />
         </AssociationConnector>
-        <AssociationConnector Association="SIGMAEntities.FK_Mascotas_Colores" >
+        <AssociationConnector Association="SiGMAModel.FK_Mascotas_Colores" ManuallyRouted="false">
           <ConnectorPoint PointX="12" PointY="6.922841796875" />
           <ConnectorPoint PointX="13.5" PointY="6.922841796875" />
           <ConnectorPoint PointX="13.5" PointY="10.125" />
         </AssociationConnector>
-        <AssociationConnector Association="SIGMAEntities.FK_Razas_CuidadosEspeciales" >
+        <AssociationConnector Association="SiGMAModel.FK_Razas_CuidadosEspeciales" ManuallyRouted="false">
           <ConnectorPoint PointX="9.75" PointY="24.595896809895834" />
           <ConnectorPoint PointX="10.5" PointY="24.595896809895834" />
         </AssociationConnector>
-        <AssociationConnector Association="SIGMAEntities.FK_Duenios_Personas" >
+        <AssociationConnector Association="SiGMAModel.FK_Duenios_Personas" ManuallyRouted="false">
           <ConnectorPoint PointX="6.75" PointY="12.927643229166666" />
           <ConnectorPoint PointX="7.5" PointY="12.927643229166666" />
         </AssociationConnector>
-        <AssociationConnector Association="SIGMAEntities.FK_Mascotas_Duenios" >
+        <AssociationConnector Association="SiGMAModel.FK_Mascotas_Duenios" ManuallyRouted="false">
           <ConnectorPoint PointX="9" PointY="12.28125" />
           <ConnectorPoint PointX="11.572916666666666" PointY="12.28125" />
           <ConnectorPoint PointX="11.739583333333334" PointY="12.28125" />
           <ConnectorPoint PointX="12.75" PointY="12.28125" />
         </AssociationConnector>
-        <AssociationConnector Association="SIGMAEntities.FK_Mascotas_Edades" >
+        <AssociationConnector Association="SiGMAModel.FK_Mascotas_Edades" ManuallyRouted="false">
           <ConnectorPoint PointX="12" PointY="9.297841796875" />
           <ConnectorPoint PointX="13.0937475" PointY="9.297841796875" />
           <ConnectorPoint PointX="13.0937475" PointY="10.125" />
         </AssociationConnector>
-        <AssociationConnector Association="SIGMAEntities.FK_Mascotas_Especies" >
+        <AssociationConnector Association="SiGMAModel.FK_Mascotas_Especies" ManuallyRouted="false">
           <ConnectorPoint PointX="11.65625" PointY="16.875" />
           <ConnectorPoint PointX="11.65625" PointY="11.171872500000006" />
           <ConnectorPoint PointX="12.75" PointY="11.171872500000006" />
         </AssociationConnector>
-        <AssociationConnector Association="SIGMAEntities.FK_Razas_Especies" >
+        <AssociationConnector Association="SiGMAModel.FK_Razas_Especies" ManuallyRouted="false">
           <ConnectorPoint PointX="12" PointY="18.662985026041667" />
           <ConnectorPoint PointX="12.375" PointY="19.037985026041667" />
           <ConnectorPoint PointX="12.375" PointY="21.875" />
           <ConnectorPoint PointX="12" PointY="22.25" />
         </AssociationConnector>
-        <AssociationConnector Association="SIGMAEntities.FK_Mascotas_Estados" >
+        <AssociationConnector Association="SiGMAModel.FK_Mascotas_Estados" ManuallyRouted="false">
           <ConnectorPoint PointX="12" PointY="20.172841796874998" />
           <ConnectorPoint PointX="12.291666666666666" PointY="20.172841796874998" />
           <ConnectorPoint PointX="12.458333333333334" PointY="20.172841796874998" />
@@ -1905,89 +1900,90 @@
           <ConnectorPoint PointX="13.5" PointY="20.172841796874998" />
           <ConnectorPoint PointX="13.5" PointY="15.759013671875003" />
         </AssociationConnector>
-        <AssociationConnector Association="SIGMAEntities.FK_Hallazgos_Mascotas" >
+        <AssociationConnector Association="SiGMAModel.FK_Hallazgos_Mascotas" ManuallyRouted="false">
           <ConnectorPoint PointX="14.25" PointY="14.692006835937502" />
           <ConnectorPoint PointX="15" PointY="14.692006835937502" />
         </AssociationConnector>
-        <AssociationConnector Association="SIGMAEntities.FK_Hallazgos_Perdidas" >
+        <AssociationConnector Association="SiGMAModel.FK_Hallazgos_Perdidas" ManuallyRouted="false">
           <ConnectorPoint PointX="18" PointY="15.288198242187502" />
           <ConnectorPoint PointX="16.5" PointY="15.288198242187502" />
         </AssociationConnector>
-        <AssociationConnector Association="SIGMAEntities.FK_Hallazgos_Sesiones" >
-          <ConnectorPoint PointX="6.75" PointY="19.018992513020834" />
-          <ConnectorPoint PointX="13.010414166666665" PointY="19.018992513020834" />
-          <ConnectorPoint PointX="13.177080833333333" PointY="19.018992513020834" />
-          <ConnectorPoint PointX="13.416666666666666" PointY="19.018992513020834" />
-          <ConnectorPoint PointX="13.583333333333334" PointY="19.018992513020834" />
-          <ConnectorPoint PointX="15.3437475" PointY="19.018992513020834" />
+        <AssociationConnector Association="SiGMAModel.FK_Hallazgos_Sesiones" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="19.109944424358929" />
+          <ConnectorPoint PointX="13.010414166666665" PointY="19.109944424358929" />
+          <ConnectorPoint PointX="13.177080833333333" PointY="19.109944424358929" />
+          <ConnectorPoint PointX="13.416666666666666" PointY="19.109944424358929" />
+          <ConnectorPoint PointX="13.583333333333334" PointY="19.109944424358929" />
+          <ConnectorPoint PointX="15.3437475" PointY="19.109944424358929" />
           <ConnectorPoint PointX="15.3437475" PointY="16.951396484375003" />
         </AssociationConnector>
-        <AssociationConnector Association="SIGMAEntities.FK_Mascotas_Razas" >
+        <AssociationConnector Association="SiGMAModel.FK_Mascotas_Razas" ManuallyRouted="false">
           <ConnectorPoint PointX="12" PointY="23.752149309895827" />
           <ConnectorPoint PointX="13.0937475" PointY="23.752149309895827" />
           <ConnectorPoint PointX="13.0937475" PointY="15.759013671875003" />
         </AssociationConnector>
-        <AssociationConnector Association="SIGMAEntities.FK_Perdidas_Mascotas" >
+        <AssociationConnector Association="SiGMAModel.FK_Perdidas_Mascotas" ManuallyRouted="false">
           <ConnectorPoint PointX="14.25" PointY="11.874999500000001" />
           <ConnectorPoint PointX="18.75" PointY="11.874999500000001" />
           <ConnectorPoint PointX="18.75" PointY="13.625" />
         </AssociationConnector>
-        <AssociationConnector Association="SIGMAEntities.FK_Perdidas_Sesiones" >
-          <ConnectorPoint PointX="6.75" PointY="18.840986269531257" />
-          <ConnectorPoint PointX="12.094667910156256" PointY="18.840986269531257" />
-          <ConnectorPoint PointX="12.261334576822923" PointY="18.840986269531257" />
-          <ConnectorPoint PointX="13.010414166666665" PointY="18.840986269531257" />
-          <ConnectorPoint PointX="13.177080833333333" PointY="18.840986269531257" />
-          <ConnectorPoint PointX="13.416666666666666" PointY="18.840986269531257" />
-          <ConnectorPoint PointX="13.583333333333334" PointY="18.840986269531257" />
-          <ConnectorPoint PointX="15.260414166666665" PointY="18.840986269531257" />
-          <ConnectorPoint PointX="15.427080833333333" PointY="18.840986269531257" />
-          <ConnectorPoint PointX="18.3437475" PointY="18.840986269531257" />
+        <AssociationConnector Association="SiGMAModel.FK_Perdidas_Sesiones" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="18.886462225200304" />
+          <ConnectorPoint PointX="12.140143865825303" PointY="18.886462225200304" />
+          <ConnectorPoint PointX="12.306810532491971" PointY="18.886462225200304" />
+          <ConnectorPoint PointX="13.010414166666665" PointY="18.886462225200304" />
+          <ConnectorPoint PointX="13.177080833333333" PointY="18.886462225200304" />
+          <ConnectorPoint PointX="13.416666666666666" PointY="18.886462225200304" />
+          <ConnectorPoint PointX="13.583333333333334" PointY="18.886462225200304" />
+          <ConnectorPoint PointX="15.260414166666665" PointY="18.886462225200304" />
+          <ConnectorPoint PointX="15.427080833333333" PointY="18.886462225200304" />
+          <ConnectorPoint PointX="18.3437475" PointY="18.886462225200304" />
           <ConnectorPoint PointX="18.3437475" PointY="16.951396484375003" />
         </AssociationConnector>
-        <AssociationConnector Association="SIGMAEntities.FK_Personas_TipoDocumentos" >
+        <AssociationConnector Association="SiGMAModel.FK_PermisosXRoles_Permisos" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="8.4228417968750016" />
+          <ConnectorPoint PointX="3.75" PointY="8.4228417968750016" />
+          <ConnectorPoint PointX="3.75" PointY="10.5" />
+        </AssociationConnector>
+        <AssociationConnector Association="SiGMAModel.FK_PermisosXRoles_Roles" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="11.490143229166666" />
+          <ConnectorPoint PointX="3" PointY="11.490143229166666" />
+        </AssociationConnector>
+        <AssociationConnector Association="SiGMAModel.FK_Personas_TipoDocumentos" ManuallyRouted="false">
           <ConnectorPoint PointX="4.5" PointY="19.938460538461534" />
-          <ConnectorPoint PointX="5.0625" PointY="19.375960538461534" />
-          <ConnectorPoint PointX="5.0625" PointY="14.143951822916669" />
-          <ConnectorPoint PointX="5.25" PointY="14.143951822916669" />
+          <ConnectorPoint PointX="4.9375" PointY="19.500960538461534" />
+          <ConnectorPoint PointX="4.9375" PointY="14.143951822916666" />
+          <ConnectorPoint PointX="5.25" PointY="14.143951822916666" />
         </AssociationConnector>
-        <AssociationConnector Association="SIGMAEntities.FK_Personas_Usuarios" >
-          <ConnectorPoint PointX="4.5" PointY="14.816920572916668" />
-          <ConnectorPoint PointX="4.979166666666667" PointY="14.816920572916668" />
-          <ConnectorPoint PointX="5.145833333333333" PointY="14.816920572916668" />
-          <ConnectorPoint PointX="5.25" PointY="14.816920572916668" />
+        <AssociationConnector Association="SiGMAModel.FK_Voluntarios_Personas" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="15.456451822916668" />
+          <ConnectorPoint PointX="7.5" PointY="15.456451822916668" />
         </AssociationConnector>
-        <AssociationConnector Association="SIGMAEntities.FK_Voluntarios_Personas" >
-          <ConnectorPoint PointX="6.75" PointY="15.456451822916669" />
-          <ConnectorPoint PointX="7.5" PointY="15.456451822916669" />
+        <EntityTypeShape EntityType="SiGMAModel.RolesXUsuario" Width="1.5" PointX="0.5" PointY="14" Height="1.9802864583333388" />
+        <EntityTypeShape EntityType="SiGMAModel.Usuarios" Width="1.5" PointX="3" PointY="13.375" Height="1.9802864583333246" />
+        <AssociationConnector Association="SiGMAModel.FK_Personas_Usuarios" >
+          <ConnectorPoint PointX="4.5" PointY="14.812119140624995" />
+          <ConnectorPoint PointX="4.854166666666667" PointY="14.812119140624995" />
+          <ConnectorPoint PointX="5.020833333333333" PointY="14.812119140624995" />
+          <ConnectorPoint PointX="5.25" PointY="14.812119140624995" />
         </AssociationConnector>
-        <AssociationConnector Association="SIGMAEntities.FK_Usuarios_Roles" >
-          <ConnectorPoint PointX="1.5" PointY="12.547587890625" />
-          <ConnectorPoint PointX="1.5" PointY="14.182444661458334" />
-          <ConnectorPoint PointX="3" PointY="14.182444661458334" />
+        <AssociationConnector Association="SiGMAModel.FK_RolesXUsuario_Roles" >
+          <ConnectorPoint PointX="1.375" PointY="12.480286458333334" />
+          <ConnectorPoint PointX="1.375" PointY="14" />
         </AssociationConnector>
-        <AssociationConnector Association="SIGMAEntities.FK_Sesiones_Usuarios" >
-          <ConnectorPoint PointX="4.5" PointY="15.302580630608976" />
-          <ConnectorPoint PointX="4.9375" PointY="15.740080630608976" />
-          <ConnectorPoint PointX="4.9375" PointY="19.432444661458334" />
+        <AssociationConnector Association="SiGMAModel.FK_RolesXUsuario_Usuarios" >
+          <ConnectorPoint PointX="3" PointY="14.677643229166662" />
+          <ConnectorPoint PointX="2" PointY="14.677643229166662" />
+        </AssociationConnector>
+        <AssociationConnector Association="SiGMAModel.FK_Sesiones_Usuarios" >
+          <ConnectorPoint PointX="4.5" PointY="15.324131612179478" />
+          <ConnectorPoint PointX="4.8785744349011217" PointY="15.702706047080598" />
+          <ConnectorPoint PointX="4.9964255650988791" PointY="15.820557177278356" />
+          <ConnectorPoint PointX="5.03125" PointY="15.855381612179478" />
+          <ConnectorPoint PointX="5.03125" PointY="19.432444661458334" />
           <ConnectorPoint PointX="5.25" PointY="19.432444661458334" />
         </AssociationConnector>
-        <AssociationConnector Association="SIGMAEntities.RolesXUsuario" >
-          <ConnectorPoint PointX="1.9062525" PointY="12.547587890625" />
-          <ConnectorPoint PointX="1.9062525" PointY="13.559969830729173" />
-          <ConnectorPoint PointX="3" PointY="13.559969830729173" />
-        </AssociationConnector>
-        <EntityTypeShape EntityType="SIGMAEntities.PermisosXRoles" Width="1.5" PointX="3" PointY="9.125" Height="1.9802864583333388" />
-        <AssociationConnector Association="SIGMAEntities.FK_PermisosXRoles_Permisos" >
-          <ConnectorPoint PointX="2.25" PointY="8.3749995000000013" />
-          <ConnectorPoint PointX="3.75" PointY="8.3749995000000013" />
-          <ConnectorPoint PointX="3.75" PointY="9.125" />
-        </AssociationConnector>
-        <AssociationConnector Association="SIGMAEntities.FK_PermisosXRoles_Roles" >
-          <ConnectorPoint PointX="2.25" PointY="10.740143229166669" />
-          <ConnectorPoint PointX="3" PointY="10.740143229166669" />
-        </AssociationConnector>
       </Diagram>
-    </edmx:Diagrams>
-  </edmx:Designer>
+    </Diagrams>
+  </Designer>
 </edmx:Edmx>

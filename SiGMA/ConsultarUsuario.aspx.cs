@@ -191,6 +191,7 @@ namespace SiGMA
                 lblResultado3.Text = "No se pudo modificar";
                 pnlCorrecto.Visible = false;
             }
+
         }
         public void btnEliminarClick(object sender, EventArgs e)
         {

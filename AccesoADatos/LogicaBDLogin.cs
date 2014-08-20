@@ -10,7 +10,7 @@ namespace AccesoADatos
     {
         public static bool esUsuario(EUsuario logging)
         {
-            SIGMAEntitiesContainer mapaEntidades = Conexion.crearSegunServidor();            
+            SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();            
             if (mapaEntidades.Usuarios.Any(u => u.user == logging.user && u.password == logging.password))
             {
 
@@ -31,13 +31,14 @@ namespace AccesoADatos
         }
         public static string obtenerRol(EUsuario logged)
         {
-            SIGMAEntitiesContainer mapaEntidades = Conexion.crearSegunServidor();
-            var query = from usuario in mapaEntidades.Usuarios
-                        from rol in mapaEntidades.Roles
-                        where (usuario.user == logged.user && usuario.password == logged.password &&
-                        usuario.idRol == rol.idRol)
-                        select rol.nombre;
-            return  query.First();            
+            //SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+            //var query = from usuario in mapaEntidades.Usuarios
+            //            from rol in mapaEntidades.Roles
+            //            where (usuario.user == logged.user && usuario.password == logged.password &&
+            //            usuario.idRol == rol.idRol)
+            //            select rol.nombre;
+            //return  query.First();  
+            return null;
         }
     }
 }
