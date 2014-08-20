@@ -14,7 +14,7 @@
                 <div class="almedio">
                     <asp:Login ID="login" runat="server" onauthenticate="login_Authenticate">
                         <LoginButtonStyle CssClass="btn-primary" />
-                        <TextBoxStyle CssClass="TextBox" />
+                        <TextBoxStyle/>
                     </asp:Login>
                     <br />
                     No tiene un usuario? <input value="Crear Usuario" type="button" class="btn-primary" onclick="RegistrarUsuario()"/>
