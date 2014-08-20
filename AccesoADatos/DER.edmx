@@ -145,6 +145,10 @@
             <End Role="Usuarios" EntitySet="Usuarios" />
             <End Role="Sesiones" EntitySet="Sesiones" />
           </AssociationSet>
+          <AssociationSet Name="FK_Usuarios_Roles" Association="SiGMAModel.Store.FK_Usuarios_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
           <AssociationSet Name="FK_Voluntarios_Personas" Association="SiGMAModel.Store.FK_Voluntarios_Personas">
             <End Role="Personas" EntitySet="Personas" />
             <End Role="Voluntarios" EntitySet="Voluntarios" />
@@ -282,10 +286,11 @@
           <Key>
             <PropertyRef Name="idRol" />
             <PropertyRef Name="idPermiso" />
+            <PropertyRef Name="pantalla" />
           </Key>
           <Property Name="idRol" Type="int" Nullable="false" />
-          <Property Name="idPermiso" Type="int" Nullable="false" />
-          <Property Name="pantalla" Type="varchar" MaxLength="100" />
+          <Property Name="idPermiso" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="pantalla" Type="varchar" Nullable="false" MaxLength="100" />
         </EntityType>
         <EntityType Name="Personas">
           <Key>
@@ -330,7 +335,6 @@
           </Key>
           <Property Name="user" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="idRol" Type="int" Nullable="false" />
-          <Property Name="test" Type="nchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="Sesiones">
           <Key>
@@ -354,6 +358,7 @@
           </Key>
           <Property Name="user" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="password" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="idRol" Type="int" />
         </EntityType>
         <EntityType Name="Voluntarios">
           <Key>
@@ -710,6 +715,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Usuarios_Roles">
+          <End Role="Roles" Type="SiGMAModel.Store.Roles" Multiplicity="0..1" />
+          <End Role="Usuarios" Type="SiGMAModel.Store.Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="idRol" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="idRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Voluntarios_Personas">
           <End Role="Personas" Type="SiGMAModel.Store.Personas" Multiplicity="1" />
           <End Role="Voluntarios" Type="SiGMAModel.Store.Voluntarios" Multiplicity="*" />
@@ -869,6 +886,10 @@
           <AssociationSet Name="FK_Sesiones_Usuarios" Association="SiGMAModel.FK_Sesiones_Usuarios">
             <End Role="Usuarios" EntitySet="Usuarios" />
             <End Role="Sesiones" EntitySet="Sesiones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuarios_Roles" Association="SiGMAModel.FK_Usuarios_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="Adopciones">
@@ -1092,6 +1113,7 @@
           <Property Name="descripcion" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="PermisosXRoles" Relationship="SiGMAModel.FK_PermisosXRoles_Roles" FromRole="Roles" ToRole="PermisosXRoles" />
           <NavigationProperty Name="RolesXUsuario" Relationship="SiGMAModel.FK_RolesXUsuario_Roles" FromRole="Roles" ToRole="RolesXUsuario" />
+          <NavigationProperty Name="Usuarios" Relationship="SiGMAModel.FK_Usuarios_Roles" FromRole="Roles" ToRole="Usuarios" />
         </EntityType>
         <EntityType Name="Sesiones">
           <Key>
@@ -1454,6 +1476,8 @@
           <NavigationProperty Name="Personas" Relationship="SiGMAModel.FK_Personas_Usuarios" FromRole="Usuarios" ToRole="Personas" />
           <NavigationProperty Name="RolesXUsuario" Relationship="SiGMAModel.FK_RolesXUsuario_Usuarios" FromRole="Usuarios" ToRole="RolesXUsuario" />
           <NavigationProperty Name="Sesiones" Relationship="SiGMAModel.FK_Sesiones_Usuarios" FromRole="Usuarios" ToRole="Sesiones" />
+          <Property Type="Int32" Name="idRol" />
+          <NavigationProperty Name="Roles" Relationship="SiGMAModel.FK_Usuarios_Roles" FromRole="Usuarios" ToRole="Roles" />
         </EntityType>
         <Association Name="FK_Personas_Usuarios">
           <End Type="SiGMAModel.Usuarios" Role="Usuarios" Multiplicity="0..1" />
@@ -1500,6 +1524,18 @@
             </Principal>
             <Dependent Role="Sesiones">
               <PropertyRef Name="user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuarios_Roles">
+          <End Type="SiGMAModel.Roles" Role="Roles" Multiplicity="0..1" />
+          <End Type="SiGMAModel.Usuarios" Role="Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="idRol" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="idRol" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1728,7 +1764,6 @@
           <EntitySetMapping Name="RolesXUsuario">
             <EntityTypeMapping TypeName="SiGMAModel.RolesXUsuario">
               <MappingFragment StoreEntitySet="RolesXUsuario">
-                <ScalarProperty Name="test" ColumnName="test" />
                 <ScalarProperty Name="idRol" ColumnName="idRol" />
                 <ScalarProperty Name="user" ColumnName="user" />
               </MappingFragment>
@@ -1737,6 +1772,7 @@
           <EntitySetMapping Name="Usuarios">
             <EntityTypeMapping TypeName="SiGMAModel.Usuarios">
               <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="idRol" ColumnName="idRol" />
                 <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="user" ColumnName="user" />
               </MappingFragment>
@@ -1805,7 +1841,7 @@
         <AssociationConnector Association="SiGMAModel.FK_Hallazgos_Barrios" ManuallyRouted="false">
           <ConnectorPoint PointX="4.5" PointY="17.4687505" />
           <ConnectorPoint PointX="4.854166666666667" PointY="17.4687505" />
-          <ConnectorPoint PointX="5.114583333333333" PointY="17.4687505" />
+          <ConnectorPoint PointX="5.052083333333333" PointY="17.4687505" />
           <ConnectorPoint PointX="10.25" PointY="17.4687505" />
           <ConnectorPoint PointX="10.25" PointY="16.625" />
           <ConnectorPoint PointX="11.572916666666666" PointY="16.625" />
@@ -1826,7 +1862,7 @@
         <AssociationConnector Association="SiGMAModel.FK_Perdidas_Barrios" ManuallyRouted="false">
           <ConnectorPoint PointX="4.5" PointY="17.078123249999997" />
           <ConnectorPoint PointX="4.854166666666667" PointY="17.078123249999997" />
-          <ConnectorPoint PointX="5.114583333333333" PointY="17.078123249999997" />
+          <ConnectorPoint PointX="5.052083333333333" PointY="17.078123249999997" />
           <ConnectorPoint PointX="10" PointY="17.078123249999997" />
           <ConnectorPoint PointX="10" PointY="16.375" />
           <ConnectorPoint PointX="11.572916666666666" PointY="16.375" />
@@ -1846,10 +1882,10 @@
         </AssociationConnector>
         <AssociationConnector Association="SiGMAModel.FK_Personas_Barrios" ManuallyRouted="false">
           <ConnectorPoint PointX="4.5" PointY="16.751152846153843" />
-          <ConnectorPoint PointX="4.875" PointY="16.376152846153843" />
-          <ConnectorPoint PointX="4.875" PointY="16.664056491987182" />
+          <ConnectorPoint PointX="4.8785744349011209" PointY="16.376152846153843" />
           <ConnectorPoint PointX="4.8785744349011209" PointY="16.66048205708606" />
-          <ConnectorPoint PointX="5.0901755650988791" PointY="16.448880926888304" />
+          <ConnectorPoint PointX="4.9098244349011209" PointY="16.62923205708606" />
+          <ConnectorPoint PointX="5.0276755650988791" PointY="16.511380926888304" />
           <ConnectorPoint PointX="5.2511528461538459" PointY="16.287903645833335" />
         </AssociationConnector>
         <AssociationConnector Association="SiGMAModel.FK_Razas_CategoriaRazas" ManuallyRouted="false">
@@ -1946,8 +1982,8 @@
           <ConnectorPoint PointX="3.75" PointY="10.5" />
         </AssociationConnector>
         <AssociationConnector Association="SiGMAModel.FK_PermisosXRoles_Roles" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="11.490143229166666" />
-          <ConnectorPoint PointX="3" PointY="11.490143229166666" />
+          <ConnectorPoint PointX="2.25" PointY="11.490143229166669" />
+          <ConnectorPoint PointX="3" PointY="11.490143229166669" />
         </AssociationConnector>
         <AssociationConnector Association="SiGMAModel.FK_Personas_TipoDocumentos" ManuallyRouted="false">
           <ConnectorPoint PointX="4.5" PointY="19.938460538461534" />
@@ -1962,26 +1998,29 @@
         <EntityTypeShape EntityType="SiGMAModel.RolesXUsuario" Width="1.5" PointX="0.5" PointY="14" Height="1.9802864583333388" />
         <EntityTypeShape EntityType="SiGMAModel.Usuarios" Width="1.5" PointX="3" PointY="13.375" Height="1.9802864583333246" />
         <AssociationConnector Association="SiGMAModel.FK_Personas_Usuarios" >
-          <ConnectorPoint PointX="4.5" PointY="14.812119140624995" />
-          <ConnectorPoint PointX="4.854166666666667" PointY="14.812119140624995" />
-          <ConnectorPoint PointX="5.020833333333333" PointY="14.812119140624995" />
-          <ConnectorPoint PointX="5.25" PointY="14.812119140624995" />
+          <ConnectorPoint PointX="4.5" PointY="14.858414552435056" />
+          <ConnectorPoint PointX="4.854166666666667" PointY="14.858414552435056" />
+          <ConnectorPoint PointX="5.020833333333333" PointY="14.858414552435056" />
+          <ConnectorPoint PointX="5.25" PointY="14.858414552435056" />
         </AssociationConnector>
         <AssociationConnector Association="SiGMAModel.FK_RolesXUsuario_Roles" >
-          <ConnectorPoint PointX="1.375" PointY="12.480286458333334" />
+          <ConnectorPoint PointX="1.375" PointY="12.672587890625" />
           <ConnectorPoint PointX="1.375" PointY="14" />
         </AssociationConnector>
         <AssociationConnector Association="SiGMAModel.FK_RolesXUsuario_Usuarios" >
-          <ConnectorPoint PointX="3" PointY="14.677643229166662" />
-          <ConnectorPoint PointX="2" PointY="14.677643229166662" />
+          <ConnectorPoint PointX="3" PointY="14.869944661458334" />
+          <ConnectorPoint PointX="2" PointY="14.869944661458334" />
         </AssociationConnector>
         <AssociationConnector Association="SiGMAModel.FK_Sesiones_Usuarios" >
-          <ConnectorPoint PointX="4.5" PointY="15.324131612179478" />
-          <ConnectorPoint PointX="4.8785744349011217" PointY="15.702706047080598" />
-          <ConnectorPoint PointX="4.9964255650988791" PointY="15.820557177278356" />
-          <ConnectorPoint PointX="5.03125" PointY="15.855381612179478" />
-          <ConnectorPoint PointX="5.03125" PointY="19.432444661458334" />
+          <ConnectorPoint PointX="4.5" PointY="15.708734476762821" />
+          <ConnectorPoint PointX="4.96875" PointY="16.177484476762821" />
+          <ConnectorPoint PointX="4.96875" PointY="19.432444661458334" />
           <ConnectorPoint PointX="5.25" PointY="19.432444661458334" />
+        </AssociationConnector>
+        <AssociationConnector Association="SiGMAModel.FK_Usuarios_Roles" >
+          <ConnectorPoint PointX="2.15625" PointY="12.672587890625" />
+          <ConnectorPoint PointX="2.15625" PointY="13.65625" />
+          <ConnectorPoint PointX="3" PointY="13.65625" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

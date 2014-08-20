@@ -27,5 +27,23 @@ namespace Herramientas
             ddl.DataSource = LogicaBDRol.Roles();
             ddl.DataBind();
         }
+        //carga de combo de Barrio
+        public static void cargarComboBarrio(ref DropDownList ddl)
+        {
+            List<EBarrio> barrios = Datos.BuscarBarrios();
+            foreach (EBarrio item in barrios)
+            {
+                ddl.Items.Add(new ListItem(item.nombre.ToString(), item.idBarrio.ToString()));
+            }
+        }
+        //carga de combo de Localidades
+        public static void cargarComboLocalidades(ref DropDownList ddl)
+        {
+            List<ELocalidad> localidades = Datos.BuscarLocalidades();
+            foreach (ELocalidad item in localidades)
+            {
+                ddl.Items.Add(new ListItem(item.nombre.ToString(), item.idLocalidad.ToString()));
+            }
+        }
     }
 }

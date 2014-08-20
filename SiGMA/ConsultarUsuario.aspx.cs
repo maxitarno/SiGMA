@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Entidades;
 using AccesoADatos;
+using Herramientas;
 namespace SiGMA
 {
     public partial class ConsultarUsuario : System.Web.UI.Page
@@ -14,31 +15,10 @@ namespace SiGMA
         {
             if (!Page.IsPostBack)
             {
-                List<ETipoDeDocumento> tipos = new List<ETipoDeDocumento>();
-                tipos = Datos.TiposDNI();
-                ddlTipoDeDocumento.DataSource = tipos;
-                ddlTipoDeDocumento.DataTextField = "nombre";
-                ddlTipoDeDocumento.DataValueField = "idTipoDeDocumento";
-                ddlTipoDeDocumento.DataBind();
-                List<ERol> roles = new List<ERol>();
-                roles = LogicaBDRol.Roles();
-                ddlRoles.DataSource = roles;
-                ddlRoles.DataTextField = "nombreRol";
-                ddlRoles.DataValueField = "idRol";
-                ddlRoles.DataBind();
-                rbPorPersona.Checked = true;
-                List<ELocalidad> localidades = new List<ELocalidad>();
-                localidades = Datos.BuscarLocalidades();
-                ddlLocalidades.DataSource = localidades;
-                ddlLocalidades.DataTextField = "nombre";
-                ddlLocalidades.DataValueField = "idLocalidad";
-                ddlLocalidades.DataBind();
-                List<EBarrio> barrios = new List<EBarrio>();
-                barrios = Datos.BuscarBarrios();
-                ddlBarrios.DataSource = barrios;
-                ddlBarrios.DataTextField = "nombre";
-                ddlBarrios.DataValueField = "idBarrio";
-                ddlBarrios.DataBind();
+                CargarCombos.cargarComboBarrio(ref ddlBarrios);
+                CargarCombos.cargarComboLocalidades(ref ddlLocalidades);
+                CargarCombos.cargarComboTipoDocumento(ref ddlTipoDeDocumento);
+                CargarCombos.cargarRoles(ref ddlRoles);
             }
         }
         public void btnBuscarClick(object sender, EventArgs e){
