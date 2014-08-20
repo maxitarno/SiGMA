@@ -106,7 +106,7 @@ namespace AccesoADatos
                            from rolesBD in mapaEntidades.Roles
                            from BarriosBD in mapaEntidades.Barrios
                            from LocalidadesBD in mapaEntidades.Localidades
-                           where (personasBD.user == usuariosBD.user && rolesBD.idRol == usuariosBD.idRol && personasBD.idBarrio == BarriosBD.idBarrio && LocalidadesBD.idLocalidad == BarriosBD.idLocalidad && personasBD.user == nombre)
+                           where (personasBD.user == usuariosBD.user  && personasBD.idBarrio == BarriosBD.idBarrio && LocalidadesBD.idLocalidad == BarriosBD.idLocalidad && personasBD.user == nombre)
                            select new
                            {
                                apellido = personasBD.apellido,
@@ -118,7 +118,6 @@ namespace AccesoADatos
                                tEC = personasBD.telefonoCelular,
                                mail = personasBD.email,
                                usuario = usuariosBD.user,
-                               rol = rolesBD.idRol,
                                barrio = persona.idBarrio,
                                localidad = LocalidadesBD.idLocalidad,
                                idPersona = personasBD.idPersona,
@@ -137,7 +136,6 @@ namespace AccesoADatos
                     persona.telefonoCelular = usuario.tEC;
                     persona.email = usuario.mail;
                     user.user = usuario.usuario;
-                    user.idRol = usuario.rol;
                     barrio.idBarrio = usuario.barrio;
                     localidad.idLocalidad = usuario.localidad;
                     persona.fechaNacimiento = DateTime.Parse(usuario.fecha.ToString());
@@ -170,10 +168,6 @@ namespace AccesoADatos
                     registro.nroDocumento = registro.nroDocumento.Replace(registro.nroDocumento, persona.nroDocumento);
                     registro.telefonoCelular = registro.telefonoCelular.Replace(registro.telefonoCelular, persona.telefonoCelular);
                     registro.telefonoFijo = registro.telefonoFijo.Replace(registro.telefonoFijo, persona.telefonoFijo);
-                }
-                foreach (var registro in usuarios)
-                {
-                    registro.idRol = usuario.idRol;
                 }
                 b = true;
                 mapaEntidades.SaveChanges();

@@ -80,7 +80,6 @@ namespace SiGMA
             txtApellido.Text = persona.apellido;
             txtNombre.Text = persona.nombre;
             txtDomicilio.Text = persona.domicilio;
-            ddlRoles.SelectedIndex = usuario.idRol - 1;
             ddlLocalidades.SelectedIndex = localidad.idLocalidad - 1;
             ddlBarrios.SelectedIndex = barrio.idBarrio;
             txtTelefonoFijo.Text = persona.telefonoFijo;
@@ -116,8 +115,6 @@ namespace SiGMA
             pnlphonefixed.Visible = true;
             pnlresult.Visible = true;
             pnlResultados.Visible = true;
-            pnlrol.Visible = true;
-            pnlRoles.Visible = true;
             pnlSeleccionar.Visible = true;
             pnlsurname.Visible = true;
             pnlTelefonFijo.Visible = true;
@@ -149,7 +146,6 @@ namespace SiGMA
             persona.telefonoCelular = txtTelefonoCelular.Text;
             persona.telefonoFijo = txtTelefonoFijo.Text;
             EUsuario usuario = new EUsuario();
-            usuario.idRol = int.Parse(ddlRoles.SelectedValue);
             usuario.user = txtUsuario.Text;
             if (usuario.user != "")
             {
@@ -209,7 +205,6 @@ namespace SiGMA
             txtTelefonoCelular.Text = "";
             txtTelefonoFijo.Text = "";
             txtUsuario.Text = "";
-            
         }
         public void RdbPorUsuario(object sender, EventArgs e)
         {
@@ -243,8 +238,6 @@ namespace SiGMA
                 pnlphonefixed.Visible = false;
                 pnlresult.Visible = false;
                 pnlResultados.Visible = false;
-                pnlrol.Visible = false;
-                pnlRoles.Visible = false;
                 pnlSeleccionar.Visible = false;
                 pnlsurname.Visible = false;
                 pnlTelefonFijo.Visible = false;
@@ -283,8 +276,6 @@ namespace SiGMA
             pnlphonefixed.Visible = false;
             pnlresult.Visible = false;
             pnlResultados.Visible = false;
-            pnlrol.Visible = false;
-            pnlRoles.Visible = false;
             pnlSeleccionar.Visible = false;
             pnlsurname.Visible = false;
             pnlTelefonFijo.Visible = false;

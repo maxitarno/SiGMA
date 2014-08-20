@@ -553,33 +553,6 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.RegularExpressionValidator revMail;
         
         /// <summary>
-        /// Control pnlrol.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlrol;
-        
-        /// <summary>
-        /// Control pnlRoles.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlRoles;
-        
-        /// <summary>
-        /// Control ddlRoles.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlRoles;
-        
-        /// <summary>
         /// Control pnlSeleccionar.
         /// </summary>
         /// <remarks>

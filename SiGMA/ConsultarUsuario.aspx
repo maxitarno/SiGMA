@@ -237,19 +237,6 @@
                     </tr>
                     <tr>
                         <td>
-                            <asp:Panel ID="pnlrol" runat="server" Visible="false">
-                                 Rol:&nbsp
-                            </asp:Panel>
-                        </td>
-                        <td>
-                            <asp:Panel ID="pnlRoles" runat="server" Visible="false">
-                                <asp:DropDownList ID="ddlRoles" runat="server" Width="100%">
-                                </asp:DropDownList>
-                            </asp:Panel>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
                             <asp:Panel ID="pnlSeleccionar" runat="server" Visible="false">
                                 <asp:Button ID="btnSeleccionar" runat="server" Text="Seleccionar" CssClass="btn-primary" OnClick="btnAceptarClick" Width=100%/>
                             </asp:Panel>

@@ -49,6 +49,7 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_RolesXUsuario_Roles", "Roles", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Roles), "RolesXUsuario", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.RolesXUsuario), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_RolesXUsuario_Usuarios", "Usuarios", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Usuarios), "RolesXUsuario", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.RolesXUsuario), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Sesiones_Usuarios", "Usuarios", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Usuarios), "Sesiones", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Sesiones), true)]
+[assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Usuarios_Roles", "Roles", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(AccesoADatos.Roles), "Usuarios", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Usuarios), true)]
 
 #endregion
 
@@ -4844,6 +4845,28 @@ namespace AccesoADatos
                 }
             }
         }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("SiGMAModel", "FK_Usuarios_Roles", "Usuarios")]
+        public EntityCollection<Usuarios> Usuarios
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Usuarios>("SiGMAModel.FK_Usuarios_Roles", "Usuarios");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Usuarios>("SiGMAModel.FK_Usuarios_Roles", "Usuarios", value);
+                }
+            }
+        }
 
         #endregion
 
@@ -5442,6 +5465,30 @@ namespace AccesoADatos
         private global::System.String _password;
         partial void OnpasswordChanging(global::System.String value);
         partial void OnpasswordChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> idRol
+        {
+            get
+            {
+                return _idRol;
+            }
+            set
+            {
+                OnidRolChanging(value);
+                ReportPropertyChanging("idRol");
+                _idRol = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("idRol");
+                OnidRolChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _idRol;
+        partial void OnidRolChanging(Nullable<global::System.Int32> value);
+        partial void OnidRolChanged();
 
         #endregion
 
@@ -5510,6 +5557,44 @@ namespace AccesoADatos
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Sesiones>("SiGMAModel.FK_Sesiones_Usuarios", "Sesiones", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("SiGMAModel", "FK_Usuarios_Roles", "Roles")]
+        public Roles Roles
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Roles>("SiGMAModel.FK_Usuarios_Roles", "Roles").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Roles>("SiGMAModel.FK_Usuarios_Roles", "Roles").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Roles> RolesReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Roles>("SiGMAModel.FK_Usuarios_Roles", "Roles");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Roles>("SiGMAModel.FK_Usuarios_Roles", "Roles", value);
                 }
             }
         }
