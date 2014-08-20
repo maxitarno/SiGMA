@@ -10,40 +10,40 @@ namespace AccesoADatos
     public class LogicaBDRol
     {
         //metodo para ABMC de Permisos segun el Rol seleccionado
-        //public static bool guardarPermisoRol(List<EPermisoRol> ListadoPermisos)
-        //{
-        //    using (TransactionScope transaction = new TransactionScope())
-        //    {
-        //        bool b = true;
-        //        try
-        //        {
-        //            SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
-        //            var rol = ListadoPermisos[1].idRol;
-        //            var list = mapaEntidades.PermisosXRoles.Where(m => m.idRol == rol);
-        //            foreach (PermisosXRoles per in list)
-        //                mapaEntidades.PermisosXRoles.DeleteObject(per);
-        //                mapaEntidades.SaveChanges(); 
-        //            foreach (var item in ListadoPermisos)
-        //            {
-        //                PermisosXRoles perRolesBD = new PermisosXRoles();
-        //                perRolesBD.idPermiso = item.idPermiso;
-        //                perRolesBD.idRol = item.idRol;
-        //                perRolesBD.pantalla = item.pantalla;
-        //                mapaEntidades.AddToPermisosXRoles(perRolesBD);
-        //            }
-        //            mapaEntidades.SaveChanges();
-        //            transaction.Complete();
-        //            b = true;
-        //        }
-        //        catch (Exception exc)
-        //        {
-        //            transaction.Dispose();
-        //            b = false;
-        //            throw exc;
-        //        }
-        //        return b;
-        //    }
-        //}
+        public static bool guardarPermisoRol(ERol rol)
+        {
+            using (TransactionScope transaction = new TransactionScope())
+            {
+                bool b = true;
+                try
+                {
+                    SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+                    var idRol = rol.idRol;
+                    var list = mapaEntidades.PermisosXRoles.Where(m => m.idRol == idRol);
+                    foreach (PermisosXRoles per in list)
+                        mapaEntidades.PermisosXRoles.DeleteObject(per);
+                    mapaEntidades.SaveChanges();
+                    foreach (var item in rol.listaPermisos)
+                    {
+                        PermisosXRoles perRolesBD = new PermisosXRoles();
+                        perRolesBD.idPermiso = item.idPermiso;
+                        perRolesBD.idRol = idRol;
+                        perRolesBD.pantalla = item.pantalla;
+                        mapaEntidades.AddToPermisosXRoles(perRolesBD);
+                    }
+                    mapaEntidades.SaveChanges();
+                    transaction.Complete();
+                    b = true;
+                }
+                catch (Exception exc)
+                {
+                    transaction.Dispose();
+                    b = false;
+                    throw exc;
+                }
+                return b;
+            }
+        }
         //fin metodo
         //Metodo para buscar roles
         public static List<ERol> Roles()
