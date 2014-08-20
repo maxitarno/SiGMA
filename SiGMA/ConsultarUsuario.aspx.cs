@@ -18,7 +18,6 @@ namespace SiGMA
                 CargarCombos.cargarComboBarrio(ref ddlBarrios);
                 CargarCombos.cargarComboLocalidades(ref ddlLocalidades);
                 CargarCombos.cargarComboTipoDocumento(ref ddlTipoDeDocumento);
-                CargarCombos.cargarRoles(ref ddlRoles);
             }
         }
         public void btnBuscarClick(object sender, EventArgs e){
