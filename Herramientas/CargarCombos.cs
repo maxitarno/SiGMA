@@ -10,6 +10,7 @@ namespace Herramientas
 {
     public class CargarCombos
     {
+        //carga de combo de tipo de documentos
         public static void cargarComboTipoDocumento(ref DropDownList ddl)
         {
             List<ETipoDeDocumento> tiposDoc = Datos.TiposDNI();
@@ -17,6 +18,14 @@ namespace Herramientas
             {
                 ddl.Items.Add(new ListItem(item.nombre.ToString(),item.idTipoDeDocumento.ToString()));
             }
-        }        
+        }
+        //carga del combo de roles
+        public static void cargarRoles(ref DropDownList ddl)
+        {
+            ddl.DataTextField = "nombreRol";
+            ddl.DataValueField = "idRol";
+            ddl.DataSource = LogicaBDRol.Roles();
+            ddl.DataBind();
+        }
     }
 }

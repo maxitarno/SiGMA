@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Entidades;
 using AccesoADatos;
+using Herramientas;
 
 namespace SiGMA
 {
@@ -15,18 +16,8 @@ namespace SiGMA
         {
             if (!Page.IsPostBack)
             {
-                cargarRoles();
-            }
-           
-        }
-
-        //carga del combo de roles
-        private void cargarRoles()
-        {
-            ddlRol.DataTextField = "nombreRol";
-            ddlRol.DataValueField = "idRol";
-            ddlRol.DataSource = LogicaBDRol.Roles();
-            ddlRol.DataBind();
+                CargarCombos.cargarRoles(ref ddlRol);
+            } 
         }
 
         //metodo para asignacion de permisos por rol, se elige el rol y luego se especifica con el chk 
@@ -34,6 +25,7 @@ namespace SiGMA
         // es un bajon para mi que sea de esta forma pero funcionaria tecnicamente
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
+
         //    try
         //    {
         //        if (Page.IsValid)
