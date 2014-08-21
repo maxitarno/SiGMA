@@ -324,12 +324,9 @@ td
 }
 .DropDownList
 {
+    border: 3px groove #0066FF;
     background-color:White;
-    border-color:#0066FF;
-    border-style:groove;
-    border-width:3px;
-    width:100%;
-}
+    }
 table, tr, td
 {
     
@@ -356,10 +353,7 @@ asp:Login
 }
 .TextBox
 {
-    border-color:#0066FF;
-    border-style:groove;
-    border-width:3px;
-    width:100%;
+    border: 3px groove #0066FF;
 }
 .almedio
 {

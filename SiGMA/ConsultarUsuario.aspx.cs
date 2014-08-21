@@ -15,9 +15,9 @@ namespace SiGMA
         {
             if (!Page.IsPostBack)
             {
-                CargarCombos.cargarComboBarrio(ref ddlBarrios);
-                CargarCombos.cargarComboLocalidades(ref ddlLocalidades);
-                CargarCombos.cargarComboTipoDocumento(ref ddlTipoDeDocumento);
+                CargarCombos.cargarBarrio(ref ddlBarrios);
+                CargarCombos.cargarLocalidades(ref ddlLocalidades);
+                CargarCombos.cargarTipoDocumento(ref ddlTipoDeDocumento);
             }
         }
         public void btnBuscarClick(object sender, EventArgs e){

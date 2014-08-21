@@ -15,9 +15,9 @@ namespace SiGMA
         {
             if (!Page.IsPostBack)
             {
-                CargarCombos.cargarComboColor(ref ddlColor);
-                CargarCombos.cargarComboEdad(ref ddlEdad);
-                CargarCombos.cargarComboEspecies(ref ddlEspecie);
+                CargarCombos.cargarColor(ref ddlColor);
+                CargarCombos.cargarEdad(ref ddlEdad);
+                CargarCombos.cargarEspecies(ref ddlEspecie);
                 CargarCombos.cargarComboRazas(ref ddlRaza);
             }
         }

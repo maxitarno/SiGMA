@@ -151,11 +151,11 @@ namespace AccesoADatos
         }
         //fin metodo
         //metodo para buscar razas
-        public static List<ERaza> BuscarRazas(int idRaza){
+        public static List<ERaza> BuscarRazas(int idEspecie){
             List<ERaza> razas = new List<ERaza>();
             SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
             IQueryable<Razas> consulta = from razaDB in mapaEntidades.Razas
-                                         where(razaDB.idEspecie == idRaza)
+                                         where(razaDB.idEspecie == idEspecie)
                                          select razaDB;
             try
             {
@@ -188,6 +188,7 @@ namespace AccesoADatos
                     EEdad edad = new EEdad();
                     edad.idEdad = registro.idEdad;
                     edad.nombreEdad = registro.nombreEdad;
+                    edad.descripcion = registro.descripcion;
                     edades.Add(edad);
                 }
             }
@@ -245,5 +246,28 @@ namespace AccesoADatos
             return razas;
         }
         //fin metodo
+
+        public static List<ECaracterMascota> BuscarCaracteresMascota()
+        {
+            List<ECaracterMascota> caracterMascotas = new List<ECaracterMascota>();
+            SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+            IQueryable<CaracteresMascota> consulta = from caracteresDB in mapaEntidades.CaracteresMascota
+                                         select caracteresDB;
+            try
+            {
+                foreach (var registro in consulta)
+                {
+                    ECaracterMascota caracter = new ECaracterMascota();
+                    caracter.idCaracter = registro.idCaracter;
+                    caracter.descripcion = registro.descripcion;
+                    caracterMascotas.Add(caracter);
+                }
+            }
+            catch (System.Data.EntityCommandCompilationException exc)
+            {
+                throw exc;
+            }
+            return caracterMascotas;
+        }
     }
 }

@@ -16,7 +16,7 @@ namespace SiGMA
         {
             if (!Page.IsPostBack)
             {
-                CargarCombos.cargarComboTipoDocumento(ref ddlTipoDocumento);
+                CargarCombos.cargarTipoDocumento(ref ddlTipoDocumento);
             }
         }
 
