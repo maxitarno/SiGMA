@@ -1,0 +1,12 @@
+*.dll
+*.suo
+*.pdb
+*.csdl
+*.msl
+*.ssdl
+*.cache
+AccesoADatos/bin/Debug/AccesoADatos.dll.config
+Herramientas/obj/Debug/Herramientas.csproj.FileListAbsolute.txt
+SiGMA/obj/Debug/SiGMA.csproj.FileListAbsolute.txt
+Entidades/obj/Debug/Entidades.csproj.FileListAbsolute.txt
+AccesoADatos/obj/Debug/AccesoADatos.csproj.FileListAbsolute.txt
