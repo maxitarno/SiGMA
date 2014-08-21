@@ -222,5 +222,28 @@ namespace AccesoADatos
             return categorias;
         }
         //fin metodo
+        public static List<ERaza> BuscarRazas()
+        {
+            List<ERaza> razas = new List<ERaza>();
+            SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+            IQueryable<Razas> consulta = from razaDB in mapaEntidades.Razas
+                                         select razaDB;
+            try
+            {
+                foreach (var registro in consulta)
+                {
+                    ERaza raza = new ERaza();
+                    raza.idRaza = registro.idRaza;
+                    raza.nombreRaza = registro.nombreRaza;
+                    razas.Add(raza);
+                }
+            }
+            catch (System.Data.EntityCommandCompilationException exc)
+            {
+                throw exc;
+            }
+            return razas;
+        }
+        //fin metodo
     }
 }

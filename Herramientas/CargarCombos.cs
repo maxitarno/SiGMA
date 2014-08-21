@@ -68,7 +68,7 @@ namespace Herramientas
             List<EEdad> edades = Datos.BuscarEdades();
             foreach (EEdad item in edades)
             {
-                ddl.Items.Add(new ListItem(item.nombreEdad.ToString() + " - " + item.descripcion.ToString(), item.idEdad.ToString()));
+                ddl.Items.Add(new ListItem(item.nombreEdad.ToString(), item.idEdad.ToString()));
             }
         }
 
@@ -79,6 +79,15 @@ namespace Herramientas
             {
                 ddl.Items.Add(new ListItem(item.nombreColor.ToString(), item.idColor.ToString()));
             }
-        } 
+        }
+
+        public static void cargarComboRazas(ref DropDownList ddl)
+        {
+            List<ERaza> razas = Datos.BuscarRazas();
+            foreach (ERaza item in razas)
+            {
+                ddl.Items.Add(new ListItem(item.nombreRaza.ToString(), item.idRaza.ToString()));
+            }
+        }
     }
 }
