@@ -9,7 +9,7 @@ namespace AccesoADatos
 {
     public class LogicaBDRol
     {
-        //metodo para ABMC de Permisos segun el Rol seleccionado
+        //metodo para ABMC de Permisos segun el Rol seleccionado .
         public static bool guardarPermisoRol(ERol rol)
         {
             using (TransactionScope transaction = new TransactionScope())
