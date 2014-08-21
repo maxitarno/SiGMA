@@ -16,11 +16,11 @@ namespace Entidades
         public int idColor { get; set; }
         public string tratoAnimal { get; set; }
         public string tratoNiños { get; set; }
-        public string caracter { get; set; }
+        public ECaracterMascota caracter { get; set; }
         public string observaciones { get; set; }
         public string alimetaionEspeial { get; set; }
         public DateTime fechaNcimiento { get; set; }
-        public int sexo { get; set; }
+        public string sexo { get; set; }
         public int idDuenio { get; set; }
     }
 }

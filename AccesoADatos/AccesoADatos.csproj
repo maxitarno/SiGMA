@@ -46,14 +46,14 @@
   <ItemGroup>
     <Compile Include="Conexion.cs" />
     <Compile Include="Datos.cs" />
-    <Compile Include="LogicaBDLogin.cs" />
-    <Compile Include="LogicaBDRol.cs" />
-    <Compile Include="LogicaBDUsuario.cs" />
     <Compile Include="DER.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DER.edmx</DependentUpon>
     </Compile>
+    <Compile Include="LogicaBDLogin.cs" />
+    <Compile Include="LogicaBDRol.cs" />
+    <Compile Include="LogicaBDUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

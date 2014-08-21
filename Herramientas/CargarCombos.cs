@@ -45,5 +45,40 @@ namespace Herramientas
                 ddl.Items.Add(new ListItem(item.nombre.ToString(), item.idLocalidad.ToString()));
             }
         }
+        public static void cargarComboEspecies(ref DropDownList ddl)
+        {
+            List<EEspecie> especies = Datos.BuscarEspecies();
+            foreach (EEspecie item in especies)
+            {
+                ddl.Items.Add(new ListItem(item.nombreEspecie.ToString(), item.idEspecie.ToString()));
+            }
+        }
+
+        public static void cargarComboRazas(ref DropDownList ddl, int idEspecie)
+        {
+            List<ERaza> razas = Datos.BuscarRazas(idEspecie);
+            foreach (ERaza item in razas)
+            {
+                ddl.Items.Add(new ListItem(item.nombreRaza.ToString(), item.idRaza.ToString()));
+            }
+        }
+
+        public static void cargarComboEdad(ref DropDownList ddl)
+        {
+            List<EEdad> edades = Datos.BuscarEdades();
+            foreach (EEdad item in edades)
+            {
+                ddl.Items.Add(new ListItem(item.nombreEdad.ToString() + " - " + item.descripcion.ToString(), item.idEdad.ToString()));
+            }
+        }
+
+        public static void cargarComboColor(ref DropDownList ddl)
+        {
+            List<EColor> edades = Datos.BuscarColores();
+            foreach (EColor item in edades)
+            {
+                ddl.Items.Add(new ListItem(item.nombreColor.ToString(), item.idColor.ToString()));
+            }
+        } 
     }
 }

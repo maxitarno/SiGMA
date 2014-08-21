@@ -5,10 +5,9 @@ using System.Text;
 
 namespace Entidades
 {
-    public class EEdad
+    public class ECaracterMascota
     {
-        public int idEdad { get; set; }
-        public string nombreEdad { get; set; }
+        public int idCaracter { get; set; }
         public string descripcion { get; set; }
     }
 }

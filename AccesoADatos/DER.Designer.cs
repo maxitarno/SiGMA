@@ -26,6 +26,7 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Hallazgos_Barrios", "Barrios", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(AccesoADatos.Barrios), "Hallazgos", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Hallazgos), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Perdidas_Barrios", "Barrios", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(AccesoADatos.Barrios), "Perdidas", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Perdidas), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Personas_Barrios", "Barrios", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(AccesoADatos.Barrios), "Personas", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Personas), true)]
+[assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Mascotas_CaracteresMascota", "CaracteresMascota", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(AccesoADatos.CaracteresMascota), "Mascotas", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Mascotas), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Razas_CategoriaRazas", "CategoriaRazas", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(AccesoADatos.CategoriaRazas), "Razas", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Razas), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Mascotas_Colores", "Colores", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Colores), "Mascotas", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Mascotas), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Razas_CuidadosEspeciales", "CuidadosEspeciales", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(AccesoADatos.CuidadosEspeciales), "Razas", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Razas), true)]
@@ -44,12 +45,11 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_PermisosXRoles_Permisos", "Permisos", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Permisos), "PermisosXRoles", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.PermisosXRoles), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_PermisosXRoles_Roles", "Roles", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Roles), "PermisosXRoles", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.PermisosXRoles), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Personas_TipoDocumentos", "TipoDocumentos", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(AccesoADatos.TipoDocumentos), "Personas", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Personas), true)]
-[assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Voluntarios_Personas", "Personas", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Personas), "Voluntarios", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Voluntarios), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Personas_Usuarios", "Usuarios", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(AccesoADatos.Usuarios), "Personas", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Personas), true)]
+[assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Voluntarios_Personas", "Personas", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Personas), "Voluntarios", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Voluntarios), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_RolesXUsuario_Roles", "Roles", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Roles), "RolesXUsuario", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.RolesXUsuario), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_RolesXUsuario_Usuarios", "Usuarios", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Usuarios), "RolesXUsuario", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.RolesXUsuario), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Sesiones_Usuarios", "Usuarios", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Usuarios), "Sesiones", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Sesiones), true)]
-[assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Usuarios_Roles", "Roles", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(AccesoADatos.Roles), "Usuarios", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Usuarios), true)]
 
 #endregion
 
@@ -132,6 +132,22 @@ namespace AccesoADatos
             }
         }
         private ObjectSet<Barrios> _Barrios;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<CaracteresMascota> CaracteresMascota
+        {
+            get
+            {
+                if ((_CaracteresMascota == null))
+                {
+                    _CaracteresMascota = base.CreateObjectSet<CaracteresMascota>("CaracteresMascota");
+                }
+                return _CaracteresMascota;
+            }
+        }
+        private ObjectSet<CaracteresMascota> _CaracteresMascota;
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
@@ -392,6 +408,22 @@ namespace AccesoADatos
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
+        public ObjectSet<RolesXUsuario> RolesXUsuario
+        {
+            get
+            {
+                if ((_RolesXUsuario == null))
+                {
+                    _RolesXUsuario = base.CreateObjectSet<RolesXUsuario>("RolesXUsuario");
+                }
+                return _RolesXUsuario;
+            }
+        }
+        private ObjectSet<RolesXUsuario> _RolesXUsuario;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
         public ObjectSet<Sesiones> Sesiones
         {
             get
@@ -424,38 +456,6 @@ namespace AccesoADatos
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        public ObjectSet<Voluntarios> Voluntarios
-        {
-            get
-            {
-                if ((_Voluntarios == null))
-                {
-                    _Voluntarios = base.CreateObjectSet<Voluntarios>("Voluntarios");
-                }
-                return _Voluntarios;
-            }
-        }
-        private ObjectSet<Voluntarios> _Voluntarios;
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        public ObjectSet<RolesXUsuario> RolesXUsuario
-        {
-            get
-            {
-                if ((_RolesXUsuario == null))
-                {
-                    _RolesXUsuario = base.CreateObjectSet<RolesXUsuario>("RolesXUsuario");
-                }
-                return _RolesXUsuario;
-            }
-        }
-        private ObjectSet<RolesXUsuario> _RolesXUsuario;
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
         public ObjectSet<Usuarios> Usuarios
         {
             get
@@ -468,6 +468,22 @@ namespace AccesoADatos
             }
         }
         private ObjectSet<Usuarios> _Usuarios;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<Voluntarios> Voluntarios
+        {
+            get
+            {
+                if ((_Voluntarios == null))
+                {
+                    _Voluntarios = base.CreateObjectSet<Voluntarios>("Voluntarios");
+                }
+                return _Voluntarios;
+            }
+        }
+        private ObjectSet<Voluntarios> _Voluntarios;
 
         #endregion
 
@@ -487,6 +503,14 @@ namespace AccesoADatos
         public void AddToBarrios(Barrios barrios)
         {
             base.AddObject("Barrios", barrios);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet CaracteresMascota. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToCaracteresMascota(CaracteresMascota caracteresMascota)
+        {
+            base.AddObject("CaracteresMascota", caracteresMascota);
         }
     
         /// <summary>
@@ -618,6 +642,14 @@ namespace AccesoADatos
         }
     
         /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet RolesXUsuario. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToRolesXUsuario(RolesXUsuario rolesXUsuario)
+        {
+            base.AddObject("RolesXUsuario", rolesXUsuario);
+        }
+    
+        /// <summary>
         /// Método desusado para agregar un nuevo objeto al EntitySet Sesiones. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
         /// </summary>
         public void AddToSesiones(Sesiones sesiones)
@@ -634,27 +666,19 @@ namespace AccesoADatos
         }
     
         /// <summary>
-        /// Método desusado para agregar un nuevo objeto al EntitySet Voluntarios. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
-        /// </summary>
-        public void AddToVoluntarios(Voluntarios voluntarios)
-        {
-            base.AddObject("Voluntarios", voluntarios);
-        }
-    
-        /// <summary>
-        /// Método desusado para agregar un nuevo objeto al EntitySet RolesXUsuario. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
-        /// </summary>
-        public void AddToRolesXUsuario(RolesXUsuario rolesXUsuario)
-        {
-            base.AddObject("RolesXUsuario", rolesXUsuario);
-        }
-    
-        /// <summary>
         /// Método desusado para agregar un nuevo objeto al EntitySet Usuarios. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
         /// </summary>
         public void AddToUsuarios(Usuarios usuarios)
         {
             base.AddObject("Usuarios", usuarios);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet Voluntarios. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToVoluntarios(Voluntarios voluntarios)
+        {
+            base.AddObject("Voluntarios", voluntarios);
         }
 
         #endregion
@@ -1175,6 +1199,115 @@ namespace AccesoADatos
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Personas>("SiGMAModel.FK_Personas_Barrios", "Personas", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="SiGMAModel", Name="CaracteresMascota")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class CaracteresMascota : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto CaracteresMascota.
+        /// </summary>
+        /// <param name="idCaracter">Valor inicial de la propiedad idCaracter.</param>
+        /// <param name="descripcion">Valor inicial de la propiedad descripcion.</param>
+        public static CaracteresMascota CreateCaracteresMascota(global::System.Int32 idCaracter, global::System.String descripcion)
+        {
+            CaracteresMascota caracteresMascota = new CaracteresMascota();
+            caracteresMascota.idCaracter = idCaracter;
+            caracteresMascota.descripcion = descripcion;
+            return caracteresMascota;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 idCaracter
+        {
+            get
+            {
+                return _idCaracter;
+            }
+            set
+            {
+                if (_idCaracter != value)
+                {
+                    OnidCaracterChanging(value);
+                    ReportPropertyChanging("idCaracter");
+                    _idCaracter = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("idCaracter");
+                    OnidCaracterChanged();
+                }
+            }
+        }
+        private global::System.Int32 _idCaracter;
+        partial void OnidCaracterChanging(global::System.Int32 value);
+        partial void OnidCaracterChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String descripcion
+        {
+            get
+            {
+                return _descripcion;
+            }
+            set
+            {
+                OndescripcionChanging(value);
+                ReportPropertyChanging("descripcion");
+                _descripcion = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("descripcion");
+                OndescripcionChanged();
+            }
+        }
+        private global::System.String _descripcion;
+        partial void OndescripcionChanging(global::System.String value);
+        partial void OndescripcionChanged();
+
+        #endregion
+
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("SiGMAModel", "FK_Mascotas_CaracteresMascota", "Mascotas")]
+        public EntityCollection<Mascotas> Mascotas
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Mascotas>("SiGMAModel.FK_Mascotas_CaracteresMascota", "Mascotas");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Mascotas>("SiGMAModel.FK_Mascotas_CaracteresMascota", "Mascotas", value);
                 }
             }
         }
@@ -1754,6 +1887,30 @@ namespace AccesoADatos
         private global::System.String _nombreEdad;
         partial void OnnombreEdadChanging(global::System.String value);
         partial void OnnombreEdadChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String descripcion
+        {
+            get
+            {
+                return _descripcion;
+            }
+            set
+            {
+                OndescripcionChanging(value);
+                ReportPropertyChanging("descripcion");
+                _descripcion = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("descripcion");
+                OndescripcionChanged();
+            }
+        }
+        private global::System.String _descripcion;
+        partial void OndescripcionChanging(global::System.String value);
+        partial void OndescripcionChanged();
 
         #endregion
 
@@ -2542,7 +2699,7 @@ namespace AccesoADatos
         /// <param name="idRaza">Valor inicial de la propiedad idRaza.</param>
         /// <param name="idColor">Valor inicial de la propiedad idColor.</param>
         /// <param name="sexo">Valor inicial de la propiedad sexo.</param>
-        public static Mascotas CreateMascotas(global::System.Int32 idMascota, global::System.Int32 idEstado, global::System.Int32 idEspecie, global::System.Int32 idEdad, global::System.Int32 idRaza, global::System.Int32 idColor, global::System.Int32 sexo)
+        public static Mascotas CreateMascotas(global::System.Int32 idMascota, global::System.Int32 idEstado, global::System.Int32 idEspecie, global::System.Int32 idEdad, global::System.Int32 idRaza, global::System.Int32 idColor, global::System.String sexo)
         {
             Mascotas mascotas = new Mascotas();
             mascotas.idMascota = idMascota;
@@ -2783,30 +2940,6 @@ namespace AccesoADatos
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.String caracter
-        {
-            get
-            {
-                return _caracter;
-            }
-            set
-            {
-                OncaracterChanging(value);
-                ReportPropertyChanging("caracter");
-                _caracter = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("caracter");
-                OncaracterChanged();
-            }
-        }
-        private global::System.String _caracter;
-        partial void OncaracterChanging(global::System.String value);
-        partial void OncaracterChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
         public global::System.String observaciones
         {
             get
@@ -2879,7 +3012,7 @@ namespace AccesoADatos
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 sexo
+        public global::System.String sexo
         {
             get
             {
@@ -2889,13 +3022,13 @@ namespace AccesoADatos
             {
                 OnsexoChanging(value);
                 ReportPropertyChanging("sexo");
-                _sexo = StructuralObject.SetValidValue(value);
+                _sexo = StructuralObject.SetValidValue(value, false);
                 ReportPropertyChanged("sexo");
                 OnsexoChanged();
             }
         }
-        private global::System.Int32 _sexo;
-        partial void OnsexoChanging(global::System.Int32 value);
+        private global::System.String _sexo;
+        partial void OnsexoChanging(global::System.String value);
         partial void OnsexoChanged();
     
         /// <summary>
@@ -2921,6 +3054,30 @@ namespace AccesoADatos
         private Nullable<global::System.Int32> _idDuenio;
         partial void OnidDuenioChanging(Nullable<global::System.Int32> value);
         partial void OnidDuenioChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> idCaracter
+        {
+            get
+            {
+                return _idCaracter;
+            }
+            set
+            {
+                OnidCaracterChanging(value);
+                ReportPropertyChanging("idCaracter");
+                _idCaracter = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("idCaracter");
+                OnidCaracterChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _idCaracter;
+        partial void OnidCaracterChanging(Nullable<global::System.Int32> value);
+        partial void OnidCaracterChanged();
 
         #endregion
 
@@ -2945,6 +3102,44 @@ namespace AccesoADatos
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Adopciones>("SiGMAModel.FK_Adopciones_Mascotas", "Adopciones", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("SiGMAModel", "FK_Mascotas_CaracteresMascota", "CaracteresMascota")]
+        public CaracteresMascota CaracteresMascota
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<CaracteresMascota>("SiGMAModel.FK_Mascotas_CaracteresMascota", "CaracteresMascota").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<CaracteresMascota>("SiGMAModel.FK_Mascotas_CaracteresMascota", "CaracteresMascota").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<CaracteresMascota> CaracteresMascotaReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<CaracteresMascota>("SiGMAModel.FK_Mascotas_CaracteresMascota", "CaracteresMascota");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<CaracteresMascota>("SiGMAModel.FK_Mascotas_CaracteresMascota", "CaracteresMascota", value);
                 }
             }
         }
@@ -4316,28 +4511,6 @@ namespace AccesoADatos
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("SiGMAModel", "FK_Voluntarios_Personas", "Voluntarios")]
-        public EntityCollection<Voluntarios> Voluntarios
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Voluntarios>("SiGMAModel.FK_Voluntarios_Personas", "Voluntarios");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Voluntarios>("SiGMAModel.FK_Voluntarios_Personas", "Voluntarios", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("SiGMAModel", "FK_Personas_Usuarios", "Usuarios")]
         public Usuarios Usuarios
         {
@@ -4366,6 +4539,28 @@ namespace AccesoADatos
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Usuarios>("SiGMAModel.FK_Personas_Usuarios", "Usuarios", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("SiGMAModel", "FK_Voluntarios_Personas", "Voluntarios")]
+        public EntityCollection<Voluntarios> Voluntarios
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Voluntarios>("SiGMAModel.FK_Voluntarios_Personas", "Voluntarios");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Voluntarios>("SiGMAModel.FK_Voluntarios_Personas", "Voluntarios", value);
                 }
             }
         }
@@ -4842,28 +5037,6 @@ namespace AccesoADatos
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<RolesXUsuario>("SiGMAModel.FK_RolesXUsuario_Roles", "RolesXUsuario", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("SiGMAModel", "FK_Usuarios_Roles", "Usuarios")]
-        public EntityCollection<Usuarios> Usuarios
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Usuarios>("SiGMAModel.FK_Usuarios_Roles", "Usuarios");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Usuarios>("SiGMAModel.FK_Usuarios_Roles", "Usuarios", value);
                 }
             }
         }
@@ -5465,30 +5638,6 @@ namespace AccesoADatos
         private global::System.String _password;
         partial void OnpasswordChanging(global::System.String value);
         partial void OnpasswordChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Int32> idRol
-        {
-            get
-            {
-                return _idRol;
-            }
-            set
-            {
-                OnidRolChanging(value);
-                ReportPropertyChanging("idRol");
-                _idRol = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("idRol");
-                OnidRolChanged();
-            }
-        }
-        private Nullable<global::System.Int32> _idRol;
-        partial void OnidRolChanging(Nullable<global::System.Int32> value);
-        partial void OnidRolChanged();
 
         #endregion
 
@@ -5557,44 +5706,6 @@ namespace AccesoADatos
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Sesiones>("SiGMAModel.FK_Sesiones_Usuarios", "Sesiones", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("SiGMAModel", "FK_Usuarios_Roles", "Roles")]
-        public Roles Roles
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Roles>("SiGMAModel.FK_Usuarios_Roles", "Roles").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Roles>("SiGMAModel.FK_Usuarios_Roles", "Roles").Value = value;
-            }
-        }
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<Roles> RolesReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Roles>("SiGMAModel.FK_Usuarios_Roles", "Roles");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Roles>("SiGMAModel.FK_Usuarios_Roles", "Roles", value);
                 }
             }
         }
