@@ -94,13 +94,22 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.RadioButton rbPorMascota;
         
         /// <summary>
-        /// Control pnlBuscar.
+        /// Control pnlNombre.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlBuscar;
+        protected global::System.Web.UI.WebControls.Panel pnlNombre;
+        
+        /// <summary>
+        /// Control pnltxtNombreDueñio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnltxtNombreDueñio;
         
         /// <summary>
         /// Control txtNombreDueñio.
@@ -110,6 +119,24 @@ namespace SiGMA {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNombreDueñio;
+        
+        /// <summary>
+        /// Control pnlboton.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlboton;
+        
+        /// <summary>
+        /// Control btnBuscar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnBuscar;
         
         /// <summary>
         /// Control rfvNombreDuenio.
@@ -130,13 +157,22 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvNombre;
         
         /// <summary>
-        /// Control btnBuscar.
+        /// Control pnlmascota.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnBuscar;
+        protected global::System.Web.UI.WebControls.Panel pnlmascota;
+        
+        /// <summary>
+        /// Control pnltxtMascota.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnltxtMascota;
         
         /// <summary>
         /// Control txtMascota.
@@ -319,13 +355,13 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.TextBox txtFecha;
         
         /// <summary>
-        /// Control pnlBotons.
+        /// Control pnlbtnSeleccionar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlBotons;
+        protected global::System.Web.UI.WebControls.Panel pnlbtnSeleccionar;
         
         /// <summary>
         /// Control btnSeleccionar.
@@ -335,6 +371,15 @@ namespace SiGMA {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSeleccionar;
+        
+        /// <summary>
+        /// Control pnlbotones.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlbotones;
         
         /// <summary>
         /// Control btnModificar.

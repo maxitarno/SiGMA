@@ -43,13 +43,13 @@
                                             Por dueñio:&nbsp
                                         </td>
                                         <td>
-                                            <asp:RadioButton ID="rbPorDuenio" runat="server" />&nbsp&nbsp
+                                            <asp:RadioButton ID="rbPorDuenio" runat="server" AutoPostBack="True" GroupName="1" ValidationGroup="1" />&nbsp&nbsp
                                         </td>
                                         <td>
                                             Por Mascota:&nbsp
                                         </td>
                                         <td>
-                                            <asp:RadioButton ID="rbPorMascota" runat="server" />
+                                            <asp:RadioButton ID="rbPorMascota" runat="server" AutoPostBack="True" GroupName="1" />
                                         </td>
                                     </tr>
                                 </table>
@@ -58,53 +58,61 @@
                     </tr>
                     <tr>
                         <td class="almedio">
-                            <asp:Panel ID="pnlBuscar" runat="server" Width="100%">
-                                <table>
-                                    <tr>
-                                        <td valign="middle">
+                            <table>
+                                <tr>
+                                    <td valign="middle">
+                                        <asp:Panel ID="pnlNombre" Visible="false" runat=server>
                                             Nombre:&nbsp
-                                        </td>
-                                        <td>
+                                        </asp:Panel>
+                                    </td>
+                                    <td>
+                                        <asp:Panel ID="pnltxtNombreDueñio" Visible="false" runat=server>
                                             <asp:TextBox ID="txtNombreDueñio" runat="server" CssClass="TextBox" Width="100%"></asp:TextBox>
-                                        </td>
-                                        <td>
-                                            <asp:RequiredFieldValidator ID="rfvNombreDuenio" runat="server" ErrorMessage="Debe ingresar un nombre"
-                                                ControlToValidate="txtNombreDueñio" Display="Dynamic" ValidationGroup="1"></asp:RequiredFieldValidator>
-                                            <asp:RequiredFieldValidator runat="server" ErrorMessage=" Debe ingresar un nombre"
-                                                ID="rfvNombre" ValidationGroup="2" Display="Dynamic" ControlToValidate="txtNombreDueñio"></asp:RequiredFieldValidator>
-                                        </td>
-                                        <td>
+                                        </asp:Panel>
+                                    </td>
+                                    <td>
+                                        <asp:Panel ID=pnlboton runat=server Visible=false>
                                             <asp:Button ID="btnBuscar" runat="server" Text="Button" CssClass="btn-primary" />
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td valign="middle">
+                                        </asp:Panel>
+                                    </td>
+                                    <td>
+                                        <asp:RequiredFieldValidator ID="rfvNombreDuenio" runat="server" ErrorMessage="Debe ingresar un nombre"
+                                            ControlToValidate="txtNombreDueñio" Display="Dynamic" ValidationGroup="1"></asp:RequiredFieldValidator>
+                                        <asp:RequiredFieldValidator runat="server" ErrorMessage=" Debe ingresar un nombre"
+                                            ID="rfvNombre" ValidationGroup="2" Display="Dynamic" ControlToValidate="txtNombreDueñio"></asp:RequiredFieldValidator>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td valign="middle">
+                                        <asp:Panel ID="pnlmascota" Visible="false" runat=server>
                                             mascota:&nbsp
-                                        </td>
-                                        <td>
+                                        </asp:Panel>
+                                    </td>
+                                    <td>
+                                        <asp:Panel ID="pnltxtMascota" Visible="false" runat=server>
                                             <asp:TextBox ID="txtMascota" runat="server" CssClass="TextBox" Width="100%"></asp:TextBox>
-                                        </td>
-                                        <td>
-                                            <asp:RequiredFieldValidator ID="rfvMascota" runat="server" ErrorMessage="Debe ingresar un nombre"
-                                                ControlToValidate="txtMascota" Display="Dynamic" ValidationGroup="1"></asp:RequiredFieldValidator>
-                                            <asp:RequiredFieldValidator runat="server" ErrorMessage=" Debe ingresar un nombre"
-                                                ID="rfvNombreMascota" ValidationGroup="2" Display="Dynamic" ControlToValidate="txtNombreDueñio"></asp:RequiredFieldValidator>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </asp:Panel>
+                                        </asp:Panel>
+                                    </td>
+                                    <td>
+                                        <asp:RequiredFieldValidator ID="rfvMascota" runat="server" ErrorMessage="Debe ingresar un nombre"
+                                            ControlToValidate="txtMascota" Display="Dynamic" ValidationGroup="1"></asp:RequiredFieldValidator>
+                                        <asp:RequiredFieldValidator runat="server" ErrorMessage=" Debe ingresar un nombre"
+                                            ID="rfvNombreMascota" ValidationGroup="2" Display="Dynamic" ControlToValidate="txtNombreDueñio"></asp:RequiredFieldValidator>
+                                    </td>
+                                </tr>
+                            </table>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <asp:Panel ID="pnlResultados" runat="server" Width="100%">
-                                <table width=100%>
+                            <asp:Panel ID="pnlResultados" runat="server" Width="100%" Visible="false">
+                                <table width="100%">
                                     <tr>
                                         <td align="center">
                                             Resultados:
                                         </td>
                                         <td colspan="3">
-                                            <asp:ListBox ID="lstResultados" runat="server" Width=100% CssClass="ListBox"></asp:ListBox>
+                                            <asp:ListBox ID="lstResultados" runat="server" Width="100%" CssClass="ListBox"></asp:ListBox>
                                         </td>
                                     </tr>
                                 </table>
@@ -113,15 +121,16 @@
                     </tr>
                     <tr>
                         <td>
-                            <asp:Panel ID="pnlDatos" runat="server">
+                            <asp:Panel ID="pnlDatos" runat="server" Visible="false">
                                 <table>
                                     <tr>
                                         <td>
                                             Estado:&nbsp
                                         </td>
                                         <td>
-                                            <asp:DropDownList ID="ddlEstado" runat="server" CssClass="DropDownList" Width=100% AppendDataBoundItems=true>
-                                                <asp:ListItem Selected=True Value=0 Text="-- seleccione --"></asp:ListItem>
+                                            <asp:DropDownList ID="ddlEstado" runat="server" CssClass="DropDownList" Width="100%"
+                                                AppendDataBoundItems="true">
+                                                <asp:ListItem Selected="True" Value="0" Text="-- seleccione --"></asp:ListItem>
                                             </asp:DropDownList>
                                         </td>
                                     </tr>
@@ -130,8 +139,9 @@
                                             Especie:&nbsp
                                         </td>
                                         <td>
-                                            <asp:DropDownList ID="ddlEspecie" runat="server" Width=100% CssClass="DropDownList" onselectedindexchanged="ddlRaza_SelectedIndexChanged" AutoPostBack="True" AppendDataBoundItems=true>
-                                                <asp:ListItem Selected=True Value=0 Text="-- seleccione --"></asp:ListItem>
+                                            <asp:DropDownList ID="ddlEspecie" runat="server" Width="100%" CssClass="DropDownList"
+                                                OnSelectedIndexChanged="ddlRaza_SelectedIndexChanged" AutoPostBack="True" AppendDataBoundItems="true">
+                                                <asp:ListItem Selected="True" Value="0" Text="-- seleccione --"></asp:ListItem>
                                             </asp:DropDownList>
                                         </td>
                                     </tr>
@@ -140,8 +150,9 @@
                                             Edad:
                                         </td>
                                         <td>
-                                            <asp:DropDownList ID="ddlEdad" runat="server" Width=100% CssClass="DropDownList" AppendDataBoundItems="True">
-                                                <asp:ListItem Selected=True Value=0 Text="-- seleccione --"></asp:ListItem>
+                                            <asp:DropDownList ID="ddlEdad" runat="server" Width="100%" CssClass="DropDownList"
+                                                AppendDataBoundItems="True">
+                                                <asp:ListItem Selected="True" Value="0" Text="-- seleccione --"></asp:ListItem>
                                             </asp:DropDownList>
                                         </td>
                                     </tr>
@@ -150,7 +161,8 @@
                                             Raza:&nbsp
                                         </td>
                                         <td>
-                                            <asp:DropDownList ID="ddlRaza" runat="server" Width=100% CssClass="DropDownList" AppendDataBoundItems="False">
+                                            <asp:DropDownList ID="ddlRaza" runat="server" Width="100%" CssClass="DropDownList"
+                                                AppendDataBoundItems="False">
                                             </asp:DropDownList>
                                         </td>
                                     </tr>
@@ -159,8 +171,8 @@
                                             Categoria:&nbsp
                                         </td>
                                         <td>
-                                            <asp:DropDownList ID="ddlCategoria" runat="server" Width=100% CssClass="DropDownList" AppendDataBoundItems="False">
-                                                
+                                            <asp:DropDownList ID="ddlCategoria" runat="server" Width="100%" CssClass="DropDownList"
+                                                AppendDataBoundItems="False">
                                             </asp:DropDownList>
                                         </td>
                                     </tr>
@@ -169,7 +181,7 @@
                                             Cuidado especial:&nbsp
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="txtCuidadoEspecial" runat="server" CssClass="TextBox"  Width="100%"></asp:TextBox>
+                                            <asp:TextBox ID="txtCuidadoEspecial" runat="server" CssClass="TextBox" Width="100%"></asp:TextBox>
                                         </td>
                                     </tr>
                                     <tr>
@@ -177,8 +189,9 @@
                                             Color:&nbsp
                                         </td>
                                         <td>
-                                            <asp:DropDownList ID="ddlColor" runat="server" Width=100% CssClass="DropDownList" AppendDataBoundItems="True">
-                                                <asp:ListItem Selected=True Value=0 Text="-- seleccione --"></asp:ListItem>
+                                            <asp:DropDownList ID="ddlColor" runat="server" Width="100%" CssClass="DropDownList"
+                                                AppendDataBoundItems="True">
+                                                <asp:ListItem Selected="True" Value="0" Text="-- seleccione --"></asp:ListItem>
                                             </asp:DropDownList>
                                         </td>
                                     </tr>
@@ -227,8 +240,8 @@
                                             Sexo:&nbsp
                                         </td>
                                         <td>
-                                            <asp:DropDownList ID="ddlSexo" runat="server" Width=100% CssClass="DropDownList">
-                                                <asp:ListItem Selected=True Value=0 Text="-- seleccione --"></asp:ListItem>
+                                            <asp:DropDownList ID="ddlSexo" runat="server" Width="100%" CssClass="DropDownList">
+                                                <asp:ListItem Selected="True" Value="0" Text="-- seleccione --"></asp:ListItem>
                                                 <asp:ListItem Text="Hembra" Value="1"></asp:ListItem>
                                                 <asp:ListItem Value="2" Text="Macho"></asp:ListItem>
                                             </asp:DropDownList>
@@ -248,18 +261,20 @@
                     </tr>
                     <tr>
                         <td class="almedio">
-                            <asp:Panel ID="pnlBotons" runat="server">
-                                <table>
-                                    <tr>
-                                        <td>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <asp:Panel ID="pnlbtnSeleccionar" runat="server" Visible="false">
                                             <asp:Button ID="btnSeleccionar" runat="server" Text="Seleccionar" CssClass="btn-primary" />
+                                        </asp:Panel>
+                                        <asp:Panel ID="pnlbotones" runat="server" Visible="false">
                                             <asp:Button ID="btnModificar" runat="server" Text="Modificar" CssClass="btn-primary" />
                                             <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" CssClass="btn-primary" />
                                             <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar" CssClass="btn-primary" />
-                                        </td>
-                                    </tr>
-                                </table>
-                            </asp:Panel>
+                                        </asp:Panel>
+                                    </td>
+                                </tr>
+                            </table>
                         </td>
                     </tr>
                 </table>
