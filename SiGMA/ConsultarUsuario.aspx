@@ -182,7 +182,7 @@
                         </td>
                         <td>
                             <asp:Panel ID="pnlFecha" runat="server" Visible="false">
-                                <asp:TextBox ID="txtFecha" runat="server" CssClass="text-primary"></asp:TextBox>
+                                <asp:TextBox ID="txtFecha" runat="server" CssClass="text-primary" TextMode="SingleLine" Text="  /  /"></asp:TextBox>
                             </asp:Panel>
                         </td>
                         <td>

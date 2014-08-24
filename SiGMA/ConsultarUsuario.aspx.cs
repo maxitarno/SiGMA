@@ -24,23 +24,32 @@ namespace SiGMA
             if (rbPorPersona.Checked == true)
             {
                 List<EUsuario> usuarios = new List<EUsuario>();
-                usuarios = LogicaBDUsuario.BuscarUsuarios(int.Parse(ddlTipoDeDocumento.SelectedValue), txtNºDeDocumento.Text);
-                if (usuarios.Count != 0)
+                if (Validaciones.verificarSoloNumeros(txtNºDeDocumento.Text))
                 {
-                    lstResultados.DataSource = usuarios;
-                    lstResultados.DataTextField = "user";
-                    lstResultados.DataValueField = "user";
-                    lstResultados.DataBind();
-                    pnlSeleccionar.Visible = true;
-                    pnlResultados.Visible = true;
-                    pnlInfo.Visible = false;
-                    pnlEliminar.Visible = false;
-                    pnlAtento.Visible = false;
+                    usuarios = LogicaBDUsuario.BuscarUsuarios(int.Parse(ddlTipoDeDocumento.SelectedValue), txtNºDeDocumento.Text);
+                    if (usuarios.Count != 0)
+                    {
+                        lstResultados.DataSource = usuarios;
+                        lstResultados.DataTextField = "user";
+                        lstResultados.DataValueField = "user";
+                        lstResultados.DataBind();
+                        pnlSeleccionar.Visible = true;
+                        pnlResultados.Visible = true;
+                        pnlInfo.Visible = false;
+                        pnlEliminar.Visible = false;
+                        pnlAtento.Visible = false;
+                    }
+                    else if(usuarios.Count == 0)
+                    {
+                        pnlAtento.Visible = false;
+                        pnlCorrecto.Visible = false;
+                        pnlInfo.Visible = true;
+                        lblResultado2.Text = "No se encontraron usuarios";
+                    }
                 }
-                else if(usuarios.Count == 0)
-                {
+                else{
                     pnlInfo.Visible = true;
-                    lblResultado2.Text = "No se encontraron usuarios";
+                    lblResultado2.Text = "Debe ingresar un numero dedocumento";
                 }
             }
             else if(rbPorUsuario.Checked == true)
@@ -61,6 +70,8 @@ namespace SiGMA
                 }
                 else if(usuarios.Count == 0)
                 {
+                    pnlAtento.Visible = false;
+                    pnlCorrecto.Visible = false;
                     pnlInfo.Visible = true;
                     lblResultado2.Text = "No se encontraron usuarios";
                 }
@@ -68,6 +79,9 @@ namespace SiGMA
         }
         public void btnAceptarClick(object sender, EventArgs e)
         {
+            pnlAtento.Visible = false;
+            pnlCorrecto.Visible = false;
+            pnlInfo.Visible = false;
             EBarrio barrio = new EBarrio();
             ELocalidad localidad = new ELocalidad();
             EPersona persona = new EPersona();
@@ -128,45 +142,61 @@ namespace SiGMA
             persona.apellido = txtApellido.Text;
             persona.domicilio = txtDomicilio.Text;
             persona.email = txtMail.Text;
-            try
-            {
-                persona.fechaNacimiento = DateTime.Parse(txtFecha.Text);
-            }
-            catch (System.FormatException)
-            {
-                pnlAtento.Visible = true;
-                lblResultado3.Text = "No se pudo modificar";
-                pnlCorrecto.Visible = false;
-            }
             persona.idBarrio = int.Parse(ddlBarrios.SelectedValue);
             persona.idTipoDocumento = int.Parse(ddlTipoDeDocumento.SelectedValue);
-            persona.nombre = txtNombre.Text;
-            persona.nroDocumento = txtNºDeDocumento.Text;
-            persona.telefonoCelular = txtTelefonoCelular.Text;
-            persona.telefonoFijo = txtTelefonoFijo.Text;
-            EUsuario usuario = new EUsuario();
-            usuario.user = txtUsuario.Text;
-            if (usuario.user != "")
+            DateTime fecha = new DateTime();
+            if (Validaciones.verificarSoloNumeros(txtNºDeDocumento.Text))
             {
-                if (LogicaBDUsuario.ModificarUsuario(persona, usuario))
+                if (Validaciones.Fecha(txtFecha.Text, out fecha))
                 {
-                    pnlCorrecto.Visible = true;
-                    lblResultado1.Text = "Se modifico corretamente";
+                    persona.nombre = txtNombre.Text;
+                    persona.nroDocumento = txtNºDeDocumento.Text;
+                    persona.telefonoCelular = txtTelefonoCelular.Text;
+                    persona.telefonoFijo = txtTelefonoFijo.Text;
+                    EUsuario usuario = new EUsuario();
+                    usuario.user = txtUsuario.Text;
+                    if (usuario.user != "")
+                    {
+                        if (LogicaBDUsuario.ModificarUsuario(persona, usuario))
+                        {
+                            pnlCorrecto.Visible = true;
+                            lblResultado1.Text = "Se modifico corretamente";
+                            pnlAtento.Visible = false;
+                            pnlInfo.Visible = false;
+                        }
+                        else
+                        {
+                            pnlCorrecto.Visible = false;
+                            pnlInfo.Visible = false;
+                            pnlAtento.Visible = true;
+                            lblResultado3.Text = "No se pudo modificar";
+                            pnlCorrecto.Visible = false;
+                        }
+                    }
+                    else
+                    {
+                        pnlCorrecto.Visible = false;
+                        pnlInfo.Visible = false;
+                        pnlAtento.Visible = true;
+                        lblResultado3.Text = "No se pudo modificar";
+                        pnlCorrecto.Visible = false;
+                    }
                 }
                 else
                 {
-                    pnlAtento.Visible = true;
-                    lblResultado3.Text = "No se pudo modificar";
+                    pnlInfo.Visible = true;
+                    lblResultado2.Text = "Debe ingresar una fecha";
+                    pnlAtento.Visible = false;
                     pnlCorrecto.Visible = false;
                 }
             }
             else
             {
-                pnlAtento.Visible = true;
-                lblResultado3.Text = "No se pudo modificar";
-                pnlCorrecto.Visible = false;
+                pnlInfo.Visible = true;
+                lblResultado2.Text = "Debe ingresar un número de documento";
+                pnlCorrecto.Visible=false;
+                pnlAtento.Visible=false;
             }
-
         }
         public void btnEliminarClick(object sender, EventArgs e)
         {

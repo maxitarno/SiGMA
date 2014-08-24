@@ -36,5 +36,16 @@ namespace Herramientas
             }
             return true;
         }
+        public static bool Fecha(string fecha, out DateTime fechaRetorno)
+        {
+            if (DateTime.TryParse(fecha, out fechaRetorno))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
