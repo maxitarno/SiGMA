@@ -31,6 +31,7 @@ namespace Herramientas
         //carga de combo de Barrio
         public static void cargarBarrio(ref DropDownList ddl)
         {
+            ddl.Items.Add(new ListItem("", "0"));
             List<EBarrio> barrios = Datos.BuscarBarrios();
             foreach (EBarrio item in barrios)
             {
@@ -40,6 +41,7 @@ namespace Herramientas
         //carga de combo de Localidades
         public static void cargarLocalidades(ref DropDownList ddl)
         {
+            ddl.Items.Add(new ListItem("","0"));
             List<ELocalidad> localidades = Datos.BuscarLocalidades();
             foreach (ELocalidad item in localidades)
             {
@@ -73,7 +75,7 @@ namespace Herramientas
             List<EEdad> edades = Datos.BuscarEdades();
             foreach (EEdad item in edades)
             {
-                ddl.Items.Add(new ListItem(item.nombreEdad.ToString() + " - " + item.descripcion.ToString(), item.idEdad.ToString()));
+                ddl.Items.Add(new ListItem(item.nombreEdad.ToString(),item.idEdad.ToString()));
             }            
         }
 

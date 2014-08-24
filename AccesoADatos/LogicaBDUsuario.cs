@@ -118,7 +118,7 @@ namespace AccesoADatos
                                tEC = personasBD.telefonoCelular,
                                mail = personasBD.email,
                                usuario = usuariosBD.user,
-                               barrio = persona.idBarrio,
+                               barrio = personasBD.idBarrio,
                                localidad = LocalidadesBD.idLocalidad,
                                idPersona = personasBD.idPersona,
                                fecha = personasBD.fechaNacimiento
@@ -136,7 +136,7 @@ namespace AccesoADatos
                     persona.telefonoCelular = usuario.tEC;
                     persona.email = usuario.mail;
                     user.user = usuario.usuario;
-                    barrio.idBarrio = usuario.barrio;
+                    barrio.idBarrio = (int)usuario.barrio;
                     localidad.idLocalidad = usuario.localidad;
                     persona.fechaNacimiento = DateTime.Parse(usuario.fecha.ToString());
                 }

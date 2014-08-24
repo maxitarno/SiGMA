@@ -169,7 +169,7 @@
                         </td>
                         <td>
                             <asp:Panel ID="pnlBarrios" runat="server" Visible="false">
-                                <asp:DropDownList ID="ddlBarrios" runat="server">
+                                <asp:DropDownList ID="ddlBarrios" runat="server" AutoPostBack="True">
                                 </asp:DropDownList>
                             </asp:Panel>
                         </td>

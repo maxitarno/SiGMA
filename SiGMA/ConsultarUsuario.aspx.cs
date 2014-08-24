@@ -24,7 +24,7 @@ namespace SiGMA
             if (rbPorPersona.Checked == true)
             {
                 List<EUsuario> usuarios = new List<EUsuario>();
-                usuarios = LogicaBDUsuario.BuscarUsuarios(ddlTipoDeDocumento.SelectedIndex + 1, txtNºDeDocumento.Text);
+                usuarios = LogicaBDUsuario.BuscarUsuarios(int.Parse(ddlTipoDeDocumento.SelectedValue), txtNºDeDocumento.Text);
                 if (usuarios.Count != 0)
                 {
                     lstResultados.DataSource = usuarios;
@@ -74,13 +74,13 @@ namespace SiGMA
             EUsuario usuario = new EUsuario();
             LogicaBDUsuario.BuscarUsuarios(lstResultados.SelectedValue, usuario, persona, barrio, localidad);
             txtUsuario.Text = usuario.user;
-            ddlTipoDeDocumento.SelectedIndex = persona.idTipoDocumento - 1;
+            ddlTipoDeDocumento.SelectedValue = persona.idTipoDocumento.ToString();
             txtNºDeDocumento.Text = persona.nroDocumento;
             txtApellido.Text = persona.apellido;
             txtNombre.Text = persona.nombre;
             txtDomicilio.Text = persona.domicilio;
-            ddlLocalidades.SelectedIndex = localidad.idLocalidad - 1;
-            ddlBarrios.SelectedIndex = barrio.idBarrio;
+            ddlLocalidades.SelectedValue = localidad.idLocalidad.ToString();
+            ddlBarrios.SelectedValue = barrio.idBarrio.ToString();
             txtTelefonoFijo.Text = persona.telefonoFijo;
             txtTelefonoCelular.Text = persona.telefonoCelular;
             txtMail.Text = persona.email;
@@ -138,8 +138,8 @@ namespace SiGMA
                 lblResultado3.Text = "No se pudo modificar";
                 pnlCorrecto.Visible = false;
             }
-            persona.idBarrio = ddlBarrios.SelectedIndex + 1;
-            persona.idTipoDocumento = ddlTipoDeDocumento.SelectedIndex + 1;
+            persona.idBarrio = int.Parse(ddlBarrios.SelectedValue);
+            persona.idTipoDocumento = int.Parse(ddlTipoDeDocumento.SelectedValue);
             persona.nombre = txtNombre.Text;
             persona.nroDocumento = txtNºDeDocumento.Text;
             persona.telefonoCelular = txtTelefonoCelular.Text;
