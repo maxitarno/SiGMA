@@ -52,6 +52,7 @@
       <DependentUpon>DER.edmx</DependentUpon>
     </Compile>
     <Compile Include="LogicaBDLogin.cs" />
+    <Compile Include="LogicaBDMascotas.cs" />
     <Compile Include="LogicaBDRol.cs" />
     <Compile Include="LogicaBDUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

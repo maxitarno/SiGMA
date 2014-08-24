@@ -19,6 +19,17 @@ namespace SiGMA
                 CargarCombos.cargarEdad(ref ddlEdad);
                 CargarCombos.cargarEspecies(ref ddlEspecie);
                 CargarCombos.cargarComboRazas(ref ddlRaza);
+                    pnlNombre.Visible = false;
+                    pnltxtNombreDueñio.Visible = false;
+                    pnlboton.Visible = true;
+                    pnlAtento.Visible = false;
+                    pnlbotones.Visible = false;
+                    pnlbtnSeleccionar.Visible = false;
+                    pnlCorrecto.Visible = false;
+                    pnlDatos.Visible = false;
+                    pnlInfo.Visible = false;
+                    pnlmascota.Visible = true;
+                    pnltxtMascota.Visible = true;
             }
         }
         public void ddlRaza_SelectedIndexChanged(object sender, EventArgs e)
@@ -30,6 +41,84 @@ namespace SiGMA
             ddlRaza.DataTextField = "nombreRaza";
             ddlRaza.DataValueField = "idRaza";
             ddlRaza.DataBind();
+        }
+        public void RbPorDuenio(object sender, EventArgs e)
+        {
+            if (rbPorDuenio.Checked)
+            {
+                pnlNombre.Visible = true;
+                pnltxtNombreDueñio.Visible = true;
+                pnlboton.Visible = true;
+                pnlAtento.Visible = false;
+                pnlbotones.Visible = false;
+                pnlbtnSeleccionar.Visible = false;
+                pnlCorrecto.Visible = false;
+                pnlDatos.Visible = false;
+                pnlInfo.Visible = false;
+                pnlmascota.Visible = false;
+                pnltxtMascota.Visible = false;
+                pnlResultados.Visible = false;
+            }
+        }
+        public void RbPorMascota(object sender, EventArgs e){
+            pnlNombre.Visible = false;
+            pnltxtNombreDueñio.Visible = false;
+            pnlboton.Visible = true;
+            pnlAtento.Visible = false;
+            pnlbotones.Visible = false;
+            pnlbtnSeleccionar.Visible = false;
+            pnlCorrecto.Visible = false;
+            pnlDatos.Visible = false;
+            pnlInfo.Visible = false;
+            pnlmascota.Visible = true;
+            pnltxtMascota.Visible = true;
+            pnlResultados.Visible = false;
+       }
+        public void BtnBuscarClick(object sender, EventArgs e)
+        {
+            List<EMascota> mascotas = new List<EMascota>();
+            if (rbPorDuenio.Checked)
+            {
+                mascotas = LogicaBDMascotas.BuscarMascotaPorduenio(txtNombreDueñio.Text);
+                if (mascotas.Count != 0)
+                {
+                    pnlbtnSeleccionar.Visible = true;
+                    pnlResultados.Visible = true;
+                    lstResultados.DataSource = mascotas;
+                    lstResultados.DataTextField = "nombreMascota";
+                    lstResultados.DataValueField = "idMascota";
+                    lstResultados.DataBind();
+                }
+                else
+                {
+                    pnlInfo.Visible = true;
+                    lblResultado2.Text = "No se encontraron mascotas";
+                }
+            }
+        }
+        public void BtnSeleccionarClick(object sender, EventArgs e)
+        {
+            EMascota mascota = new EMascota();
+            EPersona persona = new EPersona();
+            ECaracterMascota caracter = new ECaracterMascota();
+            ECategoriaRaza categoria = new ECategoriaRaza();
+            ECuidado cuidado = new ECuidado();
+            mascota.nombreMascota = lstResultados.SelectedValue;
+            if (LogicaBDMascotas.BuscarMascotaPorDuenio(persona, mascota, categoria, caracter, cuidado))
+            {
+                ddlEstado.SelectedValue = mascota.idEstado.ToString();
+                txtAlimentacionEspecial.Text = mascota.alimetaionEspeial;
+                txtCaracter.Text = caracter.descripcion;
+                txtCategoria.Text = categoria.nombreCategoriaRaza;
+                txtCuidadoEspecial.Text = cuidado.descripcion;
+                txtFecha.Text = mascota.fechaNcimiento.ToString();
+                txtMascota.Text = mascota.nombreMascota;
+                txtNombreDueñio.Text = persona.nombre;
+                txtObservaciones.Text = mascota.observaciones;
+                txtTratoA.Text = mascota.tratoAnimal;
+                txtTratoN.Text = mascota.tratoNiños;
+                pnlDatos.Visible = true;
+            }
         }
     }
 }

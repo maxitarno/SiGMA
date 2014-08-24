@@ -18,6 +18,41 @@ namespace SiGMA
                 CargarCombos.cargarBarrio(ref ddlBarrios);
                 CargarCombos.cargarLocalidades(ref ddlLocalidades);
                 CargarCombos.cargarTipoDocumento(ref ddlTipoDeDocumento);
+                pnlUser.Visible = true;
+                pnlBuscar.Visible = true;
+                pnlUsuario.Visible = true;
+                pnlType.Visible = false;
+                pnlNºDeDocumento.Visible = false;
+                pnlTipoDeDocumento.Visible = false;
+                pnlnumber.Visible = false;
+                pnlTipoDeDocumento.Visible = false;
+                pnlApellido.Visible = false;
+                pnladress.Visible = false;
+                pnlbarrio.Visible = false;
+                pnlBarrios.Visible = false;
+                pnldate.Visible = false;
+                pnlDomicilio.Visible = false;
+                pnlEliminar.Visible = false;
+                pnlestate.Visible = false;
+                pnlFecha.Visible = false;
+                pnlLimpiar.Visible = false;
+                pnlLocalidades.Visible = false;
+                pnlMail.Visible = false;
+                pnlmails.Visible = false;
+                pnlModificar.Visible = false;
+                pnlname.Visible = false;
+                pnlNombre.Visible = false;
+                pnlphone.Visible = false;
+                pnlphonefixed.Visible = false;
+                pnlresult.Visible = false;
+                pnlResultados.Visible = false;
+                pnlSeleccionar.Visible = false;
+                pnlsurname.Visible = false;
+                pnlTelefonFijo.Visible = false;
+                pnlTelefonoCelular.Visible = false;
+                pnlAtento.Visible = false;
+                pnlCorrecto.Visible = false;
+                pnlEliminar.Visible = false;
             }
         }
         public void btnBuscarClick(object sender, EventArgs e){

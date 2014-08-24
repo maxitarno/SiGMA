@@ -35,22 +35,22 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="almedio">
-                            <asp:Panel ID="pnlBuscarPor" runat="server" Width="100%">
-                                <table>
-                                    <tr>
-                                        <td>
-                                            Por dueñio:&nbsp
-                                        </td>
-                                        <td>
-                                            <asp:RadioButton ID="rbPorDuenio" runat="server" AutoPostBack="True" GroupName="1" ValidationGroup="1" />&nbsp&nbsp
-                                        </td>
-                                        <td>
-                                            Por Mascota:&nbsp
-                                        </td>
-                                        <td>
-                                            <asp:RadioButton ID="rbPorMascota" runat="server" AutoPostBack="True" GroupName="1" />
-                                        </td>
+                        
+    <td class="almedio">
+        <asp:Panel ID="pnlBuscarPor" runat="server" Width="100%">
+            <table>
+                <tr>
+                    <td colspan="2" align="justify">
+                        <asp:Panel ID="pnlrdbporDuenio" runat="server">
+                            Por dueñio:&nbsp<asp:RadioButton ID="rbPorDuenio" runat="server" GroupName="1" ValidationGroup="1" AutoPostBack="True" OnCheckedChanged="RbPorDuenio" />&nbsp
+                        </asp:Panel>
+                    </td>
+                    <td colspan="2" align="right">
+                        <asp:Panel ID="pnlrdbMascota" runat="server">
+                            Por mascota:&nbsp<asp:RadioButton ID="rbPorMascota" runat="server" GroupName="1"
+                                ValidationGroup="1" AutoPostBack="True" OnCheckedChanged="RbPorMascota" Checked="True" />
+                        </asp:Panel>
+                    </td>
                                     </tr>
                                 </table>
                             </asp:Panel>
@@ -72,7 +72,7 @@
                                     </td>
                                     <td>
                                         <asp:Panel ID=pnlboton runat=server Visible=false>
-                                            <asp:Button ID="btnBuscar" runat="server" Text="Button" CssClass="btn-primary" />
+                                            <asp:Button ID="btnBuscar" runat="server" Text="Buscar" CssClass="btn-primary" OnClick="BtnBuscarClick"/>
                                         </asp:Panel>
                                     </td>
                                     <td>
@@ -171,9 +171,7 @@
                                             Categoria:&nbsp
                                         </td>
                                         <td>
-                                            <asp:DropDownList ID="ddlCategoria" runat="server" Width="100%" CssClass="DropDownList"
-                                                AppendDataBoundItems="False">
-                                            </asp:DropDownList>
+                                            <asp:TextBox ID="txtCategoria" runat="server" CssClass="TextBox"></asp:TextBox>
                                         </td>
                                     </tr>
                                     <tr>
@@ -265,7 +263,7 @@
                                 <tr>
                                     <td>
                                         <asp:Panel ID="pnlbtnSeleccionar" runat="server" Visible="false">
-                                            <asp:Button ID="btnSeleccionar" runat="server" Text="Seleccionar" CssClass="btn-primary" />
+                                            <asp:Button ID="btnSeleccionar" runat="server" Text="Seleccionar" CssClass="btn-primary" OnClick="BtnSeleccionarClick"/>
                                         </asp:Panel>
                                         <asp:Panel ID="pnlbotones" runat="server" Visible="false">
                                             <asp:Button ID="btnModificar" runat="server" Text="Modificar" CssClass="btn-primary" />

@@ -76,6 +76,15 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.Panel pnlBuscarPor;
         
         /// <summary>
+        /// Control pnlrdbporDuenio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlrdbporDuenio;
+        
+        /// <summary>
         /// Control rbPorDuenio.
         /// </summary>
         /// <remarks>
@@ -83,6 +92,15 @@ namespace SiGMA {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButton rbPorDuenio;
+        
+        /// <summary>
+        /// Control pnlrdbMascota.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlrdbMascota;
         
         /// <summary>
         /// Control rbPorMascota.
@@ -265,13 +283,13 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.DropDownList ddlRaza;
         
         /// <summary>
-        /// Control ddlCategoria.
+        /// Control txtCategoria.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlCategoria;
+        protected global::System.Web.UI.WebControls.TextBox txtCategoria;
         
         /// <summary>
         /// Control txtCuidadoEspecial.

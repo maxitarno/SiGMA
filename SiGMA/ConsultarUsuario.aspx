@@ -41,7 +41,7 @@
                         </td>
                         <td colspan="2" align="right">
                             <asp:Panel ID="pnlrdbUsuario" runat="server" >
-                                Por usuario:&nbsp<asp:RadioButton ID="rbPorUsuario" runat="server" GroupName="1" ValidationGroup="1" AutoPostBack="True" OnCheckedChanged="RdbPorUsuario" />
+                                Por usuario:&nbsp<asp:RadioButton ID="rbPorUsuario" runat="server" GroupName="1" ValidationGroup="1" AutoPostBack="True" OnCheckedChanged="RdbPorUsuario" Checked="True" />
                             </asp:Panel>
                         </td>
                     </tr>

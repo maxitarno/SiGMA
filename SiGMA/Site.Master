@@ -64,6 +64,7 @@
             </button>
             <ul class="dropdown-menu">
                 <li><a href="ConsultarMascotas.aspx">Consultar mascotas</a></li>
+                <li><a href="RegistrarMascota.aspx">Registrar mascotas</a></li>
             </ul>
         </div>
         <!-- fin mascotas -->
