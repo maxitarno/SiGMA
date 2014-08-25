@@ -30,6 +30,7 @@ namespace SiGMA
                     pnlInfo.Visible = false;
                     pnlmascota.Visible = true;
                     pnltxtMascota.Visible = true;
+                    CargarCombos.cargarEstado(ref ddlEstado);
             }
         }
         public void ddlRaza_SelectedIndexChanged(object sender, EventArgs e)
@@ -103,21 +104,27 @@ namespace SiGMA
             ECaracterMascota caracter = new ECaracterMascota();
             ECategoriaRaza categoria = new ECategoriaRaza();
             ECuidado cuidado = new ECuidado();
-            mascota.nombreMascota = lstResultados.SelectedValue;
-            if (LogicaBDMascotas.BuscarMascotaPorDuenio(persona, mascota, categoria, caracter, cuidado))
+            int idMascota = int.Parse(lstResultados.SelectedValue);
+            if (LogicaBDMascotas.BuscarMascotaPorDuenio(persona, mascota, categoria, caracter, cuidado, idMascota))
             {
                 ddlEstado.SelectedValue = mascota.idEstado.ToString();
                 txtAlimentacionEspecial.Text = mascota.alimetaionEspeial;
                 txtCaracter.Text = caracter.descripcion;
                 txtCategoria.Text = categoria.nombreCategoriaRaza;
                 txtCuidadoEspecial.Text = cuidado.descripcion;
-                txtFecha.Text = mascota.fechaNcimiento.ToString();
+                txtFecha.Text = mascota.fechaNcimiento.ToShortDateString().ToString();
                 txtMascota.Text = mascota.nombreMascota;
                 txtNombreDueñio.Text = persona.nombre;
                 txtObservaciones.Text = mascota.observaciones;
                 txtTratoA.Text = mascota.tratoAnimal;
                 txtTratoN.Text = mascota.tratoNiños;
                 pnlDatos.Visible = true;
+                ddlColor.SelectedValue = mascota.idColor.ToString();
+                ddlEdad.SelectedValue = mascota.idEdad.ToString();
+                ddlEspecie.SelectedValue = mascota.idEspacie.ToString();
+                ddlRaza.SelectedValue = mascota.idRaza.ToString();
+                ddlSexo.SelectedValue = mascota.sexo.ToString().ToUpper();
+                pnlbotones.Visible = true;
             }
         }
     }

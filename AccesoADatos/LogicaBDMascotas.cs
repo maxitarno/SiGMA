@@ -7,13 +7,12 @@ namespace AccesoADatos
 {
     public class LogicaBDMascotas
     {
-        public static bool BuscarMascotaPorDuenio(EPersona persona, EMascota mascota, ECategoriaRaza categoria, ECaracterMascota caracter, ECuidado cuidado)
+        public static bool BuscarMascotaPorDuenio(EPersona persona, EMascota mascota, ECategoriaRaza categoria, ECaracterMascota caracter, ECuidado cuidado, int idMascota)
         {
             bool b = false;
             try
             {
                 SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
-                List<EMascota> mascotas = new List<EMascota>();
                 var consulta = from MascotasBD in mapaEntidades.Mascotas
                                from DueniosBD in mapaEntidades.Duenios
                                from PersonasBD in mapaEntidades.Personas
@@ -21,7 +20,7 @@ namespace AccesoADatos
                                from CategoriaRazaBD in mapaEntidades.CategoriaRazas
                                from CaracterBD in mapaEntidades.CaracteresMascota
                                from CuidadoEspecialBD in mapaEntidades.CuidadosEspeciales
-                               where (CuidadoEspecialBD.idCuidadoEspecial == RazaBD.idCuidadoEspecial && DueniosBD.idPersona == PersonasBD.idPersona && DueniosBD.idDuenio == MascotasBD.idMascota && MascotasBD.idRaza == RazaBD.idRaza && RazaBD.idCategoriaRaza == CategoriaRazaBD.idCategoriaRazas && MascotasBD.idCaracter == CaracterBD.idCaracter && MascotasBD.nombreMascota.Contains(mascota.nombreMascota))
+                               where (DueniosBD.idPersona == PersonasBD.idPersona && DueniosBD.idDuenio == MascotasBD.idDuenio && MascotasBD.idRaza == RazaBD.idRaza && CuidadoEspecialBD.idCuidadoEspecial == RazaBD.idCuidadoEspecial && RazaBD.idCategoriaRaza == CategoriaRazaBD.idCategoriaRazas && MascotasBD.idCaracter == CaracterBD.idCaracter && MascotasBD.idMascota == idMascota)
                                select new
                                {
                                    nombre = MascotasBD.nombreMascota,
@@ -39,7 +38,8 @@ namespace AccesoADatos
                                    Duenio = PersonasBD.nombre,
                                    categoria = CategoriaRazaBD.nombreCategoriaRaza,
                                    caracter = CaracterBD.descripcion,
-                                   Cuidado = CuidadoEspecialBD.descripcion
+                                   Cuidado = CuidadoEspecialBD.descripcion,
+                                   id = MascotasBD.idMascota
                                };
                 foreach (var registro in consulta)
                 {
@@ -56,8 +56,12 @@ namespace AccesoADatos
                     mascota.tratoAnimal = registro.tratoA;
                     mascota.tratoNiños = registro.tratoN;
                     cuidado.descripcion = registro.Cuidado;
-                    b = true;
-                }
+                    mascota.idMascota = registro.id;
+                    mascota.idEdad = registro.edad;
+                    mascota.idEspacie = registro.especie;
+                    mascota.idEstado = registro.estado;
+                   }
+                b = true;
             }
             catch (System.Data.EntityCommandCompilationException exc)
             {

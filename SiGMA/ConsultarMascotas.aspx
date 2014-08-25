@@ -35,22 +35,22 @@
                         </td>
                     </tr>
                     <tr>
-                        
-    <td class="almedio">
-        <asp:Panel ID="pnlBuscarPor" runat="server" Width="100%">
-            <table>
-                <tr>
-                    <td colspan="2" align="justify">
-                        <asp:Panel ID="pnlrdbporDuenio" runat="server">
-                            Por dueñio:&nbsp<asp:RadioButton ID="rbPorDuenio" runat="server" GroupName="1" ValidationGroup="1" AutoPostBack="True" OnCheckedChanged="RbPorDuenio" />&nbsp
-                        </asp:Panel>
-                    </td>
-                    <td colspan="2" align="right">
-                        <asp:Panel ID="pnlrdbMascota" runat="server">
-                            Por mascota:&nbsp<asp:RadioButton ID="rbPorMascota" runat="server" GroupName="1"
-                                ValidationGroup="1" AutoPostBack="True" OnCheckedChanged="RbPorMascota" Checked="True" />
-                        </asp:Panel>
-                    </td>
+                        <td class="almedio">
+                            <asp:Panel ID="pnlBuscarPor" runat="server" Width="100%">
+                                <table>
+                                    <tr>
+                                        <td colspan="2" align="justify">
+                                            <asp:Panel ID="pnlrdbporDuenio" runat="server">
+                                                Por dueñio:&nbsp<asp:RadioButton ID="rbPorDuenio" runat="server" GroupName="1" ValidationGroup="1"
+                                                    AutoPostBack="True" OnCheckedChanged="RbPorDuenio" />&nbsp
+                                            </asp:Panel>
+                                        </td>
+                                        <td colspan="2" align="right">
+                                            <asp:Panel ID="pnlrdbMascota" runat="server">
+                                                Por mascota:&nbsp<asp:RadioButton ID="rbPorMascota" runat="server" GroupName="1"
+                                                    ValidationGroup="1" AutoPostBack="True" OnCheckedChanged="RbPorMascota" Checked="True" />
+                                            </asp:Panel>
+                                        </td>
                                     </tr>
                                 </table>
                             </asp:Panel>
@@ -61,18 +61,18 @@
                             <table>
                                 <tr>
                                     <td valign="middle">
-                                        <asp:Panel ID="pnlNombre" Visible="false" runat=server>
+                                        <asp:Panel ID="pnlNombre" Visible="false" runat="server">
                                             Nombre:&nbsp
                                         </asp:Panel>
                                     </td>
                                     <td>
-                                        <asp:Panel ID="pnltxtNombreDueñio" Visible="false" runat=server>
+                                        <asp:Panel ID="pnltxtNombreDueñio" Visible="false" runat="server">
                                             <asp:TextBox ID="txtNombreDueñio" runat="server" CssClass="TextBox" Width="100%"></asp:TextBox>
                                         </asp:Panel>
                                     </td>
                                     <td>
-                                        <asp:Panel ID=pnlboton runat=server Visible=false>
-                                            <asp:Button ID="btnBuscar" runat="server" Text="Buscar" CssClass="btn-primary" OnClick="BtnBuscarClick"/>
+                                        <asp:Panel ID="pnlboton" runat="server" Visible="false">
+                                            <asp:Button ID="btnBuscar" runat="server" Text="Buscar" CssClass="btn-primary" OnClick="BtnBuscarClick" />
                                         </asp:Panel>
                                     </td>
                                     <td>
@@ -84,12 +84,12 @@
                                 </tr>
                                 <tr>
                                     <td valign="middle">
-                                        <asp:Panel ID="pnlmascota" Visible="false" runat=server>
+                                        <asp:Panel ID="pnlmascota" Visible="false" runat="server">
                                             mascota:&nbsp
                                         </asp:Panel>
                                     </td>
                                     <td>
-                                        <asp:Panel ID="pnltxtMascota" Visible="false" runat=server>
+                                        <asp:Panel ID="pnltxtMascota" Visible="false" runat="server">
                                             <asp:TextBox ID="txtMascota" runat="server" CssClass="TextBox" Width="100%"></asp:TextBox>
                                         </asp:Panel>
                                     </td>
@@ -130,7 +130,6 @@
                                         <td>
                                             <asp:DropDownList ID="ddlEstado" runat="server" CssClass="DropDownList" Width="100%"
                                                 AppendDataBoundItems="true">
-                                                <asp:ListItem Selected="True" Value="0" Text="-- seleccione --"></asp:ListItem>
                                             </asp:DropDownList>
                                         </td>
                                     </tr>
@@ -141,7 +140,6 @@
                                         <td>
                                             <asp:DropDownList ID="ddlEspecie" runat="server" Width="100%" CssClass="DropDownList"
                                                 OnSelectedIndexChanged="ddlRaza_SelectedIndexChanged" AutoPostBack="True" AppendDataBoundItems="true">
-                                                <asp:ListItem Selected="True" Value="0" Text="-- seleccione --"></asp:ListItem>
                                             </asp:DropDownList>
                                         </td>
                                     </tr>
@@ -152,7 +150,6 @@
                                         <td>
                                             <asp:DropDownList ID="ddlEdad" runat="server" Width="100%" CssClass="DropDownList"
                                                 AppendDataBoundItems="True">
-                                                <asp:ListItem Selected="True" Value="0" Text="-- seleccione --"></asp:ListItem>
                                             </asp:DropDownList>
                                         </td>
                                     </tr>
@@ -189,7 +186,6 @@
                                         <td>
                                             <asp:DropDownList ID="ddlColor" runat="server" Width="100%" CssClass="DropDownList"
                                                 AppendDataBoundItems="True">
-                                                <asp:ListItem Selected="True" Value="0" Text="-- seleccione --"></asp:ListItem>
                                             </asp:DropDownList>
                                         </td>
                                     </tr>
@@ -240,8 +236,8 @@
                                         <td>
                                             <asp:DropDownList ID="ddlSexo" runat="server" Width="100%" CssClass="DropDownList">
                                                 <asp:ListItem Selected="True" Value="0" Text="-- seleccione --"></asp:ListItem>
-                                                <asp:ListItem Text="Hembra" Value="1"></asp:ListItem>
-                                                <asp:ListItem Value="2" Text="Macho"></asp:ListItem>
+                                                <asp:ListItem Text="HEMBRA" Value="HEMBRA"></asp:ListItem>
+                                                <asp:ListItem Value="MACHO" Text="MACHO"></asp:ListItem>
                                             </asp:DropDownList>
                                         </td>
                                     </tr>
@@ -263,7 +259,8 @@
                                 <tr>
                                     <td>
                                         <asp:Panel ID="pnlbtnSeleccionar" runat="server" Visible="false">
-                                            <asp:Button ID="btnSeleccionar" runat="server" Text="Seleccionar" CssClass="btn-primary" OnClick="BtnSeleccionarClick"/>
+                                            <asp:Button ID="btnSeleccionar" runat="server" Text="Seleccionar" CssClass="btn-primary"
+                                                OnClick="BtnSeleccionarClick" />
                                         </asp:Panel>
                                         <asp:Panel ID="pnlbotones" runat="server" Visible="false">
                                             <asp:Button ID="btnModificar" runat="server" Text="Modificar" CssClass="btn-primary" />

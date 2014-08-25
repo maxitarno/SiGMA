@@ -123,6 +123,10 @@ namespace AccesoADatos
             {
                 throw exc;
             }
+            catch (System.Data.EntityException exc)
+            {
+                throw exc;
+            }
             return colores;
         }
         //fin metodo
