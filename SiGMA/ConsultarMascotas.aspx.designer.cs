@@ -310,22 +310,22 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.DropDownList ddlColor;
         
         /// <summary>
-        /// Control txtTratoA.
+        /// Control ddlTratoAnimales.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTratoA;
+        protected global::System.Web.UI.WebControls.DropDownList ddlTratoAnimales;
         
         /// <summary>
-        /// Control txtTratoN.
+        /// Control ddlTratoNinios.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTratoN;
+        protected global::System.Web.UI.WebControls.DropDownList ddlTratoNinios;
         
         /// <summary>
         /// Control txtCaracter.

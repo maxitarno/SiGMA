@@ -168,7 +168,7 @@
                                             Categoria:&nbsp
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="txtCategoria" runat="server" CssClass="TextBox"></asp:TextBox>
+                                            <asp:TextBox ID="txtCategoria" runat="server" CssClass="TextBox" ReadOnly="True"></asp:TextBox>
                                         </td>
                                     </tr>
                                     <tr>
@@ -194,7 +194,11 @@
                                             Trato animales:&nbsp
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="txtTratoA" runat="server" CssClass="TextBox"></asp:TextBox>
+                                            <asp:DropDownList ID="ddlTratoAnimales" runat="server">
+                                            <asp:ListItem Selected="True" Value="0" Text=""></asp:ListItem>
+                                                <asp:ListItem Text="Si" Value="Si"></asp:ListItem>
+                                                <asp:ListItem Value="No" Text="No"></asp:ListItem>
+                                            </asp:DropDownList>
                                         </td>
                                     </tr>
                                     <tr>
@@ -202,7 +206,11 @@
                                             Trato niños:&nbsp
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="txtTratoN" runat="server" CssClass="TextBox"></asp:TextBox>
+                                           <asp:DropDownList ID="ddlTratoNinios" runat="server">
+                                            <asp:ListItem Selected="True" Value="0" Text=""></asp:ListItem>
+                                                <asp:ListItem Text="Si" Value="Si"></asp:ListItem>
+                                                <asp:ListItem Value="No" Text="No"></asp:ListItem>
+                                            </asp:DropDownList>
                                         </td>
                                     </tr>
                                     <tr>

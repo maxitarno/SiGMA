@@ -116,8 +116,8 @@ namespace SiGMA
                 txtMascota.Text = mascota.nombreMascota;
                 txtNombreDueñio.Text = persona.nombre;
                 txtObservaciones.Text = mascota.observaciones;
-                txtTratoA.Text = mascota.tratoAnimal;
-                txtTratoN.Text = mascota.tratoNiños;
+                ddlTratoAnimales.SelectedValue = mascota.tratoAnimal;
+                ddlTratoNinios.SelectedValue = mascota.tratoNiños;
                 pnlDatos.Visible = true;
                 ddlColor.SelectedValue = mascota.idColor.ToString();
                 ddlEdad.SelectedValue = mascota.idEdad.ToString();
