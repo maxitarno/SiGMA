@@ -210,5 +210,34 @@ namespace SiGMA
                 pnlCorrecto.Visible = false;
             }
         }
+        public void BtnEliminarClick(object sender, EventArgs e){
+            if (ddlEstado.SelectedValue == "7")
+            {
+                if ((int)Session["idMascota"] != 0)
+                {
+                    if (LogicaBDMascotas.Eliminar((int)Session["idMascota"]))
+                    {
+                        pnlCorrecto.Visible = true;
+                        pnlInfo.Visible = false;
+                        pnlAtento.Visible = false;
+                        lblResultado1.Text = "Se elimino correctamente";
+                    }
+                    else
+                    {
+                        pnlCorrecto.Visible = false;
+                        pnlInfo.Visible = false;
+                        pnlAtento.Visible = true;
+                        lblResultado3.Text = "No se puedo eliminar";
+                    }
+                }
+            }
+            else
+            {
+                pnlCorrecto.Visible = false;
+                pnlInfo.Visible = false;
+                pnlAtento.Visible = true;
+                lblResultado3.Text = "No se puedo eliminar";
+            }
+        }
     }
 }

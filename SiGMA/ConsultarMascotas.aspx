@@ -195,7 +195,7 @@
                                         </td>
                                         <td>
                                             <asp:DropDownList ID="ddlTratoAnimales" runat="server">
-                                            <asp:ListItem Selected="True" Value="0" Text=""></asp:ListItem>
+                                                <asp:ListItem Selected="True" Value="0" Text=""></asp:ListItem>
                                                 <asp:ListItem Text="Si" Value="Si"></asp:ListItem>
                                                 <asp:ListItem Value="No" Text="No"></asp:ListItem>
                                             </asp:DropDownList>
@@ -206,8 +206,8 @@
                                             Trato niños:&nbsp
                                         </td>
                                         <td>
-                                           <asp:DropDownList ID="ddlTratoNinios" runat="server">
-                                            <asp:ListItem Selected="True" Value="0" Text=""></asp:ListItem>
+                                            <asp:DropDownList ID="ddlTratoNinios" runat="server">
+                                                <asp:ListItem Selected="True" Value="0" Text=""></asp:ListItem>
                                                 <asp:ListItem Text="Si" Value="Si"></asp:ListItem>
                                                 <asp:ListItem Value="No" Text="No"></asp:ListItem>
                                             </asp:DropDownList>
@@ -271,9 +271,13 @@
                                             <asp:Button ID="btnSeleccionar" runat="server" Text="Seleccionar" CssClass="btn-primary"
                                                 OnClick="BtnSeleccionarClick" CausesValidation="False" />
                                         </asp:Panel>
+                                    </td>
+                                    <td>
                                         <asp:Panel ID="pnlbotones" runat="server" Visible="false">
-                                            <asp:Button ID="btnModificar" runat="server" Text="Modificar" CssClass="btn-primary" OnClick="BtnModificarClick" ValidationGroup="1" />
-                                            <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" CssClass="btn-primary" ValidationGroup="2" />
+                                            <asp:Button ID="btnModificar" runat="server" Text="Modificar" CssClass="btn-primary"
+                                                OnClick="BtnModificarClick" ValidationGroup="1" />
+                                            <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" CssClass="btn-primary"
+                                                ValidationGroup="2" OnClick="BtnEliminarClick"/>
                                             <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar" CssClass="btn-primary" />
                                         </asp:Panel>
                                     </td>

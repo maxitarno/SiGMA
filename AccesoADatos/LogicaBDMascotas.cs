@@ -60,7 +60,7 @@ namespace AccesoADatos
                     mascota.idEdad = registro.edad;
                     mascota.idEspecie = registro.especie;
                     mascota.idEstado = registro.estado;
-                   }
+                }
                 b = true;
             }
             catch (System.Data.EntityCommandCompilationException exc)
@@ -73,13 +73,14 @@ namespace AccesoADatos
         public static List<EMascota> BuscarMascotaPorduenio(string duenio)
         {
             List<EMascota> mascotas = new List<EMascota>();
-                SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
-                IQueryable<Mascotas> consulta = from MascotasBD in mapaEntidades.Mascotas
-                                                from DueniosBD in mapaEntidades.Duenios
-                                                from PersonasBD in mapaEntidades.Personas
-                                                where(DueniosBD.idPersona == PersonasBD.idPersona && MascotasBD.idDuenio == DueniosBD.idDuenio && PersonasBD.nombre.Contains(duenio))
-                                                select MascotasBD;
-            try{
+            SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+            IQueryable<Mascotas> consulta = from MascotasBD in mapaEntidades.Mascotas
+                                            from DueniosBD in mapaEntidades.Duenios
+                                            from PersonasBD in mapaEntidades.Personas
+                                            where (DueniosBD.idPersona == PersonasBD.idPersona && MascotasBD.idDuenio == DueniosBD.idDuenio && PersonasBD.nombre.Contains(duenio))
+                                            select MascotasBD;
+            try
+            {
                 foreach (var registro in consulta)
                 {
                     EMascota mascota = new EMascota();
@@ -94,12 +95,15 @@ namespace AccesoADatos
             }
             return mascotas;
         }
-        public static bool ModificarMascota(EMascota mascota){
+        public static bool ModificarMascota(EMascota mascota)
+        {
             bool b = false;
-            try{
+            try
+            {
                 SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
-                var consulta = mapaEntidades.Mascotas.Where( mascotasBuscadas => mascotasBuscadas.idMascota == mascota.idMascota);
-                foreach(var registro in consulta){
+                var consulta = mapaEntidades.Mascotas.Where(mascotasBuscadas => mascotasBuscadas.idMascota == mascota.idMascota);
+                foreach (var registro in consulta)
+                {
                     registro.alimentacionEspecial = registro.alimentacionEspecial.Replace(registro.alimentacionEspecial, mascota.alimetaionEspeial);
                     registro.idCaracter = mascota.idcaracter;
                     registro.idEdad = mascota.idEdad;
@@ -117,7 +121,8 @@ namespace AccesoADatos
                 b = true;
                 mapaEntidades.SaveChanges();
             }
-            catch(InvalidOperationException exc){
+            catch (InvalidOperationException exc)
+            {
                 b = false;
                 throw exc;
             }
@@ -147,6 +152,30 @@ namespace AccesoADatos
                 throw exc;
             }
             return mascotas;
+        }
+        public static bool Eliminar(int idMascota)
+        {
+            SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+            bool b = false;
+            IQueryable<Mascotas> consulta = from MascotasBD in mapaEntidades.Mascotas
+                                            where ( MascotasBD.idMascota == idMascota)
+                                            select MascotasBD;
+            if(consulta.Count() != 0)
+            {
+                try
+                {
+                    var mascotas = mapaEntidades.Mascotas.Where( mascotasBuscadas => mascotasBuscadas.idMascota == idMascota).Single();
+                    mapaEntidades.DeleteObject(mascotas);
+                    mapaEntidades.DetectChanges();
+                    mapaEntidades.SaveChanges();
+                    b = true;
+                }
+                catch(System.Data.UpdateException exc){
+                    b = false;
+                    throw exc;
+                }
+            }
+            return b;
         }
     }
 }
