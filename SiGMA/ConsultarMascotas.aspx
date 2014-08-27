@@ -218,7 +218,8 @@
                                             Carater:&nbsp
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="txtCaracter" runat="server" CssClass="TextBox"></asp:TextBox>
+                                            <asp:DropDownList ID="ddlCaracter" runat="server" CssClass="DropDownList">
+                                            </asp:DropDownList>
                                         </td>
                                     </tr>
                                     <tr>

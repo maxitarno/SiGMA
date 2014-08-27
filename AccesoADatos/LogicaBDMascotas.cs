@@ -58,7 +58,7 @@ namespace AccesoADatos
                     cuidado.descripcion = registro.Cuidado;
                     mascota.idMascota = registro.id;
                     mascota.idEdad = registro.edad;
-                    mascota.idEspacie = registro.especie;
+                    mascota.idEspecie = registro.especie;
                     mascota.idEstado = registro.estado;
                    }
                 b = true;
@@ -80,6 +80,59 @@ namespace AccesoADatos
                                                 where(DueniosBD.idPersona == PersonasBD.idPersona && MascotasBD.idDuenio == DueniosBD.idDuenio && PersonasBD.nombre.Contains(duenio))
                                                 select MascotasBD;
             try{
+                foreach (var registro in consulta)
+                {
+                    EMascota mascota = new EMascota();
+                    mascota.nombreMascota = registro.nombreMascota;
+                    mascota.idMascota = registro.idMascota;
+                    mascotas.Add(mascota);
+                }
+            }
+            catch (System.Data.EntityCommandCompilationException exc)
+            {
+                throw exc;
+            }
+            return mascotas;
+        }
+        public static bool ModificarMascota(EMascota mascota){
+            bool b = false;
+            try{
+                SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+                var consulta = mapaEntidades.Mascotas.Where( mascotasBuscadas => mascotasBuscadas.idMascota == mascota.idMascota);
+                foreach(var registro in consulta){
+                    registro.alimentacionEspecial = registro.alimentacionEspecial.Replace(registro.alimentacionEspecial, mascota.alimetaionEspeial);
+                    registro.idCaracter = mascota.idcaracter;
+                    registro.idEdad = mascota.idEdad;
+                    registro.idEspecie = mascota.idEspecie;
+                    registro.idEstado = mascota.idEstado;
+                    registro.idRaza = mascota.idMascota;
+                    registro.nombreMascota = registro.nombreMascota.Replace(registro.nombreMascota, mascota.nombreMascota);
+                    registro.observaciones = registro.observaciones.Replace(registro.observaciones, mascota.observaciones);
+                    registro.idColor = mascota.idColor;
+                    registro.sexo = registro.sexo.Replace(registro.sexo, mascota.sexo);
+                    registro.tratoAnimales = registro.tratoAnimales.Replace(registro.tratoAnimales, mascota.sexo);
+                    registro.tratoNinios = registro.tratoNinios.Replace(registro.tratoNinios, mascota.tratoNiños);
+                }
+                b = true;
+                mapaEntidades.SaveChanges();
+            }
+            catch(InvalidOperationException exc){
+                b = false;
+                throw exc;
+            }
+            return b;
+        }
+        public static List<EMascota> BuscarMascotaPorMascota(string nombre)
+        {
+            List<EMascota> mascotas = new List<EMascota>();
+            SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+            IQueryable<Mascotas> consulta = from MascotasBD in mapaEntidades.Mascotas
+                                            from DueniosBD in mapaEntidades.Duenios
+                                            from PersonasBD in mapaEntidades.Personas
+                                            where (DueniosBD.idPersona == PersonasBD.idPersona && MascotasBD.idDuenio == DueniosBD.idDuenio && MascotasBD.nombreMascota.Contains(nombre))
+                                            select MascotasBD;
+            try
+            {
                 foreach (var registro in consulta)
                 {
                     EMascota mascota = new EMascota();

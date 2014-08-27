@@ -328,13 +328,13 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.DropDownList ddlTratoNinios;
         
         /// <summary>
-        /// Control txtCaracter.
+        /// Control ddlCaracter.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCaracter;
+        protected global::System.Web.UI.WebControls.DropDownList ddlCaracter;
         
         /// <summary>
         /// Control txtObservaciones.
