@@ -272,7 +272,7 @@
                                                 OnClick="BtnSeleccionarClick" />
                                         </asp:Panel>
                                         <asp:Panel ID="pnlbotones" runat="server" Visible="false">
-                                            <asp:Button ID="btnModificar" runat="server" Text="Modificar" CssClass="btn-primary" />
+                                            <asp:Button ID="btnModificar" runat="server" Text="Modificar" CssClass="btn-primary" OnClick="BtnModificarClick" />
                                             <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" CssClass="btn-primary" />
                                             <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar" CssClass="btn-primary" />
                                         </asp:Panel>

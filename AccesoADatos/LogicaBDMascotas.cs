@@ -31,27 +31,27 @@ namespace AccesoADatos
                                    color = MascotasBD.idColor,
                                    tratoA = MascotasBD.tratoAnimales,
                                    tratoN = MascotasBD.tratoNinios,
-                                   observaiones = MascotasBD.observaciones,
+                                   observaciones = MascotasBD.observaciones,
                                    alimentacion = MascotasBD.alimentacionEspecial,
                                    fecha = MascotasBD.fechaNacimiento,
                                    sexo = MascotasBD.sexo,
                                    Duenio = PersonasBD.nombre,
                                    categoria = CategoriaRazaBD.nombreCategoriaRaza,
-                                   caracter = CaracterBD.descripcion,
+                                   caracter = CaracterBD.idCaracter,
                                    Cuidado = CuidadoEspecialBD.descripcion,
                                    id = MascotasBD.idMascota
                                };
                 foreach (var registro in consulta)
                 {
                     mascota.alimetaionEspeial = registro.alimentacion;
-                    caracter.descripcion = registro.caracter;
+                    caracter.idCaracter = registro.caracter;
                     categoria.nombreCategoriaRaza = registro.categoria;
                     persona.nombre = registro.Duenio;
                     mascota.idRaza = registro.raza;
                     mascota.fechaNcimiento = (DateTime)registro.fecha;
                     mascota.idColor = registro.color;
                     mascota.nombreMascota = registro.nombre;
-                    mascota.observaciones = registro.observaiones;
+                    mascota.observaciones = registro.observaciones;
                     mascota.sexo = registro.sexo;
                     mascota.tratoAnimal = registro.tratoA;
                     mascota.tratoNiños = registro.tratoN;
@@ -112,6 +112,7 @@ namespace AccesoADatos
                     registro.sexo = registro.sexo.Replace(registro.sexo, mascota.sexo);
                     registro.tratoAnimales = registro.tratoAnimales.Replace(registro.tratoAnimales, mascota.sexo);
                     registro.tratoNinios = registro.tratoNinios.Replace(registro.tratoNinios, mascota.tratoNiños);
+                    registro.idCaracter = mascota.idcaracter;
                 }
                 b = true;
                 mapaEntidades.SaveChanges();
