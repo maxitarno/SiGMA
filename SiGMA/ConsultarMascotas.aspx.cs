@@ -128,22 +128,22 @@ namespace SiGMA
                 int idMascota = int.Parse(lstResultados.SelectedValue);
                 if (LogicaBDMascotas.BuscarMascotaPorDuenio(persona, mascota, categoria, caracter, cuidado, idMascota))
                 {
-                    ddlEstado.SelectedValue = mascota.idEstado.ToString();
-                    txtAlimentacionEspecial.Text = mascota.alimetaionEspeial;
+                    ddlEstado.SelectedValue = mascota.estado.ToString();
+                    txtAlimentacionEspecial.Text = mascota.alimetacionEspecial;
                     ddlCaracter.SelectedValue = caracter.idCaracter.ToString();
                     txtCategoria.Text = categoria.nombreCategoriaRaza;
                     txtCuidadoEspecial.Text = cuidado.descripcion;
-                    txtFecha.Text = mascota.fechaNcimiento.ToShortDateString().ToString();
+                    txtFecha.Text = mascota.fechaNacimiento.ToShortDateString().ToString();
                     txtMascota.Text = mascota.nombreMascota;
                     txtNombreDueñio.Text = persona.nombre;
                     txtObservaciones.Text = mascota.observaciones;
                     ddlTratoAnimales.SelectedValue = mascota.tratoAnimal;
                     ddlTratoNinios.SelectedValue = mascota.tratoNiños;
                     pnlDatos.Visible = true;
-                    ddlColor.SelectedValue = mascota.idColor.ToString();
-                    ddlEdad.SelectedValue = mascota.idEdad.ToString();
-                    ddlEspecie.SelectedValue = mascota.idEspecie.ToString();
-                    ddlRaza.SelectedValue = mascota.idRaza.ToString();
+                    ddlColor.SelectedValue = mascota.color.ToString();
+                    ddlEdad.SelectedValue = mascota.edad.idEdad.ToString();
+                    ddlEspecie.SelectedValue = mascota.especie.idEspecie.ToString();
+                    ddlRaza.SelectedValue = mascota.raza.ToString();
                     ddlSexo.SelectedValue = mascota.sexo.ToString().ToUpper();
                     pnlbotones.Visible = true;
                     pnlInfo.Visible = false;
@@ -173,19 +173,19 @@ namespace SiGMA
             mascota.idMascota = (int)Session["idMascota"];
             DateTime fecha = new DateTime();
             if(Validaciones.Fecha(txtFecha.Text, out fecha)){
-                mascota.alimetaionEspeial = txtAlimentacionEspecial.Text;
-                mascota.fechaNcimiento = DateTime.Parse(txtFecha.Text);
+                mascota.alimetacionEspecial = txtAlimentacionEspecial.Text;
+                mascota.fechaNacimiento = DateTime.Parse(txtFecha.Text);
                 mascota.tratoNiños = ddlTratoNinios.SelectedValue.ToString();
                 mascota.tratoAnimal = ddlTratoAnimales.SelectedValue.ToString();
                 mascota.sexo = ddlSexo.SelectedValue.ToString();
                 mascota.observaciones = txtObservaciones.Text;
                 mascota.nombreMascota = txtMascota.Text;
-                mascota.idRaza = int.Parse(ddlRaza.SelectedValue);
-                mascota.idEstado = int.Parse(ddlEstado.SelectedValue);
-                mascota.idEspecie = int.Parse(ddlEspecie.SelectedValue);
-                mascota.idEdad = int.Parse(ddlEdad.SelectedValue);
-                mascota.idColor = int.Parse(ddlColor.SelectedValue);
-                mascota.idcaracter = int.Parse(ddlCaracter.SelectedValue);
+                mascota.raza.idRaza = int.Parse(ddlRaza.SelectedValue);
+                mascota.estado.idEstado = int.Parse(ddlEstado.SelectedValue);
+                mascota.especie.idEspecie = int.Parse(ddlEspecie.SelectedValue);
+                mascota.edad.idEdad = int.Parse(ddlEdad.SelectedValue);
+                mascota.color.idColor = int.Parse(ddlColor.SelectedValue);
+                mascota.caracter.idCaracter = int.Parse(ddlCaracter.SelectedValue);
                 if (LogicaBDMascotas.ModificarMascota(mascota))
                 {
                     pnlCorrecto.Visible = true;

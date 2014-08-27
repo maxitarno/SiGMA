@@ -3,10 +3,67 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Entidades;
+using System.Transactions;
 namespace AccesoADatos
 {
     public class LogicaBDMascotas
     {
+        public static void registrarMascota(EMascota mascota)
+        {
+            using (TransactionScope transaction = new TransactionScope())
+            {
+                try
+                {
+                    SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+                    Mascotas bdMascota = new Mascotas();
+                    bdMascota.idEstado = 1;
+                    bdMascota.nombreMascota = mascota.nombreMascota;
+                    bdMascota.idEspecie = mascota.especie.idEspecie;
+                    bdMascota.idRaza = mascota.raza.idRaza;
+                    if (mascota.edad.idEdad != 0)
+                    {
+                        bdMascota.idEdad = mascota.edad.idEdad;
+                    }
+                    if (mascota.color.idColor != 0)
+                    {
+                        bdMascota.idColor = mascota.color.idColor;
+                    }
+                    if (mascota.caracter.idCaracter != 0)
+                    {
+                        bdMascota.idCaracter = mascota.caracter.idCaracter;
+                    }
+                    if (!mascota.tratoAnimal.Equals("0"))
+                    {
+                        bdMascota.tratoAnimales = mascota.tratoAnimal;
+                    }
+                    if (!mascota.tratoNiños.Equals("0"))
+                    {
+                        bdMascota.tratoNinios = mascota.tratoNiños;
+                    }
+                    if (!mascota.observaciones.Equals(""))
+                    {
+                        bdMascota.observaciones = mascota.observaciones;
+                    }
+                    if (!mascota.alimetacionEspecial.Equals(""))
+                    {
+                        bdMascota.alimentacionEspecial = mascota.alimetacionEspecial;
+                    }
+                    if (!mascota.fechaNacimiento.Equals(new DateTime()))
+                    {
+                        bdMascota.fechaNacimiento = mascota.fechaNacimiento.Date;
+                    }                    
+                    bdMascota.sexo = mascota.sexo;
+                    mapaEntidades.AddToMascotas(bdMascota);
+                    mapaEntidades.SaveChanges();
+                    transaction.Complete();
+                }
+                catch (Exception exc)
+                {
+                    transaction.Dispose();
+                    throw exc;
+                }
+            }
+        }
         public static bool BuscarMascotaPorDuenio(EPersona persona, EMascota mascota, ECategoriaRaza categoria, ECaracterMascota caracter, ECuidado cuidado, int idMascota)
         {
             bool b = false;
@@ -43,13 +100,13 @@ namespace AccesoADatos
                                };
                 foreach (var registro in consulta)
                 {
-                    mascota.alimetaionEspeial = registro.alimentacion;
+                    mascota.alimetacionEspecial = registro.alimentacion;
                     caracter.idCaracter = registro.caracter;
                     categoria.nombreCategoriaRaza = registro.categoria;
                     persona.nombre = registro.Duenio;
-                    mascota.idRaza = registro.raza;
-                    mascota.fechaNcimiento = (DateTime)registro.fecha;
-                    mascota.idColor = registro.color;
+                    mascota.raza.idRaza = registro.raza;
+                    mascota.fechaNacimiento = (DateTime)registro.fecha;
+                    mascota.color.idColor = registro.color;
                     mascota.nombreMascota = registro.nombre;
                     mascota.observaciones = registro.observaciones;
                     mascota.sexo = registro.sexo;
@@ -57,9 +114,9 @@ namespace AccesoADatos
                     mascota.tratoNiños = registro.tratoN;
                     cuidado.descripcion = registro.Cuidado;
                     mascota.idMascota = registro.id;
-                    mascota.idEdad = registro.edad;
-                    mascota.idEspecie = registro.especie;
-                    mascota.idEstado = registro.estado;
+                    mascota.edad.idEdad = registro.edad;
+                    mascota.especie.idEspecie = registro.especie;
+                    mascota.estado.idEstado = registro.estado;
                 }
                 b = true;
             }
@@ -104,19 +161,19 @@ namespace AccesoADatos
                 var consulta = mapaEntidades.Mascotas.Where(mascotasBuscadas => mascotasBuscadas.idMascota == mascota.idMascota);
                 foreach (var registro in consulta)
                 {
-                    registro.alimentacionEspecial = registro.alimentacionEspecial.Replace(registro.alimentacionEspecial, mascota.alimetaionEspeial);
-                    registro.idCaracter = mascota.idcaracter;
-                    registro.idEdad = mascota.idEdad;
-                    registro.idEspecie = mascota.idEspecie;
-                    registro.idEstado = mascota.idEstado;
-                    registro.idRaza = mascota.idRaza;
+                    registro.alimentacionEspecial = registro.alimentacionEspecial.Replace(registro.alimentacionEspecial, mascota.alimetacionEspecial);
+                    registro.idCaracter = mascota.caracter.idCaracter;
+                    registro.idEdad = mascota.edad.idEdad;
+                    registro.idEspecie = mascota.especie.idEspecie;
+                    registro.idEstado = mascota.estado.idEstado;
+                    registro.idRaza = mascota.raza.idRaza;
                     registro.nombreMascota = registro.nombreMascota.Replace(registro.nombreMascota, mascota.nombreMascota);
                     registro.observaciones = registro.observaciones.Replace(registro.observaciones, mascota.observaciones);
-                    registro.idColor = mascota.idColor;
+                    registro.idColor = mascota.color.idColor;
                     registro.sexo = registro.sexo.Replace(registro.sexo, mascota.sexo);
                     registro.tratoAnimales = registro.tratoAnimales.Replace(registro.tratoAnimales, mascota.tratoAnimal);
                     registro.tratoNinios = registro.tratoNinios.Replace(registro.tratoNinios, mascota.tratoNiños);
-                    registro.idCaracter = mascota.idcaracter;
+                    registro.idCaracter = mascota.caracter.idCaracter;
                 }
                 b = true;
                 mapaEntidades.SaveChanges();

@@ -2,11 +2,23 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Web.UI.WebControls;
 
 namespace Herramientas
 {
     public class Validaciones
     {
+        public static bool verificarSeleccionEnDdl(ref DropDownList ddl)
+        {
+            if (ddl.SelectedValue.Equals("0"))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
         public static bool verificarSoloNumeros(string texto)
         {
             if (!texto.Equals(""))

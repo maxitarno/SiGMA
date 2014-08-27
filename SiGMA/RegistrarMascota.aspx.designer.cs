@@ -22,13 +22,22 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.Panel pnlDatos;
         
         /// <summary>
-        /// Control txtMascota.
+        /// Control txtNombreMascota.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMascota;
+        protected global::System.Web.UI.WebControls.TextBox txtNombreMascota;
+        
+        /// <summary>
+        /// Control rfvNombreMascota.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvNombreMascota;
         
         /// <summary>
         /// Control ddlEspecie.
@@ -40,6 +49,15 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.DropDownList ddlEspecie;
         
         /// <summary>
+        /// Control cvEspecie.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator cvEspecie;
+        
+        /// <summary>
         /// Control ddlRaza.
         /// </summary>
         /// <remarks>
@@ -49,6 +67,15 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.DropDownList ddlRaza;
         
         /// <summary>
+        /// Control cvRaza.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator cvRaza;
+        
+        /// <summary>
         /// Control ddlEdad.
         /// </summary>
         /// <remarks>
@@ -56,15 +83,6 @@ namespace SiGMA {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlEdad;
-        
-        /// <summary>
-        /// Control txtCuidadoEspecial.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCuidadoEspecial;
         
         /// <summary>
         /// Control ddlColor.
@@ -128,6 +146,15 @@ namespace SiGMA {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlSexo;
+        
+        /// <summary>
+        /// Control cvDdlSexo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator cvDdlSexo;
         
         /// <summary>
         /// Control txtFecha.

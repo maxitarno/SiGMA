@@ -16,7 +16,7 @@
     <div class="panel panel-primary">
         <div class="panel-heading">
             <h3 class="panel-title">
-                Consultar Mascotas</h3>
+                Registrar Mascota</h3>
         </div>
         <div class="panel-body">
             <div class="almedio">    
@@ -29,9 +29,11 @@
                                     <td class="style2">Nombre:&nbsp                                       
                                     </td>
                                     <td class="style1">
-                                            <asp:TextBox ID="txtMascota" runat="server" Width="100%"></asp:TextBox>
+                                            <asp:TextBox ID="txtNombreMascota" runat="server" Width="100%"></asp:TextBox>
                                     </td>
                                     <td>
+    <asp:RequiredFieldValidator ID="rfvNombreMascota" runat="server" ErrorMessage="*" 
+                                            ControlToValidate="txtNombreMascota" ForeColor="Red"></asp:RequiredFieldValidator>
                                     </td>
                                 </tr>
                                     <tr>
@@ -44,6 +46,9 @@
                                                 onselectedindexchanged="ddlEspecie_SelectedIndexChanged">
                                             </asp:DropDownList>
                                         </td>
+                                        <td>
+        <asp:CustomValidator ID="cvEspecie" runat="server" ErrorMessage="*" ControlToValidate="ddlEspecie" ForeColor="Red" 
+                                                onservervalidate="cvEspecie_ServerValidate"></asp:CustomValidator></td>
                                     </tr>
                                     <tr>
                                         <td class="style2">
@@ -53,6 +58,10 @@
                                             <asp:DropDownList ID="ddlRaza" runat="server">
                                             </asp:DropDownList>
                                         </td>
+                                        <td>
+        <asp:CustomValidator ID="cvRaza" runat="server" ErrorMessage="*" ControlToValidate="ddlRaza" ForeColor="Red" 
+                                                onservervalidate="cvRaza_ServerValidate"></asp:CustomValidator></td>
+                                    
                                     </tr>
                                     <tr>
                                         <td class="style2">
@@ -62,16 +71,7 @@
                                             <asp:DropDownList ID="ddlEdad" runat="server">
                                             </asp:DropDownList>
                                         </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="style2">
-                                            Cuidado especial:&nbsp
-                                        </td>
-                                        <td class="style1">
-                                            <asp:TextBox ID="txtCuidadoEspecial" runat="server"
-                                             Width="100%"></asp:TextBox>
-                                        </td>
-                                    </tr>
+                                    </tr>                                    
                                     <tr>
                                         <td class="style2">
                                             Color:&nbsp
@@ -86,10 +86,7 @@
                                             Trato con animales:&nbsp
                                         </td>
                                         <td class="style1">
-                                            <asp:DropDownList ID="ddlTratoAnimales" runat="server">
-                                            <asp:ListItem Selected="True" Value="0" Text=""></asp:ListItem>
-                                                <asp:ListItem Text="Si" Value="1"></asp:ListItem>
-                                                <asp:ListItem Value="2" Text="No"></asp:ListItem>
+                                            <asp:DropDownList ID="ddlTratoAnimales" runat="server">                                            
                                             </asp:DropDownList>
                                         </td>
                                     </tr>
@@ -99,9 +96,7 @@
                                         </td>
                                         <td class="style1">
                                             <asp:DropDownList ID="ddlTratoNinios" runat="server">
-                                            <asp:ListItem Selected="True" Value="0" Text=""></asp:ListItem>
-                                                <asp:ListItem Text="Si" Value="1"></asp:ListItem>
-                                                <asp:ListItem Value="2" Text="No"></asp:ListItem>
+                                            
                                             </asp:DropDownList>
                                         </td>
                                     </tr>
@@ -135,12 +130,14 @@
                                             Sexo:&nbsp
                                         </td>
                                         <td class="style1">
-                                            <asp:DropDownList ID="ddlSexo" runat="server" Width="100%">
-                                                <asp:ListItem Selected="True" Value="0" Text=""></asp:ListItem>
-                                                <asp:ListItem Text="Hembra" Value="1"></asp:ListItem>
-                                                <asp:ListItem Value="2" Text="Macho"></asp:ListItem>
+                                            <asp:DropDownList ID="ddlSexo" runat="server">
+                                                
                                             </asp:DropDownList>
                                         </td>
+                                         <td>
+        <asp:CustomValidator ID="cvDdlSexo" runat="server" ErrorMessage="*" ControlToValidate="ddlSexo" ForeColor="Red" 
+                                                onservervalidate="cvDdlSexo_ServerValidate"></asp:CustomValidator></td>
+                                    
                                     </tr>
                                     <tr>
                                         <td class="style2">
@@ -160,14 +157,16 @@
                                 <tr>
                                     <td>
                                         <asp:Panel ID="pnlBtnRegistrar" runat="server">
-                                            <asp:Button ID="btnRegistrar" runat="server" Text="Registrar" CssClass="btn-primary" />
+                                            <asp:Button ID="btnRegistrar" runat="server" Text="Registrar" 
+                                                CssClass="btn-primary" onclick="btnRegistrar_Click" />
                                         </asp:Panel>
                                     </td>
                                     <td></td>
                                     <td></td>
                                     <td>
                                         <asp:Panel ID="pnlBtnLimpiar" runat="server">
-                                            <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar" CssClass="btn-primary" />
+                                            <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar" 
+                                                CssClass="btn-primary" onclick="btnLimpiar_Click" />
                                         </asp:Panel>
                                     </td>
                                 </tr>
