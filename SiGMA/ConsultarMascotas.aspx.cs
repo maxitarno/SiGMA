@@ -123,29 +123,49 @@ namespace SiGMA
             ECaracterMascota caracter = new ECaracterMascota();
             ECategoriaRaza categoria = new ECategoriaRaza();
             ECuidado cuidado = new ECuidado();
-            int idMascota = int.Parse(lstResultados.SelectedValue);
-            if (LogicaBDMascotas.BuscarMascotaPorDuenio(persona, mascota, categoria, caracter, cuidado, idMascota))
+            if (lstResultados.SelectedValue != "")
             {
-                ddlEstado.SelectedValue = mascota.idEstado.ToString();
-                txtAlimentacionEspecial.Text = mascota.alimetaionEspeial;
-                ddlCaracter.SelectedValue = caracter.idCaracter.ToString();
-                txtCategoria.Text = categoria.nombreCategoriaRaza;
-                txtCuidadoEspecial.Text = cuidado.descripcion;
-                txtFecha.Text = mascota.fechaNcimiento.ToShortDateString().ToString();
-                txtMascota.Text = mascota.nombreMascota;
-                txtNombreDueñio.Text = persona.nombre;
-                txtObservaciones.Text = mascota.observaciones;
-                ddlTratoAnimales.SelectedValue = mascota.tratoAnimal;
-                ddlTratoNinios.SelectedValue = mascota.tratoNiños;
-                pnlDatos.Visible = true;
-                ddlColor.SelectedValue = mascota.idColor.ToString();
-                ddlEdad.SelectedValue = mascota.idEdad.ToString();
-                ddlEspecie.SelectedValue = mascota.idEspecie.ToString();
-                ddlRaza.SelectedValue = mascota.idRaza.ToString();
-                ddlSexo.SelectedValue = mascota.sexo.ToString().ToUpper();
-                pnlbotones.Visible = true;
-                pnlInfo.Visible = false;
-                Session["idMAscota"] = idMascota;
+                int idMascota = int.Parse(lstResultados.SelectedValue);
+                if (LogicaBDMascotas.BuscarMascotaPorDuenio(persona, mascota, categoria, caracter, cuidado, idMascota))
+                {
+                    ddlEstado.SelectedValue = mascota.idEstado.ToString();
+                    txtAlimentacionEspecial.Text = mascota.alimetaionEspeial;
+                    ddlCaracter.SelectedValue = caracter.idCaracter.ToString();
+                    txtCategoria.Text = categoria.nombreCategoriaRaza;
+                    txtCuidadoEspecial.Text = cuidado.descripcion;
+                    txtFecha.Text = mascota.fechaNcimiento.ToShortDateString().ToString();
+                    txtMascota.Text = mascota.nombreMascota;
+                    txtNombreDueñio.Text = persona.nombre;
+                    txtObservaciones.Text = mascota.observaciones;
+                    ddlTratoAnimales.SelectedValue = mascota.tratoAnimal;
+                    ddlTratoNinios.SelectedValue = mascota.tratoNiños;
+                    pnlDatos.Visible = true;
+                    ddlColor.SelectedValue = mascota.idColor.ToString();
+                    ddlEdad.SelectedValue = mascota.idEdad.ToString();
+                    ddlEspecie.SelectedValue = mascota.idEspecie.ToString();
+                    ddlRaza.SelectedValue = mascota.idRaza.ToString();
+                    ddlSexo.SelectedValue = mascota.sexo.ToString().ToUpper();
+                    pnlbotones.Visible = true;
+                    pnlInfo.Visible = false;
+                    Session["idMAscota"] = idMascota;
+                    pnlAtento.Visible = false;
+                    pnlCorrecto.Visible = false;
+                    pnlInfo.Visible = false;
+                }
+                else
+                {
+                    pnlInfo.Visible = true;
+                    lblResultado2.Text = "No se encontraron mascota";
+                    pnlCorrecto.Visible = false;
+                    pnlAtento.Visible = false;
+                }
+            }
+            else
+            {
+                pnlInfo.Visible = true;
+                lblResultado2.Text = "Debe seleccionar una mascota";
+                pnlCorrecto.Visible = false;
+                pnlAtento.Visible = false;
             }
         }
         public void BtnModificarClick(object sender, EventArgs e){
@@ -153,6 +173,19 @@ namespace SiGMA
             mascota.idMascota = (int)Session["idMascota"];
             DateTime fecha = new DateTime();
             if(Validaciones.Fecha(txtFecha.Text, out fecha)){
+                mascota.alimetaionEspeial = txtAlimentacionEspecial.Text;
+                mascota.fechaNcimiento = DateTime.Parse(txtFecha.Text);
+                mascota.tratoNiños = ddlTratoNinios.SelectedValue.ToString();
+                mascota.tratoAnimal = ddlTratoAnimales.SelectedValue.ToString();
+                mascota.sexo = ddlSexo.SelectedValue.ToString();
+                mascota.observaciones = txtObservaciones.Text;
+                mascota.nombreMascota = txtMascota.Text;
+                mascota.idRaza = int.Parse(ddlRaza.SelectedValue);
+                mascota.idEstado = int.Parse(ddlEstado.SelectedValue);
+                mascota.idEspecie = int.Parse(ddlEspecie.SelectedValue);
+                mascota.idEdad = int.Parse(ddlEdad.SelectedValue);
+                mascota.idColor = int.Parse(ddlColor.SelectedValue);
+                mascota.idcaracter = int.Parse(ddlCaracter.SelectedValue);
                 if (LogicaBDMascotas.ModificarMascota(mascota))
                 {
                     pnlCorrecto.Visible = true;

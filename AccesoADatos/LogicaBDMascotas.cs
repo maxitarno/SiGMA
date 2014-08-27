@@ -105,12 +105,12 @@ namespace AccesoADatos
                     registro.idEdad = mascota.idEdad;
                     registro.idEspecie = mascota.idEspecie;
                     registro.idEstado = mascota.idEstado;
-                    registro.idRaza = mascota.idMascota;
+                    registro.idRaza = mascota.idRaza;
                     registro.nombreMascota = registro.nombreMascota.Replace(registro.nombreMascota, mascota.nombreMascota);
                     registro.observaciones = registro.observaciones.Replace(registro.observaciones, mascota.observaciones);
                     registro.idColor = mascota.idColor;
                     registro.sexo = registro.sexo.Replace(registro.sexo, mascota.sexo);
-                    registro.tratoAnimales = registro.tratoAnimales.Replace(registro.tratoAnimales, mascota.sexo);
+                    registro.tratoAnimales = registro.tratoAnimales.Replace(registro.tratoAnimales, mascota.tratoAnimal);
                     registro.tratoNinios = registro.tratoNinios.Replace(registro.tratoNinios, mascota.tratoNiños);
                     registro.idCaracter = mascota.idcaracter;
                 }
