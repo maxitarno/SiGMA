@@ -156,7 +156,7 @@
                         </td>
                         <td>
                             <asp:Panel ID="pnlLocalidades" runat="server" Visible="false">
-                                <asp:DropDownList ID="ddlLocalidades" runat="server">
+                                <asp:DropDownList ID="ddlLocalidades" runat="server" OnSelectedIndexChanged="DdlBarrio_SelectedIndexChanged" AutoPostBack="True">
                                 </asp:DropDownList>&nbsp
                             </asp:Panel>
                         </td>
@@ -169,7 +169,7 @@
                         </td>
                         <td>
                             <asp:Panel ID="pnlBarrios" runat="server" Visible="false">
-                                <asp:DropDownList ID="ddlBarrios" runat="server" AutoPostBack="True">
+                                <asp:DropDownList ID="ddlBarrios" runat="server" AutoPostBack="False" >
                                 </asp:DropDownList>
                             </asp:Panel>
                         </td>

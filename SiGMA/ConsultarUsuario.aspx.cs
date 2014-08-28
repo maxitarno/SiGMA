@@ -192,24 +192,41 @@ namespace SiGMA
             persona.idBarrio = int.Parse(ddlBarrios.SelectedValue);
             persona.idTipoDocumento = int.Parse(ddlTipoDeDocumento.SelectedValue);
             DateTime fecha = new DateTime();
-            if (Validaciones.verificarSoloNumeros(txtNºDeDocumento.Text))
+            if (ddlBarrios.SelectedValue.Equals("0") || ddlLocalidades.SelectedValue.Equals("0") || ddlTipoDeDocumento.SelectedValue.Equals("0"))
             {
-                if (Validaciones.Fecha(txtFecha.Text, out fecha))
+                pnlInfo.Visible = true;
+                lblResultado2.Text = "Debe seleccionar una opción";
+            }
+            else
+            {
+                pnlInfo.Visible = false;
+                if (Validaciones.verificarSoloNumeros(txtNºDeDocumento.Text))
                 {
-                    persona.nombre = txtNombre.Text;
-                    persona.nroDocumento = txtNºDeDocumento.Text;
-                    persona.telefonoCelular = txtTelefonoCelular.Text;
-                    persona.telefonoFijo = txtTelefonoFijo.Text;
-                    EUsuario usuario = new EUsuario();
-                    usuario.user = txtUsuario.Text;
-                    if (usuario.user != "")
+                    if (Validaciones.Fecha(txtFecha.Text, out fecha))
                     {
-                        if (LogicaBDUsuario.ModificarUsuario(persona, usuario))
+                        persona.nombre = txtNombre.Text;
+                        persona.nroDocumento = txtNºDeDocumento.Text;
+                        persona.telefonoCelular = txtTelefonoCelular.Text;
+                        persona.telefonoFijo = txtTelefonoFijo.Text;
+                        EUsuario usuario = new EUsuario();
+                        usuario.user = txtUsuario.Text;
+                        if (usuario.user != "")
                         {
-                            pnlCorrecto.Visible = true;
-                            lblResultado1.Text = "Se modifico corretamente";
-                            pnlAtento.Visible = false;
-                            pnlInfo.Visible = false;
+                            if (LogicaBDUsuario.ModificarUsuario(persona, usuario))
+                            {
+                                pnlCorrecto.Visible = true;
+                                lblResultado1.Text = "Se modifico corretamente";
+                                pnlAtento.Visible = false;
+                                pnlInfo.Visible = false;
+                            }
+                            else
+                            {
+                                pnlCorrecto.Visible = false;
+                                pnlInfo.Visible = false;
+                                pnlAtento.Visible = true;
+                                lblResultado3.Text = "No se pudo modificar";
+                                pnlCorrecto.Visible = false;
+                            }
                         }
                         else
                         {
@@ -222,27 +239,19 @@ namespace SiGMA
                     }
                     else
                     {
-                        pnlCorrecto.Visible = false;
-                        pnlInfo.Visible = false;
-                        pnlAtento.Visible = true;
-                        lblResultado3.Text = "No se pudo modificar";
+                        pnlInfo.Visible = true;
+                        lblResultado2.Text = "Debe ingresar una fecha";
+                        pnlAtento.Visible = false;
                         pnlCorrecto.Visible = false;
                     }
                 }
                 else
                 {
                     pnlInfo.Visible = true;
-                    lblResultado2.Text = "Debe ingresar una fecha";
-                    pnlAtento.Visible = false;
+                    lblResultado2.Text = "Debe ingresar un número de documento";
                     pnlCorrecto.Visible = false;
+                    pnlAtento.Visible = false;
                 }
-            }
-            else
-            {
-                pnlInfo.Visible = true;
-                lblResultado2.Text = "Debe ingresar un número de documento";
-                pnlCorrecto.Visible=false;
-                pnlAtento.Visible=false;
             }
         }
         public void btnEliminarClick(object sender, EventArgs e)
@@ -252,6 +261,64 @@ namespace SiGMA
             {
                 if (LogicaBDUsuario.EliminarUsuario(txtUsuario.Text))
                 {
+                    pnlAtento.Visible = false;
+                    pnlCorrecto.Visible = false;
+                    pnlInfo.Visible = false;
+                    txtApellido.Text = "";
+                    txtDomicilio.Text = "";
+                    txtFecha.Text = "";
+                    txtMail.Text = "";
+                    txtNºDeDocumento.Text = "";
+                    txtNombre.Text = "";
+                    txtTelefonoCelular.Text = "";
+                    txtTelefonoFijo.Text = "";
+                    txtUsuario.Text = "";
+                    lstResultados.Items.Clear();
+                    pnlApellido.Visible = false;
+                    pnladress.Visible = false;
+                    pnlAtento.Visible = false;
+                    pnlbarrio.Visible = false;
+                    pnlBarrios.Visible = false;
+                    pnldate.Visible = false;
+                    pnlDomicilio.Visible = false;
+                    pnlEliminar.Visible = false;
+                    pnlestate.Visible = false;
+                    pnlFecha.Visible = false;
+                    pnlLimpiar.Visible = false;
+                    pnlLocalidades.Visible = false;
+                    pnlMail.Visible = false;
+                    pnlmails.Visible = false;
+                    pnlModificar.Visible = false;
+                    pnlphone.Visible = false;
+                    pnlphonefixed.Visible = false;
+                    pnlresult.Visible = false;
+                    pnlResultados.Visible = false;
+                    pnlSeleccionar.Visible = false;
+                    pnlsurname.Visible = false;
+                    pnlTelefonFijo.Visible = false;
+                    pnlTelefonoCelular.Visible = false;
+                    if (rbPorUsuario.Checked)
+                    {
+                        pnlUsuario.Visible = true;
+                        pnlUser.Visible = true;
+                        pnlType.Visible = false;
+                        pnlTipoDeDocumento.Visible = false;
+                        pnlnumber.Visible = false;
+                        pnlNºDeDocumento.Visible = false;
+                        pnlBuscar.Visible = true;
+                    }
+                    if (rbPorPersona.Checked)
+                    {
+                        pnlType.Visible = true;
+                        pnlTipoDeDocumento.Visible = true;
+                        pnlUsuario.Visible = false;
+                        pnlUser.Visible = false;
+                        pnlnumber.Visible = true;
+                        pnlNºDeDocumento.Visible = true;
+                        pnlBuscar.Visible = true;
+                    }
+                    pnlname.Visible = false;
+                    pnlNombre.Visible = false;
                     pnlCorrecto.Visible = true;
                     lblResultado1.Text = "Se elimino corretamente";
                 }
@@ -282,6 +349,51 @@ namespace SiGMA
             txtTelefonoFijo.Text = "";
             txtUsuario.Text = "";
             lstResultados.Items.Clear();
+            pnlApellido.Visible = false;
+            pnladress.Visible = false;
+            pnlAtento.Visible = false;
+            pnlbarrio.Visible = false;
+            pnlBarrios.Visible = false;
+            pnldate.Visible = false;
+            pnlDomicilio.Visible = false;
+            pnlEliminar.Visible = false;
+            pnlestate.Visible = false;
+            pnlFecha.Visible = false;
+            pnlLimpiar.Visible = false;
+            pnlLocalidades.Visible = false;
+            pnlMail.Visible = false;
+            pnlmails.Visible = false;
+            pnlModificar.Visible = false;
+            pnlphone.Visible = false;
+            pnlphonefixed.Visible = false;
+            pnlresult.Visible = false;
+            pnlResultados.Visible = false;
+            pnlSeleccionar.Visible = false;
+            pnlsurname.Visible = false;
+            pnlTelefonFijo.Visible = false;
+            pnlTelefonoCelular.Visible = false;
+            if (rbPorUsuario.Checked)
+            {
+                pnlUsuario.Visible = true;
+                pnlUser.Visible = true;
+                pnlType.Visible = false;
+                pnlTipoDeDocumento.Visible = false;
+                pnlnumber.Visible = false;
+                pnlNºDeDocumento.Visible = false;
+                pnlBuscar.Visible = true;
+            }
+            if (rbPorPersona.Checked)
+            {
+                pnlType.Visible = true;
+                pnlTipoDeDocumento.Visible = true;
+                pnlUsuario.Visible = false;
+                pnlUser.Visible = false;
+                pnlnumber.Visible = true;
+                pnlNºDeDocumento.Visible = true;
+                pnlBuscar.Visible = true;
+            }
+            pnlname.Visible = false;
+            pnlNombre.Visible = false;
         }
         public void RdbPorUsuario(object sender, EventArgs e)
         {
@@ -362,6 +474,16 @@ namespace SiGMA
             pnlAtento.Visible = false;
             pnlCorrecto.Visible = false;
             pnlEliminar.Visible = false;
+        }
+        public void DdlBarrio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            pnlAtento.Visible = false;
+            pnlCorrecto.Visible = false;
+            if(!ddlLocalidades.SelectedValue.Equals("0")){
+                ddlBarrios.Items.Clear();
+                CargarCombos.cargarBarrio(ref ddlBarrios, int.Parse(ddlLocalidades.SelectedValue.ToString()));
+                pnlInfo.Visible = false;
+            }
         }
     }
 }

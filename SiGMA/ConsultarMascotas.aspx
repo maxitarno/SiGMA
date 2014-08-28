@@ -195,7 +195,7 @@
                                         </td>
                                         <td>
                                             <asp:DropDownList ID="ddlTratoAnimales" runat="server">
-                                                <asp:ListItem Selected="True" Value="0" Text=""></asp:ListItem>
+                                                <asp:ListItem Selected="True" Value="0" Text="-- Seleccione una opción"></asp:ListItem>
                                                 <asp:ListItem Text="Si" Value="Si"></asp:ListItem>
                                                 <asp:ListItem Value="No" Text="No"></asp:ListItem>
                                             </asp:DropDownList>
@@ -207,7 +207,7 @@
                                         </td>
                                         <td>
                                             <asp:DropDownList ID="ddlTratoNinios" runat="server">
-                                                <asp:ListItem Selected="True" Value="0" Text=""></asp:ListItem>
+                                                <asp:ListItem Selected="True" Value="0" Text="-- Seleccione una opción --"></asp:ListItem>
                                                 <asp:ListItem Text="Si" Value="Si"></asp:ListItem>
                                                 <asp:ListItem Value="No" Text="No"></asp:ListItem>
                                             </asp:DropDownList>
@@ -278,7 +278,7 @@
                                                 OnClick="BtnModificarClick" ValidationGroup="1" />
                                             <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" CssClass="btn-primary"
                                                 ValidationGroup="2" OnClick="BtnEliminarClick"/>
-                                            <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar" CssClass="btn-primary" />
+                                            <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar" CssClass="btn-primary" OnClick="BtnLimpiarClick"/>
                                         </asp:Panel>
                                     </td>
                                 </tr>
