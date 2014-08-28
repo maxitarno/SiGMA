@@ -123,9 +123,15 @@ namespace Herramientas
         }
         public static void cargarEstado(ref DropDownList ddl)
         {
+<<<<<<< .mine
+            ddl.Items.Add(new ListItem("-- Seleccione una opción--", "0"));
+            List<EEstados> estados = Datos.BuscarEstados();
+            foreach (EEstados item in estados)
+=======
             ddl.Items.Add(new ListItem("-- Seleccione una opción--", "0"));
             List<EEstado> estados = Datos.BuscarEstados();
             foreach (EEstado item in estados)
+>>>>>>> .r127
             {
                 ddl.Items.Add(new ListItem(item.nombreEstado.ToString(), item.idEstado.ToString()));
             }
