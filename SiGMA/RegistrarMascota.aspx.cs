@@ -7,13 +7,14 @@ using System.Web.UI.WebControls;
 using Herramientas;
 using Entidades;
 using AccesoADatos;
+using System.IO;
 
 namespace SiGMA
 {
     public partial class RegistrarMascota : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
-        {
+        {          
             if (!Page.IsPostBack)
             {
                 CargarCombos.cargarColor(ref ddlColor);
@@ -23,11 +24,11 @@ namespace SiGMA
                 CargarCombos.cargarSexo(ref ddlSexo);
                 CargarCombos.cargarTratos(ref ddlTratoAnimales);
                 CargarCombos.cargarTratos(ref ddlTratoNinios);
-            }
+            }     
         }
 
         protected void ddlEspecie_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        {      
             CargarCombos.cargarRazas(ref ddlRaza, int.Parse(ddlEspecie.SelectedValue));
         }
 
@@ -65,15 +66,21 @@ namespace SiGMA
                 mascota.sexo = ddlSexo.SelectedValue;
                 mascota.caracter = new ECaracterMascota();
                 mascota.caracter.idCaracter = int.Parse(ddlCaracter.SelectedValue);
-                //mascota.duenio.id      
-                if (fuImagen.FileBytes != null)
+                //mascota.duenio.id 
+                if (fuImagen.PostedFile.ContentLength != 0)
                 {
-                    LogicaBDMascotas.registrarMascota(mascota, fuImagen.FileBytes);
+                    if (!GestorImagen.verificarTamaño(fuImagen.PostedFile.ContentLength))
+                    {
+                        Response.Write("<SCRIPT>alert('El tamaño de la imagen no debe superar 1Mb');</SCRIPT>");
+                        return;
+                    }
+                    byte[] imagen = GestorImagen.obtenerArrayBytes(fuImagen.PostedFile.InputStream, fuImagen.PostedFile.ContentLength);
+                    LogicaBDMascotas.registrarMascota(mascota, imagen);
                 }
                 else
                 {
                     LogicaBDMascotas.registrarMascota(mascota, null);
-                }
+                }               
                 Response.Redirect("~/Inicio.aspx");
             }
         }

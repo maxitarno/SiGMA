@@ -51,6 +51,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DER.edmx</DependentUpon>
     </Compile>
+    <Compile Include="LogicaBDImagen.cs" />
     <Compile Include="LogicaBDLogin.cs" />
     <Compile Include="LogicaBDMascotas.cs" />
     <Compile Include="LogicaBDRol.cs" />

@@ -58,7 +58,7 @@ namespace AccesoADatos
                     if (imagen != null)
                     {
                         mascota.idMascota = mapaEntidades.Mascotas.OrderByDescending(m => m.idMascota).First().idMascota;
-                        guardarImagen(imagen, mascota);
+                        LogicaBDImagen.guardarImagen(imagen, mascota);
                     }
                     transaction.Complete();
                 }
@@ -69,30 +69,7 @@ namespace AccesoADatos
                 }
             }
         }
-        public static void guardarImagen(byte[] imagen, EMascota mascota)
-        {
-            using (TransactionScope transaction = new TransactionScope())
-            {
-                try
-                {
-                    SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
-                    IQueryable<Mascotas> consulta = from MascotasBD in mapaEntidades.Mascotas
-                                                    where (MascotasBD.idMascota == mascota.idMascota)
-                                                    select MascotasBD;
-                    if (consulta.Count() != 0)
-                    {
-                        Mascotas bdMascota = consulta.First();
-                        bdMascota.imagen = imagen;
-                        mapaEntidades.SaveChanges();
-                        transaction.Complete();
-                    }
-                }
-                catch (Exception exc)
-                {
-                    transaction.Dispose();
-                }
-            }
-        }
+        
         public static bool BuscarMascotaPorDuenio(EPersona persona, EMascota mascota, ECategoriaRaza categoria, ECaracterMascota caracter, ECuidado cuidado, int idMascota)
         {
             bool b = false;
