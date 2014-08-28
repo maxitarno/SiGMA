@@ -270,6 +270,7 @@
           <Property Name="sexo" Type="varchar" Nullable="false" MaxLength="50" />
           <Property Name="idDuenio" Type="int" />
           <Property Name="idCaracter" Type="int" />
+          <Property Name="imagen" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="Perdidas">
           <Key>
@@ -1053,6 +1054,7 @@
           <NavigationProperty Name="Hallazgos" Relationship="SiGMAModel.FK_Hallazgos_Mascotas" FromRole="Mascotas" ToRole="Hallazgos" />
           <NavigationProperty Name="Razas" Relationship="SiGMAModel.FK_Mascotas_Razas" FromRole="Mascotas" ToRole="Razas" />
           <NavigationProperty Name="Perdidas" Relationship="SiGMAModel.FK_Perdidas_Mascotas" FromRole="Mascotas" ToRole="Perdidas" />
+          <Property Type="Binary" Name="imagen" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="Perdidas">
           <Key>
@@ -1680,6 +1682,7 @@
           <EntitySetMapping Name="Mascotas">
             <EntityTypeMapping TypeName="SiGMAModel.Mascotas">
               <MappingFragment StoreEntitySet="Mascotas">
+                <ScalarProperty Name="imagen" ColumnName="imagen" />
                 <ScalarProperty Name="idMascota" ColumnName="idMascota" />
                 <ScalarProperty Name="nombreMascota" ColumnName="nombreMascota" />
                 <ScalarProperty Name="idEstado" ColumnName="idEstado" />

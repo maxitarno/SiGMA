@@ -3078,6 +3078,30 @@ namespace AccesoADatos
         private Nullable<global::System.Int32> _idCaracter;
         partial void OnidCaracterChanging(Nullable<global::System.Int32> value);
         partial void OnidCaracterChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.Byte[] imagen
+        {
+            get
+            {
+                return StructuralObject.GetValidValue(_imagen);
+            }
+            set
+            {
+                OnimagenChanging(value);
+                ReportPropertyChanging("imagen");
+                _imagen = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("imagen");
+                OnimagenChanged();
+            }
+        }
+        private global::System.Byte[] _imagen;
+        partial void OnimagenChanging(global::System.Byte[] value);
+        partial void OnimagenChanged();
 
         #endregion
 

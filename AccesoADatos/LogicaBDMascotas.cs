@@ -8,7 +8,7 @@ namespace AccesoADatos
 {
     public class LogicaBDMascotas
     {
-        public static void registrarMascota(EMascota mascota)
+        public static void registrarMascota(EMascota mascota, byte[] imagen)
         {
             using (TransactionScope transaction = new TransactionScope())
             {
@@ -51,16 +51,45 @@ namespace AccesoADatos
                     if (!mascota.fechaNacimiento.Equals(new DateTime()))
                     {
                         bdMascota.fechaNacimiento = mascota.fechaNacimiento.Date;
-                    }                    
+                    }
                     bdMascota.sexo = mascota.sexo;
                     mapaEntidades.AddToMascotas(bdMascota);
                     mapaEntidades.SaveChanges();
+                    if (imagen != null)
+                    {
+                        mascota.idMascota = mapaEntidades.Mascotas.OrderByDescending(m => m.idMascota).First().idMascota;
+                        guardarImagen(imagen, mascota);
+                    }
                     transaction.Complete();
                 }
                 catch (Exception exc)
                 {
                     transaction.Dispose();
                     throw exc;
+                }
+            }
+        }
+        public static void guardarImagen(byte[] imagen, EMascota mascota)
+        {
+            using (TransactionScope transaction = new TransactionScope())
+            {
+                try
+                {
+                    SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+                    IQueryable<Mascotas> consulta = from MascotasBD in mapaEntidades.Mascotas
+                                                    where (MascotasBD.idMascota == mascota.idMascota)
+                                                    select MascotasBD;
+                    if (consulta.Count() != 0)
+                    {
+                        Mascotas bdMascota = consulta.First();
+                        bdMascota.imagen = imagen;
+                        mapaEntidades.SaveChanges();
+                        transaction.Complete();
+                    }
+                }
+                catch (Exception exc)
+                {
+                    transaction.Dispose();
                 }
             }
         }

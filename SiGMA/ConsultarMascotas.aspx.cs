@@ -169,12 +169,12 @@ namespace SiGMA
                 pnlAtento.Visible = false;
             }
         }
-        public void BtnModificarClick(object sender, EventArgs e){
+        public void BtnModificarClick(object sender, EventArgs e)
+        {
             EMascota mascota = new EMascota();
             mascota.idMascota = (int)Session["idMascota"];
             DateTime fecha = new DateTime();
-<<<<<<< .mine
-            if (ddlCaracter.SelectedValue.Equals("0")|| ddlColor.SelectedValue.Equals("0") || ddlEdad.SelectedValue.Equals("0")|| ddlEspecie.SelectedValue.Equals("0") || ddlEstado.SelectedValue.Equals("0")|| ddlRaza.SelectedValue.Equals("0") || ddlSexo.SelectedValue.Equals("0") || ddlTratoAnimales.SelectedValue.Equals("0") || ddlTratoNinios.SelectedValue.Equals("0"))
+            if (ddlCaracter.SelectedValue.Equals("0") || ddlColor.SelectedValue.Equals("0") || ddlEdad.SelectedValue.Equals("0") || ddlEspecie.SelectedValue.Equals("0") || ddlEstado.SelectedValue.Equals("0") || ddlRaza.SelectedValue.Equals("0") || ddlSexo.SelectedValue.Equals("0") || ddlTratoAnimales.SelectedValue.Equals("0") || ddlTratoNinios.SelectedValue.Equals("0"))
             {
                 pnlInfo.Visible = true;
                 lblResultado2.Text = "Debe seleccionar una opción";
@@ -183,61 +183,67 @@ namespace SiGMA
             {
                 pnlInfo.Visible = false;
                 if (Validaciones.Fecha(txtFecha.Text, out fecha))
-=======
-            if(Validaciones.Fecha(txtFecha.Text, out fecha)){
-                mascota.alimetacionEspecial = txtAlimentacionEspecial.Text;
-                mascota.fechaNacimiento = DateTime.Parse(txtFecha.Text);
-                mascota.tratoNiños = ddlTratoNinios.SelectedValue.ToString();
-                mascota.tratoAnimal = ddlTratoAnimales.SelectedValue.ToString();
-                mascota.sexo = ddlSexo.SelectedValue.ToString();
-                mascota.observaciones = txtObservaciones.Text;
-                mascota.nombreMascota = txtMascota.Text;
-                mascota.raza.idRaza = int.Parse(ddlRaza.SelectedValue);
-                mascota.estado.idEstado = int.Parse(ddlEstado.SelectedValue);
-                mascota.especie.idEspecie = int.Parse(ddlEspecie.SelectedValue);
-                mascota.edad.idEdad = int.Parse(ddlEdad.SelectedValue);
-                mascota.color.idColor = int.Parse(ddlColor.SelectedValue);
-                mascota.caracter.idCaracter = int.Parse(ddlCaracter.SelectedValue);
-                if (LogicaBDMascotas.ModificarMascota(mascota))
->>>>>>> .r127
-                {
-                    mascota.alimetaionEspeial = txtAlimentacionEspecial.Text;
-                    mascota.fechaNcimiento = DateTime.Parse(txtFecha.Text);
-                    mascota.tratoNiños = ddlTratoNinios.SelectedValue.ToString();
-                    mascota.tratoAnimal = ddlTratoAnimales.SelectedValue.ToString();
-                    mascota.sexo = ddlSexo.SelectedValue.ToString();
-                    mascota.observaciones = txtObservaciones.Text;
-                    mascota.nombreMascota = txtMascota.Text;
-                    mascota.idRaza = int.Parse(ddlRaza.SelectedValue);
-                    mascota.idEstado = int.Parse(ddlEstado.SelectedValue);
-                    mascota.idEspecie = int.Parse(ddlEspecie.SelectedValue);
-                    mascota.idEdad = int.Parse(ddlEdad.SelectedValue);
-                    mascota.idColor = int.Parse(ddlColor.SelectedValue);
-                    mascota.idcaracter = int.Parse(ddlCaracter.SelectedValue);
-                    if (LogicaBDMascotas.ModificarMascota(mascota))
+                    if (Validaciones.Fecha(txtFecha.Text, out fecha))
                     {
-                        pnlCorrecto.Visible = true;
-                        lblResultado1.Text = "Se modifico corretamente";
-                        pnlAtento.Visible = false;
-                        pnlInfo.Visible = false;
+                        mascota.alimetacionEspecial = txtAlimentacionEspecial.Text;
+                        mascota.fechaNacimiento = DateTime.Parse(txtFecha.Text);
+                        mascota.tratoNiños = ddlTratoNinios.SelectedValue.ToString();
+                        mascota.tratoAnimal = ddlTratoAnimales.SelectedValue.ToString();
+                        mascota.sexo = ddlSexo.SelectedValue.ToString();
+                        mascota.observaciones = txtObservaciones.Text;
+                        mascota.nombreMascota = txtMascota.Text;
+                        mascota.raza.idRaza = int.Parse(ddlRaza.SelectedValue);
+                        mascota.estado.idEstado = int.Parse(ddlEstado.SelectedValue);
+                        mascota.especie.idEspecie = int.Parse(ddlEspecie.SelectedValue);
+                        mascota.edad.idEdad = int.Parse(ddlEdad.SelectedValue);
+                        mascota.color.idColor = int.Parse(ddlColor.SelectedValue);
+                        mascota.caracter.idCaracter = int.Parse(ddlCaracter.SelectedValue);
+                        if (LogicaBDMascotas.ModificarMascota(mascota))
+                        {
+                            mascota.alimetacionEspecial = txtAlimentacionEspecial.Text;
+                            mascota.fechaNacimiento = DateTime.Parse(txtFecha.Text);
+                            mascota.tratoNiños = ddlTratoNinios.SelectedValue.ToString();
+                            mascota.tratoAnimal = ddlTratoAnimales.SelectedValue.ToString();
+                            mascota.sexo = ddlSexo.SelectedValue.ToString();
+                            mascota.observaciones = txtObservaciones.Text;
+                            mascota.nombreMascota = txtMascota.Text;
+                            mascota.raza = new ERaza();
+                            mascota.raza.idRaza = int.Parse(ddlRaza.SelectedValue);
+                            mascota.estado = new EEstado();
+                            mascota.estado.idEstado = int.Parse(ddlEstado.SelectedValue);
+                            mascota.especie = new EEspecie();
+                            mascota.especie.idEspecie = int.Parse(ddlEspecie.SelectedValue);
+                            mascota.edad = new EEdad();
+                            mascota.edad.idEdad = int.Parse(ddlEdad.SelectedValue);
+                            mascota.color = new EColor();
+                            mascota.color.idColor = int.Parse(ddlColor.SelectedValue);
+                            mascota.caracter = new ECaracterMascota();
+                            mascota.caracter.idCaracter = int.Parse(ddlCaracter.SelectedValue);
+                            if (LogicaBDMascotas.ModificarMascota(mascota))
+                            {
+                                pnlCorrecto.Visible = true;
+                                lblResultado1.Text = "Se modifico corretamente";
+                                pnlAtento.Visible = false;
+                                pnlInfo.Visible = false;
+                            }
+                            else
+                            {
+                                pnlCorrecto.Visible = false;
+                                pnlInfo.Visible = false;
+                                pnlAtento.Visible = true;
+                                lblResultado3.Text = "No se pudo modificar";
+                                pnlCorrecto.Visible = false;
+                            }
+                            pnlInfo.Visible = false;
+                        }
+                        else
+                        {
+                            pnlInfo.Visible = true;
+                            lblResultado2.Text = "Debe ingresar una fecha";
+                            pnlAtento.Visible = false;
+                            pnlCorrecto.Visible = false;
+                        }
                     }
-                    else
-                    {
-                        pnlCorrecto.Visible = false;
-                        pnlInfo.Visible = false;
-                        pnlAtento.Visible = true;
-                        lblResultado3.Text = "No se pudo modificar";
-                        pnlCorrecto.Visible = false;
-                    }
-                    pnlInfo.Visible = false;
-                }
-                else
-                {
-                    pnlInfo.Visible = true;
-                    lblResultado2.Text = "Debe ingresar una fecha";
-                    pnlAtento.Visible = false;
-                    pnlCorrecto.Visible = false;
-                }
             }
         }
         public void BtnEliminarClick(object sender, EventArgs e){

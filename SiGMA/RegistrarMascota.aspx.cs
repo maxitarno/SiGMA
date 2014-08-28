@@ -65,7 +65,15 @@ namespace SiGMA
                 mascota.sexo = ddlSexo.SelectedValue;
                 mascota.caracter = new ECaracterMascota();
                 mascota.caracter.idCaracter = int.Parse(ddlCaracter.SelectedValue);
-                LogicaBDMascotas.registrarMascota(mascota);
+                //mascota.duenio.id      
+                if (fuImagen.FileBytes != null)
+                {
+                    LogicaBDMascotas.registrarMascota(mascota, fuImagen.FileBytes);
+                }
+                else
+                {
+                    LogicaBDMascotas.registrarMascota(mascota, null);
+                }
                 Response.Redirect("~/Inicio.aspx");
             }
         }

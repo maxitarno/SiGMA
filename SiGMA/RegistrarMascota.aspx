@@ -18,14 +18,23 @@
             <h3 class="panel-title">
                 Registrar Mascota</h3>
         </div>
+        <div>
+         <div class="izquierda">
+    <table><tr><td>
+        <asp:FileUpload ID="fuImagen" runat="server" /></td></tr></table>
+    </div>
         <div class="panel-body">
-            <div class="almedio">    
+        
+            <div class="almedio">
+                        
+   
+            
                   <table>   
                     <tr>
                         <td>
                             <asp:Panel ID="pnlDatos" runat="server">
                                 <table>
-                                 <tr>
+                                 <tr>   
                                     <td class="style2">Nombre:&nbsp                                       
                                     </td>
                                     <td class="style1">
@@ -174,6 +183,7 @@
                         </td>
                     </tr>
                 </table>
+            </div>
             </div>
         </div>
     </div>

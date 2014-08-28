@@ -360,6 +360,11 @@ asp:Login
     margin-left:35%;
     margin-right: 35%;
 }
+.izquierda
+{
+    margin-left:5%;
+    margin-right: 35%;
+}
 .ListBox
 {
     border-color:#0066FF;
