@@ -79,9 +79,9 @@ namespace AccesoADatos
             return localidades;
         }
         //metodo parabusar estados
-        public static List<EEstados> BuscarEstados()
+        public static List<EEstado> BuscarEstados()
         {
-            List<EEstados> estados = new List<EEstados>();
+            List<EEstado> estados = new List<EEstado>();
             SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
             IQueryable<Estados> consulta = from EstadosDB in mapaEntidades.Estados
                                            select EstadosDB;
@@ -89,7 +89,7 @@ namespace AccesoADatos
             {
                 foreach (var registro in consulta)
                 {
-                    EEstados estado = new EEstados();
+                    EEstado estado = new EEstado();
                     estado.idEstado = registro.idEstado;
                     estado.nombreEstado = registro.nombreEstado;
                     estados.Add(estado);

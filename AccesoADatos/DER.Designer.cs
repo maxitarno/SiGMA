@@ -2089,7 +2089,7 @@ namespace AccesoADatos
         /// </summary>
         /// <param name="idEstado">Valor inicial de la propiedad idEstado.</param>
         /// <param name="nombreEstado">Valor inicial de la propiedad nombreEstado.</param>
-        public static Estados CreateEstados(global::System.Int32 idEstado, global::System.String nombreEstado)
+        public static Estados CreatEEstado(global::System.Int32 idEstado, global::System.String nombreEstado)
         {
             Estados estados = new Estados();
             estados.idEstado = idEstado;
