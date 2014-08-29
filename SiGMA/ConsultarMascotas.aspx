@@ -67,12 +67,12 @@
                                     </td>
                                     <td>
                                         <asp:Panel ID="pnltxtNombreDueñio" Visible="false" runat="server">
-                                            <asp:TextBox ID="txtNombreDueñio" runat="server" CssClass="TextBox" Width="100%"></asp:TextBox>
+                                            <asp:TextBox ID="txtNombreDueñio" runat="server" CssClass="text-primary" Width="100%"></asp:TextBox>
                                         </asp:Panel>
                                     </td>
-                                    <td>
+                                    <td colspan=3 rowspan=2>
                                         <asp:Panel ID="pnlboton" runat="server" Visible="false">
-                                            <asp:Button ID="btnBuscar" runat="server" Text="Buscar" CssClass="btn-primary" OnClick="BtnBuscarClick" />
+                                            <asp:Button ID="btnBuscar" runat="server" Text="Buscar" CssClass="btn-primary" OnClick="BtnBuscarClick" width=100%/>
                                         </asp:Panel>
                                     </td>
                                     <td>
@@ -90,7 +90,7 @@
                                     </td>
                                     <td>
                                         <asp:Panel ID="pnltxtMascota" Visible="false" runat="server">
-                                            <asp:TextBox ID="txtMascota" runat="server" CssClass="TextBox" Width="100%"></asp:TextBox>
+                                            <asp:TextBox ID="txtMascota" runat="server" CssClass="text-primary" Width="100%"></asp:TextBox>
                                         </asp:Panel>
                                     </td>
                                     <td>
@@ -112,7 +112,7 @@
                                             Resultados:
                                         </td>
                                         <td colspan="3">
-                                            <asp:ListBox ID="lstResultados" runat="server" Width="100%" CssClass="ListBox"></asp:ListBox>
+                                            <asp:ListBox ID="lstResultados" runat="server" Width="100%" CssClass="text-primary"></asp:ListBox>
                                         </td>
                                     </tr>
                                 </table>
@@ -128,7 +128,7 @@
                                             Estado:&nbsp
                                         </td>
                                         <td>
-                                            <asp:DropDownList ID="ddlEstado" runat="server" CssClass="DropDownList" Width="100%"
+                                            <asp:DropDownList ID="ddlEstado" runat="server" CssClass="text-primary" Width="100%"
                                                 AppendDataBoundItems="true">
                                             </asp:DropDownList>
                                         </td>
@@ -138,7 +138,7 @@
                                             Especie:&nbsp
                                         </td>
                                         <td>
-                                            <asp:DropDownList ID="ddlEspecie" runat="server" Width="100%" CssClass="DropDownList"
+                                            <asp:DropDownList ID="ddlEspecie" runat="server" Width="100%" CssClass="text-primary"
                                                 OnSelectedIndexChanged="ddlRaza_SelectedIndexChanged" AutoPostBack="True" AppendDataBoundItems="true">
                                             </asp:DropDownList>
                                         </td>
@@ -148,7 +148,7 @@
                                             Edad:
                                         </td>
                                         <td>
-                                            <asp:DropDownList ID="ddlEdad" runat="server" Width="100%" CssClass="DropDownList"
+                                            <asp:DropDownList ID="ddlEdad" runat="server" Width="100%" CssClass="text-primary"
                                                 AppendDataBoundItems="True">
                                             </asp:DropDownList>
                                         </td>
@@ -158,7 +158,7 @@
                                             Raza:&nbsp
                                         </td>
                                         <td>
-                                            <asp:DropDownList ID="ddlRaza" runat="server" Width="100%" CssClass="DropDownList"
+                                            <asp:DropDownList ID="ddlRaza" runat="server" Width="100%" CssClass="text-primary"
                                                 AppendDataBoundItems="False">
                                             </asp:DropDownList>
                                         </td>
@@ -168,7 +168,7 @@
                                             Categoria:&nbsp
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="txtCategoria" runat="server" CssClass="TextBox" ReadOnly="True"></asp:TextBox>
+                                            <asp:TextBox ID="txtCategoria" runat="server" CssClass="text-primary" ReadOnly="True" Width=100%></asp:TextBox>
                                         </td>
                                     </tr>
                                     <tr>
@@ -176,7 +176,7 @@
                                             Cuidado especial:&nbsp
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="txtCuidadoEspecial" runat="server" CssClass="TextBox" Width="100%"></asp:TextBox>
+                                            <asp:TextBox ID="txtCuidadoEspecial" runat="server" CssClass="text-primary" Width="100%"></asp:TextBox>
                                         </td>
                                     </tr>
                                     <tr>
@@ -184,7 +184,7 @@
                                             Color:&nbsp
                                         </td>
                                         <td>
-                                            <asp:DropDownList ID="ddlColor" runat="server" Width="100%" CssClass="DropDownList"
+                                            <asp:DropDownList ID="ddlColor" runat="server" Width="100%" CssClass="text-primary"
                                                 AppendDataBoundItems="True">
                                             </asp:DropDownList>
                                         </td>
@@ -194,7 +194,8 @@
                                             Trato animales:&nbsp
                                         </td>
                                         <td>
-                                            <asp:DropDownList ID="ddlTratoAnimales" runat="server">
+                                            <asp:DropDownList ID="ddlTratoAnimales" runat="server" CssClass="text-primary" Width=100%
+                                            >
                                                 <asp:ListItem Selected="True" Value="0" Text="-- Seleccione una opción"></asp:ListItem>
                                                 <asp:ListItem Text="Si" Value="Si"></asp:ListItem>
                                                 <asp:ListItem Value="No" Text="No"></asp:ListItem>
@@ -206,7 +207,7 @@
                                             Trato niños:&nbsp
                                         </td>
                                         <td>
-                                            <asp:DropDownList ID="ddlTratoNinios" runat="server">
+                                            <asp:DropDownList ID="ddlTratoNinios" runat="server" CssClass="text-primary" Width=100%>
                                                 <asp:ListItem Selected="True" Value="0" Text="-- Seleccione una opción --"></asp:ListItem>
                                                 <asp:ListItem Text="Si" Value="Si"></asp:ListItem>
                                                 <asp:ListItem Value="No" Text="No"></asp:ListItem>
@@ -218,7 +219,7 @@
                                             Carater:&nbsp
                                         </td>
                                         <td>
-                                            <asp:DropDownList ID="ddlCaracter" runat="server" CssClass="DropDownList">
+                                            <asp:DropDownList ID="ddlCaracter" runat="server" CssClass="text-primary" Width=100%>
                                             </asp:DropDownList>
                                         </td>
                                     </tr>
@@ -227,7 +228,7 @@
                                             Observaciones:&nbsp
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="txtObservaciones" runat="server" CssClass="TextBox"></asp:TextBox>
+                                            <asp:TextBox ID="txtObservaciones" runat="server" CssClass="text-primary" Width=100%></asp:TextBox>
                                         </td>
                                     </tr>
                                     <tr>
@@ -235,7 +236,7 @@
                                             Alimentacion especial:&nbsp
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="txtAlimentacionEspecial" runat="server" CssClass="TextBox"></asp:TextBox>
+                                            <asp:TextBox ID="txtAlimentacionEspecial" runat="server" CssClass="text-primary" Width=100%></asp:TextBox>
                                         </td>
                                     </tr>
                                     <tr>
@@ -243,7 +244,7 @@
                                             Sexo:&nbsp
                                         </td>
                                         <td>
-                                            <asp:DropDownList ID="ddlSexo" runat="server" Width="100%" CssClass="DropDownList">
+                                            <asp:DropDownList ID="ddlSexo" runat="server" Width="100%" CssClass="text-primary">
                                                 <asp:ListItem Selected="True" Value="0" Text="-- seleccione --"></asp:ListItem>
                                                 <asp:ListItem Text="HEMBRA" Value="HEMBRA"></asp:ListItem>
                                                 <asp:ListItem Value="MACHO" Text="MACHO"></asp:ListItem>
@@ -255,7 +256,7 @@
                                             Fecha:&nbsp
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="txtFecha" runat="server" TextMode="Date" CssClass="TextBox"></asp:TextBox>
+                                            <asp:TextBox ID="txtFecha" runat="server" TextMode="Date" CssClass="text-primary" Width=100%></asp:TextBox>
                                         </td>
                                     </tr>
                                 </table>
@@ -272,7 +273,7 @@
                                                 OnClick="BtnSeleccionarClick" CausesValidation="False" />
                                         </asp:Panel>
                                     </td>
-                                    <td>
+                                    <td colspan=3>
                                         <asp:Panel ID="pnlbotones" runat="server" Visible="false">
                                             <asp:Button ID="btnModificar" runat="server" Text="Modificar" CssClass="btn-primary"
                                                 OnClick="BtnModificarClick" ValidationGroup="1" />

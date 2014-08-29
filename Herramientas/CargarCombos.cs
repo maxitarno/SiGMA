@@ -10,19 +10,6 @@ namespace Herramientas
 {
     public class CargarCombos
     {
-        public static void cargarSexo(ref DropDownList ddl)
-        {
-            ddl.Items.Add(new ListItem("", "0"));
-            ddl.Items.Add(new ListItem("Hembra", "Hembra"));
-            ddl.Items.Add(new ListItem("Macho", "Macho"));
-        }
-
-        public static void cargarTratos(ref DropDownList ddl)
-        {
-            ddl.Items.Add(new ListItem("", "0"));
-            ddl.Items.Add(new ListItem("Si", "Si"));
-            ddl.Items.Add(new ListItem("No", "No"));
-        }
         //carga de combo de tipo de documentos
         public static void cargarTipoDocumento(ref DropDownList ddl)
         {
@@ -88,7 +75,7 @@ namespace Herramientas
             List<EEdad> edades = Datos.BuscarEdades();
             foreach (EEdad item in edades)
             {
-                ddl.Items.Add(new ListItem(item.nombreEdad.ToString() + " - " + item.descripcion.ToString(), item.idEdad.ToString()));
+                ddl.Items.Add(new ListItem(item.nombreEdad.ToString(),item.idEdad.ToString()));
             }            
         }
 
@@ -124,8 +111,8 @@ namespace Herramientas
         public static void cargarEstado(ref DropDownList ddl)
         {
             ddl.Items.Add(new ListItem("-- Seleccione una opción--", "0"));
-            List<EEstado> estados = Datos.BuscarEstados();
-            foreach (EEstado item in estados)
+            List<EEstados> estados = Datos.BuscarEstados();
+            foreach (EEstados item in estados)
             {
                 ddl.Items.Add(new ListItem(item.nombreEstado.ToString(), item.idEstado.ToString()));
             }

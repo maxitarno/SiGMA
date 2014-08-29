@@ -36,13 +36,16 @@
                     <tr>
                         <td colspan="2" align="justify">
                             <asp:Panel ID="pnlrdbPersona" runat="server">
-                                Por persona:&nbsp<asp:RadioButton ID="rbPorPersona" runat="server" GroupName="1" ValidationGroup="1" AutoPostBack="True" OnCheckedChanged="RdbPorPersona" />&nbsp
+                                Por persona:&nbsp<asp:RadioButton ID="rbPorPersona" runat="server" GroupName="1" ValidationGroup="1" AutoPostBack="True" OnCheckedChanged="RdbPorPersona" cssClass="text-primary"/>&nbsp
                             </asp:Panel>
                         </td>
                         <td colspan="2" align="right">
                             <asp:Panel ID="pnlrdbUsuario" runat="server" >
-                                Por usuario:&nbsp<asp:RadioButton ID="rbPorUsuario" runat="server" GroupName="1" ValidationGroup="1" AutoPostBack="True" OnCheckedChanged="RdbPorUsuario" Checked="True" />
+                                Por usuario:&nbsp
                             </asp:Panel>
+                        </td>
+                        <td>
+                            <asp:RadioButton ID="rbPorUsuario" runat="server" GroupName="1" ValidationGroup="1" AutoPostBack="True" OnCheckedChanged="RdbPorUsuario" Checked="True" cssClass="text-primary"/>
                         </td>
                     </tr>
                     <tr>
@@ -53,7 +56,7 @@
                         </td>
                         <td>
                             <asp:Panel ID="pnlUsuario" runat="server" Visible="false">
-                                <asp:TextBox CssClass="text-primary" ID="txtUsuario" runat="server"></asp:TextBox>
+                                <asp:TextBox CssClass="text-primary" ID="txtUsuario" runat="server" Width="100%"></asp:TextBox>
                             </asp:Panel>
                         </td>
                         <td colspan="2">
@@ -68,13 +71,13 @@
                         </td>
                         <td>
                             <asp:Panel ID="pnlTipoDeDocumento" runat="server" Visible=false>
-                                <asp:DropDownList ID="ddlTipoDeDocumento" runat="server">
+                                <asp:DropDownList ID="ddlTipoDeDocumento" runat="server" cssClass="text-primary" Width=100%>
                             </asp:DropDownList>
                             &nbsp
                             </asp:Panel>
                         </td>
                         <td colspan="2" align="center">
-                            <asp:Panel ID="pnlBuscar" runat="server" Visible="false">
+                            <asp:Panel ID="pnlBuscar" runat="server" Visible="false" Width=100%>
                                 <asp:Button CssClass="btn-primary" ID="btnBuscar" runat="server" Text="Buscar" OnClick="btnBuscarClick" width=100%/>
                             </asp:Panel>
                         </td>
@@ -87,7 +90,7 @@
                         </td>
                         <td>
                             <asp:Panel ID="pnlNºDeDocumento" runat="server" Visible="false">
-                                 <asp:TextBox CssClass="text-primary" ID="txtNºDeDocumento" runat="server"></asp:TextBox>&nbsp
+                                 <asp:TextBox CssClass="text-primary" ID="txtNºDeDocumento" runat="server" Width=100%></asp:TextBox>&nbsp
                             </asp:Panel>
                         </td>
                         <td>
@@ -102,7 +105,7 @@
                         </td>
                         <td>
                             <asp:Panel ID="pnlResultados" runat="server" Visible="false">
-                                <asp:ListBox ID="lstResultados" runat="server" Width="100%"></asp:ListBox>
+                                <asp:ListBox ID="lstResultados" runat="server" Width="100%" cssClass="text-primary"></asp:ListBox>
                             </asp:Panel>
                         </td>
                     </tr>
@@ -141,7 +144,7 @@
                         </td>
                         <td>
                             <asp:Panel ID="pnlDomicilio" runat="server" Visible="false">
-                                <asp:TextBox ID="txtDomicilio" runat="server" CssClass="text-primary"></asp:TextBox>
+                                <asp:TextBox ID="txtDomicilio" runat="server" CssClass="text-primary" Width=100%></asp:TextBox>
                             </asp:Panel>
                         </td>
                         <td>
@@ -156,7 +159,7 @@
                         </td>
                         <td>
                             <asp:Panel ID="pnlLocalidades" runat="server" Visible="false">
-                                <asp:DropDownList ID="ddlLocalidades" runat="server" OnSelectedIndexChanged="DdlBarrio_SelectedIndexChanged" AutoPostBack="True">
+                                <asp:DropDownList ID="ddlLocalidades" runat="server" OnSelectedIndexChanged="DdlBarrio_SelectedIndexChanged" AutoPostBack="True" cssClass="text-primary" Width=100%>
                                 </asp:DropDownList>&nbsp
                             </asp:Panel>
                         </td>
@@ -169,7 +172,7 @@
                         </td>
                         <td>
                             <asp:Panel ID="pnlBarrios" runat="server" Visible="false">
-                                <asp:DropDownList ID="ddlBarrios" runat="server" AutoPostBack="False" >
+                                <asp:DropDownList ID="ddlBarrios" runat="server" AutoPostBack="False" cssClass="text-primary" withd=100%>
                                 </asp:DropDownList>
                             </asp:Panel>
                         </td>
@@ -182,7 +185,7 @@
                         </td>
                         <td>
                             <asp:Panel ID="pnlFecha" runat="server" Visible="false">
-                                <asp:TextBox ID="txtFecha" runat="server" CssClass="text-primary" TextMode="SingleLine" Text="  /  /"></asp:TextBox>
+                                <asp:TextBox ID="txtFecha" runat="server" CssClass="text-primary" TextMode="SingleLine" Text="  /  /"  Width=100%></asp:TextBox>
                             </asp:Panel>
                         </td>
                         <td>
@@ -197,7 +200,7 @@
                         </td>
                         <td>
                             <asp:Panel ID="pnlTelefonFijo" runat="server" Visible="false">
-                                <asp:TextBox ID="txtTelefonoFijo" runat="server" CssClass="text-primary"></asp:TextBox>
+                                <asp:TextBox ID="txtTelefonoFijo" runat="server" CssClass="text-primary"  Width=100%></asp:TextBox>
                             </asp:Panel>
                         </td>
                         <td>
@@ -212,7 +215,7 @@
                         </td>
                         <td>
                             <asp:Panel ID="pnlTelefonoCelular" runat="server" Visible="false">
-                                <asp:TextBox ID="txtTelefonoCelular" runat="server" CssClass="text-primary"></asp:TextBox>
+                                <asp:TextBox ID="txtTelefonoCelular" runat="server" CssClass="text-primary"  Width=100%></asp:TextBox>
                             </asp:Panel>
                         </td>
                         <td>
@@ -227,7 +230,7 @@
                         </td>
                         <td>
                             <asp:Panel ID="pnlMail" runat="server" Visible="false">
-                                <asp:TextBox ID="txtMail" runat="server" CssClass="text-primary" CausesValidation="True"></asp:TextBox>
+                                <asp:TextBox ID="txtMail" runat="server" CssClass="text-primary" CausesValidation="True"  Width=100%></asp:TextBox>
                             </asp:Panel>
                         </td>
                         <td>
@@ -253,7 +256,7 @@
                         </td>
                         <td>
                             <asp:Panel ID="pnlLimpiar" runat="server" Visible="false">
-                                <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar" CssClass="btn-primary" OnClick="btnLimpiarClick"/>
+                                <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar" CssClass="btn-primary" OnClick="btnLimpiarClick" Width=100%/>
                             </asp:Panel>
                         </td>
                     </tr>

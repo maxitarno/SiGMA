@@ -196,6 +196,8 @@ namespace SiGMA
             {
                 pnlInfo.Visible = true;
                 lblResultado2.Text = "Debe seleccionar una opción";
+                pnlCorrecto.Visible = false;
+                pnlAtento.Visible = false;
             }
             else
             {
