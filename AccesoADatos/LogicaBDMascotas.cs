@@ -77,13 +77,15 @@ namespace AccesoADatos
             {
                 SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
                 var consulta = from MascotasBD in mapaEntidades.Mascotas
-                               from DueniosBD in mapaEntidades.Duenios
-                               from PersonasBD in mapaEntidades.Personas
+                               //from DueniosBD in mapaEntidades.Duenios
+                               //from PersonasBD in mapaEntidades.Personas
                                from RazaBD in mapaEntidades.Razas
-                               from CategoriaRazaBD in mapaEntidades.CategoriaRazas
+                               //from CategoriaRazaBD in mapaEntidades.CategoriaRazas
                                from CaracterBD in mapaEntidades.CaracteresMascota
-                               from CuidadoEspecialBD in mapaEntidades.CuidadosEspeciales
-                               where (DueniosBD.idPersona == PersonasBD.idPersona && DueniosBD.idDuenio == MascotasBD.idDuenio && MascotasBD.idRaza == RazaBD.idRaza && CuidadoEspecialBD.idCuidadoEspecial == RazaBD.idCuidadoEspecial && RazaBD.idCategoriaRaza == CategoriaRazaBD.idCategoriaRazas && MascotasBD.idCaracter == CaracterBD.idCaracter && MascotasBD.idMascota == idMascota)
+                               //from CuidadoEspecialBD in mapaEntidades.CuidadosEspeciales
+                               where (MascotasBD.idRaza == RazaBD.idRaza 
+                               //&& CuidadoEspecialBD.idCuidadoEspecial == RazaBD.idCuidadoEspecial && RazaBD.idCategoriaRaza == CategoriaRazaBD.idCategoriaRazas 
+                               && MascotasBD.idCaracter == CaracterBD.idCaracter && MascotasBD.idMascota == idMascota)
                                select new
                                {
                                    nombre = MascotasBD.nombreMascota,
@@ -98,30 +100,38 @@ namespace AccesoADatos
                                    alimentacion = MascotasBD.alimentacionEspecial,
                                    fecha = MascotasBD.fechaNacimiento,
                                    sexo = MascotasBD.sexo,
-                                   Duenio = PersonasBD.nombre,
-                                   categoria = CategoriaRazaBD.nombreCategoriaRaza,
+                                   //Duenio = PersonasBD.nombre,
+                                   //categoria = CategoriaRazaBD.nombreCategoriaRaza,
                                    caracter = CaracterBD.idCaracter,
-                                   Cuidado = CuidadoEspecialBD.descripcion,
+                                   //Cuidado = CuidadoEspecialBD.descripcion,
                                    id = MascotasBD.idMascota
                                };
                 foreach (var registro in consulta)
                 {
                     mascota.alimetacionEspecial = registro.alimentacion;
                     caracter.idCaracter = registro.caracter;
-                    categoria.nombreCategoriaRaza = registro.categoria;
-                    persona.nombre = registro.Duenio;
+                    //categoria.nombreCategoriaRaza = registro.categoria;
+                    //persona.nombre = registro.Duenio;
+                    mascota.raza = new ERaza();
                     mascota.raza.idRaza = registro.raza;
-                    mascota.fechaNacimiento = (DateTime)registro.fecha;
+                    if (registro.fecha != null)
+                    {
+                        mascota.fechaNacimiento = (DateTime)registro.fecha;
+                    }
+                    mascota.color = new EColor();
                     mascota.color.idColor = registro.color;
                     mascota.nombreMascota = registro.nombre;
                     mascota.observaciones = registro.observaciones;
                     mascota.sexo = registro.sexo;
                     mascota.tratoAnimal = registro.tratoA;
                     mascota.tratoNiños = registro.tratoN;
-                    cuidado.descripcion = registro.Cuidado;
+                    //cuidado.descripcion = registro.Cuidado;
                     mascota.idMascota = registro.id;
+                    mascota.edad = new EEdad();
                     mascota.edad.idEdad = registro.edad;
+                    mascota.especie = new EEspecie();
                     mascota.especie.idEspecie = registro.especie;
+                    mascota.estado = new EEstado();
                     mascota.estado.idEstado = registro.estado;
                 }
                 b = true;
@@ -195,10 +205,8 @@ namespace AccesoADatos
         {
             List<EMascota> mascotas = new List<EMascota>();
             SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
-            IQueryable<Mascotas> consulta = from MascotasBD in mapaEntidades.Mascotas
-                                            from DueniosBD in mapaEntidades.Duenios
-                                            from PersonasBD in mapaEntidades.Personas
-                                            where (DueniosBD.idPersona == PersonasBD.idPersona && MascotasBD.idDuenio == DueniosBD.idDuenio && MascotasBD.nombreMascota.Contains(nombre))
+            IQueryable<Mascotas> consulta = from MascotasBD in mapaEntidades.Mascotas                                            
+                                            where (MascotasBD.nombreMascota.Contains(nombre))
                                             select MascotasBD;
             try
             {

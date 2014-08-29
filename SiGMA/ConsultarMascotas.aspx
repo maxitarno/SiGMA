@@ -194,7 +194,7 @@
                                             Trato animales:&nbsp
                                         </td>
                                         <td>
-                                            <asp:DropDownList ID="ddlTratoAnimales" runat="server Width=100%>
+                                            <asp:DropDownList ID="ddlTratoAnimales" runat="server" Width="100%">
                                                 <asp:ListItem Selected="True" Value="0" Text="-- Seleccione una opción"></asp:ListItem>
                                                 <asp:ListItem Text="Si" Value="Si"></asp:ListItem>
                                                 <asp:ListItem Value="No" Text="No"></asp:ListItem>

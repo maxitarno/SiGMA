@@ -20,7 +20,7 @@
         </div>
         <div>
          <div class="derecha">
-    <table><tr><td><input type="file" runat="server"  id="fuImagen"  onchange="preview(this)" />
+    <table><tr><td><input type="file" runat="server"  id="fuImagen"  onchange="showimagepreview(this)" />
         <%--<asp:FileUpload ID="fuImagen" runat="server"  />--%>
         </td>          
           </tr>
