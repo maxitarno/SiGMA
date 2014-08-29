@@ -286,6 +286,3 @@ namespace SiGMA
             txtMascota.Text = "";
             Session["idMascota"] = 0;
             txtNombreDueñio.Text = "";
-        }
-    }
-}
