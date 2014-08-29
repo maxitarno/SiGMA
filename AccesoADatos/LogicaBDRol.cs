@@ -10,7 +10,7 @@ namespace AccesoADatos
     public class LogicaBDRol
     {
         //metodo para ABMC de Permisos segun el Rol seleccionado .
-        public static bool guardarPermisoRol(ERol rol)
+        public static bool guardarPermisoRol(ERol Rol)
         {
             using (TransactionScope transaction = new TransactionScope())
             {
@@ -18,12 +18,12 @@ namespace AccesoADatos
                 try
                 {
                     SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
-                    var idRol = rol.idRol;
+                    var idRol = Rol.idRol;
                     var list = mapaEntidades.PermisosXRoles.Where(m => m.idRol == idRol);
                     foreach (PermisosXRoles per in list)
                         mapaEntidades.PermisosXRoles.DeleteObject(per);
                     mapaEntidades.SaveChanges();
-                    foreach (var item in rol.listaPermisos)
+                    foreach (var item in Rol.listaPermisos)
                     {
                         PermisosXRoles perRolesBD = new PermisosXRoles();
                         perRolesBD.idPermiso = item.idPermiso;
@@ -105,30 +105,30 @@ namespace AccesoADatos
         }
         //fin metodo
         //metodo para cargar permisos segun rol seleccionado
-        //public static List<EPermisoRol> cargarPermisosRol(int idRol)
-        //{
-        //    List<EPermisoRol> perRol = new List<EPermisoRol>();
-        //    SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
-        //    IQueryable<PermisosXRoles> ListaPermisos = from permisos in mapaEntidades.PermisosXRoles
-        //                                               where (permisos.idRol == idRol)
-        //                                               select permisos;
-        //    try
-        //    {
-        //        foreach (var permisos in ListaPermisos)
-        //        {
-        //            EPermisoRol per = new EPermisoRol();
-        //            per.idPermiso = permisos.idPermiso;
-        //            per.idRol = permisos.idRol;
-        //            per.pantalla = permisos.pantalla;
-        //            perRol.Add(per);
-        //        }
-        //    }
-        //    catch (System.Data.EntityCommandCompilationException exc)
-        //    {
-        //        throw exc;
-        //    }
-        //    return perRol;
-        //}
+        public static List<EPermiso> cargarPermisosRol(int idRol)
+        {
+            List<EPermiso> perRol = new List<EPermiso>();
+            SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+            IQueryable<PermisosXRoles> ListaPermisos = from permisos in mapaEntidades.PermisosXRoles
+                                                       where (permisos.idRol == idRol)
+                                                       select permisos;
+            try
+            {
+                var i = 0;
+                foreach (var permisos in ListaPermisos)
+                {
+                    EPermiso per = new EPermiso();
+                    per.idPermiso = permisos.idPermiso;
+                    per.pantalla = permisos.pantalla;
+                    perRol.Add(per);
+                }
+            }
+            catch (System.Data.EntityCommandCompilationException exc)
+            {
+                throw exc;
+            }
+            return perRol;
+        }
 
         public static ERol cargarRol(int idRol) 
         {
