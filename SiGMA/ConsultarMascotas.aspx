@@ -70,9 +70,10 @@
                                             <asp:TextBox ID="txtNombreDueñio" runat="server" CssClass="TextBox" Width="100%"></asp:TextBox>
                                         </asp:Panel>
                                     </td>
-                                    <td colspan=3 rowspan=2>
+                                    <td colspan="3" rowspan="2">
                                         <asp:Panel ID="pnlboton" runat="server" Visible="false">
-                                            <asp:Button ID="btnBuscar" runat="server" Text="Buscar" CssClass="btn-primary" OnClick="BtnBuscarClick" width=100%/>
+                                            <asp:Button ID="btnBuscar" runat="server" Text="Buscar" CssClass="btn-primary" OnClick="BtnBuscarClick"
+                                                Width="100%" />
                                         </asp:Panel>
                                     </td>
                                 </tr>
@@ -198,7 +199,7 @@
                                             Trato niños:&nbsp
                                         </td>
                                         <td>
-                                            <asp:DropDownList ID="ddlTratoNinios" runat="server" Width=100%>
+                                            <asp:DropDownList ID="ddlTratoNinios" runat="server" Width="100%">
                                                 <asp:ListItem Selected="True" Value="0" Text="-- Seleccione una opción --"></asp:ListItem>
                                                 <asp:ListItem Text="Si" Value="Si"></asp:ListItem>
                                                 <asp:ListItem Value="No" Text="No"></asp:ListItem>
@@ -210,7 +211,7 @@
                                             Carater:&nbsp
                                         </td>
                                         <td>
-                                            <asp:DropDownList ID="ddlCaracter" runat="server" CssClass="DropDownList" Width=100%>
+                                            <asp:DropDownList ID="ddlCaracter" runat="server" CssClass="DropDownList" Width="100%">
                                             </asp:DropDownList>
                                         </td>
                                     </tr>
@@ -219,7 +220,7 @@
                                             Observaciones:&nbsp
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="txtObservaciones" runat="server" CssClass="TextBox" Width=100%></asp:TextBox>
+                                            <asp:TextBox ID="txtObservaciones" runat="server" CssClass="TextBox" Width="100%"></asp:TextBox>
                                         </td>
                                     </tr>
                                     <tr>
@@ -227,7 +228,7 @@
                                             Alimentacion especial:&nbsp
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="txtAlimentacionEspecial" runat="server" CssClass="TextBox" Width=100%></asp:TextBox>
+                                            <asp:TextBox ID="txtAlimentacionEspecial" runat="server" CssClass="TextBox" Width="100%"></asp:TextBox>
                                         </td>
                                     </tr>
                                     <tr>
@@ -247,7 +248,7 @@
                                             Fecha:&nbsp
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="txtFecha" runat="server" TextMode="Date" CssClass="TextBox" Width=100%></asp:TextBox>
+                                            <asp:TextBox ID="txtFecha" runat="server" TextMode="Date" CssClass="TextBox" Width="100%"></asp:TextBox>
                                         </td>
                                     </tr>
                                 </table>
@@ -264,17 +265,88 @@
                                                 OnClick="BtnSeleccionarClick" CausesValidation="False" />
                                         </asp:Panel>
                                     </td>
-                                    <td colspan=3>
+                                    <td colspan="3">
                                         <asp:Panel ID="pnlbotones" runat="server" Visible="false">
                                             <asp:Button ID="btnModificar" runat="server" Text="Modificar" CssClass="btn-primary"
                                                 OnClick="BtnModificarClick" ValidationGroup="1" />
                                             <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" CssClass="btn-primary"
-                                                ValidationGroup="2" OnClick="BtnEliminarClick"/>
-                                            <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar" CssClass="btn-primary" OnClick="BtnLimpiarClick"/>
+                                                ValidationGroup="2" OnClick="BtnEliminarClick" />
+                                            <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar" CssClass="btn-primary"
+                                                OnClick="BtnLimpiarClick" />
                                         </asp:Panel>
                                     </td>
                                 </tr>
                             </table>
+                        </td>
+                        <td>
+                            <tr>
+                                <td>
+                                    <input type="file" runat="server" id="fuImagen" onchange="showimagepreview(this)" />
+                                    <%--<asp:FileUpload ID="fuImagen" runat="server"  />--%>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <script type="text/javascript">
+                                        /***** CUSTOMIZE THESE VARIABLES *****/
+
+                                        // width to resize large images to
+                                        var maxWidth = 200;
+                                        // height to resize large images to
+                                        var maxHeight = 200;
+                                        // valid file types
+                                        var fileTypes = ["bmp", "gif", "png", "jpg", "jpeg"];
+                                        // the id of the preview image tag
+                                        var outImage = "imgprvw";
+
+                                        /***** DO NOT EDIT BELOW *****/
+                                        function preview(input) {
+                                            var source = input.value;
+                                            var ext = input.value.substring(input.value.lastIndexOf(".") + 1, input.value.length).toLowerCase();
+                                            for (var i = 0; i < fileTypes.length; i++) if (fileTypes[i] == ext) break;
+                                            globalPic = new Image();
+                                            if (i < fileTypes.length) globalPic.src = input.value;
+                                            else {
+                                                if (input.value != "") {
+                                                    alert("Formato del archivo no permitido, debe ser: " + fileTypes.join(", "));
+                                                }
+                                            }
+                                            setTimeout("applyChanges()", 100);
+                                        }
+                                        var globalPic;
+                                        function applyChanges() {
+                                            var field = document.getElementById(outImage);
+                                            var x = parseInt(globalPic.width);
+                                            var y = parseInt(globalPic.height);
+                                            if (x > maxWidth) {
+                                                y *= maxWidth / x;
+                                                x = maxWidth;
+                                            }
+                                            if (y > maxHeight) {
+                                                x *= maxHeight / y;
+                                                y = maxHeight;
+                                            }
+                                            field.style.display = (x < 1 || y < 1) ? "none" : "";
+                                            field.src = globalPic.src;
+                                            field.width = x;
+                                            field.height = y;
+                                        }
+                                        // End -->
+                                    </script>
+                                    <script type="text/javascript">
+                                        function showimagepreview(input) {
+                                            if (input.files && input.files[0]) {
+                                                var filerdr = new FileReader();
+                                                filerdr.onload = function (e) {
+                                                    $('#imgprvw').attr('src', e.target.result);
+                                                }
+                                                filerdr.readAsDataURL(input.files[0]);
+                                            }
+                                        }
+                                    </script>
+                                    <img id="imgprvw" />
+                                </td>
+                            </tr>
                         </td>
                     </tr>
                 </table>
