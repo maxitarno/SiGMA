@@ -219,20 +219,48 @@ namespace SiGMA
                     mascota.color.idColor = int.Parse(ddlColor.SelectedValue);
                     mascota.caracter = new ECaracterMascota();
                     mascota.caracter.idCaracter = int.Parse(ddlCaracter.SelectedValue);
-                    if (LogicaBDMascotas.ModificarMascota(mascota))
-                    {
-                        pnlCorrecto.Visible = true;
-                        lblResultado1.Text = "Se modifico corretamente";
-                        pnlAtento.Visible = false;
-                        pnlInfo.Visible = false;
+                    if(fuImagen.PostedFile.ContentLength != 0){
+                        if (!GestorImagen.verificarTamaño(fuImagen.PostedFile.ContentLength))
+                        {
+                            pnlInfo.Visible = true;
+                            lblResultado2.Text = "El tamaño de la imagen no debe superar 1Mb";
+                        }
+                        else
+                        {
+                            byte[] imagen = GestorImagen.obtenerArrayBytes(fuImagen.PostedFile.InputStream, fuImagen.PostedFile.ContentLength);
+                            if (LogicaBDMascotas.ModificarMascota(mascota, imagen))
+                            {
+                                pnlCorrecto.Visible = true;
+                                lblResultado1.Text = "Se modifico corretamente";
+                                pnlAtento.Visible = false;
+                                pnlInfo.Visible = false;
+                            }
+                            else
+                            {
+                                pnlCorrecto.Visible = false;
+                                pnlInfo.Visible = false;
+                                pnlAtento.Visible = true;
+                                lblResultado3.Text = "No se pudo modificar";
+                                pnlCorrecto.Visible = false;
+                            }
+                        }
                     }
-                    else
-                    {
-                        pnlCorrecto.Visible = false;
-                        pnlInfo.Visible = false;
-                        pnlAtento.Visible = true;
-                        lblResultado3.Text = "No se pudo modificar";
-                        pnlCorrecto.Visible = false;
+                    else{
+                        if (LogicaBDMascotas.ModificarMascota(mascota, null))
+                        {
+                            pnlCorrecto.Visible = true;
+                            lblResultado1.Text = "Se modifico corretamente";
+                            pnlAtento.Visible = false;
+                            pnlInfo.Visible = false;
+                        }
+                        else
+                        {
+                            pnlCorrecto.Visible = false;
+                            pnlInfo.Visible = false;
+                            pnlAtento.Visible = true;
+                            lblResultado3.Text = "No se pudo modificar";
+                            pnlCorrecto.Visible = false;
+                        }
                     }
                 }
                 else

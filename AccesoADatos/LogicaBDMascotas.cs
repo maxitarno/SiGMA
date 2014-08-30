@@ -164,7 +164,7 @@ namespace AccesoADatos
             }
             return mascotas;
         }
-        public static bool ModificarMascota(EMascota mascota)
+        public static bool ModificarMascota(EMascota mascota, byte[] imagen )
         {
             bool b = false;
             try
@@ -187,8 +187,18 @@ namespace AccesoADatos
                     registro.tratoNinios = mascota.tratoNiños;
                     registro.idCaracter = mascota.caracter.idCaracter;
                 }
-                b = true;
-                mapaEntidades.SaveChanges();
+                if (imagen != null)
+                {
+                    LogicaBDImagen.guardarImagen(imagen, mascota);
+                    b = true;
+                    mapaEntidades.SaveChanges();
+                }
+                else
+                {
+                    LogicaBDImagen.guardarImagen(null, mascota);
+                    b = true;
+                    mapaEntidades.SaveChanges();
+                }
             }
             catch (InvalidOperationException exc)
             {
