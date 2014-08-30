@@ -135,6 +135,10 @@
                                 <asp:TextBox ID="txtNombre" runat="server" CssClass="text-primary" Width="100%"></asp:TextBox>
                             </asp:Panel>
                         </td>
+                        <td>
+                            <asp:RequiredFieldValidator ID="rfvNombre" runat="server" ErrorMessage="Debe ingresar un nombre" Display="Dynamic" ControlToValidate="txtNombre" ValidationGroup="1"></asp:RequiredFieldValidator>
+                            
+                        </td>
                     </tr>
                     <tr>
                         <td>
