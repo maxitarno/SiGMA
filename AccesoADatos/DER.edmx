@@ -296,10 +296,11 @@
           <Key>
             <PropertyRef Name="idRol" />
             <PropertyRef Name="idPermiso" />
+            <PropertyRef Name="pantalla" />
           </Key>
           <Property Name="idRol" Type="int" Nullable="false" />
           <Property Name="idPermiso" Type="int" Nullable="false" />
-          <Property Name="pantalla" Type="varchar" MaxLength="100" />
+          <Property Name="pantalla" Type="varchar" Nullable="false" MaxLength="100" />
         </EntityType>
         <EntityType Name="Personas">
           <Key>
@@ -717,7 +718,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_RolesXUsuario_Usuarios">
-          <End Role="Usuarios" Type="SiGMAModel.Store.Usuarios" Multiplicity="1" />
+          <End Role="Usuarios" Type="SiGMAModel.Store.Usuarios" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="RolesXUsuario" Type="SiGMAModel.Store.RolesXUsuario" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Usuarios">
@@ -772,7 +775,6 @@
           <EntitySet Name="Mascotas" EntityType="SiGMAModel.Mascotas" />
           <EntitySet Name="Perdidas" EntityType="SiGMAModel.Perdidas" />
           <EntitySet Name="Permisos" EntityType="SiGMAModel.Permisos" />
-          <EntitySet Name="PermisosXRoles" EntityType="SiGMAModel.PermisosXRoles" />
           <EntitySet Name="Personas" EntityType="SiGMAModel.Personas" />
           <EntitySet Name="Razas" EntityType="SiGMAModel.Razas" />
           <EntitySet Name="Roles" EntityType="SiGMAModel.Roles" />
@@ -873,14 +875,6 @@
             <End Role="Sesiones" EntitySet="Sesiones" />
             <End Role="Perdidas" EntitySet="Perdidas" />
           </AssociationSet>
-          <AssociationSet Name="FK_PermisosXRoles_Permisos" Association="SiGMAModel.FK_PermisosXRoles_Permisos">
-            <End Role="Permisos" EntitySet="Permisos" />
-            <End Role="PermisosXRoles" EntitySet="PermisosXRoles" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PermisosXRoles_Roles" Association="SiGMAModel.FK_PermisosXRoles_Roles">
-            <End Role="Roles" EntitySet="Roles" />
-            <End Role="PermisosXRoles" EntitySet="PermisosXRoles" />
-          </AssociationSet>
           <AssociationSet Name="FK_Personas_TipoDocumentos" Association="SiGMAModel.FK_Personas_TipoDocumentos">
             <End Role="TipoDocumentos" EntitySet="TipoDocumentos" />
             <End Role="Personas" EntitySet="Personas" />
@@ -904,6 +898,15 @@
           <AssociationSet Name="FK_Sesiones_Usuarios" Association="SiGMAModel.FK_Sesiones_Usuarios">
             <End Role="Usuarios" EntitySet="Usuarios" />
             <End Role="Sesiones" EntitySet="Sesiones" />
+          </AssociationSet>
+          <EntitySet Name="PermisosXRoles" EntityType="SiGMAModel.PermisosXRoles" />
+          <AssociationSet Name="FK_PermisosXRoles_Permisos" Association="SiGMAModel.FK_PermisosXRoles_Permisos">
+            <End Role="Permisos" EntitySet="Permisos" />
+            <End Role="PermisosXRoles" EntitySet="PermisosXRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PermisosXRoles_Roles" Association="SiGMAModel.FK_PermisosXRoles_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="PermisosXRoles" EntitySet="PermisosXRoles" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Adopciones">
@@ -1081,17 +1084,6 @@
           <Property Name="tipoPermiso" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="PermisosXRoles" Relationship="SiGMAModel.FK_PermisosXRoles_Permisos" FromRole="Permisos" ToRole="PermisosXRoles" />
         </EntityType>
-        <EntityType Name="PermisosXRoles">
-          <Key>
-            <PropertyRef Name="idRol" />
-            <PropertyRef Name="idPermiso" />
-          </Key>
-          <Property Name="idRol" Type="Int32" Nullable="false" />
-          <Property Name="idPermiso" Type="Int32" Nullable="false" />
-          <Property Name="pantalla" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
-          <NavigationProperty Name="Permisos" Relationship="SiGMAModel.FK_PermisosXRoles_Permisos" FromRole="PermisosXRoles" ToRole="Permisos" />
-          <NavigationProperty Name="Roles" Relationship="SiGMAModel.FK_PermisosXRoles_Roles" FromRole="PermisosXRoles" ToRole="Roles" />
-        </EntityType>
         <EntityType Name="Personas">
           <Key>
             <PropertyRef Name="idPersona" />
@@ -1136,8 +1128,8 @@
           <Property Name="idRol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="descripcion" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="PermisosXRoles" Relationship="SiGMAModel.FK_PermisosXRoles_Roles" FromRole="Roles" ToRole="PermisosXRoles" />
           <NavigationProperty Name="RolesXUsuario" Relationship="SiGMAModel.FK_RolesXUsuario_Roles" FromRole="Roles" ToRole="RolesXUsuario" />
+          <NavigationProperty Name="PermisosXRoles" Relationship="SiGMAModel.FK_PermisosXRoles_Roles" FromRole="Roles" ToRole="PermisosXRoles" />
         </EntityType>
         <EntityType Name="RolesXUsuario">
           <Key>
@@ -1467,30 +1459,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_PermisosXRoles_Permisos">
-          <End Role="Permisos" Type="SiGMAModel.Permisos" Multiplicity="1" />
-          <End Role="PermisosXRoles" Type="SiGMAModel.PermisosXRoles" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Permisos">
-              <PropertyRef Name="idPermiso" />
-            </Principal>
-            <Dependent Role="PermisosXRoles">
-              <PropertyRef Name="idPermiso" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PermisosXRoles_Roles">
-          <End Role="Roles" Type="SiGMAModel.Roles" Multiplicity="1" />
-          <End Role="PermisosXRoles" Type="SiGMAModel.PermisosXRoles" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Roles">
-              <PropertyRef Name="idRol" />
-            </Principal>
-            <Dependent Role="PermisosXRoles">
-              <PropertyRef Name="idRol" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Personas_TipoDocumentos">
           <End Role="TipoDocumentos" Type="SiGMAModel.TipoDocumentos" Multiplicity="0..1" />
           <End Role="Personas" Type="SiGMAModel.Personas" Multiplicity="*" />
@@ -1562,6 +1530,42 @@
             </Principal>
             <Dependent Role="Sesiones">
               <PropertyRef Name="user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PermisosXRoles">
+          <Key>
+            <PropertyRef Name="idRol" />
+            <PropertyRef Name="idPermiso" />
+            <PropertyRef Name="pantalla" />
+          </Key>
+          <Property Type="Int32" Name="idRol" Nullable="false" />
+          <Property Type="Int32" Name="idPermiso" Nullable="false" />
+          <Property Type="String" Name="pantalla" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Permisos" Relationship="SiGMAModel.FK_PermisosXRoles_Permisos" FromRole="PermisosXRoles" ToRole="Permisos" />
+          <NavigationProperty Name="Roles" Relationship="SiGMAModel.FK_PermisosXRoles_Roles" FromRole="PermisosXRoles" ToRole="Roles" />
+        </EntityType>
+        <Association Name="FK_PermisosXRoles_Permisos">
+          <End Type="SiGMAModel.Permisos" Role="Permisos" Multiplicity="1" />
+          <End Type="SiGMAModel.PermisosXRoles" Role="PermisosXRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Permisos">
+              <PropertyRef Name="idPermiso" />
+            </Principal>
+            <Dependent Role="PermisosXRoles">
+              <PropertyRef Name="idPermiso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PermisosXRoles_Roles">
+          <End Type="SiGMAModel.Roles" Role="Roles" Multiplicity="1" />
+          <End Type="SiGMAModel.PermisosXRoles" Role="PermisosXRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="idRol" />
+            </Principal>
+            <Dependent Role="PermisosXRoles">
+              <PropertyRef Name="idRol" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1723,15 +1727,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="PermisosXRoles">
-            <EntityTypeMapping TypeName="SiGMAModel.PermisosXRoles">
-              <MappingFragment StoreEntitySet="PermisosXRoles">
-                <ScalarProperty Name="idRol" ColumnName="idRol" />
-                <ScalarProperty Name="idPermiso" ColumnName="idPermiso" />
-                <ScalarProperty Name="pantalla" ColumnName="pantalla" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Personas">
             <EntityTypeMapping TypeName="SiGMAModel.Personas">
               <MappingFragment StoreEntitySet="Personas">
@@ -1814,6 +1809,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="PermisosXRoles">
+            <EntityTypeMapping TypeName="SiGMAModel.PermisosXRoles">
+              <MappingFragment StoreEntitySet="PermisosXRoles">
+                <ScalarProperty Name="pantalla" ColumnName="pantalla" />
+                <ScalarProperty Name="idPermiso" ColumnName="idPermiso" />
+                <ScalarProperty Name="idRol" ColumnName="idRol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -1850,7 +1854,6 @@
         <EntityTypeShape EntityType="SiGMAModel.Mascotas" Width="1.5" PointX="7.5" PointY="3.5" Height="5.8263151041666674" IsExpanded="true" />
         <EntityTypeShape EntityType="SiGMAModel.Perdidas" Width="1.5" PointX="13.75" PointY="10.625" Height="3.3263964843750031" IsExpanded="true" />
         <EntityTypeShape EntityType="SiGMAModel.Permisos" Width="1.5" PointX="3.75" PointY="32.125" Height="1.5956835937500031" IsExpanded="true" />
-        <EntityTypeShape EntityType="SiGMAModel.PermisosXRoles" Width="1.5" PointX="6" PointY="0.75" Height="1.9802864583333388" IsExpanded="true" />
         <EntityTypeShape EntityType="SiGMAModel.Personas" Width="1.5" PointX="3" PointY="9.625" Height="4.2879036458333388" IsExpanded="true" />
         <EntityTypeShape EntityType="SiGMAModel.Razas" Width="1.5" PointX="5.25" PointY="27.375" Height="2.9417936197916674" IsExpanded="true" />
         <EntityTypeShape EntityType="SiGMAModel.Roles" Width="1.5" PointX="3.75" PointY="1.75" Height="1.9802864583333388" IsExpanded="true" />
@@ -1865,9 +1868,7 @@
           <ConnectorPoint PointX="5.682291666666667" PointY="12.958639322916669" />
           <ConnectorPoint PointX="5.848958333333333" PointY="12.958639322916669" />
           <ConnectorPoint PointX="7.5416629166666675" PointY="12.958639322916667" />
-          <ConnectorPoint PointX="8.0833333333333339" PointY="12.958639322916669" />
-          <ConnectorPoint PointX="8.1666691666666669" PointY="12.958639322916667" />
-          <ConnectorPoint PointX="8.4583370833333351" PointY="12.958639322916669" />
+          <ConnectorPoint PointX="8.1770861458333339" PointY="12.958639322916669" />
           <ConnectorPoint PointX="8.5" PointY="12.958639322916669" />
         </AssociationConnector>
         <AssociationConnector Association="SiGMAModel.FK_Adopciones_Mascotas" ManuallyRouted="false">
@@ -1879,10 +1880,10 @@
           <ConnectorPoint PointX="5.765625" PointY="10.53125" />
           <ConnectorPoint PointX="6.666666666666667" PointY="10.53125" />
           <ConnectorPoint PointX="6.833333333333333" PointY="10.53125" />
+          <ConnectorPoint PointX="7.041666666666667" PointY="10.53125" />
+          <ConnectorPoint PointX="7.208333333333333" PointY="10.53125" />
           <ConnectorPoint PointX="7.5416629166666675" PointY="10.531249999999998" />
-          <ConnectorPoint PointX="8.0833333333333339" PointY="10.53125" />
-          <ConnectorPoint PointX="8.1666691666666669" PointY="10.531249999999998" />
-          <ConnectorPoint PointX="8.4583370833333351" PointY="10.53125" />
+          <ConnectorPoint PointX="8.1770861458333339" PointY="10.53125" />
           <ConnectorPoint PointX="8.5" PointY="10.53125" />
         </AssociationConnector>
         <AssociationConnector Association="SiGMAModel.FK_Barrios_Localidades" ManuallyRouted="false">
@@ -1890,58 +1891,48 @@
           <ConnectorPoint PointX="1.875" PointY="7.375" />
         </AssociationConnector>
         <AssociationConnector Association="SiGMAModel.FK_Hallazgos_Barrios" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="8.4687505" />
-          <ConnectorPoint PointX="3.6666666666666665" PointY="8.4687505" />
-          <ConnectorPoint PointX="3.8333333333333335" PointY="8.4687505" />
-          <ConnectorPoint PointX="4.1666671666666675" PointY="8.4687505" />
-          <ConnectorPoint PointX="4.3333338333333336" PointY="8.4687505" />
-          <ConnectorPoint PointX="4.791666666666667" PointY="8.4687505" />
-          <ConnectorPoint PointX="4.958333333333333" PointY="8.4687505" />
-          <ConnectorPoint PointX="5" PointY="8.4687505" />
-          <ConnectorPoint PointX="5" PointY="9.7302864583333317" />
-          <ConnectorPoint PointX="5.041666666666667" PointY="9.7302864583333317" />
-          <ConnectorPoint PointX="5.208333333333333" PointY="9.7302864583333317" />
-          <ConnectorPoint PointX="5.3072891666666671" PointY="9.7302864583333317" />
-          <ConnectorPoint PointX="5.4739558333333331" PointY="9.7302864583333317" />
-          <ConnectorPoint PointX="5.510416666666667" PointY="9.7302864583333317" />
-          <ConnectorPoint PointX="5.677083333333333" PointY="9.7302864583333317" />
-          <ConnectorPoint PointX="7.5416629166666675" PointY="9.73028645833333" />
-          <ConnectorPoint PointX="8.0833333333333339" PointY="9.7302864583333317" />
-          <ConnectorPoint PointX="8.1666691666666669" PointY="9.73028645833333" />
-          <ConnectorPoint PointX="8.4583370833333351" PointY="9.7302864583333317" />
-          <ConnectorPoint PointX="8.6666666666666661" PointY="9.7302864583333317" />
-          <ConnectorPoint PointX="8.8333333333333339" PointY="9.7302864583333317" />
-          <ConnectorPoint PointX="11.5" PointY="9.7302864583333317" />
+          <ConnectorPoint PointX="2.25" PointY="7.90624775" />
+          <ConnectorPoint PointX="4.572916666666667" PointY="7.9062477499999995" />
+          <ConnectorPoint PointX="4.739583333333333" PointY="7.90624775" />
+          <ConnectorPoint PointX="5" PointY="7.90624775" />
+          <ConnectorPoint PointX="5" PointY="9.7686165364583317" />
+          <ConnectorPoint PointX="5.3072891666666671" PointY="9.7686165364583317" />
+          <ConnectorPoint PointX="5.4739558333333331" PointY="9.7686165364583317" />
+          <ConnectorPoint PointX="5.510416666666667" PointY="9.7686165364583317" />
+          <ConnectorPoint PointX="5.677083333333333" PointY="9.7686165364583317" />
+          <ConnectorPoint PointX="7.041666666666667" PointY="9.7686165364583317" />
+          <ConnectorPoint PointX="7.208333333333333" PointY="9.7686165364583317" />
+          <ConnectorPoint PointX="7.5416629166666675" PointY="9.76861653645833" />
+          <ConnectorPoint PointX="8.1770861458333339" PointY="9.7686165364583317" />
+          <ConnectorPoint PointX="8.6666666666666661" PointY="9.7686165364583317" />
+          <ConnectorPoint PointX="8.8333333333333339" PointY="9.7686165364583317" />
+          <ConnectorPoint PointX="11.5" PointY="9.7686165364583317" />
           <ConnectorPoint PointX="11.5" PointY="10.625" />
         </AssociationConnector>
         <AssociationConnector Association="SiGMAModel.FK_Perdidas_Barrios" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="9.04687775" />
-          <ConnectorPoint PointX="3.6666666666666665" PointY="9.04687775" />
-          <ConnectorPoint PointX="3.8333333333333335" PointY="9.04687775" />
-          <ConnectorPoint PointX="4.1666671666666675" PointY="9.04687775" />
-          <ConnectorPoint PointX="4.3333338333333336" PointY="9.04687775" />
-          <ConnectorPoint PointX="4.75" PointY="9.04687775" />
-          <ConnectorPoint PointX="4.75" PointY="9.9802864583333317" />
-          <ConnectorPoint PointX="4.791666666666667" PointY="9.9802864583333317" />
-          <ConnectorPoint PointX="4.958333333333333" PointY="9.9802864583333317" />
-          <ConnectorPoint PointX="5.3072891666666671" PointY="9.9802864583333317" />
-          <ConnectorPoint PointX="5.4739558333333331" PointY="9.9802864583333317" />
-          <ConnectorPoint PointX="5.510416666666667" PointY="9.9802864583333317" />
-          <ConnectorPoint PointX="5.677083333333333" PointY="9.9802864583333317" />
-          <ConnectorPoint PointX="6.666666666666667" PointY="9.9802864583333317" />
-          <ConnectorPoint PointX="6.833333333333333" PointY="9.9802864583333317" />
-          <ConnectorPoint PointX="7.5416629166666675" PointY="9.98028645833333" />
-          <ConnectorPoint PointX="8.0833333333333339" PointY="9.9802864583333317" />
-          <ConnectorPoint PointX="8.1666691666666669" PointY="9.98028645833333" />
-          <ConnectorPoint PointX="8.4583370833333351" PointY="9.9802864583333317" />
-          <ConnectorPoint PointX="8.6666666666666661" PointY="9.9802864583333317" />
-          <ConnectorPoint PointX="8.8333333333333339" PointY="9.9802864583333317" />
-          <ConnectorPoint PointX="11.416666666666666" PointY="9.9802864583333317" />
-          <ConnectorPoint PointX="11.583333333333334" PointY="9.9802864583333317" />
-          <ConnectorPoint PointX="14.010414166666665" PointY="9.9802864583333317" />
-          <ConnectorPoint PointX="14.177080833333333" PointY="9.9802864583333317" />
-          <ConnectorPoint PointX="14.5" PointY="9.9802864583333317" />
-          <ConnectorPoint PointX="14.5" PointY="10.625" />
+          <ConnectorPoint PointX="2.25" PointY="8.3515615625" />
+          <ConnectorPoint PointX="4.572916666666667" PointY="8.3515615625" />
+          <ConnectorPoint PointX="4.739583333333333" PointY="8.3515615625" />
+          <ConnectorPoint PointX="4.916666666666667" PointY="8.3515615625" />
+          <ConnectorPoint PointX="5.083333333333333" PointY="8.3515615625" />
+          <ConnectorPoint PointX="5.125" PointY="8.3515615625" />
+          <ConnectorPoint PointX="5.125" PointY="9.8311165364583317" />
+          <ConnectorPoint PointX="5.3072891666666671" PointY="9.8311165364583317" />
+          <ConnectorPoint PointX="5.4739558333333331" PointY="9.8311165364583317" />
+          <ConnectorPoint PointX="5.510416666666667" PointY="9.8311165364583317" />
+          <ConnectorPoint PointX="5.677083333333333" PointY="9.8311165364583317" />
+          <ConnectorPoint PointX="6.666666666666667" PointY="9.8311165364583317" />
+          <ConnectorPoint PointX="6.833333333333333" PointY="9.8311165364583317" />
+          <ConnectorPoint PointX="7.041666666666667" PointY="9.8311165364583317" />
+          <ConnectorPoint PointX="7.208333333333333" PointY="9.8311165364583317" />
+          <ConnectorPoint PointX="7.5416629166666675" PointY="9.83111653645833" />
+          <ConnectorPoint PointX="8.1770861458333339" PointY="9.8311165364583317" />
+          <ConnectorPoint PointX="8.6666666666666661" PointY="9.8311165364583317" />
+          <ConnectorPoint PointX="8.8333333333333339" PointY="9.8311165364583317" />
+          <ConnectorPoint PointX="14.111977041666666" PointY="9.8311165364583317" />
+          <ConnectorPoint PointX="14.278643708333334" PointY="9.8311165364583317" />
+          <ConnectorPoint PointX="14.70312575" PointY="9.8311165364583317" />
+          <ConnectorPoint PointX="14.70312575" PointY="10.625" />
         </AssociationConnector>
         <AssociationConnector Association="SiGMAModel.FK_Personas_Barrios" ManuallyRouted="false">
           <ConnectorPoint PointX="2.25" PointY="7.89062275" />
@@ -1950,6 +1941,8 @@
         </AssociationConnector>
         <AssociationConnector Association="SiGMAModel.FK_Mascotas_CaracteresMascota" ManuallyRouted="false">
           <ConnectorPoint PointX="6.75" PointY="5.672841796875" />
+          <ConnectorPoint PointX="7.041666666666667" PointY="5.6728417968749989" />
+          <ConnectorPoint PointX="7.208333333333333" PointY="5.672841796875" />
           <ConnectorPoint PointX="7.5" PointY="5.672841796875" />
         </AssociationConnector>
         <AssociationConnector Association="SiGMAModel.FK_Razas_CategoriaRazas" ManuallyRouted="false">
@@ -1959,11 +1952,11 @@
           <ConnectorPoint PointX="5.25" PointY="27.922841796874998" />
         </AssociationConnector>
         <AssociationConnector Association="SiGMAModel.FK_Mascotas_Colores" ManuallyRouted="false">
-          <ConnectorPoint PointX="6.75" PointY="17.922841796874998" />
-          <ConnectorPoint PointX="7.5416629166666675" PointY="17.922841796874998" />
-          <ConnectorPoint PointX="7.9583320833333326" PointY="17.922841796874998" />
-          <ConnectorPoint PointX="8" PointY="17.922841796874998" />
-          <ConnectorPoint PointX="8" PointY="9.3263151041666674" />
+          <ConnectorPoint PointX="6.75" PointY="18.381735026041667" />
+          <ConnectorPoint PointX="7.5729154166666675" PointY="18.381735026041667" />
+          <ConnectorPoint PointX="7.8958342708333333" PointY="18.381735026041667" />
+          <ConnectorPoint PointX="7.937500625" PointY="18.381735026041667" />
+          <ConnectorPoint PointX="7.937500625" PointY="9.5186165364583317" />
         </AssociationConnector>
         <AssociationConnector Association="SiGMAModel.FK_Razas_CuidadosEspeciales" ManuallyRouted="false">
           <ConnectorPoint PointX="4.5" PointY="29.783396809895834" />
@@ -1973,30 +1966,30 @@
         </AssociationConnector>
         <AssociationConnector Association="SiGMAModel.FK_Duenios_Personas" ManuallyRouted="false">
           <ConnectorPoint PointX="4.5" PointY="13.435771484375003" />
-          <ConnectorPoint PointX="4.791666666666667" PointY="13.435771484375003" />
-          <ConnectorPoint PointX="4.958333333333333" PointY="13.435771484375003" />
+          <ConnectorPoint PointX="4.572916666666667" PointY="13.435771484375003" />
+          <ConnectorPoint PointX="4.739583333333333" PointY="13.435771484375003" />
           <ConnectorPoint PointX="5.3906225" PointY="13.435771484375003" />
           <ConnectorPoint PointX="5.3906225" PointY="9.4802864583333317" />
         </AssociationConnector>
         <AssociationConnector Association="SiGMAModel.FK_Mascotas_Duenios" ManuallyRouted="false">
-          <ConnectorPoint PointX="6.75" PointY="8.4131575520833337" />
-          <ConnectorPoint PointX="7.5" PointY="8.4131575520833337" />
+          <ConnectorPoint PointX="6.75" PointY="8.4901432291666659" />
+          <ConnectorPoint PointX="7.041666666666667" PointY="8.4901432291666659" />
+          <ConnectorPoint PointX="7.208333333333333" PointY="8.4901432291666659" />
+          <ConnectorPoint PointX="7.5" PointY="8.4901432291666659" />
         </AssociationConnector>
         <AssociationConnector Association="SiGMAModel.FK_Mascotas_Edades" ManuallyRouted="false">
           <ConnectorPoint PointX="6.75" PointY="20.393992513020834" />
-          <ConnectorPoint PointX="7.5416629166666675" PointY="20.393992513020834" />
-          <ConnectorPoint PointX="7.7083295833333336" PointY="20.393992513020834" />
-          <ConnectorPoint PointX="7.7499975" PointY="20.393992513020834" />
-          <ConnectorPoint PointX="7.7499975" PointY="9.3263151041666674" />
+          <ConnectorPoint PointX="7.5729154166666675" PointY="20.393992513020834" />
+          <ConnectorPoint PointX="7.7395820833333335" PointY="20.393992513020834" />
+          <ConnectorPoint PointX="7.7812484375" PointY="20.393992513020834" />
+          <ConnectorPoint PointX="7.7812484375" PointY="9.5186165364583317" />
         </AssociationConnector>
         <AssociationConnector Association="SiGMAModel.FK_Mascotas_Especies" ManuallyRouted="false">
-          <ConnectorPoint PointX="6.75" PointY="22.893992513020834" />
-          <ConnectorPoint PointX="7.5416629166666675" PointY="22.893992513020834" />
-          <ConnectorPoint PointX="7.7083295833333336" PointY="22.893992513020834" />
-          <ConnectorPoint PointX="7.7916654166666666" PointY="22.893992513020834" />
-          <ConnectorPoint PointX="7.9583320833333326" PointY="22.893992513020834" />
-          <ConnectorPoint PointX="8.2500025" PointY="22.893992513020834" />
-          <ConnectorPoint PointX="8.2500025" PointY="9.3263151041666674" />
+          <ConnectorPoint PointX="6.75" PointY="22.862740013020833" />
+          <ConnectorPoint PointX="7.5729154166666675" PointY="22.862740013020833" />
+          <ConnectorPoint PointX="7.8958342708333333" PointY="22.862740013020833" />
+          <ConnectorPoint PointX="8.0937528125" PointY="22.862740013020833" />
+          <ConnectorPoint PointX="8.0937528125" PointY="9.5186165364583317" />
         </AssociationConnector>
         <AssociationConnector Association="SiGMAModel.FK_Razas_Especies" ManuallyRouted="false">
           <ConnectorPoint PointX="6.75" PointY="23.787985026041667" />
@@ -2008,12 +2001,14 @@
           <ConnectorPoint PointX="6.75" PointY="25.422841796874998" />
           <ConnectorPoint PointX="7.041666666666667" PointY="25.422841796874998" />
           <ConnectorPoint PointX="7.208333333333333" PointY="25.422841796874998" />
-          <ConnectorPoint PointX="7.6249962500000006" PointY="25.422841796874998" />
-          <ConnectorPoint PointX="7.6249962500000006" PointY="9.3263151041666674" />
+          <ConnectorPoint PointX="7.6562487500000005" PointY="25.422841796874998" />
+          <ConnectorPoint PointX="7.6562487500000005" PointY="9.5186165364583317" />
         </AssociationConnector>
         <AssociationConnector Association="SiGMAModel.FK_Hallazgos_Mascotas" ManuallyRouted="false">
-          <ConnectorPoint PointX="8.3750037500000012" PointY="9.3263151041666674" />
-          <ConnectorPoint PointX="8.3750037500000012" PointY="13.569194335937501" />
+          <ConnectorPoint PointX="7.6249962500000006" PointY="9.5186165364583317" />
+          <ConnectorPoint PointX="7.6249962500000006" PointY="13.569194335937501" />
+          <ConnectorPoint PointX="7.6979151041666674" PointY="13.5691943359375" />
+          <ConnectorPoint PointX="8.1770861458333339" PointY="13.569194335937501" />
           <ConnectorPoint PointX="10.75" PointY="13.569194335937501" />
         </AssociationConnector>
         <AssociationConnector Association="SiGMAModel.FK_Hallazgos_Perdidas" ManuallyRouted="false">
@@ -2021,20 +2016,20 @@
           <ConnectorPoint PointX="12.25" PointY="12.288198242187502" />
         </AssociationConnector>
         <AssociationConnector Association="SiGMAModel.FK_Hallazgos_Sesiones" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="19.110341796874998" />
-          <ConnectorPoint PointX="4.791666666666667" PointY="19.110341796874998" />
-          <ConnectorPoint PointX="4.958333333333333" PointY="19.110341796874998" />
-          <ConnectorPoint PointX="7.5416629166666675" PointY="19.110341796874998" />
-          <ConnectorPoint PointX="7.9583320833333326" PointY="19.110341796874998" />
-          <ConnectorPoint PointX="8.1666691666666669" PointY="19.110341796874998" />
-          <ConnectorPoint PointX="8.3333358333333347" PointY="19.110341796874998" />
-          <ConnectorPoint PointX="11.5" PointY="19.110341796874998" />
+          <ConnectorPoint PointX="4.5" PointY="19.115143229166669" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="19.115143229166669" />
+          <ConnectorPoint PointX="4.958333333333333" PointY="19.115143229166669" />
+          <ConnectorPoint PointX="7.5729154166666675" PointY="19.115143229166669" />
+          <ConnectorPoint PointX="7.8958342708333333" PointY="19.115143229166669" />
+          <ConnectorPoint PointX="8.0104194791666661" PointY="19.115143229166669" />
+          <ConnectorPoint PointX="8.1770861458333339" PointY="19.115143229166669" />
+          <ConnectorPoint PointX="11.5" PointY="19.115143229166669" />
           <ConnectorPoint PointX="11.5" PointY="13.951396484375003" />
         </AssociationConnector>
         <AssociationConnector Association="SiGMAModel.FK_Mascotas_Razas" ManuallyRouted="false">
           <ConnectorPoint PointX="6.75" PointY="28.877725732972749" />
-          <ConnectorPoint PointX="7.87499875" PointY="28.877725732972749" />
-          <ConnectorPoint PointX="7.87499875" PointY="9.3263151041666674" />
+          <ConnectorPoint PointX="7.8125009375" PointY="28.877725732972749" />
+          <ConnectorPoint PointX="7.8125009375" PointY="9.5186165364583317" />
         </AssociationConnector>
         <AssociationConnector Association="SiGMAModel.FK_Perdidas_Mascotas" ManuallyRouted="false">
           <ConnectorPoint PointX="9" PointY="6.4131575520833337" />
@@ -2042,32 +2037,17 @@
           <ConnectorPoint PointX="14.0937475" PointY="10.625" />
         </AssociationConnector>
         <AssociationConnector Association="SiGMAModel.FK_Perdidas_Sesiones" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="18.915510195312503" />
-          <ConnectorPoint PointX="4.791666666666667" PointY="18.915510195312503" />
-          <ConnectorPoint PointX="4.958333333333333" PointY="18.915510195312503" />
-          <ConnectorPoint PointX="7.5416629166666675" PointY="18.915510195312503" />
-          <ConnectorPoint PointX="7.9583320833333326" PointY="18.915510195312503" />
-          <ConnectorPoint PointX="8.1666691666666669" PointY="18.915510195312503" />
-          <ConnectorPoint PointX="8.3333358333333347" PointY="18.915510195312503" />
-          <ConnectorPoint PointX="11.416666666666666" PointY="18.915510195312503" />
-          <ConnectorPoint PointX="11.583333333333334" PointY="18.915510195312503" />
-          <ConnectorPoint PointX="14.5" PointY="18.915510195312503" />
+          <ConnectorPoint PointX="4.5" PointY="18.917910911458339" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="18.917910911458339" />
+          <ConnectorPoint PointX="4.958333333333333" PointY="18.917910911458339" />
+          <ConnectorPoint PointX="7.5729154166666675" PointY="18.917910911458339" />
+          <ConnectorPoint PointX="7.8958342708333333" PointY="18.917910911458339" />
+          <ConnectorPoint PointX="8.0104194791666661" PointY="18.917910911458339" />
+          <ConnectorPoint PointX="8.1770861458333339" PointY="18.917910911458339" />
+          <ConnectorPoint PointX="11.416666666666666" PointY="18.917910911458339" />
+          <ConnectorPoint PointX="11.583333333333334" PointY="18.917910911458339" />
+          <ConnectorPoint PointX="14.5" PointY="18.917910911458339" />
           <ConnectorPoint PointX="14.5" PointY="13.951396484375003" />
-        </AssociationConnector>
-        <AssociationConnector Association="SiGMAModel.FK_PermisosXRoles_Permisos" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="32.125" />
-          <ConnectorPoint PointX="4.5" PointY="31.095683593749996" />
-          <ConnectorPoint PointX="4.875" PointY="31.095683593749996" />
-          <ConnectorPoint PointX="4.875" PointY="3.9802864583333388" />
-          <ConnectorPoint PointX="5.5" PointY="3.9802864583333388" />
-          <ConnectorPoint PointX="5.5" PointY="1.7401432291666694" />
-          <ConnectorPoint PointX="6" PointY="1.7401432291666694" />
-        </AssociationConnector>
-        <AssociationConnector Association="SiGMAModel.FK_PermisosXRoles_Roles" ManuallyRouted="false">
-          <ConnectorPoint PointX="5.25" PointY="2.2401432291666694" />
-          <ConnectorPoint PointX="5.416666666666667" PointY="2.240143229166669" />
-          <ConnectorPoint PointX="5.583333333333333" PointY="2.2401432291666694" />
-          <ConnectorPoint PointX="6" PointY="2.2401432291666694" />
         </AssociationConnector>
         <AssociationConnector Association="SiGMAModel.FK_Personas_TipoDocumentos" ManuallyRouted="false">
           <ConnectorPoint PointX="2.25" PointY="13.706451822916669" />
@@ -2081,43 +2061,35 @@
         </AssociationConnector>
         <AssociationConnector Association="SiGMAModel.FK_Voluntarios_Personas" ManuallyRouted="false">
           <ConnectorPoint PointX="4.5" PointY="10.255768229166666" />
-          <ConnectorPoint PointX="4.541666666666667" PointY="10.255768229166666" />
-          <ConnectorPoint PointX="4.708333333333333" PointY="10.255768229166666" />
-          <ConnectorPoint PointX="4.791666666666667" PointY="10.255768229166666" />
-          <ConnectorPoint PointX="4.958333333333333" PointY="10.255768229166666" />
+          <ConnectorPoint PointX="4.572916666666667" PointY="10.255768229166666" />
+          <ConnectorPoint PointX="4.739583333333333" PointY="10.255768229166666" />
           <ConnectorPoint PointX="5.3072891666666671" PointY="10.255768229166666" />
           <ConnectorPoint PointX="5.4739558333333331" PointY="10.255768229166666" />
           <ConnectorPoint PointX="5.49218625" PointY="10.255768229166666" />
           <ConnectorPoint PointX="5.49218625" PointY="14.25" />
         </AssociationConnector>
         <AssociationConnector Association="SiGMAModel.FK_RolesXUsuario_Roles" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.2500005000000005" PointY="3.7302864583333388" />
-          <ConnectorPoint PointX="4.2500005000000005" PointY="9.375" />
-          <ConnectorPoint PointX="4.625" PointY="9.375" />
-          <ConnectorPoint PointX="4.625" PointY="11.740143229166669" />
-          <ConnectorPoint PointX="4.791666666666667" PointY="11.740143229166669" />
-          <ConnectorPoint PointX="4.958333333333333" PointY="11.740143229166669" />
-          <ConnectorPoint PointX="5.3072891666666671" PointY="11.740143229166668" />
-          <ConnectorPoint PointX="5.6770833333333321" PointY="11.740143229166669" />
-          <ConnectorPoint PointX="5.682291666666667" PointY="11.740143229166669" />
-          <ConnectorPoint PointX="5.848958333333333" PointY="11.740143229166669" />
-          <ConnectorPoint PointX="6" PointY="11.740143229166669" />
+          <ConnectorPoint PointX="5.25" PointY="2.7401432291666667" />
+          <ConnectorPoint PointX="7.125" PointY="2.7401432291666667" />
+          <ConnectorPoint PointX="7.125" PointY="10.75" />
         </AssociationConnector>
         <AssociationConnector Association="SiGMAModel.FK_RolesXUsuario_Usuarios" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="11.213819614583336" />
-          <ConnectorPoint PointX="2.75" PointY="11.213819614583336" />
-          <ConnectorPoint PointX="2.75" PointY="9.5" />
-          <ConnectorPoint PointX="3.6666666666666665" PointY="9.5" />
-          <ConnectorPoint PointX="3.8333333333333335" PointY="9.5" />
-          <ConnectorPoint PointX="4.541666666666667" PointY="9.4999999999999982" />
-          <ConnectorPoint PointX="5.083333333333333" PointY="9.5" />
-          <ConnectorPoint PointX="5.125" PointY="9.5" />
-          <ConnectorPoint PointX="5.125" PointY="9.8552864583333317" />
-          <ConnectorPoint PointX="5.3072891666666671" PointY="9.8552864583333317" />
-          <ConnectorPoint PointX="5.4739558333333331" PointY="9.8552864583333317" />
-          <ConnectorPoint PointX="5.510416666666667" PointY="9.8552864583333317" />
-          <ConnectorPoint PointX="5.677083333333333" PointY="9.8552864583333317" />
-          <ConnectorPoint PointX="6.75" PointY="9.8552864583333317" />
+          <ConnectorPoint PointX="2.25" PointY="11.708891229166667" />
+          <ConnectorPoint PointX="2.75" PointY="11.708891229166667" />
+          <ConnectorPoint PointX="2.75" PointY="9.359375" />
+          <ConnectorPoint PointX="3.6666666666666665" PointY="9.359375" />
+          <ConnectorPoint PointX="3.8333333333333335" PointY="9.359375" />
+          <ConnectorPoint PointX="4.572916666666667" PointY="9.359375" />
+          <ConnectorPoint PointX="4.739583333333333" PointY="9.359375" />
+          <ConnectorPoint PointX="4.75" PointY="9.359375" />
+          <ConnectorPoint PointX="4.75" PointY="9.7302864583333317" />
+          <ConnectorPoint PointX="5.041666666666667" PointY="9.7302864583333317" />
+          <ConnectorPoint PointX="5.208333333333333" PointY="9.7302864583333317" />
+          <ConnectorPoint PointX="5.3072891666666671" PointY="9.7302864583333317" />
+          <ConnectorPoint PointX="5.4739558333333331" PointY="9.7302864583333317" />
+          <ConnectorPoint PointX="5.510416666666667" PointY="9.7302864583333317" />
+          <ConnectorPoint PointX="5.677083333333333" PointY="9.7302864583333317" />
+          <ConnectorPoint PointX="6.75" PointY="9.7302864583333317" />
           <ConnectorPoint PointX="6.75" PointY="10.75" />
         </AssociationConnector>
         <AssociationConnector Association="SiGMAModel.FK_Sesiones_Usuarios" ManuallyRouted="false">
@@ -2125,6 +2097,21 @@
           <ConnectorPoint PointX="2.625" PointY="13.105286458333325" />
           <ConnectorPoint PointX="2.625" PointY="19.682444661458334" />
           <ConnectorPoint PointX="3" PointY="19.682444661458334" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="SiGMAModel.PermisosXRoles" Width="1.5" PointX="8.25" PointY="16" Height="1.9802864583333388" />
+        <AssociationConnector Association="SiGMAModel.FK_PermisosXRoles_Permisos" >
+          <ConnectorPoint PointX="4.875" PointY="32.125" />
+          <ConnectorPoint PointX="4.875" PointY="16.581492513020834" />
+          <ConnectorPoint PointX="7.5729154166666675" PointY="16.58149251302083" />
+          <ConnectorPoint PointX="8.1770861458333322" PointY="16.581492513020834" />
+          <ConnectorPoint PointX="8.25" PointY="16.581492513020834" />
+        </AssociationConnector>
+        <AssociationConnector Association="SiGMAModel.FK_PermisosXRoles_Roles" >
+          <ConnectorPoint PointX="4.65625" PointY="3.7302864583333331" />
+          <ConnectorPoint PointX="4.65625" PointY="16.309736269531257" />
+          <ConnectorPoint PointX="7.5729154166666675" PointY="16.309736269531253" />
+          <ConnectorPoint PointX="8.1770861458333322" PointY="16.309736269531257" />
+          <ConnectorPoint PointX="8.25" PointY="16.309736269531257" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

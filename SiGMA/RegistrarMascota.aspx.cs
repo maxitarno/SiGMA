@@ -46,6 +46,7 @@ namespace SiGMA
             if (Page.IsValid)
             {
                 EMascota mascota = new EMascota();
+                mascota.duenio = new EDuenio { idDuenio = Int32.Parse(Request.Cookies["idDueño"].Value) };                
                 mascota.nombreMascota = txtNombreMascota.Text;
                 mascota.especie = new EEspecie();
                 mascota.especie.idEspecie = int.Parse(ddlEspecie.SelectedValue);
@@ -66,7 +67,7 @@ namespace SiGMA
                 mascota.sexo = ddlSexo.SelectedValue;
                 mascota.caracter = new ECaracterMascota();
                 mascota.caracter.idCaracter = int.Parse(ddlCaracter.SelectedValue);
-                //mascota.duenio.id 
+                mascota.estado = LogicaBDEstado.buscarEstadoPorNombre("Con dueño");
                 if (fuImagen.PostedFile.ContentLength != 0)
                 {
                     if (!GestorImagen.verificarTamaño(fuImagen.PostedFile.ContentLength))
@@ -88,12 +89,21 @@ namespace SiGMA
         protected void cvDdlSexo_ServerValidate(object source, ServerValidateEventArgs args)
         {
             args.IsValid = Validaciones.verificarSeleccionEnDdl(ref ddlSexo); 
-
         }
 
         protected void btnLimpiar_Click(object sender, EventArgs e)
         {
 
+        }
+
+        protected void cvEdad_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            args.IsValid = Validaciones.verificarSeleccionEnDdl(ref ddlEdad); 
+        }
+
+        protected void cvColor_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            args.IsValid = Validaciones.verificarSeleccionEnDdl(ref ddlColor); 
         }
        
     }

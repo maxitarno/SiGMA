@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MessagingToolkit.QRCode">
+      <HintPath>..\packages\MessagingToolkit.QRCode.1.3.0\lib\MessagingToolkit.QRCode.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
@@ -51,6 +54,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DER.edmx</DependentUpon>
     </Compile>
+    <Compile Include="LogicaBDEstado.cs" />
     <Compile Include="LogicaBDImagen.cs" />
     <Compile Include="LogicaBDLogin.cs" />
     <Compile Include="LogicaBDMascotas.cs" />
@@ -66,6 +70,7 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>DER.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Entidades\Entidades.csproj">

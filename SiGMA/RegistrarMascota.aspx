@@ -20,68 +20,24 @@
         </div>
         <div>
          <div class="derecha">
-    <table><tr><td><input type="file" runat="server"  id="fuImagen"  onchange="showimagepreview(this)" />
+    <table><tr><td><input type="file" runat="server"  id="fuImagen"  onchange="showimagepreview(this,'imgprvw')" />
         <%--<asp:FileUpload ID="fuImagen" runat="server"  />--%>
         </td>          
           </tr>
-               <tr><td><script type="text/javascript">
-                           /***** CUSTOMIZE THESE VARIABLES *****/
-
-                           // width to resize large images to
-                           var maxWidth = 200;
-                           // height to resize large images to
-                           var maxHeight = 200;
-                           // valid file types
-                           var fileTypes = ["bmp", "gif", "png", "jpg", "jpeg"];
-                           // the id of the preview image tag
-                           var outImage = "imgprvw";                       
-
-                           /***** DO NOT EDIT BELOW *****/
-                           function preview(input) {
-                               var source = input.value;
-                               var ext = input.value.substring(input.value.lastIndexOf(".") + 1, input.value.length).toLowerCase();
-                               for (var i = 0; i < fileTypes.length; i++) if (fileTypes[i] == ext) break;
-                               globalPic = new Image();
-                               if (i < fileTypes.length) globalPic.src = input.value;
-                               else {
-                                   if (input.value != "") {
-                                       alert("Formato del archivo no permitido, debe ser: " + fileTypes.join(", "));
-                                   }
-                               }
-                               setTimeout("applyChanges()", 100);
-                           }
-                           var globalPic;
-                           function applyChanges() {
-                               var field = document.getElementById(outImage);
-                               var x = parseInt(globalPic.width);
-                               var y = parseInt(globalPic.height);
-                               if (x > maxWidth) {
-                                   y *= maxWidth / x;
-                                   x = maxWidth;
-                               }
-                               if (y > maxHeight) {
-                                   x *= maxHeight / y;
-                                   y = maxHeight;
-                               }
-                               field.style.display = (x < 1 || y < 1) ? "none" : "";
-                               field.src = globalPic.src;
-                               field.width = x;
-                               field.height = y;
-                           }
-// End -->
-</script>
+               <tr><td>
                <script type="text/javascript">
-                           function showimagepreview(input) {
+                           function showimagepreview(input, image) {
                                if (input.files && input.files[0]) {
                                    var filerdr = new FileReader();
                                    filerdr.onload = function (e) {
                                        $('#imgprvw').attr('src', e.target.result);
+                                       document.getElementById(image).style.display = 'block';
                                    }
                                    filerdr.readAsDataURL(input.files[0]);
                                }
                            }
-</script>
-              <img id="imgprvw" />    
+</script>                   
+              <img id="imgprvw" width="140px" height="140px" hidden />    
     </td></tr>  
                   </table>
       
@@ -143,6 +99,9 @@
                                             <asp:DropDownList ID="ddlEdad" runat="server">
                                             </asp:DropDownList>
                                         </td>
+                                        <td>
+        <asp:CustomValidator ID="cvEdad" runat="server" ErrorMessage="*" ControlToValidate="ddlEdad" ForeColor="Red" 
+                                                onservervalidate="cvEdad_ServerValidate"></asp:CustomValidator></td>
                                     </tr>                                    
                                     <tr>
                                         <td class="style2">
@@ -152,6 +111,9 @@
                                             <asp:DropDownList ID="ddlColor" runat="server">
                                             </asp:DropDownList>
                                         </td>
+                                        <td>
+        <asp:CustomValidator ID="cvColor" runat="server" ErrorMessage="*" ControlToValidate="ddlColor" ForeColor="Red" 
+                                                onservervalidate="cvColor_ServerValidate"></asp:CustomValidator></td>
                                     </tr>
                                     <tr>
                                         <td class="style2">

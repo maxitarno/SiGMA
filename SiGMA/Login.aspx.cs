@@ -26,7 +26,11 @@ namespace SiGMA
             usuario.password = login.Password;
             if (LogicaBDLogin.esUsuario(usuario))
             {
-                LogicaBDLogin.obtenerRol(usuario);
+                //aca hay que verificar el rol, HACER!!!!
+                HttpCookie cook = new HttpCookie("idDueño");
+                cook.Value = LogicaBDUsuario.buscarIdDueñoPorUsuario(usuario.user).ToString();
+                cook.Expires = DateTime.Now.AddDays(1);
+                Response.Cookies.Add(cook);
                 e.Authenticated = true;
             }
             else

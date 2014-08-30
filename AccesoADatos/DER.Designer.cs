@@ -42,14 +42,14 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Mascotas_Razas", "Razas", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Razas), "Mascotas", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Mascotas), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Perdidas_Mascotas", "Mascotas", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Mascotas), "Perdidas", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Perdidas), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Perdidas_Sesiones", "Sesiones", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Sesiones), "Perdidas", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Perdidas), true)]
-[assembly: EdmRelationshipAttribute("SiGMAModel", "FK_PermisosXRoles_Permisos", "Permisos", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Permisos), "PermisosXRoles", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.PermisosXRoles), true)]
-[assembly: EdmRelationshipAttribute("SiGMAModel", "FK_PermisosXRoles_Roles", "Roles", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Roles), "PermisosXRoles", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.PermisosXRoles), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Personas_TipoDocumentos", "TipoDocumentos", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(AccesoADatos.TipoDocumentos), "Personas", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Personas), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Personas_Usuarios", "Usuarios", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(AccesoADatos.Usuarios), "Personas", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Personas), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Voluntarios_Personas", "Personas", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Personas), "Voluntarios", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Voluntarios), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_RolesXUsuario_Roles", "Roles", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Roles), "RolesXUsuario", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.RolesXUsuario), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_RolesXUsuario_Usuarios", "Usuarios", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Usuarios), "RolesXUsuario", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.RolesXUsuario), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Sesiones_Usuarios", "Usuarios", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Usuarios), "Sesiones", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Sesiones), true)]
+[assembly: EdmRelationshipAttribute("SiGMAModel", "FK_PermisosXRoles_Permisos", "Permisos", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Permisos), "PermisosXRoles", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.PermisosXRoles), true)]
+[assembly: EdmRelationshipAttribute("SiGMAModel", "FK_PermisosXRoles_Roles", "Roles", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Roles), "PermisosXRoles", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.PermisosXRoles), true)]
 
 #endregion
 
@@ -344,22 +344,6 @@ namespace AccesoADatos
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        public ObjectSet<PermisosXRoles> PermisosXRoles
-        {
-            get
-            {
-                if ((_PermisosXRoles == null))
-                {
-                    _PermisosXRoles = base.CreateObjectSet<PermisosXRoles>("PermisosXRoles");
-                }
-                return _PermisosXRoles;
-            }
-        }
-        private ObjectSet<PermisosXRoles> _PermisosXRoles;
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
         public ObjectSet<Personas> Personas
         {
             get
@@ -484,6 +468,22 @@ namespace AccesoADatos
             }
         }
         private ObjectSet<Voluntarios> _Voluntarios;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<PermisosXRoles> PermisosXRoles
+        {
+            get
+            {
+                if ((_PermisosXRoles == null))
+                {
+                    _PermisosXRoles = base.CreateObjectSet<PermisosXRoles>("PermisosXRoles");
+                }
+                return _PermisosXRoles;
+            }
+        }
+        private ObjectSet<PermisosXRoles> _PermisosXRoles;
 
         #endregion
 
@@ -610,14 +610,6 @@ namespace AccesoADatos
         }
     
         /// <summary>
-        /// Método desusado para agregar un nuevo objeto al EntitySet PermisosXRoles. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
-        /// </summary>
-        public void AddToPermisosXRoles(PermisosXRoles permisosXRoles)
-        {
-            base.AddObject("PermisosXRoles", permisosXRoles);
-        }
-    
-        /// <summary>
         /// Método desusado para agregar un nuevo objeto al EntitySet Personas. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
         /// </summary>
         public void AddToPersonas(Personas personas)
@@ -679,6 +671,14 @@ namespace AccesoADatos
         public void AddToVoluntarios(Voluntarios voluntarios)
         {
             base.AddObject("Voluntarios", voluntarios);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet PermisosXRoles. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToPermisosXRoles(PermisosXRoles permisosXRoles)
+        {
+            base.AddObject("PermisosXRoles", permisosXRoles);
         }
 
         #endregion
@@ -2089,7 +2089,7 @@ namespace AccesoADatos
         /// </summary>
         /// <param name="idEstado">Valor inicial de la propiedad idEstado.</param>
         /// <param name="nombreEstado">Valor inicial de la propiedad nombreEstado.</param>
-        public static Estados CreatEEstado(global::System.Int32 idEstado, global::System.String nombreEstado)
+        public static Estados CreateEstados(global::System.Int32 idEstado, global::System.String nombreEstado)
         {
             Estados estados = new Estados();
             estados.idEstado = idEstado;
@@ -3935,11 +3935,13 @@ namespace AccesoADatos
         /// </summary>
         /// <param name="idRol">Valor inicial de la propiedad idRol.</param>
         /// <param name="idPermiso">Valor inicial de la propiedad idPermiso.</param>
-        public static PermisosXRoles CreatePermisosXRoles(global::System.Int32 idRol, global::System.Int32 idPermiso)
+        /// <param name="pantalla">Valor inicial de la propiedad pantalla.</param>
+        public static PermisosXRoles CreatePermisosXRoles(global::System.Int32 idRol, global::System.Int32 idPermiso, global::System.String pantalla)
         {
             PermisosXRoles permisosXRoles = new PermisosXRoles();
             permisosXRoles.idRol = idRol;
             permisosXRoles.idPermiso = idPermiso;
+            permisosXRoles.pantalla = pantalla;
             return permisosXRoles;
         }
 
@@ -4004,7 +4006,7 @@ namespace AccesoADatos
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.String pantalla
         {
@@ -4014,11 +4016,14 @@ namespace AccesoADatos
             }
             set
             {
-                OnpantallaChanging(value);
-                ReportPropertyChanging("pantalla");
-                _pantalla = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("pantalla");
-                OnpantallaChanged();
+                if (_pantalla != value)
+                {
+                    OnpantallaChanging(value);
+                    ReportPropertyChanging("pantalla");
+                    _pantalla = StructuralObject.SetValidValue(value, false);
+                    ReportPropertyChanged("pantalla");
+                    OnpantallaChanged();
+                }
             }
         }
         private global::System.String _pantalla;
@@ -5027,28 +5032,6 @@ namespace AccesoADatos
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("SiGMAModel", "FK_PermisosXRoles_Roles", "PermisosXRoles")]
-        public EntityCollection<PermisosXRoles> PermisosXRoles
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<PermisosXRoles>("SiGMAModel.FK_PermisosXRoles_Roles", "PermisosXRoles");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<PermisosXRoles>("SiGMAModel.FK_PermisosXRoles_Roles", "PermisosXRoles", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("SiGMAModel", "FK_RolesXUsuario_Roles", "RolesXUsuario")]
         public EntityCollection<RolesXUsuario> RolesXUsuario
         {
@@ -5061,6 +5044,28 @@ namespace AccesoADatos
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<RolesXUsuario>("SiGMAModel.FK_RolesXUsuario_Roles", "RolesXUsuario", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("SiGMAModel", "FK_PermisosXRoles_Roles", "PermisosXRoles")]
+        public EntityCollection<PermisosXRoles> PermisosXRoles
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<PermisosXRoles>("SiGMAModel.FK_PermisosXRoles_Roles", "PermisosXRoles");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<PermisosXRoles>("SiGMAModel.FK_PermisosXRoles_Roles", "PermisosXRoles", value);
                 }
             }
         }

@@ -16,18 +16,13 @@ namespace AccesoADatos
                 {
                     SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
                     Mascotas bdMascota = new Mascotas();
-                    bdMascota.idEstado = 1;
+                    bdMascota.idEstado = mascota.estado.idEstado;
                     bdMascota.nombreMascota = mascota.nombreMascota;
                     bdMascota.idEspecie = mascota.especie.idEspecie;
-                    bdMascota.idRaza = mascota.raza.idRaza;
-                    if (mascota.edad.idEdad != 0)
-                    {
-                        bdMascota.idEdad = mascota.edad.idEdad;
-                    }
-                    if (mascota.color.idColor != 0)
-                    {
-                        bdMascota.idColor = mascota.color.idColor;
-                    }
+                    bdMascota.idRaza = mascota.raza.idRaza;                   
+                    bdMascota.idEdad = mascota.edad.idEdad;
+                    bdMascota.idColor = mascota.color.idColor;
+                    bdMascota.idDuenio = mascota.duenio.idDuenio;
                     if (mascota.caracter.idCaracter != 0)
                     {
                         bdMascota.idCaracter = mascota.caracter.idCaracter;
