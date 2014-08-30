@@ -137,7 +137,7 @@ namespace SiGMA
                 if (LogicaBDMascotas.BuscarMascotaPorDuenio(persona, mascota, categoria, caracter, cuidado, idMascota))
                 {
                     ddlEstado.SelectedValue = mascota.estado.idEstado.ToString();
-                    txtAlimentacionEspecial.Text = mascota.alimetacionEspecial;
+                    txtAlimentacionEspecial.Text = mascota.alimentacionEspecial;
                     ddlCaracter.SelectedValue = caracter.idCaracter.ToString();
                     txtCategoria.Text = categoria.nombreCategoriaRaza;
                     txtCuidadoEspecial.Text = cuidado.descripcion;
@@ -197,7 +197,7 @@ namespace SiGMA
                 pnlInfo.Visible = false;
                 if (Validaciones.Fecha(txtFecha.Text, out fecha))
                 {
-                    mascota.alimetacionEspecial = txtAlimentacionEspecial.Text;
+                    mascota.alimentacionEspecial = txtAlimentacionEspecial.Text;
                     mascota.fechaNacimiento = DateTime.Parse(txtFecha.Text);
                     mascota.tratoNiños = ddlTratoNinios.SelectedValue.ToString();
                     mascota.tratoAnimal = ddlTratoAnimales.SelectedValue.ToString();

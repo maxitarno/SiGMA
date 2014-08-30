@@ -44,9 +44,9 @@ namespace AccesoADatos
                     {
                         bdMascota.observaciones = mascota.observaciones;
                     }
-                    if (!mascota.alimetacionEspecial.Equals(""))
+                    if (!mascota.alimentacionEspecial.Equals(""))
                     {
-                        bdMascota.alimentacionEspecial = mascota.alimetacionEspecial;
+                        bdMascota.alimentacionEspecial = mascota.alimentacionEspecial;
                     }
                     if (!mascota.fechaNacimiento.Equals(new DateTime()))
                     {
@@ -108,7 +108,7 @@ namespace AccesoADatos
                                };
                 foreach (var registro in consulta)
                 {
-                    mascota.alimetacionEspecial = registro.alimentacion;
+                    mascota.alimentacionEspecial = registro.alimentacion;
                     caracter.idCaracter = registro.caracter;
                     //categoria.nombreCategoriaRaza = registro.categoria;
                     //persona.nombre = registro.Duenio;
@@ -177,7 +177,7 @@ namespace AccesoADatos
                 var consulta = mapaEntidades.Mascotas.Where(mascotasBuscadas => mascotasBuscadas.idMascota == mascota.idMascota);
                 foreach (var registro in consulta)
                 {
-                    registro.alimentacionEspecial = registro.alimentacionEspecial.Replace(registro.alimentacionEspecial, mascota.alimetacionEspecial);
+                    registro.alimentacionEspecial = registro.alimentacionEspecial.Replace(registro.alimentacionEspecial, mascota.alimentacionEspecial);
                     registro.idCaracter = mascota.caracter.idCaracter;
                     registro.idEdad = mascota.edad.idEdad;
                     registro.idEspecie = mascota.especie.idEspecie;

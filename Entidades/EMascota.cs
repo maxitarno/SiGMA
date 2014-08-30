@@ -18,7 +18,7 @@ namespace Entidades
         public string tratoNiños { get; set; }
         public ECaracterMascota caracter { get; set; }
         public string observaciones { get; set; }
-        public string alimetacionEspecial { get; set; }
+        public string alimentacionEspecial { get; set; }
         public DateTime fechaNacimiento { get; set; }
         public string sexo { get; set; }
         public EDuenio duenio { get; set; }        

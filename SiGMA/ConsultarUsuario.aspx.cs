@@ -5,13 +5,6 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Entidades;
-using AccesoADatos;using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using Entidades;
 using AccesoADatos;
 using Herramientas;
 namespace SiGMA
@@ -189,6 +182,7 @@ namespace SiGMA
                 pnlCorrecto.Visible = false;
                 pnlAtento.Visible = false;
             }
+            txtUsuario.ReadOnly = true;
         }
         public void btnModificarClick(object sender, EventArgs e)
         {
@@ -217,6 +211,7 @@ namespace SiGMA
                         persona.nroDocumento = txtNºDeDocumento.Text;
                         persona.telefonoCelular = txtTelefonoCelular.Text;
                         persona.telefonoFijo = txtTelefonoFijo.Text;
+                        persona.fechaNacimiento = fecha;
                         EUsuario usuario = new EUsuario();
                         usuario.user = txtUsuario.Text;
                         if (usuario.user != "")
@@ -403,6 +398,7 @@ namespace SiGMA
             }
             pnlname.Visible = false;
             pnlNombre.Visible = false;
+            txtUsuario.ReadOnly = false;
         }
         public void RdbPorUsuario(object sender, EventArgs e)
         {
@@ -444,6 +440,7 @@ namespace SiGMA
                 pnlAtento.Visible = false;
                 pnlCorrecto.Visible = false;
                 pnlEliminar.Visible = false;
+                txtUsuario.ReadOnly = false;
             }
         }
         public void RdbPorPersona(object sender, EventArgs e)
@@ -483,6 +480,7 @@ namespace SiGMA
             pnlAtento.Visible = false;
             pnlCorrecto.Visible = false;
             pnlEliminar.Visible = false;
+            txtUsuario.ReadOnly = false;
         }
         public void DdlBarrio_SelectedIndexChanged(object sender, EventArgs e)
         {

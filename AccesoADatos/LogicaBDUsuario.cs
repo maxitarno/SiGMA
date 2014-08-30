@@ -72,7 +72,7 @@ namespace AccesoADatos
             return usuarios;
         }
         //fin del metodo
-        //metodo para busca usuarios por tipo y nº de documento
+        //metodo para buscar usuarios por tipo y nº de documento
         public static List<EUsuario> BuscarUsuarios(int tipo, string dni)
         {
             List<EUsuario> usuarios = new List<EUsuario>();
@@ -158,16 +158,16 @@ namespace AccesoADatos
                 var usuarios = mapaEntidades.Usuarios.Where(usuariobuscado => usuariobuscado.user == usuario.user);
                 foreach (var registro in personas)
                 {
-                    registro.apellido = registro.apellido.Replace(registro.apellido, persona.apellido);
-                    registro.domicilio = registro.domicilio.Replace(registro.domicilio, persona.domicilio);
-                    registro.email = registro.email.Replace(registro.email, persona.email);
+                    registro.apellido = persona.apellido;
+                    registro.domicilio = persona.domicilio;
+                    registro.email = persona.email;
                     registro.fechaNacimiento = persona.fechaNacimiento;
                     registro.idBarrio = persona.idBarrio;
                     registro.idTipoDocumento = persona.idTipoDocumento;
-                    registro.nombre = registro.nombre.Replace(registro.nombre, persona.nombre);
-                    registro.nroDocumento = registro.nroDocumento.Replace(registro.nroDocumento, persona.nroDocumento);
-                    registro.telefonoCelular = registro.telefonoCelular.Replace(registro.telefonoCelular, persona.telefonoCelular);
-                    registro.telefonoFijo = registro.telefonoFijo.Replace(registro.telefonoFijo, persona.telefonoFijo);
+                    registro.nombre = persona.nombre;
+                    registro.nroDocumento = persona.nroDocumento;
+                    registro.telefonoCelular = persona.telefonoCelular;
+                    registro.telefonoFijo = persona.telefonoFijo;
                 }
                 b = true;
                 mapaEntidades.SaveChanges();
