@@ -58,7 +58,7 @@ namespace SiGMA
                 mascota.tratoNiños = ddlTratoNinios.SelectedValue;
                 mascota.tratoAnimal = ddlTratoAnimales.SelectedValue;
                 mascota.observaciones = txtObservaciones.Text;                
-                mascota.alimetacionEspecial = txtAlimentacionEspecial.Text;
+                mascota.alimentacionEspecial = txtAlimentacionEspecial.Text;
                 if (!txtFecha.Text.Equals(""))
                 {
                     mascota.fechaNacimiento = DateTime.Parse(txtFecha.Text);

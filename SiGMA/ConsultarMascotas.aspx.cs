@@ -88,6 +88,8 @@ namespace SiGMA
                 mascotas = LogicaBDMascotas.BuscarMascotaPorduenio(txtNombreDueñio.Text);
                 if (mascotas.Count != 0)
                 {
+                    pnlNombre.Visible = false;
+                    pnltxtNombreDueñio.Visible = false;
                     pnlbtnSeleccionar.Visible = true;
                     pnlResultados.Visible = true;
                     lstResultados.DataSource = mascotas;
@@ -108,12 +110,16 @@ namespace SiGMA
                 mascotas = LogicaBDMascotas.BuscarMascotaPorMascota(txtMascota.Text);
                 if (mascotas.Count != 0)
                 {
+                    pnlNombre.Visible = false;
+                    pnltxtNombreDueñio.Visible = false;
                     pnlbtnSeleccionar.Visible = true;
                     pnlResultados.Visible = true;
                     lstResultados.DataSource = mascotas;
                     lstResultados.DataTextField = "nombreMascota";
                     lstResultados.DataValueField = "idMascota";
                     lstResultados.DataBind();
+                    pnlNombre.Visible = false;
+                    pnltxtNombreDueñio.Visible = false;
                 }
                 else
                 {
@@ -134,7 +140,7 @@ namespace SiGMA
             if (lstResultados.SelectedValue != "")
             {
                 int idMascota = int.Parse(lstResultados.SelectedValue);
-                if (LogicaBDMascotas.BuscarMascotaPorDuenio(persona, mascota, categoria, caracter, cuidado, idMascota))
+                if (LogicaBDMascotas.BuscarMascota(mascota, categoria, caracter, cuidado, idMascota))
                 {
                     ddlEstado.SelectedValue = mascota.estado.idEstado.ToString();
                     txtAlimentacionEspecial.Text = mascota.alimentacionEspecial;
@@ -143,7 +149,6 @@ namespace SiGMA
                     txtCuidadoEspecial.Text = cuidado.descripcion;
                     txtFecha.Text = mascota.fechaNacimiento.ToShortDateString().ToString();
                     txtMascota.Text = mascota.nombreMascota;
-                    txtNombreDueñio.Text = persona.nombre;
                     txtObservaciones.Text = mascota.observaciones;
                     ddlTratoAnimales.SelectedValue = mascota.tratoAnimal;
                     ddlTratoNinios.SelectedValue = mascota.tratoNiños;
@@ -160,9 +165,7 @@ namespace SiGMA
                     pnlCorrecto.Visible = false;
                     pnlInfo.Visible = false;
                     pnlmascota.Visible = true;
-                    pnlNombre.Visible = true;
                     pnltxtMascota.Visible = true;
-                    pnltxtNombreDueñio.Visible = true;
                 }
                 else
                 {
@@ -206,10 +209,15 @@ namespace SiGMA
                     mascota.nombreMascota = txtMascota.Text;
                     mascota.raza = new ERaza();
                     mascota.raza.idRaza = int.Parse(ddlRaza.SelectedValue);
+                    mascota.estado = new EEstado();
                     mascota.estado.idEstado = int.Parse(ddlEstado.SelectedValue);
+                    mascota.especie = new EEspecie();
                     mascota.especie.idEspecie = int.Parse(ddlEspecie.SelectedValue);
+                    mascota.edad = new EEdad();
                     mascota.edad.idEdad = int.Parse(ddlEdad.SelectedValue);
+                    mascota.color = new EColor();
                     mascota.color.idColor = int.Parse(ddlColor.SelectedValue);
+                    mascota.caracter = new ECaracterMascota();
                     mascota.caracter.idCaracter = int.Parse(ddlCaracter.SelectedValue);
                     if (LogicaBDMascotas.ModificarMascota(mascota))
                     {
@@ -238,7 +246,7 @@ namespace SiGMA
         }
         public void BtnEliminarClick(object sender, EventArgs e)
         {
-            if (ddlEstado.SelectedValue == "7")
+            if (ddlEstado.SelectedValue == "6")
             {
                 if ((int)Session["idMascota"] != 0)
                 {
@@ -260,7 +268,6 @@ namespace SiGMA
                 pnlAtento.Visible = false;
                 pnlbotones.Visible = false;
                 pnlbtnSeleccionar.Visible = false;
-                pnlCorrecto.Visible = false;
                 pnlDatos.Visible = false;
                 pnlInfo.Visible = false;
                 pnlResultados.Visible = false;

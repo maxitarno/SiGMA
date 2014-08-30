@@ -75,12 +75,6 @@
                                             <asp:Button ID="btnBuscar" runat="server" Text="Buscar" CssClass="btn-primary" OnClick="BtnBuscarClick" width=100%/>
                                         </asp:Panel>
                                     </td>
-                                    <td>
-                                        <asp:RequiredFieldValidator ID="rfvNombreDuenio" runat="server" ErrorMessage="Debe ingresar un nombre"
-                                            ControlToValidate="txtNombreDueñio" Display="Dynamic" ValidationGroup="1"></asp:RequiredFieldValidator>
-                                        <asp:RequiredFieldValidator runat="server" ErrorMessage=" Debe ingresar un nombre"
-                                            ID="rfvNombre" ValidationGroup="2" Display="Dynamic" ControlToValidate="txtNombreDueñio"></asp:RequiredFieldValidator>
-                                    </td>
                                 </tr>
                                 <tr>
                                     <td valign="middle">
@@ -96,8 +90,6 @@
                                     <td>
                                         <asp:RequiredFieldValidator ID="rfvMascota" runat="server" ErrorMessage="Debe ingresar un nombre"
                                             ControlToValidate="txtMascota" Display="Dynamic" ValidationGroup="1"></asp:RequiredFieldValidator>
-                                        <asp:RequiredFieldValidator runat="server" ErrorMessage=" Debe ingresar un nombre"
-                                            ID="rfvNombreMascota" ValidationGroup="2" Display="Dynamic" ControlToValidate="txtNombreDueñio"></asp:RequiredFieldValidator>
                                     </td>
                                 </tr>
                             </table>

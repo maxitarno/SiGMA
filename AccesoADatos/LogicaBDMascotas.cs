@@ -70,21 +70,19 @@ namespace AccesoADatos
             }
         }
         
-        public static bool BuscarMascotaPorDuenio(EPersona persona, EMascota mascota, ECategoriaRaza categoria, ECaracterMascota caracter, ECuidado cuidado, int idMascota)
+        public static bool BuscarMascota(EMascota mascota, ECategoriaRaza categoria, ECaracterMascota caracter, ECuidado cuidado, int idMascota)
         {
             bool b = false;
             try
             {
                 SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
                 var consulta = from MascotasBD in mapaEntidades.Mascotas
-                               //from DueniosBD in mapaEntidades.Duenios
-                               //from PersonasBD in mapaEntidades.Personas
                                from RazaBD in mapaEntidades.Razas
-                               //from CategoriaRazaBD in mapaEntidades.CategoriaRazas
+                               from CategoriaRazaBD in mapaEntidades.CategoriaRazas
                                from CaracterBD in mapaEntidades.CaracteresMascota
-                               //from CuidadoEspecialBD in mapaEntidades.CuidadosEspeciales
+                               from CuidadoEspecialBD in mapaEntidades.CuidadosEspeciales
                                where (MascotasBD.idRaza == RazaBD.idRaza 
-                               //&& CuidadoEspecialBD.idCuidadoEspecial == RazaBD.idCuidadoEspecial && RazaBD.idCategoriaRaza == CategoriaRazaBD.idCategoriaRazas 
+                               && CuidadoEspecialBD.idCuidadoEspecial == RazaBD.idCuidadoEspecial && RazaBD.idCategoriaRaza == CategoriaRazaBD.idCategoriaRazas 
                                && MascotasBD.idCaracter == CaracterBD.idCaracter && MascotasBD.idMascota == idMascota)
                                select new
                                {
@@ -100,18 +98,16 @@ namespace AccesoADatos
                                    alimentacion = MascotasBD.alimentacionEspecial,
                                    fecha = MascotasBD.fechaNacimiento,
                                    sexo = MascotasBD.sexo,
-                                   //Duenio = PersonasBD.nombre,
-                                   //categoria = CategoriaRazaBD.nombreCategoriaRaza,
+                                   categoria = CategoriaRazaBD.nombreCategoriaRaza,
                                    caracter = CaracterBD.idCaracter,
-                                   //Cuidado = CuidadoEspecialBD.descripcion,
+                                   Cuidado = CuidadoEspecialBD.descripcion,
                                    id = MascotasBD.idMascota
                                };
                 foreach (var registro in consulta)
                 {
                     mascota.alimentacionEspecial = registro.alimentacion;
                     caracter.idCaracter = registro.caracter;
-                    //categoria.nombreCategoriaRaza = registro.categoria;
-                    //persona.nombre = registro.Duenio;
+                    categoria.nombreCategoriaRaza = registro.categoria;
                     mascota.raza = new ERaza();
                     mascota.raza.idRaza = registro.raza;
                     if (registro.fecha != null)
@@ -125,7 +121,7 @@ namespace AccesoADatos
                     mascota.sexo = registro.sexo;
                     mascota.tratoAnimal = registro.tratoA;
                     mascota.tratoNiños = registro.tratoN;
-                    //cuidado.descripcion = registro.Cuidado;
+                    cuidado.descripcion = registro.Cuidado;
                     mascota.idMascota = registro.id;
                     mascota.edad = new EEdad();
                     mascota.edad.idEdad = registro.edad;
@@ -177,18 +173,18 @@ namespace AccesoADatos
                 var consulta = mapaEntidades.Mascotas.Where(mascotasBuscadas => mascotasBuscadas.idMascota == mascota.idMascota);
                 foreach (var registro in consulta)
                 {
-                    registro.alimentacionEspecial = registro.alimentacionEspecial.Replace(registro.alimentacionEspecial, mascota.alimentacionEspecial);
+                    registro.alimentacionEspecial = registro.alimentacionEspecial;
                     registro.idCaracter = mascota.caracter.idCaracter;
                     registro.idEdad = mascota.edad.idEdad;
                     registro.idEspecie = mascota.especie.idEspecie;
                     registro.idEstado = mascota.estado.idEstado;
                     registro.idRaza = mascota.raza.idRaza;
-                    registro.nombreMascota = registro.nombreMascota.Replace(registro.nombreMascota, mascota.nombreMascota);
-                    registro.observaciones = registro.observaciones.Replace(registro.observaciones, mascota.observaciones);
+                    registro.nombreMascota = mascota.nombreMascota;
+                    registro.observaciones = mascota.observaciones;
                     registro.idColor = mascota.color.idColor;
-                    registro.sexo = registro.sexo.Replace(registro.sexo, mascota.sexo);
-                    registro.tratoAnimales = registro.tratoAnimales.Replace(registro.tratoAnimales, mascota.tratoAnimal);
-                    registro.tratoNinios = registro.tratoNinios.Replace(registro.tratoNinios, mascota.tratoNiños);
+                    registro.sexo = mascota.sexo;
+                    registro.tratoAnimales = mascota.tratoAnimal;
+                    registro.tratoNinios = mascota.tratoNiños;
                     registro.idCaracter = mascota.caracter.idCaracter;
                 }
                 b = true;
