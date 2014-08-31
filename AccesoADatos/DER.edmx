@@ -200,7 +200,7 @@
             <PropertyRef Name="idCuidadoEspecial" />
           </Key>
           <Property Name="idCuidadoEspecial" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="descripcion" Type="varchar" Nullable="false" MaxLength="250" />
+          <Property Name="descripcion" Type="varchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="Duenios">
           <Key>
