@@ -233,7 +233,7 @@
                                             Cuidado especial:&nbsp
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="txtCuidadoEspecial" runat="server" CssClass="TextBox" Width="100%"></asp:TextBox>
+                                            <asp:TextBox ID="txtCuidadoEspecial" runat="server" style="resize:none" TextMode="MultiLine" Rows="5" Columns="25" CssClass="TextBox" Width="100%" Enabled="False"></asp:TextBox>
                                         </td>
                                     </tr>
                                     <tr>
