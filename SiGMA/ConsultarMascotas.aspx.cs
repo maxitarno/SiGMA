@@ -7,6 +7,9 @@ using System.Web.UI.WebControls;
 using AccesoADatos;
 using Entidades;
 using Herramientas;
+using System.IO;
+using System.Drawing;
+using System.Drawing.Imaging;
 namespace SiGMA
 {
     public partial class ConsultarMascotasaspx : System.Web.UI.Page
@@ -166,6 +169,7 @@ namespace SiGMA
                     pnlInfo.Visible = false;
                     pnlmascota.Visible = true;
                     pnltxtMascota.Visible = true;
+                    Session["imagen"] = mascota.imagen;
                 }
                 else
                 {
@@ -325,6 +329,13 @@ namespace SiGMA
             txtMascota.Text = "";
             Session["idMascota"] = 0;
             txtNombreDueñio.Text = "";
+        }
+        public void BtnMostrarImagen(object sender, EventArgs e)
+        {
+            if (Session["imagen"] != null)
+            {
+                Response.Redirect("imagenes.aspx");
+            }
         }
     }
 }

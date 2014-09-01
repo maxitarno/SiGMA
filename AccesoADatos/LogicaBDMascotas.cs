@@ -96,7 +96,8 @@ namespace AccesoADatos
                                    categoria = CategoriaRazaBD.nombreCategoriaRaza,
                                    caracter = CaracterBD.idCaracter,
                                    Cuidado = CuidadoEspecialBD.descripcion,
-                                   id = MascotasBD.idMascota
+                                   id = MascotasBD.idMascota,
+                                   imagen = MascotasBD.imagen
                                };
                 foreach (var registro in consulta)
                 {
@@ -124,6 +125,13 @@ namespace AccesoADatos
                     mascota.especie.idEspecie = registro.especie;
                     mascota.estado = new EEstado();
                     mascota.estado.idEstado = registro.estado;
+                    if (registro.imagen != null){
+                        mascota.imagen = registro.imagen;
+                    }
+                    else
+                    {
+                        mascota.imagen = null;
+                    }
                 }
                 b = true;
             }

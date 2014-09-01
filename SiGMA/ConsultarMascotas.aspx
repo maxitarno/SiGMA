@@ -343,6 +343,7 @@
                                                 ValidationGroup="2" OnClick="BtnEliminarClick" />
                                             <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar" CssClass="btn-primary"
                                                 OnClick="BtnLimpiarClick" />
+                                            <asp:Button ID=btnMostrarImagen runat=server Text="Mostrar imagen" OnClick="BtnMostrarImagen" />
                                         </asp:Panel>
                                     </td>
                                 </tr>
