@@ -66,6 +66,7 @@ namespace SiGMA
                 pnlmascota.Visible = false;
                 pnltxtMascota.Visible = false;
                 pnlResultados.Visible = false;
+                imgImagen.Visible = false;
             }
         }
         public void RbPorMascota(object sender, EventArgs e)
@@ -82,6 +83,7 @@ namespace SiGMA
             pnlmascota.Visible = true;
             pnltxtMascota.Visible = true;
             pnlResultados.Visible = false;
+            imgImagen.Visible = false;
         }
         public void BtnBuscarClick(object sender, EventArgs e)
         {
@@ -170,6 +172,7 @@ namespace SiGMA
                     pnlmascota.Visible = true;
                     pnltxtMascota.Visible = true;
                     Session["imagen"] = mascota.imagen;
+                    imgImagen.Visible = true;
                 }
                 else
                 {
@@ -307,6 +310,7 @@ namespace SiGMA
                 txtMascota.Text = "";
                 Session["idMascota"] = 0;
                 txtNombreDueñio.Text = "";
+                imgImagen.Visible = false;
             }
             else
             {
@@ -329,6 +333,7 @@ namespace SiGMA
             txtMascota.Text = "";
             Session["idMascota"] = 0;
             txtNombreDueñio.Text = "";
+            imgImagen.Visible = false;
         }
         public void BtnMostrarImagen(object sender, EventArgs e)
         {

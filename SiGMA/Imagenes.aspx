@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ContentPlaceHolderID=MainContent runat=server>
     <div class="almedio">
-        <table>
+        <!--<table>
             <tr>
                 <td>
                     <asp:Image ID="imgImage1" runat="server" />
@@ -15,6 +15,6 @@
                     <asp:Button ID="btnAceptar" runat="server" Text="Button" OnClick="BtnOrigenClick"/>
                 </td>
             </tr>
-        </table>
+        </table>-->
      </div>
 </asp:Content>

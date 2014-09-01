@@ -70,7 +70,9 @@
                                             }
                                         }
                                     </script>
-                                    <img id="imgprvw" />
+                                    <asp:Panel Visible=false runat=server ID="imgImagen">
+                                        <img id="imgprvw" />
+                                    </asp:Panel>
                                 </td>
                             </tr>
             </div>
