@@ -16,11 +16,12 @@ namespace SiGMA
             if (!Page.IsPostBack)
             {
                 MemoryStream ms = new MemoryStream((byte[])Session["imagen"]);
-                Bitmap imagen = (Bitmap)System.Drawing.Image.FromStream(ms);
-                /*imagen.Save(ms, ImageFormat.Jpeg);
-                Context.Response.ContentType = "image/jpeg";
-                imagen.Save("C:\\Users\\NICOLAS\\Downloads"+(int)Session["idmascota"], ImageFormat.Jpeg);
-                imgImage1.ImageUrl = "C:\\Users\\NICOLAS\\Downloads" + (int)Session["idmascota"];*/
+                string formato = ImageFormat.Jpeg.ToString();
+                string path = string.Format(@"C:\Users\NICOLAS\Desktop\SiGMA\trunk\SiGMA\imagenes\"+(int)Session["idMAscota"]+"."+formato.ToString());
+                System.Drawing.Image imagen =System.Drawing.Image.FromStream(ms);
+                imagen.Save(path, ImageFormat.Jpeg);
+                imagen.Dispose();
+                imgImage1.ImageUrl = path;
             }
         }
         public void BtnOrigenClick(object sender, EventArgs e)
