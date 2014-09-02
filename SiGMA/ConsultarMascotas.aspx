@@ -346,6 +346,8 @@
                                             <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar" CssClass="btn-primary"
                                                 OnClick="BtnLimpiarClick" />
                                             <asp:Button ID=btnMostrarImagen runat=server Text="Mostrar imagen" OnClick="BtnMostrarImagen" />
+                                            <asp:Button ID=btnGenerarQR runat=server Text="Generar Codigo QR" 
+                                                OnClick="btnGenerarQR_Click" />
                                         </asp:Panel>
                                     </td>
                                 </tr>

@@ -182,6 +182,7 @@ namespace SiGMA
                     pnltxtMascota.Visible = true;
                     Session["imagen"] = mascota.imagen;
                     imgImagen.Visible = true;
+                    Session["Mascota"] = mascota; //Agregado por Gonzalo, el pr0, para probar generacion QR
                 }
                 else
                 {
@@ -349,6 +350,14 @@ namespace SiGMA
             if (Session["imagen"] != null)
             {
                 Response.Redirect("imagenes.aspx");
+            }
+        }
+
+        protected void btnGenerarQR_Click(object sender, EventArgs e)
+        {
+            if (Session["Mascota"] != null)
+            {
+                Response.Redirect("~/GenerarCodigoQR.aspx");
             }
         }
     }
