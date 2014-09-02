@@ -29,6 +29,18 @@
                             <td width="300">Grabación</td>
                             <td width="300">Eliminación</td>
                         </tr>
+                         <tr>
+                            <td>ConsultarMascotas</td>
+                            <td align="center"><asp:CheckBox ID="chkConsultarMascotasL" runat="server" /></td>
+                            <td align="center"><asp:CheckBox ID="chkConsultarMascotasG" runat="server" /></td>
+                            <td align="center"><asp:CheckBox ID="chkConsultarMascotasE" runat="server" /></td>
+                        </tr>
+                         <tr>
+                            <td>RegistrarMascotas</td>
+                            <td align="center"><asp:CheckBox ID="chkRegistrarMascotasL" runat="server" /></td>
+                            <td align="center"><asp:CheckBox ID="chkRegistrarMascotasG" runat="server" /></td>
+                            <td align="center"><asp:CheckBox ID="chkRegistrarMascotasE" runat="server" /></td>
+                        </tr>
                         <tr>
                             <td >ConsutarUsuario</td>
                             <td align="center"><asp:CheckBox ID="chkConsultarUsuarioL" runat="server" /></td>

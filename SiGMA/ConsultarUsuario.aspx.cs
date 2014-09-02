@@ -15,6 +15,15 @@ namespace SiGMA
         {
             if (!Page.IsPostBack)
             {
+                if (Session["UsuarioLogueado"] != null)
+                {
+                    if (!LogicaBDUsuario.verificarPermisoVisualizacion(Session["UsuarioLogueado"].ToString(), "ConsultarUsuario.aspx"))
+                        Response.Redirect("PermisosInsuficientes.aspx");
+                }
+                else
+                {
+                    Response.Redirect("Login.aspx");
+                }
                 CargarCombos.cargarBarrio(ref ddlBarrios);
                 CargarCombos.cargarLocalidades(ref ddlLocalidades);
                 CargarCombos.cargarTipoDocumento(ref ddlTipoDeDocumento);

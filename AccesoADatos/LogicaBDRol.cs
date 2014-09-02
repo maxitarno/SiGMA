@@ -161,6 +161,34 @@ namespace AccesoADatos
             }
             else return null;
         }
+        //Roles segun usuario
+        public static List<ERol> cargarRolesSergunUsuario(string usuarioNombre)
+        {
+         List<ERol> roles = new List<ERol>();
+            SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+            IQueryable<Roles> consulta = from rolesDB in mapaEntidades.Roles
+                                         from rolesUsuariosBD in mapaEntidades.RolesXUsuario
+                                         from usuarioBD in mapaEntidades.Usuarios
+                                         where (usuarioBD.user == usuarioNombre && rolesUsuariosBD.idRol == rolesDB.idRol)
+                                         select rolesDB;
+            try
+            {
+                foreach (var registro in consulta)
+                {
+                    ERol rol = new ERol();
+                    rol.idRol = registro.idRol;
+                    rol.nombreRol = registro.nombre;
+                    rol.descripcionRol = registro.descripcion;
+                    rol.listaPermisos = cargarPermisosRol(registro.idRol);
+                    roles.Add(rol);
+                }
+            }
+            catch (System.Data.EntityCommandCompilationException exc)
+            {
+                throw exc;
+            }
+            return roles;
+        }
 
     }
 }

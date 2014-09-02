@@ -68,6 +68,8 @@
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="PermisosInsuficientes.aspx" />
+    <Content Include="Principal.aspx" />
     <Content Include="RegistrarMascota.aspx" />
     <Content Include="RegistrarRoles.aspx" />
     <Content Include="Scripts\bootstrap.js" />
@@ -91,6 +93,7 @@
     <Content Include="Inicio.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Code\ManejoSesion.cs" />
     <Compile Include="AsignarPermisos.aspx.cs">
       <DependentUpon>AsignarPermisos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -153,6 +156,20 @@
     </Compile>
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PermisosInsuficientes.aspx.cs">
+      <DependentUpon>PermisosInsuficientes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PermisosInsuficientes.aspx.designer.cs">
+      <DependentUpon>PermisosInsuficientes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Principal.aspx.cs">
+      <DependentUpon>Principal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Principal.aspx.designer.cs">
+      <DependentUpon>Principal.aspx</DependentUpon>
     </Compile>
     <Compile Include="RegistrarMascota.aspx.cs">
       <DependentUpon>RegistrarMascota.aspx</DependentUpon>
@@ -233,7 +250,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>50399</DevelopmentServerPort>
+          <DevelopmentServerPort>53173</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

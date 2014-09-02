@@ -8,7 +8,7 @@ namespace AccesoADatos
 {
     public class LogicaBDUsuario
     {
-        public static void guardarUsuario(EDuenio duenio, EUsuario usuario)
+        public static Boolean guardarUsuario(EDuenio duenio, EUsuario usuario)
         {
             using (TransactionScope transaction = new TransactionScope())
             {               
@@ -20,7 +20,7 @@ namespace AccesoADatos
                     userBD.password = usuario.password;                  
                     mapaEntidades.AddToUsuarios(userBD);
                     mapaEntidades.SaveChanges();
-                    ERol rolDuenio = LogicaBDRol.ObtenerRol("Duenio");
+                    ERol rolDuenio = LogicaBDRol.ObtenerRol("Dueño");
                     RolesXUsuario rolesXUserBD = new RolesXUsuario();
                     rolesXUserBD.idRol = rolDuenio.idRol;
                     rolesXUserBD.user = usuario.user;
@@ -39,11 +39,14 @@ namespace AccesoADatos
                     duenioBD.idPersona = personBD.idPersona;
                     mapaEntidades.AddToDuenios(duenioBD);
                     mapaEntidades.SaveChanges();
-                    transaction.Complete();                    
+                    transaction.Complete();
+                    return true;
                 }
                 catch (Exception exc)
                 {
-                    transaction.Dispose();                    
+                    
+                    transaction.Dispose();
+                    return false;
                     throw exc;
                 }                
             }
@@ -234,6 +237,48 @@ namespace AccesoADatos
             {
                 return null;
             }
+        }
+
+        public static Boolean verificarPermisoVisualizacion(String nombreUsuario, String pantalla)
+        {
+            EUsuario usuarioLogueado = new EUsuario();
+            SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+            IQueryable<Usuarios> consulta = from UsuarioBD in mapaEntidades.Usuarios
+                                            where (UsuarioBD.user == nombreUsuario)
+                                            select UsuarioBD;
+            try
+            {
+                foreach (var registro in consulta)
+                {
+                    usuarioLogueado.user = registro.user;
+                    usuarioLogueado.password = registro.password;
+                    usuarioLogueado.rolesUsuario = LogicaBDRol.cargarRolesSergunUsuario(registro.user);
+                    
+                }
+            }
+            catch (System.Data.EntityCommandCompilationException exc)
+            {
+                throw exc;
+            }
+            Boolean ingreso = false;
+            if (usuarioLogueado != null)
+            {
+                List<ERol> roles = usuarioLogueado.rolesUsuario;
+                foreach (var rol in roles)
+                {
+                    List<EPermiso> permisos = rol.listaPermisos;
+                    foreach (var permiso in permisos)
+                    {
+                        if (permiso.pantalla == pantalla && permiso.idPermiso == 1)
+                        {
+                            ingreso = true;
+                            break;
+                        }
+                    }
+                }
+                return ingreso;
+            }
+            else { return false; } 
         }
     }
 }

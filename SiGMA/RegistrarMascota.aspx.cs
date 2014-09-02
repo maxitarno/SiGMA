@@ -17,6 +17,15 @@ namespace SiGMA
         {          
             if (!Page.IsPostBack)
             {
+                if (Session["UsuarioLogueado"] != null)
+                {
+                    if (!LogicaBDUsuario.verificarPermisoVisualizacion(Session["UsuarioLogueado"].ToString(), "RegistrarMascota.aspx"))
+                        Response.Redirect("PermisosInsuficientes.aspx");
+                }
+                else
+                {
+                    Response.Redirect("Login.aspx");
+                }
                 CargarCombos.cargarColor(ref ddlColor);
                 CargarCombos.cargarEspecies(ref ddlEspecie);
                 CargarCombos.cargarEdad(ref ddlEdad);

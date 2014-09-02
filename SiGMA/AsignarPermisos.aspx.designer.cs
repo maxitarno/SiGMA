@@ -49,6 +49,60 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.Label lblRol;
         
         /// <summary>
+        /// chkConsultarMascotasL control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkConsultarMascotasL;
+        
+        /// <summary>
+        /// chkConsultarMascotasG control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkConsultarMascotasG;
+        
+        /// <summary>
+        /// chkConsultarMascotasE control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkConsultarMascotasE;
+        
+        /// <summary>
+        /// chkRegistrarMascotasL control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkRegistrarMascotasL;
+        
+        /// <summary>
+        /// chkRegistrarMascotasG control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkRegistrarMascotasG;
+        
+        /// <summary>
+        /// chkRegistrarMascotasE control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkRegistrarMascotasE;
+        
+        /// <summary>
         /// chkConsultarUsuarioL control.
         /// </summary>
         /// <remarks>

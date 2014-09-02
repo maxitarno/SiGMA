@@ -16,6 +16,15 @@ namespace SiGMA
         {
             if (!Page.IsPostBack)
             {
+                if (Session["UsuarioLogueado"] != null)
+                {
+                    if (!LogicaBDUsuario.verificarPermisoVisualizacion(Session["UsuarioLogueado"].ToString(), "AsignarPermisos.aspx"))
+                        Response.Redirect("PermisosInsuficientes.aspx");
+                }
+                else
+                {
+                    Response.Redirect("Login.aspx");
+                }
                 CargarCombos.cargarRoles(ref ddlRol);
             } 
         }
@@ -90,6 +99,47 @@ namespace SiGMA
                     permisoRol9.pantalla = "AsignarPermisos.aspx";
                     if (permisoRol9.idPermiso != 0)
                         ListadoPermisos.Add(permisoRol9);
+
+                    // --------------- ConsultarMascotas --------------- //
+
+                    EPermiso permisoRol10 = new EPermiso();
+                    permisoRol10.idPermiso = chkConsultarMascotasL.Checked ? 1 : 0;
+                    permisoRol10.pantalla = "ConsultarMascotas.aspx";
+                    if (permisoRol10.idPermiso != 0)
+                        ListadoPermisos.Add(permisoRol10);
+
+                    EPermiso permisoRol11 = new EPermiso();
+                    permisoRol11.idPermiso = chkConsultarMascotasG.Checked ? 2 : 0;
+                    permisoRol11.pantalla = "ConsultarMascotas.aspx";
+                    if (permisoRol11.idPermiso != 0)
+                        ListadoPermisos.Add(permisoRol11);
+
+                    EPermiso permisoRol12 = new EPermiso();
+                    permisoRol12.idPermiso = chkConsultarMascotasE.Checked ? 3 : 0;
+                    permisoRol12.pantalla = "ConsultarMascotas.aspx";
+                    if (permisoRol12.idPermiso != 0)
+                        ListadoPermisos.Add(permisoRol12);
+
+                    // --------------- RegistrarMascotas --------------- //
+
+                    EPermiso permisoRol13 = new EPermiso();
+                    permisoRol13.idPermiso = chkRegistrarMascotasL.Checked ? 1 : 0;
+                    permisoRol13.pantalla = "RegistrarMascota.aspx";
+                    if (permisoRol13.idPermiso != 0)
+                        ListadoPermisos.Add(permisoRol13);
+
+                    EPermiso permisoRol14 = new EPermiso();
+                    permisoRol14.idPermiso = chkRegistrarMascotasG.Checked ? 2 : 0;
+                    permisoRol14.pantalla = "RegistrarMascota.aspx";
+                    if (permisoRol14.idPermiso != 0)
+                        ListadoPermisos.Add(permisoRol14);
+
+                    EPermiso permisoRol15 = new EPermiso();
+                    permisoRol15.idPermiso = chkRegistrarMascotasE.Checked ? 3 : 0;
+                    permisoRol15.pantalla = "RegistrarMascota.aspx";
+                    if (permisoRol15.idPermiso != 0)
+                        ListadoPermisos.Add(permisoRol15);
+
                     ERol RolEnviar = new ERol();
                     RolEnviar.listaPermisos = ListadoPermisos;
                     RolEnviar.idRol = idRol;

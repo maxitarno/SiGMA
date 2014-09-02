@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Entidades;
 using AccesoADatos;
+using Herramientas;
 
 namespace SiGMA
 {
@@ -15,18 +16,18 @@ namespace SiGMA
         {
             if (!Page.IsPostBack)
             {
-                cargarRoles();
+                if (Session["UsuarioLogueado"] != null)
+                {
+                    if (!LogicaBDUsuario.verificarPermisoVisualizacion(Session["UsuarioLogueado"].ToString(), "RegistrarRoles.aspx"))
+                        Response.Redirect("PermisosInsuficientes.aspx");
+                }
+                else
+                {
+                    Response.Redirect("Login.aspx");
+                }
+                CargarCombos.cargarRoles(ref ddlRol);
             }
 
-        }
-
-        //carga del combo de roles
-        private void cargarRoles()
-        {
-            ddlRol.DataTextField = "nombreRol";
-            ddlRol.DataValueField = "idRol";
-            ddlRol.DataSource = LogicaBDRol.Roles();
-            ddlRol.DataBind();
         }
 
         protected void ddlRol_SelectedIndexChanged(object sender, EventArgs e)

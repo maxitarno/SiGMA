@@ -16,6 +16,11 @@ namespace SiGMA
         {
             if (!Page.IsPostBack)
             {
+                if (Session["UsuarioLogueado"] != null)
+                {
+                    if (!LogicaBDUsuario.verificarPermisoVisualizacion(Session["UsuarioLogueado"].ToString(), "RegistrarUsuario.aspx"))
+                        Response.Redirect("PermisosInsuficientes.aspx");
+                }
                 CargarCombos.cargarTipoDocumento(ref ddlTipoDocumento);
             }
         }
@@ -37,13 +42,32 @@ namespace SiGMA
                     duenio.email = txtEmail.Text;
                     usuario.user = txtUsuario.Text;
                     usuario.password = txtContra.Text;
-                    LogicaBDUsuario.guardarUsuario(duenio, usuario);
+                    if (LogicaBDUsuario.guardarUsuario(duenio, usuario))
+                    {
+                        Response.Write("<SCRIPT>alert('Usuario Registrado Exitosamente');</SCRIPT>");
+                        limpiarPagina();
+                    }
+                    else
+                    {
+                        Response.Write("<SCRIPT>alert('Error al registrar usuario');</SCRIPT>");
+                    }
                 }
                 catch (Exception ex)
                 {
                     mostrarResultado(ex.InnerException.Message);
                 }
             }                 
+        }
+
+        private void limpiarPagina() 
+        {
+            txtApellido.Text = "";
+            txtContra.Text = "";
+            txtDocumento.Text = "";
+            txtEmail.Text = "";
+            txtNombre.Text = "";
+            txtRepetirContra.Text = "";
+            ddlTipoDocumento.SelectedValue = "0";
         }
 
         //Metodo para mostrar un label informando alguna excepcion, el parametro sera el string de la excepcion
