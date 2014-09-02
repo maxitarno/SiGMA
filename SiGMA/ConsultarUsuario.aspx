@@ -250,7 +250,9 @@
                         </td>
                         <td>
                             <asp:Panel ID="pnlModificar" runat="server" Visible="false">
-                                <asp:Button ID="btnModificar" runat="server" Text="Modificar" CssClass="btn-primary" OnClick="btnModificarClick" width=100% ValidationGroup="2" OnClientClick="mensaje()" />
+                                <asp:Button ID="btnModificar" runat="server" Text="Modificar" 
+                                    CssClass="btn-primary" OnClick="btnModificarClick" width=100% 
+                                    ValidationGroup="2" />
                             </asp:Panel>
                         </td>
                         <td>
