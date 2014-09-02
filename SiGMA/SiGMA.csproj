@@ -62,6 +62,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="GenerarCodigoQR.aspx" />
     <Content Include="Imagenes.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Account\ChangePassword.aspx" />
@@ -114,6 +115,13 @@
     </Compile>
     <Compile Include="ConsultarUsuario.aspx.designer.cs">
       <DependentUpon>ConsultarUsuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GenerarCodigoQR.aspx.cs">
+      <DependentUpon>GenerarCodigoQR.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GenerarCodigoQR.aspx.designer.cs">
+      <DependentUpon>GenerarCodigoQR.aspx</DependentUpon>
     </Compile>
     <Compile Include="Imagenes.aspx.cs">
       <DependentUpon>Imagenes.aspx</DependentUpon>
