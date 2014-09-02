@@ -303,9 +303,6 @@
                                         </td>
                                         <td>
                                             <asp:DropDownList ID="ddlSexo" runat="server" Width="100%" CssClass="DropDownList">
-                                                <asp:ListItem Selected="True" Value="0" Text="-- seleccione --"></asp:ListItem>
-                                                <asp:ListItem Text="HEMBRA" Value="HEMBRA"></asp:ListItem>
-                                                <asp:ListItem Value="MACHO" Text="MACHO"></asp:ListItem>
                                             </asp:DropDownList>
                                         </td>
                                     </tr>

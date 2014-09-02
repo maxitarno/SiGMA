@@ -7,12 +7,13 @@
     <div class="panel panel-primary">
         <div class="panel-heading">
             <h3 class="panel-title">
-                Inicar sesion</h3>
+                Iniciar sesion</h3>
         </div>
         <div class="panel-body">
             <div>
                 <div class="almedio">
-                    <asp:Login ID="login" runat="server" onauthenticate="login_Authenticate">
+                    <asp:Login ID="login" runat="server" onauthenticate="login_Authenticate" 
+                        TitleText="">
                         <LoginButtonStyle CssClass="btn-primary" />
                         <TextBoxStyle/>
                     </asp:Login>

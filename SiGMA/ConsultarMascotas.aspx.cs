@@ -31,6 +31,7 @@ namespace SiGMA
                 CargarCombos.cargarEdad(ref ddlEdad);
                 CargarCombos.cargarEspecies(ref ddlEspecie);
                 CargarCombos.cargarComboRazas(ref ddlRaza);
+                CargarCombos.cargarSexo(ref ddlSexo);
                 pnlNombre.Visible = false;
                 pnltxtNombreDueñio.Visible = false;
                 pnlboton.Visible = true;
@@ -171,7 +172,7 @@ namespace SiGMA
                     ddlEdad.SelectedValue = mascota.edad.idEdad.ToString();
                     ddlEspecie.SelectedValue = mascota.especie.idEspecie.ToString();
                     ddlRaza.SelectedValue = mascota.raza.idRaza.ToString();
-                    ddlSexo.SelectedValue = mascota.sexo.ToString().ToUpper();
+                    ddlSexo.SelectedValue = mascota.sexo.ToString();
                     pnlbotones.Visible = true;
                     pnlInfo.Visible = false;
                     Session["idMAscota"] = idMascota;
