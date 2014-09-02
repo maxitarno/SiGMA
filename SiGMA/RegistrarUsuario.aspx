@@ -17,7 +17,7 @@
                         Nombre:
                     </td>
                     <td>
-                        <asp:TextBox class="text-primary" ID="txtNombre" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtNombre" runat="server"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="rfvNombre" runat="server" ErrorMessage="*" ForeColor="Red"
                             ControlToValidate="txtNombre" Display="Dynamic"></asp:RequiredFieldValidator>
                     </td>
@@ -27,7 +27,7 @@
                         Apellido:
                     </td>
                     <td>
-                        <asp:TextBox class="text-primary" ID="txtApellido" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtApellido" runat="server"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="rfvApellido" runat="server" ErrorMessage="*" ForeColor="Red"
                             ControlToValidate="txtApellido" Display="Dynamic"></asp:RequiredFieldValidator>
                     </td>
@@ -48,7 +48,7 @@
                         Documento:
                     </td>
                     <td>
-                        <asp:TextBox class="text-primary" ID="txtDocumento" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtDocumento" runat="server"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="rfvDocumento" runat="server" ErrorMessage="*" ForeColor="Red"
                             ControlToValidate="txtDocumento" Display="Dynamic"></asp:RequiredFieldValidator>
                         <asp:CustomValidator ID="cuvDocumento" runat="server" ErrorMessage="Solo numeros"
@@ -61,7 +61,7 @@
                         Usuario:
                     </td>
                     <td>
-                        <asp:TextBox class="text-primary" ID="txtUsuario" runat="server" MaxLength="10"></asp:TextBox>
+                        <asp:TextBox  ID="txtUsuario" runat="server" MaxLength="10"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="rfvUsuario" runat="server" ErrorMessage="*" ForeColor="Red"
                             ControlToValidate="txtUsuario" Display="Dynamic"></asp:RequiredFieldValidator>
                     </td>
@@ -71,7 +71,7 @@
                         Contraseña:
                     </td>
                     <td>
-                        <asp:TextBox class="text-primary" ID="txtContra" runat="server" MaxLength="10" TextMode="Password"></asp:TextBox>
+                        <asp:TextBox ID="txtContra" runat="server" MaxLength="10" TextMode="Password"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="rfvContra" runat="server" ErrorMessage="*" ForeColor="Red"
                             ControlToValidate="txtContra" Display="Dynamic"></asp:RequiredFieldValidator>
                     </td>
@@ -81,7 +81,7 @@
                         <asp:Label ID="lblRepetirContraseña" runat="server" Text="Repetir Contraseña:"></asp:Label>
                     </td>
                     <td>
-                        <asp:TextBox class="text-primary" ID="txtRepetirContra" runat="server" MaxLength="25" TextMode="Password"></asp:TextBox>
+                        <asp:TextBox  ID="txtRepetirContra" runat="server" MaxLength="25" TextMode="Password"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="rfvRepetirContra" runat="server" ErrorMessage="*"
                             ForeColor="Red" ControlToValidate="txtRepetirContra" Display="Dynamic"></asp:RequiredFieldValidator>
                         <asp:CompareValidator ID="covPassword" runat="server" ErrorMessage="Las contraseñas no son iguales"
@@ -94,7 +94,7 @@
                         Email:
                     </td>
                     <td>
-                        <asp:TextBox class="text-primary" ID="txtEmail" runat="server"></asp:TextBox>
+                        <asp:TextBox  ID="txtEmail" runat="server"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="*"
                             ForeColor="Red" ControlToValidate="txtEmail" Display="Dynamic"></asp:RequiredFieldValidator>
                         <asp:RegularExpressionValidator ID="revMail" runat="server" ErrorMessage="Formato de email incorrecto"

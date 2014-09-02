@@ -71,7 +71,7 @@
                                         }
                                     </script>
                                     <asp:Panel Visible=false runat=server ID="imgImagen">
-                                        <img id="imgprvw" />
+                                        <img id="imgprvw" width="140px" height="140px"/>
                                     </asp:Panel>
                                 </td>
                             </tr>
