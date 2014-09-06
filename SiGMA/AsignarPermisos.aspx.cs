@@ -21,9 +21,7 @@ namespace SiGMA
                     if (!LogicaBDRol.verificarPermisoVisualizacion(Session["UsuarioLogueado"].ToString(), "AsignarPermisos.aspx"))
                         Response.Redirect("PermisosInsuficientes.aspx");
                     if (!LogicaBDRol.verificarPermisosGrabacion(Session["UsuarioLogueado"].ToString(), "AsignarPermisos.aspx"))
-                    {
                         btnGuardar.Visible = false;
-                    }
                 }
                 else
                 {
@@ -169,18 +167,21 @@ namespace SiGMA
 
                     if (LogicaBDRol.guardarPermisoRol(RolEnviar))
                     {
-                        Response.Write("<SCRIPT>alert('Rol Actualizado Correctamente');</SCRIPT>");
                         limpiarPagina();
+                        pnlCorrecto.Visible = true;
+                        lblCorrecto.Text = "Rol Actualizado Correctamente";
                     }
                     else
                     {
-                        Response.Write("<SCRIPT>alert('No se actualizo el rol');</SCRIPT>");
+                        pnlAtento.Visible = true;
+                        lblError.Text = "No se actualizo el rol. Verifique datos";
                     }
                 }
             }
             catch (Exception exc)
             {
-                Response.Write("<SCRIPT>alert('OCURRIO UN ERROR EN LA APLICACIÓN');</SCRIPT>");
+                pnlAtento.Visible = true;
+                lblError.Text = "" + exc.ToString();
             }
             
         }
@@ -196,6 +197,18 @@ namespace SiGMA
             chkRegistrarUsuarioL.Checked = false;
             chkRegistrarUsuarioG.Checked = false;
             chkRegistrarUsuarioE.Checked = false;
+            chkAdministracionL.Checked = false;
+            chkAdministracionG.Checked = false;
+            chkAdministracionE.Checked = false;
+            chkConsultarMascotasL.Checked = false;
+            chkConsultarMascotasG.Checked = false;
+            chkConsultarMascotasE.Checked = false;
+            chkRegistrarMascotasL.Checked = false;
+            chkRegistrarMascotasG.Checked = false;
+            chkRegistrarMascotasE.Checked = false;
+            pnlAtento.Visible = false;
+            pnlCorrecto.Visible = false;
+            pnlInfo.Visible = false;
             pnlPermisos.Visible = false;
             ddlRol.SelectedValue = "0";
             lblRol.Text = "";
