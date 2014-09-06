@@ -369,6 +369,7 @@
           </Key>
           <Property Name="user" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="password" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="estado" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Voluntarios">
           <Key>
@@ -1171,6 +1172,7 @@
           <NavigationProperty Name="Personas" Relationship="SiGMAModel.FK_Personas_Usuarios" FromRole="Usuarios" ToRole="Personas" />
           <NavigationProperty Name="RolesXUsuario" Relationship="SiGMAModel.FK_RolesXUsuario_Usuarios" FromRole="Usuarios" ToRole="RolesXUsuario" />
           <NavigationProperty Name="Sesiones" Relationship="SiGMAModel.FK_Sesiones_Usuarios" FromRole="Usuarios" ToRole="Sesiones" />
+          <Property Type="Boolean" Name="estado" Nullable="false" />
         </EntityType>
         <EntityType Name="Voluntarios">
           <Key>
@@ -1796,6 +1798,7 @@
           <EntitySetMapping Name="Usuarios">
             <EntityTypeMapping TypeName="SiGMAModel.Usuarios">
               <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="estado" ColumnName="estado" />
                 <ScalarProperty Name="user" ColumnName="user" />
                 <ScalarProperty Name="password" ColumnName="password" />
               </MappingFragment>
