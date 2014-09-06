@@ -147,6 +147,7 @@ namespace SiGMA
         }
         public void BtnSeleccionarClick(object sender, EventArgs e)
         {
+            Session["imagen"] = null;
             EMascota mascota = new EMascota();
             EPersona persona = new EPersona();
             ECaracterMascota caracter = new ECaracterMascota();
@@ -181,7 +182,14 @@ namespace SiGMA
                     pnlInfo.Visible = false;
                     pnlmascota.Visible = true;
                     pnltxtMascota.Visible = true;
-                    Session["imagen"] = mascota.imagen;
+                    if (mascota.imagen != null) 
+                    {
+                        Session["imagen"] = mascota.imagen;
+                        Handler1.AddMethod(ImageHandler_ObtenerImagenMascota);
+                        imgprvw.Src = ResolveUrl("~/Handler1.ashx");
+                        imgprvw.Width = 300;
+                        imgprvw.Height = 200;
+                    }
                     imgImagen.Visible = true;
                     Session["Mascota"] = mascota; //Agregado por Gonzalo, el pr0, para probar generacion QR
                 }
@@ -201,6 +209,15 @@ namespace SiGMA
                 pnlAtento.Visible = false;
             }
         }
+
+        public byte[] ImageHandler_ObtenerImagenMascota(HttpContext context)
+        {
+            if (Session["imagen"] != null)
+                return (byte[])Session["imagen"];
+            else
+                return null;
+        }
+
         public void BtnModificarClick(object sender, EventArgs e)
         {
             EMascota mascota = new EMascota();

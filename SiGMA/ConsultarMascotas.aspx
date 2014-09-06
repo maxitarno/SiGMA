@@ -71,7 +71,8 @@
                                         }
                                     </script>
                                     <asp:Panel Visible=false runat=server ID="imgImagen">
-                                        <img id="imgprvw" width="140px" height="140px"/>
+                                        <%--<img id="imgprvw" width="140px" height="140px"/>--%>
+                                        <img id="imgprvw" style="border: 2px solid #000000;" runat="server" src="~/App_Themes/TemaSigma/imagenes/sin_imagen_disponible.jpg" />
                                     </asp:Panel>
                                 </td>
                             </tr>

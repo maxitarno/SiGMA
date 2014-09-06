@@ -18,7 +18,7 @@ namespace Entidades
         public int idBarrio { get; set; }
         public string telefonoFijo { get; set; }
         public string telefonoCelular { get; set; }
-        public DateTime fechaNacimiento { get; set; }
+        public DateTime? fechaNacimiento { get; set; }
         public EUsuario usuario { get; set; }
     }
 }

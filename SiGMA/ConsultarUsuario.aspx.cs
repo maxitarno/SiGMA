@@ -146,7 +146,7 @@ namespace SiGMA
                 txtTelefonoFijo.Text = persona.telefonoFijo;
                 txtTelefonoCelular.Text = persona.telefonoCelular;
                 txtMail.Text = persona.email;
-                txtFecha.Text = persona.fechaNacimiento.ToShortDateString();
+                txtFecha.Text = persona.fechaNacimiento != null ? persona.fechaNacimiento.Value.ToShortDateString() : null;
                 Session["persona"] = persona.idPersona;
                 pnlUser.Visible = true;
                 pnlBuscar.Visible = false;
