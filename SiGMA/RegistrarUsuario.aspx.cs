@@ -18,8 +18,10 @@ namespace SiGMA
             {
                 if (Session["UsuarioLogueado"] != null)
                 {
-                    if (!LogicaBDUsuario.verificarPermisoVisualizacion(Session["UsuarioLogueado"].ToString(), "RegistrarUsuario.aspx"))
-                        Response.Redirect("PermisosInsuficientes.aspx");
+                    //if (!LogicaBDRol.verificarPermisoVisualizacion(Session["UsuarioLogueado"].ToString(), "RegistrarUsuario.aspx"))
+                    //    Response.Redirect("PermisosInsuficientes.aspx");
+                    //if (!LogicaBDRol.verificarPermisosGrabacion(Session["UsuarioLogueado"].ToString(), "ConsultarUsuario.aspx"))
+                    //    btnRegistrar.Visible = false;
                 }
                 CargarCombos.cargarTipoDocumento(ref ddlTipoDocumento);
             }

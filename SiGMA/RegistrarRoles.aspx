@@ -29,7 +29,6 @@
                         Modificar Rol <asp:DropDownList ID="ddlRol" runat="server" AutoPostBack="true" 
                             AppendDataBoundItems="true" 
                             onselectedindexchanged="ddlRol_SelectedIndexChanged"> 
-                            <%--<asp:ListItem Value="0" Text="---Seleccione un rol ---"></asp:ListItem>--%>
                         </asp:DropDownList>
                         <br />
                         <br />
@@ -58,6 +57,8 @@
                         <br />
                         <asp:Button ID="btnGuardarRol" runat="server" Text="Guardar" 
                             onclick="btnGuardarRol_Click" class="btn-primary" />
+                        <asp:Button ID="btnEliminarRol" runat="server" Text="Eliminar" 
+                            class="btn-primary" onclick="btnEliminarRol_Click" />
                         <script type="text/javascript">
                             function checkTextAreaMaxLength(textBox, e, length) {
 

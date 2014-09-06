@@ -18,8 +18,15 @@ namespace SiGMA
             {
                 if (Session["UsuarioLogueado"] != null)
                 {
-                    if (!LogicaBDUsuario.verificarPermisoVisualizacion(Session["UsuarioLogueado"].ToString(), "RegistrarRoles.aspx"))
+                    if (!LogicaBDRol.verificarPermisoVisualizacion(Session["UsuarioLogueado"].ToString(), "Administracion"))
                         Response.Redirect("PermisosInsuficientes.aspx");
+                    if (!LogicaBDRol.verificarPermisosGrabacion(Session["UsuarioLogueado"].ToString(), "Administracion"))
+                    {
+                        btnNuevoRol.Visible = false;
+                        btnGuardarRol.Visible = false;
+                    }
+                    if (!LogicaBDRol.verificarPermisosEliminacion(Session["UsuarioLogueado"].ToString(), "Administracion"))
+                        btnEliminarRol.Visible = false;
                 }
                 else
                 {
@@ -98,6 +105,36 @@ namespace SiGMA
             pnlAtento.Visible = false;
             pnlCorrecto.Visible = false;
             pnlInfo.Visible = false;
+        }
+
+        protected void btnEliminarRol_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Page.IsValid)
+                {
+                    ERol rol = new ERol();
+                    rol.idRol = Convert.ToInt32(ddlRol.SelectedValue);
+                    if (LogicaBDRol.eliminarRol(rol))
+                    {
+                        limpiarPagina();
+                        ddlRol.Items.Clear();
+                        CargarCombos.cargarRoles(ref ddlRol);
+                        pnlCorrecto.Visible = true;
+                        lblCorrecto.Text = "Rol Eliminado Correctamente";
+                    }
+                    else
+                    {
+                        pnlAtento.Visible = true;
+                        lblError.Text = "No se elimino el rol. Verifique la inexistencia de usuarios con este rol";
+                    }
+                }
+            }
+            catch (Exception exc)
+            {
+
+                throw exc;
+            }
         }
     }
 }

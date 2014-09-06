@@ -20,8 +20,15 @@ namespace SiGMA
             {
                 if (Session["UsuarioLogueado"] != null)
                 {
-                    if (!LogicaBDUsuario.verificarPermisoVisualizacion(Session["UsuarioLogueado"].ToString(), "ConsultarMascotas.aspx"))
+                    if (!LogicaBDRol.verificarPermisoVisualizacion(Session["UsuarioLogueado"].ToString(), "ConsultarMascotas.aspx"))
                         Response.Redirect("PermisosInsuficientes.aspx");
+                    if (!LogicaBDRol.verificarPermisosGrabacion(Session["UsuarioLogueado"].ToString(), "ConsultarMascotas.aspx"))
+                    {
+                        btnModificar.Visible = false;
+                        btnLimpiar.Visible = false;
+                    }
+                    if (!LogicaBDRol.verificarPermisosEliminacion(Session["UsuarioLogueado"].ToString(), "ConsultarMascotas.aspx"))
+                        btnEliminar.Visible = false;
                 }
                 else
                 {
@@ -362,13 +369,6 @@ namespace SiGMA
             Session["idMascota"] = 0;
             txtNombreDueñio.Text = "";
             imgImagen.Visible = false;
-        }
-        public void BtnMostrarImagen(object sender, EventArgs e)
-        {
-            if (Session["imagen"] != null)
-            {
-                Response.Redirect("imagenes.aspx");
-            }
         }
 
         protected void btnGenerarQR_Click(object sender, EventArgs e)

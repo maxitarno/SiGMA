@@ -29,32 +29,38 @@
                             <td width="300">Grabación</td>
                             <td width="300">Eliminación</td>
                         </tr>
+                        <tr>
+                            <td>Administracion</td>
+                            <td align="center"><asp:CheckBox ID="chkAdministracionL" runat="server" /></td>
+                            <td align="center"><asp:CheckBox ID="chkAdministracionG" runat="server" /></td>
+                            <td align="center"><asp:CheckBox ID="chkAdministracionE" runat="server" /></td>
+                        </tr>
                          <tr>
-                            <td>ConsultarMascotas</td>
+                            <td>Consultar Mascotas</td>
                             <td align="center"><asp:CheckBox ID="chkConsultarMascotasL" runat="server" /></td>
                             <td align="center"><asp:CheckBox ID="chkConsultarMascotasG" runat="server" /></td>
                             <td align="center"><asp:CheckBox ID="chkConsultarMascotasE" runat="server" /></td>
                         </tr>
                          <tr>
-                            <td>RegistrarMascotas</td>
+                            <td>Registrar Mascotas</td>
                             <td align="center"><asp:CheckBox ID="chkRegistrarMascotasL" runat="server" /></td>
                             <td align="center"><asp:CheckBox ID="chkRegistrarMascotasG" runat="server" /></td>
                             <td align="center"><asp:CheckBox ID="chkRegistrarMascotasE" runat="server" /></td>
                         </tr>
                         <tr>
-                            <td >ConsutarUsuario</td>
+                            <td >Consutar Usuarios</td>
                             <td align="center"><asp:CheckBox ID="chkConsultarUsuarioL" runat="server" /></td>
                             <td align="center"><asp:CheckBox ID="chkConsultarUsuarioG" runat="server" /></td>
                             <td align="center"><asp:CheckBox ID="chkConsultarUsuarioE" runat="server" /></td>
                         </tr>
                         <tr>
-                            <td>RegistrarUsuario</td>
+                            <td>Registrar Usuarios</td>
                             <td align="center"><asp:CheckBox ID="chkRegistrarUsuarioL" runat="server" /></td>
                             <td align="center"><asp:CheckBox ID="chkRegistrarUsuarioG" runat="server" /></td>
                             <td align="center"><asp:CheckBox ID="chkRegistrarUsuarioE" runat="server" /></td>
                         </tr>
                         <tr>
-                            <td>AsignarPermisos</td>
+                            <td>Asignar Permisos</td>
                             <td align="center"><asp:CheckBox ID="chkAsignarPermisosL" runat="server" /></td>
                             <td align="center"><asp:CheckBox ID="chkAsignarPermisosG" runat="server" /></td>
                             <td align="center"><asp:CheckBox ID="chkAsignarPermisosE" runat="server" /></td>

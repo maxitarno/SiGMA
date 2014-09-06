@@ -18,8 +18,12 @@ namespace SiGMA
             {
                 if (Session["UsuarioLogueado"] != null)
                 {
-                    if (!LogicaBDUsuario.verificarPermisoVisualizacion(Session["UsuarioLogueado"].ToString(), "AsignarPermisos.aspx"))
+                    if (!LogicaBDRol.verificarPermisoVisualizacion(Session["UsuarioLogueado"].ToString(), "AsignarPermisos.aspx"))
                         Response.Redirect("PermisosInsuficientes.aspx");
+                    if (!LogicaBDRol.verificarPermisosGrabacion(Session["UsuarioLogueado"].ToString(), "AsignarPermisos.aspx"))
+                    {
+                        btnGuardar.Visible = false;
+                    }
                 }
                 else
                 {
@@ -43,6 +47,25 @@ namespace SiGMA
                     EPermiso permisoRol = new EPermiso();
                     var idRol = Convert.ToInt32(ddlRol.SelectedItem.Value);
                     var i = 0;
+
+                    // --------------- Administracion --------------- //
+                    EPermiso permisoRol16 = new EPermiso();
+                    permisoRol16.idPermiso = chkAdministracionL.Checked ? 1 : 0;
+                    permisoRol16.pantalla = "Administracion";
+                    if (permisoRol16.idPermiso != 0)
+                        ListadoPermisos.Add(permisoRol16);
+
+                    EPermiso permisoRol17 = new EPermiso();
+                    permisoRol17.idPermiso = chkAdministracionG.Checked ? 2 : 0;
+                    permisoRol17.pantalla = "Administracion";
+                    if (permisoRol17.idPermiso != 0)
+                        ListadoPermisos.Add(permisoRol17);
+
+                    EPermiso permisoRol18 = new EPermiso();
+                    permisoRol18.idPermiso = chkAdministracionE.Checked ? 3 : 0;
+                    permisoRol18.pantalla = "Administracion";
+                    if (permisoRol18.idPermiso != 0)
+                        ListadoPermisos.Add(permisoRol18);
 
                     // --------------- RegistrarUsuario --------------- //
                     permisoRol.idPermiso = chkRegistrarUsuarioL.Checked ? 1 : 0;
@@ -221,6 +244,33 @@ namespace SiGMA
                             chkAsignarPermisosG.Checked = true;
                         if (permisosRol[i].idPermiso == 3)
                             chkAsignarPermisosE.Checked = true;
+                    }
+                    if (permisosRol[i].pantalla == "RegistrarMascota.aspx")
+                    {
+                        if (permisosRol[i].idPermiso == 1)
+                            chkRegistrarMascotasL.Checked = true;
+                        if (permisosRol[i].idPermiso == 2)
+                            chkRegistrarMascotasG.Checked = true;
+                        if (permisosRol[i].idPermiso == 3)
+                            chkRegistrarMascotasE.Checked = true;
+                    }
+                    if (permisosRol[i].pantalla == "ConsultarMascotas.aspx")
+                    {
+                        if (permisosRol[i].idPermiso == 1)
+                            chkConsultarMascotasL.Checked = true;
+                        if (permisosRol[i].idPermiso == 2)
+                            chkConsultarMascotasG.Checked = true;
+                        if (permisosRol[i].idPermiso == 3)
+                            chkConsultarMascotasE.Checked = true;
+                    }
+                    if (permisosRol[i].pantalla == "Administracion")
+                    {
+                        if (permisosRol[i].idPermiso == 1)
+                            chkAdministracionL.Checked = true;
+                        if (permisosRol[i].idPermiso == 2)
+                            chkAdministracionG.Checked = true;
+                        if (permisosRol[i].idPermiso == 3)
+                            chkAdministracionE.Checked = true;
                     }
                 }
             }

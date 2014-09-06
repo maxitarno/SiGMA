@@ -257,7 +257,7 @@
                         </td>
                         <td>
                             <asp:Panel ID="pnlEliminar" runat="server" Visible="false">
-                                <asp:Button ID="btnElimiar" runat="server" Text="Eliminar" CssClass="btn-primary" onClick="btnEliminarClick" Width=100% ValidationGroup="3" />
+                                <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" CssClass="btn-primary" onClick="btnEliminarClick" Width=100% ValidationGroup="3" />
                             </asp:Panel>
                         </td>
                         <td>

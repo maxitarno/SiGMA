@@ -238,47 +238,5 @@ namespace AccesoADatos
                 return null;
             }
         }
-
-        public static Boolean verificarPermisoVisualizacion(String nombreUsuario, String pantalla)
-        {
-            EUsuario usuarioLogueado = new EUsuario();
-            SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
-            IQueryable<Usuarios> consulta = from UsuarioBD in mapaEntidades.Usuarios
-                                            where (UsuarioBD.user == nombreUsuario)
-                                            select UsuarioBD;
-            try
-            {
-                foreach (var registro in consulta)
-                {
-                    usuarioLogueado.user = registro.user;
-                    usuarioLogueado.password = registro.password;
-                    usuarioLogueado.rolesUsuario = LogicaBDRol.cargarRolesSergunUsuario(registro.user);
-                    
-                }
-            }
-            catch (System.Data.EntityCommandCompilationException exc)
-            {
-                throw exc;
-            }
-            Boolean ingreso = false;
-            if (usuarioLogueado != null)
-            {
-                List<ERol> roles = usuarioLogueado.rolesUsuario;
-                foreach (var rol in roles)
-                {
-                    List<EPermiso> permisos = rol.listaPermisos;
-                    foreach (var permiso in permisos)
-                    {
-                        if (permiso.pantalla == pantalla && permiso.idPermiso == 1)
-                        {
-                            ingreso = true;
-                            break;
-                        }
-                    }
-                }
-                return ingreso;
-            }
-            else { return false; } 
-        }
     }
 }

@@ -190,6 +190,158 @@ namespace AccesoADatos
             return roles;
         }
 
+        //Eliminar rol por IdRol
+        public static bool eliminarRol(ERol rol)
+        {
+            bool b = true;
+            try
+            {
+                SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+                Roles rolBD = new Roles();
+                if (rol.idRol != 0)
+                {
+                    rolBD = (from r in mapaEntidades.Roles
+                                where (r.idRol == rol.idRol)
+                                select r).First();
+                    mapaEntidades.DeleteObject(rolBD);
+                    mapaEntidades.SaveChanges(System.Data.Objects.SaveOptions.DetectChangesBeforeSave);
+                        b = true;
+                }
+            }
+            catch (Exception exc)
+            {
+                b = false;
+                throw exc;
+            }
+            return b;
+        }
+
+        public static Boolean verificarPermisoVisualizacion(String nombreUsuario, String pantalla)
+        {
+            EUsuario usuarioLogueado = new EUsuario();
+            SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+            IQueryable<Usuarios> consulta = from UsuarioBD in mapaEntidades.Usuarios
+                                            where (UsuarioBD.user == nombreUsuario)
+                                            select UsuarioBD;
+            try
+            {
+                foreach (var registro in consulta)
+                {
+                    usuarioLogueado.user = registro.user;
+                    usuarioLogueado.password = registro.password;
+                    usuarioLogueado.rolesUsuario = LogicaBDRol.cargarRolesSergunUsuario(registro.user);
+
+                }
+            }
+            catch (System.Data.EntityCommandCompilationException exc)
+            {
+                throw exc;
+            }
+            Boolean ingreso = false;
+            if (usuarioLogueado != null)
+            {
+                List<ERol> roles = usuarioLogueado.rolesUsuario;
+                foreach (var rol in roles)
+                {
+                    List<EPermiso> permisos = rol.listaPermisos;
+                    foreach (var permiso in permisos)
+                    {
+                        if (permiso.pantalla == pantalla && permiso.idPermiso == 1)
+                        {
+                            ingreso = true;
+                            break;
+                        }
+                    }
+                }
+                return ingreso;
+            }
+            else { return false; }
+        }
+
+        public static bool verificarPermisosGrabacion(string nombreUsuario, string pantalla)
+        {
+            EUsuario usuarioLogueado = new EUsuario();
+            SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+            IQueryable<Usuarios> consulta = from UsuarioBD in mapaEntidades.Usuarios
+                                            where (UsuarioBD.user == nombreUsuario)
+                                            select UsuarioBD;
+            try
+            {
+                foreach (var registro in consulta)
+                {
+                    usuarioLogueado.user = registro.user;
+                    usuarioLogueado.password = registro.password;
+                    usuarioLogueado.rolesUsuario = LogicaBDRol.cargarRolesSergunUsuario(registro.user);
+                    
+                }
+            }
+            catch (System.Data.EntityCommandCompilationException exc)
+            {
+                throw exc;
+            }
+            Boolean ingreso = false;
+            if (usuarioLogueado != null)
+            {
+                List<ERol> roles = usuarioLogueado.rolesUsuario;
+                foreach (var rol in roles)
+                {
+                    List<EPermiso> permisos = rol.listaPermisos;
+                    foreach (var permiso in permisos)
+                    {
+                        if (permiso.pantalla == pantalla && permiso.idPermiso == 2)
+                        {
+                            ingreso = true;
+                            break;
+                        }
+                    }
+                }
+                return ingreso;
+            }
+            else { return false; } 
+        }
+
+        public static bool verificarPermisosEliminacion(string nombreUsuario, string pantalla)
+        {
+            EUsuario usuarioLogueado = new EUsuario();
+            SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+            IQueryable<Usuarios> consulta = from UsuarioBD in mapaEntidades.Usuarios
+                                            where (UsuarioBD.user == nombreUsuario)
+                                            select UsuarioBD;
+            try
+            {
+                foreach (var registro in consulta)
+                {
+                    usuarioLogueado.user = registro.user;
+                    usuarioLogueado.password = registro.password;
+                    usuarioLogueado.rolesUsuario = LogicaBDRol.cargarRolesSergunUsuario(registro.user);
+
+                }
+            }
+            catch (System.Data.EntityCommandCompilationException exc)
+            {
+                throw exc;
+            }
+            Boolean ingreso = false;
+            if (usuarioLogueado != null)
+            {
+                List<ERol> roles = usuarioLogueado.rolesUsuario;
+                foreach (var rol in roles)
+                {
+                    List<EPermiso> permisos = rol.listaPermisos;
+                    foreach (var permiso in permisos)
+                    {
+                        if (permiso.pantalla == pantalla && permiso.idPermiso == 3)
+                        {
+                            ingreso = true;
+                            break;
+                        }
+                    }
+                }
+                return ingreso;
+            }
+            else { return false; } 
+        }
     }
 }
+
 
