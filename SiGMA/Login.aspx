@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Acerca de nosotros" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
+﻿<%@ Page Title="SIGMA" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
     CodeBehind="Login.aspx.cs" Inherits="SiGMA.About" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
@@ -11,7 +11,7 @@
         </div>
         <div class="panel-body">
             <div>
-                <div class="almedio">
+                <div class="almedio" >
                     <asp:Login ID="login" runat="server" onauthenticate="login_Authenticate" 
                         TitleText="">
                         <LoginButtonStyle CssClass="btn-primary" />

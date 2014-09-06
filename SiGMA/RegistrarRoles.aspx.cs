@@ -32,13 +32,17 @@ namespace SiGMA
 
         protected void ddlRol_SelectedIndexChanged(object sender, EventArgs e)
         {
+            pnlAtento.Visible = false;
+            pnlCorrecto.Visible = false;
+            pnlInfo.Visible = false;
             pnlModificacionRol.Visible = true;
             txtRol.Text = ddlRol.SelectedItem.Text;
             int idRol = Convert.ToInt32(ddlRol.SelectedValue);
             ERol rol = LogicaBDRol.cargarRol(idRol);
             txtRol.Text = rol.nombreRol;
             txtDescripcionRol.Text = rol.descripcionRol;
-            if (ddlRol.SelectedValue == "0")
+            txtRol.Enabled = false;
+            if (ddlRol.SelectedValue == "-- Seleccione un rol --")
                 limpiarPagina();
         }
 
@@ -51,16 +55,20 @@ namespace SiGMA
                     ERol rol = new ERol();
                     rol.nombreRol = txtRol.Text;
                     rol.descripcionRol = txtDescripcionRol.Text;
-                    if (ddlRol.SelectedValue != "0")
+                    if (ddlRol.SelectedValue != "-- Seleccione un rol --")
                         rol.idRol = Convert.ToInt32(ddlRol.SelectedValue);
                     if (LogicaBDRol.guardarRol(rol))
                     {
-                        Response.Write("<SCRIPT>alert('Rol Guardado Correctamente');</SCRIPT>");
                         limpiarPagina();
+                        ddlRol.Items.Clear();
+                        CargarCombos.cargarRoles(ref ddlRol);
+                        pnlCorrecto.Visible = true;
+                        lblCorrecto.Text = "Rol Guardado Correctamente";
                     }
                     else
                     {
-                        Response.Write("<SCRIPT>alert('No se guardo el rol');</SCRIPT>");
+                        pnlAtento.Visible = true;
+                        lblError.Text = "No se guardo el rol. Verifique datos";
                     }
                 }
             }
@@ -73,16 +81,23 @@ namespace SiGMA
 
         private void limpiarPagina()
         {
-            ddlRol.SelectedValue = "0";
+            ddlRol.SelectedValue = "-- Seleccione un rol --";
             txtDescripcionRol.Text = "";
             txtRol.Text = "";
             pnlModificacionRol.Visible = false;
+            txtRol.Enabled = true;
+            pnlAtento.Visible = false;
+            pnlCorrecto.Visible = false;
+            pnlInfo.Visible = false;
         }
 
         protected void btnNuevoRol_Click(object sender, EventArgs e)
         {
             limpiarPagina();
             pnlModificacionRol.Visible = true;
+            pnlAtento.Visible = false;
+            pnlCorrecto.Visible = false;
+            pnlInfo.Visible = false;
         }
     }
 }

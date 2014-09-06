@@ -10,11 +10,26 @@
         <div class="panel-body">
             <div>
                 <div class="almedio">
+                    <asp:Panel runat="server" id="pnlCorrecto" class="alert alert-dismissable alert-success" Visible=false>
+                                <button class="close" type="button" data-dismiss="alert">
+                                    ×</button>
+                                    <asp:Label ID="lblCorrecto" runat="server" Text=""></asp:Label>
+                            </asp:Panel>
+                            <asp:Panel runat="server" id="pnlInfo" class="alert alert-dismissable alert-info" Visible=false>
+                                <button class="close" type="button" data-dismiss="alert">
+                                    ×</button>
+                                    <asp:Label ID="lblInfo" runat="server" Text=""></asp:Label>
+                            </asp:Panel>
+                            <asp:Panel runat="server" id="pnlAtento" class="alert alert-dismissable alert-danger" Visible=false>
+                                <button class="close" type="button" data-dismiss="alert">
+                                    ×</button>
+                                    <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
+                            </asp:Panel>
                     <asp:Panel ID="pnlSeleccionRol" runat="server">
                         Modificar Rol <asp:DropDownList ID="ddlRol" runat="server" AutoPostBack="true" 
                             AppendDataBoundItems="true" 
                             onselectedindexchanged="ddlRol_SelectedIndexChanged"> 
-                            <asp:ListItem Value="0" Text="---Seleccione un rol ---"></asp:ListItem>
+                            <%--<asp:ListItem Value="0" Text="---Seleccione un rol ---"></asp:ListItem>--%>
                         </asp:DropDownList>
                         <br />
                         <br />
@@ -26,14 +41,18 @@
                             <tr style="height:30px">
                                 <td align="right" width="100px"> Rol: </td>
                                 <td align="left"> 
-                                    <asp:TextBox ID="txtRol" runat="server" MaxLength="20"></asp:TextBox>
+                                    <asp:TextBox ID="txtRol" runat="server" MaxLength="21"></asp:TextBox>
                                 </td>
+                                <td><asp:RequiredFieldValidator ID="rfvRol" runat="server" ErrorMessage="*" 
+                                        Text="Ingrese nombre de rol" ControlToValidate="txtRol" Font-Size="Small" 
+                                        ForeColor="Red" SetFocusOnError="True"></asp:RequiredFieldValidator></td>
                             </tr>
                             <tr>
                                 <td align="right" width="100px">Descripcion: </td>
                                 <td align="left">
                                     <asp:TextBox ID="txtDescripcionRol" runat="server" style="resize:none" TextMode="MultiLine" Rows="3" Columns="23" onkeyDown="checkTextAreaMaxLength(this,event,'50');"></asp:TextBox>
                                 </td>
+                                <td></td>
                             </tr>
                         </table>
                         <br />

@@ -35,10 +35,11 @@ namespace Herramientas
         }
         //carga del combo de roles
         public static void cargarRoles(ref DropDownList ddl)
-        {
+        {  
             ddl.DataTextField = "nombreRol";
             ddl.DataValueField = "idRol";
             ddl.DataSource = LogicaBDRol.Roles();
+            ddl.Items.Insert(0, "-- Seleccione un rol --");
             ddl.DataBind();            
         }
         //carga de combo de Barrio
