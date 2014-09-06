@@ -45,7 +45,7 @@
                             <td width="300">Eliminación</td>
                         </tr>
                         <tr>
-                            <td>Administracion</td>
+                            <td>Administración</td>
                             <td align="center"><asp:CheckBox ID="chkAdministracionL" runat="server" /></td>
                             <td align="center"><asp:CheckBox ID="chkAdministracionG" runat="server" /></td>
                             <td align="center"><asp:CheckBox ID="chkAdministracionE" runat="server" /></td>

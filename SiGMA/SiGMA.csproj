@@ -71,6 +71,7 @@
     <Content Include="PermisosInsuficientes.aspx" />
     <Content Include="Principal.aspx" />
     <Content Include="RegistrarMascota.aspx" />
+    <Content Include="RegistrarPerdida.aspx" />
     <Content Include="RegistrarRoles.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -179,6 +180,13 @@
     </Compile>
     <Compile Include="RegistrarMascota.aspx.designer.cs">
       <DependentUpon>RegistrarMascota.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrarPerdida.aspx.cs">
+      <DependentUpon>RegistrarPerdida.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegistrarPerdida.aspx.designer.cs">
+      <DependentUpon>RegistrarPerdida.aspx</DependentUpon>
     </Compile>
     <Compile Include="RegistrarRoles.aspx.cs">
       <DependentUpon>RegistrarRoles.aspx</DependentUpon>
