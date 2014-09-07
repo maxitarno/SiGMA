@@ -11,20 +11,20 @@
         <div class="panel-body">
             <div class="almedio">
             <asp:Panel runat="server" id="pnlCorrecto" class="alert alert-dismissable alert-success" Visible=false>
-                                <button class="close" type="button" data-dismiss="alert">
-                                    ×</button>
-                                    <asp:Label ID="lblCorrecto" runat="server" Text=""></asp:Label>
-                            </asp:Panel>
-                            <asp:Panel runat="server" id="pnlInfo" class="alert alert-dismissable alert-info" Visible=false>
-                                <button class="close" type="button" data-dismiss="alert">
-                                    ×</button>
-                                    <asp:Label ID="lblInfo" runat="server" Text=""></asp:Label>
-                            </asp:Panel>
-                            <asp:Panel runat="server" id="pnlAtento" class="alert alert-dismissable alert-danger" Visible=false>
-                                <button class="close" type="button" data-dismiss="alert">
-                                    ×</button>
-                                    <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
-                            </asp:Panel>
+                <button class="close" type="button" data-dismiss="alert">
+                    ×</button>
+                    <asp:Label ID="lblCorrecto" runat="server" Text=""></asp:Label>
+            </asp:Panel>
+            <asp:Panel runat="server" id="pnlInfo" class="alert alert-dismissable alert-info" Visible=false>
+                <button class="close" type="button" data-dismiss="alert">
+                    ×</button>
+                    <asp:Label ID="lblInfo" runat="server" Text=""></asp:Label>
+            </asp:Panel>
+            <asp:Panel runat="server" id="pnlAtento" class="alert alert-dismissable alert-danger" Visible=false>
+                <button class="close" type="button" data-dismiss="alert">
+                    ×</button>
+                    <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
+            </asp:Panel>
             <asp:Panel ID="pnlRol" runat="server">
                 <asp:DropDownList ID="ddlRol" runat="server" 
                     onselectedindexchanged="ddlRol_SelectedIndexChanged" AutoPostBack="true" AppendDataBoundItems="true"> 

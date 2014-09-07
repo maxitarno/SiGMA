@@ -167,6 +167,33 @@ namespace AccesoADatos
             }
             return mascotas;
         }
+
+        public static List<EMascota> BuscarMascotaPorIdDueño(int idDueño)
+        {
+            List<EMascota> mascotas = new List<EMascota>();
+            SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+            IQueryable<Mascotas> consulta = from MascotasBD in mapaEntidades.Mascotas
+                                            from DueniosBD in mapaEntidades.Duenios
+                                            from PersonasBD in mapaEntidades.Personas
+                                            where (DueniosBD.idPersona == PersonasBD.idPersona && MascotasBD.idDuenio == DueniosBD.idDuenio && DueniosBD.idDuenio == idDueño)
+                                            select MascotasBD;
+            try
+            {
+                foreach (var registro in consulta)
+                {
+                    EMascota mascota = new EMascota();
+                    mascota.nombreMascota = registro.nombreMascota;
+                    mascota.idMascota = registro.idMascota;
+                    mascotas.Add(mascota);
+                }
+            }
+            catch (System.Data.EntityCommandCompilationException exc)
+            {
+                throw exc;
+            }
+            return mascotas;
+        }
+
         public static bool ModificarMascota(EMascota mascota, byte[] imagen )
         {
             bool b = false;

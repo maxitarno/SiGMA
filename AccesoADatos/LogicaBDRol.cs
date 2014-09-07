@@ -169,7 +169,7 @@ namespace AccesoADatos
             IQueryable<Roles> consulta = from rolesDB in mapaEntidades.Roles
                                          from rolesUsuariosBD in mapaEntidades.RolesXUsuario
                                          from usuarioBD in mapaEntidades.Usuarios
-                                         where (usuarioBD.user == usuarioNombre && rolesUsuariosBD.idRol == rolesDB.idRol)
+                                         where (usuarioBD.user == usuarioNombre && rolesUsuariosBD.idRol == rolesDB.idRol && rolesUsuariosBD.user == usuarioBD.user)
                                          select rolesDB;
             try
             {
@@ -340,6 +340,41 @@ namespace AccesoADatos
                 return ingreso;
             }
             else { return false; } 
+        }
+
+        public static bool verificarSoloDueño(string nombreUsuario) 
+        {
+            EUsuario usuarioLogueado = new EUsuario();
+            SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+            IQueryable<Usuarios> consulta = from UsuarioBD in mapaEntidades.Usuarios
+                                            where (UsuarioBD.user == nombreUsuario)
+                                            select UsuarioBD;
+            try
+            {
+                foreach (var registro in consulta)
+                {
+                    usuarioLogueado.user = registro.user;
+                    usuarioLogueado.password = registro.password;
+                    usuarioLogueado.rolesUsuario = LogicaBDRol.cargarRolesSergunUsuario(registro.user);
+
+                }
+            }
+            catch (System.Data.EntityCommandCompilationException exc)
+            {
+                throw exc;
+            }
+            Boolean ingreso = true;
+            if (usuarioLogueado != null)
+            {
+                List<ERol> roles = usuarioLogueado.rolesUsuario;
+                foreach (var rol in roles)
+                {
+                    if (rol.nombreRol != "Dueño")
+                        ingreso = false;
+                }
+                return ingreso;
+            }
+            else { return false; }
         }
     }
 }

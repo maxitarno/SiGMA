@@ -63,8 +63,9 @@
                 <span class="caret"></span>
             </button>
             <ul class="dropdown-menu">
-                <li><a href="ConsultarMascotas.aspx">Consultar mascotas</a></li>
-                <li><a href="RegistrarMascota.aspx">Registrar mascotas</a></li>
+                <li><a href="ConsultarMascotas.aspx">Consultar Mascotas</a></li>
+                <li><a href="RegistrarMascota.aspx">Registrar Mascotas</a></li>
+                <li><a href="RegistrarPerdida.aspx">Registrar Perdida</a></li>
             </ul>
         </div>
         <!-- fin mascotas -->
@@ -110,8 +111,8 @@
                 <span class="caret"></span>
             </button>
             <ul class="dropdown-menu">
-                <li><a href="RegistrarUsuario.aspx" id="registrarUsuario">Registrar usuario</a></li>
-                <li><a href="ConsultarUsuario.aspx">Consultar usuario</a></li>
+                <li><a href="RegistrarUsuario.aspx" id="registrarUsuario">Registrar Usuario</a></li>
+                <li><a href="ConsultarUsuario.aspx">Consultar Usuario</a></li>
             </ul>
         </div>
     <!-- fin menu -->
