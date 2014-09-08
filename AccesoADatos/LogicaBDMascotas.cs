@@ -272,8 +272,10 @@ namespace AccesoADatos
                 try
                 {
                     var mascotas = mapaEntidades.Mascotas.Where( mascotasBuscadas => mascotasBuscadas.idMascota == idMascota).Single();
-                    mapaEntidades.DeleteObject(mascotas);
-                    mapaEntidades.DetectChanges();
+                    foreach (var registro in consulta)
+                    {
+                        registro.idEstado = 6;
+                    }
                     mapaEntidades.SaveChanges();
                     b = true;
                 }

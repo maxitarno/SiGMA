@@ -118,6 +118,7 @@ namespace SiGMA
                     lstResultados.DataTextField = "nombreMascota";
                     lstResultados.DataValueField = "idMascota";
                     lstResultados.DataBind();
+                    pnlInfo.Visible = false;
                 }
                 else
                 {
@@ -142,6 +143,7 @@ namespace SiGMA
                     lstResultados.DataBind();
                     pnlNombre.Visible = false;
                     pnltxtNombreDueñio.Visible = false;
+                    pnlInfo.Visible = false;
                 }
                 else
                 {
@@ -183,12 +185,13 @@ namespace SiGMA
                     ddlSexo.SelectedValue = mascota.sexo.ToString();
                     pnlbotones.Visible = true;
                     pnlInfo.Visible = false;
-                    Session["idMAscota"] = idMascota;
+                    Session["idMascota"] = idMascota;
                     pnlAtento.Visible = false;
                     pnlCorrecto.Visible = false;
                     pnlInfo.Visible = false;
                     pnlmascota.Visible = true;
                     pnltxtMascota.Visible = true;
+                    btnEliminar.Visible = true;
                     if (mascota.imagen != null) 
                     {
                         Session["imagen"] = mascota.imagen;
@@ -230,87 +233,159 @@ namespace SiGMA
             EMascota mascota = new EMascota();
             mascota.idMascota = (int)Session["idMascota"];
             DateTime fecha = new DateTime();
-            if (ddlCaracter.SelectedValue.Equals("0") || ddlColor.SelectedValue.Equals("0") || ddlEdad.SelectedValue.Equals("0") || ddlEspecie.SelectedValue.Equals("0") || ddlEstado.SelectedValue.Equals("0") || ddlRaza.SelectedValue.Equals("0") || ddlSexo.SelectedValue.Equals("0") || ddlTratoAnimales.SelectedValue.Equals("0") || ddlTratoNinios.SelectedValue.Equals("0"))
+            if (ddlCaracter.SelectedValue.Equals("0"))
             {
                 pnlInfo.Visible = true;
-                lblResultado2.Text = "Debe seleccionar una opción";
+                lblResultado2.Text = "Debe seleccionar una caracter";
                 pnlCorrecto.Visible = false;
                 pnlAtento.Visible = false;
             }
             else
             {
                 pnlInfo.Visible = false;
-                if (Validaciones.Fecha(txtFecha.Text, out fecha))
+                if (!ddlColor.SelectedValue.Equals("0"))
                 {
-                    mascota.alimentacionEspecial = txtAlimentacionEspecial.Text;
-                    mascota.fechaNacimiento = DateTime.Parse(txtFecha.Text);
-                    mascota.tratoNiños = ddlTratoNinios.SelectedValue.ToString();
-                    mascota.tratoAnimal = ddlTratoAnimales.SelectedValue.ToString();
-                    mascota.sexo = ddlSexo.SelectedValue.ToString();
-                    mascota.observaciones = txtObservaciones.Text;
-                    mascota.nombreMascota = txtMascota.Text;
-                    mascota.raza = new ERaza();
-                    mascota.raza.idRaza = int.Parse(ddlRaza.SelectedValue);
-                    mascota.estado = new EEstado();
-                    mascota.estado.idEstado = int.Parse(ddlEstado.SelectedValue);
-                    mascota.especie = new EEspecie();
-                    mascota.especie.idEspecie = int.Parse(ddlEspecie.SelectedValue);
-                    mascota.edad = new EEdad();
-                    mascota.edad.idEdad = int.Parse(ddlEdad.SelectedValue);
-                    mascota.color = new EColor();
-                    mascota.color.idColor = int.Parse(ddlColor.SelectedValue);
-                    mascota.caracter = new ECaracterMascota();
-                    mascota.caracter.idCaracter = int.Parse(ddlCaracter.SelectedValue);
-                    if(fuImagen.PostedFile.ContentLength != 0){
-                        if (!GestorImagen.verificarTamaño(fuImagen.PostedFile.ContentLength))
+                    if (!ddlEdad.SelectedValue.Equals("0"))
+                    {
+                        if (!ddlEspecie.SelectedValue.Equals("0"))
                         {
-                            pnlInfo.Visible = true;
-                            lblResultado2.Text = "El tamaño de la imagen no debe superar 1Mb";
-                        }
-                        else
-                        {
-                            byte[] imagen = GestorImagen.obtenerArrayBytes(fuImagen.PostedFile.InputStream, fuImagen.PostedFile.ContentLength);
-                            if (LogicaBDMascotas.ModificarMascota(mascota, imagen))
+                            if (!ddlEstado.SelectedValue.Equals("0"))
                             {
-                                pnlCorrecto.Visible = true;
-                                lblResultado1.Text = "Se modifico corretamente";
-                                pnlAtento.Visible = false;
-                                pnlInfo.Visible = false;
+                                if (!ddlRaza.SelectedValue.Equals("0"))
+                                {
+                                    if (!ddlSexo.SelectedValue.Equals("0"))
+                                    {
+                                        if (!ddlTratoNinios.SelectedValue.Equals("0") || ddlTratoAnimales.SelectedValue.Equals("0"))
+                                        {
+                                            if (Validaciones.Fecha(txtFecha.Text, out fecha))
+                                            {
+                                                mascota.alimentacionEspecial = txtAlimentacionEspecial.Text;
+                                                mascota.fechaNacimiento = DateTime.Parse(txtFecha.Text);
+                                                mascota.tratoNiños = ddlTratoNinios.SelectedValue.ToString();
+                                                mascota.tratoAnimal = ddlTratoAnimales.SelectedValue.ToString();
+                                                mascota.sexo = ddlSexo.SelectedValue.ToString();
+                                                mascota.observaciones = txtObservaciones.Text;
+                                                mascota.nombreMascota = txtMascota.Text;
+                                                mascota.raza = new ERaza();
+                                                mascota.raza.idRaza = int.Parse(ddlRaza.SelectedValue);
+                                                mascota.estado = new EEstado();
+                                                mascota.estado.idEstado = int.Parse(ddlEstado.SelectedValue);
+                                                mascota.especie = new EEspecie();
+                                                mascota.especie.idEspecie = int.Parse(ddlEspecie.SelectedValue);
+                                                mascota.edad = new EEdad();
+                                                mascota.edad.idEdad = int.Parse(ddlEdad.SelectedValue);
+                                                mascota.color = new EColor();
+                                                mascota.color.idColor = int.Parse(ddlColor.SelectedValue);
+                                                mascota.caracter = new ECaracterMascota();
+                                                mascota.caracter.idCaracter = int.Parse(ddlCaracter.SelectedValue);
+                                                if(File1.PostedFile.ContentLength != 0){
+                                                    if (!GestorImagen.verificarTamaño(File1.PostedFile.ContentLength))
+                                                    {
+                                                        pnlInfo.Visible = true;
+                                                        lblResultado2.Text = "El tamaño de la imagen no debe superar 1Mb";
+                                                        pnlCorrecto.Visible = false;
+                                                        pnlAtento.Visible = false;
+                                                    }
+                                                    else
+                                                    {
+                                                        byte[] imagen = GestorImagen.obtenerArrayBytes(File1.PostedFile.InputStream, File1.PostedFile.ContentLength);
+                                                        if (LogicaBDMascotas.ModificarMascota(mascota, imagen))
+                                                        {
+                                                            pnlCorrecto.Visible = true;
+                                                            lblResultado1.Text = "Se modifico corretamente";
+                                                            pnlAtento.Visible = false;
+                                                            pnlInfo.Visible = false;
+                                                        }
+                                                        else
+                                                        {
+                                                            pnlCorrecto.Visible = false;
+                                                            pnlInfo.Visible = false;
+                                                            pnlAtento.Visible = true;
+                                                            lblResultado3.Text = "No se pudo modificar";
+                                                            pnlCorrecto.Visible = false;
+                                                        }
+                                                    }
+                                                }
+                                                else{
+                                                    if (LogicaBDMascotas.ModificarMascota(mascota, null))
+                                                    {
+                                                        pnlCorrecto.Visible = true;
+                                                        lblResultado1.Text = "Se modifico corretamente";
+                                                        pnlAtento.Visible = false;
+                                                        pnlInfo.Visible = false;
+                                                    }
+                                                    else
+                                                    {
+                                                        pnlCorrecto.Visible = false;
+                                                        pnlInfo.Visible = false;
+                                                        pnlAtento.Visible = true;
+                                                        lblResultado3.Text = "No se pudo modificar";
+                                                        pnlCorrecto.Visible = false;
+                                                    }
+                                                }
+                                            }
+                                            else
+                                            {
+                                                pnlInfo.Visible = true;
+                                                lblResultado2.Text = "Debe ingresar una fecha";
+                                                pnlAtento.Visible = false;
+                                                pnlCorrecto.Visible = false;
+                                            }
+                                        }
+                                        else
+                                        {
+                                            pnlInfo.Visible = true;
+                                            lblResultado2.Text = "Debe selecionar un trato";
+                                            pnlCorrecto.Visible = false;
+                                            pnlAtento.Visible = false;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        pnlInfo.Visible = true;
+                                        lblResultado2.Text = "Debe selecionar un sexo";
+                                        pnlCorrecto.Visible = false;
+                                        pnlAtento.Visible = false;
+                                    }
+                                }
+                                else
+                                {
+                                    pnlInfo.Visible = true;
+                                    lblResultado2.Text = "Debe selecionar un raza";
+                                    pnlCorrecto.Visible = false;
+                                    pnlAtento.Visible = false;
+                                }
                             }
                             else
                             {
+                                pnlInfo.Visible = true;
+                                lblResultado2.Text = "Debe selecionar un estado";
                                 pnlCorrecto.Visible = false;
-                                pnlInfo.Visible = false;
-                                pnlAtento.Visible = true;
-                                lblResultado3.Text = "No se pudo modificar";
-                                pnlCorrecto.Visible = false;
+                                pnlAtento.Visible = false;
                             }
-                        }
-                    }
-                    else{
-                        if (LogicaBDMascotas.ModificarMascota(mascota, null))
-                        {
-                            pnlCorrecto.Visible = true;
-                            lblResultado1.Text = "Se modifico corretamente";
-                            pnlAtento.Visible = false;
-                            pnlInfo.Visible = false;
                         }
                         else
                         {
+                            pnlInfo.Visible = true;
+                            lblResultado2.Text = "Debe selecionar un especie";
                             pnlCorrecto.Visible = false;
-                            pnlInfo.Visible = false;
-                            pnlAtento.Visible = true;
-                            lblResultado3.Text = "No se pudo modificar";
-                            pnlCorrecto.Visible = false;
+                            pnlAtento.Visible = false;
                         }
+                    }
+                    else
+                    {
+                        pnlInfo.Visible = true;
+                        pnlCorrecto.Visible = false;
+                        pnlAtento.Visible = false;
+                        lblResultado2.Text = "Debe seleccionar una edad";
                     }
                 }
                 else
                 {
                     pnlInfo.Visible = true;
-                    lblResultado2.Text = "Debe ingresar una fecha";
-                    pnlAtento.Visible = false;
+                    lblResultado2.Text = "Debe selecionar un color";
                     pnlCorrecto.Visible = false;
+                    pnlAtento.Visible = false;
                 }
             }
         }
@@ -332,7 +407,7 @@ namespace SiGMA
                         pnlCorrecto.Visible = false;
                         pnlInfo.Visible = false;
                         pnlAtento.Visible = true;
-                        lblResultado3.Text = "No se puedo eliminar";
+                        lblResultado3.Text = "No se pudo eliminar";
                     }
                 }
                 pnlAtento.Visible = false;
@@ -352,7 +427,7 @@ namespace SiGMA
                 pnlCorrecto.Visible = false;
                 pnlInfo.Visible = false;
                 pnlAtento.Visible = true;
-                lblResultado3.Text = "No se puedo eliminar";
+                lblResultado3.Text = "Debe seleccionar el estados defallecido";
             }
         }
         public void BtnLimpiarClick(object sender, EventArgs e)

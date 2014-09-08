@@ -150,10 +150,6 @@
                                             <asp:TextBox ID="txtMascota" runat="server" CssClass="TextBox" Width="100%"></asp:TextBox>
                                         </asp:Panel>
                                     </td>
-                                    <td>
-                                        <asp:RequiredFieldValidator ID="rfvMascota" runat="server" ErrorMessage="Debe ingresar un nombre"
-                                            ControlToValidate="txtMascota" Display="Dynamic" ValidationGroup="1"></asp:RequiredFieldValidator>
-                                    </td>
                                 </tr>
                             </table>
                         </td>
@@ -315,7 +311,7 @@
                             <td>
                             </td>
                             <td>
-                            <input type="file" runat="server" id="File1" onchange="showimagepreview(this)" />
+                                <input type="file" runat="server" id="File1" onchange="showimagepreview(this)" />
                             </td>
                         </tr>
                     </table>
