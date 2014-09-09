@@ -72,6 +72,8 @@ namespace SiGMA
             if (rbPorPersona.Checked == true)
             {
                 pnlCorrecto.Visible = false;
+                pnlInfo.Visible = false;
+                pnlAtento.Visible = false;
                 lstResultados.Items.Clear();
                 List<EUsuario> usuarios = new List<EUsuario>();
                 if (Validaciones.verificarSoloNumeros(txtNºDeDocumento.Text))
@@ -117,6 +119,9 @@ namespace SiGMA
             }
             else if(rbPorUsuario.Checked == true)
             {
+                pnlCorrecto.Visible = false;
+                pnlInfo.Visible = false;
+                pnlAtento.Visible = false;
                 lstResultados.Items.Clear();
                 List<EUsuario> usuarios = new List<EUsuario>();
                 usuarios = LogicaBDUsuario.BuscarUsuarios(txtUsuario.Text);
