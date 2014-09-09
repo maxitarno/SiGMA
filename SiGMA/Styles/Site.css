@@ -315,16 +315,16 @@ table
 }
 tr
 {
-    text-align:center;
+    
 }
 td
 {
     vertical-align:middle;
-    text-align:center;
+    text-align:left;
 }
 .DropDownList
 {
-    border: 3px groove #0066FF;
+    border: 1px groove #004C00;
     background-color:White;
     }
 table, tr, td
@@ -353,7 +353,7 @@ asp:Login
 }
 .TextBox
 {
-    border: 3px groove #0066FF;
+    border: 1px groove #004C00;
 }
 .almedio
 {
@@ -372,9 +372,9 @@ asp:Login
 }
 .ListBox
 {
-    border-color:#0066FF;
+    border-color:#004C00;
     border-style:groove;
-    border-width:3px;
+    border-width:1px;
     width:100%;
 }
 .Validator

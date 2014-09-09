@@ -110,8 +110,7 @@ namespace SiGMA
                 mascotas = LogicaBDMascotas.BuscarMascotaPorduenio(txtNombreDueñio.Text);
                 if (mascotas.Count != 0)
                 {
-                    pnlNombre.Visible = false;
-                    pnltxtNombreDueñio.Visible = false;
+                    lstResultados.Items.Clear();
                     pnlbtnSeleccionar.Visible = true;
                     pnlResultados.Visible = true;
                     lstResultados.DataSource = mascotas;
@@ -122,6 +121,7 @@ namespace SiGMA
                 }
                 else
                 {
+                    lstResultados.Items.Clear();
                     pnlInfo.Visible = true;
                     lblResultado2.Text = "No se encontraron mascotas";
                     pnlAtento.Visible = false;
@@ -133,6 +133,7 @@ namespace SiGMA
                 mascotas = LogicaBDMascotas.BuscarMascotaPorMascota(txtMascota.Text);
                 if (mascotas.Count != 0)
                 {
+                    lstResultados.Items.Clear();
                     pnlNombre.Visible = false;
                     pnltxtNombreDueñio.Visible = false;
                     pnlbtnSeleccionar.Visible = true;
@@ -147,6 +148,7 @@ namespace SiGMA
                 }
                 else
                 {
+                    lstResultados.Items.Clear();
                     pnlInfo.Visible = true;
                     lblResultado2.Text = "No se encontraron mascotas";
                     pnlAtento.Visible = false;
@@ -210,6 +212,8 @@ namespace SiGMA
                     pnlCorrecto.Visible = false;
                     pnlAtento.Visible = false;
                 }
+                pnltxtNombreDueñio.Visible = false;
+                pnlNombre.Visible = false;
             }
             else
             {
@@ -444,6 +448,16 @@ namespace SiGMA
             Session["idMascota"] = 0;
             txtNombreDueñio.Text = "";
             imgImagen.Visible = false;
+            if (rbPorDuenio.Checked)
+            {
+                pnltxtNombreDueñio.Visible = false;
+                pnlNombre.Visible = false;
+            }
+            if (rbPorMascota.Checked)
+            {
+                pnltxtMascota.Visible = false;
+                pnlmascota.Visible = false;
+            }
         }
 
         protected void btnGenerarQR_Click(object sender, EventArgs e)

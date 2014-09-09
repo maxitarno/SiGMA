@@ -78,7 +78,7 @@ namespace AccesoADatos
                                from CuidadoEspecialBD in mapaEntidades.CuidadosEspeciales
                                where (MascotasBD.idRaza == RazaBD.idRaza 
                                && CuidadoEspecialBD.idCuidadoEspecial == RazaBD.idCuidadoEspecial && RazaBD.idCategoriaRaza == CategoriaRazaBD.idCategoriaRazas 
-                               && MascotasBD.idCaracter == CaracterBD.idCaracter && MascotasBD.idMascota == idMascota)
+                               && MascotasBD.idCaracter == CaracterBD.idCaracter && MascotasBD.idMascota == idMascota && MascotasBD.idEstado != 6)
                                select new
                                {
                                    nombre = MascotasBD.nombreMascota,
@@ -109,6 +109,10 @@ namespace AccesoADatos
                     if (registro.fecha != null)
                     {
                         mascota.fechaNacimiento = (DateTime)registro.fecha;
+                    }
+                    else
+                    {
+                        mascota.fechaNacimiento = DateTime.Now;
                     }
                     mascota.color = new EColor();
                     mascota.color.idColor = registro.color;
@@ -149,7 +153,7 @@ namespace AccesoADatos
             IQueryable<Mascotas> consulta = from MascotasBD in mapaEntidades.Mascotas
                                             from DueniosBD in mapaEntidades.Duenios
                                             from PersonasBD in mapaEntidades.Personas
-                                            where (DueniosBD.idPersona == PersonasBD.idPersona && MascotasBD.idDuenio == DueniosBD.idDuenio && PersonasBD.nombre.Contains(duenio))
+                                            where (DueniosBD.idPersona == PersonasBD.idPersona && MascotasBD.idDuenio == DueniosBD.idDuenio && PersonasBD.nombre.Contains(duenio) && MascotasBD.idEstado != 6)
                                             select MascotasBD;
             try
             {
@@ -175,7 +179,7 @@ namespace AccesoADatos
             IQueryable<Mascotas> consulta = from MascotasBD in mapaEntidades.Mascotas
                                             from DueniosBD in mapaEntidades.Duenios
                                             from PersonasBD in mapaEntidades.Personas
-                                            where (DueniosBD.idPersona == PersonasBD.idPersona && MascotasBD.idDuenio == DueniosBD.idDuenio && DueniosBD.idDuenio == idDueño)
+                                            where (DueniosBD.idPersona == PersonasBD.idPersona && MascotasBD.idDuenio == DueniosBD.idDuenio && DueniosBD.idDuenio == idDueño && MascotasBD.idEstado != 6)
                                             select MascotasBD;
             try
             {
@@ -242,7 +246,7 @@ namespace AccesoADatos
             List<EMascota> mascotas = new List<EMascota>();
             SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
             IQueryable<Mascotas> consulta = from MascotasBD in mapaEntidades.Mascotas                                            
-                                            where (MascotasBD.nombreMascota.Contains(nombre))
+                                            where (MascotasBD.nombreMascota.Contains(nombre) && MascotasBD.idEstado != 6)
                                             select MascotasBD;
             try
             {
