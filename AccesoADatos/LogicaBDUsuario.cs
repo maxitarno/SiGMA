@@ -57,7 +57,7 @@ namespace AccesoADatos
             List<EUsuario> usuarios = new List<EUsuario>();
             SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
             IQueryable<Usuarios> aux = from usuariosBuscados in mapaEntidades.Usuarios
-                                       where (usuariosBuscados.user.Contains(nombre))
+                                       where (usuariosBuscados.user.Contains(nombre) && usuariosBuscados.estado == true)
                                        select usuariosBuscados;
             try
             {
@@ -82,7 +82,7 @@ namespace AccesoADatos
             SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
             IQueryable<Usuarios> consulta = from personasBD in mapaEntidades.Personas
                                             from usuariosBD in mapaEntidades.Usuarios
-                                            where (personasBD.user == usuariosBD.user && personasBD.nroDocumento == dni && personasBD.idTipoDocumento == tipo)
+                                            where (personasBD.user == usuariosBD.user && personasBD.nroDocumento == dni && personasBD.idTipoDocumento == tipo && usuariosBD.estado == true)
                                             select usuariosBD;
             try
             {
@@ -109,7 +109,7 @@ namespace AccesoADatos
                            from rolesBD in mapaEntidades.Roles
                            from BarriosBD in mapaEntidades.Barrios
                            from LocalidadesBD in mapaEntidades.Localidades
-                           where (personasBD.user == usuariosBD.user  && personasBD.idBarrio == BarriosBD.idBarrio && LocalidadesBD.idLocalidad == BarriosBD.idLocalidad && personasBD.user == nombre)
+                           where (personasBD.user == usuariosBD.user  && personasBD.idBarrio == BarriosBD.idBarrio && LocalidadesBD.idLocalidad == BarriosBD.idLocalidad && personasBD.user == nombre && usuariosBD.estado == true)
                            select new
                            {
                                apellido = personasBD.apellido,
@@ -194,11 +194,10 @@ namespace AccesoADatos
                 try
                 {
                     var usuarios = mapaEntidades.Usuarios.Where(usuarioBuscado => usuarioBuscado.user == usuario).Single();
-                    var personas = mapaEntidades.Personas.Where(personaBuscada => personaBuscada.user == usuario).Single();
-                    var duenios = mapaEntidades.Duenios.Where(dueniosBuscado => dueniosBuscado.idPersona == personas.idPersona && personas.user == usuario).Single();
-                    mapaEntidades.DeleteObject(duenios);
-                    mapaEntidades.DeleteObject(usuarios);
-                    mapaEntidades.DeleteObject(personas);
+                    foreach (var registro in aux)
+                    {
+                        registro.estado = false;
+                    }
                     mapaEntidades.DetectChanges();
                     mapaEntidades.SaveChanges(System.Data.Objects.SaveOptions.DetectChangesBeforeSave);
                     b = true;

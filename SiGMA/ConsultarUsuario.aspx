@@ -59,9 +59,6 @@
                                 <asp:TextBox CssClass="text-primary" ID="txtUsuario" runat="server" Width="100%"></asp:TextBox>
                             </asp:Panel>
                         </td>
-                        <td colspan="2">
-                            <asp:RequiredFieldValidator ID="rfvUsuario" runat="server" ControlToValidate="txtUsuario" CssClass="Validator" Display="Dynamic" ErrorMessage="Debe ingresar un usuario" SetFocusOnError="True" ValidationGroup="2"></asp:RequiredFieldValidator>
-                        </td>
                     </tr>
                     <tr>
                         <td>
@@ -136,8 +133,7 @@
                             </asp:Panel>
                         </td>
                         <td>
-                            <asp:RequiredFieldValidator ID="rfvNombre" runat="server" ErrorMessage="Debe ingresar un nombre" Display="Dynamic" ControlToValidate="txtNombre" ValidationGroup="1"></asp:RequiredFieldValidator>
-                            
+                            <asp:RequiredFieldValidator CssClass="Validator" ID="rfvNombre" runat="server" ErrorMessage="Debe ingresar un nombre" Display="Dynamic" ControlToValidate="txtNombre" ValidationGroup="1"></asp:RequiredFieldValidator>
                         </td>
                     </tr>
                     <tr>
