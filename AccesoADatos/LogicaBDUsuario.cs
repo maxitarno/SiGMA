@@ -109,7 +109,7 @@ namespace AccesoADatos
                            from rolesBD in mapaEntidades.Roles
                            from BarriosBD in mapaEntidades.Barrios
                            from LocalidadesBD in mapaEntidades.Localidades
-                           where (personasBD.user == usuariosBD.user  && personasBD.idBarrio == BarriosBD.idBarrio && LocalidadesBD.idLocalidad == BarriosBD.idLocalidad && personasBD.user == nombre && usuariosBD.estado == true)
+                           where (personasBD.user == usuariosBD.user  && personasBD.idBarrio == BarriosBD.idBarrio && LocalidadesBD.idLocalidad == BarriosBD.idLocalidad && usuariosBD.user == nombre && usuariosBD.estado == true)
                            select new
                            {
                                apellido = personasBD.apellido,
@@ -141,7 +141,10 @@ namespace AccesoADatos
                     user.user = usuario.usuario;
                     barrio.idBarrio = (int)usuario.barrio;
                     localidad.idLocalidad = usuario.localidad;
-                    persona.fechaNacimiento = DateTime.Parse(usuario.fecha.ToString());
+                    if (usuario.fecha != null)
+                    {
+                        persona.fechaNacimiento = DateTime.Parse(usuario.fecha.ToString());
+                    }
                 }
             }
             catch (System.Data.EntityCommandCompilationException exc)

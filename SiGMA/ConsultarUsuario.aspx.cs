@@ -71,6 +71,7 @@ namespace SiGMA
         public void btnBuscarClick(object sender, EventArgs e){
             if (rbPorPersona.Checked == true)
             {
+                pnlCorrecto.Visible = false;
                 lstResultados.Items.Clear();
                 List<EUsuario> usuarios = new List<EUsuario>();
                 if (Validaciones.verificarSoloNumeros(txtNºDeDocumento.Text))
@@ -159,7 +160,10 @@ namespace SiGMA
                 txtNombre.Text = persona.nombre;
                 txtDomicilio.Text = persona.domicilio;
                 ddlLocalidades.SelectedValue = localidad.idLocalidad.ToString();
-                ddlBarrios.SelectedValue = barrio.idBarrio.ToString();
+                if (barrio.idBarrio.ToString().Equals("0"))
+                {
+                    ddlBarrios.SelectedValue = barrio.idBarrio.ToString();
+                }
                 txtTelefonoFijo.Text = persona.telefonoFijo;
                 txtTelefonoCelular.Text = persona.telefonoCelular;
                 txtMail.Text = persona.email;
@@ -200,6 +204,9 @@ namespace SiGMA
                 pnlLimpiar.Visible = true;
                 pnlModificar.Visible = true;
                 pnlEliminar.Visible = true;
+                btnEliminar.Visible = true;
+                pnlresult.Visible = false;
+                pnlResultados.Visible = false;
             }
             else
             {
@@ -228,9 +235,9 @@ namespace SiGMA
             }
             else
             {
-                if (ddlLocalidades.SelectedValue.Equals("0"))
+                if (!ddlLocalidades.SelectedValue.Equals("0"))
                 {
-                    if (ddlBarrios.SelectedValue.Equals("0"))
+                    if (!ddlBarrios.SelectedValue.Equals("0"))
                     {
                         pnlInfo.Visible = false;
                         if (Validaciones.verificarSoloNumeros(txtNºDeDocumento.Text))
