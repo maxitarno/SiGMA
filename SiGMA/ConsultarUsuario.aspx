@@ -56,7 +56,7 @@
                         </td>
                         <td>
                             <asp:Panel ID="pnlUsuario" runat="server" Visible="false">
-                                <asp:TextBox CssClass="text-primary" ID="txtUsuario" runat="server" Width="100%"></asp:TextBox>
+                                <asp:TextBox CssClass="TextBox" ID="txtUsuario" runat="server" Width="100%"></asp:TextBox>
                             </asp:Panel>
                         </td>
                     </tr>
@@ -68,7 +68,7 @@
                         </td>
                         <td>
                             <asp:Panel ID="pnlTipoDeDocumento" runat="server" Visible=false>
-                                <asp:DropDownList ID="ddlTipoDeDocumento" runat="server" cssClass="text-primary" Width=100%>
+                                <asp:DropDownList ID="ddlTipoDeDocumento" runat="server" cssClass="TextBox" Width=100%>
                             </asp:DropDownList>
                             &nbsp
                             </asp:Panel>
@@ -87,7 +87,7 @@
                         </td>
                         <td>
                             <asp:Panel ID="pnlNºDeDocumento" runat="server" Visible="false">
-                                 <asp:TextBox CssClass="text-primary" ID="txtNºDeDocumento" runat="server" Width=100%></asp:TextBox>&nbsp
+                                 <asp:TextBox CssClass="TextBox" ID="txtNºDeDocumento" runat="server" Width=100%></asp:TextBox>&nbsp
                             </asp:Panel>
                         </td>
                         <td>
@@ -102,7 +102,7 @@
                         </td>
                         <td>
                             <asp:Panel ID="pnlResultados" runat="server" Visible="false">
-                                <asp:ListBox ID="lstResultados" runat="server" Width="100%" cssClass="text-primary"></asp:ListBox>
+                                <asp:ListBox ID="lstResultados" runat="server" Width="100%" cssClass="TextBox"></asp:ListBox>
                             </asp:Panel>
                         </td>
                     </tr>
@@ -114,7 +114,7 @@
                         </td>
                         <td>
                             <asp:Panel ID="pnlApellido" runat="server" Visible="false">
-                                <asp:TextBox ID="txtApellido" runat="server" CssClass="text-primary" Width="100%"></asp:TextBox>
+                                <asp:TextBox ID="txtApellido" runat="server" CssClass="TextBox" Width="100%"></asp:TextBox>
                             </asp:Panel>
                         </td>
                         <td>
@@ -129,7 +129,7 @@
                         </td>
                         <td>
                             <asp:Panel ID="pnlNombre" runat="server" Visible="false">
-                                <asp:TextBox ID="txtNombre" runat="server" CssClass="text-primary" Width="100%"></asp:TextBox>
+                                <asp:TextBox ID="txtNombre" runat="server" CssClass="TextBox" Width="100%"></asp:TextBox>
                             </asp:Panel>
                         </td>
                         <td>
@@ -159,7 +159,7 @@
                         </td>
                         <td>
                             <asp:Panel ID="pnlLocalidades" runat="server" Visible="false">
-                                <asp:DropDownList ID="ddlLocalidades" runat="server" OnSelectedIndexChanged="DdlBarrio_SelectedIndexChanged" AutoPostBack="True" cssClass="text-primary" Width=100%>
+                                <asp:DropDownList ID="ddlLocalidades" runat="server" OnSelectedIndexChanged="DdlBarrio_SelectedIndexChanged" AutoPostBack="True" cssClass="TextBox" Width=100%>
                                 </asp:DropDownList>&nbsp
                             </asp:Panel>
                         </td>
@@ -172,7 +172,7 @@
                         </td>
                         <td>
                             <asp:Panel ID="pnlBarrios" runat="server" Visible="false">
-                                <asp:DropDownList ID="ddlBarrios" runat="server" AutoPostBack="False" cssClass="text-primary" withd=100%>
+                                <asp:DropDownList ID="ddlBarrios" runat="server" AutoPostBack="False" cssClass="TextBox" withd=100%>
                                 </asp:DropDownList>
                             </asp:Panel>
                         </td>
@@ -185,7 +185,7 @@
                         </td>
                         <td>
                             <asp:Panel ID="pnlFecha" runat="server" Visible="false">
-                                <asp:TextBox ID="txtFecha" runat="server" CssClass="text-primary" TextMode="SingleLine" Text="  /  /"  Width=100%></asp:TextBox>
+                                <asp:TextBox ID="txtFecha" runat="server" CssClass="TextBox" TextMode="SingleLine" Text="  /  /"  Width=100%></asp:TextBox>
                             </asp:Panel>
                         </td>
                         <td>
@@ -200,7 +200,7 @@
                         </td>
                         <td>
                             <asp:Panel ID="pnlTelefonFijo" runat="server" Visible="false">
-                                <asp:TextBox ID="txtTelefonoFijo" runat="server" CssClass="text-primary"  Width=100%></asp:TextBox>
+                                <asp:TextBox ID="txtTelefonoFijo" runat="server" CssClass="TextBox"  Width=100%></asp:TextBox>
                             </asp:Panel>
                         </td>
                         <td>
@@ -215,7 +215,7 @@
                         </td>
                         <td>
                             <asp:Panel ID="pnlTelefonoCelular" runat="server" Visible="false">
-                                <asp:TextBox ID="txtTelefonoCelular" runat="server" CssClass="text-primary"  Width=100%></asp:TextBox>
+                                <asp:TextBox ID="txtTelefonoCelular" runat="server" CssClass="TextBox"  Width=100%></asp:TextBox>
                             </asp:Panel>
                         </td>
                         <td>
@@ -230,7 +230,7 @@
                         </td>
                         <td>
                             <asp:Panel ID="pnlMail" runat="server" Visible="false">
-                                <asp:TextBox ID="txtMail" runat="server" CssClass="text-primary" CausesValidation="True"  Width=100%></asp:TextBox>
+                                <asp:TextBox ID="txtMail" runat="server" CssClass="TextBox" CausesValidation="True"  Width=100%></asp:TextBox>
                             </asp:Panel>
                         </td>
                         <td>

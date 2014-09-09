@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AsignarPermisos.aspx" />
+    <Content Include="CABMTipoDeDocumento.aspx" />
     <Content Include="ConsultarMascotas.aspx" />
     <Content Include="ConsultarUsuario.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -100,6 +101,13 @@
     </Compile>
     <Compile Include="AsignarPermisos.aspx.designer.cs">
       <DependentUpon>AsignarPermisos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CABMTipoDeDocumento.aspx.cs">
+      <DependentUpon>CABMTipoDeDocumento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CABMTipoDeDocumento.aspx.designer.cs">
+      <DependentUpon>CABMTipoDeDocumento.aspx</DependentUpon>
     </Compile>
     <Compile Include="ConsultarMascotas.aspx.cs">
       <DependentUpon>ConsultarMascotas.aspx</DependentUpon>
