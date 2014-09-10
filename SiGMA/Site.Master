@@ -123,6 +123,7 @@
                 <span class="caret"></span>
             </button>
             <ul class="dropdown-menu">
+                <li><a href="CABMTipoDeDocumento.aspx">Consultar, modificar, eliminar tipos de documentos</a></li>
                 <li><a href="AsignarPermisos.aspx">Asignar Permisos a Rol</a></li>
                  <li><a href="RegistrarRoles.aspx">Gestionar Roles</a></li>
                 
