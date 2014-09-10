@@ -26,7 +26,7 @@ namespace Herramientas
         //carga de combo de tipo de documentos
         public static void cargarTipoDocumento(ref DropDownList ddl)
         {
-            ddl.Items.Add(new ListItem("-- Seleccione una opción --", "0"));
+            ddl.Items.Add(new ListItem("-- Seleccione una tipo de documento --", "0"));
             List<ETipoDeDocumento> tiposDoc = Datos.TiposDNI();
             foreach(ETipoDeDocumento item in tiposDoc)
             {
@@ -45,7 +45,7 @@ namespace Herramientas
         //carga de combo de Barrio
         public static void cargarBarrio(ref DropDownList ddl)
         {
-            ddl.Items.Add(new ListItem("-- Seleccione una opción --", "0"));
+            ddl.Items.Add(new ListItem("-- Seleccione una barrio --", "0"));
             List<EBarrio> barrios = Datos.BuscarBarrios();
             foreach (EBarrio item in barrios)
             {
@@ -55,7 +55,7 @@ namespace Herramientas
         //carga de combo de Localidades
         public static void cargarLocalidades(ref DropDownList ddl)
         {
-            ddl.Items.Add(new ListItem("-- Seleccione una opción --", "0"));
+            ddl.Items.Add(new ListItem("-- Seleccione una localidad --", "0"));
             List<ELocalidad> localidades = Datos.BuscarLocalidades();
             foreach (ELocalidad item in localidades)
             {
@@ -64,7 +64,7 @@ namespace Herramientas
         }
         public static void cargarEspecies(ref DropDownList ddl)
         {
-            ddl.Items.Add(new ListItem("-- Seleccione una opción --", "0"));
+            ddl.Items.Add(new ListItem("-- Seleccione una especie --", "0"));
             List<EEspecie> especies = Datos.BuscarEspecies();
             foreach (EEspecie item in especies)
             {
@@ -75,7 +75,7 @@ namespace Herramientas
         public static void cargarRazas(ref DropDownList ddl, int idEspecie)
         {
             ddl.Items.Clear();
-            ddl.Items.Add(new ListItem("-- Seleccione una opción --", "0"));
+            ddl.Items.Add(new ListItem("-- Seleccione una raza --", "0"));
             List<ERaza> razas = Datos.BuscarRazas(idEspecie);
             foreach (ERaza item in razas)
             {
@@ -85,7 +85,7 @@ namespace Herramientas
 
         public static void cargarEdad(ref DropDownList ddl)
         {
-            ddl.Items.Add(new ListItem("-- Seleccione una opción --", "0"));
+            ddl.Items.Add(new ListItem("-- Seleccione una edad --", "0"));
             List<EEdad> edades = Datos.BuscarEdades();
             foreach (EEdad item in edades)
             {
@@ -95,7 +95,7 @@ namespace Herramientas
 
         public static void cargarColor(ref DropDownList ddl)
         {
-            ddl.Items.Add(new ListItem("-- Seleccione una opción --", "0"));
+            ddl.Items.Add(new ListItem("-- Seleccione una color --", "0"));
             List<EColor> colores = Datos.BuscarColores();
             foreach (EColor item in colores)
             {
@@ -106,7 +106,7 @@ namespace Herramientas
         public static void cargarCaracteresMascota(ref DropDownList ddl)
         {
             List<ECaracterMascota> caracterMascotas = Datos.BuscarCaracteresMascota();
-            ddl.Items.Add(new ListItem("-- Seleccione una opción --", "0"));
+            ddl.Items.Add(new ListItem("-- Seleccione una mascota --", "0"));
             foreach (ECaracterMascota item in caracterMascotas)
             {
                 ddl.Items.Add(new ListItem(item.descripcion.ToString(), item.idCaracter.ToString()));
@@ -124,7 +124,7 @@ namespace Herramientas
         }
         public static void cargarEstado(ref DropDownList ddl)
         {
-            ddl.Items.Add(new ListItem("-- Seleccione una opción--", "0"));
+            ddl.Items.Add(new ListItem("-- Seleccione una estado--", "0"));
             List<EEstado> estados = Datos.BuscarEstados();
             foreach (EEstado item in estados)
             {
@@ -137,6 +137,14 @@ namespace Herramientas
             foreach (EBarrio item in barrios)
             {
                 ddl.Items.Add(new ListItem(item.nombre.ToString(), item.idBarrio.ToString()));
+            }
+        }
+        public static void cargarTipoDocumentoLista(ref ListBox ddl, string tipoDocumento)
+        {
+            List<ETipoDeDocumento> tiposDocumentos = Datos.TiposDNI(tipoDocumento);
+            foreach (ETipoDeDocumento item in tiposDocumentos)
+            {
+                ddl.Items.Add(new ListItem(item.nombre.ToString(), item.idTipoDeDocumento.ToString()));
             }
         }
     }

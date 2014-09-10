@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Entidades;
+using System.Transactions;
 namespace AccesoADatos
 {
     public class Datos
@@ -136,7 +137,7 @@ namespace AccesoADatos
             List<EEspecie> especies = new List<EEspecie>();
             SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
             IQueryable<Especies> consulta = from especiesDB in mapaEntidades.Especies
-                                           select especiesDB;
+                                            select especiesDB;
             try
             {
                 foreach (var registro in consulta)
@@ -155,11 +156,12 @@ namespace AccesoADatos
         }
         //fin metodo
         //metodo para buscar razas
-        public static List<ERaza> BuscarRazas(int idEspecie){
+        public static List<ERaza> BuscarRazas(int idEspecie)
+        {
             List<ERaza> razas = new List<ERaza>();
             SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
             IQueryable<Razas> consulta = from razaDB in mapaEntidades.Razas
-                                         where(razaDB.idEspecie == idEspecie)
+                                         where (razaDB.idEspecie == idEspecie)
                                          select razaDB;
             try
             {
@@ -256,7 +258,7 @@ namespace AccesoADatos
             List<ECaracterMascota> caracterMascotas = new List<ECaracterMascota>();
             SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
             IQueryable<CaracteresMascota> consulta = from caracteresDB in mapaEntidades.CaracteresMascota
-                                         select caracteresDB;
+                                                     select caracteresDB;
             try
             {
                 foreach (var registro in consulta)
@@ -279,7 +281,7 @@ namespace AccesoADatos
             List<EBarrio> barrios = new List<EBarrio>();
             SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
             IQueryable<Barrios> consulta = from BarriosDB in mapaEntidades.Barrios
-                                           where(BarriosDB.idLocalidad == idLocalidad)
+                                           where (BarriosDB.idLocalidad == idLocalidad)
                                            select BarriosDB;
             try
             {
@@ -299,5 +301,110 @@ namespace AccesoADatos
             return barrios;
         }
         //fin metodo
+        public static List<ETipoDeDocumento> TiposDNI(string tipo)
+        {
+            List<ETipoDeDocumento> tiposDNI = new List<ETipoDeDocumento>();
+            SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+            IQueryable<TipoDocumentos> tiposDeDocumentos = from tipoDeDocumentos in mapaEntidades.TipoDocumentos
+                                                           where (tipoDeDocumentos.nombre.Contains(tipo))
+                                                           select tipoDeDocumentos;
+            using (TransactionScope transaction = new TransactionScope())
+            {
+                try
+                {
+                    foreach (var tipoDocumento in tiposDeDocumentos)
+                    {
+                        ETipoDeDocumento tipoD = new ETipoDeDocumento();
+                        tipoD.nombre = tipoDocumento.nombre;
+                        tipoD.idTipoDeDocumento = tipoDocumento.idTipoDocumento;
+                        tiposDNI.Add(tipoD);
+                    }
+                }
+                catch (System.Data.EntityCommandCompilationException exc)
+                {
+                    transaction.Dispose();
+                    throw exc;
+                }
+                return tiposDNI;
+            }
+        }
+        public static Boolean guardarTipoDocumento(ETipoDeDocumento tipo)
+        {
+            using (TransactionScope transaction = new TransactionScope())
+            {
+                try
+                {
+                    SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+                    TipoDocumentos tipoDB = new TipoDocumentos();
+                    tipoDB.nombre = tipo.nombre;
+                    mapaEntidades.AddToTipoDocumentos(tipoDB);
+                    mapaEntidades.SaveChanges();
+                    transaction.Complete();
+                    return true;
+                }
+                catch (Exception exc)
+                {
+
+                    transaction.Dispose();
+                    return false;
+                    throw exc;
+                }
+            }
+        }
+        public static Boolean ModificarTipoDeDocumento(ETipoDeDocumento tipo, string aux)
+        {
+            bool b = false;
+            using (TransactionScope transaccion = new TransactionScope())
+            {
+                try
+                {
+                    SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+                    IQueryable<TipoDocumentos> tipoDocumento = from tipoDB in mapaEntidades.TipoDocumentos
+                                                               where (tipoDB.nombre.Contains(tipo.nombre))
+                                                               select tipoDB;
+                    foreach (var registro in tipoDocumento)
+                    {
+                        registro.nombre = tipo.nombre;
+                    }
+                    b = true;
+                }
+                catch (Exception exc)
+                {
+                    transaccion.Dispose();
+                    throw exc;
+                    b = false;
+                }
+            }
+            return b;
+        }
+        public static Boolean EliminarTiposDNI(string tipo)
+        {
+            SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+            bool b = false;
+            IQueryable<TipoDocumentos> tiposDeDocumentos = from tipoDeDocumentos in mapaEntidades.TipoDocumentos
+                                                           where (tipoDeDocumentos.nombre == tipo)
+                                                           select tipoDeDocumentos;
+            using (TransactionScope transaction = new TransactionScope())
+            {
+                try
+                {
+                    TipoDocumentos tipoDB = new TipoDocumentos();
+                    foreach (var registro in tiposDeDocumentos)
+                    {
+                        tipoDB.idTipoDocumento = registro.idTipoDocumento;
+                        tipoDB.nombre = registro.nombre;
+                    }
+                    mapaEntidades.DeleteObject(tipoDB);
+                    mapaEntidades.DetectChanges();
+                    mapaEntidades.SaveChanges();
+                    return true;
+                }
+                catch (System.Data.EntityCommandCompilationException exc)
+                {
+                    transaction.Dispose();
+                    throw exc;
+                }
+            }
+        }
     }
 }

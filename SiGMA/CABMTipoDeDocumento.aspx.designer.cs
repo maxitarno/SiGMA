@@ -13,6 +13,60 @@ namespace SiGMA {
     public partial class CABMTipoDeDocumento {
         
         /// <summary>
+        /// Control pnlCorrecto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlCorrecto;
+        
+        /// <summary>
+        /// Control lblResultado1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblResultado1;
+        
+        /// <summary>
+        /// Control pnlInfo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlInfo;
+        
+        /// <summary>
+        /// Control lblResultado2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblResultado2;
+        
+        /// <summary>
+        /// Control pnlAtento.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlAtento;
+        
+        /// <summary>
+        /// Control lblResultado3.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblResultado3;
+        
+        /// <summary>
         /// Control pnlNombre.
         /// </summary>
         /// <remarks>
@@ -38,6 +92,15 @@ namespace SiGMA {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNombre;
+        
+        /// <summary>
+        /// Control pnlBuscar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlBuscar;
         
         /// <summary>
         /// Control btnBuscar.
@@ -67,13 +130,13 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.Panel pnlResultado;
         
         /// <summary>
-        /// Control lstResulttados.
+        /// Control lstResultados.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox lstResulttados;
+        protected global::System.Web.UI.WebControls.ListBox lstResultados;
         
         /// <summary>
         /// Control pnRegistrar.
@@ -94,15 +157,6 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.Button btnRregistrar;
         
         /// <summary>
-        /// Control pnlSeleccionar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlSeleccionar;
-        
-        /// <summary>
         /// Control btnSeleccionar.
         /// </summary>
         /// <remarks>
@@ -110,15 +164,6 @@ namespace SiGMA {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSeleccionar;
-        
-        /// <summary>
-        /// Control pnlBotones.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlBotones;
         
         /// <summary>
         /// Control btnModificar.
