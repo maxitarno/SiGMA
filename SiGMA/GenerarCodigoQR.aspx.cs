@@ -30,9 +30,11 @@ namespace SiGMA
         { 
             EMascota mascota = (EMascota)Session["Mascota"];
             Bitmap qr = GenerarQR.generarQR(mascota, (List<string>)Session["CamposQR"]);
-            string ruta = Server.MapPath("Imagenes/") + "qr" + mascota.idMascota.ToString() + ".jpg";
-            qr.Save(ruta, ImageFormat.Jpeg);
-            imgQR.ImageUrl = "Imagenes/" + "qr" + mascota.idMascota.ToString() + ".jpg"; 
+            string rutaGuardar = Server.MapPath("Imagenes/") + "qr" + mascota.idMascota.ToString() + ".jpg";
+            qr.Save(rutaGuardar, ImageFormat.Jpeg);
+            string rutaLeer = "Imagenes/" + "qr" + mascota.idMascota.ToString() + ".jpg";
+            imgQR.ImageUrl = rutaLeer;
+            ViewState["CodigoQR"] = "qr" + mascota.idMascota.ToString() + ".jpg"; ;
         }
 
         protected void chkColor_CheckedChanged(object sender, EventArgs e)
@@ -71,6 +73,14 @@ namespace SiGMA
         {
             actualizarCampos("Sexo", chkSexo.Checked);
 
+        }
+
+        protected void btnDescargar_Click(object sender, EventArgs e)
+        {
+            Response.ContentType = "application/octet-stream";
+            Response.AppendHeader("content-disposition","attachment;filename=" + ViewState["CodigoQR"].ToString());
+            Response.TransmitFile(Server.MapPath("/Imagenes/" + ViewState["CodigoQR"].ToString()));
+            Response.End();
         }
     }
 }

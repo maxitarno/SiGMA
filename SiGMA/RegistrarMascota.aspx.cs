@@ -18,13 +18,12 @@ namespace SiGMA
             if (!Page.IsPostBack)
             {
                 if (Session["UsuarioLogueado"] != null)
-                {
+                {                    
                     if (!LogicaBDRol.verificarPermisoVisualizacion(Session["UsuarioLogueado"].ToString(), "RegistrarMascota.aspx"))
                         Response.Redirect("PermisosInsuficientes.aspx");
                     if (!LogicaBDRol.verificarPermisosGrabacion(Session["UsuarioLogueado"].ToString(), "RegistrarMascota.aspx"))
                     {
-                        btnRegistrar.Visible = false;
-                        btnLimpiar.Visible = false;
+                        btnRegistrar.Visible = false;                        
                     }
                 }
                 else
@@ -86,20 +85,32 @@ namespace SiGMA
                 {
                     if (!GestorImagen.verificarTamaño(fuImagen.PostedFile.ContentLength))
                     {
-                        Response.Write("<SCRIPT>alert('El tamaño de la imagen no debe superar 1Mb');</SCRIPT>");
+                        mostrarResultado("El tamaño de la imagen no debe superar 1Mb", false);
                         return;
                     }
                     byte[] imagen = GestorImagen.obtenerArrayBytes(fuImagen.PostedFile.InputStream, fuImagen.PostedFile.ContentLength);
                     LogicaBDMascotas.registrarMascota(mascota, imagen);
+
                 }
                 else
                 {
                     LogicaBDMascotas.registrarMascota(mascota, null);
-                }               
-                Response.Redirect("~/Inicio.aspx");
+                }
+                mostrarResultado("", true);
             }
         }
-
+        private void mostrarResultado(string mensaje, bool b)
+        {
+            if (!b)
+            {
+                lblError.Text = mensaje;
+            }           
+            pnlCorrecto.Visible = b;
+            pnlAtento.Visible = !b;
+            pnlDatos.Visible = !b;
+            pnlBtnRegistrar.Visible = !b;
+            fuImagen.Visible = !b;
+        }
         protected void cvDdlSexo_ServerValidate(object source, ServerValidateEventArgs args)
         {
             args.IsValid = Validaciones.verificarSeleccionEnDdl(ref ddlSexo); 

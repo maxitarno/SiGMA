@@ -11,13 +11,13 @@ namespace AccesoADatos
         public static Boolean guardarUsuario(EDuenio duenio, EUsuario usuario)
         {
             using (TransactionScope transaction = new TransactionScope())
-            {               
+            {
                 try
                 {
                     SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
                     Usuarios userBD = new Usuarios();
                     userBD.user = usuario.user;
-                    userBD.password = usuario.password;                  
+                    userBD.password = usuario.password;
                     mapaEntidades.AddToUsuarios(userBD);
                     mapaEntidades.SaveChanges();
                     ERol rolDuenio = LogicaBDRol.ObtenerRol("Dueño");
@@ -44,11 +44,10 @@ namespace AccesoADatos
                 }
                 catch (Exception exc)
                 {
-                    
+
                     transaction.Dispose();
-                    return false;
                     throw exc;
-                }                
+                }      
             }
         }
         //metodo para buscar el usuario por usuarios

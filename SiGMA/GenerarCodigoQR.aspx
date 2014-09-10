@@ -14,6 +14,13 @@
         oncheckedchanged="chkSexo_CheckedChanged" /></td></tr>
 <tr>
     <td><asp:Image ID="imgQR" runat="server" /></td></tr>
+    <tr><td></td></tr>
+    <tr>
+    <td>
+        <asp:Button ID="btnDescargar" runat="server" Text="Descargar" 
+            onclick="btnDescargar_Click" />
+        </td>
+    </tr>
 </table>
     
 </div>

@@ -1172,7 +1172,7 @@
           <NavigationProperty Name="Personas" Relationship="SiGMAModel.FK_Personas_Usuarios" FromRole="Usuarios" ToRole="Personas" />
           <NavigationProperty Name="RolesXUsuario" Relationship="SiGMAModel.FK_RolesXUsuario_Usuarios" FromRole="Usuarios" ToRole="RolesXUsuario" />
           <NavigationProperty Name="Sesiones" Relationship="SiGMAModel.FK_Sesiones_Usuarios" FromRole="Usuarios" ToRole="Sesiones" />
-          <Property Type="Boolean" Name="estado" Nullable="false" />
+          <Property Name="estado" Nullable="false" Type="Boolean" />
         </EntityType>
         <EntityType Name="Voluntarios">
           <Key>

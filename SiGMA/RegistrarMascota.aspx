@@ -46,7 +46,16 @@
         
             <div class="almedio">
                         
-   
+   <asp:Panel runat="server" id="pnlCorrecto" class="alert alert-dismissable alert-success" Visible=false>
+                <button class="close" type="button" data-dismiss="alert">
+                    ×</button>
+                    <asp:Label ID="lblCorrecto" runat="server" Text="Mascota registrada exitosamente"></asp:Label>
+            </asp:Panel>
+            <asp:Panel runat="server" id="pnlAtento" class="alert alert-dismissable alert-danger" Visible=false>
+                <button class="close" type="button" data-dismiss="alert">
+                    ×</button>
+                    <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
+            </asp:Panel>
             
                   <table>   
                     <tr>
@@ -194,15 +203,7 @@
                                             <asp:Button ID="btnRegistrar" runat="server" Text="Registrar" 
                                                 CssClass="btn-primary" onclick="btnRegistrar_Click" />
                                         </asp:Panel>
-                                    </td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>
-                                        <asp:Panel ID="pnlBtnLimpiar" runat="server">
-                                            <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar" 
-                                                CssClass="btn-primary" onclick="btnLimpiar_Click" />
-                                        </asp:Panel>
-                                    </td>
+                                    </td>                                    
                                 </tr>
                             </table>
                         </td>

@@ -10,7 +10,7 @@ namespace Herramientas
     {
         public static bool verificarTamaño(int tamaño)
         {
-            if (tamaño > 1024000)
+            if (tamaño > 1048576)
             {
                 return false;
             }

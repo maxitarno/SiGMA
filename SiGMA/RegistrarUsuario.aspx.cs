@@ -39,52 +39,58 @@ namespace SiGMA
                     duenio.nombre = txtNombre.Text;
                     duenio.apellido = txtApellido.Text;
                     duenio.idTipoDocumento = int.Parse(ddlTipoDocumento.SelectedValue);
-                    duenio.nroDocumento = txtDocumento.Text;
-                    duenio.usuario.user = txtUsuario.Text;
+                    duenio.nroDocumento = txtDocumento.Text;                    
                     duenio.email = txtEmail.Text;
                     usuario.user = txtUsuario.Text;
                     usuario.password = txtContra.Text;
                     if (LogicaBDUsuario.guardarUsuario(duenio, usuario))
                     {
-                        Response.Write("<SCRIPT>alert('Usuario Registrado Exitosamente');</SCRIPT>");
-                        limpiarPagina();
+                        mostrarResultado("", true);
                     }
                     else
                     {
-                        Response.Write("<SCRIPT>alert('Error al registrar usuario');</SCRIPT>");
+                        mostrarResultado("Error al registrar el usuario", false);
                     }
                 }
                 catch (Exception ex)
                 {
-                    mostrarResultado(ex.InnerException.Message);
+                    mostrarResultado(ex.InnerException.Message, false);
                 }
             }                 
-        }
-
-        private void limpiarPagina() 
-        {
-            txtApellido.Text = "";
-            txtContra.Text = "";
-            txtDocumento.Text = "";
-            txtEmail.Text = "";
-            txtNombre.Text = "";
-            txtRepetirContra.Text = "";
-            ddlTipoDocumento.SelectedValue = "0";
-        }
+        }        
 
         //Metodo para mostrar un label informando alguna excepcion, el parametro sera el string de la excepcion
-        private void mostrarResultado(string tipoResultado)
+        private void mostrarResultado(string tipoResultado, bool b)
         {
-            if(tipoResultado.Contains("Unique_Email"))
+            if (b)
             {
-                lblResultado.Text = "Ya existe un usuario con el email " + txtEmail.Text;                
+                txtApellido.Text = "";
+                txtContra.Text = "";
+                txtDocumento.Text = "";
+                txtEmail.Text = "";
+                txtNombre.Text = "";
+                txtUsuario.Text = "";
+                txtRepetirContra.Text = "";
+                ddlTipoDocumento.SelectedValue = "0";
             }
-            else if (tipoResultado.Contains("PK_Usuarios"))
+            else
             {
-                lblResultado.Text = "Ya existe el usuario " + txtUsuario.Text;   
+                if (tipoResultado.Contains("Unique_Email"))
+                {
+                    lblError.Text = "Ya existe un usuario con el email " + txtEmail.Text;
+                }
+                else if (tipoResultado.Contains("PK_Usuarios"))
+                {
+                    lblError.Text = "Ya existe el usuario " + txtUsuario.Text;
+                }
+                else
+                {
+                    lblError.Text = tipoResultado;
+                }
             }
-            lblResultado.Visible = true;
-            lblResultado.ForeColor = System.Drawing.Color.Red;
+            pnlCorrecto.Visible = b;
+            pnlAtento.Visible = !b;
+           
         }
 
         protected void cuvDocumento_ServerValidate(object source, ServerValidateEventArgs args)
