@@ -153,13 +153,14 @@ namespace SiGMA
             pnlInfo.Visible = false;
             EBarrio barrio = new EBarrio();
             ELocalidad localidad = new ELocalidad();
+            ETipoDeDocumento tipodoc = new ETipoDeDocumento();
             EPersona persona = new EPersona();
             EUsuario usuario = new EUsuario();
             if (lstResultados.SelectedValue != "")
             {
-                LogicaBDUsuario.BuscarUsuarios(lstResultados.SelectedValue, usuario, persona, barrio, localidad);
+                LogicaBDUsuario.BuscarUsuarios(lstResultados.SelectedValue, usuario, persona, barrio, localidad, tipodoc);
                 txtUsuario.Text = usuario.user;
-                ddlTipoDeDocumento.SelectedValue = persona.idTipoDocumento.ToString();
+                ddlTipoDeDocumento.SelectedValue = tipodoc.idTipoDeDocumento.ToString();
                 txtNºDeDocumento.Text = persona.nroDocumento;
                 txtApellido.Text = persona.apellido;
                 txtNombre.Text = persona.nombre;
@@ -228,8 +229,8 @@ namespace SiGMA
             persona.apellido = txtApellido.Text;
             persona.domicilio = txtDomicilio.Text;
             persona.email = txtMail.Text;
-            persona.idBarrio = int.Parse(ddlBarrios.SelectedValue);
-            persona.idTipoDocumento = int.Parse(ddlTipoDeDocumento.SelectedValue);
+            persona.barrio.idBarrio = int.Parse(ddlBarrios.SelectedValue);
+            persona.tipoDocumento.idTipoDeDocumento = int.Parse(ddlTipoDeDocumento.SelectedValue);
             DateTime fecha = new DateTime();
             if (ddlTipoDeDocumento.SelectedValue.Equals("0"))
             {

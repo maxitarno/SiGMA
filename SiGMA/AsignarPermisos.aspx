@@ -28,7 +28,6 @@
             <asp:Panel ID="pnlRol" runat="server">
                 <asp:DropDownList ID="ddlRol" runat="server" 
                     onselectedindexchanged="ddlRol_SelectedIndexChanged" AutoPostBack="true" AppendDataBoundItems="true"> 
-                    <asp:ListItem Value="0" Text="---Seleccione un rol ---"></asp:ListItem>
                 </asp:DropDownList>
                 <br />
                 <br />

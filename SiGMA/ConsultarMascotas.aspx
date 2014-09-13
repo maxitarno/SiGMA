@@ -247,8 +247,8 @@
                                 <td>
                                     <asp:DropDownList ID="ddlTratoAnimales" runat="server" Width="100%">
                                         <asp:ListItem Selected="True" Value="0" Text="-- Seleccione una opción"></asp:ListItem>
-                                        <asp:ListItem Text="Si" Value="Si"></asp:ListItem>
-                                        <asp:ListItem Value="No" Text="No"></asp:ListItem>
+                                        <asp:ListItem Text="Si" Value="1"></asp:ListItem>
+                                        <asp:ListItem Value="2" Text="No"></asp:ListItem>
                                     </asp:DropDownList>
                                 </td>
                             </tr>
@@ -259,8 +259,8 @@
                                 <td>
                                     <asp:DropDownList ID="ddlTratoNinios" runat="server" Width="100%">
                                         <asp:ListItem Selected="True" Value="0" Text="-- Seleccione una opción --"></asp:ListItem>
-                                        <asp:ListItem Text="Si" Value="Si"></asp:ListItem>
-                                        <asp:ListItem Value="No" Text="No"></asp:ListItem>
+                                        <asp:ListItem Text="Si" Value="1"></asp:ListItem>
+                                        <asp:ListItem Value="2" Text="No"></asp:ListItem>
                                     </asp:DropDownList>
                                 </td>
                             </tr>
@@ -309,11 +309,10 @@
                                 </td>
                             </tr>
                             <tr>
-                            </tr>
-                            <tr>
                                 <td>
                                     <input type="file" runat="server" id="File1" onchange="showimagepreview(this)" class="bg-primary" />
                                 </td>
+                                <td></td>
                             </tr>
                     </asp:Panel>
                 </table>

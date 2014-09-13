@@ -23,6 +23,7 @@ namespace SiGMA
         {
             List<EMascota> mascotas = new List<EMascota>();
             mascotas = LogicaBDMascotas.BuscarMascotaPorMascota(txtMascota.Text);
+            limpiarPagina();
             if (mascotas.Count != 0)
             {
                 pnlDueño.Visible = true;
@@ -42,6 +43,7 @@ namespace SiGMA
 
         private void MascotasPorDueño() 
         {
+            limpiarPagina();
             List<EMascota> mascotas = new List<EMascota>();
             mascotas = LogicaBDMascotas.BuscarMascotaPorIdDueño(Convert.ToInt32(Session["IdDueño"]));
             if (mascotas.Count != 0)
@@ -66,6 +68,23 @@ namespace SiGMA
             pnlInfo.Visible = false;
             pnlAtento.Visible = false;
             pnlCorrecto.Visible = false;
+        }
+
+        protected void lstMascotas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+        protected void btnSeleccionar_Click(object sender, EventArgs e)
+        {
+            var idMascota = Convert.ToInt32(lstMascotas.SelectedValue);
+            pnlRegistrarPerdida.Visible = true;
+            EMascota mascota = new EMascota();
+            ECaracterMascota caracter = new ECaracterMascota();
+            ECategoriaRaza categoria = new ECategoriaRaza();
+            EPersona persona = new EPersona();
+            if (LogicaBDMascotas.BuscarMascotaPorIdMascota(idMascota, mascota, categoria, caracter, persona))
+            { }
         }
     }
 }

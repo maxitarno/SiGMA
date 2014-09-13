@@ -29,7 +29,7 @@ namespace AccesoADatos
                     Personas personBD = new Personas();
                     personBD.nombre = duenio.nombre;
                     personBD.apellido = duenio.apellido;
-                    personBD.idTipoDocumento = duenio.idTipoDocumento;
+                    personBD.idTipoDocumento = duenio.tipoDocumento.idTipoDeDocumento;
                     personBD.nroDocumento = duenio.nroDocumento;
                     personBD.email = duenio.email;
                     personBD.user = duenio.usuario.user;
@@ -100,50 +100,41 @@ namespace AccesoADatos
         }
         //fin metodo
         //metodo para buscar persona
-        public static void BuscarUsuarios(string nombre, EUsuario user, EPersona persona, EBarrio barrio, ELocalidad localidad)
+        public static void BuscarUsuarios(string nombre, EUsuario user, EPersona persona, EBarrio barrio, ELocalidad localidad, ETipoDeDocumento tipoDoc)
         {
             SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
-            var consulta = from personasBD in mapaEntidades.Personas
-                           from usuariosBD in mapaEntidades.Usuarios
-                           from rolesBD in mapaEntidades.Roles
-                           from BarriosBD in mapaEntidades.Barrios
-                           from LocalidadesBD in mapaEntidades.Localidades
-                           where (personasBD.user == usuariosBD.user  && personasBD.idBarrio == BarriosBD.idBarrio && LocalidadesBD.idLocalidad == BarriosBD.idLocalidad && usuariosBD.user == nombre && usuariosBD.estado == true)
-                           select new
+            var consulta1 = from usuariosBD in mapaEntidades.Usuarios join personasBD in mapaEntidades.Personas
+                           on usuariosBD.user equals personasBD.user into group1
+                           from G1 in group1.DefaultIfEmpty()
+                           join barriosBD in mapaEntidades.Barrios on G1.idBarrio equals barriosBD.idBarrio into group2
+                           from G2 in group2.DefaultIfEmpty()
+                           join localidadesBD in mapaEntidades.Localidades on G2.idLocalidad equals localidadesBD.idLocalidad into group3
+                           from G3 in group3.DefaultIfEmpty()
+                           where ( G1.user == nombre || G3 == null )
+                           select new 
                            {
-                               apellido = personasBD.apellido,
-                               nombre = personasBD.nombre,
-                               tipoDNI = personasBD.idTipoDocumento,
-                               dNI = personasBD.nroDocumento,
-                               domicilio = personasBD.domicilio,
-                               tEF = personasBD.telefonoFijo,
-                               tEC = personasBD.telefonoCelular,
-                               mail = personasBD.email,
-                               usuario = usuariosBD.user,
-                               barrio = personasBD.idBarrio,
-                               localidad = LocalidadesBD.idLocalidad,
-                               idPersona = personasBD.idPersona,
-                               fecha = personasBD.fechaNacimiento
-                           };
+                               user = usuariosBD,
+                               persona = G1,
+                               barrio = G2,
+                               localidad = G3
+                            };
             try
             {
-                foreach (var usuario in consulta)
+                foreach (var usuario in consulta1)
                 {
-                    persona.apellido = usuario.apellido;
-                    persona.nombre = usuario.nombre;
-                    persona.idTipoDocumento = (int)usuario.tipoDNI;
-                    persona.nroDocumento = usuario.dNI;
-                    persona.domicilio = usuario.domicilio;
-                    persona.telefonoFijo = usuario.tEF;
-                    persona.telefonoCelular = usuario.tEC;
-                    persona.email = usuario.mail;
-                    user.user = usuario.usuario;
-                    barrio.idBarrio = (int)usuario.barrio;
-                    localidad.idLocalidad = usuario.localidad;
-                    if (usuario.fecha != null)
-                    {
-                        persona.fechaNacimiento = DateTime.Parse(usuario.fecha.ToString());
-                    }
+                    persona.apellido = usuario.persona.apellido;
+                    persona.nombre = usuario.persona.nombre;
+                    barrio.idBarrio = (usuario.barrio == null) ? 0 : usuario.barrio.idBarrio;
+                    persona.domicilio = usuario.persona.domicilio;
+                    persona.email = usuario.persona.email;
+                    persona.fechaNacimiento = usuario.persona.fechaNacimiento;
+                    persona.nroDocumento = usuario.persona.nroDocumento;
+                    tipoDoc.idTipoDeDocumento = usuario.persona.idTipoDocumento;
+                    persona.telefonoFijo = usuario.persona.telefonoFijo;
+                    persona.telefonoCelular = usuario.persona.telefonoCelular;
+                    localidad.idLocalidad = (usuario.localidad == null) ? 0 : usuario.localidad.idLocalidad;
+                    user.user = usuario.persona.user;
+                    persona.idPersona = usuario.persona.idPersona;
                 }
             }
             catch (System.Data.EntityCommandCompilationException exc)
@@ -167,8 +158,8 @@ namespace AccesoADatos
                     registro.domicilio = persona.domicilio;
                     registro.email = persona.email;
                     registro.fechaNacimiento = persona.fechaNacimiento;
-                    registro.idBarrio = persona.idBarrio;
-                    registro.idTipoDocumento = persona.idTipoDocumento;
+                    registro.idBarrio = persona.barrio.idBarrio;
+                    registro.idTipoDocumento = persona.tipoDocumento.idTipoDeDocumento;
                     registro.nombre = persona.nombre;
                     registro.nroDocumento = persona.nroDocumento;
                     registro.telefonoCelular = persona.telefonoCelular;

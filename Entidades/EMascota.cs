@@ -14,8 +14,8 @@ namespace Entidades
         public EEdad edad { get; set; }
         public ERaza raza { get; set; }
         public EColor color { get; set; }
-        public string tratoAnimal { get; set; }
-        public string tratoNiños { get; set; }
+        public bool? tratoAnimal { get; set; }
+        public bool? tratoNiños { get; set; }
         public ECaracterMascota caracter { get; set; }
         public string observaciones { get; set; }
         public string alimentacionEspecial { get; set; }

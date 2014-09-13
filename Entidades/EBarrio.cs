@@ -9,6 +9,6 @@ namespace Entidades
     {
         public int idBarrio { get; set; }
         public string nombre { get; set; }
-        public int idLocalidad { get; set; }
+        public ELocalidad localidad { get; set; }
     }
 }

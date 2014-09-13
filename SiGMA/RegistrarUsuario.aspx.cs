@@ -38,7 +38,7 @@ namespace SiGMA
                     duenio.usuario = usuario;
                     duenio.nombre = txtNombre.Text;
                     duenio.apellido = txtApellido.Text;
-                    duenio.idTipoDocumento = int.Parse(ddlTipoDocumento.SelectedValue);
+                    duenio.tipoDocumento.idTipoDeDocumento = int.Parse(ddlTipoDocumento.SelectedValue);
                     duenio.nroDocumento = txtDocumento.Text;                    
                     duenio.email = txtEmail.Text;
                     usuario.user = txtUsuario.Text;

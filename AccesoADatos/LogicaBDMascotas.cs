@@ -264,6 +264,88 @@ namespace AccesoADatos
             }
             return mascotas;
         }
+        public static bool BuscarMascotaPorIdMascota(int idMascota, EMascota mascota, ECategoriaRaza categoria, ECaracterMascota caracter, EPersona dueño) 
+        {
+            bool b = false;
+            try
+            {
+                SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+                var consulta = from MascotasBD in mapaEntidades.Mascotas
+                               from DuenioBD in mapaEntidades.Duenios.DefaultIfEmpty()
+                               from PersonaBD in mapaEntidades.Personas.DefaultIfEmpty()
+                               from RazaBD in mapaEntidades.Razas
+                               from CategoriaRazaBD in mapaEntidades.CategoriaRazas
+                               from CaracterBD in mapaEntidades.CaracteresMascota
+                               from BarrioBD in mapaEntidades.Barrios.DefaultIfEmpty()
+                               from LocalidadBD in mapaEntidades.Localidades.DefaultIfEmpty()
+                               where (MascotasBD.idRaza == RazaBD.idRaza && RazaBD.idCategoriaRaza == CategoriaRazaBD.idCategoriaRazas
+                               && MascotasBD.idCaracter == CaracterBD.idCaracter && MascotasBD.idMascota == idMascota && MascotasBD.idEstado != 6
+                               && MascotasBD.idDuenio == DuenioBD.idDuenio && PersonaBD.idPersona == DuenioBD.idPersona
+                               && PersonaBD.idBarrio == BarrioBD.idBarrio && BarrioBD.idLocalidad == LocalidadBD.idLocalidad)
+                               select new
+                               {
+                                   nombre = MascotasBD.nombreMascota,
+                                   estado = MascotasBD.idEstado,
+                                   especie = MascotasBD.idEspecie,
+                                   edad = MascotasBD.idEdad,
+                                   raza = MascotasBD.idRaza,
+                                   color = MascotasBD.idColor,
+                                   tratoA = MascotasBD.tratoAnimales,
+                                   tratoN = MascotasBD.tratoNinios,
+                                   sexo = MascotasBD.sexo,
+                                   categoria = CategoriaRazaBD.nombreCategoriaRaza,
+                                   caracter = CaracterBD.idCaracter,
+                                   id = MascotasBD.idMascota,
+                                   imagen = MascotasBD.imagen,
+                                   dueñoNombre = (PersonaBD == null) ? null : PersonaBD.nombre,
+                                   dueñoApellido = (PersonaBD == null) ? null : PersonaBD.apellido,
+                                   domicilio = (PersonaBD == null) ? null : PersonaBD.domicilio,
+                                   idBarrio = (BarrioBD == null) ? 0 : BarrioBD.idBarrio,
+                                   barrio = (BarrioBD == null) ? null : BarrioBD.nombre,
+                                   localidad = (LocalidadBD == null) ? null : LocalidadBD.nombre
+
+                               };
+                foreach (var registro in consulta)
+                {
+                    caracter.idCaracter = registro.caracter;
+                    categoria.nombreCategoriaRaza = registro.categoria;
+                    mascota.raza = new ERaza();
+                    mascota.raza.idRaza = registro.raza;
+                    mascota.color = new EColor();
+                    mascota.color.idColor = registro.color;
+                    mascota.nombreMascota = registro.nombre;
+                    mascota.sexo = registro.sexo;
+                    mascota.tratoAnimal = registro.tratoA;
+                    mascota.tratoNiños = registro.tratoN;
+                    mascota.idMascota = registro.id;
+                    mascota.edad = new EEdad();
+                    mascota.edad.idEdad = registro.edad;
+                    mascota.especie = new EEspecie();
+                    mascota.especie.idEspecie = registro.especie;
+                    mascota.duenio.apellido = registro.dueñoApellido;
+                    mascota.duenio.nombre = registro.dueñoNombre;
+                    mascota.duenio.domicilio = registro.domicilio;
+                    mascota.duenio.barrio.idBarrio = registro.idBarrio;
+                    mascota.duenio.barrio.nombre = registro.barrio;
+                    mascota.duenio.barrio.localidad.nombre = registro.localidad;
+                    if (registro.imagen != null)
+                    {
+                        mascota.imagen = registro.imagen;
+                    }
+                    else
+                    {
+                        mascota.imagen = null;
+                    }
+                }
+                b = true;
+            }
+            catch (System.Data.EntityCommandCompilationException exc)
+            {
+                b = false;
+                throw exc;
+            }
+            return b;
+        }
         public static bool Eliminar(int idMascota)
         {
             SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();

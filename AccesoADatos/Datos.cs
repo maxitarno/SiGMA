@@ -45,7 +45,7 @@ namespace AccesoADatos
                     EBarrio barrio = new EBarrio();
                     barrio.idBarrio = registro.idBarrio;
                     barrio.nombre = registro.nombre;
-                    barrio.idLocalidad = (int)registro.idLocalidad;
+                    barrio.localidad.idLocalidad = (int)registro.idLocalidad;
                     barrios.Add(barrio);
                 }
             }
@@ -290,7 +290,7 @@ namespace AccesoADatos
                     EBarrio barrio = new EBarrio();
                     barrio.idBarrio = registro.idBarrio;
                     barrio.nombre = registro.nombre;
-                    barrio.idLocalidad = (int)registro.idLocalidad;
+                    barrio.localidad.idLocalidad = (int)registro.idLocalidad;
                     barrios.Add(barrio);
                 }
             }

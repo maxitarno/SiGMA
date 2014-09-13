@@ -69,8 +69,8 @@ namespace SiGMA
                 mascota.edad.idEdad = int.Parse(ddlEdad.SelectedValue);
                 mascota.color = new EColor();
                 mascota.color.idColor = int.Parse(ddlColor.SelectedValue);
-                mascota.tratoNiños = ddlTratoNinios.SelectedValue;
-                mascota.tratoAnimal = ddlTratoAnimales.SelectedValue;
+                mascota.tratoNiños = Convert.ToBoolean(ddlTratoNinios.SelectedValue);
+                mascota.tratoAnimal = Convert.ToBoolean(ddlTratoAnimales.SelectedValue);
                 mascota.observaciones = txtObservaciones.Text;                
                 mascota.alimentacionEspecial = txtAlimentacionEspecial.Text;
                 if (!txtFecha.Text.Equals(""))

@@ -177,8 +177,14 @@ namespace SiGMA
                     txtFecha.Text = mascota.fechaNacimiento.ToShortDateString().ToString();
                     txtMascota.Text = mascota.nombreMascota;
                     txtObservaciones.Text = mascota.observaciones;
-                    ddlTratoAnimales.SelectedValue = mascota.tratoAnimal;
-                    ddlTratoNinios.SelectedValue = mascota.tratoNiños;
+                    if(mascota.tratoAnimal != null)
+                    {
+                        ddlTratoAnimales.SelectedValue = mascota.tratoAnimal.ToString() == "false" ? "2" : "1";
+                    }
+                    if (mascota.tratoNiños != null) 
+                    {
+                        ddlTratoNinios.SelectedValue = mascota.tratoNiños.ToString() == "false" ? "2" : "1";
+                    }
                     pnlDatos.Visible = true;
                     ddlColor.SelectedValue = mascota.color.idColor.ToString();
                     ddlEdad.SelectedValue = mascota.edad.idEdad.ToString();
@@ -227,7 +233,10 @@ namespace SiGMA
         public byte[] ImageHandler_ObtenerImagenMascota(HttpContext context)
         {
             if (Session["imagen"] != null)
+            {
                 return (byte[])Session["imagen"];
+                Session["imagen"] = null;
+            }
             else
                 return null;
         }
@@ -265,8 +274,8 @@ namespace SiGMA
                                             {
                                                 mascota.alimentacionEspecial = txtAlimentacionEspecial.Text;
                                                 mascota.fechaNacimiento = DateTime.Parse(txtFecha.Text);
-                                                mascota.tratoNiños = ddlTratoNinios.SelectedValue.ToString();
-                                                mascota.tratoAnimal = ddlTratoAnimales.SelectedValue.ToString();
+                                                mascota.tratoNiños = Convert.ToBoolean(ddlTratoNinios.SelectedValue);
+                                                mascota.tratoAnimal = Convert.ToBoolean(ddlTratoAnimales.SelectedValue);
                                                 mascota.sexo = ddlSexo.SelectedValue.ToString();
                                                 mascota.observaciones = txtObservaciones.Text;
                                                 mascota.nombreMascota = txtMascota.Text;

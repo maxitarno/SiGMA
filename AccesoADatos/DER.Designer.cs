@@ -42,14 +42,14 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Mascotas_Razas", "Razas", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Razas), "Mascotas", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Mascotas), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Perdidas_Mascotas", "Mascotas", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Mascotas), "Perdidas", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Perdidas), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Perdidas_Sesiones", "Sesiones", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Sesiones), "Perdidas", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Perdidas), true)]
-[assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Personas_TipoDocumentos", "TipoDocumentos", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(AccesoADatos.TipoDocumentos), "Personas", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Personas), true)]
+[assembly: EdmRelationshipAttribute("SiGMAModel", "FK_PermisosXRoles_Permisos", "Permisos", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Permisos), "PermisosXRoles", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.PermisosXRoles), true)]
+[assembly: EdmRelationshipAttribute("SiGMAModel", "FK_PermisosXRoles_Roles", "Roles", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Roles), "PermisosXRoles", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.PermisosXRoles), true)]
+[assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Personas_TipoDocumentos", "TipoDocumentos", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.TipoDocumentos), "Personas", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Personas), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Personas_Usuarios", "Usuarios", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(AccesoADatos.Usuarios), "Personas", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Personas), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Voluntarios_Personas", "Personas", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Personas), "Voluntarios", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Voluntarios), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_RolesXUsuario_Roles", "Roles", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Roles), "RolesXUsuario", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.RolesXUsuario), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_RolesXUsuario_Usuarios", "Usuarios", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Usuarios), "RolesXUsuario", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.RolesXUsuario), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Sesiones_Usuarios", "Usuarios", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Usuarios), "Sesiones", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Sesiones), true)]
-[assembly: EdmRelationshipAttribute("SiGMAModel", "FK_PermisosXRoles_Permisos", "Permisos", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Permisos), "PermisosXRoles", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.PermisosXRoles), true)]
-[assembly: EdmRelationshipAttribute("SiGMAModel", "FK_PermisosXRoles_Roles", "Roles", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Roles), "PermisosXRoles", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.PermisosXRoles), true)]
 
 #endregion
 
@@ -344,6 +344,22 @@ namespace AccesoADatos
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
+        public ObjectSet<PermisosXRoles> PermisosXRoles
+        {
+            get
+            {
+                if ((_PermisosXRoles == null))
+                {
+                    _PermisosXRoles = base.CreateObjectSet<PermisosXRoles>("PermisosXRoles");
+                }
+                return _PermisosXRoles;
+            }
+        }
+        private ObjectSet<PermisosXRoles> _PermisosXRoles;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
         public ObjectSet<Personas> Personas
         {
             get
@@ -468,22 +484,6 @@ namespace AccesoADatos
             }
         }
         private ObjectSet<Voluntarios> _Voluntarios;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<PermisosXRoles> PermisosXRoles
-        {
-            get
-            {
-                if ((_PermisosXRoles == null))
-                {
-                    _PermisosXRoles = base.CreateObjectSet<PermisosXRoles>("PermisosXRoles");
-                }
-                return _PermisosXRoles;
-            }
-        }
-        private ObjectSet<PermisosXRoles> _PermisosXRoles;
 
         #endregion
 
@@ -610,6 +610,14 @@ namespace AccesoADatos
         }
     
         /// <summary>
+        /// Deprecated Method for adding a new object to the PermisosXRoles EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToPermisosXRoles(PermisosXRoles permisosXRoles)
+        {
+            base.AddObject("PermisosXRoles", permisosXRoles);
+        }
+    
+        /// <summary>
         /// Deprecated Method for adding a new object to the Personas EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddToPersonas(Personas personas)
@@ -671,14 +679,6 @@ namespace AccesoADatos
         public void AddToVoluntarios(Voluntarios voluntarios)
         {
             base.AddObject("Voluntarios", voluntarios);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the PermisosXRoles EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToPermisosXRoles(PermisosXRoles permisosXRoles)
-        {
-            base.AddObject("PermisosXRoles", permisosXRoles);
         }
 
         #endregion
@@ -1548,12 +1548,10 @@ namespace AccesoADatos
         /// Create a new CuidadosEspeciales object.
         /// </summary>
         /// <param name="idCuidadoEspecial">Initial value of the idCuidadoEspecial property.</param>
-        /// <param name="descripcion">Initial value of the descripcion property.</param>
-        public static CuidadosEspeciales CreateCuidadosEspeciales(global::System.Int32 idCuidadoEspecial, global::System.String descripcion)
+        public static CuidadosEspeciales CreateCuidadosEspeciales(global::System.Int32 idCuidadoEspecial)
         {
             CuidadosEspeciales cuidadosEspeciales = new CuidadosEspeciales();
             cuidadosEspeciales.idCuidadoEspecial = idCuidadoEspecial;
-            cuidadosEspeciales.descripcion = descripcion;
             return cuidadosEspeciales;
         }
 
@@ -1591,7 +1589,7 @@ namespace AccesoADatos
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String descripcion
         {
@@ -1603,7 +1601,7 @@ namespace AccesoADatos
             {
                 OndescripcionChanging(value);
                 ReportPropertyChanging("descripcion");
-                _descripcion = StructuralObject.SetValidValue(value, false);
+                _descripcion = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("descripcion");
                 OndescripcionChanged();
             }
@@ -2892,7 +2890,7 @@ namespace AccesoADatos
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.String tratoAnimales
+        public Nullable<global::System.Boolean> tratoAnimales
         {
             get
             {
@@ -2902,13 +2900,13 @@ namespace AccesoADatos
             {
                 OntratoAnimalesChanging(value);
                 ReportPropertyChanging("tratoAnimales");
-                _tratoAnimales = StructuralObject.SetValidValue(value, true);
+                _tratoAnimales = StructuralObject.SetValidValue(value);
                 ReportPropertyChanged("tratoAnimales");
                 OntratoAnimalesChanged();
             }
         }
-        private global::System.String _tratoAnimales;
-        partial void OntratoAnimalesChanging(global::System.String value);
+        private Nullable<global::System.Boolean> _tratoAnimales;
+        partial void OntratoAnimalesChanging(Nullable<global::System.Boolean> value);
         partial void OntratoAnimalesChanged();
     
         /// <summary>
@@ -2916,7 +2914,7 @@ namespace AccesoADatos
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.String tratoNinios
+        public Nullable<global::System.Boolean> tratoNinios
         {
             get
             {
@@ -2926,13 +2924,13 @@ namespace AccesoADatos
             {
                 OntratoNiniosChanging(value);
                 ReportPropertyChanging("tratoNinios");
-                _tratoNinios = StructuralObject.SetValidValue(value, true);
+                _tratoNinios = StructuralObject.SetValidValue(value);
                 ReportPropertyChanged("tratoNinios");
                 OntratoNiniosChanged();
             }
         }
-        private global::System.String _tratoNinios;
-        partial void OntratoNiniosChanging(global::System.String value);
+        private Nullable<global::System.Boolean> _tratoNinios;
+        partial void OntratoNiniosChanging(Nullable<global::System.Boolean> value);
         partial void OntratoNiniosChanged();
     
         /// <summary>
@@ -4129,10 +4127,12 @@ namespace AccesoADatos
         /// Create a new Personas object.
         /// </summary>
         /// <param name="idPersona">Initial value of the idPersona property.</param>
-        public static Personas CreatePersonas(global::System.Int32 idPersona)
+        /// <param name="idTipoDocumento">Initial value of the idTipoDocumento property.</param>
+        public static Personas CreatePersonas(global::System.Int32 idPersona, global::System.Int32 idTipoDocumento)
         {
             Personas personas = new Personas();
             personas.idPersona = idPersona;
+            personas.idTipoDocumento = idTipoDocumento;
             return personas;
         }
 
@@ -4218,9 +4218,9 @@ namespace AccesoADatos
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int32> idTipoDocumento
+        public global::System.Int32 idTipoDocumento
         {
             get
             {
@@ -4235,8 +4235,8 @@ namespace AccesoADatos
                 OnidTipoDocumentoChanged();
             }
         }
-        private Nullable<global::System.Int32> _idTipoDocumento;
-        partial void OnidTipoDocumentoChanging(Nullable<global::System.Int32> value);
+        private global::System.Int32 _idTipoDocumento;
+        partial void OnidTipoDocumentoChanging(global::System.Int32 value);
         partial void OnidTipoDocumentoChanged();
     
         /// <summary>
@@ -5032,28 +5032,6 @@ namespace AccesoADatos
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("SiGMAModel", "FK_RolesXUsuario_Roles", "RolesXUsuario")]
-        public EntityCollection<RolesXUsuario> RolesXUsuario
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<RolesXUsuario>("SiGMAModel.FK_RolesXUsuario_Roles", "RolesXUsuario");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<RolesXUsuario>("SiGMAModel.FK_RolesXUsuario_Roles", "RolesXUsuario", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("SiGMAModel", "FK_PermisosXRoles_Roles", "PermisosXRoles")]
         public EntityCollection<PermisosXRoles> PermisosXRoles
         {
@@ -5066,6 +5044,28 @@ namespace AccesoADatos
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<PermisosXRoles>("SiGMAModel.FK_PermisosXRoles_Roles", "PermisosXRoles", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("SiGMAModel", "FK_RolesXUsuario_Roles", "RolesXUsuario")]
+        public EntityCollection<RolesXUsuario> RolesXUsuario
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<RolesXUsuario>("SiGMAModel.FK_RolesXUsuario_Roles", "RolesXUsuario");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<RolesXUsuario>("SiGMAModel.FK_RolesXUsuario_Roles", "RolesXUsuario", value);
                 }
             }
         }
@@ -5605,13 +5605,11 @@ namespace AccesoADatos
         /// </summary>
         /// <param name="user">Initial value of the user property.</param>
         /// <param name="password">Initial value of the password property.</param>
-        /// <param name="estado">Initial value of the estado property.</param>
-        public static Usuarios CreateUsuarios(global::System.String user, global::System.String password, global::System.Boolean estado)
+        public static Usuarios CreateUsuarios(global::System.String user, global::System.String password)
         {
             Usuarios usuarios = new Usuarios();
             usuarios.user = user;
             usuarios.password = password;
-            usuarios.estado = estado;
             return usuarios;
         }
 
@@ -5673,9 +5671,9 @@ namespace AccesoADatos
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.Boolean estado
+        public Nullable<global::System.Boolean> estado
         {
             get
             {
@@ -5690,8 +5688,8 @@ namespace AccesoADatos
                 OnestadoChanged();
             }
         }
-        private global::System.Boolean _estado;
-        partial void OnestadoChanging(global::System.Boolean value);
+        private Nullable<global::System.Boolean> _estado;
+        partial void OnestadoChanging(Nullable<global::System.Boolean> value);
         partial void OnestadoChanged();
 
         #endregion
