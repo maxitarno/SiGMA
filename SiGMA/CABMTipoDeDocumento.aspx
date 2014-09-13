@@ -44,12 +44,12 @@
                             </td>
                             <td colspan="3">
                                 <asp:Panel ID="pnltxtNombre" runat="server" Width="100%">
-                                    <asp:TextBox ID="txtNombre" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="txtNombre" runat="server" CssClass="TextBox"></asp:TextBox>
                                 </asp:Panel>
                             </td>
                             <td>
                                 <asp:Panel ID="pnlBuscar" runat="server" Width="100%">
-                                    <asp:Button ID="btnBuscar" runat="server" Text="Buscar" OnClick="BtnBuscarClick" />
+                                    <asp:Button ID="btnBuscar" runat="server" Text="Buscar" OnClick="BtnBuscarClick" CssClass="btn-primary"/>
                                 </asp:Panel>
                             </td>
                             <td>
@@ -70,15 +70,15 @@
                         <tr>
                             <td colspan="5">
                                 <asp:Panel ID="pnlRegistrar" runat="server" Width="100%">
-                                    <asp:Button ID="btnRegistrar" runat="server" Text="Registrar" OnClick="BtnRegistrarClick" />
+                                    <asp:Button ID="btnRegistrar" runat="server" Text="Registrar" OnClick="BtnRegistrarClick" CssClass="btn-primary"/>
                                 </asp:Panel>
                                 <asp:Panel ID="pnlSeleccionar" runat="server" Visible="false">
-                                    <asp:Button ID="btnSeleccionar" runat="server" Text="Seleccionar" OnClick="BtnSeleccionarClick" />
+                                    <asp:Button ID="btnSeleccionar" runat="server" Text="Seleccionar" OnClick="BtnSeleccionarClick" CssClass="btn-primary"/>
                                    </asp:Panel>
                                 <asp:Panel ID=pnlCambio runat=server Visible=false>
-                                    <asp:Button ID="btnModificar" runat="server" Text="Modificar" OnClick="BtnModificarClick" />
+                                    <asp:Button ID="btnModificar" runat="server" Text="Modificar" OnClick="BtnModificarClick" CssClass="btn-primary"/>
                                     <!--<asp:Button ID="btneliminar" runat="server" Text="Eliminar" />-->
-                                    <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar" />
+                                    <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar" OnClick="BtnLimpiarClick" CssClass="btn-primary"/>
                                 </asp:Panel>
                             </td>
                         </tr>

@@ -61,6 +61,7 @@ namespace SiGMA
                     txtNombre.Text = "";
                     pnlRegistrar.Visible = true;
                     pnlBuscar.Visible = true;
+                    pnlCambio.Visible = false;
                 }
                 else
                 {
@@ -89,7 +90,7 @@ namespace SiGMA
                     pnlInfo.Visible = false;
                     lblResultado1.Text = "Se registro correctamente";
                     txtNombre.Text = "";
-                    pnlRegistrar.Visible = false;
+                    pnlRegistrar.Visible = true;
                 }
                 else
                 {
@@ -123,5 +124,15 @@ namespace SiGMA
                 }
             }
         }*/
+        public void BtnLimpiarClick(object sender, EventArgs e)
+        {
+            pnlAtento.Visible = false;
+            pnlCorrecto.Visible = false;
+            pnlInfo.Visible = false;
+            txtNombre.Text = "";
+            pnlRegistrar.Visible = true;
+            pnlBuscar.Visible = true;
+            pnlCambio.Visible = false;
+        }
     }
 }
