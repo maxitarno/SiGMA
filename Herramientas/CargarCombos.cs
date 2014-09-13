@@ -12,14 +12,14 @@ namespace Herramientas
     {
         public static void cargarSexo(ref DropDownList ddl)
         {
-            ddl.Items.Add(new ListItem("", "0"));
+            ddl.Items.Add(new ListItem("-- Seleccione un sexo --", "0"));
             ddl.Items.Add(new ListItem("Hembra", "Hembra"));
             ddl.Items.Add(new ListItem("Macho", "Macho"));
         }
 
         public static void cargarTratos(ref DropDownList ddl)
         {
-            ddl.Items.Add(new ListItem("", "0"));
+            ddl.Items.Add(new ListItem("-- Seleccione un trato --", "0"));
             ddl.Items.Add(new ListItem("Si", "Si"));
             ddl.Items.Add(new ListItem("No", "No"));
         }
@@ -124,7 +124,7 @@ namespace Herramientas
         }
         public static void cargarEstado(ref DropDownList ddl)
         {
-            ddl.Items.Add(new ListItem("-- Seleccione una estado--", "0"));
+            ddl.Items.Add(new ListItem("-- Seleccione una estado --", "0"));
             List<EEstado> estados = Datos.BuscarEstados();
             foreach (EEstado item in estados)
             {

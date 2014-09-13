@@ -268,14 +268,26 @@ namespace SiGMA
                                 {
                                     if (!ddlSexo.SelectedValue.Equals("0"))
                                     {
-                                        if (!ddlTratoNinios.SelectedValue.Equals("0") || ddlTratoAnimales.SelectedValue.Equals("0"))
+                                        if (!ddlTratoNinios.SelectedValue.Equals("0") && !ddlTratoAnimales.SelectedValue.Equals("0"))
                                         {
                                             if (Validaciones.Fecha(txtFecha.Text, out fecha))
                                             {
                                                 mascota.alimentacionEspecial = txtAlimentacionEspecial.Text;
                                                 mascota.fechaNacimiento = DateTime.Parse(txtFecha.Text);
-                                                mascota.tratoNiños = Convert.ToBoolean(ddlTratoNinios.SelectedValue);
-                                                mascota.tratoAnimal = Convert.ToBoolean(ddlTratoAnimales.SelectedValue);
+                                                if (ddlTratoAnimales.SelectedValue.Equals("Si"))
+                                                {
+                                                    mascota.tratoAnimal = true;
+                                                }
+                                                else{
+                                                    mascota.tratoAnimal = false;
+                                                }
+                                                if (ddlTratoNinios.SelectedValue.Equals("Si"))
+                                                {
+                                                    mascota.tratoNiños = true;
+                                                }
+                                                else{
+                                                    mascota.tratoNiños = false;
+                                                }
                                                 mascota.sexo = ddlSexo.SelectedValue.ToString();
                                                 mascota.observaciones = txtObservaciones.Text;
                                                 mascota.nombreMascota = txtMascota.Text;
@@ -459,13 +471,17 @@ namespace SiGMA
             imgImagen.Visible = false;
             if (rbPorDuenio.Checked)
             {
-                pnltxtNombreDueñio.Visible = false;
-                pnlNombre.Visible = false;
+                pnltxtNombreDueñio.Visible = true;
+                pnlNombre.Visible = true;
+                pnltxtMascota.Visible = false;
+                pnlmascota.Visible = false;
             }
             if (rbPorMascota.Checked)
             {
-                pnltxtMascota.Visible = false;
-                pnlmascota.Visible = false;
+                pnltxtMascota.Visible = true;
+                pnlmascota.Visible = true;
+                pnltxtNombreDueñio.Visible = false;
+                pnlNombre.Visible = false;
             }
         }
 
