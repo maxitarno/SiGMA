@@ -15,7 +15,7 @@
                 <div class="almedio">
                     <table>
                         <tr>
-                            <td>
+                            <td colspan="5">
                                 <asp:Panel runat="server" ID="pnlCorrecto" class="alert alert-dismissable alert-success"
                                     Visible="false">
                                     <button class="close" type="button" data-dismiss="alert">
@@ -42,7 +42,7 @@
                                     Nombre:
                                 </asp:Panel>
                             </td>
-                            <td>
+                            <td colspan="3">
                                 <asp:Panel ID="pnltxtNombre" runat="server" Width="100%">
                                     <asp:TextBox ID="txtNombre" runat="server"></asp:TextBox>
                                 </asp:Panel>
@@ -58,22 +58,26 @@
                             </td>
                         </tr>
                         <tr>
-                            <asp:Panel ID="pnlResultado" runat="server" Visible=false>
+                            <asp:Panel ID="pnlResultado" runat="server" Visible="false" Width="100%">
                                 <td>
                                     Resultados:
                                 </td>
-                                <td>
+                                <td colspan="4">
                                     <asp:ListBox ID="lstResultados" runat="server" CssClass="ListBox"></asp:ListBox>
                                 </td>
                             </asp:Panel>
                         </tr>
                         <tr>
-                            <td colspan="3">
-                                <asp:Panel ID="pnRegistrar" runat="server">
-                                    <asp:Button ID="btnRregistrar" runat="server" Text="Registrar" />
+                            <td colspan="5">
+                                <asp:Panel ID="pnlRegistrar" runat="server" Width="100%">
+                                    <asp:Button ID="btnRegistrar" runat="server" Text="Registrar" OnClick="BtnRegistrarClick" />
+                                </asp:Panel>
+                                <asp:Panel ID="pnlSeleccionar" runat="server" Visible="false">
                                     <asp:Button ID="btnSeleccionar" runat="server" Text="Seleccionar" OnClick="BtnSeleccionarClick" />
-                                    <asp:Button ID="btnModificar" runat="server" Text="Modificar" OnClick="BtnModificarClick"/>
-                                    <asp:Button ID="btneliminar" runat="server" Text="Eliminar" />
+                                   </asp:Panel>
+                                <asp:Panel ID=pnlCambio runat=server Visible=false>
+                                    <asp:Button ID="btnModificar" runat="server" Text="Modificar" OnClick="BtnModificarClick" />
+                                    <!--<asp:Button ID="btneliminar" runat="server" Text="Eliminar" />-->
                                     <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar" />
                                 </asp:Panel>
                             </td>

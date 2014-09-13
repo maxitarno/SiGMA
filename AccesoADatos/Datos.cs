@@ -352,38 +352,33 @@ namespace AccesoADatos
                 }
             }
         }
-        public static Boolean ModificarTipoDeDocumento(ETipoDeDocumento tipo, string aux)
+        public static Boolean ModificarTipoDeDocumento(ETipoDeDocumento tipo)
         {
             bool b = false;
-            using (TransactionScope transaccion = new TransactionScope())
-            {
                 try
                 {
                     SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
-                    IQueryable<TipoDocumentos> tipoDocumento = from tipoDB in mapaEntidades.TipoDocumentos
-                                                               where (tipoDB.nombre.Contains(tipo.nombre))
-                                                               select tipoDB;
+                    var tipoDocumento = mapaEntidades.TipoDocumentos.Where( tipoDB => tipoDB.idTipoDocumento == tipo.idTipoDeDocumento);
                     foreach (var registro in tipoDocumento)
                     {
                         registro.nombre = tipo.nombre;
                     }
                     b = true;
+                    mapaEntidades.SaveChanges();
                 }
                 catch (Exception exc)
                 {
-                    transaccion.Dispose();
                     throw exc;
                     b = false;
                 }
+                return b;
             }
-            return b;
-        }
-        public static Boolean EliminarTiposDNI(string tipo)
+        /*public static Boolean EliminarTiposDNI(ETipoDeDocumento tipo)
         {
             SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
             bool b = false;
             IQueryable<TipoDocumentos> tiposDeDocumentos = from tipoDeDocumentos in mapaEntidades.TipoDocumentos
-                                                           where (tipoDeDocumentos.nombre == tipo)
+                                                           where (tipoDeDocumentos.idTipoDocumento == tipo.idTipoDeDocumento)
                                                            select tipoDeDocumentos;
             using (TransactionScope transaction = new TransactionScope())
             {
@@ -406,6 +401,6 @@ namespace AccesoADatos
                     throw exc;
                 }
             }
-        }
+        }*/
     }
 }
