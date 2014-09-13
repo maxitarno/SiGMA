@@ -19,12 +19,21 @@ namespace SiGMA
         {
             lstResultados.Items.Clear();
             CargarCombos.cargarTipoDocumentoLista(ref lstResultados, txtNombre.Text);
-            pnlResultado.Visible = true;
-            pnlAtento.Visible = false;
-            pnlCorrecto.Visible = false;
-            pnlInfo.Visible = false;
-            pnlRegistrar.Visible = false;
-            pnlSeleccionar.Visible = true;
+            if (lstResultados.Items.Count != 0)
+            {
+                pnlResultado.Visible = true;
+                pnlAtento.Visible = false;
+                pnlCorrecto.Visible = false;
+                pnlInfo.Visible = false;
+                pnlRegistrar.Visible = false;
+                pnlSeleccionar.Visible = true;
+                pnl8.Visible = true;
+            }
+            else
+            {
+                pnlInfo.Visible = true;
+                lblResultado2.Text = "No se encontraron tipos de documento";
+            }
         }
         public void BtnSeleccionarClick(object sender, EventArgs e)
         {
@@ -76,7 +85,7 @@ namespace SiGMA
                 pnlAtento.Visible = false;
                 pnlCorrecto.Visible = false;
                 pnlInfo.Visible = true;
-                lblResultado1.Text = "Debe seleccionar un tipo de documento";
+                lblResultado1.Text = "Debe ingresar un tipo de documento";
             }
         }
         public void BtnRegistrarClick(object sender, EventArgs e)
@@ -133,6 +142,9 @@ namespace SiGMA
             pnlRegistrar.Visible = true;
             pnlBuscar.Visible = true;
             pnlCambio.Visible = false;
+            pnl8.Visible = false;
+            pnlSeleccionar.Visible = false;
+            pnlResultado.Visible = false;
         }
     }
 }

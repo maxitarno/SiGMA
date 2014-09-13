@@ -8,7 +8,7 @@
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <h1 class="panel-title">
-                    Consultar, modificar, eliminar tipos de documentos
+                    Consultar, modificar tipos de documentos
                 </h1>
             </div>
             <div class="panel-body">
@@ -42,19 +42,19 @@
                                     Nombre:
                                 </asp:Panel>
                             </td>
-                            <td colspan="3">
+                            <td colspan="5">
                                 <asp:Panel ID="pnltxtNombre" runat="server" Width="100%">
                                     <asp:TextBox ID="txtNombre" runat="server" CssClass="TextBox"></asp:TextBox>
                                 </asp:Panel>
                             </td>
                             <td>
                                 <asp:Panel ID="pnlBuscar" runat="server" Width="100%">
-                                    <asp:Button ID="btnBuscar" runat="server" Text="Buscar" OnClick="BtnBuscarClick" CssClass="btn-primary"/>
+                                    <asp:Button ID="btnBuscar" runat="server" Text="Buscar" OnClick="BtnBuscarClick" CssClass="btn-primary" CausesValidation="False" />
                                 </asp:Panel>
                             </td>
                             <td>
-                                <asp:RequiredFieldValidator ID="rfvNombre" runat="server" ErrorMessage="RequiredFieldValidator"
-                                    ControlToValidate="txtNombre" ValidationGroup="1"></asp:RequiredFieldValidator>
+                                <asp:RequiredFieldValidator ID="rfvNombre" runat="server" ErrorMessage="Debe ingresar un tipo de documento"
+                                    ControlToValidate="txtNombre" ValidationGroup="1" CssClass="Validator"></asp:RequiredFieldValidator>
                             </td>
                         </tr>
                         <tr>
@@ -62,23 +62,31 @@
                                 <td>
                                     Resultados:
                                 </td>
-                                <td colspan="4">
+                                <td colspan="5">
                                     <asp:ListBox ID="lstResultados" runat="server" CssClass="ListBox"></asp:ListBox>
                                 </td>
                             </asp:Panel>
                         </tr>
                         <tr>
-                            <td colspan="5">
-                                <asp:Panel ID="pnlRegistrar" runat="server" Width="100%">
-                                    <asp:Button ID="btnRegistrar" runat="server" Text="Registrar" OnClick="BtnRegistrarClick" CssClass="btn-primary"/>
+                            <td align=center>
+                                <asp:Panel ID="pnlRegistrar" runat="server">
+                                    <asp:Button ID="btnRegistrar" runat="server" Text="Registrar" OnClick="BtnRegistrarClick" CssClass="btn-primary" ValidationGroup="1" />
                                 </asp:Panel>
+                            </td>
+                            <td>
                                 <asp:Panel ID="pnlSeleccionar" runat="server" Visible="false">
-                                    <asp:Button ID="btnSeleccionar" runat="server" Text="Seleccionar" OnClick="BtnSeleccionarClick" CssClass="btn-primary"/>
+                                    <asp:Button ID="btnSeleccionar" runat="server" Text="Seleccionar" OnClick="BtnSeleccionarClick" CssClass="btn-primary" CausesValidation="False" />
                                    </asp:Panel>
+                            </td>
+                            <td>
                                 <asp:Panel ID=pnlCambio runat=server Visible=false>
-                                    <asp:Button ID="btnModificar" runat="server" Text="Modificar" OnClick="BtnModificarClick" CssClass="btn-primary"/>
+                                    <asp:Button ID="btnModificar" runat="server" Text="Modificar" OnClick="BtnModificarClick" CssClass="btn-primary" CausesValidation="False" />
+                                </asp:Panel>
+                            </td>
+                            <td>
+                                <asp:Panel runat=server ID="pnl8" Visible=false>
                                     <!--<asp:Button ID="btneliminar" runat="server" Text="Eliminar" />-->
-                                    <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar" OnClick="BtnLimpiarClick" CssClass="btn-primary"/>
+                                    <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar" OnClick="BtnLimpiarClick" CssClass="btn-primary" CausesValidation="False" />
                                 </asp:Panel>
                             </td>
                         </tr>
