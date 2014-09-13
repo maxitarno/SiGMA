@@ -166,10 +166,10 @@ namespace SiGMA
                 txtNombre.Text = persona.nombre;
                 txtDomicilio.Text = persona.domicilio;
                 ddlLocalidades.SelectedValue = localidad.idLocalidad.ToString();
-                if (barrio.idBarrio.ToString().Equals("0"))
-                {
+                /*if (barrio.idBarrio.ToString().Equals("0"))
+                {*/
                     ddlBarrios.SelectedValue = barrio.idBarrio.ToString();
-                }
+                //}
                 txtTelefonoFijo.Text = persona.telefonoFijo;
                 txtTelefonoCelular.Text = persona.telefonoCelular;
                 txtMail.Text = persona.email;
@@ -226,11 +226,6 @@ namespace SiGMA
         public void btnModificarClick(object sender, EventArgs e)
         {
             EPersona persona = new EPersona();
-            persona.apellido = txtApellido.Text;
-            persona.domicilio = txtDomicilio.Text;
-            persona.email = txtMail.Text;
-            persona.barrio.idBarrio = int.Parse(ddlBarrios.SelectedValue);
-            persona.tipoDocumento.idTipoDeDocumento = int.Parse(ddlTipoDeDocumento.SelectedValue);
             DateTime fecha = new DateTime();
             if (ddlTipoDeDocumento.SelectedValue.Equals("0"))
             {
@@ -255,6 +250,13 @@ namespace SiGMA
                                 persona.telefonoCelular = txtTelefonoCelular.Text;
                                 persona.telefonoFijo = txtTelefonoFijo.Text;
                                 persona.fechaNacimiento = fecha;
+                                persona.apellido = txtApellido.Text;
+                                persona.domicilio = txtDomicilio.Text;
+                                persona.email = txtMail.Text;
+                                persona.barrio = new EBarrio();
+                                persona.barrio.idBarrio = int.Parse(ddlBarrios.SelectedValue);
+                                persona.tipoDocumento = new ETipoDeDocumento();
+                                persona.tipoDocumento.idTipoDeDocumento = int.Parse(ddlTipoDeDocumento.SelectedValue);
                                 EUsuario usuario = new EUsuario();
                                 usuario.user = txtUsuario.Text;
                                 if (usuario.user != "")

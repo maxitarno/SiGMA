@@ -103,7 +103,7 @@ namespace AccesoADatos
         public static void BuscarUsuarios(string nombre, EUsuario user, EPersona persona, EBarrio barrio, ELocalidad localidad, ETipoDeDocumento tipoDoc)
         {
             SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
-            var consulta1 = from usuariosBD in mapaEntidades.Usuarios join personasBD in mapaEntidades.Personas
+            /*var consulta1 = from usuariosBD in mapaEntidades.Usuarios join personasBD in mapaEntidades.Personas
                            on usuariosBD.user equals personasBD.user into group1
                            from G1 in group1.DefaultIfEmpty()
                            join barriosBD in mapaEntidades.Barrios on G1.idBarrio equals barriosBD.idBarrio into group2
@@ -117,12 +117,33 @@ namespace AccesoADatos
                                persona = G1,
                                barrio = G2,
                                localidad = G3
-                            };
+                            };*/
+            var consulta1 = from usuariosBD in mapaEntidades.Usuarios
+                            from PersonaBD in mapaEntidades.Personas
+                            from BarrioBD in mapaEntidades.Barrios
+                            from LocalidadesBD in mapaEntidades.Localidades
+                            where (usuariosBD.user == PersonaBD.user && PersonaBD.idBarrio == BarrioBD.idBarrio && BarrioBD.idLocalidad == LocalidadesBD.idLocalidad && usuariosBD.user == nombre && usuariosBD.estado == true)
+                            select new
+                            {
+                                usuario = usuariosBD.user,
+                                apellido = PersonaBD.apellido,
+                                nombre = PersonaBD.nombre,
+                                barrio = BarrioBD.idBarrio,
+                                localidad = LocalidadesBD.idLocalidad,
+                                domicilio = PersonaBD.domicilio,
+                                email = PersonaBD.email,
+                                fecha = PersonaBD.fechaNacimiento,
+                                tipo = PersonaBD.idTipoDocumento,
+                                n = PersonaBD.nroDocumento,
+                                TC = PersonaBD.telefonoCelular,
+                                TF = PersonaBD.telefonoFijo,
+                                personaId = PersonaBD.idPersona,
+                             };
             try
             {
                 foreach (var usuario in consulta1)
                 {
-                    persona.apellido = usuario.persona.apellido;
+                    /*persona.apellido = usuario.persona.apellido;
                     persona.nombre = usuario.persona.nombre;
                     barrio.idBarrio = (usuario.barrio == null) ? 0 : usuario.barrio.idBarrio;
                     persona.domicilio = usuario.persona.domicilio;
@@ -134,7 +155,21 @@ namespace AccesoADatos
                     persona.telefonoCelular = usuario.persona.telefonoCelular;
                     localidad.idLocalidad = (usuario.localidad == null) ? 0 : usuario.localidad.idLocalidad;
                     user.user = usuario.persona.user;
-                    persona.idPersona = usuario.persona.idPersona;
+                    persona.idPersona = usuario.persona.idPersona;*/
+                    user.user = usuario.usuario;
+                    barrio.idBarrio = usuario.barrio;
+                    localidad.idLocalidad = usuario.localidad;
+                    persona.apellido = usuario.apellido;
+                    persona.domicilio = usuario.domicilio;
+                    persona.email = usuario.email;
+                    persona.fechaNacimiento = usuario.fecha;
+                    persona.idPersona = usuario.personaId;
+                    persona.nombre = usuario.nombre;
+                    persona.nroDocumento = usuario.n;
+                    persona.telefonoCelular = usuario.TC;
+                    persona.telefonoFijo = usuario.TF;
+                    persona.tipoDocumento = new ETipoDeDocumento();
+                    tipoDoc.idTipoDeDocumento = usuario.tipo;
                 }
             }
             catch (System.Data.EntityCommandCompilationException exc)
