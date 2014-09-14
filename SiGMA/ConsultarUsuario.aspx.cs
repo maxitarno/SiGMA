@@ -168,7 +168,7 @@ namespace SiGMA
                 txtNºDeDocumento.Text = persona.nroDocumento;
                 txtApellido.Text = persona.apellido;
                 txtNombre.Text = persona.nombre;
-                txtDomicilio.Text = calle.nombre + " " + calle.numeroCalle;
+                txtDomicilio.Text = calle.nombre + " "; // falta agregar el numero de la calle aca
                 ddlLocalidades.SelectedValue = localidad.idLocalidad.ToString();
                 /*if (barrio.idBarrio.ToString().Equals("0"))
                 {*/

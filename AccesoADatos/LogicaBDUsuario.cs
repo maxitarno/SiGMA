@@ -171,7 +171,7 @@ namespace AccesoADatos
                     persona.telefonoFijo = usuario.TF;
                     persona.tipoDocumento = new ETipoDeDocumento();
                     tipoDoc.idTipoDeDocumento = usuario.tipo;
-                    calle.numeroCalle = (int)usuario.numero;
+                    //calle.numeroCalle = (int)usuario.numero;
                     calle.idCalle = usuario.calle;
                 }
             }

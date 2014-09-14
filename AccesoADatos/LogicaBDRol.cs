@@ -113,8 +113,7 @@ namespace AccesoADatos
                                                        where (permisos.idRol == idRol)
                                                        select permisos;
             try
-            {
-                var i = 0;
+            {                
                 foreach (var permisos in ListaPermisos)
                 {
                     EPermiso per = new EPermiso();

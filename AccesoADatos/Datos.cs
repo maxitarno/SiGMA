@@ -494,7 +494,7 @@ namespace AccesoADatos
                 {
                     ECalle calle = new ECalle();
                     calle.nombre = registro.nombre;
-                    calle.idLocalidad = (int)registro.idLocalidad;
+                    calle.localidad.idLocalidad = (int)registro.idLocalidad;
                     calle.idCalle = registro.idCalle;
                     calles.Add(calle);
                 }
@@ -518,7 +518,7 @@ namespace AccesoADatos
                 {
                     ECalle calle = new ECalle();
                     calle.nombre = registro.nombre;
-                    calle.idLocalidad = (int)registro.idLocalidad;
+                    calle.localidad.idLocalidad = (int)registro.idLocalidad;
                     calle.idCalle = registro.idCalle;
                     calles.Add(calle);
                 }
