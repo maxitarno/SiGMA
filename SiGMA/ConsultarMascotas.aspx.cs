@@ -24,11 +24,11 @@ namespace SiGMA
                         Response.Redirect("PermisosInsuficientes.aspx");
                     if (!LogicaBDRol.verificarPermisosGrabacion(Session["UsuarioLogueado"].ToString(), "ConsultarMascotas.aspx"))
                     {
-                        btnModificar.Visible = false;
-                        btnLimpiar.Visible = false;
+                        btnModificar.Visible = true;
+                        btnLimpiar.Visible = true;
                     }
                     if (!LogicaBDRol.verificarPermisosEliminacion(Session["UsuarioLogueado"].ToString(), "ConsultarMascotas.aspx"))
-                        btnEliminar.Visible = false;
+                        btnEliminar.Visible = true;
                 }
                 else
                 {
@@ -117,7 +117,9 @@ namespace SiGMA
                     lstResultados.DataTextField = "nombreMascota";
                     lstResultados.DataValueField = "idMascota";
                     lstResultados.DataBind();
+                    pnlCorrecto.Visible = false;
                     pnlInfo.Visible = false;
+                    pnlAtento.Visible = false;
                 }
                 else
                 {
@@ -144,7 +146,9 @@ namespace SiGMA
                     lstResultados.DataBind();
                     pnlNombre.Visible = false;
                     pnltxtNombreDueñio.Visible = false;
+                    pnlCorrecto.Visible = false;
                     pnlInfo.Visible = false;
+                    pnlAtento.Visible = false;
                 }
                 else
                 {
@@ -361,7 +365,7 @@ namespace SiGMA
                                         else
                                         {
                                             pnlInfo.Visible = true;
-                                            lblResultado2.Text = "Debe selecionar un trato";
+                                            lblResultado2.Text = "Debe seleccionar un trato";
                                             pnlCorrecto.Visible = false;
                                             pnlAtento.Visible = false;
                                         }
@@ -369,7 +373,7 @@ namespace SiGMA
                                     else
                                     {
                                         pnlInfo.Visible = true;
-                                        lblResultado2.Text = "Debe selecionar un sexo";
+                                        lblResultado2.Text = "Debe seleccionar un sexo";
                                         pnlCorrecto.Visible = false;
                                         pnlAtento.Visible = false;
                                     }
@@ -377,7 +381,7 @@ namespace SiGMA
                                 else
                                 {
                                     pnlInfo.Visible = true;
-                                    lblResultado2.Text = "Debe selecionar un raza";
+                                    lblResultado2.Text = "Debe seleccionar un raza";
                                     pnlCorrecto.Visible = false;
                                     pnlAtento.Visible = false;
                                 }
@@ -385,7 +389,7 @@ namespace SiGMA
                             else
                             {
                                 pnlInfo.Visible = true;
-                                lblResultado2.Text = "Debe selecionar un estado";
+                                lblResultado2.Text = "Debe seleccionar un estado";
                                 pnlCorrecto.Visible = false;
                                 pnlAtento.Visible = false;
                             }
@@ -393,7 +397,7 @@ namespace SiGMA
                         else
                         {
                             pnlInfo.Visible = true;
-                            lblResultado2.Text = "Debe selecionar un especie";
+                            lblResultado2.Text = "Debe seleccionar un especie";
                             pnlCorrecto.Visible = false;
                             pnlAtento.Visible = false;
                         }
@@ -409,7 +413,7 @@ namespace SiGMA
                 else
                 {
                     pnlInfo.Visible = true;
-                    lblResultado2.Text = "Debe selecionar un color";
+                    lblResultado2.Text = "Debe seleccionar un color";
                     pnlCorrecto.Visible = false;
                     pnlAtento.Visible = false;
                 }
@@ -453,7 +457,7 @@ namespace SiGMA
                 pnlCorrecto.Visible = false;
                 pnlInfo.Visible = false;
                 pnlAtento.Visible = true;
-                lblResultado3.Text = "Debe seleccionar el estados defallecido";
+                lblResultado3.Text = "Debe seleccionar el estados de fallecido";
             }
         }
         public void BtnLimpiarClick(object sender, EventArgs e)
