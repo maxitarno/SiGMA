@@ -26,6 +26,8 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Hallazgos_Barrios", "Barrios", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(AccesoADatos.Barrios), "Hallazgos", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Hallazgos), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Perdidas_Barrios", "Barrios", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(AccesoADatos.Barrios), "Perdidas", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Perdidas), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Personas_Barrios", "Barrios", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(AccesoADatos.Barrios), "Personas", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Personas), true)]
+[assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Calles_Localidades", "Localidades", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(AccesoADatos.Localidades), "Calles", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Calles), true)]
+[assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Personas_Calles", "Calles", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(AccesoADatos.Calles), "Personas", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Personas), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Mascotas_CaracteresMascota", "CaracteresMascota", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(AccesoADatos.CaracteresMascota), "Mascotas", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Mascotas), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Razas_CategoriaRazas", "CategoriaRazas", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(AccesoADatos.CategoriaRazas), "Razas", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Razas), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Mascotas_Colores", "Colores", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Colores), "Mascotas", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Mascotas), true)]
@@ -132,6 +134,22 @@ namespace AccesoADatos
             }
         }
         private ObjectSet<Barrios> _Barrios;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Calles> Calles
+        {
+            get
+            {
+                if ((_Calles == null))
+                {
+                    _Calles = base.CreateObjectSet<Calles>("Calles");
+                }
+                return _Calles;
+            }
+        }
+        private ObjectSet<Calles> _Calles;
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -503,6 +521,14 @@ namespace AccesoADatos
         public void AddToBarrios(Barrios barrios)
         {
             base.AddObject("Barrios", barrios);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Calles EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToCalles(Calles calles)
+        {
+            base.AddObject("Calles", calles);
         }
     
         /// <summary>
@@ -1006,12 +1032,10 @@ namespace AccesoADatos
         /// Create a new Barrios object.
         /// </summary>
         /// <param name="idBarrio">Initial value of the idBarrio property.</param>
-        /// <param name="nombre">Initial value of the nombre property.</param>
-        public static Barrios CreateBarrios(global::System.Int32 idBarrio, global::System.String nombre)
+        public static Barrios CreateBarrios(global::System.Int32 idBarrio)
         {
             Barrios barrios = new Barrios();
             barrios.idBarrio = idBarrio;
-            barrios.nombre = nombre;
             return barrios;
         }
 
@@ -1049,7 +1073,7 @@ namespace AccesoADatos
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String nombre
         {
@@ -1061,7 +1085,7 @@ namespace AccesoADatos
             {
                 OnnombreChanging(value);
                 ReportPropertyChanging("nombre");
-                _nombre = StructuralObject.SetValidValue(value, false);
+                _nombre = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("nombre");
                 OnnombreChanged();
             }
@@ -1199,6 +1223,175 @@ namespace AccesoADatos
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Personas>("SiGMAModel.FK_Personas_Barrios", "Personas", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="SiGMAModel", Name="Calles")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Calles : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Calles object.
+        /// </summary>
+        /// <param name="idCalle">Initial value of the idCalle property.</param>
+        public static Calles CreateCalles(global::System.Int32 idCalle)
+        {
+            Calles calles = new Calles();
+            calles.idCalle = idCalle;
+            return calles;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 idCalle
+        {
+            get
+            {
+                return _idCalle;
+            }
+            set
+            {
+                if (_idCalle != value)
+                {
+                    OnidCalleChanging(value);
+                    ReportPropertyChanging("idCalle");
+                    _idCalle = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("idCalle");
+                    OnidCalleChanged();
+                }
+            }
+        }
+        private global::System.Int32 _idCalle;
+        partial void OnidCalleChanging(global::System.Int32 value);
+        partial void OnidCalleChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String nombre
+        {
+            get
+            {
+                return _nombre;
+            }
+            set
+            {
+                OnnombreChanging(value);
+                ReportPropertyChanging("nombre");
+                _nombre = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("nombre");
+                OnnombreChanged();
+            }
+        }
+        private global::System.String _nombre;
+        partial void OnnombreChanging(global::System.String value);
+        partial void OnnombreChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> idLocalidad
+        {
+            get
+            {
+                return _idLocalidad;
+            }
+            set
+            {
+                OnidLocalidadChanging(value);
+                ReportPropertyChanging("idLocalidad");
+                _idLocalidad = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("idLocalidad");
+                OnidLocalidadChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _idLocalidad;
+        partial void OnidLocalidadChanging(Nullable<global::System.Int32> value);
+        partial void OnidLocalidadChanged();
+
+        #endregion
+
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("SiGMAModel", "FK_Calles_Localidades", "Localidades")]
+        public Localidades Localidades
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Localidades>("SiGMAModel.FK_Calles_Localidades", "Localidades").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Localidades>("SiGMAModel.FK_Calles_Localidades", "Localidades").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Localidades> LocalidadesReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Localidades>("SiGMAModel.FK_Calles_Localidades", "Localidades");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Localidades>("SiGMAModel.FK_Calles_Localidades", "Localidades", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("SiGMAModel", "FK_Personas_Calles", "Personas")]
+        public EntityCollection<Personas> Personas
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Personas>("SiGMAModel.FK_Personas_Calles", "Personas");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Personas>("SiGMAModel.FK_Personas_Calles", "Personas", value);
                 }
             }
         }
@@ -2582,12 +2775,10 @@ namespace AccesoADatos
         /// Create a new Localidades object.
         /// </summary>
         /// <param name="idLocalidad">Initial value of the idLocalidad property.</param>
-        /// <param name="nombre">Initial value of the nombre property.</param>
-        public static Localidades CreateLocalidades(global::System.Int32 idLocalidad, global::System.String nombre)
+        public static Localidades CreateLocalidades(global::System.Int32 idLocalidad)
         {
             Localidades localidades = new Localidades();
             localidades.idLocalidad = idLocalidad;
-            localidades.nombre = nombre;
             return localidades;
         }
 
@@ -2625,7 +2816,7 @@ namespace AccesoADatos
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String nombre
         {
@@ -2637,7 +2828,7 @@ namespace AccesoADatos
             {
                 OnnombreChanging(value);
                 ReportPropertyChanging("nombre");
-                _nombre = StructuralObject.SetValidValue(value, false);
+                _nombre = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("nombre");
                 OnnombreChanged();
             }
@@ -2669,6 +2860,28 @@ namespace AccesoADatos
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Barrios>("SiGMAModel.FK_Barrios_Localidades", "Barrios", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("SiGMAModel", "FK_Calles_Localidades", "Calles")]
+        public EntityCollection<Calles> Calles
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Calles>("SiGMAModel.FK_Calles_Localidades", "Calles");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Calles>("SiGMAModel.FK_Calles_Localidades", "Calles", value);
                 }
             }
         }
@@ -4430,6 +4643,54 @@ namespace AccesoADatos
         private global::System.String _user;
         partial void OnuserChanging(global::System.String value);
         partial void OnuserChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> idCalle
+        {
+            get
+            {
+                return _idCalle;
+            }
+            set
+            {
+                OnidCalleChanging(value);
+                ReportPropertyChanging("idCalle");
+                _idCalle = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("idCalle");
+                OnidCalleChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _idCalle;
+        partial void OnidCalleChanging(Nullable<global::System.Int32> value);
+        partial void OnidCalleChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> nroCalle
+        {
+            get
+            {
+                return _nroCalle;
+            }
+            set
+            {
+                OnnroCalleChanging(value);
+                ReportPropertyChanging("nroCalle");
+                _nroCalle = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("nroCalle");
+                OnnroCalleChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _nroCalle;
+        partial void OnnroCalleChanging(Nullable<global::System.Int32> value);
+        partial void OnnroCalleChanged();
 
         #endregion
 
@@ -4470,6 +4731,44 @@ namespace AccesoADatos
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Barrios>("SiGMAModel.FK_Personas_Barrios", "Barrios", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("SiGMAModel", "FK_Personas_Calles", "Calles")]
+        public Calles Calles
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Calles>("SiGMAModel.FK_Personas_Calles", "Calles").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Calles>("SiGMAModel.FK_Personas_Calles", "Calles").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Calles> CallesReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Calles>("SiGMAModel.FK_Personas_Calles", "Calles");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Calles>("SiGMAModel.FK_Personas_Calles", "Calles", value);
                 }
             }
         }
