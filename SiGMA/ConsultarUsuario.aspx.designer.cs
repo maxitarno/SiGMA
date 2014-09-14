@@ -373,6 +373,42 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.DropDownList ddlLocalidades;
         
         /// <summary>
+        /// Control pnlCalle.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlCalle;
+        
+        /// <summary>
+        /// Control pnlDdlCalle.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlDdlCalle;
+        
+        /// <summary>
+        /// Control ddlCalle.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlCalle;
+        
+        /// <summary>
+        /// Control txtNº.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtNº;
+        
+        /// <summary>
         /// Control pnlbarrio.
         /// </summary>
         /// <remarks>

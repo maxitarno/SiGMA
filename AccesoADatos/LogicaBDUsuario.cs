@@ -100,7 +100,7 @@ namespace AccesoADatos
         }
         //fin metodo
         //metodo para buscar persona
-        public static void BuscarUsuarios(string nombre, EUsuario user, EPersona persona, EBarrio barrio, ELocalidad localidad, ETipoDeDocumento tipoDoc)
+        public static void BuscarUsuarios(string nombre, EUsuario user, EPersona persona, EBarrio barrio, ELocalidad localidad, ETipoDeDocumento tipoDoc, ECalle calle)
         {
             SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
             /*var consulta1 = from usuariosBD in mapaEntidades.Usuarios join personasBD in mapaEntidades.Personas
@@ -118,19 +118,20 @@ namespace AccesoADatos
                                barrio = G2,
                                localidad = G3
                             };*/
-            var consulta1 = from usuariosBD in mapaEntidades.Usuarios
+            var consulta1 = from calleBD in mapaEntidades.Calles
+                            from usuariosBD in mapaEntidades.Usuarios
                             from PersonaBD in mapaEntidades.Personas
                             from BarrioBD in mapaEntidades.Barrios
                             from LocalidadesBD in mapaEntidades.Localidades
-                            where (usuariosBD.user == PersonaBD.user && PersonaBD.idBarrio == BarrioBD.idBarrio && BarrioBD.idLocalidad == LocalidadesBD.idLocalidad && usuariosBD.user == nombre && usuariosBD.estado == true)
+                            where (usuariosBD.user == PersonaBD.user && PersonaBD.idBarrio == BarrioBD.idBarrio && BarrioBD.idLocalidad == LocalidadesBD.idLocalidad && PersonaBD.idCalle == calleBD.idCalle && usuariosBD.user == nombre && usuariosBD.estado == true)
                             select new
                             {
+                                calle = calleBD.idCalle,
                                 usuario = usuariosBD.user,
                                 apellido = PersonaBD.apellido,
                                 nombre = PersonaBD.nombre,
                                 barrio = BarrioBD.idBarrio,
                                 localidad = LocalidadesBD.idLocalidad,
-                                domicilio = PersonaBD.domicilio,
                                 email = PersonaBD.email,
                                 fecha = PersonaBD.fechaNacimiento,
                                 tipo = PersonaBD.idTipoDocumento,
@@ -138,6 +139,7 @@ namespace AccesoADatos
                                 TC = PersonaBD.telefonoCelular,
                                 TF = PersonaBD.telefonoFijo,
                                 personaId = PersonaBD.idPersona,
+                                numero = PersonaBD.nroCalle
                              };
             try
             {
@@ -160,7 +162,6 @@ namespace AccesoADatos
                     barrio.idBarrio = usuario.barrio;
                     localidad.idLocalidad = usuario.localidad;
                     persona.apellido = usuario.apellido;
-                    persona.domicilio = usuario.domicilio;
                     persona.email = usuario.email;
                     persona.fechaNacimiento = usuario.fecha;
                     persona.idPersona = usuario.personaId;
@@ -170,6 +171,8 @@ namespace AccesoADatos
                     persona.telefonoFijo = usuario.TF;
                     persona.tipoDocumento = new ETipoDeDocumento();
                     tipoDoc.idTipoDeDocumento = usuario.tipo;
+                    calle.numeroCalle = (int)usuario.numero;
+                    calle.idCalle = usuario.calle;
                 }
             }
             catch (System.Data.EntityCommandCompilationException exc)

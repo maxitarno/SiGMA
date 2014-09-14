@@ -166,6 +166,20 @@
                     </tr>
                     <tr>
                         <td>
+                            <asp:Panel ID="pnlCalle" runat=server Visible=false>
+                                Calle:
+                            </asp:Panel>
+                        </td>
+                        <td>
+                            <asp:Panel runat=server Visible=false ID=pnlDdlCalle>
+                                <asp:DropDownList ID="ddlCalle" runat="server">
+                                </asp:DropDownList> Nº 
+                                <asp:TextBox ID="txtNº" runat="server"></asp:TextBox>
+                            </asp:Panel>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
                             <asp:Panel ID="pnlbarrio" runat="server" Visible="false">
                                 Barrios:&nbsp
                             </asp:Panel>

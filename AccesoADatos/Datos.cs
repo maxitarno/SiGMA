@@ -291,6 +291,7 @@ namespace AccesoADatos
                     EBarrio barrio = new EBarrio();
                     barrio.idBarrio = registro.idBarrio;
                     barrio.nombre = registro.nombre;
+                    barrio.localidad = new ELocalidad();
                     barrio.localidad.idLocalidad = (int)registro.idLocalidad;
                     barrios.Add(barrio);
                 }
@@ -480,6 +481,53 @@ namespace AccesoADatos
                 throw exc;
             }
             return cuidados;
+        }
+        public static List<ECalle> BuscarCalle()
+        {
+            List<ECalle> calles = new List<ECalle>();
+            SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+            IQueryable<Calles> consulta = from callesDB in mapaEntidades.Calles
+                                         select callesDB;
+            try
+            {
+                foreach (var registro in consulta)
+                {
+                    ECalle calle = new ECalle();
+                    calle.nombre = registro.nombre;
+                    calle.idLocalidad = (int)registro.idLocalidad;
+                    calle.idCalle = registro.idCalle;
+                    calles.Add(calle);
+                }
+            }
+            catch (System.Data.EntityCommandCompilationException exc)
+            {
+                throw exc;
+            }
+            return calles;
+        }
+        public static List<ECalle> BuscarCalle(int localidad)
+        {
+            List<ECalle> calles = new List<ECalle>();
+            SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+            IQueryable<Calles> consulta = from callesDB in mapaEntidades.Calles
+                                          where(callesDB.idLocalidad == localidad)
+                                          select callesDB;
+            try
+            {
+                foreach (var registro in consulta)
+                {
+                    ECalle calle = new ECalle();
+                    calle.nombre = registro.nombre;
+                    calle.idLocalidad = (int)registro.idLocalidad;
+                    calle.idCalle = registro.idCalle;
+                    calles.Add(calle);
+                }
+            }
+            catch (System.Data.EntityCommandCompilationException exc)
+            {
+                throw exc;
+            }
+            return calles;
         }
     }
 }

@@ -171,5 +171,21 @@ namespace Herramientas
                 ddl.Items.Add(new ListItem(item.descripcion.ToString(), item.idCuidado.ToString()));
             }
         }
+        public static void cargarCalles(ref DropDownList ddl)
+        {
+            List<ECalle> calles = Datos.BuscarCalle();
+            foreach (ECalle item in calles)
+            {
+                ddl.Items.Add(new ListItem(item.nombre.ToString(), item.idCalle.ToString()));
+            }
+        }
+        public static void cargarCalles(ref DropDownList ddl, int localidad)
+        {
+            List<ECalle> calles = Datos.BuscarCalle(localidad);
+            foreach (ECalle item in calles)
+            {
+                ddl.Items.Add(new ListItem(item.nombre.ToString(), item.idCalle.ToString()));
+            }
+        }
     }
 }

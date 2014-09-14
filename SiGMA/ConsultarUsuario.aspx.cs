@@ -20,9 +20,9 @@ namespace SiGMA
                     if (!LogicaBDRol.verificarPermisoVisualizacion(Session["UsuarioLogueado"].ToString(), "ConsultarUsuario.aspx"))
                         Response.Redirect("PermisosInsuficientes.aspx");
                     if (!LogicaBDRol.verificarPermisosGrabacion(Session["UsuarioLogueado"].ToString(), "ConsultarUsuario.aspx"))
-                        btnModificar.Visible = false;
+                        btnModificar.Visible = true;
                     if (!LogicaBDRol.verificarPermisosEliminacion(Session["UsuarioLogueado"].ToString(), "ConsultarUsuario.aspx"))
-                        btnEliminar.Visible = false;
+                        btnEliminar.Visible = true;
                 }
                 else
                 {
@@ -66,6 +66,9 @@ namespace SiGMA
                 pnlAtento.Visible = false;
                 pnlCorrecto.Visible = false;
                 pnlEliminar.Visible = false;
+                CargarCombos.cargarCalles(ref ddlCalle);
+                pnlCalle.Visible = false;
+                pnlDdlCalle.Visible = false;
             }
         }
         public void btnBuscarClick(object sender, EventArgs e){
@@ -156,15 +159,16 @@ namespace SiGMA
             ETipoDeDocumento tipodoc = new ETipoDeDocumento();
             EPersona persona = new EPersona();
             EUsuario usuario = new EUsuario();
+            ECalle calle = new ECalle();
             if (lstResultados.SelectedValue != "")
             {
-                LogicaBDUsuario.BuscarUsuarios(lstResultados.SelectedValue, usuario, persona, barrio, localidad, tipodoc);
+                LogicaBDUsuario.BuscarUsuarios(lstResultados.SelectedValue, usuario, persona, barrio, localidad, tipodoc, calle);
                 txtUsuario.Text = usuario.user;
                 ddlTipoDeDocumento.SelectedValue = tipodoc.idTipoDeDocumento.ToString();
                 txtNºDeDocumento.Text = persona.nroDocumento;
                 txtApellido.Text = persona.apellido;
                 txtNombre.Text = persona.nombre;
-                txtDomicilio.Text = persona.domicilio;
+                txtDomicilio.Text = calle.nombre + " " + calle.numeroCalle;
                 ddlLocalidades.SelectedValue = localidad.idLocalidad.ToString();
                 /*if (barrio.idBarrio.ToString().Equals("0"))
                 {*/
@@ -176,7 +180,7 @@ namespace SiGMA
                 txtFecha.Text = persona.fechaNacimiento != null ? persona.fechaNacimiento.Value.ToShortDateString() : null;
                 Session["persona"] = persona.idPersona;
                 pnlUser.Visible = true;
-                pnlBuscar.Visible = false;
+                pnlBuscar.Visible = true;
                 pnlUsuario.Visible = true;
                 pnlType.Visible = true;
                 pnlNºDeDocumento.Visible = true;
@@ -213,6 +217,8 @@ namespace SiGMA
                 btnEliminar.Visible = true;
                 pnlresult.Visible = false;
                 pnlResultados.Visible = false;
+                pnlDdlCalle.Visible = true;
+                ddlCalle.SelectedValue = calle.idCalle.ToString();
             }
             else
             {
@@ -552,6 +558,7 @@ namespace SiGMA
                 ddlBarrios.Items.Clear();
                 CargarCombos.cargarBarrio(ref ddlBarrios, int.Parse(ddlLocalidades.SelectedValue.ToString()));
                 pnlInfo.Visible = false;
+                CargarCombos.cargarCalles(ref ddlCalle, int.Parse(ddlLocalidades.SelectedValue.ToString()));
             }
         }
     }
