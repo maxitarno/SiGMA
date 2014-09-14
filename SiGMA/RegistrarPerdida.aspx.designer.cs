@@ -166,31 +166,40 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.TextBox txtDatosDueño;
         
         /// <summary>
-        /// txtDomicilio control.
+        /// ddlCalles control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDomicilio;
+        protected global::System.Web.UI.WebControls.DropDownList ddlCalles;
         
         /// <summary>
-        /// ddlBarrio control.
+        /// txtNroCalle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlBarrio;
+        protected global::System.Web.UI.WebControls.TextBox txtNroCalle;
         
         /// <summary>
-        /// ddlLocalidad control.
+        /// ddlBarrios control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlLocalidad;
+        protected global::System.Web.UI.WebControls.DropDownList ddlBarrios;
+        
+        /// <summary>
+        /// ddlLocalidades control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlLocalidades;
         
         /// <summary>
         /// txtMascotaPerdida control.

@@ -30,6 +30,7 @@ namespace SiGMA
                 }
                 CargarCombos.cargarBarrio(ref ddlBarrios);
                 CargarCombos.cargarLocalidades(ref ddlLocalidades);
+                CargarCombos.cargarCalles(ref ddlCalle);
                 CargarCombos.cargarTipoDocumento(ref ddlTipoDeDocumento);
                 pnlUser.Visible = true;
                 pnlBuscar.Visible = true;
@@ -66,7 +67,6 @@ namespace SiGMA
                 pnlAtento.Visible = false;
                 pnlCorrecto.Visible = false;
                 pnlEliminar.Visible = false;
-                CargarCombos.cargarCalles(ref ddlCalle);
                 pnlCalle.Visible = false;
                 pnlDdlCalle.Visible = false;
             }
@@ -170,10 +170,7 @@ namespace SiGMA
                 txtNombre.Text = persona.nombre;
                 txtDomicilio.Text = calle.nombre + " "; // falta agregar el numero de la calle aca
                 ddlLocalidades.SelectedValue = localidad.idLocalidad.ToString();
-                /*if (barrio.idBarrio.ToString().Equals("0"))
-                {*/
-                    ddlBarrios.SelectedValue = barrio.idBarrio.ToString();
-                //}
+                ddlBarrios.SelectedValue = barrio.idBarrio.ToString();
                 txtTelefonoFijo.Text = persona.telefonoFijo;
                 txtTelefonoCelular.Text = persona.telefonoCelular;
                 txtMail.Text = persona.email;

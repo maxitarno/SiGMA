@@ -31,6 +31,9 @@ namespace SiGMA
             CargarCombos.cargarComboRazas(ref ddlRaza);
             CargarCombos.cargarSexo(ref ddlSexo);
             CargarCombos.cargarCaracteresMascota(ref ddlCaracter);
+            CargarCombos.cargarBarrio(ref ddlBarrios);
+            CargarCombos.cargarLocalidades(ref ddlLocalidades);
+            CargarCombos.cargarCalles(ref ddlCalles);
         }
 
         protected void btnBuscar_Click(object sender, EventArgs e)

@@ -10,6 +10,7 @@ namespace Entidades
         public int idPersona { get; set; }
         public string nombre { get; set; }
         public string apellido { get; set; }
+        public int? nroCalle { get; set; }
         public string nroDocumento { get; set; }
         public string email { get; set; }
 		public string emailAlternativo { get; set; }

@@ -90,19 +90,20 @@
                             </td>
                         </tr>
                         <tr>
-                                <td>
-                                    Domicilio:
-                                </td>
-                                <td>
-                                    <asp:TextBox ID="txtDomicilio" ReadOnly="True" runat="server" Width="100%"></asp:TextBox>
-                                </td>
-                            </tr>
+                            <td>
+                                Domicilio:
+                            </td>
+                            <td>
+                                <asp:DropDownList ID="ddlCalles" ReadOnly="True" runat="server" Width="100%" AppendDataBoundItems="True">
+                                </asp:DropDownList> - <asp:TextBox ID="txtNroCalle" ReadOnly="True" runat="server" style="width:30" ></asp:TextBox>
+                            </td>
+                        </tr>
                         <tr>
                             <td>
                                 Barrio:
                             </td>
                             <td>
-                                <asp:DropDownList ID="ddlBarrio" ReadOnly="True" runat="server" Width="100%" AppendDataBoundItems="True">
+                                <asp:DropDownList ID="ddlBarrios" ReadOnly="True" runat="server" Width="100%" AppendDataBoundItems="True">
                                 </asp:DropDownList>
                             </td>
                         </tr>
@@ -111,7 +112,7 @@
                                 Localidad:
                             </td>
                             <td>
-                                <asp:DropDownList ID="ddlLocalidad" ReadOnly="True" runat="server" Width="100%" AppendDataBoundItems="False">
+                                <asp:DropDownList ID="ddlLocalidades" ReadOnly="True" runat="server" Width="100%" AppendDataBoundItems="False">
                                 </asp:DropDownList>
                             </td>
                         </tr>

@@ -103,49 +103,29 @@ namespace AccesoADatos
         public static void BuscarUsuarios(string nombre, EUsuario user, EPersona persona, EBarrio barrio, ELocalidad localidad, ETipoDeDocumento tipoDoc, ECalle calle)
         {
             SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
-            /*var consulta1 = from usuariosBD in mapaEntidades.Usuarios join personasBD in mapaEntidades.Personas
+            var consulta1 = from usuariosBD in mapaEntidades.Usuarios join personasBD in mapaEntidades.Personas
                            on usuariosBD.user equals personasBD.user into group1
                            from G1 in group1.DefaultIfEmpty()
                            join barriosBD in mapaEntidades.Barrios on G1.idBarrio equals barriosBD.idBarrio into group2
                            from G2 in group2.DefaultIfEmpty()
                            join localidadesBD in mapaEntidades.Localidades on G2.idLocalidad equals localidadesBD.idLocalidad into group3
                            from G3 in group3.DefaultIfEmpty()
-                           where ( G1.user == nombre || G3 == null )
+                           join calleBD in mapaEntidades.Calles on G1.idCalle equals calleBD.idCalle into group4
+                           from G4 in group4.DefaultIfEmpty()
+                           where (G1.user == nombre && usuariosBD.estado == true)
                            select new 
                            {
                                user = usuariosBD,
                                persona = G1,
                                barrio = G2,
-                               localidad = G3
-                            };*/
-            var consulta1 = from calleBD in mapaEntidades.Calles
-                            from usuariosBD in mapaEntidades.Usuarios
-                            from PersonaBD in mapaEntidades.Personas
-                            from BarrioBD in mapaEntidades.Barrios
-                            from LocalidadesBD in mapaEntidades.Localidades
-                            where (usuariosBD.user == PersonaBD.user && PersonaBD.idBarrio == BarrioBD.idBarrio && BarrioBD.idLocalidad == LocalidadesBD.idLocalidad && PersonaBD.idCalle == calleBD.idCalle && usuariosBD.user == nombre && usuariosBD.estado == true)
-                            select new
-                            {
-                                calle = calleBD.idCalle,
-                                usuario = usuariosBD.user,
-                                apellido = PersonaBD.apellido,
-                                nombre = PersonaBD.nombre,
-                                barrio = BarrioBD.idBarrio,
-                                localidad = LocalidadesBD.idLocalidad,
-                                email = PersonaBD.email,
-                                fecha = PersonaBD.fechaNacimiento,
-                                tipo = PersonaBD.idTipoDocumento,
-                                n = PersonaBD.nroDocumento,
-                                TC = PersonaBD.telefonoCelular,
-                                TF = PersonaBD.telefonoFijo,
-                                personaId = PersonaBD.idPersona,
-                                numero = PersonaBD.nroCalle
-                             };
+                               localidad = G3,
+                               calle = G4
+                            };
             try
             {
                 foreach (var usuario in consulta1)
                 {
-                    /*persona.apellido = usuario.persona.apellido;
+                    persona.apellido = usuario.persona.apellido;
                     persona.nombre = usuario.persona.nombre;
                     barrio.idBarrio = (usuario.barrio == null) ? 0 : usuario.barrio.idBarrio;
                     persona.domicilio = usuario.persona.domicilio;
@@ -157,22 +137,9 @@ namespace AccesoADatos
                     persona.telefonoCelular = usuario.persona.telefonoCelular;
                     localidad.idLocalidad = (usuario.localidad == null) ? 0 : usuario.localidad.idLocalidad;
                     user.user = usuario.persona.user;
-                    persona.idPersona = usuario.persona.idPersona;*/
-                    user.user = usuario.usuario;
-                    barrio.idBarrio = usuario.barrio;
-                    localidad.idLocalidad = usuario.localidad;
-                    persona.apellido = usuario.apellido;
-                    persona.email = usuario.email;
-                    persona.fechaNacimiento = usuario.fecha;
-                    persona.idPersona = usuario.personaId;
-                    persona.nombre = usuario.nombre;
-                    persona.nroDocumento = usuario.n;
-                    persona.telefonoCelular = usuario.TC;
-                    persona.telefonoFijo = usuario.TF;
-                    persona.tipoDocumento = new ETipoDeDocumento();
-                    tipoDoc.idTipoDeDocumento = usuario.tipo;
-                    //calle.numeroCalle = (int)usuario.numero;
-                    calle.idCalle = usuario.calle;
+                    persona.idPersona = usuario.persona.idPersona;
+                    persona.nroCalle = usuario.persona.nroCalle;
+                    calle.idCalle = usuario.persona.idCalle;
                 }
             }
             catch (System.Data.EntityCommandCompilationException exc)
