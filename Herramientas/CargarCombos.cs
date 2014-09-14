@@ -147,5 +147,29 @@ namespace Herramientas
                 ddl.Items.Add(new ListItem(item.nombre.ToString(), item.idTipoDeDocumento.ToString()));
             }
         }
+        public static void cargarRazaLista(ref ListBox ddl, string raza, int idEspecie)
+        {
+            List<ERaza> razas = Datos.BuscarRazas(idEspecie, raza);
+            foreach (ERaza item in razas)
+            {
+                ddl.Items.Add(new ListItem(item.nombreRaza.ToString(), item.idRaza.ToString()));
+            }
+        }
+        public static void cargarCategorias(ref DropDownList ddl)
+        {
+            List<ECategoriaRaza> categorias = Datos.BuscarCategoriasDeRazas();
+            foreach (ECategoriaRaza item in categorias)
+            {
+                ddl.Items.Add(new ListItem(item.nombreCategoriaRaza.ToString(), item.idCategoriaRaza.ToString()));
+            }
+        }
+        public static void cargarCuidados(ref DropDownList ddl)
+        {
+            List<ECuidado> categorias = Datos.BuscarCuidado();
+            foreach (ECuidado item in categorias)
+            {
+                ddl.Items.Add(new ListItem(item.descripcion.ToString(), item.idCuidado.ToString()));
+            }
+        }
     }
 }

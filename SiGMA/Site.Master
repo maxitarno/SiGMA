@@ -126,7 +126,8 @@
                 <li><a href="CABMTipoDeDocumento.aspx">Consultar y modificar tipos de documentos</a></li>
                 <li><a href="AsignarPermisos.aspx">Asignar Permisos a Rol</a></li>
                  <li><a href="RegistrarRoles.aspx">Gestionar Roles</a></li>
-                
+                 <li class="divider"></li>
+                 <li><a href=CABMRazas.aspx>Consultar y modificar razas</a></li>
             </ul>
         </div>
     </div>

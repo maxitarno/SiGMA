@@ -402,5 +402,84 @@ namespace AccesoADatos
                 }
             }
         }*/
+        public static List<ERaza> BuscarRazas(int idEspecie, string nombre)
+        {
+            List<ERaza> razas = new List<ERaza>();
+            SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+            IQueryable<Razas> consulta = from razaDB in mapaEntidades.Razas
+                                         where (razaDB.idEspecie == idEspecie && razaDB.nombreRaza.Contains(nombre))
+                                         select razaDB;
+            try
+            {
+                foreach (var registro in consulta)
+                {
+                    ERaza raza = new ERaza();
+                    raza.idRaza = registro.idRaza;
+                    raza.nombreRaza = registro.nombreRaza;
+                    razas.Add(raza);
+                }
+            }
+            catch (System.Data.EntityCommandCompilationException exc)
+            {
+                throw exc;
+            }
+            return razas;
+        }
+        public static ERaza BuscarRaza(int id)
+        {
+            ERaza raza = new ERaza();
+            SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+            var consulta = from razaDB in mapaEntidades.Razas
+                           from categoriaRazaDB in mapaEntidades.CategoriaRazas
+                           from cuidadoDB in mapaEntidades.CuidadosEspeciales
+                           where (razaDB.idRaza == id && razaDB.idCuidadoEspecial == cuidadoDB.idCuidadoEspecial && razaDB.idCategoriaRaza == categoriaRazaDB.idCategoriaRazas)
+                           select new
+                           {
+                               idRaza = razaDB.idRaza,
+                               nombre = razaDB.nombreRaza,
+                               categoria = razaDB.idCategoriaRaza,
+                               cuidado = razaDB.idCuidadoEspecial,
+                               peso = razaDB.PesoRaza,
+                               idEspecie = razaDB.idEspecie
+                           };
+            try
+            {
+                foreach (var registro in consulta)
+                {
+                    raza.nombreRaza = registro.nombre;
+                    raza.idCategoriaRaza = (int)registro.categoria;
+                    raza.idcuidadoEspecial = (int)registro.cuidado;
+                    raza.idRaza = registro.idRaza;
+                    raza.pesoRaza = registro.peso;
+                }
+            }
+            catch (Exception exc)
+            {
+                throw exc;
+            }
+            return raza;
+        }
+        public static List<ECuidado> BuscarCuidado()
+        {
+            List<ECuidado> cuidados = new List<ECuidado>();
+            SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+            IQueryable<CuidadosEspeciales> consulta = from CuidadoDB in mapaEntidades.CuidadosEspeciales
+                                                  select CuidadoDB;
+            try
+            {
+                foreach (var registro in consulta)
+                {
+                    ECuidado cuidado = new ECuidado();
+                    cuidado.idCuidado = registro.idCuidadoEspecial;
+                    cuidado.descripcion = registro.descripcion;
+                    cuidados.Add(cuidado);
+                }
+            }
+            catch (System.Data.EntityCommandCompilationException exc)
+            {
+                throw exc;
+            }
+            return cuidados;
+        }
     }
 }
