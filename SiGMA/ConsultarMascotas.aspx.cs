@@ -234,8 +234,9 @@ namespace SiGMA
         {
             if (Session["imagen"] != null)
             {
-                return (byte[])Session["imagen"];
+                var imagen = (byte[])Session["imagen"];
                 Session["imagen"] = null;
+                return imagen;
             }
             else
                 return null;

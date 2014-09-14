@@ -76,8 +76,46 @@
                             </tr>
                         </table>
                     </asp:Panel>
+                    <asp:Panel Visible="false" runat="server" ID="pnlImagen">
+                        <img id="imgprvw" style="border: 2px solid #000000;" runat="server" src="~/App_Themes/TemaSigma/imagenes/sin_imagen_disponible.jpg" />
+                     </asp:Panel>
                     <table>
                         <asp:Panel ID="pnlRegistrarPerdida" runat="server" Width="100%" Visible="false">
+                         <tr>
+                            <td>
+                                Dueño:
+                            </td>
+                            <td>
+                                <asp:TextBox ID="txtDatosDueño" ReadOnly="True" runat="server" Width="100%"></asp:TextBox>
+                            </td>
+                        </tr>
+                        <tr>
+                                <td>
+                                    Domicilio:
+                                </td>
+                                <td>
+                                    <asp:TextBox ID="txtDomicilio" ReadOnly="True" runat="server" Width="100%"></asp:TextBox>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td>
+                                Barrio:
+                            </td>
+                            <td>
+                                <asp:DropDownList ID="ddlBarrio" ReadOnly="True" runat="server" Width="100%" AppendDataBoundItems="True">
+                                </asp:DropDownList>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Localidad:
+                            </td>
+                            <td>
+                                <asp:DropDownList ID="ddlLocalidad" ReadOnly="True" runat="server" Width="100%" AppendDataBoundItems="False">
+                                </asp:DropDownList>
+                            </td>
+                        </tr>
+                        
                         <tr>
                             <td>
                                 Mascota:
@@ -157,8 +195,8 @@
                             <td>
                                 <asp:DropDownList ID="ddlTratoAnimales" runat="server" Width="100%" ReadOnly="True">
                                     <asp:ListItem Selected="True" Value="0" Text="-- Seleccione una opción"></asp:ListItem>
-                                    <asp:ListItem Text="Si" Value="True"></asp:ListItem>
-                                    <asp:ListItem Value="No" Text="False"></asp:ListItem>
+                                    <asp:ListItem Text="Si" Value="1"></asp:ListItem>
+                                    <asp:ListItem Value="2" Text="False"></asp:ListItem>
                                 </asp:DropDownList>
                             </td>
                         </tr>
@@ -169,18 +207,9 @@
                             <td>
                                 <asp:DropDownList ID="ddlTratoNinios" runat="server" Width="100%" ReadOnly="True">
                                     <asp:ListItem Selected="True" Value="0" Text="-- Seleccione una opción --"></asp:ListItem>
-                                    <asp:ListItem Text="Si" Value="True"></asp:ListItem>
-                                    <asp:ListItem Value="No" Text="False"></asp:ListItem>
+                                    <asp:ListItem Text="Si" Value="1"></asp:ListItem>
+                                    <asp:ListItem Value="2" Text="False"></asp:ListItem>
                                 </asp:DropDownList>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Alimentación especial:
-                            </td>
-                            <td>
-                                <asp:TextBox ID="txtAlimentacionEspecial" runat="server" ReadOnly="True" Width="100%"
-                                    Style="resize: none" TextMode="MultiLine" Rows="5" Columns="25" Enabled="False"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>

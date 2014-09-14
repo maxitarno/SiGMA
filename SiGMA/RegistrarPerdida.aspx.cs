@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Entidades;
 using AccesoADatos;
+using Herramientas;
 
 namespace SiGMA
 {
@@ -13,10 +14,23 @@ namespace SiGMA
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!LogicaBDRol.verificarSoloDueño(Session["UsuarioLogueado"].ToString()))
-                pnlVoluntario.Visible = true;
+            if (Session["UsuarioLogueado"] != null)
+            {
+                if (!LogicaBDRol.verificarSoloDueño(Session["UsuarioLogueado"].ToString()))
+                    pnlVoluntario.Visible = true;
+                else
+                    MascotasPorDueño();
+            }
             else
-                MascotasPorDueño();
+            {
+                Response.Redirect("Login.aspx");
+            }
+            CargarCombos.cargarColor(ref ddlColor);
+            CargarCombos.cargarEdad(ref ddlEdad);
+            CargarCombos.cargarEspecies(ref ddlEspecie);
+            CargarCombos.cargarComboRazas(ref ddlRaza);
+            CargarCombos.cargarSexo(ref ddlSexo);
+            CargarCombos.cargarCaracteresMascota(ref ddlCaracter);
         }
 
         protected void btnBuscar_Click(object sender, EventArgs e)
@@ -83,8 +97,55 @@ namespace SiGMA
             ECaracterMascota caracter = new ECaracterMascota();
             ECategoriaRaza categoria = new ECategoriaRaza();
             EPersona persona = new EPersona();
-            if (LogicaBDMascotas.BuscarMascotaPorIdMascota(idMascota, mascota, categoria, caracter, persona))
-            { }
+            EBarrio barrio = new EBarrio();
+            ELocalidad localidad = new ELocalidad();
+            if (LogicaBDMascotas.BuscarMascotaPorIdMascota(idMascota, mascota, categoria, caracter, persona, barrio, localidad))
+            {
+                ddlCaracter.SelectedValue = caracter.idCaracter.ToString();
+                txtCategoria.Text = categoria.nombreCategoriaRaza;
+                txtMascotaPerdida.Text = mascota.nombreMascota;
+                if (mascota.tratoAnimal != null)
+                {
+                    ddlTratoAnimales.SelectedValue = mascota.tratoAnimal.ToString() == "false" ? "2" : "1";
+                }
+                if (mascota.tratoNiños != null)
+                {
+                    ddlTratoNinios.SelectedValue = mascota.tratoNiños.ToString() == "false" ? "2" : "1";
+                }
+                ddlColor.SelectedValue = mascota.color.idColor.ToString();
+                ddlEdad.SelectedValue = mascota.edad.idEdad.ToString();
+                ddlEspecie.SelectedValue = mascota.especie.idEspecie.ToString();
+                ddlRaza.SelectedValue = mascota.raza.idRaza.ToString();
+                ddlSexo.SelectedValue = mascota.sexo.ToString();
+                Session["idMascota"] = idMascota;
+                pnlImagen.Visible = true;
+                if (mascota.imagen != null)
+                {
+                    Session["imagen"] = mascota.imagen;
+                    Handler1.AddMethod(ImageHandler_ObtenerImagenMascota);
+                    imgprvw.Src = ResolveUrl("~/Handler1.ashx");
+                    imgprvw.Width = 300;
+                    imgprvw.Height = 200;
+                }
+            }
+            else
+            {
+                pnlInfo.Visible = true;
+                lblInfo.Text = "No se encontro la mascota";
+                pnlCorrecto.Visible = false;
+                pnlAtento.Visible = false;
+            }
+        }
+        public byte[] ImageHandler_ObtenerImagenMascota(HttpContext context)
+        {
+            if (Session["imagen"] != null)
+            {
+                var imagen = (byte[])Session["imagen"];
+                Session["imagen"] = null;
+                return imagen;
+            }
+            else
+                return null;
         }
     }
 }

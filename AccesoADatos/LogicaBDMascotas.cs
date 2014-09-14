@@ -264,24 +264,26 @@ namespace AccesoADatos
             }
             return mascotas;
         }
-        public static bool BuscarMascotaPorIdMascota(int idMascota, EMascota mascota, ECategoriaRaza categoria, ECaracterMascota caracter, EPersona dueño) 
+        public static bool BuscarMascotaPorIdMascota(int idMascota, EMascota mascota, ECategoriaRaza categoria, ECaracterMascota caracter, EPersona dueño, EBarrio barrio, ELocalidad localidad) 
         {
             bool b = false;
             try
             {
                 SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
                 var consulta = from MascotasBD in mapaEntidades.Mascotas
-                               from DuenioBD in mapaEntidades.Duenios.DefaultIfEmpty()
-                               from PersonaBD in mapaEntidades.Personas.DefaultIfEmpty()
-                               from RazaBD in mapaEntidades.Razas
-                               from CategoriaRazaBD in mapaEntidades.CategoriaRazas
-                               from CaracterBD in mapaEntidades.CaracteresMascota
-                               from BarrioBD in mapaEntidades.Barrios.DefaultIfEmpty()
-                               from LocalidadBD in mapaEntidades.Localidades.DefaultIfEmpty()
-                               where (MascotasBD.idRaza == RazaBD.idRaza && RazaBD.idCategoriaRaza == CategoriaRazaBD.idCategoriaRazas
-                               && MascotasBD.idCaracter == CaracterBD.idCaracter && MascotasBD.idMascota == idMascota && MascotasBD.idEstado != 6
-                               && MascotasBD.idDuenio == DuenioBD.idDuenio && PersonaBD.idPersona == DuenioBD.idPersona
-                               && PersonaBD.idBarrio == BarrioBD.idBarrio && BarrioBD.idLocalidad == LocalidadBD.idLocalidad)
+                               join DuenioBD in mapaEntidades.Duenios on MascotasBD.idDuenio equals DuenioBD.idDuenio into group1
+                               from G1 in group1.DefaultIfEmpty()
+                               join PersonaBD in mapaEntidades.Personas on G1.idPersona equals PersonaBD.idPersona into group2
+                               from G2 in group2.DefaultIfEmpty()
+                               join RazaBD in mapaEntidades.Razas on MascotasBD.idRaza equals RazaBD.idRaza 
+                               join CategoriaRazaBD in mapaEntidades.CategoriaRazas on RazaBD.idCategoriaRaza equals CategoriaRazaBD.idCategoriaRazas
+                               join CaracterBD in mapaEntidades.CaracteresMascota on MascotasBD.idCaracter equals CaracterBD.idCaracter into group3
+                               from G3 in group3.DefaultIfEmpty()
+                               join BarrioBD in mapaEntidades.Barrios on G2.idBarrio equals BarrioBD.idBarrio into group4
+                               from G4 in group4.DefaultIfEmpty()
+                               join LocalidadBD in mapaEntidades.Localidades on G4.idLocalidad equals LocalidadBD.idLocalidad into group5
+                               from G5 in group5.DefaultIfEmpty()
+                               where ((MascotasBD.idEstado == 1 || MascotasBD.idEstado == 4 || MascotasBD.idEstado == 5) && MascotasBD.idMascota == idMascota)
                                select new
                                {
                                    nombre = MascotasBD.nombreMascota,
@@ -294,15 +296,15 @@ namespace AccesoADatos
                                    tratoN = MascotasBD.tratoNinios,
                                    sexo = MascotasBD.sexo,
                                    categoria = CategoriaRazaBD.nombreCategoriaRaza,
-                                   caracter = CaracterBD.idCaracter,
+                                   caracter = G3.idCaracter,
                                    id = MascotasBD.idMascota,
                                    imagen = MascotasBD.imagen,
-                                   dueñoNombre = (PersonaBD == null) ? null : PersonaBD.nombre,
-                                   dueñoApellido = (PersonaBD == null) ? null : PersonaBD.apellido,
-                                   domicilio = (PersonaBD == null) ? null : PersonaBD.domicilio,
-                                   idBarrio = (BarrioBD == null) ? 0 : BarrioBD.idBarrio,
-                                   barrio = (BarrioBD == null) ? null : BarrioBD.nombre,
-                                   localidad = (LocalidadBD == null) ? null : LocalidadBD.nombre
+                                   dueñoNombre = (G2 == null) ? null : G2.nombre,
+                                   dueñoApellido = (G2 == null) ? null : G2.apellido,
+                                   domicilio = (G2 == null) ? null : G2.domicilio,
+                                   idBarrio = (G4 == null) ? 0 : G4.idBarrio,
+                                   barrio = (G4 == null) ? null : G4.nombre,
+                                   localidad = (G5 == null) ? null : G5.nombre
 
                                };
                 foreach (var registro in consulta)
@@ -322,12 +324,12 @@ namespace AccesoADatos
                     mascota.edad.idEdad = registro.edad;
                     mascota.especie = new EEspecie();
                     mascota.especie.idEspecie = registro.especie;
-                    mascota.duenio.apellido = registro.dueñoApellido;
-                    mascota.duenio.nombre = registro.dueñoNombre;
-                    mascota.duenio.domicilio = registro.domicilio;
-                    mascota.duenio.barrio.idBarrio = registro.idBarrio;
-                    mascota.duenio.barrio.nombre = registro.barrio;
-                    mascota.duenio.barrio.localidad.nombre = registro.localidad;
+                    dueño.apellido = registro.dueñoApellido;
+                    dueño.nombre = registro.dueñoNombre;
+                    dueño.domicilio = registro.domicilio;
+                    barrio.idBarrio = registro.idBarrio;
+                    barrio.nombre = registro.barrio;
+                    localidad.nombre = registro.localidad;
                     if (registro.imagen != null)
                     {
                         mascota.imagen = registro.imagen;
