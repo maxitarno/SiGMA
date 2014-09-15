@@ -39,7 +39,7 @@
                                 Por persona:&nbsp<asp:RadioButton ID="rbPorPersona" runat="server" GroupName="1" ValidationGroup="1" AutoPostBack="True" OnCheckedChanged="RdbPorPersona" cssClass="text-primary"/>&nbsp
                             </asp:Panel>
                         </td>
-                        <td colspan="2" align="right">
+                        <td colspan="3" align="right">
                             <asp:Panel ID="pnlrdbUsuario" runat="server" >
                                 Por usuario:&nbsp
                             </asp:Panel>
@@ -144,7 +144,7 @@
                         </td>
                         <td>
                             <asp:Panel ID="pnlDomicilio" runat="server" Visible="false">
-                                <asp:TextBox ID="txtDomicilio" runat="server" CssClass="text-primary" Width=100%></asp:TextBox>
+                                <asp:TextBox ID="txtDomicilio" runat="server" CssClass="DropDownList" Width=100%></asp:TextBox>
                             </asp:Panel>
                         </td>
                         <td>
@@ -175,11 +175,11 @@
                                 <table>
                                     <tr>
                                         <td>
-                                            <asp:DropDownList ID="ddlCalle" runat="server">
+                                            <asp:DropDownList ID="ddlCalle" runat="server" CssClass="DropDownList">
                                             </asp:DropDownList> 
                                         </td>
                                         <td colspan=2>
-                                          <asp:TextBox ID="txtNº" runat="server"></asp:TextBox>
+                                          <asp:TextBox ID="txtNº" runat="server" CssClass="TextBox"></asp:TextBox>
                                         </td>
                                     </tr>
                                 </table>
@@ -193,7 +193,7 @@
                             </asp:Panel>
                         </td>
                         <td>
-                            <asp:Panel ID="pnlBarrios" runat="server" Visible="false">
+                            <asp:Panel ID="pnlBarrios" runat="server" Visible="false" Width=100%>
                                 <asp:DropDownList ID="ddlBarrios" runat="server" AutoPostBack="False" cssClass="TextBox" withd=100%>
                                 </asp:DropDownList>
                             </asp:Panel>

@@ -92,15 +92,20 @@
                                             </asp:DropDownList>
                                         </td>
                                     </tr>
-                                    <!--<tr>
+                                    <tr>
                                         <td>
                                             Cuidado especial:
                                         </td>
                                         <td>
                                             <asp:DropDownList ID="ddlCuidadoEspecial" runat="server">
+                                                <asp:ListItem Value=0 Text="-- Seleccione un cuidado especial --"></asp:ListItem>
+                                                <asp:ListItem Value=1 Text="Pequeño"></asp:ListItem>
+                                                <asp:ListItem Value=2 Text="Grande"></asp:ListItem>
+                                                <asp:ListItem Value=3 Text="Mediano"></asp:ListItem>
+                                                <asp:ListItem Value=4 Text="Gato"></asp:ListItem>
                                             </asp:DropDownList>
                                         </td>
-                                    </tr>-->
+                                    </tr>
                                     <tr>
                                         <td>
                                             Peso Raza:
@@ -117,7 +122,7 @@
                         <td>
                             <asp:Panel ID="pnlRegistrar" runat="server">
                                 <asp:Button ID="btnRegistrar" runat="server" Text="Registrar" CssClass="btn-primary"
-                                    ValidationGroup="1" />
+                                    ValidationGroup="1" OnClick=" />
                             </asp:Panel>
                         </td>
                         <td>
@@ -129,7 +134,7 @@
                         <td>
                             <asp:Panel ID="pnlCambio" runat="server" Visible="false">
                                 <asp:Button ID="btnModificar" runat="server" Text="Modificar" CssClass="btn-primary"
-                                    CausesValidation="False" />
+                                    CausesValidation="False" OnClick="BtnModificarClick" />
                             </asp:Panel>
                         </td>
                         <td>

@@ -452,6 +452,7 @@ namespace AccesoADatos
                     raza.idcuidadoEspecial = (int)registro.cuidado;
                     raza.idRaza = registro.idRaza;
                     raza.pesoRaza = registro.peso;
+                    raza.idEspecie = registro.idEspecie;
                 }
             }
             catch (Exception exc)
@@ -530,6 +531,57 @@ namespace AccesoADatos
                 throw exc;
             }
             return calles;
+        }
+        public static Boolean ModificarRaza(ERaza raza)
+        {
+            bool b = false;
+            try
+            {
+                SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+                var razas = mapaEntidades.Razas.Where(razaBD => razaBD.idRaza == raza.idRaza);
+                foreach (var registro in razas)
+                {
+                    registro.idCategoriaRaza = raza.idCategoriaRaza;
+                    registro.idCuidadoEspecial = raza.idcuidadoEspecial;
+                    registro.idEspecie = raza.idEspecie;
+                    registro.PesoRaza = raza.pesoRaza;
+                    registro.nombreRaza = raza.nombreRaza;
+                }
+                b = true;
+                mapaEntidades.SaveChanges();
+            }
+            catch (Exception exc)
+            {
+                throw exc;
+                b = false;
+            }
+            return b;
+        }
+        public static Boolean guardarRaza(ERaza raza)
+        {
+            using (TransactionScope transaccion = new TransactionScope())
+            {
+                try
+                {
+                    SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+                    Razas razaBD = new Razas();
+                    razaBD.idCuidadoEspecial = raza.idcuidadoEspecial;
+                    razaBD.idCategoriaRaza = raza.idCategoriaRaza;
+                    razaBD.idEspecie = raza.idEspecie;
+                    razaBD.nombreRaza = raza.nombreRaza;
+                    razaBD.PesoRaza = raza.pesoRaza;
+                    mapaEntidades.AddToRazas(razaBD);
+                    mapaEntidades.SaveChanges();
+                    transaccion.Complete();
+                    return true;
+                }
+                catch (Exception exc)
+                {
+                    transaccion.Dispose();
+                    return false;
+                    throw exc;
+                }
+            }
         }
     }
 }

@@ -17,7 +17,6 @@ namespace SiGMA
             {
                 CargarCombos.cargarEspecies(ref ddlEspecies);
                 CargarCombos.cargarCategorias(ref ddlCategoria);
-                CargarCombos.cargarCuidados(ref ddlCuidadoEspecial);
             }
         }
         public void BtnBuscarClick(object sender, EventArgs e)
@@ -74,6 +73,8 @@ namespace SiGMA
                     ddlCategoria.SelectedValue = raza.idCategoriaRaza.ToString();
                     ddlCuidadoEspecial.SelectedValue = raza.idcuidadoEspecial.ToString();
                     txtPeso.Text = raza.pesoRaza;
+                    Session["idraza"] = int.Parse(lstResultados.SelectedValue.ToString());
+                    ddlEspecies.SelectedValue = raza.idEspecie.ToString();
                 }
                 else
                 {
@@ -89,6 +90,95 @@ namespace SiGMA
                 pnlAtento.Visible = false;
                 pnlInfo.Visible = true;
                 lblResultado2.Text = "Debe seleccionar una raza";
+            }
+        }
+        public void BtnModificarClick(object sender, EventArgs e)
+        {
+            lstResultados.Items.Clear();
+            if (ddlEspecies.SelectedValue.Equals("0"))
+            {
+                pnlRegistrar.Visible = false;
+                pnlCorrecto.Visible = false;
+                pnlAtento.Visible = false;
+                pnlInfo.Visible = true;
+                lblResultado2.Text = "Debe seleccionar una especie";
+            }
+            else
+            {
+                if (!ddlCuidadoEspecial.SelectedValue.Equals("0"))
+                {
+                    if (!ddlCategoria.SelectedValue.Equals("0"))
+                    {
+                        if (txtNombre.Text != "")
+                        {
+                            ERaza raza = new ERaza();
+                            raza.pesoRaza = txtPeso.Text;
+                            raza.nombreRaza = txtNombre.Text;
+                            raza.idCategoriaRaza = int.Parse(ddlCategoria.SelectedValue.ToString());
+                            raza.idcuidadoEspecial = int.Parse(ddlCuidadoEspecial.SelectedValue.ToString());
+                            raza.idEspecie = int.Parse(ddlEspecies.SelectedValue.ToString());
+                            raza.idRaza = (int)Session["idraza"];
+                            if(Datos.ModificarRaza(raza)){
+                                pnlInfo.Visible = false;
+                                lblResultado1.Text = "Se modifico correctamente";
+                                pnlCorrecto.Visible = true;
+                                pnlAtento.Visible = false;
+                            }
+                            else{
+                                pnlInfo.Visible = false;
+                                lblResultado1.Text = "No se pudo modificar";
+                                pnlCorrecto.Visible = false;
+                                pnlAtento.Visible = true;
+                            }
+                        }
+                        else
+                        {
+                            pnlInfo.Visible = true;
+                            lblResultado2.Text = "Debe ingresar un nombre";
+                            pnlCorrecto.Visible = false;
+                            pnlAtento.Visible = false;
+                        }
+                    }
+                    else
+                    {
+                        pnlInfo.Visible = true;
+                        lblResultado2.Text = "Debe seleccionar una categoria";
+                        pnlCorrecto.Visible = false;
+                        pnlAtento.Visible = false;
+                    }
+                }
+                else
+                {
+                    pnlCorrecto.Visible = false;
+                    pnlAtento.Visible = false;
+                    pnlInfo.Visible = true;
+                    lblResultado2.Text = "Debe seleccionar un cuidado";
+                }
+            }
+        }
+        public void BtnRegistrarClick(object sender, EventArgs e)
+        {
+            ERaza raza = new ERaza();
+            raza.idCategoriaRaza = int.Parse(ddlCategoria.SelectedValue.ToString());
+            raza.idcuidadoEspecial = int.Parse(ddlCuidadoEspecial.SelectedValue.ToString());
+            raza.idEspecie = int.Parse(ddlEspecies.SelectedValue.ToString());
+            raza.nombreRaza = txtNombre.Text;
+            raza.pesoRaza = txtPeso.Text;
+            if (Datos.guardarRaza(raza))
+            {
+                pnlAtento.Visible = false;
+                pnlCorrecto.Visible = true;
+                pnlInfo.Visible = false;
+                lblResultado1.Text = "Se registro correctamente";
+                txtNombre.Text = "";
+                pnlRegistrar.Visible = true;
+            }
+            else
+            {
+                pnlAtento.Visible = false;
+                pnlCorrecto.Visible = false;
+                pnlInfo.Visible = true;
+                lblResultado1.Text = "No se pudo registrar";
             }
         }
     }
