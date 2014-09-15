@@ -54,7 +54,7 @@
                             </td>
                             <td>
                                 <asp:RequiredFieldValidator ID="rfvNombre" runat="server" ErrorMessage="Debe ingresar un tipo de documento"
-                                    ControlToValidate="txtNombre" ValidationGroup="1" CssClass="Validator"></asp:RequiredFieldValidator>
+                                    ControlToValidate="txtNombre" ValidationGroup="1" CssClass="Validator" Display="Dynamic"></asp:RequiredFieldValidator>
                             </td>
                         </tr>
                         <tr>
@@ -80,7 +80,7 @@
                             </td>
                             <td>
                                 <asp:Panel ID=pnlCambio runat=server Visible=false>
-                                    <asp:Button ID="btnModificar" runat="server" Text="Modificar" OnClick="BtnModificarClick" CssClass="btn-primary" CausesValidation="False" />
+                                    <asp:Button ID="btnModificar" runat="server" Text="Modificar" OnClick="BtnModificarClick" CssClass="btn-primary" CausesValidation="true" />
                                 </asp:Panel>
                             </td>
                             <td>

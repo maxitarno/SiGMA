@@ -33,6 +33,8 @@ namespace SiGMA
             {
                 pnlInfo.Visible = true;
                 lblResultado2.Text = "No se encontraron tipos de documento";
+                pnlAtento.Visible = false;
+                pnlCorrecto.Visible = false;
             }
         }
         public void BtnSeleccionarClick(object sender, EventArgs e)
@@ -45,6 +47,9 @@ namespace SiGMA
                 lstResultados.Items.Clear();
                 pnlCambio.Visible = true;
                 pnlSeleccionar.Visible = false;
+                pnlAtento.Visible = false;
+                pnlCorrecto.Visible = false;
+                pnlInfo.Visible = false;
             }
             else
             {
@@ -74,10 +79,10 @@ namespace SiGMA
                 }
                 else
                 {
-                    pnlAtento.Visible = false;
+                    pnlAtento.Visible = true;
                     pnlCorrecto.Visible = false;
-                    pnlInfo.Visible = true;
-                    lblResultado1.Text = "No se pudo modificar";
+                    pnlInfo.Visible = false;
+                    lblResultado3.Text = "No se pudo modificar";
                 }
             }
             else
@@ -85,7 +90,7 @@ namespace SiGMA
                 pnlAtento.Visible = false;
                 pnlCorrecto.Visible = false;
                 pnlInfo.Visible = true;
-                lblResultado1.Text = "Debe ingresar un tipo de documento";
+                lblResultado2.Text = "Debe ingresar un tipo de documento";
             }
         }
         public void BtnRegistrarClick(object sender, EventArgs e)
@@ -103,10 +108,10 @@ namespace SiGMA
                 }
                 else
                 {
-                    pnlAtento.Visible = false;
+                    pnlAtento.Visible = true;
                     pnlCorrecto.Visible = false;
-                    pnlInfo.Visible = true;
-                    lblResultado1.Text = "No se pudo registrar";
+                    pnlInfo.Visible = false;
+                    lblResultado3.Text = "No se pudo registrar";
                 }
         }
         /*public void BtnEliminarClick(object sender, EventArgs e)

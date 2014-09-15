@@ -140,6 +140,7 @@ namespace AccesoADatos
                     persona.idPersona = usuario.persona.idPersona;
                     persona.nroCalle = usuario.persona.nroCalle;
                     calle.idCalle = usuario.persona.idCalle;
+                    calle.nombre = usuario.calle.nombre;
                 }
             }
             catch (System.Data.EntityCommandCompilationException exc)

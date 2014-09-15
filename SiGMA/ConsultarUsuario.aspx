@@ -159,7 +159,7 @@
                         </td>
                         <td>
                             <asp:Panel ID="pnlLocalidades" runat="server" Visible="false">
-                                <asp:DropDownList ID="ddlLocalidades" Enabled="false"  runat="server" OnSelectedIndexChanged="DdlBarrio_SelectedIndexChanged" AutoPostBack="True" cssClass="TextBox" Width=100%>
+                                <asp:DropDownList ID="ddlLocalidades" Enabled="true"  runat="server" OnSelectedIndexChanged="DdlBarrio_SelectedIndexChanged" AutoPostBack="True" cssClass="TextBox" Width=100%>
                                 </asp:DropDownList>&nbsp
                             </asp:Panel>
                         </td>
@@ -175,7 +175,7 @@
                                 <table>
                                     <tr>
                                         <td>
-                                            <asp:DropDownList ID="ddlCalle"  Enabled="false"  runat="server" CssClass="DropDownList">
+                                            <asp:DropDownList ID="ddlCalle"  Enabled="true"  runat="server" CssClass="DropDownList">
                                             </asp:DropDownList> 
                                         </td>
                                         <td colspan=2>
@@ -194,7 +194,7 @@
                         </td>
                         <td>
                             <asp:Panel ID="pnlBarrios" runat="server" Visible="false" Width=100%>
-                                <asp:DropDownList ID="ddlBarrios"  Enabled="false"  runat="server" AutoPostBack="False" cssClass="TextBox" withd=100%>
+                                <asp:DropDownList ID="ddlBarrios"  Enabled="true"  runat="server" AutoPostBack="False" cssClass="TextBox" withd=100%>
                                 </asp:DropDownList>
                             </asp:Panel>
                         </td>
