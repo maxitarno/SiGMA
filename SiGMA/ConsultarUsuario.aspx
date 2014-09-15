@@ -172,9 +172,17 @@
                         </td>
                         <td>
                             <asp:Panel runat=server Visible=false ID=pnlDdlCalle>
-                                <asp:DropDownList ID="ddlCalle" runat="server">
-                                </asp:DropDownList> Nº 
-                                <asp:TextBox ID="txtNº" runat="server"></asp:TextBox>
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <asp:DropDownList ID="ddlCalle" runat="server">
+                                            </asp:DropDownList> 
+                                        </td>
+                                        <td colspan=2>
+                                          <asp:TextBox ID="txtNº" runat="server"></asp:TextBox>
+                                        </td>
+                                    </tr>
+                                </table>
                             </asp:Panel>
                         </td>
                     </tr>
