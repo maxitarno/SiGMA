@@ -164,22 +164,60 @@ namespace SiGMA
             raza.idEspecie = int.Parse(ddlEspecies.SelectedValue.ToString());
             raza.nombreRaza = txtNombre.Text;
             raza.pesoRaza = txtPeso.Text;
-            if (Datos.guardarRaza(raza))
+            if (!ddlCuidadoEspecial.SelectedValue.Equals("0"))
             {
-                pnlAtento.Visible = false;
-                pnlCorrecto.Visible = true;
-                pnlInfo.Visible = false;
-                lblResultado1.Text = "Se registro correctamente";
-                txtNombre.Text = "";
-                pnlRegistrar.Visible = true;
+                if (!ddlCategoria.SelectedValue.Equals("0"))
+                {
+                    if (!ddlEspecies.SelectedValue.Equals("0"))
+                    {
+                        if(Datos.guardarRaza(raza)){
+                            lblResultado1.Text = "Se modifico correctamente";
+                            pnlCorrecto.Visible = true;
+                            pnlAtento.Visible = false;
+                            pnlInfo.Visible = false;
+                        }
+                        else{
+                            pnlCorrecto.Visible = false;
+                            pnlAtento.Visible = true;
+                            pnlInfo.Visible = false;
+                            lblResultado3.Text = "No se pudo modificar";
+                        }
+                    }
+                    else
+                    {
+                        pnlCorrecto.Visible = false;
+                        pnlAtento.Visible = false;
+                        pnlInfo.Visible = true;
+                        lblResultado2.Text = "Debe seleccionar una especie";
+                    }
+                }
+                else
+                {
+                    pnlCorrecto.Visible = false;
+                    pnlAtento.Visible = false;
+                    pnlInfo.Visible = true;
+                    lblResultado2.Text = "Debe seleccionar una categoria";
+                }
             }
             else
             {
-                pnlAtento.Visible = false;
                 pnlCorrecto.Visible = false;
+                pnlAtento.Visible = false;
                 pnlInfo.Visible = true;
-                lblResultado1.Text = "No se pudo registrar";
+                lblResultado2.Text = "Debe seleccionar un cuidado";
             }
+        }
+        public void BtnLimpiarClick(object sender, EventArgs e)
+        {
+            pnlCambio.Visible = false;
+            pnl8.Visible = false;
+            pnlAtento.Visible = false;
+            pnlCorrecto.Visible = false;
+            pnlDatos.Visible = false;
+            pnlInfo.Visible = false;
+            pnlResultado.Visible = false;
+            pnlSeleccionar.Visible = false;
+            txtNombre.Text = "";
         }
     }
 }

@@ -158,6 +158,7 @@ namespace Herramientas
         public static void cargarCategorias(ref DropDownList ddl)
         {
             List<ECategoriaRaza> categorias = Datos.BuscarCategoriasDeRazas();
+            ddl.Items.Add(new ListItem("-- Debe seleccionar una categoria --", "0"));
             foreach (ECategoriaRaza item in categorias)
             {
                 ddl.Items.Add(new ListItem(item.nombreCategoriaRaza.ToString(), item.idCategoriaRaza.ToString()));

@@ -65,7 +65,7 @@
                             </asp:Panel>
                         </td>
                         <td>
-                            <asp:RequiredFieldValidator ID="rfvNombre" runat="server" ErrorMessage="Debe ingresar un tipo de documento"
+                            <asp:RequiredFieldValidator ID="rfvNombre" runat="server" ErrorMessage="Debe ingresar un nombre de raza"
                                 ControlToValidate="txtNombre" ValidationGroup="1" CssClass="Validator"></asp:RequiredFieldValidator>
                         </td>
                     </tr>
@@ -122,7 +122,7 @@
                         <td>
                             <asp:Panel ID="pnlRegistrar" runat="server">
                                 <asp:Button ID="btnRegistrar" runat="server" Text="Registrar" CssClass="btn-primary"
-                                    ValidationGroup="1" OnClick=" />
+                                    ValidationGroup="1" OnClick="BtnRegistrarClick" />
                             </asp:Panel>
                         </td>
                         <td>
@@ -141,7 +141,7 @@
                             <asp:Panel runat="server" ID="pnl8" Visible="false">
                                 <!--<asp:Button ID="btneliminar" runat="server" Text="Eliminar" />-->
                                 <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar" CssClass="btn-primary"
-                                    CausesValidation="False" />
+                                    CausesValidation="False" OnClick="BtnLimpiarClick" />
                             </asp:Panel>
                         </td>
                     </tr>
