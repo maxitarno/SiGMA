@@ -94,8 +94,8 @@
                                 Domicilio:
                             </td>
                             <td>
-                                <asp:DropDownList ID="ddlCalles" ReadOnly="True" runat="server" Width="100%" AppendDataBoundItems="True">
-                                </asp:DropDownList> - <asp:TextBox ID="txtNroCalle" ReadOnly="True" runat="server" style="width:30" ></asp:TextBox>
+                                <asp:DropDownList ID="ddlCalles" Enabled="false" runat="server"  Width="75%" AppendDataBoundItems="True">
+                                </asp:DropDownList> - <asp:TextBox ID="txtNroCalle" ReadOnly="True" runat="server" Width="20%" ></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
@@ -103,7 +103,7 @@
                                 Barrio:
                             </td>
                             <td>
-                                <asp:DropDownList ID="ddlBarrios" ReadOnly="True" runat="server" Width="100%" AppendDataBoundItems="True">
+                                <asp:DropDownList ID="ddlBarrios" Enabled="false" runat="server" Width="100%" AppendDataBoundItems="True">
                                 </asp:DropDownList>
                             </td>
                         </tr>
@@ -112,7 +112,7 @@
                                 Localidad:
                             </td>
                             <td>
-                                <asp:DropDownList ID="ddlLocalidades" ReadOnly="True" runat="server" Width="100%" AppendDataBoundItems="False">
+                                <asp:DropDownList ID="ddlLocalidades" Enabled="false" runat="server" Width="100%" AppendDataBoundItems="False">
                                 </asp:DropDownList>
                             </td>
                         </tr>
@@ -130,7 +130,7 @@
                                     Especie:
                                 </td>
                                 <td>
-                                    <asp:DropDownList ID="ddlEspecie" runat="server" Width="100%" ReadOnly="True" AppendDataBoundItems="true">
+                                    <asp:DropDownList ID="ddlEspecie" runat="server" Width="100%" Enabled="false" AppendDataBoundItems="true">
                                     </asp:DropDownList>
                                 </td>
                             </tr>
@@ -139,7 +139,7 @@
                                 Edad:
                             </td>
                             <td>
-                                <asp:DropDownList ID="ddlEdad" ReadOnly="True" runat="server" Width="100%" AppendDataBoundItems="True">
+                                <asp:DropDownList ID="ddlEdad" Enabled="false" runat="server" Width="100%" AppendDataBoundItems="True">
                                 </asp:DropDownList>
                             </td>
                         </tr>
@@ -148,7 +148,7 @@
                                 Raza:
                             </td>
                             <td>
-                                <asp:DropDownList ID="ddlRaza" ReadOnly="True" runat="server" Width="100%" AppendDataBoundItems="False">
+                                <asp:DropDownList ID="ddlRaza" Enabled="false" runat="server" Width="100%" AppendDataBoundItems="False">
                                 </asp:DropDownList>
                             </td>
                         </tr>
@@ -157,7 +157,7 @@
                                 Sexo:
                             </td>
                             <td>
-                                <asp:DropDownList ID="ddlSexo" ReadOnly="True" runat="server" Width="100%">
+                                <asp:DropDownList ID="ddlSexo" Enabled="false" runat="server" Width="100%">
                                 </asp:DropDownList>
                             </td>
                         </tr>
@@ -166,7 +166,7 @@
                                 Color:
                             </td>
                             <td>
-                                <asp:DropDownList ID="ddlColor" ReadOnly="True" runat="server" Width="100%"
+                                <asp:DropDownList ID="ddlColor" Enabled="false" runat="server" Width="100%"
                                     AppendDataBoundItems="True">
                                 </asp:DropDownList>
                             </td>
@@ -185,7 +185,7 @@
                                 Carácter:
                             </td>
                             <td>
-                                <asp:DropDownList ID="ddlCaracter" ReadOnly="True" runat="server" CssClass="DropDownList" Width="100%">
+                                <asp:DropDownList ID="ddlCaracter" Enabled="false" runat="server" CssClass="DropDownList" Width="100%">
                                 </asp:DropDownList>
                             </td>
                         </tr>
@@ -194,7 +194,7 @@
                                 Trato con otros animales:
                             </td>
                             <td>
-                                <asp:DropDownList ID="ddlTratoAnimales" runat="server" Width="100%" ReadOnly="True">
+                                <asp:DropDownList ID="ddlTratoAnimales" runat="server" Width="100%" Enabled="false">
                                     <asp:ListItem Selected="True" Value="0" Text="-- Seleccione una opción"></asp:ListItem>
                                     <asp:ListItem Text="Si" Value="1"></asp:ListItem>
                                     <asp:ListItem Value="2" Text="False"></asp:ListItem>
@@ -206,7 +206,7 @@
                                 Trato con niños:
                             </td>
                             <td>
-                                <asp:DropDownList ID="ddlTratoNinios" runat="server" Width="100%" ReadOnly="True">
+                                <asp:DropDownList ID="ddlTratoNinios" runat="server" Width="100%" Enabled="false">
                                     <asp:ListItem Selected="True" Value="0" Text="-- Seleccione una opción --"></asp:ListItem>
                                     <asp:ListItem Text="Si" Value="1"></asp:ListItem>
                                     <asp:ListItem Value="2" Text="False"></asp:ListItem>

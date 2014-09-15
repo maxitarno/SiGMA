@@ -223,7 +223,7 @@ namespace SiGMA
                 pnlresult.Visible = false;
                 pnlResultados.Visible = false;
                 pnlDdlCalle.Visible = true;
-                ddlCalle.SelectedValue = calle.idCalle.ToString();
+                ddlCalle.SelectedValue = (calle.idCalle == null) ? "0" : calle.idCalle.ToString();
                 pnlCalle.Visible = true;
             }
             else

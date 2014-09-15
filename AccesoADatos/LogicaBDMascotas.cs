@@ -264,7 +264,7 @@ namespace AccesoADatos
             }
             return mascotas;
         }
-        public static bool BuscarMascotaPorIdMascota(int idMascota, EMascota mascota, ECategoriaRaza categoria, ECaracterMascota caracter, EPersona dueño, EBarrio barrio, ELocalidad localidad) 
+        public static bool BuscarMascotaPorIdMascota(int idMascota, EMascota mascota, ECategoriaRaza categoria, ECaracterMascota caracter, EPersona dueño, EBarrio barrio, ELocalidad localidad, ECalle calle) 
         {
             bool b = false;
             try
@@ -283,6 +283,8 @@ namespace AccesoADatos
                                from G4 in group4.DefaultIfEmpty()
                                join LocalidadBD in mapaEntidades.Localidades on G4.idLocalidad equals LocalidadBD.idLocalidad into group5
                                from G5 in group5.DefaultIfEmpty()
+                               join calleBD in mapaEntidades.Calles on G2.idCalle equals calleBD.idCalle into group6
+                               from G6 in group6.DefaultIfEmpty()
                                where ((MascotasBD.idEstado == 1 || MascotasBD.idEstado == 4 || MascotasBD.idEstado == 5) && MascotasBD.idMascota == idMascota)
                                select new
                                {
@@ -304,12 +306,14 @@ namespace AccesoADatos
                                    domicilio = (G2 == null) ? null : G2.domicilio,
                                    idBarrio = (G4 == null) ? 0 : G4.idBarrio,
                                    barrio = (G4 == null) ? null : G4.nombre,
-                                   localidad = (G5 == null) ? null : G5.nombre
-
+                                   localidad = (G5 == null) ? null : G5.nombre,
+                                   calle = (G6 == null) ? 0 : G6.idCalle,
+                                   nroCalle = (G2.nroCalle == null) ? 0 : G2.nroCalle
                                };
                 foreach (var registro in consulta)
                 {
-                    caracter.idCaracter = registro.caracter;
+                    mascota.caracter = new ECaracterMascota();
+                    mascota.caracter.idCaracter = registro.caracter;
                     categoria.nombreCategoriaRaza = registro.categoria;
                     mascota.raza = new ERaza();
                     mascota.raza.idRaza = registro.raza;
@@ -324,12 +328,17 @@ namespace AccesoADatos
                     mascota.edad.idEdad = registro.edad;
                     mascota.especie = new EEspecie();
                     mascota.especie.idEspecie = registro.especie;
-                    dueño.apellido = registro.dueñoApellido;
-                    dueño.nombre = registro.dueñoNombre;
-                    dueño.domicilio = registro.domicilio;
-                    barrio.idBarrio = registro.idBarrio;
-                    barrio.nombre = registro.barrio;
-                    localidad.nombre = registro.localidad;
+                    mascota.duenio = new EDuenio();
+                    mascota.duenio.apellido = registro.dueñoApellido;
+                    mascota.duenio.nombre = registro.dueñoNombre;
+                    mascota.duenio.domicilio = registro.domicilio;
+                    mascota.duenio.barrio = new EBarrio();
+                    mascota.duenio.barrio.idBarrio = registro.idBarrio;
+                    mascota.duenio.barrio.nombre = registro.barrio;
+                    mascota.duenio.barrio.localidad = new ELocalidad();
+                    mascota.duenio.barrio.localidad.nombre = registro.localidad;
+                    calle.idCalle = registro.calle;
+                    mascota.duenio.nroCalle = registro.nroCalle;
                     if (registro.imagen != null)
                     {
                         mascota.imagen = registro.imagen;

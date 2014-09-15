@@ -14,26 +14,29 @@ namespace SiGMA
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["UsuarioLogueado"] != null)
+            if (!Page.IsPostBack)
             {
-                if (!LogicaBDRol.verificarSoloDueño(Session["UsuarioLogueado"].ToString()))
-                    pnlVoluntario.Visible = true;
+                if (Session["UsuarioLogueado"] != null)
+                {
+                    if (!LogicaBDRol.verificarSoloDueño(Session["UsuarioLogueado"].ToString()))
+                        pnlVoluntario.Visible = true;
+                    else
+                        MascotasPorDueño();
+                }
                 else
-                    MascotasPorDueño();
+                {
+                    Response.Redirect("Login.aspx");
+                }
+                CargarCombos.cargarColor(ref ddlColor);
+                CargarCombos.cargarEdad(ref ddlEdad);
+                CargarCombos.cargarEspecies(ref ddlEspecie);
+                CargarCombos.cargarComboRazas(ref ddlRaza);
+                CargarCombos.cargarSexo(ref ddlSexo);
+                CargarCombos.cargarCaracteresMascota(ref ddlCaracter);
+                CargarCombos.cargarBarrio(ref ddlBarrios);
+                CargarCombos.cargarLocalidades(ref ddlLocalidades);
+                CargarCombos.cargarCalles(ref ddlCalles);
             }
-            else
-            {
-                Response.Redirect("Login.aspx");
-            }
-            CargarCombos.cargarColor(ref ddlColor);
-            CargarCombos.cargarEdad(ref ddlEdad);
-            CargarCombos.cargarEspecies(ref ddlEspecie);
-            CargarCombos.cargarComboRazas(ref ddlRaza);
-            CargarCombos.cargarSexo(ref ddlSexo);
-            CargarCombos.cargarCaracteresMascota(ref ddlCaracter);
-            CargarCombos.cargarBarrio(ref ddlBarrios);
-            CargarCombos.cargarLocalidades(ref ddlLocalidades);
-            CargarCombos.cargarCalles(ref ddlCalles);
         }
 
         protected void btnBuscar_Click(object sender, EventArgs e)
@@ -102,7 +105,8 @@ namespace SiGMA
             EPersona persona = new EPersona();
             EBarrio barrio = new EBarrio();
             ELocalidad localidad = new ELocalidad();
-            if (LogicaBDMascotas.BuscarMascotaPorIdMascota(idMascota, mascota, categoria, caracter, persona, barrio, localidad))
+            ECalle calle = new ECalle();
+            if (LogicaBDMascotas.BuscarMascotaPorIdMascota(idMascota, mascota, categoria, caracter, persona, barrio, localidad, calle))
             {
                 ddlCaracter.SelectedValue = caracter.idCaracter.ToString();
                 txtCategoria.Text = categoria.nombreCategoriaRaza;
@@ -115,6 +119,12 @@ namespace SiGMA
                 {
                     ddlTratoNinios.SelectedValue = mascota.tratoNiños.ToString() == "false" ? "2" : "1";
                 }
+                txtNroCalle.Text = mascota.duenio.nroCalle.ToString();
+                txtDatosDueño.Text = (mascota.duenio.nombre == null) ? null : mascota.duenio.nombre.ToString();
+                txtDatosDueño.Text += (mascota.duenio.apellido == null) ? null : mascota.duenio.apellido.ToString();
+                ddlCalles.SelectedValue = calle.idCalle.ToString();
+                ddlBarrios.SelectedValue = mascota.duenio.barrio.idBarrio.ToString();
+                ddlLocalidades.SelectedValue = mascota.duenio.barrio.localidad.idLocalidad.ToString();
                 ddlColor.SelectedValue = mascota.color.idColor.ToString();
                 ddlEdad.SelectedValue = mascota.edad.idEdad.ToString();
                 ddlEspecie.SelectedValue = mascota.especie.idEspecie.ToString();
