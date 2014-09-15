@@ -218,6 +218,7 @@ namespace SiGMA
             pnlResultado.Visible = false;
             pnlSeleccionar.Visible = false;
             txtNombre.Text = "";
+            pnlRegistrar.Visible = true;
         }
     }
 }
