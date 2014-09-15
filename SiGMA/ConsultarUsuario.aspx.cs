@@ -163,7 +163,7 @@ namespace SiGMA
             if (lstResultados.SelectedValue != "")
             {
                 LogicaBDUsuario.BuscarUsuarios(lstResultados.SelectedValue, usuario, persona, barrio, localidad, tipodoc, calle);
-                txtNº.Text = persona.nroCalle.Value.ToString();
+                txtNº.Text = (persona.nroCalle == null) ? "0" : persona.nroCalle.Value.ToString();
                 txtUsuario.Text = usuario.user;
                 ddlTipoDeDocumento.SelectedValue = tipodoc.idTipoDeDocumento.ToString();
                 txtNºDeDocumento.Text = persona.nroDocumento;

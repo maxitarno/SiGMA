@@ -125,7 +125,6 @@ namespace AccesoADatos
             {
                 foreach (var usuario in consulta1)
                 {
-                    calle.nombre = usuario.calle.nombre;
                     persona.apellido = usuario.persona.apellido;
                     persona.nombre = usuario.persona.nombre;
                     barrio.idBarrio = (usuario.barrio == null) ? 0 : usuario.barrio.idBarrio;
