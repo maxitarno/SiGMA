@@ -1,7 +1,31 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="RegistrarPerdida.aspx.cs" Inherits="SiGMA.RegistrarPerdida" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="RegistrarPerdida.aspx.cs" Inherits="SiGMA.RegistrarPerdida" MaintainScrollPositionOnPostback="true" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 <!-- encabezado -->
 <!-- fin encabezado -->
+<script type="text/javascript">
+    function checkTextAreaMaxLength(textBox, e, length) {
+
+        var mLen = textBox["MaxLength"];
+        if (null == mLen)
+            mLen = length;
+
+        var maxLength = parseInt(mLen);
+        if (!checkSpecialKeys(e)) {
+            if (textBox.value.length > maxLength - 1) {
+                if (window.event)//IE
+                    e.returnValue = false;
+                else//Firefox
+                    e.preventDefault();
+            }
+        }
+    }
+    function checkSpecialKeys(e) {
+        if (e.keyCode != 8 && e.keyCode != 46 && e.keyCode != 37 && e.keyCode != 38 && e.keyCode != 39 && e.keyCode != 40)
+            return false;
+        else
+            return true;
+    }
+</script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
@@ -218,7 +242,13 @@
                                 Fecha Pérdida:
                             </td>
                             <td>
-                                <asp:TextBox ID="txtFechaPerdida" runat="server" Width="100%" ></asp:TextBox>
+                                <asp:TextBox ID="txtFechaPerdida" runat="server" Width="90%" ></asp:TextBox><asp:ImageButton ID="imgFechaPerdida" runat="server" CausesValidation="False"
+                            ImageUrl="~/App_Themes/TemaSigma/imagenes/ico_calendar.gif" OnClick="imgFechaPerdida_click"  /> <asp:Calendar ID="calendario" runat="server" BorderColor="Black" 
+                                    BorderWidth="1px" Visible="False" onselectionchanged="calendario_SelectionChanged">
+                                     <DayHeaderStyle BackColor="White" Font-Bold="True" ForeColor="Black" />
+                                    <DayStyle ForeColor="Black" />
+                                    <TitleStyle BackColor="Black" ForeColor="White" />
+                                    </asp:Calendar>
                             </td>
                         </tr>
                         <tr>
@@ -234,15 +264,16 @@
                                 Comentarios:
                             </td>
                             <td>
-                                <asp:TextBox ID="txtComentarios" runat="server" Width="100%"></asp:TextBox>
+                                <asp:TextBox ID="txtComentarios" runat="server" style="resize: none" TextMode="MultiLine"
+                                        Rows="7" Columns="30" CssClass="TextBox" Width="100%" onkeyDown="checkTextAreaMaxLength(this,event,'250');"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <asp:Button ID="btnRegistrar" runat="server" Text="Registrar" />
+                               
                             </td>
                             <td>
-                                <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" />    
+                                <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="btn-primary" /> -  <asp:Button ID="btnRegistrar" runat="server" Text="Registrar" CssClass="btn-primary" />   
                             </td>
                         </tr>
                         </asp:Panel>

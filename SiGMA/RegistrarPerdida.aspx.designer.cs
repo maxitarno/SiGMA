@@ -301,6 +301,24 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.TextBox txtFechaPerdida;
         
         /// <summary>
+        /// imgFechaPerdida control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton imgFechaPerdida;
+        
+        /// <summary>
+        /// calendario control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Calendar calendario;
+        
+        /// <summary>
         /// txtMapa control.
         /// </summary>
         /// <remarks>

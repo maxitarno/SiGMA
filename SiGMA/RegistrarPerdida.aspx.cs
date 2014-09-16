@@ -83,6 +83,17 @@ namespace SiGMA
             }
         }
 
+        protected void imgFechaPerdida_click(object sender, ImageClickEventArgs e)
+        {
+            calendario.Visible = true;
+        }
+
+        protected void calendario_SelectionChanged(object sender, EventArgs e)
+        {
+            txtFechaPerdida.Text = calendario.SelectedDate.ToString("d");
+            calendario.Visible = false;
+        }
+
         private void limpiarPagina() 
         {
             pnlInfo.Visible = false;
@@ -97,6 +108,7 @@ namespace SiGMA
 
         protected void btnSeleccionar_Click(object sender, EventArgs e)
         {
+            Session["imagen"] = null;
             var idMascota = Convert.ToInt32(lstMascotas.SelectedValue);
             pnlRegistrarPerdida.Visible = true;
             EMascota mascota = new EMascota();
@@ -131,15 +143,23 @@ namespace SiGMA
                 ddlRaza.SelectedValue = mascota.raza.idRaza.ToString();
                 ddlSexo.SelectedValue = mascota.sexo.ToString();
                 Session["idMascota"] = idMascota;
-                pnlImagen.Visible = true;
+                
                 if (mascota.imagen != null)
                 {
+                    pnlImagen.Visible = true;
                     Session["imagen"] = mascota.imagen;
                     Handler1.AddMethod(ImageHandler_ObtenerImagenMascota);
                     imgprvw.Src = ResolveUrl("~/Handler1.ashx");
                     imgprvw.Width = 300;
-                    imgprvw.Height = 200;
+                    imgprvw.Height = 250;
                 }
+                else 
+                {
+                    pnlImagen.Visible = false;
+                    imgprvw.Width = 0;
+                    imgprvw.Height = 0;
+                }
+
             }
             else
             {
@@ -154,7 +174,6 @@ namespace SiGMA
             if (Session["imagen"] != null)
             {
                 var imagen = (byte[])Session["imagen"];
-                Session["imagen"] = null;
                 return imagen;
             }
             else
