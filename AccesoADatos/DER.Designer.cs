@@ -40,10 +40,10 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Mascotas_Estados", "Estados", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Estados), "Mascotas", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Mascotas), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Hallazgos_Mascotas", "Mascotas", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Mascotas), "Hallazgos", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Hallazgos), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Hallazgos_Perdidas", "Perdidas", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(AccesoADatos.Perdidas), "Hallazgos", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Hallazgos), true)]
-[assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Hallazgos_Sesiones", "Sesiones", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Sesiones), "Hallazgos", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Hallazgos), true)]
+[assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Hallazgos_Sesiones", "Usuarios", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Usuarios), "Hallazgos", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Hallazgos), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Mascotas_Razas", "Razas", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Razas), "Mascotas", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Mascotas), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Perdidas_Mascotas", "Mascotas", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Mascotas), "Perdidas", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Perdidas), true)]
-[assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Perdidas_Sesiones", "Sesiones", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Sesiones), "Perdidas", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Perdidas), true)]
+[assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Perdidas_Sesiones", "Usuarios", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Usuarios), "Perdidas", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Perdidas), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_PermisosXRoles_Permisos", "Permisos", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Permisos), "PermisosXRoles", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.PermisosXRoles), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_PermisosXRoles_Roles", "Roles", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Roles), "PermisosXRoles", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.PermisosXRoles), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Personas_TipoDocumentos", "TipoDocumentos", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.TipoDocumentos), "Personas", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Personas), true)]
@@ -2388,14 +2388,14 @@ namespace AccesoADatos
         /// Create a new Hallazgos object.
         /// </summary>
         /// <param name="idHallazgo">Initial value of the idHallazgo property.</param>
-        /// <param name="idSesion">Initial value of the idSesion property.</param>
+        /// <param name="idUsuario">Initial value of the idUsuario property.</param>
         /// <param name="idMascota">Initial value of the idMascota property.</param>
         /// <param name="fechaHoraHallazgo">Initial value of the fechaHoraHallazgo property.</param>
-        public static Hallazgos CreateHallazgos(global::System.Int32 idHallazgo, global::System.Int32 idSesion, global::System.Int32 idMascota, global::System.DateTime fechaHoraHallazgo)
+        public static Hallazgos CreateHallazgos(global::System.Int32 idHallazgo, global::System.String idUsuario, global::System.Int32 idMascota, global::System.DateTime fechaHoraHallazgo)
         {
             Hallazgos hallazgos = new Hallazgos();
             hallazgos.idHallazgo = idHallazgo;
-            hallazgos.idSesion = idSesion;
+            hallazgos.idUsuario = idUsuario;
             hallazgos.idMascota = idMascota;
             hallazgos.fechaHoraHallazgo = fechaHoraHallazgo;
             return hallazgos;
@@ -2437,24 +2437,24 @@ namespace AccesoADatos
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 idSesion
+        public global::System.String idUsuario
         {
             get
             {
-                return _idSesion;
+                return _idUsuario;
             }
             set
             {
-                OnidSesionChanging(value);
-                ReportPropertyChanging("idSesion");
-                _idSesion = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("idSesion");
-                OnidSesionChanged();
+                OnidUsuarioChanging(value);
+                ReportPropertyChanging("idUsuario");
+                _idUsuario = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("idUsuario");
+                OnidUsuarioChanged();
             }
         }
-        private global::System.Int32 _idSesion;
-        partial void OnidSesionChanging(global::System.Int32 value);
-        partial void OnidSesionChanged();
+        private global::System.String _idUsuario;
+        partial void OnidUsuarioChanging(global::System.String value);
+        partial void OnidUsuarioChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -2725,16 +2725,16 @@ namespace AccesoADatos
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("SiGMAModel", "FK_Hallazgos_Sesiones", "Sesiones")]
-        public Sesiones Sesiones
+        [EdmRelationshipNavigationPropertyAttribute("SiGMAModel", "FK_Hallazgos_Sesiones", "Usuarios")]
+        public Usuarios Usuarios
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Sesiones>("SiGMAModel.FK_Hallazgos_Sesiones", "Sesiones").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Usuarios>("SiGMAModel.FK_Hallazgos_Sesiones", "Usuarios").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Sesiones>("SiGMAModel.FK_Hallazgos_Sesiones", "Sesiones").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Usuarios>("SiGMAModel.FK_Hallazgos_Sesiones", "Usuarios").Value = value;
             }
         }
         /// <summary>
@@ -2742,17 +2742,17 @@ namespace AccesoADatos
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<Sesiones> SesionesReference
+        public EntityReference<Usuarios> UsuariosReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Sesiones>("SiGMAModel.FK_Hallazgos_Sesiones", "Sesiones");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Usuarios>("SiGMAModel.FK_Hallazgos_Sesiones", "Usuarios");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Sesiones>("SiGMAModel.FK_Hallazgos_Sesiones", "Sesiones", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Usuarios>("SiGMAModel.FK_Hallazgos_Sesiones", "Usuarios", value);
                 }
             }
         }
@@ -3669,13 +3669,13 @@ namespace AccesoADatos
         /// Create a new Perdidas object.
         /// </summary>
         /// <param name="idPerdida">Initial value of the idPerdida property.</param>
-        /// <param name="idSesion">Initial value of the idSesion property.</param>
+        /// <param name="idUsuario">Initial value of the idUsuario property.</param>
         /// <param name="idMascota">Initial value of the idMascota property.</param>
-        public static Perdidas CreatePerdidas(global::System.Int32 idPerdida, global::System.Int32 idSesion, global::System.Int32 idMascota)
+        public static Perdidas CreatePerdidas(global::System.Int32 idPerdida, global::System.String idUsuario, global::System.Int32 idMascota)
         {
             Perdidas perdidas = new Perdidas();
             perdidas.idPerdida = idPerdida;
-            perdidas.idSesion = idSesion;
+            perdidas.idUsuario = idUsuario;
             perdidas.idMascota = idMascota;
             return perdidas;
         }
@@ -3716,24 +3716,24 @@ namespace AccesoADatos
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 idSesion
+        public global::System.String idUsuario
         {
             get
             {
-                return _idSesion;
+                return _idUsuario;
             }
             set
             {
-                OnidSesionChanging(value);
-                ReportPropertyChanging("idSesion");
-                _idSesion = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("idSesion");
-                OnidSesionChanged();
+                OnidUsuarioChanging(value);
+                ReportPropertyChanging("idUsuario");
+                _idUsuario = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("idUsuario");
+                OnidUsuarioChanged();
             }
         }
-        private global::System.Int32 _idSesion;
-        partial void OnidSesionChanging(global::System.Int32 value);
-        partial void OnidSesionChanged();
+        private global::System.String _idUsuario;
+        partial void OnidUsuarioChanging(global::System.String value);
+        partial void OnidUsuarioChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -3988,16 +3988,16 @@ namespace AccesoADatos
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("SiGMAModel", "FK_Perdidas_Sesiones", "Sesiones")]
-        public Sesiones Sesiones
+        [EdmRelationshipNavigationPropertyAttribute("SiGMAModel", "FK_Perdidas_Sesiones", "Usuarios")]
+        public Usuarios Usuarios
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Sesiones>("SiGMAModel.FK_Perdidas_Sesiones", "Sesiones").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Usuarios>("SiGMAModel.FK_Perdidas_Sesiones", "Usuarios").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Sesiones>("SiGMAModel.FK_Perdidas_Sesiones", "Sesiones").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Usuarios>("SiGMAModel.FK_Perdidas_Sesiones", "Usuarios").Value = value;
             }
         }
         /// <summary>
@@ -4005,17 +4005,17 @@ namespace AccesoADatos
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<Sesiones> SesionesReference
+        public EntityReference<Usuarios> UsuariosReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Sesiones>("SiGMAModel.FK_Perdidas_Sesiones", "Sesiones");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Usuarios>("SiGMAModel.FK_Perdidas_Sesiones", "Usuarios");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Sesiones>("SiGMAModel.FK_Perdidas_Sesiones", "Sesiones", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Usuarios>("SiGMAModel.FK_Perdidas_Sesiones", "Usuarios", value);
                 }
             }
         }
@@ -5578,7 +5578,7 @@ namespace AccesoADatos
         /// </summary>
         /// <param name="idSesion">Initial value of the idSesion property.</param>
         /// <param name="user">Initial value of the user property.</param>
-        public static Sesiones CreateSesiones(global::System.Int32 idSesion, global::System.String user)
+        public static Sesiones CreateSesiones(global::System.String idSesion, global::System.String user)
         {
             Sesiones sesiones = new Sesiones();
             sesiones.idSesion = idSesion;
@@ -5595,7 +5595,7 @@ namespace AccesoADatos
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 idSesion
+        public global::System.String idSesion
         {
             get
             {
@@ -5607,14 +5607,14 @@ namespace AccesoADatos
                 {
                     OnidSesionChanging(value);
                     ReportPropertyChanging("idSesion");
-                    _idSesion = StructuralObject.SetValidValue(value);
+                    _idSesion = StructuralObject.SetValidValue(value, false);
                     ReportPropertyChanged("idSesion");
                     OnidSesionChanged();
                 }
             }
         }
-        private global::System.Int32 _idSesion;
-        partial void OnidSesionChanging(global::System.Int32 value);
+        private global::System.String _idSesion;
+        partial void OnidSesionChanging(global::System.String value);
         partial void OnidSesionChanged();
     
         /// <summary>
@@ -5693,50 +5693,6 @@ namespace AccesoADatos
 
     
         #region Navigation Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("SiGMAModel", "FK_Hallazgos_Sesiones", "Hallazgos")]
-        public EntityCollection<Hallazgos> Hallazgos
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Hallazgos>("SiGMAModel.FK_Hallazgos_Sesiones", "Hallazgos");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Hallazgos>("SiGMAModel.FK_Hallazgos_Sesiones", "Hallazgos", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("SiGMAModel", "FK_Perdidas_Sesiones", "Perdidas")]
-        public EntityCollection<Perdidas> Perdidas
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Perdidas>("SiGMAModel.FK_Perdidas_Sesiones", "Perdidas");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Perdidas>("SiGMAModel.FK_Perdidas_Sesiones", "Perdidas", value);
-                }
-            }
-        }
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -5995,6 +5951,50 @@ namespace AccesoADatos
 
     
         #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("SiGMAModel", "FK_Hallazgos_Sesiones", "Hallazgos")]
+        public EntityCollection<Hallazgos> Hallazgos
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Hallazgos>("SiGMAModel.FK_Hallazgos_Sesiones", "Hallazgos");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Hallazgos>("SiGMAModel.FK_Hallazgos_Sesiones", "Hallazgos", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("SiGMAModel", "FK_Perdidas_Sesiones", "Perdidas")]
+        public EntityCollection<Perdidas> Perdidas
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Perdidas>("SiGMAModel.FK_Perdidas_Sesiones", "Perdidas");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Perdidas>("SiGMAModel.FK_Perdidas_Sesiones", "Perdidas", value);
+                }
+            }
+        }
     
         /// <summary>
         /// No Metadata Documentation available.

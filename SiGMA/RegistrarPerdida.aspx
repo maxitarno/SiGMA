@@ -57,7 +57,7 @@
                     <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
                     </asp:Panel>
 
-                    <asp:Panel ID="pnlBuscarPor" runat="server" Width="100%">
+                    <asp:Panel ID="pnlBuscarPor" runat="server" >
                         <table>
                             <tr>
                                 <td colspan="2" align="justify">
@@ -103,8 +103,9 @@
                     <asp:Panel Visible="false" runat="server" ID="pnlImagen">
                         <img id="imgprvw" style="border: 2px solid #000000;" runat="server" src="~/App_Themes/TemaSigma/imagenes/sin_imagen_disponible.jpg" />
                      </asp:Panel>
-                    <table>
-                        <asp:Panel ID="pnlRegistrarPerdida" runat="server" Width="100%" Visible="false">
+                   
+                        <asp:Panel ID="pnlRegistrarPerdida" runat="server" Visible="false">
+                         <table>
                          <tr>
                             <td>
                                 Dueño:
@@ -273,11 +274,14 @@
                                
                             </td>
                             <td>
-                                <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="btn-primary" /> -  <asp:Button ID="btnRegistrar" runat="server" Text="Registrar" CssClass="btn-primary" />   
+                                <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" 
+                                    CssClass="btn-primary" onclick="btnCancelar_Click" /> -  
+                                <asp:Button ID="btnRegistrarPerdida" runat="server" Text="Registrar" 
+                                    CssClass="btn-primary" onclick="btnRegistrarPerdida_Click" />   
                             </td>
                         </tr>
+                        </table>
                         </asp:Panel>
-                    </table>
                </div>
             </div>
         </div>

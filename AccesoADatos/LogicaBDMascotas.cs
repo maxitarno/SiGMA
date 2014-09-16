@@ -383,5 +383,30 @@ namespace AccesoADatos
             }
             return b;
         }
+
+        public static bool registrarPerdida(EPerdida perdida)
+        {
+            bool b = false;
+            try
+            {
+                SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+                Perdidas bdPerdida = new Perdidas();
+                bdPerdida.idMascota = perdida.mascota.idMascota;
+                bdPerdida.Barrios.idBarrio = perdida.barrio.idBarrio;
+                bdPerdida.Usuarios.user = perdida.usuario.user;
+                bdPerdida.FechaHoraPerdida = perdida.fecha;
+                bdPerdida.observaciones = perdida.comentarios;
+                bdPerdida.mapaPerdida = perdida.mapaPerdida;
+                mapaEntidades.AddToPerdidas(bdPerdida);
+                mapaEntidades.SaveChanges();
+                b = true;
+            }
+            catch (System.Data.EntityCommandCompilationException exc)
+            {
+                b = false;
+                throw exc;
+            }
+            return b;
+        }
     }
 }

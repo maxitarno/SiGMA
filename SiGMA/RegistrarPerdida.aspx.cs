@@ -99,6 +99,10 @@ namespace SiGMA
             pnlInfo.Visible = false;
             pnlAtento.Visible = false;
             pnlCorrecto.Visible = false;
+            pnlRegistrarPerdida.Visible = false;
+            txtFechaPerdida.Text = "";
+            txtComentarios.Text = "";
+            txtMapa.Text = "";
         }
 
         protected void lstMascotas_SelectedIndexChanged(object sender, EventArgs e)
@@ -179,5 +183,47 @@ namespace SiGMA
             else
                 return null;
         }
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            limpiarPagina();
+        }
+
+        protected void btnRegistrarPerdida_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Page.IsValid)
+                {
+                    EPerdida perdida = new EPerdida();
+                    perdida.mascota = new EMascota();
+                    perdida.mascota.idMascota = Convert.ToInt32(Session["idMascota"].ToString());
+                    perdida.barrio = new EBarrio();
+                    perdida.barrio.idBarrio = Convert.ToInt32(ddlBarrios.SelectedValue);
+                    perdida.usuario = new EUsuario();
+                    perdida.usuario.user = Session["UsuarioLogueado"].ToString();
+                    perdida.fecha = Convert.ToDateTime(txtFechaPerdida.Text);
+                    perdida.comentarios = txtComentarios.Text;
+                    perdida.mapaPerdida = txtMapa.Text;
+                    if (LogicaBDMascotas.registrarPerdida(perdida))
+                    {
+                        limpiarPagina();
+                        pnlCorrecto.Visible = true;
+                        lblCorrecto.Text = "Pérdida Registrada Correctamente";
+                    }
+                    else
+                    {
+                        pnlAtento.Visible = true;
+                        lblError.Text = "No se registro la pérdida. Verifique datos";
+                    }
+                }
+            }
+            catch (Exception exc)
+            {
+
+                throw exc;
+            }
+        }
+
     }
 }
