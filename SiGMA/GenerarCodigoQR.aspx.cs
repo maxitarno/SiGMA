@@ -9,6 +9,7 @@ using Entidades;
 using System.Drawing;
 using System.IO;
 using System.Drawing.Imaging;
+using AccesoADatos;
 
 namespace SiGMA
 {
@@ -19,6 +20,9 @@ namespace SiGMA
             if (!Page.IsPostBack)
             {
                 Session["CamposQR"] = new List<string>();
+                EMascota mascota = (EMascota)Session["Mascota"];
+                mascota.duenio = LogicaBDDueño.buscarDueño(mascota.idMascota);
+                habilitarCheckboxes();
             }
         }
 
@@ -56,17 +60,18 @@ namespace SiGMA
             if (campos.Count != 0)
             {
                 mostrarCodigo();
+                btnDescargar.Enabled = true;
             }
             else
             {
                 imgQR.ImageUrl = null;
-            }
+                btnDescargar.Enabled = false;
+            }            
             Session["CamposQR"] = campos;
         }
         protected void chkRaza_CheckedChanged(object sender, EventArgs e)
         {
             actualizarCampos("Raza", chkRaza.Checked);
-
         }
 
         protected void chkSexo_CheckedChanged(object sender, EventArgs e)
@@ -81,6 +86,50 @@ namespace SiGMA
             Response.AppendHeader("content-disposition","attachment;filename=" + ViewState["CodigoQR"].ToString());
             Response.TransmitFile(Server.MapPath("/Imagenes/" + ViewState["CodigoQR"].ToString()));
             Response.End();
+        }
+
+        protected void chkTratoNiños_CheckedChanged(object sender, EventArgs e)
+        {
+            actualizarCampos("Niños", chkNiños.Checked);
+        }
+
+        protected void chkTratoAnimales_CheckedChanged(object sender, EventArgs e)
+        {
+            actualizarCampos("Animales", chkAnimales.Checked);
+
+        }
+
+        protected void chkNombreDueño_CheckedChanged(object sender, EventArgs e)
+        {
+            actualizarCampos("NombreDueño", chkNombreDueño.Checked);
+        }
+
+        protected void chkDireccion_CheckedChanged(object sender, EventArgs e)
+        {
+            actualizarCampos("Direccion", chkDireccion.Checked);
+        }       
+
+        protected void chkEmail_CheckedChanged(object sender, EventArgs e)
+        {
+            actualizarCampos("Email", chkEmail.Checked);
+        }
+
+        protected void chkTelefono_CheckedChanged(object sender, EventArgs e)
+        {
+            actualizarCampos("Telefono", chkTelefonoCel.Checked);
+
+        }
+        private void habilitarCheckboxes()
+        {
+            EMascota mascota = (EMascota)Session["Mascota"];
+            if (mascota.duenio.telefonoCelular == null)
+            {
+                chkTelefonoCel.Enabled = false;
+            }
+            if (mascota.duenio.domicilio == null)
+            {
+                chkDireccion.Enabled = false;                
+            }
         }
     }
 }

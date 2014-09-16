@@ -218,23 +218,6 @@ namespace AccesoADatos
             }
             return b;
         }
-        public static int? buscarIdDueñoPorUsuario(string usuario)
-        {
-            SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();            
-            IQueryable<int> consulta = from dueñosBD in mapaEntidades.Duenios
-                                       join personasBD in mapaEntidades.Personas on dueñosBD.idPersona equals personasBD.idPersona
-                                       join usuariosBD in mapaEntidades.Usuarios on personasBD.user equals usuariosBD.user
-                                       where (usuariosBD.user == usuario)                                       
-                                       select dueñosBD.idDuenio;
-            
-            if (consulta.Count() != 0)
-            {
-                return consulta.First();
-            }
-            else
-            {
-                return null;
-            }
-        }
+       
     }
 }

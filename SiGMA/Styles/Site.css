@@ -367,8 +367,8 @@ asp:Login
 }
 .derecha
 {
-    margin-left:5%;
-    margin-right: 35%;
+    margin-left:35%;
+    margin-right:5%;
 }
 .ListBox
 {
@@ -380,4 +380,20 @@ asp:Login
 .Validator
 {
     color: Red;
+}
+.tablaDiv
+{
+    margin-left: 35%;
+    display: table;
+    width: 30%;
+}
+.filaDiv
+{
+   display: table-row;
+   width:30% 
+}
+.celdaDiv
+{
+    display: table-cell;
+    width: 10%;
 }

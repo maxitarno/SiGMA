@@ -31,12 +31,26 @@ namespace Herramientas
                         break;
                     case "Color":
                         datosQR += " Color: " + mascota.color.nombreColor;
-                        break;            
-                }
-                //if (cadena.Equals("NombreMascota"))
-                //{
-                //    datosQR += mascota.nombreMascota;
-                //}
+                        break;
+                    case "Niños":
+                        datosQR += " Trato con niños: " + mascota.tratoNiños;
+                        break;
+                    case "Animales":
+                        datosQR += " Trato con animales: " + mascota.tratoAnimal;
+                        break;
+                    case "NombreDueño":
+                        datosQR += " Nombre del dueño: " + mascota.duenio.nombre;
+                        break;
+                    case "Direccion":
+                        datosQR += " Direccion: " + mascota.duenio.domicilio + " B°: " +mascota.duenio.barrio.nombre;
+                        break;
+                    case "Email":
+                        datosQR += " Email: " + mascota.duenio.email;
+                        break;
+                    case "TelefonoCel":
+                        datosQR += " Celular: " + mascota.duenio.telefonoCelular;
+                        break;
+                }                
             }
             Bitmap retorno = codificador.Encode(datosQR);
             return retorno;
