@@ -265,7 +265,7 @@ namespace SiGMA
                                     persona.telefonoFijo = txtTelefonoFijo.Text;
                                     persona.fechaNacimiento = fecha;
                                     persona.apellido = txtApellido.Text;
-                                    persona.domicilio = txtDomicilio.Text;
+                                    persona.domicilio.nombre = txtDomicilio.Text;
                                     persona.email = txtMail.Text;
                                     persona.barrio = new EBarrio();
                                     persona.barrio.idBarrio = int.Parse(ddlBarrios.SelectedValue);

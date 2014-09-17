@@ -321,6 +321,11 @@ namespace SiGMA
                                                         byte[] imagen = GestorImagen.obtenerArrayBytes(File1.PostedFile.InputStream, File1.PostedFile.ContentLength);
                                                         if (LogicaBDMascotas.ModificarMascota(mascota, imagen))
                                                         {
+                                                            Session["imagen"] = imagen;
+                                                            Handler1.AddMethod(ImageHandler_ObtenerImagenMascota);
+                                                            imgprvw.Src = ResolveUrl("~/Handler1.ashx");
+                                                            imgprvw.Width = 300;
+                                                            imgprvw.Height = 200;
                                                             pnlCorrecto.Visible = true;
                                                             lblResultado1.Text = "Se modifico corretamente";
                                                             pnlAtento.Visible = false;

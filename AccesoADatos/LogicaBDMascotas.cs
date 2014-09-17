@@ -264,7 +264,7 @@ namespace AccesoADatos
             }
             return mascotas;
         }
-        public static bool BuscarMascotaPorIdMascota(int idMascota, EMascota mascota, ECategoriaRaza categoria, ECaracterMascota caracter, EPersona dueño, EBarrio barrio, ELocalidad localidad, ECalle calle) 
+        public static bool BuscarMascotaPorIdMascota(int idMascota, EMascota mascota) 
         {
             bool b = false;
             try
@@ -314,8 +314,9 @@ namespace AccesoADatos
                 {
                     mascota.caracter = new ECaracterMascota();
                     mascota.caracter.idCaracter = registro.caracter;
-                    categoria.nombreCategoriaRaza = registro.categoria;
                     mascota.raza = new ERaza();
+                    mascota.raza.CategoriaRaza = new ECategoriaRaza();
+                    mascota.raza.CategoriaRaza.nombreCategoriaRaza = registro.categoria;
                     mascota.raza.idRaza = registro.raza;
                     mascota.color = new EColor();
                     mascota.color.idColor = registro.color;
@@ -331,13 +332,13 @@ namespace AccesoADatos
                     mascota.duenio = new EDuenio();
                     mascota.duenio.apellido = registro.dueñoApellido;
                     mascota.duenio.nombre = registro.dueñoNombre;
-                    mascota.duenio.domicilio = registro.domicilio;
                     mascota.duenio.barrio = new EBarrio();
                     mascota.duenio.barrio.idBarrio = registro.idBarrio;
                     mascota.duenio.barrio.nombre = registro.barrio;
                     mascota.duenio.barrio.localidad = new ELocalidad();
                     mascota.duenio.barrio.localidad.nombre = registro.localidad;
-                    calle.idCalle = registro.calle;
+                    mascota.duenio.domicilio = new ECalle();
+                    mascota.duenio.domicilio.idCalle = registro.calle;                   
                     mascota.duenio.nroCalle = registro.nroCalle;
                     if (registro.imagen != null)
                     {
@@ -392,8 +393,8 @@ namespace AccesoADatos
                 SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
                 Perdidas bdPerdida = new Perdidas();
                 bdPerdida.idMascota = perdida.mascota.idMascota;
-                bdPerdida.Barrios.idBarrio = perdida.barrio.idBarrio;
-                bdPerdida.Usuarios.user = perdida.usuario.user;
+                bdPerdida.idBarrioPerdida = perdida.barrio.idBarrio;
+                bdPerdida.idUsuario = perdida.usuario.user;
                 bdPerdida.FechaHoraPerdida = perdida.fecha;
                 bdPerdida.observaciones = perdida.comentarios;
                 bdPerdida.mapaPerdida = perdida.mapaPerdida;

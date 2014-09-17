@@ -122,7 +122,7 @@ namespace SiGMA
             EBarrio barrio = new EBarrio();
             ELocalidad localidad = new ELocalidad();
             ECalle calle = new ECalle();
-            if (LogicaBDMascotas.BuscarMascotaPorIdMascota(idMascota, mascota, categoria, caracter, persona, barrio, localidad, calle))
+            if (LogicaBDMascotas.BuscarMascotaPorIdMascota(idMascota, mascota))
             {
                 ddlCaracter.SelectedValue = caracter.idCaracter.ToString();
                 txtCategoria.Text = categoria.nombreCategoriaRaza;
@@ -138,9 +138,9 @@ namespace SiGMA
                 txtNroCalle.Text = mascota.duenio.nroCalle.ToString();
                 txtDatosDueño.Text = (mascota.duenio.nombre == null) ? null : mascota.duenio.nombre.ToString();
                 txtDatosDueño.Text += (mascota.duenio.apellido == null) ? null : mascota.duenio.apellido.ToString();
-                ddlCalles.SelectedValue = calle.idCalle.ToString();
-                ddlBarrios.SelectedValue = mascota.duenio.barrio.idBarrio.ToString();
-                ddlLocalidades.SelectedValue = mascota.duenio.barrio.localidad.idLocalidad.ToString();
+                ddlCalles.SelectedValue = (calle.idCalle == null) ? null : calle.idCalle.ToString();
+                ddlBarrios.SelectedValue = (mascota.duenio.barrio == null) ? null : mascota.duenio.barrio.idBarrio.ToString();
+                ddlLocalidades.SelectedValue = (mascota.duenio.barrio.localidad == null) ? null : mascota.duenio.barrio.localidad.idLocalidad.ToString();
                 ddlColor.SelectedValue = mascota.color.idColor.ToString();
                 ddlEdad.SelectedValue = mascota.edad.idEdad.ToString();
                 ddlEspecie.SelectedValue = mascota.especie.idEspecie.ToString();

@@ -448,11 +448,14 @@ namespace AccesoADatos
                 foreach (var registro in consulta)
                 {
                     raza.nombreRaza = registro.nombre;
-                    raza.idCategoriaRaza = (int)registro.categoria;
-                    raza.idcuidadoEspecial = (int)registro.cuidado;
+                    raza.CategoriaRaza = new ECategoriaRaza();
+                    raza.CategoriaRaza.idCategoriaRaza = (int)registro.categoria;
+                    raza.cuidadoEspecial = new ECuidado();
+                    raza.cuidadoEspecial.idCuidado = (int)registro.cuidado;
                     raza.idRaza = registro.idRaza;
                     raza.pesoRaza = registro.peso;
-                    raza.idEspecie = registro.idEspecie;
+                    raza.especie = new EEspecie();
+                    raza.especie.idEspecie = registro.idEspecie;
                 }
             }
             catch (Exception exc)
@@ -541,9 +544,9 @@ namespace AccesoADatos
                 var razas = mapaEntidades.Razas.Where(razaBD => razaBD.idRaza == raza.idRaza);
                 foreach (var registro in razas)
                 {
-                    registro.idCategoriaRaza = raza.idCategoriaRaza;
-                    registro.idCuidadoEspecial = raza.idcuidadoEspecial;
-                    registro.idEspecie = raza.idEspecie;
+                    registro.idCategoriaRaza = raza.CategoriaRaza.idCategoriaRaza;
+                    registro.idCuidadoEspecial = raza.cuidadoEspecial.idCuidado;
+                    registro.idEspecie = raza.especie.idEspecie;
                     registro.PesoRaza = raza.pesoRaza;
                     registro.nombreRaza = raza.nombreRaza;
                 }
@@ -565,9 +568,9 @@ namespace AccesoADatos
                 {
                     SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
                     Razas razaBD = new Razas();
-                    razaBD.idCuidadoEspecial = raza.idcuidadoEspecial;
-                    razaBD.idCategoriaRaza = raza.idCategoriaRaza;
-                    razaBD.idEspecie = raza.idEspecie;
+                    razaBD.idCuidadoEspecial = raza.cuidadoEspecial.idCuidado;
+                    razaBD.idCategoriaRaza = raza.CategoriaRaza.idCategoriaRaza;
+                    razaBD.idEspecie = raza.especie.idEspecie;
                     razaBD.nombreRaza = raza.nombreRaza;
                     razaBD.PesoRaza = raza.pesoRaza;
                     mapaEntidades.AddToRazas(razaBD);

@@ -20,8 +20,8 @@ namespace Herramientas
         public static void cargarTratos(ref DropDownList ddl)
         {
             ddl.Items.Add(new ListItem("-- Seleccione un trato --", "0"));
-            ddl.Items.Add(new ListItem("Si", "Si"));
-            ddl.Items.Add(new ListItem("No", "No"));
+            ddl.Items.Add(new ListItem("Si", "true"));
+            ddl.Items.Add(new ListItem("No", "false"));
         }
         //carga de combo de tipo de documentos
         public static void cargarTipoDocumento(ref DropDownList ddl)

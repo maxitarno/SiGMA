@@ -128,7 +128,7 @@ namespace AccesoADatos
                     persona.apellido = usuario.persona.apellido;
                     persona.nombre = usuario.persona.nombre;
                     barrio.idBarrio = (usuario.barrio == null) ? 0 : usuario.barrio.idBarrio;
-                    persona.domicilio = usuario.persona.domicilio;
+                    persona.domicilio.nombre = usuario.persona.domicilio;
                     persona.email = usuario.persona.email;
                     persona.fechaNacimiento = usuario.persona.fechaNacimiento;
                     persona.nroDocumento = usuario.persona.nroDocumento;
@@ -140,7 +140,6 @@ namespace AccesoADatos
                     persona.idPersona = usuario.persona.idPersona;
                     persona.nroCalle = usuario.persona.nroCalle;
                     calle.idCalle = usuario.persona.idCalle;
-                    calle.nombre = usuario.calle.nombre;
                 }
             }
             catch (System.Data.EntityCommandCompilationException exc)
@@ -161,7 +160,7 @@ namespace AccesoADatos
                 foreach (var registro in personas)
                 {
                     registro.apellido = persona.apellido;
-                    registro.domicilio = persona.domicilio;
+                    registro.idCalle = persona.domicilio.idCalle;
                     registro.email = persona.email;
                     registro.fechaNacimiento = persona.fechaNacimiento;
                     registro.idBarrio = persona.barrio.idBarrio;

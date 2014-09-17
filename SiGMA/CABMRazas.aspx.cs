@@ -68,13 +68,13 @@ namespace SiGMA
                     pnl8.Visible = true;
                     ERaza raza = new ERaza();
                     raza = Datos.BuscarRaza(int.Parse(lstResultados.SelectedValue));
-                    ddlEspecies.SelectedValue = raza.idEspecie.ToString();
+                    ddlEspecies.SelectedValue = raza.especie.idEspecie.ToString();
                     txtNombre.Text = raza.nombreRaza;
-                    ddlCategoria.SelectedValue = raza.idCategoriaRaza.ToString();
-                    ddlCuidadoEspecial.SelectedValue = raza.idcuidadoEspecial.ToString();
+                    ddlCategoria.SelectedValue = raza.CategoriaRaza.idCategoriaRaza.ToString();
+                    ddlCuidadoEspecial.SelectedValue = raza.cuidadoEspecial.idCuidado.ToString();
                     txtPeso.Text = raza.pesoRaza;
                     Session["idraza"] = int.Parse(lstResultados.SelectedValue.ToString());
-                    ddlEspecies.SelectedValue = raza.idEspecie.ToString();
+                    ddlEspecies.SelectedValue = raza.especie.idEspecie.ToString();
                 }
                 else
                 {
@@ -114,9 +114,11 @@ namespace SiGMA
                             ERaza raza = new ERaza();
                             raza.pesoRaza = txtPeso.Text;
                             raza.nombreRaza = txtNombre.Text;
-                            raza.idCategoriaRaza = int.Parse(ddlCategoria.SelectedValue.ToString());
-                            raza.idcuidadoEspecial = int.Parse(ddlCuidadoEspecial.SelectedValue.ToString());
-                            raza.idEspecie = int.Parse(ddlEspecies.SelectedValue.ToString());
+                            raza.CategoriaRaza = new ECategoriaRaza();
+                            raza.cuidadoEspecial = new ECuidado();
+                            raza.CategoriaRaza.idCategoriaRaza = int.Parse(ddlCategoria.SelectedValue.ToString());
+                            raza.cuidadoEspecial.idCuidado = int.Parse(ddlCuidadoEspecial.SelectedValue.ToString());
+                            raza.especie.idEspecie = int.Parse(ddlEspecies.SelectedValue.ToString());
                             raza.idRaza = (int)Session["idraza"];
                             if(Datos.ModificarRaza(raza)){
                                 pnlInfo.Visible = false;
@@ -159,9 +161,12 @@ namespace SiGMA
         public void BtnRegistrarClick(object sender, EventArgs e)
         {
             ERaza raza = new ERaza();
-            raza.idCategoriaRaza = int.Parse(ddlCategoria.SelectedValue.ToString());
-            raza.idcuidadoEspecial = int.Parse(ddlCuidadoEspecial.SelectedValue.ToString());
-            raza.idEspecie = int.Parse(ddlEspecies.SelectedValue.ToString());
+            raza.especie = new EEspecie();
+            raza.CategoriaRaza = new ECategoriaRaza();
+            raza.cuidadoEspecial = new ECuidado();
+            raza.CategoriaRaza.idCategoriaRaza = int.Parse(ddlCategoria.SelectedValue.ToString());
+            raza.cuidadoEspecial.idCuidado = int.Parse(ddlCuidadoEspecial.SelectedValue.ToString());
+            raza.especie.idEspecie = int.Parse(ddlEspecies.SelectedValue.ToString());
             raza.nombreRaza = txtNombre.Text;
             raza.pesoRaza = txtPeso.Text;
             if (!ddlCuidadoEspecial.SelectedValue.Equals("0"))

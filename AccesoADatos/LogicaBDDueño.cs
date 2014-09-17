@@ -56,7 +56,7 @@ namespace AccesoADatos
                 }
                 if (consulta.Select(a => a.personasBD.domicilio).First() != null)
                 {
-                    dueño.domicilio = consulta.Select(a => a.personasBD.domicilio).First();
+                    dueño.domicilio.nombre = consulta.Select(a => a.personasBD.domicilio).First();
                 }
                 dueño.email = consulta.Select(a => a.personasBD.email).First();
                 if (consulta.Select(a => a.personasBD.telefonoCelular).First() != null)

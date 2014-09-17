@@ -33,10 +33,24 @@ namespace Herramientas
                         datosQR += " Color: " + mascota.color.nombreColor;
                         break;
                     case "Niños":
-                        datosQR += " Trato con niños: " + mascota.tratoNiños;
+                        if (mascota.tratoNiños == true)
+                        {
+                            datosQR += " Trato con niños: Si";
+                        }
+                        else
+                        {
+                            datosQR += " Trato con niños: No";
+                        }
                         break;
                     case "Animales":
-                        datosQR += " Trato con animales: " + mascota.tratoAnimal;
+                        if (mascota.tratoAnimal == true)
+                        {
+                            datosQR += " Trato con animales: Si";
+                        }
+                        else
+                        {
+                            datosQR += " Trato con animales: No";
+                        }
                         break;
                     case "NombreDueño":
                         datosQR += " Nombre del dueño: " + mascota.duenio.nombre;

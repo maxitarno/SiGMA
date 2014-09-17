@@ -14,7 +14,7 @@ namespace Entidades
         public string nroDocumento { get; set; }
         public string email { get; set; }
 		public string emailAlternativo { get; set; }
-        public string domicilio { get; set; }
+        public ECalle domicilio { get; set; }
         public string telefonoFijo { get; set; }
         public string telefonoCelular { get; set; }
         public DateTime? fechaNacimiento { get; set; }
