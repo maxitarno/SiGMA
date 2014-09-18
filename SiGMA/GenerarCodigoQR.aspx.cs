@@ -20,9 +20,17 @@ namespace SiGMA
             if (!Page.IsPostBack)
             {
                 Session["CamposQR"] = new List<string>();
-                EMascota mascota = (EMascota)Session["Mascota"];
+                EMascota mascota = LogicaBDMascotas.BuscarMascotaPorIdMascota(int.Parse(Session["idMascota"].ToString()));                 
                 mascota.duenio = LogicaBDDueño.buscarDueño(mascota.idMascota);
-                habilitarCheckboxes();
+                Session["Mascota"] = mascota;         
+                if (mascota.duenio == null)
+                {
+                    pnlDueño.Visible = false;
+                }
+                else
+                {
+                    habilitarCheckboxes();
+                }
             }
         }
 
@@ -122,6 +130,10 @@ namespace SiGMA
         private void habilitarCheckboxes()
         {
             EMascota mascota = (EMascota)Session["Mascota"];
+            if (mascota.duenio.nombre == null)
+            {
+                chkNombreDueño.Enabled = false;
+            }            
             if (mascota.duenio.telefonoCelular == null)
             {
                 chkTelefonoCel.Enabled = false;
@@ -129,6 +141,10 @@ namespace SiGMA
             if (mascota.duenio.domicilio == null)
             {
                 chkDireccion.Enabled = false;                
+            }
+            if (mascota.duenio.email == null)
+            {
+                chkEmail.Enabled = false;
             }
         }
     }

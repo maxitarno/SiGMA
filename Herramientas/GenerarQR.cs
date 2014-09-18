@@ -53,7 +53,7 @@ namespace Herramientas
                         }
                         break;
                     case "NombreDueño":
-                        datosQR += " Nombre del dueño: " + mascota.duenio.nombre;
+                        datosQR += " Nombre del dueño: " + mascota.duenio.nombre + " " + mascota.duenio.apellido;
                         break;
                     case "Direccion":
                         datosQR += " Direccion: " + mascota.duenio.domicilio + " B°: " +mascota.duenio.barrio.nombre;

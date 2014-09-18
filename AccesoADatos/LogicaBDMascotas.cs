@@ -271,6 +271,9 @@ namespace AccesoADatos
             {
                 SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
                 var consulta = from MascotasBD in mapaEntidades.Mascotas
+                               join ColoresBD in mapaEntidades.Colores on MascotasBD.idColor equals ColoresBD.idColor
+                               join edadesBD in mapaEntidades.Edades on MascotasBD.idEdad equals edadesBD.idEdad
+                               join especiesBD in mapaEntidades.Especies on MascotasBD.idEspecie equals especiesBD.idEspecie
                                join DuenioBD in mapaEntidades.Duenios on MascotasBD.idDuenio equals DuenioBD.idDuenio into group1
                                from G1 in group1.DefaultIfEmpty()
                                join PersonaBD in mapaEntidades.Personas on G1.idPersona equals PersonaBD.idPersona into group2
@@ -290,15 +293,20 @@ namespace AccesoADatos
                                {
                                    nombre = MascotasBD.nombreMascota,
                                    estado = MascotasBD.idEstado,
-                                   especie = MascotasBD.idEspecie,
-                                   edad = MascotasBD.idEdad,
-                                   raza = MascotasBD.idRaza,
-                                   color = MascotasBD.idColor,
+                                   idEspecie = MascotasBD.idEspecie,
+                                   especie = especiesBD.nombreEspecie,
+                                   idEdad = MascotasBD.idEdad,
+                                   edad = edadesBD.nombreEdad, 
+                                   raza = RazaBD.nombreRaza,
+                                   idRaza = MascotasBD.idRaza,
+                                   idColor = MascotasBD.idColor,
+                                   color = ColoresBD.nombreColor,
                                    tratoA = MascotasBD.tratoAnimales,
                                    tratoN = MascotasBD.tratoNinios,
                                    sexo = MascotasBD.sexo,
                                    categoria = CategoriaRazaBD.nombreCategoriaRaza,
-                                   caracter = G3.idCaracter,
+                                   idCaracter = G3.idCaracter,
+                                   caracter = G3.descripcion,
                                    id = MascotasBD.idMascota,
                                    imagen = MascotasBD.imagen,
                                    dueñoNombre = (G2 == null) ? null : G2.nombre,
@@ -313,22 +321,27 @@ namespace AccesoADatos
                 foreach (var registro in consulta)
                 {
                     mascota.caracter = new ECaracterMascota();
-                    mascota.caracter.idCaracter = registro.caracter;
+                    mascota.caracter.idCaracter = registro.idCaracter;
+                    mascota.caracter.descripcion = registro.caracter;
                     mascota.raza = new ERaza();
                     mascota.raza.CategoriaRaza = new ECategoriaRaza();
                     mascota.raza.CategoriaRaza.nombreCategoriaRaza = registro.categoria;
-                    mascota.raza.idRaza = registro.raza;
+                    mascota.raza.idRaza = registro.idRaza;
+                    mascota.raza.nombreRaza = registro.raza;
                     mascota.color = new EColor();
-                    mascota.color.idColor = registro.color;
+                    mascota.color.idColor = registro.idColor;
+                    mascota.color.nombreColor = registro.color;
                     mascota.nombreMascota = registro.nombre;
                     mascota.sexo = registro.sexo;
                     mascota.tratoAnimal = registro.tratoA;
                     mascota.tratoNiños = registro.tratoN;
                     mascota.idMascota = registro.id;
                     mascota.edad = new EEdad();
-                    mascota.edad.idEdad = registro.edad;
+                    mascota.edad.idEdad = registro.idEdad;
+                    mascota.edad.nombreEdad = registro.edad;
                     mascota.especie = new EEspecie();
-                    mascota.especie.idEspecie = registro.especie;
+                    mascota.especie.idEspecie = registro.idEspecie;
+                    mascota.especie.nombreEspecie = registro.especie;
                     mascota.duenio = new EDuenio();
                     mascota.duenio.apellido = registro.dueñoApellido;
                     mascota.duenio.nombre = registro.dueñoNombre;
@@ -357,6 +370,84 @@ namespace AccesoADatos
                 throw exc;
             }
             return b;
+        }
+        //Metodo que busca una mascota realmente por idMascota, sin filtros fantasmas, y devuelve la mascota con todos sus datos
+        //en su estructura
+        public static EMascota BuscarMascotaPorIdMascota(int idMascota)
+        {
+            EMascota mascota = new EMascota();
+            try
+            {
+                SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+                var consulta = from MascotasBD in mapaEntidades.Mascotas
+                               join ColoresBD in mapaEntidades.Colores on MascotasBD.idColor equals ColoresBD.idColor
+                               join edadesBD in mapaEntidades.Edades on MascotasBD.idEdad equals edadesBD.idEdad
+                               join especiesBD in mapaEntidades.Especies on MascotasBD.idEspecie equals especiesBD.idEspecie                               
+                               join RazaBD in mapaEntidades.Razas on MascotasBD.idRaza equals RazaBD.idRaza
+                               join CategoriaRazaBD in mapaEntidades.CategoriaRazas on RazaBD.idCategoriaRaza equals CategoriaRazaBD.idCategoriaRazas
+                               join CaracterBD in mapaEntidades.CaracteresMascota on MascotasBD.idCaracter equals CaracterBD.idCaracter into group3
+                               from G3 in group3.DefaultIfEmpty()                               
+                               where (MascotasBD.idMascota == idMascota)
+                               select new
+                               {
+                                   nombre = MascotasBD.nombreMascota,
+                                   estado = MascotasBD.idEstado,
+                                   idEspecie = MascotasBD.idEspecie,
+                                   especie = especiesBD.nombreEspecie,
+                                   idEdad = MascotasBD.idEdad,
+                                   edad = edadesBD.nombreEdad,
+                                   raza = RazaBD.nombreRaza,
+                                   idRaza = MascotasBD.idRaza,
+                                   idColor = MascotasBD.idColor,
+                                   color = ColoresBD.nombreColor,
+                                   tratoA = MascotasBD.tratoAnimales,
+                                   tratoN = MascotasBD.tratoNinios,
+                                   sexo = MascotasBD.sexo,
+                                   categoria = CategoriaRazaBD.nombreCategoriaRaza,
+                                   idCaracter = G3.idCaracter,
+                                   caracter = G3.descripcion,
+                                   id = MascotasBD.idMascota,
+                                   imagen = MascotasBD.imagen,                                  
+                               };
+                foreach (var registro in consulta)
+                {
+                    mascota.caracter = new ECaracterMascota();
+                    mascota.caracter.idCaracter = registro.idCaracter;
+                    mascota.caracter.descripcion = registro.caracter;
+                    mascota.raza = new ERaza();
+                    mascota.raza.CategoriaRaza = new ECategoriaRaza();
+                    mascota.raza.CategoriaRaza.nombreCategoriaRaza = registro.categoria;
+                    mascota.raza.idRaza = registro.idRaza;
+                    mascota.raza.nombreRaza = registro.raza;
+                    mascota.color = new EColor();
+                    mascota.color.idColor = registro.idColor;
+                    mascota.color.nombreColor = registro.color;
+                    mascota.nombreMascota = registro.nombre;
+                    mascota.sexo = registro.sexo;
+                    mascota.tratoAnimal = registro.tratoA;
+                    mascota.tratoNiños = registro.tratoN;
+                    mascota.idMascota = registro.id;
+                    mascota.edad = new EEdad();
+                    mascota.edad.idEdad = registro.idEdad;
+                    mascota.edad.nombreEdad = registro.edad;
+                    mascota.especie = new EEspecie();
+                    mascota.especie.idEspecie = registro.idEspecie;
+                    mascota.especie.nombreEspecie = registro.especie;                    
+                    if (registro.imagen != null)
+                    {
+                        mascota.imagen = registro.imagen;
+                    }
+                    else
+                    {
+                        mascota.imagen = null;
+                    }
+                }
+                return mascota;
+            }
+            catch (Exception exc)
+            {
+                return null;
+            }            
         }
         public static bool Eliminar(int idMascota)
         {

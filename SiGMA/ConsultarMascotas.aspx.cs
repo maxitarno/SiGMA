@@ -163,8 +163,7 @@ namespace SiGMA
         public void BtnSeleccionarClick(object sender, EventArgs e)
         {
             Session["imagen"] = null;
-            EMascota mascota = new EMascota();
-            EPersona persona = new EPersona();
+            EMascota mascota = new EMascota();            
             ECaracterMascota caracter = new ECaracterMascota();
             ECategoriaRaza categoria = new ECategoriaRaza();
             ECuidado cuidado = new ECuidado();
@@ -212,8 +211,7 @@ namespace SiGMA
                         imgprvw.Width = 300;
                         imgprvw.Height = 200;
                     }
-                    imgImagen.Visible = true;
-                    Session["Mascota"] = mascota; //Agregado por Gonzalo, el pr0, para probar generacion QR
+                    imgImagen.Visible = true;                    
                 }
                 else
                 {
@@ -497,7 +495,7 @@ namespace SiGMA
 
         protected void btnGenerarQR_Click(object sender, EventArgs e)
         {
-            if (Session["Mascota"] != null)
+            if (Session["idMascota"] != null)
             {
                 Response.Redirect("~/GenerarCodigoQR.aspx");
             }

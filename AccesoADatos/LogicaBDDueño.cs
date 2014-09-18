@@ -42,10 +42,11 @@ namespace AccesoADatos
                                idBarrio = subBarriosBD != null ? subBarriosBD.idBarrio : -1,
                                nombreBarrio = subBarriosBD != null ? subBarriosBD.nombre : string.Empty
                            };
-            EDuenio dueño = new EDuenio();
+            EDuenio dueño = null;
 
             if (consulta.Count() != 0)
-            {                
+            {
+                dueño = new EDuenio();
                 dueño.apellido = consulta.Select(a => a.personasBD.apellido).First();
                 dueño.nombre = consulta.Select(a => a.personasBD.nombre).First();
                 if (consulta.Select(a => a.idBarrio).First() != -1)

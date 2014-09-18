@@ -69,8 +69,14 @@ namespace SiGMA
                 mascota.edad.idEdad = int.Parse(ddlEdad.SelectedValue);
                 mascota.color = new EColor();
                 mascota.color.idColor = int.Parse(ddlColor.SelectedValue);
-                mascota.tratoNiños = Convert.ToBoolean(ddlTratoNinios.SelectedValue);
-                mascota.tratoAnimal = Convert.ToBoolean(ddlTratoAnimales.SelectedValue);
+                if (!ddlTratoNinios.SelectedValue.Equals("0"))
+                {
+                    mascota.tratoNiños = Convert.ToBoolean(ddlTratoNinios.SelectedValue);
+                }
+                if (!ddlTratoAnimales.SelectedValue.Equals("0"))
+                {
+                    mascota.tratoAnimal = Convert.ToBoolean(ddlTratoAnimales.SelectedValue);
+                }
                 mascota.observaciones = txtObservaciones.Text;                
                 mascota.alimentacionEspecial = txtAlimentacionEspecial.Text;
                 if (!txtFecha.Text.Equals(""))
@@ -100,25 +106,24 @@ namespace SiGMA
             }
         }
         private void mostrarResultado(string mensaje, bool b)
-        {
-            if (!b)
-            {
-                lblError.Text = mensaje;
-            }           
+        {                      
             pnlCorrecto.Visible = b;
             pnlAtento.Visible = !b;
             pnlDatos.Visible = !b;
             pnlBtnRegistrar.Visible = !b;
             fuImagen.Visible = !b;
+            if (!b)
+            {
+                lblError.Text = mensaje;
+            }
+            else
+            {
+                Response.AddHeader("REFRESH", "5;URL=RegistrarMascota.aspx");
+            }
         }
         protected void cvDdlSexo_ServerValidate(object source, ServerValidateEventArgs args)
         {
             args.IsValid = Validaciones.verificarSeleccionEnDdl(ref ddlSexo); 
-        }
-
-        protected void btnLimpiar_Click(object sender, EventArgs e)
-        {
-
         }
 
         protected void cvEdad_ServerValidate(object source, ServerValidateEventArgs args)

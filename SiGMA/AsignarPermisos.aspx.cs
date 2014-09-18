@@ -43,8 +43,7 @@ namespace SiGMA
                 {
                     List<EPermiso> ListadoPermisos = new List<EPermiso>();
                     EPermiso permisoRol = new EPermiso();
-                    var idRol = Convert.ToInt32(ddlRol.SelectedItem.Value);
-                    var i = 0;
+                    var idRol = Convert.ToInt32(ddlRol.SelectedItem.Value);                   
 
                     // --------------- Administracion --------------- //
                     EPermiso permisoRol16 = new EPermiso();

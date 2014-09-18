@@ -9,9 +9,9 @@
                 </h1>
             </div>
 <div class="panel-body"><p>Seleccione los datos que quiere reflejar en el codigo QR</p>
-<div style="margin-left: 35%; display: table;width: 30%;">
+<div style="margin-left: 35%; display: table;width: 40%;">
 <div style="display: table-row; width:30%">
-    <div style="display: table-cell; width: 10%;"> <table> 
+    <div style="display: table-cell; width: 20%;"> <table> 
 <tr><td> <asp:CheckBox ID="chkNombreMascota" runat="server" Text="Nombre de la mascota" 
         AutoPostBack="true" oncheckedchanged="chkNombreMascota_CheckedChanged" /></td>
    </tr>
@@ -28,11 +28,12 @@
                 Text="Trato con animales" AutoPostBack="True" 
         oncheckedchanged="chkTratoAnimales_CheckedChanged" /></td></tr>
 </table></div>
-<div style="width: 10%; display: table-cell;">
+<div style="width: 20%; display: table-cell;">
     <asp:Panel ID="pnlDueño" runat="server">
         <table>
         <tr><td>
-            <asp:CheckBox ID="chkNombreDueño" runat="server" Text="Nombre del dueño" AutoPostBack="True" 
+            <asp:CheckBox ID="chkNombreDueño" runat="server" 
+                Text="Nombre y apellido del dueño" AutoPostBack="True" 
         oncheckedchanged="chkNombreDueño_CheckedChanged" /></td></tr>
         <tr><td>
             <asp:CheckBox ID="chkDireccion" runat="server" Text="Direccion" AutoPostBack="True" 
@@ -46,7 +47,7 @@
     </asp:Panel>
 </div>
 </div>
-
+</div>
 <div class="almedio"><table><tr>
     <td><asp:Image ID="imgQR" runat="server" /></td></tr>
     <tr><td></td></tr>
@@ -57,6 +58,5 @@
         </td>
     </tr></table></div>    
     </div>
-</div>
 </div>
 </asp:Content>
