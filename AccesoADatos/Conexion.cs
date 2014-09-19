@@ -24,6 +24,10 @@ namespace AccesoADatos
             {
                 cadenaConexion = "metadata=res://*/DER.csdl|res://*/DER.ssdl|res://*/DER.msl;provider=System.Data.SqlClient;provider connection string= \"Data Source=EUROCASE\\SQLEXPRESS;Initial catalog=SIGMA;Integrated Security=True;MultipleActiveResultSets=True\"";
             }
+            else if (nombrePC.Equals("FERRERO"))
+            {
+                cadenaConexion = "metadata=res://*/DER.csdl|res://*/DER.ssdl|res://*/DER.msl;provider=System.Data.SqlClient;provider connection string=\"Data Source=(local);Initial Catalog=SiGMA;Integrated Security=True\"";
+            }
              return new SiGMAEntities(cadenaConexion);
         }
     }
