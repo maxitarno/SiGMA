@@ -69,11 +69,11 @@ namespace SiGMA
                 mascota.edad.idEdad = int.Parse(ddlEdad.SelectedValue);
                 mascota.color = new EColor();
                 mascota.color.idColor = int.Parse(ddlColor.SelectedValue);
-                if (!ddlTratoNinios.SelectedValue.Equals("0"))
+                if (Validaciones.verificarSeleccionEnDdl(ref ddlTratoNinios))
                 {
                     mascota.tratoNiños = Convert.ToBoolean(ddlTratoNinios.SelectedValue);
                 }
-                if (!ddlTratoAnimales.SelectedValue.Equals("0"))
+                if (Validaciones.verificarSeleccionEnDdl(ref ddlTratoAnimales))
                 {
                     mascota.tratoAnimal = Convert.ToBoolean(ddlTratoAnimales.SelectedValue);
                 }

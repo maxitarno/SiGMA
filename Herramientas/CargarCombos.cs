@@ -42,7 +42,7 @@ namespace Herramientas
             ddl.Items.Insert(0, "-- Seleccione un rol --");
             ddl.DataBind();            
         }
-        //carga de combo de Barrio
+        //Borrar este metodo
         public static void cargarBarrio(ref DropDownList ddl)
         {
             ddl.Items.Add(new ListItem("-- Seleccione una barrio --", "0"));
@@ -50,7 +50,17 @@ namespace Herramientas
             foreach (EBarrio item in barrios)
             {
                 ddl.Items.Add(new ListItem(item.nombre.ToString(), item.idBarrio.ToString()));
-            }            
+            }
+        }
+        public static void cargarBarrio(ref DropDownList ddl, int idLocalidad)
+        {
+            ddl.Items.Clear();
+            ddl.Items.Add(new ListItem("-- Seleccione una barrio --", "0"));
+            List<EBarrio> barrios = Datos.BuscarBarrios(idLocalidad);
+            foreach (EBarrio item in barrios)
+            {
+                ddl.Items.Add(new ListItem(item.nombre.ToString(), item.idBarrio.ToString()));
+            }
         }
         //carga de combo de Localidades
         public static void cargarLocalidades(ref DropDownList ddl)
@@ -130,15 +140,7 @@ namespace Herramientas
             {
                 ddl.Items.Add(new ListItem(item.nombreEstado.ToString(), item.idEstado.ToString()));
             }
-        }
-        public static void cargarBarrio(ref DropDownList ddl, int idLocalidad)
-        {
-            List<EBarrio> barrios = Datos.BuscarBarrios(idLocalidad);
-            foreach (EBarrio item in barrios)
-            {
-                ddl.Items.Add(new ListItem(item.nombre.ToString(), item.idBarrio.ToString()));
-            }
-        }
+        }        
         public static void cargarTipoDocumentoLista(ref ListBox ddl, string tipoDocumento)
         {
             List<ETipoDeDocumento> tiposDocumentos = Datos.TiposDNI(tipoDocumento);
@@ -182,6 +184,7 @@ namespace Herramientas
         }
         public static void cargarCalles(ref DropDownList ddl, int localidad)
         {
+            ddl.Items.Clear();
             List<ECalle> calles = Datos.BuscarCalle(localidad);
             foreach (ECalle item in calles)
             {

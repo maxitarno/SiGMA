@@ -404,6 +404,7 @@ namespace AccesoADatos
                                    tratoN = MascotasBD.tratoNinios,
                                    sexo = MascotasBD.sexo,
                                    categoria = CategoriaRazaBD.nombreCategoriaRaza,
+                                   idCategoria = CategoriaRazaBD.idCategoriaRazas,
                                    idCaracter = G3.idCaracter,
                                    caracter = G3.descripcion,
                                    id = MascotasBD.idMascota,
@@ -416,6 +417,7 @@ namespace AccesoADatos
                     mascota.caracter.descripcion = registro.caracter;
                     mascota.raza = new ERaza();
                     mascota.raza.CategoriaRaza = new ECategoriaRaza();
+                    mascota.raza.CategoriaRaza.idCategoriaRaza = registro.idCategoria;
                     mascota.raza.CategoriaRaza.nombreCategoriaRaza = registro.categoria;
                     mascota.raza.idRaza = registro.idRaza;
                     mascota.raza.nombreRaza = registro.raza;
@@ -499,6 +501,28 @@ namespace AccesoADatos
                 throw exc;
             }
             return b;
+        }
+
+        public static List<EMascota> buscarMascotasPorEstado(string estado)
+        {
+            List<EMascota> listaMascotas = null;
+            SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+            var consulta = from mascotasBD in mapaEntidades.Mascotas
+                           join estadosBD in mapaEntidades.Estados on mascotasBD.idEstado equals estadosBD.idEstado
+                           where (estadosBD.nombreEstado == estado)
+                           select mascotasBD;
+            if (consulta.Count() != 0)
+            {
+                listaMascotas = new List<EMascota>();
+                foreach (var item in consulta)
+                {
+                    EMascota mascota = new EMascota();
+                    mascota.idMascota = item.idMascota;
+                    mascota.nombreMascota = item.nombreMascota;
+                    listaMascotas.Add(mascota);
+                }
+            }
+            return listaMascotas;
         }
     }
 }

@@ -72,6 +72,7 @@
     <Content Include="Account\Register.aspx" />
     <Content Include="PermisosInsuficientes.aspx" />
     <Content Include="Principal.aspx" />
+    <Content Include="RegistrarHallazgo.aspx" />
     <Content Include="RegistrarMascota.aspx" />
     <Content Include="RegistrarPerdida.aspx" />
     <Content Include="RegistrarRoles.aspx" />
@@ -189,6 +190,13 @@
     </Compile>
     <Compile Include="Principal.aspx.designer.cs">
       <DependentUpon>Principal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrarHallazgo.aspx.cs">
+      <DependentUpon>RegistrarHallazgo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegistrarHallazgo.aspx.designer.cs">
+      <DependentUpon>RegistrarHallazgo.aspx</DependentUpon>
     </Compile>
     <Compile Include="RegistrarMascota.aspx.cs">
       <DependentUpon>RegistrarMascota.aspx</DependentUpon>
