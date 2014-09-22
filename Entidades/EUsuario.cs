@@ -10,7 +10,6 @@ namespace Entidades
     {
         public string user { get; set; }
         public string password { get; set; }
-        public List<ERol> rolesUsuario { get; set; }      
-        
+        public List<ERol> rolesUsuario { get; set; }
     }
 }

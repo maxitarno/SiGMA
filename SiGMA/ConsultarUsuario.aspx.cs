@@ -41,11 +41,9 @@ namespace SiGMA
                 pnlnumber.Visible = false;
                 pnlTipoDeDocumento.Visible = false;
                 pnlApellido.Visible = false;
-                pnladress.Visible = false;
                 pnlbarrio.Visible = false;
                 pnlBarrios.Visible = false;
                 pnldate.Visible = false;
-                pnlDomicilio.Visible = false;
                 pnlEliminar.Visible = false;
                 pnlestate.Visible = false;
                 pnlFecha.Visible = false;
@@ -168,15 +166,7 @@ namespace SiGMA
                 ddlTipoDeDocumento.SelectedValue = tipodoc.idTipoDeDocumento.ToString();
                 txtNºDeDocumento.Text = persona.nroDocumento;
                 txtApellido.Text = persona.apellido;
-                txtNombre.Text = persona.nombre;
-                if (persona.nroCalle != null)
-                {
-                    txtDomicilio.Text = calle.nombre + " " + persona.nroCalle; // falta agregar el numero de la calle aca
-                }
-                else
-                {
-                    txtDomicilio.Text = null;
-                }   
+                txtNombre.Text = persona.nombre; 
                 ddlLocalidades.SelectedValue = localidad.idLocalidad.ToString();
                 ddlBarrios.SelectedValue = barrio.idBarrio.ToString();
                 txtTelefonoFijo.Text = persona.telefonoFijo;
@@ -193,11 +183,9 @@ namespace SiGMA
                 pnlnumber.Visible = true;
                 pnlTipoDeDocumento.Visible = true;
                 pnlApellido.Visible = true;
-                pnladress.Visible = true;
                 pnlbarrio.Visible = true;
                 pnlBarrios.Visible = true;
                 pnldate.Visible = true;
-                pnlDomicilio.Visible = true;
                 pnlEliminar.Visible = true;
                 pnlestate.Visible = true;
                 pnlFecha.Visible = true;
@@ -265,7 +253,6 @@ namespace SiGMA
                                     persona.telefonoFijo = txtTelefonoFijo.Text;
                                     persona.fechaNacimiento = fecha;
                                     persona.apellido = txtApellido.Text;
-                                    persona.domicilio.nombre = txtDomicilio.Text;
                                     persona.email = txtMail.Text;
                                     persona.barrio = new EBarrio();
                                     persona.barrio.idBarrio = int.Parse(ddlBarrios.SelectedValue);
@@ -273,6 +260,8 @@ namespace SiGMA
                                     persona.tipoDocumento.idTipoDeDocumento = int.Parse(ddlTipoDeDocumento.SelectedValue);
                                     EUsuario usuario = new EUsuario();
                                     usuario.user = txtUsuario.Text;
+                                    persona.domicilio = new ECalle();
+                                    persona.domicilio.idCalle = int.Parse(ddlCalle.SelectedValue.ToString());
                                     if (usuario.user != "")
                                     {
                                         if (LogicaBDUsuario.ModificarUsuario(persona, usuario))
@@ -352,7 +341,6 @@ namespace SiGMA
                     pnlCorrecto.Visible = false;
                     pnlInfo.Visible = false;
                     txtApellido.Text = "";
-                    txtDomicilio.Text = "";
                     txtFecha.Text = "";
                     txtMail.Text = "";
                     txtNºDeDocumento.Text = "";
@@ -362,12 +350,10 @@ namespace SiGMA
                     txtUsuario.Text = "";
                     lstResultados.Items.Clear();
                     pnlApellido.Visible = false;
-                    pnladress.Visible = false;
                     pnlAtento.Visible = false;
                     pnlbarrio.Visible = false;
                     pnlBarrios.Visible = false;
                     pnldate.Visible = false;
-                    pnlDomicilio.Visible = false;
                     pnlEliminar.Visible = false;
                     pnlestate.Visible = false;
                     pnlFecha.Visible = false;
@@ -430,7 +416,6 @@ namespace SiGMA
             pnlCorrecto.Visible = false;
             pnlInfo.Visible = false;
             txtApellido.Text = "";
-            txtDomicilio.Text = "";
             txtFecha.Text = "";
             txtMail.Text = "";
             txtNºDeDocumento.Text = "";
@@ -440,12 +425,10 @@ namespace SiGMA
             txtUsuario.Text = "";
             lstResultados.Items.Clear();
             pnlApellido.Visible = false;
-            pnladress.Visible = false;
             pnlAtento.Visible = false;
             pnlbarrio.Visible = false;
             pnlBarrios.Visible = false;
             pnldate.Visible = false;
-            pnlDomicilio.Visible = false;
             pnlEliminar.Visible = false;
             pnlestate.Visible = false;
             pnlFecha.Visible = false;
@@ -502,11 +485,9 @@ namespace SiGMA
                 pnlnumber.Visible = false;
                 pnlTipoDeDocumento.Visible = false;
                 pnlApellido.Visible = false;
-                pnladress.Visible = false;
                 pnlbarrio.Visible = false;
                 pnlBarrios.Visible = false;
                 pnldate.Visible = false;
-                pnlDomicilio.Visible = false;
                 pnlEliminar.Visible = false;
                 pnlestate.Visible = false;
                 pnlFecha.Visible = false;
@@ -544,11 +525,9 @@ namespace SiGMA
             pnlUser.Visible = false;
             pnlUsuario.Visible = false;
             pnlApellido.Visible = false;
-            pnladress.Visible = false;
             pnlbarrio.Visible = false;
             pnlBarrios.Visible = false;
             pnldate.Visible = false;
-            pnlDomicilio.Visible = false;
             pnlEliminar.Visible = false;
             pnlestate.Visible = false;
             pnlFecha.Visible = false;

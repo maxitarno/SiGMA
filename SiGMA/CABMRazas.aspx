@@ -157,7 +157,7 @@
                                     <td>
                                         <asp:Panel ID="pnlCambio" runat="server" Visible="false">
                                             <asp:Button ID="btnModificar" runat="server" Text="Modificar" CssClass="btn-primary"
-                                                CausesValidation="False" OnClick="BtnModificarClick" />
+                                                CausesValidation="1" OnClick="BtnModificarClick" />
                                         </asp:Panel>
                                     </td>
                                     <td>

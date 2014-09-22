@@ -119,7 +119,7 @@ namespace AccesoADatos
                                persona = G1,
                                barrio = G2,
                                localidad = G3,
-                               calle = G4
+                               calle = G4,
                             };
             try
             {
@@ -128,7 +128,6 @@ namespace AccesoADatos
                     persona.apellido = usuario.persona.apellido;
                     persona.nombre = usuario.persona.nombre;
                     barrio.idBarrio = (usuario.barrio == null) ? 0 : usuario.barrio.idBarrio;
-                    persona.domicilio.nombre = usuario.persona.domicilio;
                     persona.email = usuario.persona.email;
                     persona.fechaNacimiento = usuario.persona.fechaNacimiento;
                     persona.nroDocumento = usuario.persona.nroDocumento;
@@ -140,6 +139,9 @@ namespace AccesoADatos
                     persona.idPersona = usuario.persona.idPersona;
                     persona.nroCalle = usuario.persona.nroCalle;
                     calle.idCalle = usuario.persona.idCalle;
+                    calle.nombre = usuario.persona.Calles.nombre;
+                    localidad.nombre = usuario.persona.Calles.Localidades.nombre;
+                    barrio.nombre = usuario.barrio.nombre;
                 }
             }
             catch (System.Data.EntityCommandCompilationException exc)
@@ -217,6 +219,58 @@ namespace AccesoADatos
             }
             return b;
         }
-       
+       public static void BuscarUsuarios(string nombre, EUsuario user, EPersona persona, EBarrio barrio, ELocalidad localidad, ETipoDeDocumento tipoDoc, ECalle calle, EDuenio duenio)
+        {
+            SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+            var consulta1 = from usuariosBD in mapaEntidades.Usuarios join personasBD in mapaEntidades.Personas
+                           on usuariosBD.user equals personasBD.user into group1
+                           from G1 in group1.DefaultIfEmpty()
+                           join barriosBD in mapaEntidades.Barrios on G1.idBarrio equals barriosBD.idBarrio into group2
+                           from G2 in group2.DefaultIfEmpty()
+                           join localidadesBD in mapaEntidades.Localidades on G2.idLocalidad equals localidadesBD.idLocalidad into group3
+                           from G3 in group3.DefaultIfEmpty()
+                           join calleBD in mapaEntidades.Calles on G1.idCalle equals calleBD.idCalle into group4
+                           from G4 in group4.DefaultIfEmpty()
+                           join dueniosBD in mapaEntidades.Duenios on G1.idPersona equals dueniosBD.idPersona into group5
+                           from G5 in group5.DefaultIfEmpty()
+                           where (G1.user == nombre && usuariosBD.estado == true)
+                           select new 
+                           {
+                               user = usuariosBD,
+                               persona = G1,
+                               barrio = G2,
+                               localidad = G3,
+                               calle = G4,
+                               duenio = G5
+                            };
+            try
+            {
+                foreach (var usuario in consulta1)
+                {
+                    persona.apellido = usuario.persona.apellido;
+                    persona.nombre = usuario.persona.nombre;
+                    barrio.idBarrio = (usuario.barrio == null) ? 0 : usuario.barrio.idBarrio;
+                    persona.email = usuario.persona.email;
+                    persona.fechaNacimiento = usuario.persona.fechaNacimiento;
+                    persona.nroDocumento = usuario.persona.nroDocumento;
+                    tipoDoc.idTipoDeDocumento = usuario.persona.idTipoDocumento;
+                    persona.telefonoFijo = usuario.persona.telefonoFijo;
+                    persona.telefonoCelular = usuario.persona.telefonoCelular;
+                    localidad.idLocalidad = (usuario.localidad == null) ? 0 : usuario.localidad.idLocalidad;
+                    user.user = usuario.persona.user;
+                    persona.idPersona = usuario.persona.idPersona;
+                    persona.nroCalle = usuario.persona.nroCalle;
+                    calle.idCalle = usuario.persona.idCalle;
+                    calle.nombre = usuario.persona.Calles.nombre;
+                    localidad.nombre = usuario.persona.Calles.Localidades.nombre;
+                    barrio.nombre = usuario.barrio.nombre;
+                    duenio.idDuenio = usuario.duenio.idDuenio;
+                }
+            }
+            catch (System.Data.EntityCommandCompilationException exc)
+            {
+                throw exc;
+            }
+        }
     }
 }

@@ -76,7 +76,8 @@ namespace AccesoADatos
                                from CategoriaRazaBD in mapaEntidades.CategoriaRazas
                                from CaracterBD in mapaEntidades.CaracteresMascota
                                from CuidadoEspecialBD in mapaEntidades.CuidadosEspeciales
-                               where (MascotasBD.idRaza == RazaBD.idRaza 
+                               from EdadesBD in mapaEntidades.Edades
+                               where (MascotasBD.idRaza == RazaBD.idRaza && MascotasBD.idEdad == EdadesBD.idEdad
                                && CuidadoEspecialBD.idCuidadoEspecial == RazaBD.idCuidadoEspecial && RazaBD.idCategoriaRaza == CategoriaRazaBD.idCategoriaRazas 
                                && MascotasBD.idCaracter == CaracterBD.idCaracter && MascotasBD.idMascota == idMascota && MascotasBD.idEstado != 6)
                                select new
@@ -97,7 +98,9 @@ namespace AccesoADatos
                                    caracter = CaracterBD.idCaracter,
                                    Cuidado = CuidadoEspecialBD.descripcion,
                                    id = MascotasBD.idMascota,
-                                   imagen = MascotasBD.imagen
+                                   imagen = MascotasBD.imagen,
+                                   razaN = RazaBD.nombreRaza,
+                                   edadN = EdadesBD.nombreEdad
                                };
                 foreach (var registro in consulta)
                 {
@@ -129,6 +132,8 @@ namespace AccesoADatos
                     mascota.especie.idEspecie = registro.especie;
                     mascota.estado = new EEstado();
                     mascota.estado.idEstado = registro.estado;
+                    mascota.raza.nombreRaza = registro.razaN;
+                    mascota.edad.nombreEdad = registro.edadN;
                     if (registro.imagen != null){
                         mascota.imagen = registro.imagen;
                     }

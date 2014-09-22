@@ -138,21 +138,6 @@
                     </tr>
                     <tr>
                         <td>
-                            <asp:Panel ID="pnladress" runat="server" Visible="false">
-                                Domicilio:&nbsp
-                            </asp:Panel>
-                        </td>
-                        <td>
-                            <asp:Panel ID="pnlDomicilio" runat="server" Visible="false">
-                                <asp:TextBox ID="txtDomicilio" runat="server" CssClass="DropDownList"  Enabled="false" Width=100%></asp:TextBox>
-                            </asp:Panel>
-                        </td>
-                        <td>
-                            <asp:RequiredFieldValidator ID="rfvDomicilio" runat="server" ErrorMessage="Debe ingresar un domicilio" CssClass="Validator" ControlToValidate="txtDomicilio" Display="Dynamic" SetFocusOnError="True" ValidationGroup="2"></asp:RequiredFieldValidator>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
                             <asp:Panel ID="pnlestate" runat="server" Visible="false">
                                 Localidades:&nbsp
                             </asp:Panel>

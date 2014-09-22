@@ -41,6 +41,7 @@ namespace SiGMA
                     pnlInfo.Visible = false;
                     pnlResultado.Visible = true;
                     pnlSeleccionar.Visible = true;
+                    pnl8.Visible = true;
                 }
                 else
                 {
@@ -75,6 +76,7 @@ namespace SiGMA
                     txtPeso.Text = raza.pesoRaza;
                     Session["idraza"] = int.Parse(lstResultados.SelectedValue.ToString());
                     ddlEspecies.SelectedValue = raza.especie.idEspecie.ToString();
+                    pnlDatos.Visible = true;
                 }
                 else
                 {

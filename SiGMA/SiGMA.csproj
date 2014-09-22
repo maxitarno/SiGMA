@@ -72,6 +72,7 @@
     <Content Include="Account\Register.aspx" />
     <Content Include="PermisosInsuficientes.aspx" />
     <Content Include="Principal.aspx" />
+    <Content Include="RegistrarAdopcion.aspx" />
     <Content Include="RegistrarHallazgo.aspx" />
     <Content Include="RegistrarMascota.aspx" />
     <Content Include="RegistrarPerdida.aspx" />
@@ -190,6 +191,13 @@
     </Compile>
     <Compile Include="Principal.aspx.designer.cs">
       <DependentUpon>Principal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrarAdopcion.aspx.cs">
+      <DependentUpon>RegistrarAdopcion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegistrarAdopcion.aspx.designer.cs">
+      <DependentUpon>RegistrarAdopcion.aspx</DependentUpon>
     </Compile>
     <Compile Include="RegistrarHallazgo.aspx.cs">
       <DependentUpon>RegistrarHallazgo.aspx</DependentUpon>
