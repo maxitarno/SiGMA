@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Entidades;
 using System.Transactions;
+
 namespace AccesoADatos
 {
     public class LogicaBDMascotas
@@ -481,32 +482,7 @@ namespace AccesoADatos
                 }
             }
             return b;
-        }
-
-        public static bool registrarPerdida(EPerdida perdida)
-        {
-            bool b = false;
-            try
-            {
-                SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
-                Perdidas bdPerdida = new Perdidas();
-                bdPerdida.idMascota = perdida.mascota.idMascota;
-                bdPerdida.idBarrioPerdida = perdida.barrio.idBarrio;
-                bdPerdida.idUsuario = perdida.usuario.user;
-                bdPerdida.FechaHoraPerdida = perdida.fecha;
-                bdPerdida.observaciones = perdida.comentarios;
-                bdPerdida.mapaPerdida = perdida.mapaPerdida;
-                mapaEntidades.AddToPerdidas(bdPerdida);
-                mapaEntidades.SaveChanges();
-                b = true;
-            }
-            catch (System.Data.EntityCommandCompilationException exc)
-            {
-                b = false;
-                throw exc;
-            }
-            return b;
-        }
+        }        
 
         public static List<EMascota> buscarMascotasPorEstado(string estado)
         {

@@ -124,7 +124,7 @@
                             </td>
                             <td>
                                 <asp:DropDownList ID="ddlCalles" Enabled="true" runat="server"  Width="50%" AppendDataBoundItems="True">
-                                </asp:DropDownList> - <asp:TextBox ID="txtNroCalle" ReadOnly="True" runat="server" Width="20%" ></asp:TextBox>
+                                </asp:DropDownList> - <asp:TextBox ID="txtNroCalle" runat="server" Width="20%" ></asp:TextBox>
                             </td>
                         </tr>                        
                         <tr>
@@ -151,13 +151,15 @@
                                     <TitleStyle BackColor="Black" ForeColor="White" />
                                     </asp:Calendar>--%>
                             </td>
+                            <td> 
+                                <asp:RequiredFieldValidator ID="rfvFecha" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="txtFecha"></asp:RequiredFieldValidator></td>
                         </tr>
                         <tr>
                             <td>
                                 Lugar:
                             </td>
                             <td>
-                                <asp:TextBox ID="txtMapa" runat="server" Width="50%" Text="Acá iría el mapa con el punto de donde se perdio"></asp:TextBox>
+                                <asp:TextBox ID="txtMapa" runat="server" Width="50%" Text="Acá iría el mapa con el punto donde se hallo"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
@@ -174,8 +176,8 @@
                                
                             </td>
                             <td>                                  
-                                <asp:Button ID="btnRegistrarPerdida" runat="server" Text="Registrar" 
-                                    CssClass="btn-primary" />   
+                                <asp:Button ID="btnRegistrarHallazgo" runat="server" Text="Registrar" 
+                                    CssClass="btn-primary" onclick="btnRegistrarHallazgo_Click" />   
                             </td>
                         </tr>
                         </table>

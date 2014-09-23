@@ -205,7 +205,7 @@ namespace SiGMA
                     perdida.fecha = Convert.ToDateTime(txtFechaPerdida.Text);
                     perdida.comentarios = txtComentarios.Text;
                     perdida.mapaPerdida = txtMapa.Text;
-                    if (LogicaBDMascotas.registrarPerdida(perdida))
+                    if (LogicaBDPerdida.registrarPerdida(perdida))
                     {
                         limpiarPagina();
                         pnlCorrecto.Visible = true;

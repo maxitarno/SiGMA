@@ -193,6 +193,15 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.TextBox txtFecha;
         
         /// <summary>
+        /// Control rfvFecha.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvFecha;
+        
+        /// <summary>
         /// Control txtMapa.
         /// </summary>
         /// <remarks>
@@ -211,13 +220,13 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.TextBox txtComentarios;
         
         /// <summary>
-        /// Control btnRegistrarPerdida.
+        /// Control btnRegistrarHallazgo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnRegistrarPerdida;
+        protected global::System.Web.UI.WebControls.Button btnRegistrarHallazgo;
         
         /// <summary>
         /// Control pnlNueva.

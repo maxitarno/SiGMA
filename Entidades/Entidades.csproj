@@ -50,9 +50,11 @@
     <Compile Include="ECategoriaRaza.cs" />
     <Compile Include="EColor.cs" />
     <Compile Include="ECuidado.cs" />
+    <Compile Include="EDomicilio.cs" />
     <Compile Include="EDuenio.cs" />
     <Compile Include="EEdad.cs" />
     <Compile Include="EEspecie.cs" />
+    <Compile Include="EHallazgo.cs" />
     <Compile Include="ELocalidad.cs" />
     <Compile Include="EMascota.cs" />
     <Compile Include="EPerdida.cs" />

@@ -67,6 +67,7 @@
                 <li><a href="RegistrarMascota.aspx">Registrar Mascotas</a></li>
                 <li><a href="RegistrarPerdida.aspx">Registrar Perdida</a></li>
                 <li><a href="RegistrarAdopcion.aspx">Registrar Adopción</a></li>
+                <li><a href="RegistrarHallazgo.aspx">Registrar Hallazgo</a></li>
             </ul>
         </div>
         <!-- fin mascotas -->

@@ -16,6 +16,10 @@ namespace SiGMA
         {
             if (!Page.IsPostBack)
             {
+                if (Session["UsuarioLogueado"] == null)
+                {
+                    Response.Redirect("Login.aspx");
+                }                
                 CargarCombos.cargarLocalidades(ref ddlLocalidades);
                 CargarCombos.cargarEspecies(ref ddlEspecie);
                 CargarCombos.cargarComboRazas(ref ddlRaza);
@@ -86,6 +90,7 @@ namespace SiGMA
         protected void lstPerdidas_SelectedIndexChanged(object sender, EventArgs e)
         {
             EMascota mascota = LogicaBDMascotas.BuscarMascotaPorIdMascota(int.Parse(lstPerdidas.SelectedValue));
+            Session["MascotaPerdida"] = mascota;
             lblNombreMascotaPerdida.Text = mascota.nombreMascota;
             ddlEspecie.SelectedValue = mascota.especie.idEspecie.ToString();
             ddlRaza.SelectedValue = mascota.raza.idRaza.ToString();
@@ -117,6 +122,25 @@ namespace SiGMA
         {
             CargarCombos.cargarBarrio(ref ddlBarrios, int.Parse(ddlLocalidades.SelectedValue));
             CargarCombos.cargarCalles(ref ddlCalles, int.Parse(ddlLocalidades.SelectedValue));
+        }
+
+        protected void btnRegistrarHallazgo_Click(object sender, EventArgs e)
+        {
+            EMascota mascota = (EMascota)Session["MascotaPerdida"];
+            EPerdida perdida = LogicaBDPerdida.buscarPerdidaPorIdMascota(mascota);
+            EHallazgo hallazgo = new EHallazgo();
+            hallazgo.perdida = perdida;
+            hallazgo.mascota = mascota;
+            hallazgo.observaciones = txtComentarios.Text;
+            hallazgo.fechaHallazgo = DateTime.Parse(txtFecha.Text);
+            hallazgo.domicilio = new EDomicilio();
+            hallazgo.domicilio.barrio = new EBarrio();
+            hallazgo.domicilio.barrio.localidad = new ELocalidad();
+            hallazgo.domicilio.barrio.idBarrio = int.Parse(ddlBarrios.SelectedValue);
+            hallazgo.domicilio.barrio.localidad.idLocalidad = int.Parse(ddlLocalidades.SelectedValue);
+            hallazgo.domicilio.numeroCalle = int.Parse(txtNroCalle.Text);
+            hallazgo.usuario = new EUsuario() { user = Session["UsuarioLogueado"].ToString() };
+            LogicaBDHallazgo.registrarHallazgo(hallazgo);
         }              
     }
 }
