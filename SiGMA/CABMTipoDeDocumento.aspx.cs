@@ -76,6 +76,7 @@ namespace SiGMA
                     pnlRegistrar.Visible = true;
                     pnlBuscar.Visible = true;
                     pnlCambio.Visible = false;
+                    pnl8.Visible = false;
                 }
                 else
                 {
