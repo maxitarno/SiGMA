@@ -159,7 +159,7 @@ namespace SiGMA
         }
         public void btnBuscarMascotaClick(object sender, EventArgs e)
         {
-            List<EMascota> mascotas = LogicaBDMascotas.BuscarMascotaPorMascota(txtNombreMascota.Text);
+            List<EMascota> mascotas = LogicaBDMascota.buscarMascotasPorNombre(txtNombreMascota.Text);
             if(mascotas.Count != 0){
                 lstResultadosMascotas.DataSource = mascotas;
                 lstResultadosMascotas.DataTextField = "nombreMascota";
@@ -185,7 +185,7 @@ namespace SiGMA
             ECuidado cuidado = new ECuidado();
             if (lstResultadosMascotas.SelectedValue != "")
             {
-                LogicaBDMascotas.BuscarMascota(mascota, categoria, caracter, cuidado, int.Parse(lstResultadosMascotas.SelectedValue));
+                LogicaBDMascota.BuscarMascota(mascota, categoria, caracter, cuidado, int.Parse(lstResultadosMascotas.SelectedValue));
                 txtNombreMascota.Text = mascota.nombreMascota;
                 txtRaza.Text = mascota.raza.nombreRaza;
                 txtSexo.Text = mascota.sexo;

@@ -42,7 +42,7 @@ namespace SiGMA
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
             List<EMascota> mascotas = new List<EMascota>();
-            mascotas = LogicaBDMascotas.BuscarMascotaPorMascota(txtMascota.Text);
+            mascotas = LogicaBDMascota.buscarMascotasPorNombre(txtMascota.Text);
             limpiarPagina();
             if (mascotas.Count != 0)
             {
@@ -65,7 +65,7 @@ namespace SiGMA
         {
             limpiarPagina();
             List<EMascota> mascotas = new List<EMascota>();
-            mascotas = LogicaBDMascotas.BuscarMascotaPorIdDueño(Convert.ToInt32(Session["IdDueño"]));
+            mascotas = LogicaBDMascota.BuscarMascotaPorIdDueño(Convert.ToInt32(Session["IdDueño"]));
             if (mascotas.Count != 0)
             {
                 pnlDueño.Visible = true;
@@ -122,7 +122,7 @@ namespace SiGMA
             EBarrio barrio = new EBarrio();
             ELocalidad localidad = new ELocalidad();
             ECalle calle = new ECalle();
-            if (LogicaBDMascotas.BuscarMascotaPorIdMascota(idMascota, mascota))
+            if (LogicaBDMascota.BuscarMascotaPorIdMascota(idMascota, mascota))
             {
                 ddlCaracter.SelectedValue = caracter.idCaracter.ToString();
                 txtCategoria.Text = categoria.nombreCategoriaRaza;

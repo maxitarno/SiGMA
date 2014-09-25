@@ -107,7 +107,7 @@ namespace SiGMA
             List<EMascota> mascotas = new List<EMascota>();
             if (rbPorDuenio.Checked)
             {
-                mascotas = LogicaBDMascotas.BuscarMascotaPorduenio(txtNombreDueñio.Text);
+                mascotas = LogicaBDMascota.BuscarMascotaPorduenio(txtNombreDueñio.Text);
                 if (mascotas.Count != 0)
                 {
                     lstResultados.Items.Clear();
@@ -132,7 +132,7 @@ namespace SiGMA
             }
             else if (rbPorMascota.Checked)
             {
-                mascotas = LogicaBDMascotas.BuscarMascotaPorMascota(txtMascota.Text);
+                mascotas = LogicaBDMascota.buscarMascotasPorNombre(txtMascota.Text);
                 if (mascotas.Count != 0)
                 {
                     lstResultados.Items.Clear();
@@ -170,7 +170,7 @@ namespace SiGMA
             if (lstResultados.SelectedValue != "")
             {
                 int idMascota = int.Parse(lstResultados.SelectedValue);
-                if (LogicaBDMascotas.BuscarMascota(mascota, categoria, caracter, cuidado, idMascota))
+                if (LogicaBDMascota.BuscarMascota(mascota, categoria, caracter, cuidado, idMascota))
                 {
                     ddlEstado.SelectedValue = mascota.estado.idEstado.ToString();
                     txtAlimentacionEspecial.Text = mascota.alimentacionEspecial;
@@ -317,7 +317,7 @@ namespace SiGMA
                                                     else
                                                     {
                                                         byte[] imagen = GestorImagen.obtenerArrayBytes(File1.PostedFile.InputStream, File1.PostedFile.ContentLength);
-                                                        if (LogicaBDMascotas.ModificarMascota(mascota, imagen))
+                                                        if (LogicaBDMascota.ModificarMascota(mascota, imagen))
                                                         {
                                                             Session["imagen"] = imagen;
                                                             Handler1.AddMethod(ImageHandler_ObtenerImagenMascota);
@@ -340,7 +340,7 @@ namespace SiGMA
                                                     }
                                                 }
                                                 else{
-                                                    if (LogicaBDMascotas.ModificarMascota(mascota, null))
+                                                    if (LogicaBDMascota.ModificarMascota(mascota, null))
                                                     {
                                                         pnlCorrecto.Visible = true;
                                                         lblResultado1.Text = "Se modifico corretamente";
@@ -428,7 +428,7 @@ namespace SiGMA
             {
                 if ((int)Session["idMascota"] != 0)
                 {
-                    if (LogicaBDMascotas.Eliminar((int)Session["idMascota"]))
+                    if (LogicaBDMascota.Eliminar((int)Session["idMascota"]))
                     {
                         pnlCorrecto.Visible = true;
                         pnlInfo.Visible = false;
