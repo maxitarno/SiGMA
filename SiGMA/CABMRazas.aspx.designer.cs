@@ -175,13 +175,13 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.Panel pnlDatos;
         
         /// <summary>
-        /// Control ddlCategoria.
+        /// Control txtPeso.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlCategoria;
+        protected global::System.Web.UI.WebControls.TextBox txtPeso;
         
         /// <summary>
         /// Control ddlCuidadoEspecial.
@@ -193,13 +193,13 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.DropDownList ddlCuidadoEspecial;
         
         /// <summary>
-        /// Control txtPeso.
+        /// Control ddlCategoria.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPeso;
+        protected global::System.Web.UI.WebControls.DropDownList ddlCategoria;
         
         /// <summary>
         /// Control pnlRegistrar.

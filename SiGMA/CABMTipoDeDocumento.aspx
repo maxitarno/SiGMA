@@ -44,18 +44,18 @@
                     </div>
                     <div class="celdaDiv">
                         <asp:Panel ID="pnltxtNombre" runat="server">
-                            <asp:TextBox ID="txtNombre" runat="server" CssClass="TextBox"></asp:TextBox>
+                            <asp:TextBox ID="txtNombre" runat="server" CssClass="TextBox" AutoPostBack="False" CausesValidation="True"></asp:TextBox>
                         </asp:Panel>
                     </div>
                     <div class="celdaDiv">
                         <asp:Panel ID="pnlBuscar" runat="server">
                             <asp:Button ID="btnBuscar" runat="server" Text="Buscar" OnClick="BtnBuscarClick"
-                                CssClass="btn-primary" CausesValidation="False" />
+                                CssClass="btn-primary" CausesValidation="False"/>
                         </asp:Panel>
                     </div>
                     <div class="celdaDiv">
                         <asp:RequiredFieldValidator ID="rfvNombre" runat="server" ErrorMessage="Debe ingresar un tipo de documento"
-                            ControlToValidate="txtNombre" ValidationGroup="1" CssClass="Validator" Display="Dynamic"></asp:RequiredFieldValidator>
+                            ControlToValidate="txtNombre" CssClass="Validator" Display="Dynamic" ValidationGroup="2" ViewStateMode="Disabled"></asp:RequiredFieldValidator>
                     </div>
                 </div>
             </div>
@@ -79,7 +79,7 @@
                                 <td>
                                     <asp:Panel ID="pnlRegistrar" runat="server">
                                         <asp:Button ID="btnRegistrar" runat="server" Text="Registrar" OnClick="BtnRegistrarClick"
-                                            CssClass="btn-primary" ValidationGroup="1" />
+                                            CssClass="btn-primary" ValidationGroup="2" />
                                     </asp:Panel>
                                 </td>
                                 <td>
@@ -91,7 +91,7 @@
                                 <td>
                                     <asp:Panel ID="pnlCambio" runat="server" Visible="false">
                                         <asp:Button ID="btnModificar" runat="server" Text="Modificar" OnClick="BtnModificarClick"
-                                            CssClass="btn-primary" CausesValidation="true" />
+                                            CssClass="btn-primary" CausesValidation="true" ValidationGroup="2" />
                                     </asp:Panel>
                                 </td>
                                 <td>

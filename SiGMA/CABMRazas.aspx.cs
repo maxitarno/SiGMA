@@ -96,7 +96,6 @@ namespace SiGMA
         }
         public void BtnModificarClick(object sender, EventArgs e)
         {
-            lstResultados.Items.Clear();
             if (ddlEspecies.SelectedValue.Equals("0"))
             {
                 pnlRegistrar.Visible = false;
@@ -118,6 +117,7 @@ namespace SiGMA
                             raza.nombreRaza = txtNombre.Text;
                             raza.CategoriaRaza = new ECategoriaRaza();
                             raza.cuidadoEspecial = new ECuidado();
+                            raza.especie = new EEspecie();
                             raza.CategoriaRaza.idCategoriaRaza = int.Parse(ddlCategoria.SelectedValue.ToString());
                             raza.cuidadoEspecial.idCuidado = int.Parse(ddlCuidadoEspecial.SelectedValue.ToString());
                             raza.especie.idEspecie = int.Parse(ddlEspecies.SelectedValue.ToString());
@@ -182,6 +182,7 @@ namespace SiGMA
                             pnlCorrecto.Visible = true;
                             pnlAtento.Visible = false;
                             pnlInfo.Visible = false;
+                            pnl8.Visible = true;
                         }
                         else{
                             pnlCorrecto.Visible = false;
@@ -220,12 +221,15 @@ namespace SiGMA
             pnl8.Visible = false;
             pnlAtento.Visible = false;
             pnlCorrecto.Visible = false;
-            pnlDatos.Visible = false;
+            pnlDatos.Visible = true;
             pnlInfo.Visible = false;
             pnlResultado.Visible = false;
             pnlSeleccionar.Visible = false;
             txtNombre.Text = "";
             pnlRegistrar.Visible = true;
+            ddlCategoria.SelectedValue = "0";
+            ddlEspecies.SelectedValue = "0";
+            ddlCuidadoEspecial.SelectedValue = "0";
         }
     }
 }
