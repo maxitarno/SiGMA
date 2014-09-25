@@ -881,7 +881,8 @@ namespace AccesoADatos
                            where (estadosBD.nombreEstado == estado)
                            select mascotasBD.idMascota;
             if (consulta.Count() != 0)
-            {                
+            {
+                listaIdMascotas = new List<int>();
                 foreach (var item in consulta)
                 {
                     listaIdMascotas.Add(item);

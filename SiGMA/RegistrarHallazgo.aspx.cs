@@ -20,7 +20,6 @@ namespace SiGMA
                 {
                     Response.Redirect("Login.aspx");
                 }
-                LogicaBDMascota.buscarMascotasFiltros(new EMascota { nombreMascota = "h", estado = new EEstado { nombreEstado = "Hallada" } });
                 CargarCombos.cargarLocalidades(ref ddlLocalidades);
                 CargarCombos.cargarEspecies(ref ddlEspecie);
                 CargarCombos.cargarComboRazas(ref ddlRaza);
@@ -127,21 +126,24 @@ namespace SiGMA
 
         protected void btnRegistrarHallazgo_Click(object sender, EventArgs e)
         {
-            EMascota mascota = (EMascota)Session["MascotaPerdida"];
-            EPerdida perdida = LogicaBDPerdida.buscarPerdidaPorIdMascota(mascota);
-            EHallazgo hallazgo = new EHallazgo();
-            hallazgo.perdida = perdida;
-            hallazgo.mascota = mascota;
-            hallazgo.observaciones = txtComentarios.Text;
-            hallazgo.fechaHallazgo = DateTime.Parse(txtFecha.Text);
-            hallazgo.domicilio = new EDomicilio();
-            hallazgo.domicilio.barrio = new EBarrio();
-            hallazgo.domicilio.barrio.localidad = new ELocalidad();
-            hallazgo.domicilio.barrio.idBarrio = int.Parse(ddlBarrios.SelectedValue);
-            hallazgo.domicilio.barrio.localidad.idLocalidad = int.Parse(ddlLocalidades.SelectedValue);
-            hallazgo.domicilio.numeroCalle = int.Parse(txtNroCalle.Text);
-            hallazgo.usuario = new EUsuario() { user = Session["UsuarioLogueado"].ToString() };
-            LogicaBDHallazgo.registrarHallazgo(hallazgo);
+            if (Page.IsValid)
+            {
+                EMascota mascota = (EMascota)Session["MascotaPerdida"];
+                EPerdida perdida = LogicaBDPerdida.buscarPerdidaPorIdMascota(mascota);
+                EHallazgo hallazgo = new EHallazgo();
+                hallazgo.perdida = perdida;
+                hallazgo.mascota = mascota;
+                hallazgo.observaciones = txtComentarios.Text;
+                hallazgo.fechaHallazgo = DateTime.Parse(txtFecha.Text);
+                hallazgo.domicilio = new EDomicilio();
+                hallazgo.domicilio.barrio = new EBarrio();
+                hallazgo.domicilio.barrio.localidad = new ELocalidad();
+                hallazgo.domicilio.barrio.idBarrio = int.Parse(ddlBarrios.SelectedValue);
+                hallazgo.domicilio.barrio.localidad.idLocalidad = int.Parse(ddlLocalidades.SelectedValue);
+                hallazgo.domicilio.numeroCalle = int.Parse(txtNroCalle.Text);
+                hallazgo.usuario = new EUsuario() { user = Session["UsuarioLogueado"].ToString() };
+                LogicaBDHallazgo.registrarHallazgo(hallazgo);
+            }
         }
 
         protected void cvCalleNumero_ServerValidate(object source, ServerValidateEventArgs args)
