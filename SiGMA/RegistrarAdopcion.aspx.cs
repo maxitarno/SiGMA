@@ -44,9 +44,6 @@ namespace SiGMA
                 CargarCombos.cargarEdad(ref ddlEdad);
                 CargarCombos.cargarEspecies(ref ddlEspecies);
                 CargarCombos.cargarSexo(ref ddlSexo);
-            }
-            else
-            {
                 txtN.Text = Session["IdVoluntario"].ToString();
             }
         }
@@ -93,6 +90,9 @@ namespace SiGMA
                     lstResultadosDuenios.DataValueField = "user";
                     lstResultadosDuenios.DataBind();
                     pnlResultadosDuenio.Visible = true;
+                    pnlCorrecto.Visible = false;
+                    pnlInfo.Visible = false;
+                    pnlAtento.Visible = false;
                 }
             }
             else if (rbPorDNI.Checked)
@@ -115,6 +115,9 @@ namespace SiGMA
                         lstResultadosDuenios.DataValueField = "user";
                         lstResultadosDuenios.DataBind();
                         pnlResultadosDuenio.Visible = true;
+                        pnlCorrecto.Visible = false;
+                        pnlInfo.Visible = false;
+                        pnlAtento.Visible = false;
                     }
                     else
                     {
@@ -152,6 +155,9 @@ namespace SiGMA
                 txtNº.Text = persona.nroDocumento;
                 pnlBuscarMascota.Visible = true;
                 Session["Duenio"] = duenio.idDuenio;
+                pnlCorrecto.Visible = false;
+                pnlInfo.Visible = false;
+                pnlAtento.Visible = false;
             }
             else
             {
@@ -203,6 +209,9 @@ namespace SiGMA
                 pnlMascota.Visible = true;
                 pnlResultadosMascotas.Visible = true;
                 pnllimpiar.Visible = false;
+                pnlCorrecto.Visible = false;
+                pnlInfo.Visible = false;
+                pnlAtento.Visible = false;
             }
             else
             {
@@ -229,6 +238,9 @@ namespace SiGMA
                 pnllimpiar.Visible = true;
                 pnlRegistrar.Visible = true;
                 Session["IdMascota"] = mascota.idMascota;
+                pnlCorrecto.Visible = false;
+                pnlInfo.Visible = false;
+                pnlAtento.Visible = false;
             }
             else
             {
@@ -251,14 +263,14 @@ namespace SiGMA
             {
                 LogicaBDMascota.ModificarEstado(5, adopcion.mascota.idMascota);
                 pnlInfo.Visible = false;
-                lblResultado2.Text = "Se registro correctamente";
+                lblResultado1.Text = "Se registro correctamente";
                 pnlCorrecto.Visible = true;
                 pnlAtento.Visible = false;
             }
             else
             {
                 pnlInfo.Visible = false;
-                lblResultado2.Text = "No se pudo registrar";
+                lblResultado3.Text = "No se pudo registrar";
                 pnlCorrecto.Visible = false;
                 pnlAtento.Visible = true;
             }
@@ -271,6 +283,9 @@ namespace SiGMA
             pnlInfo.Visible = false;
             pnlAtento.Visible = false;
             pnlCorrecto.Visible = false;
+            pnlCorrecto.Visible = false;
+            pnlInfo.Visible = false;
+            pnlAtento.Visible = false;
         }
     }
 }
