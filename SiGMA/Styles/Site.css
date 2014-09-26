@@ -395,7 +395,7 @@ asp:Login
 }
 .celdaDiv
 {
-    display: table-cell inline;
+    display: table-cell;
     width: 20%;
     position:fixed;
 }

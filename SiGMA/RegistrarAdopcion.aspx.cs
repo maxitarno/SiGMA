@@ -207,7 +207,7 @@ namespace SiGMA
             mascota.estado.idEstado = 4;
             mascota.nombreMascota = txtNombreMascota.Text;
             List<EMascota> mascotas = LogicaBDMascota.buscarMascotasFiltros(mascota);
-            if(mascotas.Count != 0){
+            if(mascotas != null){
                 lstResultadosMascotas.DataSource = mascotas;
                 lstResultadosMascotas.DataTextField = "nombreMascota";
                 lstResultadosMascotas.DataValueField = "idMascota";

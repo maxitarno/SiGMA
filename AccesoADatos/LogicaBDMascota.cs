@@ -522,12 +522,8 @@ namespace AccesoADatos
             {
                 if (mascota.estado != null)
                 {
-                    //listaMascotas = buscarMascotasPorEstado(mascota.estado.nombreEstado);
-                    listaMascotas = buscarMascotasPorNombre(mascota.nombreMascota);
-                    if (mascota.estado != null)
-                    {
-                        listaMascotas = listaMascotas.Where(m => m.estado.nombreEstado == mascota.estado.nombreEstado).ToList();
-                    }
+                    listaMascotas = buscarMascotasPorEstado(mascota.estado.nombreEstado);
+                    
                     if (mascota.especie != null)
                     {
                         listaMascotas = listaMascotas.Where(m => m.especie.idEspecie == mascota.especie.idEspecie).ToList();
@@ -892,8 +888,8 @@ namespace AccesoADatos
                 {
                     listaIdMascotas.Add(item);
                 }
+                listaMascotas = BuscarMascotasPorIdMascota(listaIdMascotas);
             }
-            listaMascotas = BuscarMascotasPorIdMascota(listaIdMascotas);
             return listaMascotas;
         }
 
