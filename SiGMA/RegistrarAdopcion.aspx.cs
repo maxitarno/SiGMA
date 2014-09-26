@@ -61,6 +61,8 @@ namespace SiGMA
             pnlMascota.Visible = false;
             pnllimpiar.Visible = false;
             pnlRegistrar.Visible = false;
+            pnlBuscar.Visible = true;
+            txtNombreDuenio.ReadOnly = false;
         }
         public void rbPorName(object sender, EventArgs e)
         {
@@ -76,6 +78,8 @@ namespace SiGMA
             pnlMascota.Visible = false;
             pnllimpiar.Visible = false;
             pnlRegistrar.Visible = false;
+            pnlBuscar.Visible = true;
+            txtNombreDuenio.ReadOnly = false;
         }
         public void btnBuscarDuenioClick(object sender, EventArgs e)
         {
@@ -158,6 +162,8 @@ namespace SiGMA
                 pnlCorrecto.Visible = false;
                 pnlInfo.Visible = false;
                 pnlAtento.Visible = false;
+                pnlBuscar.Visible = false;
+                txtNombreDuenio.ReadOnly = false;
             }
             else
             {
@@ -245,7 +251,7 @@ namespace SiGMA
             else
             {
                 pnlInfo.Visible = true;
-                lblResultado2.Text = "Debe seleccionar una edad";
+                lblResultado2.Text = "Debe seleccionar una mascota";
                 pnlCorrecto.Visible = false;
                 pnlAtento.Visible = false;
             }
@@ -266,6 +272,7 @@ namespace SiGMA
                 lblResultado1.Text = "Se registro correctamente";
                 pnlCorrecto.Visible = true;
                 pnlAtento.Visible = false;
+                lstResultadosMascotas.Items.Remove(lstResultadosMascotas.SelectedItem);
             }
             else
             {

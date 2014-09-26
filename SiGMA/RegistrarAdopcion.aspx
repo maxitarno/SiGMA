@@ -83,8 +83,10 @@
                                         </td>
                                     </asp:Panel>
                                     <td>
-                                        <asp:Button ID="btnBuscarDuenio" runat="server" Text="Buscar" CssClass="btn-primary"
-                                            OnClick="btnBuscarDuenioClick" />
+                                       <asp:Panel ID="pnlBuscar" runat=server Visible=false>
+                                            <asp:Button ID="btnBuscarDuenio" runat="server" Text="Buscar" CssClass="btn-primary"
+                                                OnClick="btnBuscarDuenioClick" />
+                                       </asp:Panel>
                                     </td>
                                 </tr>
                                 <asp:Panel ID="pnlDocumento" runat="server" Visible="false">
