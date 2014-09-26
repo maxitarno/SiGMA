@@ -137,6 +137,42 @@
                                                     OnClick="btnBuscarMascotaClick" />
                                             </td>
                                         </tr>
+                                        <tr>
+                                            <td>
+                                                Especie:
+                                            </td>
+                                            <td>
+                                                <asp:DropDownList ID="ddlEspecies" runat="server" OnSelectedIndexChanged="ddlRaza_SelectedIndexChanged">
+                                                </asp:DropDownList>
+                                            </td>
+                                        </tr>
+                                         <tr>
+                                            <td>
+                                                Raza:
+                                            </td>
+                                            <td>
+                                                <asp:DropDownList ID="ddlRaza" runat="server" OnSelectedIndexChanged="ddlRaza_SelectedIndexChanged">
+                                                </asp:DropDownList>
+                                            </td>
+                                        </tr>
+                                         <tr>
+                                            <td>
+                                                Edad:
+                                            </td>
+                                            <td>
+                                                <asp:DropDownList ID="ddlEdad" runat="server" OnSelectedIndexChanged="ddlRaza_SelectedIndexChanged">
+                                                </asp:DropDownList>
+                                            </td>
+                                        </tr>
+                                         <tr>
+                                            <td>
+                                                Sexo:
+                                            </td>
+                                            <td>
+                                                <asp:DropDownList ID="ddlSexo" runat="server" OnSelectedIndexChanged="ddlRaza_SelectedIndexChanged">
+                                                </asp:DropDownList>
+                                            </td>
+                                        </tr>
                                 </asp:Panel>
                                 <asp:Panel Visible="false" runat="server" ID="pnlResultadosMascotas">
                                     <tr>

@@ -227,5 +227,18 @@ namespace SiGMA
                 pnlAtento.Visible = true;
             }
         }
+        public void ddlRaza_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            List<ERaza> razas = new List<ERaza>();
+            int aux = int.Parse(ddlEspecies.SelectedValue);
+            razas = Datos.BuscarRazas(aux);
+            ddlRaza.DataSource = razas;
+            ddlRaza.DataTextField = "nombreRaza";
+            ddlRaza.DataValueField = "idRaza";
+            ddlRaza.DataBind();
+            pnlInfo.Visible = false;
+            pnlAtento.Visible = false;
+            pnlCorrecto.Visible = false;
+        }
     }
 }

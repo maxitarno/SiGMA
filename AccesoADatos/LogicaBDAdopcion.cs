@@ -26,9 +26,8 @@ namespace AccesoADatos
                     transaccion.Complete();
                     return true;
                 }
-                catch (Exception exc)
+                catch (Exception)
                 {
-                    throw exc;
                     transaccion.Dispose();
                     return false;
                 }
