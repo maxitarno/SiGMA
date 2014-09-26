@@ -40,6 +40,10 @@ namespace SiGMA
                 txtFecha.Text = DateTime.Now.ToShortDateString().ToString();
                 pnllimpiar.Visible = false;
                 pnlRegistrar.Visible = false;
+                CargarCombos.cargarComboRazas(ref ddlRaza);
+                CargarCombos.cargarEdad(ref ddlEdad);
+                CargarCombos.cargarEspecies(ref ddlEspecies);
+                CargarCombos.cargarSexo(ref ddlSexo);
             }
             else
             {
@@ -159,7 +163,38 @@ namespace SiGMA
         }
         public void btnBuscarMascotaClick(object sender, EventArgs e)
         {
-            List<EMascota> mascotas = LogicaBDMascota.buscarMascotasPorNombre(txtNombreMascota.Text);
+            EMascota mascota = new EMascota();
+            if (!ddlEdad.SelectedValue.Equals("0"))
+            {
+                mascota.edad = new EEdad();
+                mascota.edad.nombreEdad = ddlEdad.SelectedItem.Text;
+                mascota.edad.idEdad = int.Parse(ddlEdad.SelectedValue);
+            }
+            if (!ddlEspecies.SelectedValue.Equals("0"))
+            {
+                mascota.especie = new EEspecie();
+                mascota.especie.idEspecie = int.Parse(ddlEspecies.SelectedValue);
+                mascota.especie.nombreEspecie = ddlEspecies.SelectedItem.Text;
+            }
+            if (!ddlRaza.SelectedValue.Equals("0"))
+            {
+                mascota.raza = new ERaza();
+                mascota.raza.nombreRaza = ddlRaza.SelectedItem.Text;
+                mascota.raza.idRaza = int.Parse(ddlRaza.SelectedValue);
+            }
+            if (!ddlSexo.SelectedValue.Equals("0"))
+            {
+                mascota.sexo = ddlSexo.SelectedItem.Text;
+            }
+            else
+            {
+                mascota.sexo = null;
+            }
+            mascota.estado = new EEstado();
+            mascota.estado.nombreEstado = "En adopcion";
+            mascota.estado.idEstado = 4;
+            mascota.nombreMascota = txtNombreMascota.Text;
+            List<EMascota> mascotas = LogicaBDMascota.buscarMascotasFiltros(mascota);
             if(mascotas.Count != 0){
                 lstResultadosMascotas.DataSource = mascotas;
                 lstResultadosMascotas.DataTextField = "nombreMascota";
@@ -214,6 +249,7 @@ namespace SiGMA
             adopcion.duenio.idDuenio = int.Parse(Session["Duenio"].ToString());
             if (LogicaBDAdopcion.RegistrarAdopcion(adopcion))
             {
+                LogicaBDMascota.ModificarEstado(5, adopcion.mascota.idMascota);
                 pnlInfo.Visible = false;
                 lblResultado2.Text = "Se registro correctamente";
                 pnlCorrecto.Visible = true;
@@ -231,11 +267,7 @@ namespace SiGMA
         {
             List<ERaza> razas = new List<ERaza>();
             int aux = int.Parse(ddlEspecies.SelectedValue);
-            razas = Datos.BuscarRazas(aux);
-            ddlRaza.DataSource = razas;
-            ddlRaza.DataTextField = "nombreRaza";
-            ddlRaza.DataValueField = "idRaza";
-            ddlRaza.DataBind();
+            CargarCombos.cargarRazas(ref ddlRaza, aux);
             pnlInfo.Visible = false;
             pnlAtento.Visible = false;
             pnlCorrecto.Visible = false;

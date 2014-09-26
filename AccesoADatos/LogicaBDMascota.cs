@@ -522,7 +522,12 @@ namespace AccesoADatos
             {
                 if (mascota.estado != null)
                 {
-                    listaMascotas = buscarMascotasPorEstado(mascota.estado.nombreEstado);
+                    //listaMascotas = buscarMascotasPorEstado(mascota.estado.nombreEstado);
+                    listaMascotas = buscarMascotasPorNombre(mascota.nombreMascota);
+                    if (mascota.estado != null)
+                    {
+                        listaMascotas = listaMascotas.Where(m => m.estado.nombreEstado == mascota.estado.nombreEstado).ToList();
+                    }
                     if (mascota.especie != null)
                     {
                         listaMascotas = listaMascotas.Where(m => m.especie.idEspecie == mascota.especie.idEspecie).ToList();
@@ -1007,6 +1012,16 @@ namespace AccesoADatos
                 listaIdMascotas.Add(item.idMascota);
             }
             return BuscarMascotasPorIdMascota(listaIdMascotas);
+        }
+        public static void ModificarEstado(int idEstado, int idMascota)
+        {
+            SiGMAEntities mapa = Conexion.crearSegunServidor();
+            var consulta = mapa.Mascotas.Where(m => m.idMascota == idMascota);
+            foreach (var item in consulta)
+            {
+                item.idEstado = idEstado;
+            }
+            mapa.SaveChanges();
         }
     }
 }
