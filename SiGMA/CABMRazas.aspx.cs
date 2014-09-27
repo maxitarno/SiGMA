@@ -9,7 +9,7 @@ using Entidades;
 using AccesoADatos;
 namespace SiGMA
 {
-    public partial class CABMRazas : System.Web.UI.Page
+    public partial class CABMRazas : System.Web.UI.Page 
     {
         protected void Page_Load(object sender, EventArgs e)
         {
