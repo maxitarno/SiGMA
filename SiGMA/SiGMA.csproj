@@ -94,6 +94,7 @@
     <Content Include="Content\css\main.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="GenerarCodigoQR.aspx" />
+    <Content Include="imagenes\volver.png" />
     <Content Include="Login.aspx" />
     <Content Include="Account\ChangePassword.aspx" />
     <Content Include="Account\ChangePasswordSuccess.aspx" />
@@ -318,7 +319,6 @@
     <Folder Include="App_Code\" />
     <Folder Include="App_Data\" />
     <Folder Include="App_Themes\TemaSigma\imagenes\" />
-    <Folder Include="imagenes\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account\Web.config" />

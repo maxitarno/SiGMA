@@ -152,5 +152,9 @@ namespace SiGMA
             pnlSeleccionar.Visible = false;
             pnlResultado.Visible = false;
         }
+        public void BtnRegresarClick(object sender, EventArgs e)
+        {
+            Response.Redirect("Administracion.aspx");
+        }
     }
 }
