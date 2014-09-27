@@ -13,24 +13,6 @@ namespace SiGMA {
     public partial class ConsultarMascotasaspx {
         
         /// <summary>
-        /// imgImagen control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel imgImagen;
-        
-        /// <summary>
-        /// imgprvw control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlImage imgprvw;
-        
-        /// <summary>
         /// pnlCorrecto control.
         /// </summary>
         /// <remarks>
@@ -83,6 +65,24 @@ namespace SiGMA {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblResultado3;
+        
+        /// <summary>
+        /// imgImagen control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel imgImagen;
+        
+        /// <summary>
+        /// imgprvw control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlImage imgprvw;
         
         /// <summary>
         /// pnlBuscarPor control.

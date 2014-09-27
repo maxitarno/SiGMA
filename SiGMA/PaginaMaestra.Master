@@ -1,0 +1,85 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="PaginaMaestra.master.cs" Inherits="SiGMA.PaginaMaestra" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title></title>
+    <link href="Content/css/bootstrap.css" rel="Stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+<form id="Form1" runat="server">
+   <div class="navbar navbar-inverse navbar-static-top">
+      <div class="container">
+        <div class="header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="Default.aspx">SIGMA</a>
+        </div>
+        <div class="btn-group collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="work.html">Facebook</a></li>
+            <li><a href="about.html">Sobre Sigma</a></li>
+            <li><a href="contact.html">Contacto</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+    <div style="text-align:center">
+        <asp:LoginView ID="LoginView1" runat="server" EnableViewState="false">
+        <AnonymousTemplate>
+                [ <a href="Login.aspx" id="HeadLoginStatus" runat="server">Iniciar sesión</a>
+                ]
+            </AnonymousTemplate>
+            <LoggedInTemplate>
+                <span class="bold">
+                    <asp:LoginName ID="HeadLoginName" runat="server" />
+                </span>! [
+                <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Cerrar sesión"
+                    LogoutPageUrl="Inicio.aspx" />
+                ]
+            </LoggedInTemplate>
+        </asp:LoginView>
+    </div>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            
+        </asp:ContentPlaceHolder>
+    
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+        
+    </asp:ContentPlaceHolder>
+
+    <div id="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-4">
+					</h4><h4>Gracias por confiarnos su mascota</h4>
+				</div><!-- /col-lg-4 -->
+				
+				<div class="col-lg-4" style="text-align:center">
+				<%--<h4>My Links</h4>--%>
+					<h4>SIGMA</h4>
+				</div><!-- /col-lg-4 -->
+				
+				<div class="col-lg-4" style="text-align:right">
+					<h4>
+						Córdoba,<br/>
+						Argentina,<br/>
+                        2014 
+				</div><!-- /col-lg-4 -->
+			
+			</div>
+		
+		</div>
+	</div>
+    
+    <script src="Scripts/jquery-2.1.1.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    </form>
+</body>
+</html>

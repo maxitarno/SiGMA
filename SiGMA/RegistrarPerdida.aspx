@@ -105,7 +105,7 @@
                      </asp:Panel>
                    
                         <asp:Panel ID="pnlRegistrarPerdida" runat="server" Visible="false">
-                         <table>
+                         <table width="100%">
                          <tr>
                             <td>
                                 Dueño:
@@ -193,48 +193,6 @@
                             <td>
                                 <asp:DropDownList ID="ddlColor" Enabled="false" runat="server" Width="100%"
                                     AppendDataBoundItems="True">
-                                </asp:DropDownList>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Categoría:
-                            </td>
-                            <td>
-                                <asp:TextBox ID="txtCategoria" ReadOnly="True" runat="server"
-                                    Width="100%"></asp:TextBox>
-                            </td>
-                        </tr>
-                            <tr>
-                            <td>
-                                Carácter:
-                            </td>
-                            <td>
-                                <asp:DropDownList ID="ddlCaracter" Enabled="false" runat="server" CssClass="DropDownList" Width="100%">
-                                </asp:DropDownList>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Trato con otros animales:
-                            </td>
-                            <td>
-                                <asp:DropDownList ID="ddlTratoAnimales" runat="server" Width="100%" Enabled="false">
-                                    <asp:ListItem Selected="True" Value="0" Text="-- Seleccione una opción"></asp:ListItem>
-                                    <asp:ListItem Text="Si" Value="1"></asp:ListItem>
-                                    <asp:ListItem Value="2" Text="False"></asp:ListItem>
-                                </asp:DropDownList>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Trato con niños:
-                            </td>
-                            <td>
-                                <asp:DropDownList ID="ddlTratoNinios" runat="server" Width="100%" Enabled="false">
-                                    <asp:ListItem Selected="True" Value="0" Text="-- Seleccione una opción --"></asp:ListItem>
-                                    <asp:ListItem Text="Si" Value="1"></asp:ListItem>
-                                    <asp:ListItem Value="2" Text="False"></asp:ListItem>
                                 </asp:DropDownList>
                             </td>
                         </tr>

@@ -47,7 +47,7 @@ namespace SiGMA
                 pnlEliminar.Visible = false;
                 pnlestate.Visible = false;
                 pnlFecha.Visible = false;
-                pnlLimpiar.Visible = false;
+                //pnlLimpiar.Visible = false;
                 pnlLocalidades.Visible = false;
                 pnlMail.Visible = false;
                 pnlmails.Visible = false;
@@ -189,7 +189,7 @@ namespace SiGMA
                 pnlEliminar.Visible = true;
                 pnlestate.Visible = true;
                 pnlFecha.Visible = true;
-                pnlLimpiar.Visible = true;
+                //pnlLimpiar.Visible = true;
                 pnlLocalidades.Visible = true;
                 pnlMail.Visible = true;
                 pnlmails.Visible = true;
@@ -204,7 +204,7 @@ namespace SiGMA
                 pnlsurname.Visible = true;
                 pnlTelefonFijo.Visible = true;
                 pnlTelefonoCelular.Visible = true;
-                pnlLimpiar.Visible = true;
+                //pnlLimpiar.Visible = true;
                 pnlModificar.Visible = true;
                 pnlEliminar.Visible = true;
                 btnEliminar.Visible = true;
@@ -357,7 +357,7 @@ namespace SiGMA
                     pnlEliminar.Visible = false;
                     pnlestate.Visible = false;
                     pnlFecha.Visible = false;
-                    pnlLimpiar.Visible = false;
+                    //pnlLimpiar.Visible = false;
                     pnlLocalidades.Visible = false;
                     pnlMail.Visible = false;
                     pnlmails.Visible = false;
@@ -432,7 +432,7 @@ namespace SiGMA
             pnlEliminar.Visible = false;
             pnlestate.Visible = false;
             pnlFecha.Visible = false;
-            pnlLimpiar.Visible = false;
+            //pnlLimpiar.Visible = false;
             pnlLocalidades.Visible = false;
             pnlMail.Visible = false;
             pnlmails.Visible = false;
@@ -491,7 +491,7 @@ namespace SiGMA
                 pnlEliminar.Visible = false;
                 pnlestate.Visible = false;
                 pnlFecha.Visible = false;
-                pnlLimpiar.Visible = false;
+                //pnlLimpiar.Visible = false;
                 pnlLocalidades.Visible = false;
                 pnlMail.Visible = false;
                 pnlmails.Visible = false;
@@ -531,7 +531,7 @@ namespace SiGMA
             pnlEliminar.Visible = false;
             pnlestate.Visible = false;
             pnlFecha.Visible = false;
-            pnlLimpiar.Visible = false;
+            //pnlLimpiar.Visible = false;
             pnlLocalidades.Visible = false;
             pnlMail.Visible = false;
             pnlmails.Visible = false;

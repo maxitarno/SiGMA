@@ -1,42 +1,78 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AsignarPermisos.aspx.cs" Inherits="SiGMA.AsignarPermisos" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
-    
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PaginaMaestra.Master" AutoEventWireup="true" CodeBehind="AsignarPermisos.aspx.cs" Inherits="SiGMA.AsignarPermisos" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
+
+    <title>SIGMA</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+
+
+    <!-- Custom styles for this template -->
+    <link href="assets/css/main.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="assets/js/hover.zoom.js"></script>
+    <script src="assets/js/hover.zoom.conf.js"></script>
+    <style>
+    .centering{
+        float:none;
+        margin:0 auto
+    }
+    </style>
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-     <div class="panel panel-primary">
-        <div class="panel-heading">
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+     <div class="centered">
+        <div class="panel panel-default">
+            <div class="panel-heading">
             <h3 class="panel-title">
                 Asignar permisos a usuarios</h3>
         </div>
+
+    <div class="panel panel-default">
         <div class="panel-body">
-            <div class="almedio">
-            <asp:Panel runat="server" id="pnlCorrecto" class="alert alert-dismissable alert-success" Visible=false>
-                <button class="close" type="button" data-dismiss="alert">
-                    ×</button>
-                    <asp:Label ID="lblCorrecto" runat="server" Text=""></asp:Label>
-            </asp:Panel>
-            <asp:Panel runat="server" id="pnlInfo" class="alert alert-dismissable alert-info" Visible=false>
-                <button class="close" type="button" data-dismiss="alert">
-                    ×</button>
-                    <asp:Label ID="lblInfo" runat="server" Text=""></asp:Label>
-            </asp:Panel>
-            <asp:Panel runat="server" id="pnlAtento" class="alert alert-dismissable alert-danger" Visible=false>
-                <button class="close" type="button" data-dismiss="alert">
-                    ×</button>
-                    <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
-            </asp:Panel>
+                <div class="col-md-2 col-md-offset-5">
+                    <asp:Panel runat="server" id="pnlCorrecto" class="alert alert-dismissable alert-success" Visible=false>
+                        <button class="close" type="button" data-dismiss="alert">
+                            ×</button>
+                            <asp:Label ID="lblCorrecto" runat="server" Text=""></asp:Label>
+                    </asp:Panel>
+                    <asp:Panel runat="server" id="pnlInfo" class="alert alert-dismissable alert-info" Visible=false>
+                        <button class="close" type="button" data-dismiss="alert">
+                            ×</button>
+                            <asp:Label ID="lblInfo" runat="server" Text=""></asp:Label>
+                    </asp:Panel>
+                    <asp:Panel runat="server" id="pnlAtento" class="alert alert-dismissable alert-danger" Visible=false>
+                        <button class="close" type="button" data-dismiss="alert">
+                            ×</button>
+                            <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
+                    </asp:Panel>
+                </div>
+        </div>
+    </div>
+
+    <div class="panel-body">
+        <div class="col-md-2 col-md-offset-5">
             <asp:Panel ID="pnlRol" runat="server">
                 <asp:DropDownList ID="ddlRol" runat="server" 
                     onselectedindexchanged="ddlRol_SelectedIndexChanged" AutoPostBack="true" AppendDataBoundItems="true"> 
                 </asp:DropDownList>
                 <br />
-                <br />
             </asp:Panel>
+        </div>
+    </div>
+
+    <div class="panel-body">
+        <div class="col-md-2 col-md-offset-4">
                 <asp:Panel ID="pnlPermisos" runat="server" Visible="false">
-                    <asp:Label ID="lblRol" runat="server" Text=""></asp:Label>
+                    <asp:Label ID="lblRol" runat="server" Text="" CssClass="pagination-centered"></asp:Label>
                     <br />
-                    <br />
-                    <table border="1px">
+                    <table border="2px">
                         <tr>
                             <td width="300">Pantallas</td>
                             <td width="300">Visualización</td>
@@ -82,10 +118,11 @@
                     </table>
                     <br />
                     <asp:Button ID="btnGuardar" runat="server" Text="Guardar" 
-                        onclick="btnGuardar_Click" class="btn-primary"/>
+                        onclick="btnGuardar_Click"/>
                 </asp:Panel>
                 
             </div>
         </div>
     </div>
+</div>
 </asp:Content>

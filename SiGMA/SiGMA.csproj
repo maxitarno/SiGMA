@@ -54,7 +54,34 @@
     <Reference Include="System.Web.ApplicationServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Administracion.aspx" />
     <Content Include="AsignarPermisos.aspx" />
+    <Content Include="assets\css\bootstrap.css" />
+    <Content Include="assets\css\main.css" />
+    <Content Include="assets\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="assets\img\blog01.jpg" />
+    <Content Include="assets\img\loader.gif" />
+    <Content Include="assets\img\menu\administracion.png" />
+    <Content Include="assets\img\menu\difusion.png" />
+    <Content Include="assets\img\menu\mascotas.png" />
+    <Content Include="assets\img\menu\sigma.png" />
+    <Content Include="assets\img\menu\usuarios.png" />
+    <Content Include="assets\img\menu\veterinarias.png" />
+    <Content Include="assets\img\menu\voluntarios.png" />
+    <Content Include="assets\img\portfolio\1.jpg" />
+    <Content Include="assets\img\portfolio\2.jpg" />
+    <Content Include="assets\img\portfolio\3.jpg" />
+    <Content Include="assets\img\portfolio\port01.jpg" />
+    <Content Include="assets\img\portfolio\port02.jpg" />
+    <Content Include="assets\img\portfolio\port03.jpg" />
+    <Content Include="assets\img\portfolio\port04.jpg" />
+    <Content Include="assets\img\portfolio\port05.jpg" />
+    <Content Include="assets\img\portfolio\port06.jpg" />
+    <Content Include="assets\img\user.png" />
+    <Content Include="assets\img\zoom.png" />
+    <Content Include="assets\js\bootstrap.min.js" />
+    <Content Include="assets\js\hover.zoom.conf.js" />
+    <Content Include="assets\js\hover.zoom.js" />
     <Content Include="CABMRazas.aspx" />
     <Content Include="CABMTipoDeDocumento.aspx" />
     <Content Include="ConsultarMascotas.aspx" />
@@ -63,6 +90,8 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\bootstrap.css" />
+    <Content Include="Content\css\main.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="GenerarCodigoQR.aspx" />
     <Content Include="Login.aspx" />
@@ -70,8 +99,9 @@
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="Mascotas.aspx" />
     <Content Include="PermisosInsuficientes.aspx" />
-    <Content Include="Principal.aspx" />
+    <Content Include="Default.aspx" />
     <Content Include="RegistrarAdopcion.aspx" />
     <Content Include="RegistrarHallazgo.aspx" />
     <Content Include="RegistrarMascota.aspx" />
@@ -88,7 +118,10 @@
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Usuarios.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -98,6 +131,13 @@
     <Content Include="Inicio.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Administracion.aspx.cs">
+      <DependentUpon>Administracion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administracion.aspx.designer.cs">
+      <DependentUpon>Administracion.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AsignarPermisos.aspx.cs">
       <DependentUpon>AsignarPermisos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -178,6 +218,20 @@
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Mascotas.aspx.cs">
+      <DependentUpon>Mascotas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mascotas.aspx.designer.cs">
+      <DependentUpon>Mascotas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PaginaMaestra.Master.cs">
+      <DependentUpon>PaginaMaestra.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PaginaMaestra.Master.designer.cs">
+      <DependentUpon>PaginaMaestra.Master</DependentUpon>
+    </Compile>
     <Compile Include="PermisosInsuficientes.aspx.cs">
       <DependentUpon>PermisosInsuficientes.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -185,12 +239,12 @@
     <Compile Include="PermisosInsuficientes.aspx.designer.cs">
       <DependentUpon>PermisosInsuficientes.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Principal.aspx.cs">
-      <DependentUpon>Principal.aspx</DependentUpon>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Principal.aspx.designer.cs">
-      <DependentUpon>Principal.aspx</DependentUpon>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="RegistrarAdopcion.aspx.cs">
       <DependentUpon>RegistrarAdopcion.aspx</DependentUpon>
@@ -252,6 +306,13 @@
     <Compile Include="Inicio.aspx.designer.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Usuarios.aspx.cs">
+      <DependentUpon>Usuarios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Usuarios.aspx.designer.cs">
+      <DependentUpon>Usuarios.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
@@ -279,12 +340,21 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <None Include="assets\.DS_Store" />
+    <None Include="assets\css\.DS_Store" />
+    <None Include="assets\fonts\glyphicons-halflings-regular.eot" />
+    <None Include="assets\fonts\glyphicons-halflings-regular.ttf" />
+    <None Include="assets\fonts\glyphicons-halflings-regular.woff" />
+    <None Include="assets\img\.DS_Store" />
+    <None Include="assets\img\portfolio\.DS_Store" />
+    <None Include="assets\js\.DS_Store" />
     <None Include="Content\bootstrap-theme.css.map" />
     <None Include="Content\bootstrap.css.map" />
     <None Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Handler1.ashx" />
+    <Content Include="PaginaMaestra.Master" />
     <None Include="Scripts\jquery-2.1.1.min.map" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

@@ -32,7 +32,6 @@ namespace SiGMA
                 CargarCombos.cargarEspecies(ref ddlEspecie);
                 CargarCombos.cargarComboRazas(ref ddlRaza);
                 CargarCombos.cargarSexo(ref ddlSexo);
-                CargarCombos.cargarCaracteresMascota(ref ddlCaracter);
                 CargarCombos.cargarBarrio(ref ddlBarrios);
                 CargarCombos.cargarLocalidades(ref ddlLocalidades);
                 CargarCombos.cargarCalles(ref ddlCalles);
@@ -124,17 +123,7 @@ namespace SiGMA
             ECalle calle = new ECalle();
             if (LogicaBDMascota.BuscarMascotaPorIdMascota(idMascota, mascota))
             {
-                ddlCaracter.SelectedValue = caracter.idCaracter.ToString();
-                txtCategoria.Text = categoria.nombreCategoriaRaza;
                 txtMascotaPerdida.Text = mascota.nombreMascota;
-                if (mascota.tratoAnimal != null)
-                {
-                    ddlTratoAnimales.SelectedValue = mascota.tratoAnimal.ToString() == "false" ? "2" : "1";
-                }
-                if (mascota.tratoNiños != null)
-                {
-                    ddlTratoNinios.SelectedValue = mascota.tratoNiños.ToString() == "false" ? "2" : "1";
-                }
                 txtNroCalle.Text = mascota.duenio.nroCalle.ToString();
                 txtDatosDueño.Text = (mascota.duenio.nombre == null) ? null : mascota.duenio.nombre.ToString();
                 txtDatosDueño.Text += (mascota.duenio.apellido == null) ? null : mascota.duenio.apellido.ToString();

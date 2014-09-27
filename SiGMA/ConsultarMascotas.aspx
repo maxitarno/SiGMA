@@ -1,55 +1,26 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ConsultarMascotas.aspx.cs"
-    Inherits="SiGMA.ConsultarMascotasaspx" MasterPageFile="~/Site.Master" %>
+    Inherits="SiGMA.ConsultarMascotasaspx" MasterPageFile="~/PaginaMaestra.Master" %>
 
-<asp:Content ContentPlaceHolderID="HeadContent" runat="server">
-</asp:Content>
-<asp:Content ContentPlaceHolderID="MainContent" runat="server">
-    <script type="text/javascript">
-        /***** CUSTOMIZE THESE VARIABLES *****/
+<asp:Content ContentPlaceHolderID="head" runat="server">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
 
-        // width to resize large images to
-        var maxWidth = 200;
-        // height to resize large images to
-        var maxHeight = 200;
-        // valid file types
-        var fileTypes = ["bmp", "gif", "png", "jpg", "jpeg"];
-        // the id of the preview image tag
-        var outImage = "imgprvw";
+    <title>SIGMA</title>
 
-        /***** DO NOT EDIT BELOW *****/
-        function preview(input) {
-            var source = input.value;
-            var ext = input.value.substring(input.value.lastIndexOf(".") + 1, input.value.length).toLowerCase();
-            for (var i = 0; i < fileTypes.length; i++) if (fileTypes[i] == ext) break;
-            globalPic = new Image();
-            if (i < fileTypes.length) globalPic.src = input.value;
-            else {
-                if (input.value != "") {
-                    alert("Formato del archivo no permitido, debe ser: " + fileTypes.join(", "));
-                }
-            }
-            setTimeout("applyChanges()", 100);
-        }
-        var globalPic;
-        function applyChanges() {
-            var field = document.getElementById(outImage);
-            var x = parseInt(globalPic.width);
-            var y = parseInt(globalPic.height);
-            if (x > maxWidth) {
-                y *= maxWidth / x;
-                x = maxWidth;
-            }
-            if (y > maxHeight) {
-                x *= maxHeight / y;
-                y = maxHeight;
-            }
-            field.style.display = (x < 1 || y < 1) ? "none" : "";
-            field.src = globalPic.src;
-            field.width = x;
-            field.height = y;
-        }
-        // End -->
-    </script>
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+
+
+    <!-- Custom styles for this template -->
+    <link href="assets/css/main.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="assets/js/hover.zoom.js"></script>
+    <script src="assets/js/hover.zoom.conf.js"></script>
     <script type="text/javascript">
         function showimagepreview(input) {
             if (input.files && input.files[0]) {
@@ -61,13 +32,44 @@
             }
         }
     </script>
-    <div class="panel panel-primary">
-        <div class="panel-heading">
+</asp:Content>
+<asp:Content ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    
+   <div class="centered">
+        <div class="panel panel-default">
+            <div class="panel-heading">
             <h3 class="panel-title">
-                Consultar Mascotas</h3>
-        </div>
+                Consultar Mascota</h3>
+            </div>
+
+    <div class="panel panel-default">
         <div class="panel-body">
-            <div class="almedio">
+                <div class="col-md-2 col-md-offset-5">
+                    <asp:Panel runat="server" ID="pnlCorrecto" class="alert alert-dismissable alert-success"
+                                                    Visible="false">
+                        <button class="close" type="button" data-dismiss="alert">
+                            ×</button>
+                        <asp:Label ID="lblResultado1" runat="server" Text=""></asp:Label>
+                    </asp:Panel>
+                    <asp:Panel runat="server" ID="pnlInfo" class="alert alert-dismissable alert-info"
+                        Visible="false">
+                        <button class="close" type="button" data-dismiss="alert">
+                            ×</button>
+                        <asp:Label ID="lblResultado2" runat="server" Text=""></asp:Label>
+                    </asp:Panel>
+                    <asp:Panel runat="server" ID="pnlAtento" class="alert alert-dismissable alert-danger"
+                        Visible="false">
+                        <button class="close" type="button" data-dismiss="alert">
+                            ×</button>
+                        <asp:Label ID="lblResultado3" runat="server" Text=""></asp:Label>
+                    </asp:Panel>
+                </div>
+         </div>
+    </div>
+
+
+    <div class="panel-body">
+        <div class="col-md-2 col-md-offset-5">
                 <asp:Panel Visible="false" runat="server" ID="imgImagen">
                     <%--<img id="imgprvw" width="140px" height="140px"/>--%>
                     <img id="imgprvw" style="border: 2px solid #000000;" runat="server" src="~/App_Themes/TemaSigma/imagenes/sin_imagen_disponible.jpg" />
@@ -75,34 +77,12 @@
                 <table>
                     <tr>
                         <td>
-                            <asp:Panel runat="server" ID="pnlCorrecto" class="alert alert-dismissable alert-success"
-                                Visible="false">
-                                <button class="close" type="button" data-dismiss="alert">
-                                    ×</button>
-                                <asp:Label ID="lblResultado1" runat="server" Text=""></asp:Label>
-                            </asp:Panel>
-                            <asp:Panel runat="server" ID="pnlInfo" class="alert alert-dismissable alert-info"
-                                Visible="false">
-                                <button class="close" type="button" data-dismiss="alert">
-                                    ×</button>
-                                <asp:Label ID="lblResultado2" runat="server" Text=""></asp:Label>
-                            </asp:Panel>
-                            <asp:Panel runat="server" ID="pnlAtento" class="alert alert-dismissable alert-danger"
-                                Visible="false">
-                                <button class="close" type="button" data-dismiss="alert">
-                                    ×</button>
-                                <asp:Label ID="lblResultado3" runat="server" Text=""></asp:Label>
-                            </asp:Panel>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
                             <asp:Panel ID="pnlBuscarPor" runat="server" Width="100%">
                                 <table>
                                     <tr>
                                         <td colspan="2" align="justify">
                                             <asp:Panel ID="pnlrdbporDuenio" runat="server">
-                                                Por dueñio:&nbsp<asp:RadioButton ID="rbPorDuenio" runat="server" GroupName="1" ValidationGroup="1"
+                                                Por dueño:&nbsp<asp:RadioButton ID="rbPorDuenio" runat="server" GroupName="1" ValidationGroup="1"
                                                     AutoPostBack="True" OnCheckedChanged="RbPorDuenio" />&nbsp
                                             </asp:Panel>
                                         </td>
@@ -128,13 +108,13 @@
                                     </td>
                                     <td colspan=2>
                                         <asp:Panel ID="pnltxtNombreDueñio" Visible="false" runat="server">
-                                            <asp:TextBox ID="txtNombreDueñio" runat="server" CssClass="TextBox" Width="100%"></asp:TextBox>
+                                            <asp:TextBox ID="txtNombreDueñio" runat="server" CssClass="TextBox"></asp:TextBox>
                                         </asp:Panel>
                                     </td>
                                     <td rowspan="2">
                                         <asp:Panel ID="pnlboton" runat="server" Visible="false">
-                                            <asp:Button ID="btnBuscar" runat="server" Text="Buscar" CssClass="btn-primary" OnClick="BtnBuscarClick"
-                                                Width="100%" />
+                                            <asp:Button ID="btnBuscar" runat="server" Text="Buscar"  OnClick="BtnBuscarClick"
+                                                />
                                         </asp:Panel>
                                     </td>
                                 </tr>
@@ -170,6 +150,10 @@
                         </td>
                     </tr>
                 </table>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="col-md-2 col-md-offset-4">
                 <table>
                     <asp:Panel ID="pnlDatos" runat="server" Visible="false">
                             <tr>
@@ -316,31 +300,47 @@
                             </tr>
                     </asp:Panel>
                 </table>
-                <table>
+
+                <div style="margin-left:auto; margin-right:auto">
+                <asp:Panel ID="pnlbtnSeleccionar" runat="server" Visible="false" style="display:inline">
+                    <asp:Button ID="btnSeleccionar" runat="server" Text="Seleccionar" 
+                        OnClick="BtnSeleccionarClick" CausesValidation="False" style="float:left"/> 
+                </asp:Panel>
+                <asp:Panel ID="pnlbotones" runat="server" Visible="false" Width="600px">
+                    <asp:Button ID="btnModificar" runat="server" Text="Modificar" 
+                        OnClick="BtnModificarClick" ValidationGroup="1" style="float:left"/> <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" 
+                        ValidationGroup="2" OnClick="BtnEliminarClick" style="float:left"/> <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar" 
+                        OnClick="BtnLimpiarClick" style="float:left" /> <asp:Button ID="btnGenerarQR" runat="server" Text="Generar Codigo QR" 
+                        OnClick="btnGenerarQR_Click" style="float:left"/>
+                </asp:Panel>
+                </div>
+                
+           <%--     <table>
                     <tr>
                         <td>
                             <asp:Panel ID="pnlbtnSeleccionar" runat="server" Visible="false">
-                                <asp:Button ID="btnSeleccionar" runat="server" Text="Seleccionar" CssClass="btn-primary"
+                                <asp:Button ID="btnSeleccionar" runat="server" Text="Seleccionar" 
                                     OnClick="BtnSeleccionarClick" CausesValidation="False" />
                             </asp:Panel>
                         </td>
                         <td colspan="4">
                             <asp:Panel ID="pnlbotones" runat="server" Visible="false" Width="100%">
-                                <asp:Button ID="btnModificar" runat="server" Text="Modificar" CssClass="btn-primary"
+                                <asp:Button ID="btnModificar" runat="server" Text="Modificar" 
                                     OnClick="BtnModificarClick" ValidationGroup="1" />
-                                <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" CssClass="btn-primary"
+                                <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" 
                                     ValidationGroup="2" OnClick="BtnEliminarClick" />
-                                <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar" CssClass="btn-primary"
+                                <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar" 
                                     OnClick="BtnLimpiarClick" />
-                                <asp:Button ID="btnGenerarQR" runat="server" Text="Generar Codigo QR" CssClass="btn-primary"
+                                <asp:Button ID="btnGenerarQR" runat="server" Text="Generar Codigo QR" 
                                     OnClick="btnGenerarQR_Click" />
                             </asp:Panel>
                         </td>
                         <td>
                         </td>
                     </tr>
-                </table>
+                </table>--%>
             </div>
         </div>
     </div>
+</div>
 </asp:Content>
