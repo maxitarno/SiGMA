@@ -27,7 +27,7 @@
             </div>
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <div class="col-md-2 col-md-offset-5">
+                    <div class="col-md-2 col-md-offset-4">
                         <asp:Panel runat="server" ID="pnlCorrecto" class="alert alert-dismissable alert-success"
                             Visible="false">
                             <button class="close" type="button" data-dismiss="alert">
@@ -50,19 +50,15 @@
                 </div>
             </div>
             <div class="panel-body">
-                <div class="col-md-2 col-md-offset-4">
+                <div class="col-md-2 col-md-offset-3">
                     <div style="margin-left: 30%; display: table; width: 40%;">
                         <div style="display: table-row; width: 30%">
-                            <div style="display: table-cell; width: 20%;">
-                                <asp:Panel runat="server" ID="pnlNombre">
+                                <div style="display: table-cell; width: 20%;">
                                     Nombre:
-                                </asp:Panel>
-                            </div>
-                            <div style="display: table-cell; width: 20%;">
-                                <asp:Panel ID="pnltxtNombre" runat="server">
+                                </div>
+                                <div style="display: table-cell; width: 20%;">
                                     <asp:TextBox ID="txtNombre" runat="server"></asp:TextBox>
-                                </asp:Panel>
-                            </div>
+                                </div>
                             <div style="display: table-cell; width: 20%;">
                                 <asp:Panel ID="pnlBuscar" runat="server">
                                     <asp:Button ID="btnBuscar" runat="server" Text="Buscar" OnClick="BtnBuscarClick"

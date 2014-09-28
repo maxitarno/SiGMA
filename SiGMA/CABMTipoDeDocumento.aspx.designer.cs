@@ -67,24 +67,6 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.Label lblResultado3;
         
         /// <summary>
-        /// Control pnlNombre.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlNombre;
-        
-        /// <summary>
-        /// Control pnltxtNombre.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnltxtNombre;
-        
-        /// <summary>
         /// Control txtNombre.
         /// </summary>
         /// <remarks>
