@@ -38,11 +38,9 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Mascotas_Especies", "Especies", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Especies), "Mascotas", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Mascotas), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Razas_Especies", "Especies", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Especies), "Razas", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Razas), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Mascotas_Estados", "Estados", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Estados), "Mascotas", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Mascotas), true)]
-[assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Hallazgos_Mascotas", "Mascotas", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Mascotas), "Hallazgos", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Hallazgos), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Hallazgos_Perdidas", "Perdidas", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(AccesoADatos.Perdidas), "Hallazgos", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Hallazgos), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Hallazgos_Sesiones", "Usuarios", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Usuarios), "Hallazgos", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Hallazgos), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Mascotas_Razas", "Razas", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Razas), "Mascotas", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Mascotas), true)]
-[assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Perdidas_Mascotas", "Mascotas", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Mascotas), "Perdidas", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Perdidas), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Perdidas_Sesiones", "Usuarios", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Usuarios), "Perdidas", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Perdidas), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_PermisosXRoles_Permisos", "Permisos", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Permisos), "PermisosXRoles", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.PermisosXRoles), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_PermisosXRoles_Roles", "Roles", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Roles), "PermisosXRoles", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.PermisosXRoles), true)]
@@ -2342,6 +2340,30 @@ namespace AccesoADatos
         private global::System.String _nombreEstado;
         partial void OnnombreEstadoChanging(global::System.String value);
         partial void OnnombreEstadoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ambito
+        {
+            get
+            {
+                return _ambito;
+            }
+            set
+            {
+                OnambitoChanging(value);
+                ReportPropertyChanging("ambito");
+                _ambito = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("ambito");
+                OnambitoChanged();
+            }
+        }
+        private global::System.String _ambito;
+        partial void OnambitoChanging(global::System.String value);
+        partial void OnambitoChanged();
 
         #endregion
 
@@ -2639,44 +2661,6 @@ namespace AccesoADatos
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Barrios>("SiGMAModel.FK_Hallazgos_Barrios", "Barrios", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("SiGMAModel", "FK_Hallazgos_Mascotas", "Mascotas")]
-        public Mascotas Mascotas
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Mascotas>("SiGMAModel.FK_Hallazgos_Mascotas", "Mascotas").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Mascotas>("SiGMAModel.FK_Hallazgos_Mascotas", "Mascotas").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<Mascotas> MascotasReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Mascotas>("SiGMAModel.FK_Hallazgos_Mascotas", "Mascotas");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Mascotas>("SiGMAModel.FK_Hallazgos_Mascotas", "Mascotas", value);
                 }
             }
         }
@@ -3575,28 +3559,6 @@ namespace AccesoADatos
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("SiGMAModel", "FK_Hallazgos_Mascotas", "Hallazgos")]
-        public EntityCollection<Hallazgos> Hallazgos
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Hallazgos>("SiGMAModel.FK_Hallazgos_Mascotas", "Hallazgos");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Hallazgos>("SiGMAModel.FK_Hallazgos_Mascotas", "Hallazgos", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("SiGMAModel", "FK_Mascotas_Razas", "Razas")]
         public Razas Razas
         {
@@ -3625,28 +3587,6 @@ namespace AccesoADatos
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Razas>("SiGMAModel.FK_Mascotas_Razas", "Razas", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("SiGMAModel", "FK_Perdidas_Mascotas", "Perdidas")]
-        public EntityCollection<Perdidas> Perdidas
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Perdidas>("SiGMAModel.FK_Perdidas_Mascotas", "Perdidas");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Perdidas>("SiGMAModel.FK_Perdidas_Mascotas", "Perdidas", value);
                 }
             }
         }
@@ -3940,44 +3880,6 @@ namespace AccesoADatos
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Hallazgos>("SiGMAModel.FK_Hallazgos_Perdidas", "Hallazgos", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("SiGMAModel", "FK_Perdidas_Mascotas", "Mascotas")]
-        public Mascotas Mascotas
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Mascotas>("SiGMAModel.FK_Perdidas_Mascotas", "Mascotas").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Mascotas>("SiGMAModel.FK_Perdidas_Mascotas", "Mascotas").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<Mascotas> MascotasReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Mascotas>("SiGMAModel.FK_Perdidas_Mascotas", "Mascotas");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Mascotas>("SiGMAModel.FK_Perdidas_Mascotas", "Mascotas", value);
                 }
             }
         }

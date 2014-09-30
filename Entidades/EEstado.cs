@@ -9,5 +9,6 @@ namespace Entidades
     {
         public int idEstado { get; set; }
         public string nombreEstado{ get; set;}
+        public string ambito { get; set; }
     }
 }
