@@ -239,7 +239,7 @@
           </Key>
           <Property Name="idEstado" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="nombreEstado" Type="varchar" Nullable="false" MaxLength="50" />
-          <Property Name="ambito" Type="varchar" MaxLength="50" />
+          <Property Name="ambito" Type="varchar" Nullable="false" MaxLength="50" />
         </EntityType>
         <EntityType Name="Hallazgos">
           <Key>
@@ -1054,7 +1054,7 @@
           </Key>
           <Property Name="idEstado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombreEstado" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="ambito" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ambito" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="Mascotas" Relationship="SiGMAModel.FK_Mascotas_Estados" FromRole="Estados" ToRole="Mascotas" />
         </EntityType>
         <EntityType Name="Hallazgos">
