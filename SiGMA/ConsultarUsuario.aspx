@@ -47,7 +47,7 @@
                 </div>
             </div>
             <div class="panel-body">
-                <div class="col-md-1 col-md-offset-1">
+                <div class="col-md-1 col-md-offset-0">
                     <div style="margin-left: 30%; display: table; width: 40%;">
                         <div style="display: table-row; width: 40%">
                             <table>
@@ -320,6 +320,9 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="col-md-1 col-md-offset-5">
+                    <asp:ImageButton ID="ibtnRegresar" runat="server" ImageUrl="~/imagenes/volver.png" OnClick="BtnRegresarClick"/>
                 </div>
             </div>
         </div>

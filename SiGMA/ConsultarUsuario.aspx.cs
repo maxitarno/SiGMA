@@ -564,5 +564,9 @@ namespace SiGMA
                 CargarCombos.cargarCalles(ref ddlCalle, int.Parse(ddlLocalidades.SelectedValue.ToString()));
             }
         }
+        public void BtnRegresarClick(object sender, EventArgs e)
+        {
+            Response.Redirect("Usuarios.aspx");
+        }
     }
 }
