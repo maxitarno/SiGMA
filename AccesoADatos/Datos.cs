@@ -101,6 +101,10 @@ namespace AccesoADatos
             {
                 throw exc;
             }
+            catch (System.Data.EntityCommandExecutionException exc)
+            {
+                throw exc;
+            }
             return estados;
         }
         //fin metodo
