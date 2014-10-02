@@ -112,7 +112,7 @@
                                             </asp:Panel>
                                         </td>
                                     </tr>
-                                    <asp:Panel ID="pnlfiltros">
+                                    <asp:Panel ID="pnlfiltros" runat=server Visible=false>
                                         <tr>
                                             <td>
                                                 Especie:
@@ -129,7 +129,7 @@
                                             </td>
                                             <td>
                                                 <asp:DropDownList ID="ddlRaza" runat="server" Width="100%" CssClass="DropDownList"
-                                                    AppendDataBoundItems="False">
+                                                    AppendDataBoundItems="false">
                                                 </asp:DropDownList>
                                             </td>
                                         </tr>
@@ -330,5 +330,8 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="centered">
+        <asp:ImageButton ID="ibtnRegresar" runat="server" ImageUrl="~/imagenes/volver.png" OnClick="BtnRegresarClick"/>
     </div>
 </asp:Content>

@@ -52,20 +52,34 @@ namespace SiGMA
                 pnltxtMascota.Visible = true;
                 CargarCombos.cargarEstado(ref ddlEstado);
                 CargarCombos.cargarCaracteresMascota(ref ddlCaracter);
+                if (rbPorMascota.Checked)
+                {
+                    pnlfiltros.Visible = true;
+                }
+                    /*Handler1.AddMethod(ImageHandler_ObtenerImagenMascota);
+                    imgprvw.Src = ResolveUrl("~/Handler1.ashx");
+                    imgprvw.Width = 300;
+                    imgprvw.Height = 200;*/
             }
         }
         public void ddlRaza_SelectedIndexChanged(object sender, EventArgs e)
         {
             List<ERaza> razas = new List<ERaza>();
-            int aux = int.Parse(ddlEspecie.SelectedValue);
-            razas = Datos.BuscarRazas(aux);
-            ddlRaza.DataSource = razas;
-            ddlRaza.DataTextField = "nombreRaza";
-            ddlRaza.DataValueField = "idRaza";
-            ddlRaza.DataBind();
-            pnlInfo.Visible = false;
-            pnlAtento.Visible = false;
-            pnlCorrecto.Visible = false;
+            if (!ddlEspecie.SelectedValue.Equals("0"))
+            {
+                int aux = int.Parse(ddlEspecie.SelectedValue);
+                CargarCombos.cargarRazas(ref ddlRaza, aux);
+                pnlInfo.Visible = false;
+                pnlAtento.Visible = false;
+                pnlCorrecto.Visible = false;
+            }
+            else
+            {
+                CargarCombos.cargarComboRazas(ref ddlRaza);
+                pnlInfo.Visible = false;
+                pnlAtento.Visible = false;
+                pnlCorrecto.Visible = false;
+            }
         }
         public void RbPorDuenio(object sender, EventArgs e)
         {
@@ -84,6 +98,7 @@ namespace SiGMA
                 pnltxtMascota.Visible = false;
                 pnlResultados.Visible = false;
                 imgImagen.Visible = false;
+                pnlfiltros.Visible = false;
             }
         }
         public void RbPorMascota(object sender, EventArgs e)
@@ -101,10 +116,20 @@ namespace SiGMA
             pnltxtMascota.Visible = true;
             pnlResultados.Visible = false;
             imgImagen.Visible = false;
+            pnlfiltros.Visible = true;
+            ddlEspecie.SelectedValue = "0";
+            ddlEstado.SelectedValue = "0";
+            ddlRaza.SelectedValue = "0";
+            ddlSexo.SelectedValue = "0";
+            ddlTratoAnimales.SelectedValue = "0";
+            ddlTratoNinios.SelectedValue = "0";
+            txtMascota.Text = "";
+            ddlEdad.SelectedValue = "0";
         }
         public void BtnBuscarClick(object sender, EventArgs e)
         {
             List<EMascota> mascotas = new List<EMascota>();
+            lstResultados.Items.Clear();
             if (rbPorDuenio.Checked)
             {
                 mascotas = LogicaBDMascota.BuscarMascotaPorduenio(txtNombreDueñio.Text);
@@ -132,8 +157,50 @@ namespace SiGMA
             }
             else if (rbPorMascota.Checked)
             {
-                mascotas = LogicaBDMascota.buscarMascotasPorNombre(txtMascota.Text);
-                if (mascotas.Count != 0)
+                EMascota mascota = new EMascota();
+                if (!ddlEdad.SelectedValue.Equals("0"))
+                {
+                    mascota.edad = new EEdad();
+                    mascota.edad.nombreEdad = ddlEdad.SelectedItem.Text;
+                    mascota.edad.idEdad = int.Parse(ddlEdad.SelectedValue);
+                }
+                if (!ddlEspecie.SelectedValue.Equals("0"))
+                {
+                    mascota.especie = new EEspecie();
+                    mascota.especie.idEspecie = int.Parse(ddlEspecie.SelectedValue);
+                    mascota.especie.nombreEspecie = ddlEspecie.SelectedItem.Text;
+                }
+                if (!ddlRaza.SelectedValue.Equals("") && !ddlRaza.SelectedValue.Equals("0"))
+                {
+                    mascota.raza = new ERaza();
+                    mascota.raza.nombreRaza = ddlRaza.SelectedItem.Text;
+                    mascota.raza.idRaza = int.Parse(ddlRaza.SelectedValue);
+                }
+                if (!ddlSexo.SelectedValue.Equals("0"))
+                {
+                    mascota.sexo = ddlSexo.SelectedItem.Text;
+                }
+                else
+                {
+                    mascota.sexo = null;
+                }
+                if (!ddlTratoAnimales.SelectedValue.Equals("0"))
+                {
+                    mascota.tratoAnimal = true;
+                }
+                if (!ddlTratoNinios.SelectedValue.Equals("0"))
+                {
+                    mascota.tratoNiños = true;
+                }
+                if (!ddlEstado.SelectedValue.Equals("0"))
+                {
+                    mascota.estado = new EEstado();
+                    mascota.estado.nombreEstado = ddlEstado.SelectedItem.Text;
+                    mascota.estado.idEstado = int.Parse(ddlEstado.SelectedValue);
+                }
+                mascota.nombreMascota = txtMascota.Text;
+                mascotas = LogicaBDMascota.buscarMascotasFiltros(mascota);
+                if (mascotas != null)
                 {
                     lstResultados.Items.Clear();
                     pnlNombre.Visible = false;
@@ -211,7 +278,13 @@ namespace SiGMA
                         imgprvw.Width = 300;
                         imgprvw.Height = 200;
                     }
-                    imgImagen.Visible = true;                    
+                    imgImagen.Visible = true;
+                    pnlfiltros.Visible = true;
+                    pnlNombre.Visible = false;
+                    pnltxtNombreDueñio.Visible = false;
+                    pnlboton.Visible = false;
+                    pnlResultados.Visible = false;
+                    pnlbtnSeleccionar.Visible = false;
                 }
                 else
                 {
@@ -328,6 +401,34 @@ namespace SiGMA
                                                             lblResultado1.Text = "Se modifico corretamente";
                                                             pnlAtento.Visible = false;
                                                             pnlInfo.Visible = false;
+                                                            if (rbPorDuenio.Checked)
+                                                            {
+                                                                pnltxtNombreDueñio.Visible = true;
+                                                                pnlNombre.Visible = true;
+                                                                pnltxtMascota.Visible = false;
+                                                                pnlmascota.Visible = false;
+                                                                pnlfiltros.Visible = false;
+                                                            }
+                                                            if (rbPorMascota.Checked)
+                                                            {
+                                                                pnltxtMascota.Visible = true;
+                                                                pnlmascota.Visible = true;
+                                                                pnltxtNombreDueñio.Visible = false;
+                                                                pnlNombre.Visible = false;
+                                                                pnlfiltros.Visible = true;
+                                                                ddlEspecie.SelectedValue = "0";
+                                                                ddlEstado.SelectedValue = "0";
+                                                                ddlRaza.SelectedValue = "0";
+                                                                ddlSexo.SelectedValue = "0";
+                                                                ddlTratoAnimales.SelectedValue = "0";
+                                                                ddlTratoNinios.SelectedValue = "0";
+                                                                txtMascota.Text = "";
+                                                                ddlEdad.SelectedValue = "0";
+                                                            }
+                                                            pnlboton.Visible = true;
+                                                            pnlDatos.Visible = false;
+                                                            pnlbotones.Visible = false;
+                                                            imgImagen.Visible = false;
                                                         }
                                                         else
                                                         {
@@ -346,6 +447,38 @@ namespace SiGMA
                                                         lblResultado1.Text = "Se modifico corretamente";
                                                         pnlAtento.Visible = false;
                                                         pnlInfo.Visible = false;
+                                                        pnlResultados.Visible = false;
+                                                        pnlbotones.Visible = false;
+                                                        txtMascota.Text = "";
+                                                        Session["idMascota"] = 0;
+                                                        txtNombreDueñio.Text = "";
+                                                        imgImagen.Visible = false;
+                                                        if (rbPorDuenio.Checked)
+                                                        {
+                                                            pnltxtNombreDueñio.Visible = true;
+                                                            pnlNombre.Visible = true;
+                                                            pnltxtMascota.Visible = false;
+                                                            pnlmascota.Visible = false;
+                                                            pnlfiltros.Visible = false;
+                                                        }
+                                                        if (rbPorMascota.Checked)
+                                                        {
+                                                            pnltxtMascota.Visible = true;
+                                                            pnlmascota.Visible = true;
+                                                            pnltxtNombreDueñio.Visible = false;
+                                                            pnlNombre.Visible = false;
+                                                            pnlfiltros.Visible = true;
+                                                            ddlEspecie.SelectedValue = "0";
+                                                            ddlEstado.SelectedValue = "0";
+                                                            ddlRaza.SelectedValue = "0";
+                                                            ddlSexo.SelectedValue = "0";
+                                                            ddlTratoAnimales.SelectedValue = "0";
+                                                            ddlTratoNinios.SelectedValue = "0";
+                                                            txtMascota.Text = "";
+                                                            ddlEdad.SelectedValue = "0";
+                                                        }
+                                                        pnlboton.Visible = true;
+                                                        pnlDatos.Visible = false;
                                                     }
                                                     else
                                                     {
@@ -434,6 +567,33 @@ namespace SiGMA
                         pnlInfo.Visible = false;
                         pnlAtento.Visible = false;
                         lblResultado1.Text = "Se elimino correctamente";
+                        if (rbPorDuenio.Checked)
+                        {
+                            pnltxtNombreDueñio.Visible = true;
+                            pnlNombre.Visible = true;
+                            pnltxtMascota.Visible = false;
+                            pnlmascota.Visible = false;
+                            pnlfiltros.Visible = false;
+                        }
+                        if (rbPorMascota.Checked)
+                        {
+                            pnltxtMascota.Visible = true;
+                            pnlmascota.Visible = true;
+                            pnltxtNombreDueñio.Visible = false;
+                            pnlNombre.Visible = false;
+                            pnlfiltros.Visible = true;
+                            ddlEspecie.SelectedValue = "0";
+                            ddlEstado.SelectedValue = "0";
+                            ddlRaza.SelectedValue = "0";
+                            ddlSexo.SelectedValue = "0";
+                            ddlTratoAnimales.SelectedValue = "0";
+                            ddlTratoNinios.SelectedValue = "0";
+                            txtMascota.Text = "";
+                            ddlEdad.SelectedValue = "0";
+                        }
+                        pnlboton.Visible = false;
+                        pnlDatos.Visible = false;
+                        pnlboton.Visible = false;
                     }
                     else
                     {
@@ -490,6 +650,14 @@ namespace SiGMA
                 pnlmascota.Visible = true;
                 pnltxtNombreDueñio.Visible = false;
                 pnlNombre.Visible = false;
+                ddlEspecie.SelectedValue = "0";
+                ddlEstado.SelectedValue = "0";
+                ddlRaza.SelectedValue = "0";
+                ddlSexo.SelectedValue = "0";
+                ddlTratoAnimales.SelectedValue = "0";
+                ddlTratoNinios.SelectedValue = "0";
+                txtMascota.Text = "";
+                ddlEdad.SelectedValue = "0";
             }
         }
 
@@ -499,6 +667,10 @@ namespace SiGMA
             {
                 Response.Redirect("~/GenerarCodigoQR.aspx");
             }
+        }
+        public void BtnRegresarClick(object sender, EventArgs e)
+        {
+            Response.Redirect("Mascotas.aspx");
         }
     }
 }

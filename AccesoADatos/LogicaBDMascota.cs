@@ -80,7 +80,7 @@ namespace AccesoADatos
                                from EdadesBD in mapaEntidades.Edades
                                where (MascotasBD.idRaza == RazaBD.idRaza && MascotasBD.idEdad == EdadesBD.idEdad
                                && CuidadoEspecialBD.idCuidadoEspecial == RazaBD.idCuidadoEspecial && RazaBD.idCategoriaRaza == CategoriaRazaBD.idCategoriaRazas 
-                               && MascotasBD.idCaracter == CaracterBD.idCaracter && MascotasBD.idMascota == idMascota && MascotasBD.idEstado != 6)
+                               && MascotasBD.idCaracter == CaracterBD.idCaracter && MascotasBD.idMascota == idMascota)
                                select new
                                {
                                    nombre = MascotasBD.nombreMascota,

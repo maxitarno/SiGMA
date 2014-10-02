@@ -127,6 +127,7 @@ namespace Herramientas
         public static void cargarComboRazas(ref DropDownList ddl)
         {
             List<ERaza> razas = Datos.BuscarRazas();
+            ddl.Items.Clear();
             ddl.Items.Add(new ListItem("SIN ASIGNAR", "0"));
             foreach (ERaza item in razas)
             {

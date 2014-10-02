@@ -53,16 +53,16 @@
                 <div class="col-md-2 col-md-offset-3">
                     <div style="margin-left: 30%; display: table; width: 40%;">
                         <div style="display: table-row; width: 30%">
-                                <div style="display: table-cell; width: 20%;">
-                                    Nombre:
-                                </div>
-                                <div style="display: table-cell; width: 20%;">
-                                    <asp:TextBox ID="txtNombre" runat="server"></asp:TextBox>
-                                </div>
+                            <div style="display: table-cell; width: 20%;">
+                                Nombre:
+                            </div>
+                            <div style="display: table-cell; width: 20%;">
+                                <asp:TextBox ID="txtNombre" runat="server"></asp:TextBox>
+                            </div>
                             <div style="display: table-cell; width: 20%;">
                                 <asp:Panel ID="pnlBuscar" runat="server">
                                     <asp:Button ID="btnBuscar" runat="server" Text="Buscar" OnClick="BtnBuscarClick"
-                                        CausesValidation="False" CssClass="btn-primary"/>
+                                        CausesValidation="False" CssClass="btn-primary" />
                                 </asp:Panel>
                             </div>
                             <div style="display: table-cell; width: 20%;">
@@ -72,7 +72,7 @@
                         </div>
                     </div>
                     <div style="margin-left: 30%; display: table; width: 40%;">
-                        <div style="display: table-row; width: 30%;>
+                        <div style="display: table-row; width: 30%;">
                             <asp:Panel ID="pnlResultado" runat="server" Visible="false">
                                 <div style="display: table-cell; width: 20%;">
                                     Resultados:
@@ -86,33 +86,36 @@
                             <div style="display: table-cell; width: 20%;">
                                 <asp:Panel ID="pnlRegistrar" runat="server">
                                     <asp:Button ID="btnRegistrar" runat="server" Text="Registrar" OnClick="BtnRegistrarClick"
-                                        ValidationGroup="1" CssClass="btn-primary"/>
+                                        ValidationGroup="1" CssClass="btn-primary" />
                                 </asp:Panel>
                             </div>
                             <div style="display: table-cell; width: 20%;">
                                 <asp:Panel ID="pnlSeleccionar" runat="server" Visible="false">
                                     <asp:Button ID="btnSeleccionar" runat="server" Text="Seleccionar" OnClick="BtnSeleccionarClick"
-                                        CausesValidation="False" CssClass="btn-primary"/>
+                                        CausesValidation="False" CssClass="btn-primary" />
                                 </asp:Panel>
                             </div>
                             <div style="display: table-cell; width: 20%;">
                                 <asp:Panel ID="pnlCambio" runat="server" Visible="false">
                                     <asp:Button ID="btnModificar" runat="server" Text="Modificar" OnClick="BtnModificarClick"
-                                        CausesValidation="true" CssClass="btn-primary"/>
+                                        CausesValidation="true" CssClass="btn-primary" />
                                 </asp:Panel>
                             </div>
                             <div style="display: table-cell; width: 20%;">
                                 <asp:Panel runat="server" ID="pnl8" Visible="false">
                                     <!--<asp:Button ID="btneliminar" runat="server" Text="Eliminar" />-->
                                     <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar" OnClick="BtnLimpiarClick"
-                                        CausesValidation="False" CssClass="btn-primary"/>
+                                        CausesValidation="False" CssClass="btn-primary" />
                                 </asp:Panel>
                             </div>
                         </div>
                     </div>
                 </div>
-                <asp:ImageButton ID="ibtnRegresar" runat="server" ImageUrl="~/imagenes/volver.png" OnClick="BtnRegresarClick"/>
             </div>
         </div>
+    </div>
+    <div class="centered">
+        <asp:ImageButton ID="ibtnRegresar" runat="server" ImageUrl="~/imagenes/volver.png"
+            OnClick="BtnRegresarClick" />
     </div>
 </asp:Content>

@@ -80,7 +80,8 @@
                                     </td>
                                     <td>
                                         <asp:Panel ID="pnlBuscar" runat="server" Visible="false">
-                                            <asp:Button ID="btnBuscar" runat="server" Text="Buscar" OnClick="btnBuscarClick" cssClass="btn-primary"/>
+                                            <asp:Button ID="btnBuscar" runat="server" Text="Buscar" OnClick="btnBuscarClick"
+                                                CssClass="btn-primary" />
                                         </asp:Panel>
                                     </td>
                                 </tr>
@@ -133,7 +134,8 @@
                         <div style="display: table-row; width: 30%">
                             <asp:Panel ID="pnlSeleccionar" runat="server" Visible="false">
                                 <div style="display: table-cell; width: 20%;">
-                                    <asp:Button ID="btnSeleccionar" runat="server" Text="Seleccionar" OnClick="btnAceptarClick" cssClass="btn-primary"/>
+                                    <asp:Button ID="btnSeleccionar" runat="server" Text="Seleccionar" OnClick="btnAceptarClick"
+                                        CssClass="btn-primary" />
                                 </div>
                             </asp:Panel>
                         </div>
@@ -300,18 +302,19 @@
                                             <td>
                                                 <asp:Panel ID="pnlModificar" runat="server" Visible="false">
                                                     <asp:Button ID="btnModificar" runat="server" Text="Modificar" OnClick="btnModificarClick"
-                                                        ValidationGroup="2" CssClass="btn-primary"/>
+                                                        ValidationGroup="2" CssClass="btn-primary" />
                                                 </asp:Panel>
                                             </td>
                                             <td>
                                                 <asp:Panel ID="pnlEliminar" runat="server" Visible="false">
                                                     <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" OnClick="btnEliminarClick"
-                                                        ValidationGroup="3" cssClass="btn-primary"/>
+                                                        ValidationGroup="3" CssClass="btn-primary" />
                                                 </asp:Panel>
                                             </td>
                                             <td>
                                                 <asp:Panel ID="pnlLimpiar" runat="server" Visible="false">
-                                                    <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar" OnClick="btnLimpiarClick" cssClass="btn-primary"/>
+                                                    <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar" OnClick="btnLimpiarClick"
+                                                        CssClass="btn-primary" />
                                                 </asp:Panel>
                                             </td>
                                         </tr>
@@ -321,9 +324,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-1 col-md-offset-5">
-                    <asp:ImageButton ID="ibtnRegresar" runat="server" ImageUrl="~/imagenes/volver.png" OnClick="BtnRegresarClick"/>
-                </div>
             </div>
+        </div>
+        <div class="centered">
+            <asp:ImageButton ID="ibtnRegresar" runat="server" ImageUrl="~/imagenes/volver.png"
+                OnClick="BtnRegresarClick" />
         </div>
 </asp:Content>
