@@ -15,5 +15,6 @@ namespace Entidades
         public string comentarios { get; set; }
         public string ubicacion { get; set; }
         public string mapaPerdida { get; set; }
+        public EEstado estado { get; set; }
     }
 }

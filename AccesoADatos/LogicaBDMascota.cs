@@ -474,7 +474,7 @@ namespace AccesoADatos
         public static List<EMascota> buscarMascotasFiltros(EMascota mascota)
         {
             List<EMascota> listaMascotas = null;
-            if (mascota.nombreMascota != "")
+            if (mascota.nombreMascota != null)
             {
                 listaMascotas = buscarMascotasPorNombre(mascota.nombreMascota);
                 if (mascota.estado != null)
@@ -522,8 +522,7 @@ namespace AccesoADatos
             {
                 if (mascota.estado != null)
                 {
-                    listaMascotas = buscarMascotasPorEstado(mascota.estado.nombreEstado);
-                    
+                    listaMascotas = buscarMascotasPorEstado(mascota.estado.nombreEstado);                    
                     if (mascota.especie != null)
                     {
                         listaMascotas = listaMascotas.Where(m => m.especie.idEspecie == mascota.especie.idEspecie).ToList();
@@ -569,11 +568,7 @@ namespace AccesoADatos
                         if (mascota.edad != null)
                         {
                             listaMascotas = listaMascotas.Where(m => m.edad.idEdad == mascota.edad.idEdad).ToList();
-                        }
-                        if (mascota.especie != null)
-                        {
-                            listaMascotas = listaMascotas.Where(m => m.especie.idEspecie == mascota.especie.idEspecie).ToList();
-                        }
+                        }                        
                         if (mascota.color != null)
                         {
                             listaMascotas = listaMascotas.Where(m => m.color.idColor == mascota.color.idColor).ToList();
@@ -782,7 +777,11 @@ namespace AccesoADatos
             {
                 listaIdMascotas.Add(item.idMascota);
             }
-            return BuscarMascotasPorIdMascota(listaIdMascotas);
+            if (listaIdMascotas.Count != 0)
+            {
+                return BuscarMascotasPorIdMascota(listaIdMascotas);
+            }
+            return null;
         }
         
         //Metodo que devuelve una lista de mascotas a partir de una lista de id de mascotas
@@ -889,8 +888,12 @@ namespace AccesoADatos
                     listaIdMascotas.Add(item);
                 }
                 listaMascotas = BuscarMascotasPorIdMascota(listaIdMascotas);
+                return listaMascotas;
             }
-            return listaMascotas;
+            else
+            {
+                return null;
+            }
         }
 
         //Metodo que busca las mascotas de una especie determinada
@@ -903,7 +906,14 @@ namespace AccesoADatos
             {
                 listaIdMascotas.Add(item.idMascota);
             }
-            return BuscarMascotasPorIdMascota(listaIdMascotas);
+            if (listaIdMascotas.Count != 0)
+            {
+                return BuscarMascotasPorIdMascota(listaIdMascotas);
+            }
+            else
+            {
+                return null;
+            }
         }
 
         //Metodo que busca las mascotas con un trato animal determinado
@@ -916,7 +926,14 @@ namespace AccesoADatos
             {
                 listaIdMascotas.Add(item.idMascota);
             }
-            return BuscarMascotasPorIdMascota(listaIdMascotas);
+            if (listaIdMascotas.Count != 0)
+            {
+                return BuscarMascotasPorIdMascota(listaIdMascotas);
+            }
+            else
+            {
+                return null;
+            }
         }
 
         //Metodo que busca las mascotas con un trato niños determinado
@@ -929,7 +946,14 @@ namespace AccesoADatos
             {
                 listaIdMascotas.Add(item.idMascota);
             }
-            return BuscarMascotasPorIdMascota(listaIdMascotas);
+            if (listaIdMascotas.Count != 0)
+            {
+                return BuscarMascotasPorIdMascota(listaIdMascotas);
+            }
+            else
+            {
+                return null;
+            }
         }
 
         //Metodo que busca las mascotas de una edad determinada
@@ -942,7 +966,14 @@ namespace AccesoADatos
             {
                 listaIdMascotas.Add(item.idMascota);
             }
-            return BuscarMascotasPorIdMascota(listaIdMascotas);
+            if (listaIdMascotas.Count != 0)
+            {
+                return BuscarMascotasPorIdMascota(listaIdMascotas);
+            }
+            else
+            {
+                return null;
+            }
         }
 
         //Metodo que busca las mascotas de una raza determinada
@@ -955,7 +986,14 @@ namespace AccesoADatos
             {
                 listaIdMascotas.Add(item.idMascota);
             }
-            return BuscarMascotasPorIdMascota(listaIdMascotas);
+            if (listaIdMascotas.Count != 0)
+            {
+                return BuscarMascotasPorIdMascota(listaIdMascotas);
+            }
+            else
+            {
+                return null;
+            }
         }
 
         //Metodo que busca las mascotas de un color determinado
@@ -968,7 +1006,14 @@ namespace AccesoADatos
             {
                 listaIdMascotas.Add(item.idMascota);
             }
-            return BuscarMascotasPorIdMascota(listaIdMascotas);
+            if (listaIdMascotas.Count != 0)
+            {
+                return BuscarMascotasPorIdMascota(listaIdMascotas);
+            }
+            else
+            {
+                return null;
+            }
         }
 
         //Metodo que busca las mascotas de un color determinado
@@ -981,7 +1026,14 @@ namespace AccesoADatos
             {
                 listaIdMascotas.Add(item.idMascota);
             }
-            return BuscarMascotasPorIdMascota(listaIdMascotas);
+            if (listaIdMascotas.Count != 0)
+            {
+                return BuscarMascotasPorIdMascota(listaIdMascotas);
+            }
+            else
+            {
+                return null;
+            }
         }
 
         //Metodo que busca las mascotas de una fecha determinada
@@ -994,7 +1046,14 @@ namespace AccesoADatos
             {
                 listaIdMascotas.Add(item.idMascota);
             }
-            return BuscarMascotasPorIdMascota(listaIdMascotas);
+            if (listaIdMascotas.Count != 0)
+            {
+                return BuscarMascotasPorIdMascota(listaIdMascotas);
+            }
+            else
+            {
+                return null;
+            }
         }
 
         //Metodo que busca las mascotas de un sexo determinado
@@ -1007,8 +1066,16 @@ namespace AccesoADatos
             {
                 listaIdMascotas.Add(item.idMascota);
             }
-            return BuscarMascotasPorIdMascota(listaIdMascotas);
+            if (listaIdMascotas.Count != 0)
+            {
+                return BuscarMascotasPorIdMascota(listaIdMascotas);
+            }
+            else
+            {
+                return null;
+            }
         }
+
         public static void ModificarEstado(int idEstado, int idMascota)
         {
             SiGMAEntities mapa = Conexion.crearSegunServidor();

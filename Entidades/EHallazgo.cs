@@ -13,5 +13,6 @@ namespace Entidades
         public EPerdida perdida { get; set; }
         public EUsuario usuario { get; set; }
         public DateTime fechaHallazgo { get; set; }
+        public EEstado estado { get; set; }
     }
 }

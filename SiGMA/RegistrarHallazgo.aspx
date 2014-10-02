@@ -1,43 +1,101 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PaginaMaestra.Master" AutoEventWireup="true"
     CodeBehind="RegistrarHallazgo.aspx.cs" Inherits="SiGMA.RegistrarHallazgo" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
+
+    <title>SIGMA</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+
+
+    <!-- Custom styles for this template -->
+    <link href="assets/css/main.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="assets/js/hover.zoom.js"></script>
+    <script src="assets/js/hover.zoom.conf.js"></script>
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="panel panel-primary">
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <div class="centered">
+    <div class="panel panel-default">
         <div class="panel-heading">
             <h3 class="panel-title">
                 Registrar Hallazgo</h3>
         </div>
+        <div class="panel-body">
         <div style="margin-left: 30%; display: table; width: 40%;">
             <div style="display: table-row; width: 30%">
                 <div style="display: table-cell; width: 20%;">
-                    <asp:RadioButton ID="rbYaPerdida" runat="server" Text="Mascota Perdida" GroupName="TipoHallazgo"
+                    <asp:RadioButton ID="rbYaPerdida" runat="server" Text="Mascota Hallada" GroupName="TipoHallazgo"
                         AutoPostBack="True" OnCheckedChanged="rbYaPerdida_CheckedChanged" />
                 </div>
                 <div style="display: table-cell; width: 20%;">
-                    <asp:RadioButton ID="rbNuevaMascota" runat="server" Text="Nueva Mascota" GroupName="TipoHallazgo"
+                    <asp:RadioButton ID="rbNuevaMascota" runat="server" Text="Mascota Rescatada" GroupName="TipoHallazgo"
                         AutoPostBack="True" OnCheckedChanged="rbNuevaMascota_CheckedChanged" />
                 </div>
             </div>
-        </div>
-        <asp:Panel ID="pnlPerdida" runat="server" Visible="false">
+        </div>        
+        <asp:Panel ID="pnlFiltros" runat="server" Visible="false">
             <div style="margin-left: 30%; display: table; width: 40%;">
+            Filtrar mascotas perdidas
                 <div style="display: table-row; width: 30%">
-                    <div style="display: table-cell; width: 20%;">
-                        <asp:ListBox ID="lstPerdidas" runat="server" AutoPostBack="true" OnSelectedIndexChanged="lstPerdidas_SelectedIndexChanged">
+                 <div style="display: table-cell; width: 20%; vertical-align: top;">                    
+                    <table>
+                    <tr>
+                    <td>Especie:</td> <td> <asp:DropDownList ID="ddlFiltroEspecie" Width="100%" AutoPostBack="true" 
+                            runat="server" onselectedindexchanged="ddlFiltroEspecie_SelectedIndexChanged">
+                        </asp:DropDownList></td>                       
+                    </tr>
+                        <tr>
+                        <td>
+                        Raza:</td> <td> <asp:DropDownList ID="ddlFiltroRaza" Width="100%" runat="server">
+                        </asp:DropDownList>
+                        </td>                        
+                        </tr>
+                        <tr><td>
+                        Sexo: </td> <td><asp:DropDownList ID="ddlFiltroSexo" Width="100%" runat="server">
+                        </asp:DropDownList>
+                        </td>                            
+                        </tr>
+                        <tr>
+                        <td>
+                        Color: </td> <td><asp:DropDownList ID="ddlFiltroColor" Width="100%" runat="server">
+                        </asp:DropDownList></td>   
+                                                   
+                        </tr> 
+                        <tr>
+                        <td><asp:Button ID="btnFiltros" runat="server" Text="Buscar" 
+                                onclick="btnFiltros_Click" />
+                        </td></tr>                              
+                    </table>
+                    </div>  
+                <div style="display: table-cell; width: 20%;">
+                    <asp:ListBox ID="lstPerdidas" runat="server" AutoPostBack="true" 
+                        OnSelectedIndexChanged="lstPerdidas_SelectedIndexChanged" Visible="False">
                         </asp:ListBox>
-                    </div>
+                    </div>                
+                                      
+                </div> 
                 </div>
+                 </asp:Panel>                                
                 <asp:Panel ID="pnlMascotaSeleccionada" runat="server" Visible="false">
-                    <div style="display: table-row; width: 30%">
-                        <div style="display: table-cell; width: 20%;">
+                <div style="margin-left: 20%; display: table; width: 60%;">
+                Datos de la mascota
+                    <div style="display: table-row; width: 30%;">     
+                        <div style="display: table-cell; width: 30%;">
                             <asp:Panel Visible="true" runat="server" ID="pnlImagen">
                                 <img id="imgprvw" style="border: 2px solid #000000; height: 135px; width: 215px;"
                                     runat="server" src="~/App_Themes/TemaSigma/imagenes/sin_imagen_disponible.jpg" />
                             </asp:Panel>
                         </div>
-                        <div style="display: table-cell; width: 30%;">
+                        <div style="display: table-cell; width: 22%; vertical-align: top;">
                             <asp:Panel ID="pnlHallazgoPerdidaMascota" runat="server" Visible="true">
                                 <table>
                                     <tr>
@@ -97,16 +155,16 @@
                             </asp:Panel>
                         </div>
                     </div>
-                    <asp:Panel ID="pnlHallazgoPerdidaLugar" runat="server" Visible="false">
-                        <div style="display: table-row; width: 30%">
-                            <div style="display: table-cell; width: 20%;">
+                    Datos del hallazgo
+                        <div style="display: table-row; width: 30%">                            
+                            <div class="col-md-12 col-md-offset-1" style="padding-right: 1%; ">
                                 <table>
                                     <tr>
                                         <td>
                                             Localidad:
                                         </td>
                                         <td>
-                                            <asp:DropDownList ID="ddlLocalidades" Enabled="true" runat="server" Width="50%" AppendDataBoundItems="False"
+                                            <asp:DropDownList ID="ddlLocalidades" Enabled="true" runat="server" Width="100%" AppendDataBoundItems="False"
                                                 OnSelectedIndexChanged="ddlLocalidades_SelectedIndexChanged" AutoPostBack="True">
                                             </asp:DropDownList>
                                         </td>
@@ -118,10 +176,10 @@
                                             Domicilio:
                                         </td>
                                         <td>
-                                            <asp:DropDownList ID="ddlCalles" Enabled="true" runat="server" Width="50%" AppendDataBoundItems="True">
+                                            <asp:DropDownList ID="ddlCalles" Enabled="true" runat="server" Width="70%" AppendDataBoundItems="True">
                                             </asp:DropDownList>
                                             -
-                                            <asp:TextBox ID="txtNroCalle" runat="server" Width="20%"></asp:TextBox>
+                                            <asp:TextBox ID="txtNroCalle" runat="server" Width="23%"></asp:TextBox>
                                         </td>
                                         <td>
                                             <asp:CustomValidator ID="cvCalleNumero" runat="server" ErrorMessage="Solo numeros"
@@ -133,7 +191,7 @@
                                             Barrio:
                                         </td>
                                         <td>
-                                            <asp:DropDownList ID="ddlBarrios" Enabled="true" runat="server" Width="50%" AppendDataBoundItems="True">
+                                            <asp:DropDownList ID="ddlBarrios" Enabled="true" runat="server" Width="100%" AppendDataBoundItems="True">
                                             </asp:DropDownList>
                                         </td>
                                         <td>
@@ -144,7 +202,7 @@
                                             Fecha del Hallazgo:
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="txtFecha" runat="server" Width="50%"></asp:TextBox>
+                                            <asp:TextBox ID="txtFecha" runat="server" Width="100%"></asp:TextBox>
                                             <%--<asp:ImageButton ID="imgFechaPerdida" runat="server" CausesValidation="False"
                             ImageUrl="~/App_Themes/TemaSigma/imagenes/ico_calendar.gif"  /> <asp:Calendar ID="calendario" runat="server" BorderColor="Black" 
                                     BorderWidth="1px" Visible="False" onselectionchanged="calendario_SelectionChanged">
@@ -163,7 +221,7 @@
                                             Lugar:
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="txtMapa" runat="server" Width="50%" Text="Acá iría el mapa con el punto donde se hallo"></asp:TextBox>
+                                            <asp:TextBox ID="txtMapa" runat="server" Width="100%" Text="Acá iría el mapa con el punto donde se hallo"></asp:TextBox>
                                         </td>
                                         <td>
                                         </td>
@@ -183,20 +241,21 @@
                                         <td>
                                         </td>
                                         <td>
-                                            <asp:Button ID="btnRegistrarHallazgo" runat="server" Text="Registrar" CssClass="btn-primary"
+                                            <asp:Button ID="btnRegistrarHallazgo" runat="server" Text="Registrar"
                                                 OnClick="btnRegistrarHallazgo_Click" />
                                         </td>
                                         <td>
                                         </td>
                                     </tr>
                                 </table>
-                            </div>
-                        </div>
-                    </asp:Panel>
-                </asp:Panel>
-            </div>
-        </asp:Panel>
+                                </div>                            
+                        </div>  
+                        </div>                         
+                        </asp:Panel>                       
+                        </div>                    
+                                 
         <asp:Panel ID="pnlNueva" runat="server">
         </asp:Panel>
-    </div>
+        </div>
+    </div> 
 </asp:Content>

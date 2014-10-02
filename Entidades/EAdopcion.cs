@@ -13,5 +13,6 @@ namespace Entidades
         public int idVoluntario { get; set; }
         public DateTime fecha { get; set; }
         public string observaciones { get; set; }
+        public EEstado estado { get; set; }
     }
 }
