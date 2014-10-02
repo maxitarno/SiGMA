@@ -20,9 +20,9 @@ namespace SiGMA
                     if (!LogicaBDRol.verificarPermisoVisualizacion(Session["UsuarioLogueado"].ToString(), "ConsultarUsuario.aspx"))
                         Response.Redirect("PermisosInsuficientes.aspx");
                     if (!LogicaBDRol.verificarPermisosGrabacion(Session["UsuarioLogueado"].ToString(), "ConsultarUsuario.aspx"))
-                        btnModificar.Visible = true;
+                        btnModificar.Visible = false;
                     if (!LogicaBDRol.verificarPermisosEliminacion(Session["UsuarioLogueado"].ToString(), "ConsultarUsuario.aspx"))
-                        btnEliminar.Visible = true;
+                        btnEliminar.Visible = false;
                 }
                 else
                 {

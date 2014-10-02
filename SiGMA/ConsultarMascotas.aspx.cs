@@ -24,11 +24,11 @@ namespace SiGMA
                         Response.Redirect("PermisosInsuficientes.aspx");
                     if (!LogicaBDRol.verificarPermisosGrabacion(Session["UsuarioLogueado"].ToString(), "ConsultarMascotas.aspx"))
                     {
-                        btnModificar.Visible = true;
-                        btnLimpiar.Visible = true;
+                        btnModificar.Visible = false;
+                        btnLimpiar.Visible = false;
                     }
                     if (!LogicaBDRol.verificarPermisosEliminacion(Session["UsuarioLogueado"].ToString(), "ConsultarMascotas.aspx"))
-                        btnEliminar.Visible = true;
+                        btnEliminar.Visible = false;
                 }
                 else
                 {

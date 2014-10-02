@@ -15,6 +15,20 @@ namespace SiGMA
         {
             if (!Page.IsPostBack)
             {
+                if (Session["UsuarioLogueado"] != null)
+                {
+                    if (!LogicaBDRol.verificarPermisoVisualizacion(Session["UsuarioLogueado"].ToString(), "CABMRazas.aspx"))
+                        Response.Redirect("PermisosInsuficientes.aspx");
+                    if (!LogicaBDRol.verificarPermisosGrabacion(Session["UsuarioLogueado"].ToString(), "CABMRazas.aspx"))
+                    {
+                        btnRegistrar.Visible = false;
+                        btnModificar.Visible = false;
+                    }
+                }
+                else
+                {
+                    Response.Redirect("Login.aspx");
+                }
                 CargarCombos.cargarEspecies(ref ddlEspecies);
                 CargarCombos.cargarCategorias(ref ddlCategoria);
             }

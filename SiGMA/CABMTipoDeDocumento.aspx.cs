@@ -13,7 +13,20 @@ namespace SiGMA
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            if (Session["UsuarioLogueado"] != null)
+            {
+                if (!LogicaBDRol.verificarPermisoVisualizacion(Session["UsuarioLogueado"].ToString(), "CABMTipoDeDocumento.aspx"))
+                    Response.Redirect("PermisosInsuficientes.aspx");
+                if (!LogicaBDRol.verificarPermisosGrabacion(Session["UsuarioLogueado"].ToString(), "CABMTipoDeDocumento.aspx"))
+                {
+                    btnRegistrar.Visible = false;
+                    btnModificar.Visible = false;
+                }
+            }
+            else
+            {
+                Response.Redirect("Login.aspx");
+            }
         }
         public void BtnBuscarClick(object sender, EventArgs e)
         {
