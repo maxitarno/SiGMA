@@ -20,6 +20,7 @@ using System.Xml.Serialization;
 #region EDM Relationship Metadata
 
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Adopciones_Duenios", "Duenios", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Duenios), "Adopciones", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Adopciones), true)]
+[assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Adopciones_Estados", "Estados", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Estados), "Adopciones", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Adopciones), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Adopciones_Mascotas", "Mascotas", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Mascotas), "Adopciones", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Adopciones), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Adopciones_Voluntarios", "Voluntarios", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Voluntarios), "Adopciones", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Adopciones), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Barrios_Localidades", "Localidades", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(AccesoADatos.Localidades), "Barrios", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Barrios), true)]
@@ -37,7 +38,9 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Mascotas_Edades", "Edades", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Edades), "Mascotas", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Mascotas), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Mascotas_Especies", "Especies", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Especies), "Mascotas", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Mascotas), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Razas_Especies", "Especies", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Especies), "Razas", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Razas), true)]
+[assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Hallazgos_Estados", "Estados", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Estados), "Hallazgos", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Hallazgos), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Mascotas_Estados", "Estados", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Estados), "Mascotas", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Mascotas), true)]
+[assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Perdidas_Estados", "Estados", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Estados), "Perdidas", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Perdidas), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Hallazgos_Perdidas", "Perdidas", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(AccesoADatos.Perdidas), "Hallazgos", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Hallazgos), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Hallazgos_Sesiones", "Usuarios", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Usuarios), "Hallazgos", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Hallazgos), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Mascotas_Razas", "Razas", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Razas), "Mascotas", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Mascotas), true)]
@@ -731,7 +734,8 @@ namespace AccesoADatos
         /// <param name="idDuenio">Initial value of the idDuenio property.</param>
         /// <param name="idVoluntario">Initial value of the idVoluntario property.</param>
         /// <param name="fechaAdopcion">Initial value of the fechaAdopcion property.</param>
-        public static Adopciones CreateAdopciones(global::System.Int32 idAdopcion, global::System.Int32 idMascota, global::System.Int32 idDuenio, global::System.Int32 idVoluntario, global::System.DateTime fechaAdopcion)
+        /// <param name="idEstado">Initial value of the idEstado property.</param>
+        public static Adopciones CreateAdopciones(global::System.Int32 idAdopcion, global::System.Int32 idMascota, global::System.Int32 idDuenio, global::System.Int32 idVoluntario, global::System.DateTime fechaAdopcion, global::System.Int32 idEstado)
         {
             Adopciones adopciones = new Adopciones();
             adopciones.idAdopcion = idAdopcion;
@@ -739,6 +743,7 @@ namespace AccesoADatos
             adopciones.idDuenio = idDuenio;
             adopciones.idVoluntario = idVoluntario;
             adopciones.fechaAdopcion = fechaAdopcion;
+            adopciones.idEstado = idEstado;
             return adopciones;
         }
 
@@ -892,6 +897,30 @@ namespace AccesoADatos
         private global::System.String _observaciones;
         partial void OnobservacionesChanging(global::System.String value);
         partial void OnobservacionesChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 idEstado
+        {
+            get
+            {
+                return _idEstado;
+            }
+            set
+            {
+                OnidEstadoChanging(value);
+                ReportPropertyChanging("idEstado");
+                _idEstado = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("idEstado");
+                OnidEstadoChanged();
+            }
+        }
+        private global::System.Int32 _idEstado;
+        partial void OnidEstadoChanging(global::System.Int32 value);
+        partial void OnidEstadoChanged();
 
         #endregion
 
@@ -932,6 +961,44 @@ namespace AccesoADatos
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Duenios>("SiGMAModel.FK_Adopciones_Duenios", "Duenios", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("SiGMAModel", "FK_Adopciones_Estados", "Estados")]
+        public Estados Estados
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Estados>("SiGMAModel.FK_Adopciones_Estados", "Estados").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Estados>("SiGMAModel.FK_Adopciones_Estados", "Estados").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Estados> EstadosReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Estados>("SiGMAModel.FK_Adopciones_Estados", "Estados");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Estados>("SiGMAModel.FK_Adopciones_Estados", "Estados", value);
                 }
             }
         }
@@ -2278,13 +2345,11 @@ namespace AccesoADatos
         /// </summary>
         /// <param name="idEstado">Initial value of the idEstado property.</param>
         /// <param name="nombreEstado">Initial value of the nombreEstado property.</param>
-        /// <param name="ambito">Initial value of the ambito property.</param>
-        public static Estados CreateEstados(global::System.Int32 idEstado, global::System.String nombreEstado, global::System.String ambito)
+        public static Estados CreateEstados(global::System.Int32 idEstado, global::System.String nombreEstado)
         {
             Estados estados = new Estados();
             estados.idEstado = idEstado;
             estados.nombreEstado = nombreEstado;
-            estados.ambito = ambito;
             return estados;
         }
 
@@ -2346,7 +2411,7 @@ namespace AccesoADatos
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String ambito
         {
@@ -2358,7 +2423,7 @@ namespace AccesoADatos
             {
                 OnambitoChanging(value);
                 ReportPropertyChanging("ambito");
-                _ambito = StructuralObject.SetValidValue(value, false);
+                _ambito = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("ambito");
                 OnambitoChanged();
             }
@@ -2378,6 +2443,50 @@ namespace AccesoADatos
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("SiGMAModel", "FK_Adopciones_Estados", "Adopciones")]
+        public EntityCollection<Adopciones> Adopciones
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Adopciones>("SiGMAModel.FK_Adopciones_Estados", "Adopciones");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Adopciones>("SiGMAModel.FK_Adopciones_Estados", "Adopciones", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("SiGMAModel", "FK_Hallazgos_Estados", "Hallazgos")]
+        public EntityCollection<Hallazgos> Hallazgos
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Hallazgos>("SiGMAModel.FK_Hallazgos_Estados", "Hallazgos");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Hallazgos>("SiGMAModel.FK_Hallazgos_Estados", "Hallazgos", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("SiGMAModel", "FK_Mascotas_Estados", "Mascotas")]
         public EntityCollection<Mascotas> Mascotas
         {
@@ -2390,6 +2499,28 @@ namespace AccesoADatos
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Mascotas>("SiGMAModel.FK_Mascotas_Estados", "Mascotas", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("SiGMAModel", "FK_Perdidas_Estados", "Perdidas")]
+        public EntityCollection<Perdidas> Perdidas
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Perdidas>("SiGMAModel.FK_Perdidas_Estados", "Perdidas");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Perdidas>("SiGMAModel.FK_Perdidas_Estados", "Perdidas", value);
                 }
             }
         }
@@ -2415,13 +2546,15 @@ namespace AccesoADatos
         /// <param name="idUsuario">Initial value of the idUsuario property.</param>
         /// <param name="idMascota">Initial value of the idMascota property.</param>
         /// <param name="fechaHoraHallazgo">Initial value of the fechaHoraHallazgo property.</param>
-        public static Hallazgos CreateHallazgos(global::System.Int32 idHallazgo, global::System.String idUsuario, global::System.Int32 idMascota, global::System.DateTime fechaHoraHallazgo)
+        /// <param name="idEstado">Initial value of the idEstado property.</param>
+        public static Hallazgos CreateHallazgos(global::System.Int32 idHallazgo, global::System.String idUsuario, global::System.Int32 idMascota, global::System.DateTime fechaHoraHallazgo, global::System.Int32 idEstado)
         {
             Hallazgos hallazgos = new Hallazgos();
             hallazgos.idHallazgo = idHallazgo;
             hallazgos.idUsuario = idUsuario;
             hallazgos.idMascota = idMascota;
             hallazgos.fechaHoraHallazgo = fechaHoraHallazgo;
+            hallazgos.idEstado = idEstado;
             return hallazgos;
         }
 
@@ -2623,6 +2756,30 @@ namespace AccesoADatos
         private Nullable<global::System.Int32> _idPerdida;
         partial void OnidPerdidaChanging(Nullable<global::System.Int32> value);
         partial void OnidPerdidaChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 idEstado
+        {
+            get
+            {
+                return _idEstado;
+            }
+            set
+            {
+                OnidEstadoChanging(value);
+                ReportPropertyChanging("idEstado");
+                _idEstado = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("idEstado");
+                OnidEstadoChanged();
+            }
+        }
+        private global::System.Int32 _idEstado;
+        partial void OnidEstadoChanging(global::System.Int32 value);
+        partial void OnidEstadoChanged();
 
         #endregion
 
@@ -2663,6 +2820,44 @@ namespace AccesoADatos
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Barrios>("SiGMAModel.FK_Hallazgos_Barrios", "Barrios", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("SiGMAModel", "FK_Hallazgos_Estados", "Estados")]
+        public Estados Estados
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Estados>("SiGMAModel.FK_Hallazgos_Estados", "Estados").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Estados>("SiGMAModel.FK_Hallazgos_Estados", "Estados").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Estados> EstadosReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Estados>("SiGMAModel.FK_Hallazgos_Estados", "Estados");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Estados>("SiGMAModel.FK_Hallazgos_Estados", "Estados", value);
                 }
             }
         }
@@ -3613,12 +3808,14 @@ namespace AccesoADatos
         /// <param name="idPerdida">Initial value of the idPerdida property.</param>
         /// <param name="idUsuario">Initial value of the idUsuario property.</param>
         /// <param name="idMascota">Initial value of the idMascota property.</param>
-        public static Perdidas CreatePerdidas(global::System.Int32 idPerdida, global::System.String idUsuario, global::System.Int32 idMascota)
+        /// <param name="idEstado">Initial value of the idEstado property.</param>
+        public static Perdidas CreatePerdidas(global::System.Int32 idPerdida, global::System.String idUsuario, global::System.Int32 idMascota, global::System.Int32 idEstado)
         {
             Perdidas perdidas = new Perdidas();
             perdidas.idPerdida = idPerdida;
             perdidas.idUsuario = idUsuario;
             perdidas.idMascota = idMascota;
+            perdidas.idEstado = idEstado;
             return perdidas;
         }
 
@@ -3820,6 +4017,30 @@ namespace AccesoADatos
         private global::System.String _observaciones;
         partial void OnobservacionesChanging(global::System.String value);
         partial void OnobservacionesChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 idEstado
+        {
+            get
+            {
+                return _idEstado;
+            }
+            set
+            {
+                OnidEstadoChanging(value);
+                ReportPropertyChanging("idEstado");
+                _idEstado = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("idEstado");
+                OnidEstadoChanged();
+            }
+        }
+        private global::System.Int32 _idEstado;
+        partial void OnidEstadoChanging(global::System.Int32 value);
+        partial void OnidEstadoChanged();
 
         #endregion
 
@@ -3860,6 +4081,44 @@ namespace AccesoADatos
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Barrios>("SiGMAModel.FK_Perdidas_Barrios", "Barrios", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("SiGMAModel", "FK_Perdidas_Estados", "Estados")]
+        public Estados Estados
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Estados>("SiGMAModel.FK_Perdidas_Estados", "Estados").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Estados>("SiGMAModel.FK_Perdidas_Estados", "Estados").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Estados> EstadosReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Estados>("SiGMAModel.FK_Perdidas_Estados", "Estados");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Estados>("SiGMAModel.FK_Perdidas_Estados", "Estados", value);
                 }
             }
         }
