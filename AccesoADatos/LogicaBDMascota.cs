@@ -477,52 +477,12 @@ namespace AccesoADatos
             if (mascota.nombreMascota != null)
             {
                 listaMascotas = buscarMascotasPorNombre(mascota.nombreMascota);
-                if (mascota.estado != null)
+                if (listaMascotas != null)
                 {
-                    listaMascotas = listaMascotas.Where(m => m.estado.nombreEstado == mascota.estado.nombreEstado).ToList();                    
-                }
-                if (mascota.especie != null)
-                {
-                    listaMascotas = listaMascotas.Where(m => m.especie.idEspecie == mascota.especie.idEspecie).ToList(); 
-                }
-                if (mascota.edad != null)
-                {
-                    listaMascotas = listaMascotas.Where(m => m.edad.idEdad == mascota.edad.idEdad).ToList();
-                }
-                if (mascota.raza != null)
-                {
-                    listaMascotas = listaMascotas.Where(m => m.raza.idRaza == mascota.raza.idRaza).ToList(); 
-                }
-                if (mascota.color != null)
-                {
-                    listaMascotas = listaMascotas.Where(m => m.color.idColor == mascota.color.idColor).ToList(); 
-                }
-                if (mascota.tratoAnimal != null)
-                {
-                    listaMascotas = listaMascotas.Where(m => m.tratoAnimal == mascota.tratoAnimal).ToList(); 
-                }
-                if (mascota.tratoNiños != null)
-                {
-                    listaMascotas = listaMascotas.Where(m => m.tratoNiños == mascota.tratoNiños).ToList();
-                }
-                if (mascota.caracter != null)
-                {
-                    listaMascotas = listaMascotas.Where(m => m.caracter.idCaracter == mascota.caracter.idCaracter).ToList();
-                }
-                if (mascota.fechaNacimiento != default(DateTime))
-                {
-                    listaMascotas = listaMascotas.Where(m => m.fechaNacimiento == mascota.fechaNacimiento).ToList();
-                }
-                if (mascota.sexo != null)
-                {
-                    listaMascotas = listaMascotas.Where(m => m.sexo == mascota.sexo).ToList();
-                }                
-            }
-            else 
-            {
-                if (mascota.estado != null)
-                {
-                    listaMascotas = buscarMascotasPorEstado(mascota.estado.nombreEstado);                    
+                    if (mascota.estado != null)
+                    {
+                        listaMascotas = listaMascotas.Where(m => m.estado.nombreEstado == mascota.estado.nombreEstado).ToList();
+                    }
                     if (mascota.especie != null)
                     {
                         listaMascotas = listaMascotas.Where(m => m.especie.idEspecie == mascota.especie.idEspecie).ToList();
@@ -560,15 +520,26 @@ namespace AccesoADatos
                         listaMascotas = listaMascotas.Where(m => m.sexo == mascota.sexo).ToList();
                     }
                 }
-                else
+            }
+            else 
+            {
+                if (mascota.estado != null)
                 {
-                    if (mascota.raza != null)
+                    listaMascotas = buscarMascotasPorEstado(mascota.estado.nombreEstado);
+                    if (listaMascotas != null)
                     {
-                        listaMascotas = buscarMascotasPorRaza(mascota.raza.idRaza);
+                        if (mascota.especie != null)
+                        {
+                            listaMascotas = listaMascotas.Where(m => m.especie.idEspecie == mascota.especie.idEspecie).ToList();
+                        }
                         if (mascota.edad != null)
                         {
                             listaMascotas = listaMascotas.Where(m => m.edad.idEdad == mascota.edad.idEdad).ToList();
-                        }                        
+                        }
+                        if (mascota.raza != null)
+                        {
+                            listaMascotas = listaMascotas.Where(m => m.raza.idRaza == mascota.raza.idRaza).ToList();
+                        }
                         if (mascota.color != null)
                         {
                             listaMascotas = listaMascotas.Where(m => m.color.idColor == mascota.color.idColor).ToList();
@@ -594,14 +565,17 @@ namespace AccesoADatos
                             listaMascotas = listaMascotas.Where(m => m.sexo == mascota.sexo).ToList();
                         }
                     }
-                    else
+                }
+                else
+                {
+                    if (mascota.raza != null)
                     {
-                        if (mascota.edad != null)
+                        listaMascotas = buscarMascotasPorRaza(mascota.raza.idRaza);
+                        if (listaMascotas != null)
                         {
-                            listaMascotas = buscarMascotasPorEdad(mascota.edad.idEdad);
-                            if (mascota.raza != null)
+                            if (mascota.edad != null)
                             {
-                                listaMascotas = listaMascotas.Where(m => m.raza.idRaza == mascota.raza.idRaza).ToList();
+                                listaMascotas = listaMascotas.Where(m => m.edad.idEdad == mascota.edad.idEdad).ToList();
                             }
                             if (mascota.color != null)
                             {
@@ -628,11 +602,18 @@ namespace AccesoADatos
                                 listaMascotas = listaMascotas.Where(m => m.sexo == mascota.sexo).ToList();
                             }
                         }
-                        else
+                    }
+                    else
+                    {
+                        if (mascota.edad != null)
                         {
-                            if (mascota.especie != null)
+                            listaMascotas = buscarMascotasPorEdad(mascota.edad.idEdad);
+                            if (listaMascotas != null)
                             {
-                                listaMascotas = buscarMascotasPorEspecie(mascota.especie.idEspecie);
+                                if (mascota.raza != null)
+                                {
+                                    listaMascotas = listaMascotas.Where(m => m.raza.idRaza == mascota.raza.idRaza).ToList();
+                                }
                                 if (mascota.color != null)
                                 {
                                     listaMascotas = listaMascotas.Where(m => m.color.idColor == mascota.color.idColor).ToList();
@@ -658,11 +639,18 @@ namespace AccesoADatos
                                     listaMascotas = listaMascotas.Where(m => m.sexo == mascota.sexo).ToList();
                                 }
                             }
-                            else
+                        }
+                        else
+                        {
+                            if (mascota.especie != null)
                             {
-                                if (mascota.color != null)
+                                listaMascotas = buscarMascotasPorEspecie(mascota.especie.idEspecie);
+                                if (listaMascotas != null)
                                 {
-                                    listaMascotas = buscarMascotasPorColor(mascota.color.idColor);
+                                    if (mascota.color != null)
+                                    {
+                                        listaMascotas = listaMascotas.Where(m => m.color.idColor == mascota.color.idColor).ToList();
+                                    }
                                     if (mascota.tratoAnimal != null)
                                     {
                                         listaMascotas = listaMascotas.Where(m => m.tratoAnimal == mascota.tratoAnimal).ToList();
@@ -684,11 +672,18 @@ namespace AccesoADatos
                                         listaMascotas = listaMascotas.Where(m => m.sexo == mascota.sexo).ToList();
                                     }
                                 }
-                                else
+                            }
+                            else
+                            {
+                                if (mascota.color != null)
                                 {
-                                    if (mascota.tratoAnimal != null)
+                                    listaMascotas = buscarMascotasPorColor(mascota.color.idColor);
+                                    if (listaMascotas != null)
                                     {
-                                        listaMascotas = buscarMascotasPorTratoAnimal((bool)mascota.tratoAnimal);
+                                        if (mascota.tratoAnimal != null)
+                                        {
+                                            listaMascotas = listaMascotas.Where(m => m.tratoAnimal == mascota.tratoAnimal).ToList();
+                                        }
                                         if (mascota.tratoNiños != null)
                                         {
                                             listaMascotas = listaMascotas.Where(m => m.tratoNiños == mascota.tratoNiños).ToList();
@@ -706,11 +701,18 @@ namespace AccesoADatos
                                             listaMascotas = listaMascotas.Where(m => m.sexo == mascota.sexo).ToList();
                                         }
                                     }
-                                    else
+                                }
+                                else
+                                {
+                                    if (mascota.tratoAnimal != null)
                                     {
-                                        if (mascota.tratoNiños != null)
+                                        listaMascotas = buscarMascotasPorTratoAnimal((bool)mascota.tratoAnimal);
+                                        if (listaMascotas != null)
                                         {
-                                            listaMascotas = buscarMascotasPorTratoNiños((bool)mascota.tratoNiños);
+                                            if (mascota.tratoNiños != null)
+                                            {
+                                                listaMascotas = listaMascotas.Where(m => m.tratoNiños == mascota.tratoNiños).ToList();
+                                            }
                                             if (mascota.caracter != null)
                                             {
                                                 listaMascotas = listaMascotas.Where(m => m.caracter.idCaracter == mascota.caracter.idCaracter).ToList();
@@ -724,11 +726,18 @@ namespace AccesoADatos
                                                 listaMascotas = listaMascotas.Where(m => m.sexo == mascota.sexo).ToList();
                                             }
                                         }
-                                        else
+                                    }
+                                    else
+                                    {
+                                        if (mascota.tratoNiños != null)
                                         {
-                                            if (mascota.caracter != null)
+                                            listaMascotas = buscarMascotasPorTratoNiños((bool)mascota.tratoNiños);
+                                            if (listaMascotas != null)
                                             {
-                                                listaMascotas = buscarMascotasPorCaracter(mascota.caracter.idCaracter);
+                                                if (mascota.caracter != null)
+                                                {
+                                                    listaMascotas = listaMascotas.Where(m => m.caracter.idCaracter == mascota.caracter.idCaracter).ToList();
+                                                }
                                                 if (mascota.fechaNacimiento != default(DateTime))
                                                 {
                                                     listaMascotas = listaMascotas.Where(m => m.fechaNacimiento == mascota.fechaNacimiento).ToList();
@@ -738,14 +747,35 @@ namespace AccesoADatos
                                                     listaMascotas = listaMascotas.Where(m => m.sexo == mascota.sexo).ToList();
                                                 }
                                             }
+                                        }
+                                        else
+                                        {
+                                            if (mascota.caracter != null)
+                                            {
+                                                listaMascotas = buscarMascotasPorCaracter(mascota.caracter.idCaracter);
+                                                if (listaMascotas != null)
+                                                {
+                                                    if (mascota.fechaNacimiento != default(DateTime))
+                                                    {
+                                                        listaMascotas = listaMascotas.Where(m => m.fechaNacimiento == mascota.fechaNacimiento).ToList();
+                                                    }
+                                                    if (mascota.sexo != null)
+                                                    {
+                                                        listaMascotas = listaMascotas.Where(m => m.sexo == mascota.sexo).ToList();
+                                                    }
+                                                }
+                                            }
                                             else
                                             {
                                                 if (mascota.fechaNacimiento != default(DateTime))
                                                 {
                                                     listaMascotas = buscarMascotasPorFecha(mascota.fechaNacimiento);
-                                                    if (mascota.sexo != null)
+                                                    if (listaMascotas != null)
                                                     {
-                                                        listaMascotas = listaMascotas.Where(m => m.sexo == mascota.sexo).ToList();
+                                                        if (mascota.sexo != null)
+                                                        {
+                                                            listaMascotas = listaMascotas.Where(m => m.sexo == mascota.sexo).ToList();
+                                                        }
                                                     }
                                                 }
                                                 else

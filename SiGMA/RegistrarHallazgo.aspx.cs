@@ -26,6 +26,9 @@ namespace SiGMA
                 CargarCombos.cargarEdad(ref ddlEdad);
                 CargarCombos.cargarSexo(ref ddlSexo);
                 CargarCombos.cargarColor(ref ddlColor);
+                CargarCombos.cargarEspecies(ref ddlFiltroEspecie);
+                CargarCombos.cargarColor(ref ddlFiltroColor);
+                CargarCombos.cargarSexo(ref ddlFiltroSexo);
             }
         }
 
@@ -62,10 +65,7 @@ namespace SiGMA
                 pnlImagen.Visible = false;
                 pnlHallazgoPerdidaMascota.Visible = false;
                 pnlImagen.Visible = false;
-                lstPerdidas.Visible = false;
-                CargarCombos.cargarEspecies(ref ddlFiltroEspecie);
-                CargarCombos.cargarColor(ref ddlFiltroColor);
-                CargarCombos.cargarSexo(ref ddlFiltroSexo);
+                lstPerdidas.Visible = false;                
             }
             else
             {

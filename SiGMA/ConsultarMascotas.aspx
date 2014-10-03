@@ -59,6 +59,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="panel-body">
                 <div class="col-md-1 col-md-offset-1">
                     <div style="margin-left: 30%; display: table; width: 40%;">
