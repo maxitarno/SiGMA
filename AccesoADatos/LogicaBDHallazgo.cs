@@ -23,11 +23,12 @@ namespace AccesoADatos
                     bdHallazgo.fechaHoraHallazgo = hallazgo.fechaHallazgo;
                     if (hallazgo.perdida != null)
                     {
+                        LogicaBDPerdida.modificarEstado("Cerrada", hallazgo.perdida.idPerdida);
                         bdHallazgo.idPerdida = hallazgo.perdida.idPerdida;
-                        Mascotas bdMascota = mapa.Mascotas.Where(m => m.idMascota == hallazgo.mascota.idMascota).First();
-                        bdMascota.idEstado = mapa.Estados.Where(es => es.nombreEstado == "Hallada").First().idEstado;
+                        LogicaBDMascota.modificarEstado("Hallada", hallazgo.mascota.idMascota);
                     }
                     bdHallazgo.observaciones = hallazgo.observaciones;
+                    bdHallazgo.idEstado = mapa.Estados.Where(es => es.ambito == "Hallazgo" && es.nombreEstado == "Abierta").First().idEstado;
                     //bdHallazgo.ubicacionHallazgo = 
                     mapa.AddToHallazgos(bdHallazgo);
                     mapa.SaveChanges();
@@ -36,9 +37,10 @@ namespace AccesoADatos
                 catch (Exception ex)
                 {
                     transaction.Dispose();
+                    throw ex;
                 }
 
             }
-        }        
+        }
     }
 }

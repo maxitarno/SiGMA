@@ -154,7 +154,18 @@ namespace SiGMA
                 hallazgo.domicilio.barrio.localidad.idLocalidad = int.Parse(ddlLocalidades.SelectedValue);
                 hallazgo.domicilio.numeroCalle = int.Parse(txtNroCalle.Text);
                 hallazgo.usuario = new EUsuario() { user = Session["UsuarioLogueado"].ToString() };
-                LogicaBDHallazgo.registrarHallazgo(hallazgo);
+                try
+                {
+                    LogicaBDHallazgo.registrarHallazgo(hallazgo);
+                    pnlCorrecto.Visible = true;
+                    lblCorrecto.Text = "Hallazgo registrado exisotamente";
+                }
+                catch (Exception)
+                {
+                    pnlAtento.Visible = true;
+                    lblError.Text = "Error al registrar el hallazgo";
+                }
+                
             }
         }
 
@@ -166,13 +177,16 @@ namespace SiGMA
         protected void ddlFiltroEspecie_SelectedIndexChanged(object sender, EventArgs e)
         {
             CargarCombos.cargarRazas(ref ddlFiltroRaza, int.Parse(ddlFiltroEspecie.SelectedValue));
+            pnlAtento.Visible = false;
         }
 
         protected void btnFiltros_Click(object sender, EventArgs e)
         {
             EMascota mascot = new EMascota();
+            bool flag = false;
             if(!ddlFiltroEspecie.SelectedValue.Equals("0"))
             {
+                flag = true;
                 mascot.especie = new EEspecie();
                 mascot.especie.idEspecie = int.Parse(ddlFiltroEspecie.SelectedValue);
                 if (!ddlFiltroRaza.SelectedValue.Equals("0"))
@@ -183,23 +197,36 @@ namespace SiGMA
             }            
             if(!ddlFiltroSexo.SelectedValue.Equals("0"))
             {
+                flag = true;
                 mascot.sexo = ddlFiltroSexo.SelectedValue;
             }
             if (!ddlFiltroColor.SelectedValue.Equals("0"))
             {
+                flag = true;
                 mascot.color = new EColor();
                 mascot.color.idColor = int.Parse(ddlFiltroColor.SelectedValue);
             }
-            List<EMascota> mascotasFiltradas = LogicaBDMascota.buscarMascotasFiltros(mascot);
+            List<EMascota> mascotasFiltradas = null;
+            if (flag)
+            {
+                mascotasFiltradas = LogicaBDMascota.buscarMascotasFiltros(mascot);
+            }
+            else
+            {
+                mascotasFiltradas = LogicaBDMascota.buscarMascotasPorEstado("Perdida");
+            }
             if (mascotasFiltradas != null)
             {
                 Session["MascotasPerdidas"] = mascotasFiltradas;
                 cargarTablaPerdidas();
+                pnlAtento.Visible = false;
             }
             else
             {
-                //mostrar mensaje de que no se encontraron mascotas
+                lblError.Text = "No se encontraron mascotas con dichas caracteristicas";
+                pnlAtento.Visible = true;                
                 lstPerdidas.Visible = false;
+                pnlMascotaSeleccionada.Visible = false;
             }
         }              
     }

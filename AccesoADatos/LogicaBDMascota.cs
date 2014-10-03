@@ -1076,6 +1076,27 @@ namespace AccesoADatos
             }
         }
 
+        //Metodo que modifica el estado de una mascota, parametros: String del nuevo estado de la mascota y el id de la mascota a modificar
+        public static void modificarEstado(string estado, int idMascotaParam)
+        {
+            using (TransactionScope transaction = new TransactionScope())
+            {
+                try
+                {
+                    SiGMAEntities mapa = Conexion.crearSegunServidor();
+                    Mascotas bdMascota = mapa.Mascotas.Where(m => m.idMascota == idMascotaParam).First();
+                    bdMascota.idEstado = mapa.Estados.Where(es => es.ambito == "Mascota" && es.nombreEstado == estado).First().idEstado;
+                    mapa.SaveChanges();
+                    transaction.Complete();
+                }
+                catch (Exception)
+                {
+                    transaction.Dispose();
+                    throw;
+                }
+            }
+        }
+
         public static void ModificarEstado(int idEstado, int idMascota)
         {
             SiGMAEntities mapa = Conexion.crearSegunServidor();

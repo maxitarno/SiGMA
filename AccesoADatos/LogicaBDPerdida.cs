@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Entidades;
+using System.Transactions;
 
 namespace AccesoADatos
 {
@@ -54,6 +55,26 @@ namespace AccesoADatos
             {
                 return null;
             }
-        }        
+        }
+
+        public static void modificarEstado(string estado, int idPerdidaParam)
+        {
+            using (TransactionScope transaction = new TransactionScope())
+            {
+                try
+                {
+                    SiGMAEntities mapa = Conexion.crearSegunServidor();
+                    Perdidas bdPerdida = mapa.Perdidas.Where(p => p.idPerdida == idPerdidaParam).First();
+                    bdPerdida.idEstado = mapa.Estados.Where(es => es.ambito == "Perdida" && es.nombreEstado == estado).First().idEstado;
+                    mapa.SaveChanges();
+                    transaction.Complete();
+                }
+                catch (Exception)
+                {
+                    transaction.Dispose();
+                    throw;
+                }
+            }
+        }
     }
 }

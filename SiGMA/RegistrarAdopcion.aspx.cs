@@ -267,7 +267,7 @@ namespace SiGMA
             adopcion.duenio.idDuenio = int.Parse(Session["Duenio"].ToString());
             if (LogicaBDAdopcion.RegistrarAdopcion(adopcion))
             {
-                LogicaBDMascota.ModificarEstado(5, adopcion.mascota.idMascota);
+                LogicaBDMascota.modificarEstado("Adoptada", adopcion.mascota.idMascota);
                 pnlInfo.Visible = false;
                 lblResultado1.Text = "Se registro correctamente";
                 pnlCorrecto.Visible = true;

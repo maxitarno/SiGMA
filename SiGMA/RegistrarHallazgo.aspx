@@ -43,11 +43,13 @@
             </div>
         </div>        
         <asp:Panel ID="pnlFiltros" runat="server" Visible="false">
-            <div style="margin-left: 30%; display: table; width: 40%;">
-            Filtrar mascotas perdidas
+            <div style="margin-left: 30%; display: table; width: 40%;">   
                 <div style="display: table-row; width: 30%">
                  <div style="display: table-cell; width: 20%; vertical-align: top;">                    
                     <table>
+                    <tr>
+                    <td colspan="2" align="left"><asp:Label ID="lblFiltros" runat="server" Text="Filtrar mascotas perdidas"></asp:Label></td>                    
+                    </tr>
                     <tr>
                     <td>Especie:</td> <td> <asp:DropDownList ID="ddlFiltroEspecie" Width="100%" AutoPostBack="true" 
                             runat="server" onselectedindexchanged="ddlFiltroEspecie_SelectedIndexChanged">
@@ -72,7 +74,7 @@
                         </tr> 
                         <tr>
                         <td><asp:Button ID="btnFiltros" runat="server" Text="Buscar" 
-                                onclick="btnFiltros_Click" />
+                                onclick="btnFiltros_Click" CausesValidation="False" />
                         </td></tr>                              
                     </table>
                     </div>  
@@ -80,8 +82,20 @@
                     <asp:ListBox ID="lstPerdidas" runat="server" AutoPostBack="true" 
                         OnSelectedIndexChanged="lstPerdidas_SelectedIndexChanged" Visible="False">
                         </asp:ListBox>
-                    </div>                
-                                      
+                    </div>         
+                </div>
+                <div style="display: table-row; width: 30%">
+                <asp:Panel runat="server" id="pnlCorrecto" 
+                        class="alert alert-dismissable alert-success"  Visible=false Width="550px">
+                    <button class="close" type="button" data-dismiss="alert">
+                        ×</button>
+                        <asp:Label ID="lblCorrecto" runat="server" Text="Usuario registrado exitosamente"></asp:Label>
+                </asp:Panel>
+                <asp:Panel runat="server" id="pnlAtento" class="alert alert-dismissable alert-danger" Width="550px" Visible=false>
+                    <button class="close" type="button" data-dismiss="alert">
+                        ×</button>
+                        <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
+                </asp:Panel>
                 </div> 
                 </div>
                  </asp:Panel>                                
