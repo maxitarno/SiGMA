@@ -304,35 +304,13 @@
                                 Style="float: left" />
                         </asp:Panel>
                     </div>
-                    <%--     <table>
-                    <tr>
-                        <td>
-                            <asp:Panel ID="pnlbtnSeleccionar" runat="server" Visible="false">
-                                <asp:Button ID="btnSeleccionar" runat="server" Text="Seleccionar" 
-                                    OnClick="BtnSeleccionarClick" CausesValidation="False" />
-                            </asp:Panel>
-                        </td>
-                        <td colspan="4">
-                            <asp:Panel ID="pnlbotones" runat="server" Visible="false" Width="100%">
-                                <asp:Button ID="btnModificar" runat="server" Text="Modificar" 
-                                    OnClick="BtnModificarClick" ValidationGroup="1" />
-                                <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" 
-                                    ValidationGroup="2" OnClick="BtnEliminarClick" />
-                                <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar" 
-                                    OnClick="BtnLimpiarClick" />
-                                <asp:Button ID="btnGenerarQR" runat="server" Text="Generar Codigo QR" 
-                                    OnClick="btnGenerarQR_Click" />
-                            </asp:Panel>
-                        </td>
-                        <td>
-                        </td>
-                    </tr>
-                </table>--%>
                 </div>
             </div>
         </div>
     </div>
     <div class="centered">
         <asp:ImageButton ID="ibtnRegresar" runat="server" ImageUrl="~/imagenes/volver.png" OnClick="BtnRegresarClick"/>
+        </br>
+        VOLVER
     </div>
 </asp:Content>

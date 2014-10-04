@@ -157,7 +157,6 @@
                             </div>
                             <div style="display: table-cell; width: 20%;">
                                 <asp:Panel runat="server" ID="pnl8" Visible="false">
-                                    <!--<asp:Button ID="btneliminar" runat="server" Text="Eliminar" />-->
                                     <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar" CssClass="btn-primary"
                                         CausesValidation="False" OnClick="BtnLimpiarClick" />
                                 </asp:Panel>
@@ -170,6 +169,7 @@
     </div>
     <div class="centered">
         <asp:ImageButton ID="ibtnRegresar" runat="server" ImageUrl="~/imagenes/volver.png"
-            OnClick="BtnRegresarClick" />
+            OnClick="BtnRegresarClick" /></br>
+        VOLVER
     </div>
 </asp:Content>

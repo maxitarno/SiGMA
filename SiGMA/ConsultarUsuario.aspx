@@ -328,6 +328,5 @@
         </div>
         <div class="centered">
             <asp:ImageButton ID="ibtnRegresar" runat="server" ImageUrl="~/imagenes/volver.png"
-                OnClick="BtnRegresarClick" />
-        </div>
+                OnClick="BtnRegresarClick" /><br />VOLVER
 </asp:Content>
