@@ -25,7 +25,7 @@ namespace AccesoADatos
                     {
                         LogicaBDPerdida.modificarEstado("Cerrada", hallazgo.perdida.idPerdida);
                         bdHallazgo.idPerdida = hallazgo.perdida.idPerdida;
-                        LogicaBDMascota.modificarEstado("Hallada", hallazgo.mascota.idMascota);
+                        LogicaBDMascota.modificarEstado("Hallada", hallazgo.mascota.idMascota, transaction);
                     }
                     bdHallazgo.observaciones = hallazgo.observaciones;
                     bdHallazgo.idEstado = mapa.Estados.Where(es => es.ambito == "Hallazgo" && es.nombreEstado == "Abierta").First().idEstado;
