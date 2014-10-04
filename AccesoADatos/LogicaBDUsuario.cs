@@ -262,10 +262,10 @@ namespace AccesoADatos
                     user.user = usuario.persona.user;
                     persona.idPersona = usuario.persona.idPersona;
                     persona.nroCalle = usuario.persona.nroCalle;
-                    calle.idCalle = usuario.persona.idCalle;
-                    calle.nombre = usuario.persona.Calles.nombre;
-                    localidad.nombre = usuario.persona.Calles.Localidades.nombre;
-                    barrio.nombre = usuario.barrio.nombre;
+                    calle.idCalle = (usuario.persona.Calles == null) ? 0 : usuario.persona.Calles.idCalle;
+                    calle.nombre = (usuario.persona.Calles == null) ? "" : usuario.persona.Calles.nombre;
+                    localidad.nombre = (usuario.localidad == null) ? "" : usuario.localidad.nombre;
+                    barrio.nombre = (usuario.barrio == null) ? "" : usuario.barrio.nombre;
                     duenio.idDuenio = usuario.duenio.idDuenio;
                 }
             }

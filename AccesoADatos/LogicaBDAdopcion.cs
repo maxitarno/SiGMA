@@ -23,12 +23,11 @@ namespace AccesoADatos
                     adopcionBD.observaciones = adopcion.observaciones;
                     mapaEntidades.AddToAdopciones(adopcionBD);
                     mapaEntidades.SaveChanges();
-                    transaccion.Complete();
+                    LogicaBDMascota.modificarEstado("Adoptada", adopcion.mascota.idMascota, transaccion);
                     return true;
                 }
                 catch (Exception)
                 {
-                    transaccion.Dispose();
                     return false;
                 }
             }

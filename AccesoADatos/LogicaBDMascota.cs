@@ -1106,11 +1106,9 @@ namespace AccesoADatos
             }
         }
 
-        //Metodo que modifica el estado de una mascota, parametros: String del nuevo estado de la mascota y el id de la mascota a modificar
-        public static void modificarEstado(string estado, int idMascotaParam)
+        //Metodo que modifica el estado de una mascota, parametros: String del nuevo estado de la mascota y el id de la mascota a modificar tambien la transaccion
+        public static void modificarEstado(string estado, int idMascotaParam, TransactionScope transaction)
         {
-            using (TransactionScope transaction = new TransactionScope())
-            {
                 try
                 {
                     SiGMAEntities mapa = Conexion.crearSegunServidor();
@@ -1124,7 +1122,6 @@ namespace AccesoADatos
                     transaction.Dispose();
                     throw;
                 }
-            }
         }
 
         public static void ModificarEstado(int idEstado, int idMascota)
