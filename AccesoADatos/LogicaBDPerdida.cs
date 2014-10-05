@@ -11,27 +11,36 @@ namespace AccesoADatos
     {
         public static bool registrarPerdida(EPerdida perdida)
         {
-            bool b = false;
-            try
+            using (TransactionScope transaction = new TransactionScope())
             {
-                SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
-                Perdidas bdPerdida = new Perdidas();
-                bdPerdida.idMascota = perdida.mascota.idMascota;
-                bdPerdida.idBarrioPerdida = perdida.barrio.idBarrio;
-                bdPerdida.idUsuario = perdida.usuario.user;
-                bdPerdida.FechaHoraPerdida = perdida.fecha;
-                bdPerdida.observaciones = perdida.comentarios;
-                bdPerdida.mapaPerdida = perdida.mapaPerdida;
-                mapaEntidades.AddToPerdidas(bdPerdida);
-                mapaEntidades.SaveChanges();
-                b = true;
+                bool b = false;
+                try
+                {
+                    SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+                    Perdidas bdPerdida = new Perdidas();
+                    bdPerdida.idMascota = perdida.mascota.idMascota;
+                    bdPerdida.idBarrioPerdida = perdida.domicilio.barrio.idBarrio;
+                    var calle = ""+perdida.domicilio.calle.nombre +" "+ perdida.domicilio.numeroCalle;
+                    var localBarrio = ", " + perdida.domicilio.barrio.nombre + ", " + perdida.domicilio.barrio.localidad.nombre;
+                    bdPerdida.ubicacionPerdida = calle + localBarrio;
+                    bdPerdida.idUsuario = perdida.usuario.user;
+                    bdPerdida.FechaHoraPerdida = perdida.fecha;
+                    bdPerdida.observaciones = perdida.comentarios;
+                    //bdPerdida.mapaPerdida = perdida.mapaPerdida;
+                    LogicaBDMascota.modificarEstado("Perdida", perdida.mascota.idMascota);
+                    bdPerdida.idEstado = mapaEntidades.Estados.Where(es => es.ambito == "Perdida" && es.nombreEstado == "Abierta").First().idEstado;
+                    mapaEntidades.AddToPerdidas(bdPerdida);
+                    mapaEntidades.SaveChanges();
+                    transaction.Complete();
+                    b = true;
+                }
+                catch (System.Data.EntityCommandCompilationException exc)
+                {
+                    b = false;
+                    throw exc;
+                }
+                return b;
             }
-            catch (System.Data.EntityCommandCompilationException exc)
-            {
-                b = false;
-                throw exc;
-            }
-            return b;
         }
 
         public static EPerdida buscarPerdidaPorIdMascota(EMascota mascota)

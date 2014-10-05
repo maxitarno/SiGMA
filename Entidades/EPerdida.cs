@@ -9,6 +9,7 @@ namespace Entidades
     {
         public EUsuario usuario { get; set; }
         public EBarrio barrio { get; set; }
+        public EDomicilio domicilio { get; set; }
         public EMascota mascota { get; set; }
         public int idPerdida { get; set; }
         public DateTime fecha { get; set; }

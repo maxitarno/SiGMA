@@ -320,6 +320,8 @@ namespace AccesoADatos
                     mascota.tratoAnimal = registro.tratoA;
                     mascota.tratoNiños = registro.tratoN;
                     mascota.idMascota = registro.id;
+                    mascota.estado = new EEstado();
+                    mascota.estado.idEstado = registro.estado;
                     mascota.edad = new EEdad();
                     mascota.edad.idEdad = registro.idEdad;
                     mascota.edad.nombreEdad = registro.edad;
@@ -346,7 +348,10 @@ namespace AccesoADatos
                         mascota.imagen = null;
                     }
                 }
-                b = true;
+                if (mascota.estado != null)
+                    b = true;
+                else
+                    b = false;
             }
             catch (System.Data.EntityCommandCompilationException exc)
             {

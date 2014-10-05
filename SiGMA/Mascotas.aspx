@@ -30,21 +30,21 @@
         </div>
 		<div class="row mt centered">	
 			<div class="col-lg-4">
-				<a class="zoom green" href="RegistrarMascota.aspx"><img class="img-responsive" src="assets/img/mascotas/registrarmascota.png" alt="" width="200px" height="300px"/></a>
+				<a class="zoom green" href="RegistrarMascota.aspx"><img class="img-responsive" src="assets/img/mascotas/registrarmascota.jpg" alt="" width="200px" height="300px"/></a>
 				<p class="col-lg-4">REGISTRAR</p>
 			</div>
 			<div class="col-lg-4">
-				<a class="zoom green" href="ConsultarMascotas.aspx"><img class="img-responsive" src="assets/img/mascotas/consultarmascota.png" alt="" width="200px" height="300px"/></a>
+				<a class="zoom green" href="ConsultarMascotas.aspx"><img class="img-responsive" src="assets/img/mascotas/consultarmascota.jpg" alt="" width="200px" height="300px"/></a>
 				<p class="col-lg-4">CONSULTAR</p>
 			</div>
 			<div class="col-lg-4">
-				<a class="zoom green" href="RegistrarPerdida.aspx"><img class="img-responsive" src="assets/img/mascotas/registrarperdida.png" alt="" width="200px" height="300px" /></a>
+				<a class="zoom green" href="RegistrarPerdida.aspx"><img class="img-responsive" src="assets/img/mascotas/registrarperdida.jpg" alt="" width="200px" height="300px" /></a>
 				<p class="col-lg-4">PERDIDAS</p>
 			</div>
 		</div><!-- /row -->
 		<div class="row mt centered">	
 			<div class="col-lg-4">
-				<a class="zoom green" href="RegistrarHallazgo.aspx"><img class="img-responsive" src="assets/img/mascotas/registrarhallazgo.png" alt="" width="200px" height="300px" /></a>
+				<a class="zoom green" href="RegistrarHallazgo.aspx"><img class="img-responsive" src="assets/img/mascotas/registrarhallazgo.jpg" alt="" width="200px" height="300px" /></a>
 				<p class="col-lg-4">HALLAZGOS</p>
 			</div>
 			<div class="col-lg-4">

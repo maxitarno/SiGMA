@@ -34,7 +34,7 @@
 				<p>REGISTRAR</p>
 			</div>
 			<div class="col-lg-4">
-				<a class="zoom green" href="ConsultarUsuario.aspx"><img class="img-responsive" src="assets/img/usuarios/consultarusuario.png" alt="" width="200px" height="300px"/></a>
+				<a class="zoom green" href="ConsultarUsuario.aspx"><img class="img-responsive" src="assets/img/usuarios/consultarusuario.jpg" alt="" width="200px" height="300px"/></a>
 				<p>CONSULTAR</p>
 			</div>
 			<div class="col-lg-4">
