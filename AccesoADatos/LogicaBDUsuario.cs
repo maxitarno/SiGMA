@@ -267,6 +267,7 @@ namespace AccesoADatos
                     localidad.nombre = (usuario.localidad == null) ? "" : usuario.localidad.nombre;
                     barrio.nombre = (usuario.barrio == null) ? "" : usuario.barrio.nombre;
                     duenio.idDuenio = usuario.duenio.idDuenio;
+                    tipoDoc.nombre = usuario.persona.TipoDocumentos.nombre;
                 }
             }
             catch (System.Data.EntityCommandCompilationException exc)

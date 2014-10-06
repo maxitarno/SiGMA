@@ -78,7 +78,8 @@ namespace AccesoADatos
                                from CaracterBD in mapaEntidades.CaracteresMascota
                                from CuidadoEspecialBD in mapaEntidades.CuidadosEspeciales
                                from EdadesBD in mapaEntidades.Edades
-                               where (MascotasBD.idRaza == RazaBD.idRaza && MascotasBD.idEdad == EdadesBD.idEdad
+                               from EspeciesBD in mapaEntidades.Especies
+                               where (MascotasBD.idEspecie == EspeciesBD.idEspecie && MascotasBD.idRaza == RazaBD.idRaza && MascotasBD.idEdad == EdadesBD.idEdad
                                && CuidadoEspecialBD.idCuidadoEspecial == RazaBD.idCuidadoEspecial && RazaBD.idCategoriaRaza == CategoriaRazaBD.idCategoriaRazas 
                                && MascotasBD.idCaracter == CaracterBD.idCaracter && MascotasBD.idMascota == idMascota)
                                select new
@@ -101,10 +102,12 @@ namespace AccesoADatos
                                    id = MascotasBD.idMascota,
                                    imagen = MascotasBD.imagen,
                                    razaN = RazaBD.nombreRaza,
-                                   edadN = EdadesBD.nombreEdad
+                                   edadN = EdadesBD.nombreEdad,
+                                   nombreEspecie =EspeciesBD.nombreEspecie
                                };
                 foreach (var registro in consulta)
                 {
+                    mascota.especie = new EEspecie();
                     mascota.alimentacionEspecial = registro.alimentacion;
                     caracter.idCaracter = registro.caracter;
                     categoria.nombreCategoriaRaza = registro.categoria;
@@ -124,12 +127,12 @@ namespace AccesoADatos
                     mascota.observaciones = registro.observaciones;
                     mascota.sexo = registro.sexo;
                     mascota.tratoAnimal = registro.tratoA;
+                    mascota.especie.nombreEspecie = registro.nombreEspecie;
                     mascota.tratoNiños = registro.tratoN;
                     cuidado.descripcion = registro.Cuidado;
                     mascota.idMascota = registro.id;
                     mascota.edad = new EEdad();
                     mascota.edad.idEdad = registro.edad;
-                    mascota.especie = new EEspecie();
                     mascota.especie.idEspecie = registro.especie;
                     mascota.estado = new EEstado();
                     mascota.estado.idEstado = registro.estado;
@@ -1119,6 +1122,7 @@ namespace AccesoADatos
                     SiGMAEntities mapa = Conexion.crearSegunServidor();
                     Mascotas bdMascota = mapa.Mascotas.Where(m => m.idMascota == idMascotaParam).First();
                     bdMascota.idEstado = mapa.Estados.Where(es => es.ambito == "Mascota" && es.nombreEstado == estado).First().idEstado;
+                    mapa.DetectChanges();
                     mapa.SaveChanges();
                     transaction.Complete();
                 }
@@ -1129,15 +1133,21 @@ namespace AccesoADatos
                 }
         }
 
-        public static void ModificarEstado(int idEstado, int idMascota)
+        public static void ModificarEstado(string estado, int idMascotaParam,TransactionScope transaction)
         {
-            SiGMAEntities mapa = Conexion.crearSegunServidor();
-            var consulta = mapa.Mascotas.Where(m => m.idMascota == idMascota);
-            foreach (var item in consulta)
+            try
             {
-                item.idEstado = idEstado;
+                SiGMAEntities mapa = Conexion.crearSegunServidor();
+                Mascotas bdMascota = mapa.Mascotas.Where(m => m.idMascota == idMascotaParam).First();
+                bdMascota.idEstado = mapa.Estados.Where(es => es.ambito == "Mascota" && es.nombreEstado == estado).First().idEstado;
+                mapa.DetectChanges();
+                mapa.SaveChanges();
             }
-            mapa.SaveChanges();
+            catch (Exception)
+            {
+                transaction.Dispose();
+                throw;
+            }
         }
     }
 }

@@ -27,7 +27,7 @@ namespace AccesoADatos
                     bdPerdida.FechaHoraPerdida = perdida.fecha;
                     bdPerdida.observaciones = perdida.comentarios;
                     //bdPerdida.mapaPerdida = perdida.mapaPerdida;
-                    LogicaBDMascota.modificarEstado("Perdida", perdida.mascota.idMascota);
+                    LogicaBDMascota.modificarEstado("Perdida", perdida.mascota.idMascota, transaction);
                     bdPerdida.idEstado = mapaEntidades.Estados.Where(es => es.ambito == "Perdida" && es.nombreEstado == "Abierta").First().idEstado;
                     mapaEntidades.AddToPerdidas(bdPerdida);
                     mapaEntidades.SaveChanges();

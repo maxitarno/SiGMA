@@ -21,5 +21,6 @@ namespace Entidades
         public EUsuario usuario { get; set; }
         public EBarrio barrio { get; set; }
         public ETipoDeDocumento tipoDocumento { get; set; }
+        public ELocalidad localidad { get; set; }
     }
 }
