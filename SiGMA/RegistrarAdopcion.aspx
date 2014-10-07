@@ -17,12 +17,13 @@
     <script src="assets/js/hover.zoom.conf.js"></script>
 </asp:Content>
 <asp:Content ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-            <h1 class="panel-title">
-                Registrar Adopcion
-            </h1>
-        </div>
+    <div class="centered">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+            <h3 class="panel-title">
+                   Registrar Perdida
+                </h3>
+            </div>
         <div class="panel-body">
             <div class="Doble">
                 <table>
@@ -336,5 +337,6 @@
                 </table>
             </div>
         </div>
+    </div>
     </div>
 </asp:Content>

@@ -30,25 +30,25 @@
         </div>
 		<div class="row mt centered">	
 			<div class="col-lg-4">
-				<a class="zoom green" href="AsignarPermisos.aspx"><img class="img-responsive" src="assets/img/mascotas/registrarmascota.png" alt="" width="200px" height="300px"/></a>
+				<a class="zoom green" href="AsignarPermisos.aspx"><img class="img-responsive" src="assets/img/administracion/permisos.jpg" alt="" width="200px" height="300px"/></a>
 				<p class="col-lg-4">PERMISOS</p>
 			</div>
 			<div class="col-lg-4">
-				<a class="zoom green" href="RegistrarRoles.aspx"><img class="img-responsive" src="assets/img/mascotas/consultarmascota.png" alt="" width="200px" height="300px"/></a>
+				<a class="zoom green" href="RegistrarRoles.aspx"><img class="img-responsive" src="assets/img/administracion/roles.jpg" alt="" width="200px" height="300px"/></a>
 				<p class="col-lg-4">ROLES</p>
 			</div>
 			<div class="col-lg-4">
-				<a class="zoom green" href="AsignarRoles.aspx"><img class="img-responsive" src="assets/img/mascotas/registrarperdida.png" alt="" width="200px" height="300px" /></a>
+				<a class="zoom green" href="AsignarRoles.aspx"><img class="img-responsive" src="assets/img/administracion/asignarrol.jpg" alt="" width="200px" height="300px" /></a>
 				<p class="col-lg-4">ASIGNAR ROL</p>
 			</div>
 		</div><!-- /row -->
 		<div class="row mt centered">	
 			<div class="col-lg-4">
-				<a class="zoom green" href="CABMRazas.aspx"><img class="img-responsive" src="assets/img/mascotas/registrarhallazgo.png" alt="" width="200px" height="300px" /></a>
+				<a class="zoom green" href="CABMRazas.aspx"><img class="img-responsive" src="assets/img/administracion/razas.jpg" alt="" width="200px" height="300px" /></a>
 				<p class="col-lg-4">RAZAS</p>
 			</div>
 			<div class="col-lg-4">
-				<a class="zoom green" href="CABMTipoDeDocumento.aspx"><img class="img-responsive" src="assets/img/mascotas/registraradopcion.jpg" alt="" width="200px" height="300px" /></a>
+				<a class="zoom green" href="CABMTipoDeDocumento.aspx"><img class="img-responsive" src="assets/img/administracion/documentos.jpg" alt="" width="200px" height="300px" /></a>
 				<p class="col-lg-4">TIPOS DOCS</p>
 			</div>
 			<div class="col-lg-4">

@@ -178,7 +178,7 @@ namespace SiGMA
                         pnlCorrecto.Visible = false;
                         pnlInfo.Visible = true;
                         pnlAtento.Visible = false;
-                        lblResultado2.Text = "No se encontraron dueñios";
+                        lblResultado2.Text = "No se encontraron dueños";
                     }
                 }
             }
@@ -228,7 +228,7 @@ namespace SiGMA
             else
             {
                 pnlInfo.Visible = true;
-                lblResultado2.Text = "Debe seleccionar un Dueñio";
+                lblResultado2.Text = "Debe seleccionar un Dueño";
                 pnlCorrecto.Visible = false;
                 pnlAtento.Visible = false;
             }
