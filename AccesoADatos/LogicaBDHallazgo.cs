@@ -17,8 +17,7 @@ namespace AccesoADatos
                 {
                     SiGMAEntities mapa = Conexion.crearSegunServidor();
                     Hallazgos bdHallazgo = new Hallazgos();
-                    bdHallazgo.idBarrioHallazgo = hallazgo.domicilio.barrio.idBarrio;                    
-                    bdHallazgo.idMascota = hallazgo.mascota.idMascota;
+                    bdHallazgo.idBarrioHallazgo = hallazgo.domicilio.barrio.idBarrio;  
                     bdHallazgo.idUsuario = hallazgo.usuario.user;
                     bdHallazgo.fechaHoraHallazgo = hallazgo.fechaHallazgo;
                     if (hallazgo.perdida != null)
@@ -26,10 +25,16 @@ namespace AccesoADatos
                         LogicaBDPerdida.modificarEstado("Cerrada", hallazgo.perdida.idPerdida, ref mapa);
                         bdHallazgo.idPerdida = hallazgo.perdida.idPerdida;
                         LogicaBDMascota.modificarEstado("Hallada", hallazgo.mascota.idMascota, ref mapa);
+                        bdHallazgo.idMascota = hallazgo.mascota.idMascota;
+                    }
+                    else
+                    {
+                        bdHallazgo.idMascota = LogicaBDMascota.obtenerProximoIdMascota();
+                        LogicaBDMascota.registrarMascota(hallazgo.mascota, ref mapa);
                     }
                     bdHallazgo.observaciones = hallazgo.observaciones;
                     bdHallazgo.idEstado = mapa.Estados.Where(es => es.ambito == "Hallazgo" && es.nombreEstado == "Abierta").First().idEstado;
-                    //bdHallazgo.ubicacionHallazgo = 
+                    bdHallazgo.ubicacionHallazgo = hallazgo.domicilio.calle + " " + hallazgo.domicilio.numeroCalle;
                     mapa.AddToHallazgos(bdHallazgo);
                     mapa.SaveChanges();
                     transaction.Complete();

@@ -95,12 +95,12 @@ namespace SiGMA
                         return;
                     }
                     byte[] imagen = GestorImagen.obtenerArrayBytes(fuImagen.PostedFile.InputStream, fuImagen.PostedFile.ContentLength);
-                    LogicaBDMascota.registrarMascota(mascota, imagen);
-
+                    mascota.imagen = imagen;
+                    LogicaBDMascota.registrarMascota(mascota);
                 }
                 else
                 {
-                    LogicaBDMascota.registrarMascota(mascota, null);
+                    LogicaBDMascota.registrarMascota(mascota);
                 }
                 mostrarResultado("", true);
             }

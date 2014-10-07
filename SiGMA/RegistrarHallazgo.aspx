@@ -30,7 +30,20 @@
                 Registrar Hallazgo</h3>
         </div>
         <div class="panel-body">
-        <div style="margin-left: 30%; display: table; width: 40%;">
+        <div style="margin-left:30%; width: 30%">        
+                <asp:Panel runat="server" id="pnlCorrecto" 
+                        class="alert alert-dismissable alert-success"  Visible=false Width="550px">
+                    <button class="close" type="button" data-dismiss="alert">
+                        ×</button>
+                        <asp:Label ID="lblCorrecto" runat="server" Text="Usuario registrado exitosamente"></asp:Label>
+                </asp:Panel>
+                <asp:Panel runat="server" id="pnlAtento" class="alert alert-dismissable alert-danger" Width="550px" Visible=false>
+                    <button class="close" type="button" data-dismiss="alert">
+                        ×</button>
+                        <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
+                </asp:Panel>                
+                </div>
+        <div style="margin-left: 30%; display: table; width: 40%;">        
             <div style="display: table-row; width: 30%">
                 <div style="display: table-cell; width: 20%;">
                     <asp:RadioButton ID="rbYaPerdida" runat="server" Text="Mascota Hallada" GroupName="TipoHallazgo"
@@ -84,29 +97,18 @@
                         </asp:ListBox>
                     </div>         
                 </div>
-                <div style="display: table-row; width: 30%">
-                <asp:Panel runat="server" id="pnlCorrecto" 
-                        class="alert alert-dismissable alert-success"  Visible=false Width="550px">
-                    <button class="close" type="button" data-dismiss="alert">
-                        ×</button>
-                        <asp:Label ID="lblCorrecto" runat="server" Text="Usuario registrado exitosamente"></asp:Label>
-                </asp:Panel>
-                <asp:Panel runat="server" id="pnlAtento" class="alert alert-dismissable alert-danger" Width="550px" Visible=false>
-                    <button class="close" type="button" data-dismiss="alert">
-                        ×</button>
-                        <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
-                </asp:Panel>
-                </div> 
+                
                 </div>
-                 </asp:Panel>                                
+                 </asp:Panel> 
+                                                
                 <asp:Panel ID="pnlMascotaSeleccionada" runat="server" Visible="false">
-                <div style="margin-left: 20%; display: table; width: 60%;">
+                <div style="margin-left: 20%; display: table; width: 60%;">                
                 Datos de la mascota
                     <div style="display: table-row; width: 30%;">     
                         <div style="display: table-cell; width: 30%;">
                             <asp:Panel Visible="true" runat="server" ID="pnlImagen">
                                 <img id="imgprvw" style="border: 2px solid #000000; height: 135px; width: 215px;"
-                                    runat="server" src="~/App_Themes/TemaSigma/imagenes/sin_imagen_disponible.jpg" />
+                                    runat="server"  src="~/App_Themes/TemaSigma/imagenes/sin_imagen_disponible.jpg"/>
                             </asp:Panel>
                         </div>
                         <div style="display: table-cell; width: 22%; vertical-align: top;">
@@ -117,7 +119,7 @@
                                             Nombre:
                                         </td>
                                         <td>
-                                            <asp:Label ID="lblNombreMascotaPerdida" runat="server" Text="Label"></asp:Label>
+                                            <asp:TextBox ID="txtNombreMascota" runat="server" Enabled="false" Width="100%"></asp:TextBox>
                                         </td>
                                     </tr>
                                     <tr>
@@ -125,7 +127,9 @@
                                             Especie:
                                         </td>
                                         <td>
-                                            <asp:DropDownList ID="ddlEspecie" runat="server" Width="100%" Enabled="false" AppendDataBoundItems="true">
+                                            <asp:DropDownList ID="ddlEspecie" runat="server" Width="100%" 
+                                                AutoPostBack="true" Enabled="false" AppendDataBoundItems="true" 
+                                                onselectedindexchanged="ddlEspecie_SelectedIndexChanged">
                                             </asp:DropDownList>
                                         </td>
                                     </tr>
@@ -164,7 +168,29 @@
                                             <asp:DropDownList ID="ddlColor" Enabled="False" runat="server" Width="100%" AppendDataBoundItems="True">
                                             </asp:DropDownList>
                                         </td>
-                                    </tr>
+                                        </tr> 
+                                    <asp:Panel ID="pnlInputFoto" runat="server">
+                                    <tr>
+                                        <td>
+                                                Foto:
+                                          </td>
+                                        <td>
+                                <input style="width:100%" type="file" runat="server"  id="fuImagen"   onchange="showimagepreview(this,'imgprvw')" /> 
+                                <script type="text/javascript">
+                                    function showimagepreview(input, image) {
+                                        if (input.files && input.files[0]) {
+                                            var filerdr = new FileReader();
+                                            filerdr.onload = function (e) {
+                                                $('#imgprvw').attr('src', e.target.result);
+                                                document.getElementById(image).style.display = 'block';
+                                            }
+                                            filerdr.readAsDataURL(input.files[0]);
+                                        }
+                                    }
+                                    </script>                               
+                            </td>                                                   
+                        </tr>  
+                                    </asp:Panel>                                                                            
                                 </table>
                             </asp:Panel>
                         </div>
@@ -260,16 +286,25 @@
                                         </td>
                                         <td>
                                         </td>
-                                    </tr>
+                                    </tr>                                    
                                 </table>
                                 </div>                            
                         </div>  
                         </div>                         
                         </asp:Panel>                       
-                        </div>                    
-                                 
-        <asp:Panel ID="pnlNueva" runat="server">
-        </asp:Panel>
+                        </div>   
         </div>
-    </div> 
+    </div>
+        <script type="text/javascript">
+            function showimagepreview(input, image) {
+                if (input.files && input.files[0]) {
+                    var filerdr = new FileReader();
+                    filerdr.onload = function (e) {
+                        $('#imgprvw').attr('src', e.target.result);
+                        document.getElementById(image).style.display = 'block';
+                    }
+                    filerdr.readAsDataURL(input.files[0]);
+                }
+            }
+</script>
 </asp:Content>

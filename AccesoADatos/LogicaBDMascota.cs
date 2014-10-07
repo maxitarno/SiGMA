@@ -9,7 +9,7 @@ namespace AccesoADatos
 {
     public class LogicaBDMascota
     {
-        public static void registrarMascota(EMascota mascota, byte[] imagen)
+        public static void registrarMascota(EMascota mascota)
         {
             using (TransactionScope transaction = new TransactionScope())
             {
@@ -51,10 +51,10 @@ namespace AccesoADatos
                     bdMascota.sexo = mascota.sexo;
                     mapaEntidades.AddToMascotas(bdMascota);
                     mapaEntidades.SaveChanges();
-                    if (imagen != null)
+                    if (mascota.imagen != null)
                     {
                         mascota.idMascota = mapaEntidades.Mascotas.OrderByDescending(m => m.idMascota).First().idMascota;
-                        LogicaBDImagen.guardarImagen(imagen, mascota);
+                        LogicaBDImagen.guardarImagen(mascota.imagen, mascota);
                     }
                     transaction.Complete();
                 }
@@ -65,6 +65,31 @@ namespace AccesoADatos
                 }
             }
         }
+
+        public static void registrarMascota(EMascota mascota, ref SiGMAEntities mapaEntidades)
+        {
+            try
+            {                
+                Mascotas bdMascota = new Mascotas();
+                bdMascota.idEstado = mascota.estado.idEstado;
+                bdMascota.nombreMascota = mascota.nombreMascota;
+                bdMascota.idEspecie = mascota.especie.idEspecie;
+                bdMascota.idRaza = mascota.raza.idRaza;
+                bdMascota.idColor = mascota.color.idColor;
+                bdMascota.idEdad = mascota.edad.idEdad;                               
+                bdMascota.sexo = mascota.sexo;
+                mapaEntidades.AddToMascotas(bdMascota);
+                //if (mascota.imagen != null)
+                //{
+                //    mascota.idMascota = mapaEntidades.Mascotas.OrderByDescending(m => m.idMascota).First().idMascota;
+                //    LogicaBDImagen.guardarImagen(mascota.imagen, mascota);
+                //}                    
+            }
+            catch (Exception exc)
+            {                    
+                throw exc;
+            }
+        }        
         
         public static bool BuscarMascota(EMascota mascota, ECategoriaRaza categoria, ECaracterMascota caracter, ECuidado cuidado, int idMascota)
         {
@@ -1126,6 +1151,15 @@ namespace AccesoADatos
             {                    
                 throw;
             }  
-        }  
+        }
+
+        public static int obtenerProximoIdMascota()
+        {
+            SiGMAEntities mapa = Conexion.crearSegunServidor();
+            //return mapa.Mascotas.OrderByDescending(m => m.idMascota).FirstOrDefault().idMascota + 1;            
+            var qonda = mapa.ExecuteStoreQuery<Decimal>("SELECT IDENT_CURRENT('Mascotas') + IDENT_INCR('Mascotas')");
+            string asd = qonda.FirstOrDefault().ToString();
+            return int.Parse(asd);
+        }
     }
 }
