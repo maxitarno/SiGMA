@@ -20,7 +20,8 @@ namespace AccesoADatos
                     adopcionBD.idVoluntario = adopcion.idVoluntario;
                     adopcionBD.fechaAdopcion = adopcion.fecha;
                     adopcionBD.idMascota = adopcion.mascota.idMascota;
-                    adopcionBD.observaciones = adopcion.observaciones;                    
+                    adopcionBD.observaciones = adopcion.observaciones;
+                    adopcionBD.idEstado = mapaEntidades.Estados.Where(es => es.ambito == "Adopcion" && es.nombreEstado == "Abierta").First().idEstado;
                     LogicaBDMascota.modificarEstado("Adoptada", adopcion.mascota.idMascota,ref mapaEntidades);                   
                     mapaEntidades.AddToAdopciones(adopcionBD);
                     mapaEntidades.SaveChanges();
