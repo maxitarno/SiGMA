@@ -27,7 +27,7 @@ namespace AccesoADatos
                     bdPerdida.FechaHoraPerdida = perdida.fecha;
                     bdPerdida.observaciones = perdida.comentarios;
                     //bdPerdida.mapaPerdida = perdida.mapaPerdida;
-                    LogicaBDMascota.modificarEstado("Perdida", perdida.mascota.idMascota, transaction);
+                    LogicaBDMascota.modificarEstado("Perdida", perdida.mascota.idMascota, ref mapaEntidades);  
                     bdPerdida.idEstado = mapaEntidades.Estados.Where(es => es.ambito == "Perdida" && es.nombreEstado == "Abierta").First().idEstado;
                     mapaEntidades.AddToPerdidas(bdPerdida);
                     mapaEntidades.SaveChanges();
@@ -66,24 +66,16 @@ namespace AccesoADatos
             }
         }
 
-        public static void modificarEstado(string estado, int idPerdidaParam)
-        {
-            using (TransactionScope transaction = new TransactionScope())
-            {
-                try
+        public static void modificarEstado(string estado, int idPerdidaParam, ref SiGMAEntities mapa)
+        {       try
                 {
-                    SiGMAEntities mapa = Conexion.crearSegunServidor();
                     Perdidas bdPerdida = mapa.Perdidas.Where(p => p.idPerdida == idPerdidaParam).First();
-                    bdPerdida.idEstado = mapa.Estados.Where(es => es.ambito == "Perdida" && es.nombreEstado == estado).First().idEstado;
-                    mapa.SaveChanges();
-                    transaction.Complete();
+                    bdPerdida.idEstado = mapa.Estados.Where(es => es.ambito == "Perdida" && es.nombreEstado == estado).First().idEstado;                                      
                 }
                 catch (Exception)
-                {
-                    transaction.Dispose();
+                {                    
                     throw;
-                }
-            }
+                }            
         }
     }
 }

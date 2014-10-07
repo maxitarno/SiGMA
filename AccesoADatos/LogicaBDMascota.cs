@@ -1114,40 +1114,18 @@ namespace AccesoADatos
             }
         }
 
-        //Metodo que modifica el estado de una mascota, parametros: String del nuevo estado de la mascota y el id de la mascota a modificar tambien la transaccion
-        public static void modificarEstado(string estado, int idMascotaParam, TransactionScope transaction)
-        {
-                try
-                {
-                    SiGMAEntities mapa = Conexion.crearSegunServidor();
-                    Mascotas bdMascota = mapa.Mascotas.Where(m => m.idMascota == idMascotaParam).First();
-                    bdMascota.idEstado = mapa.Estados.Where(es => es.ambito == "Mascota" && es.nombreEstado == estado).First().idEstado;
-                    mapa.DetectChanges();
-                    mapa.SaveChanges();
-                    transaction.Complete();
-                }
-                catch (Exception)
-                {
-                    transaction.Dispose();
-                    throw;
-                }
-        }
-
-        public static void ModificarEstado(string estado, int idMascotaParam,TransactionScope transaction)
+        //Metodo que modifica el estado de una mascota, parametros: String del nuevo estado de la mascota y el id de la mascota a modificar y la transaccion
+        public static void modificarEstado(string estado, int idMascotaParam, ref SiGMAEntities mapa)
         {
             try
-            {
-                SiGMAEntities mapa = Conexion.crearSegunServidor();
+            {                    
                 Mascotas bdMascota = mapa.Mascotas.Where(m => m.idMascota == idMascotaParam).First();
-                bdMascota.idEstado = mapa.Estados.Where(es => es.ambito == "Mascota" && es.nombreEstado == estado).First().idEstado;
-                mapa.DetectChanges();
-                mapa.SaveChanges();
+                bdMascota.idEstado = mapa.Estados.Where(es => es.ambito == "Mascota" && es.nombreEstado == estado).First().idEstado; 
             }
             catch (Exception)
-            {
-                transaction.Dispose();
+            {                    
                 throw;
-            }
-        }
+            }  
+        }  
     }
 }

@@ -23,9 +23,9 @@ namespace AccesoADatos
                     bdHallazgo.fechaHoraHallazgo = hallazgo.fechaHallazgo;
                     if (hallazgo.perdida != null)
                     {
-                        LogicaBDPerdida.modificarEstado("Cerrada", hallazgo.perdida.idPerdida);
+                        LogicaBDPerdida.modificarEstado("Cerrada", hallazgo.perdida.idPerdida, ref mapa);
                         bdHallazgo.idPerdida = hallazgo.perdida.idPerdida;
-                        LogicaBDMascota.modificarEstado("Hallada", hallazgo.mascota.idMascota, transaction);
+                        LogicaBDMascota.modificarEstado("Hallada", hallazgo.mascota.idMascota, ref mapa);
                     }
                     bdHallazgo.observaciones = hallazgo.observaciones;
                     bdHallazgo.idEstado = mapa.Estados.Where(es => es.ambito == "Hallazgo" && es.nombreEstado == "Abierta").First().idEstado;

@@ -20,10 +20,10 @@ namespace AccesoADatos
                     adopcionBD.idVoluntario = adopcion.idVoluntario;
                     adopcionBD.fechaAdopcion = adopcion.fecha;
                     adopcionBD.idMascota = adopcion.mascota.idMascota;
-                    adopcionBD.observaciones = adopcion.observaciones;
-                    adopcionBD.idEstado = 19;
+                    adopcionBD.observaciones = adopcion.observaciones;                    
+                    LogicaBDMascota.modificarEstado("Adoptada", adopcion.mascota.idMascota,ref mapaEntidades);                   
                     mapaEntidades.AddToAdopciones(adopcionBD);
-                    //LogicaBDMascota.ModificarEstado("Adoptada", adopcion.mascota.idMascota, transaccion);
+                    mapaEntidades.SaveChanges();
                     transaccion.Complete();
                     return true;
                 }

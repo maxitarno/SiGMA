@@ -54,8 +54,7 @@ namespace Herramientas
         }
         public static void cargarBarrio(ref DropDownList ddl, int idLocalidad)
         {
-            ddl.Items.Clear();
-            ddl.Items.Add(new ListItem("SIN ASIGNAR", "0"));
+            ddl.Items.Clear();            
             List<EBarrio> barrios = Datos.BuscarBarrios(idLocalidad);
             foreach (EBarrio item in barrios)
             {
@@ -64,8 +63,7 @@ namespace Herramientas
         }
         //carga de combo de Localidades
         public static void cargarLocalidades(ref DropDownList ddl)
-        {
-            ddl.Items.Add(new ListItem("SIN ASIGNAR", "0"));
+        {            
             List<ELocalidad> localidades = Datos.BuscarLocalidades();
             foreach (ELocalidad item in localidades)
             {
