@@ -67,15 +67,6 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.Label lblResultado3;
         
         /// <summary>
-        /// Control txtN.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtN;
-        
-        /// <summary>
         /// Control rbPorNombre.
         /// </summary>
         /// <remarks>
@@ -92,6 +83,15 @@ namespace SiGMA {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButton rbPorDNI;
+        
+        /// <summary>
+        /// Control txtN.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtN;
         
         /// <summary>
         /// Control pnlNombre.

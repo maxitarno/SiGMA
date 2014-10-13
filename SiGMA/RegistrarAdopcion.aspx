@@ -19,17 +19,15 @@
 <asp:Content ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="centered">
         <div class="panel panel-default">
-            <div class="panel-heading">
-            <h3 class="panel-title">
-                   Registrar Adopción
-                </h3>
-            </div>
-        <div class="panel-body">
-            <div class="Doble">
-                <table>
-                    <tr>
-                        <!-- mensajes -->
-                        <td colspan="4">
+            <div class="panel panel-default>
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        Registrar Adopción
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <div class="centered">
+                        <div class="centered">
                             <asp:Panel runat="server" ID="pnlCorrecto" class="alert alert-dismissable alert-success"
                                 Visible="false">
                                 <button class="close" type="button" data-dismiss="alert">
@@ -48,45 +46,25 @@
                                     ×</button>
                                 <asp:Label ID="lblResultado3" runat="server" Text=""></asp:Label>
                             </asp:Panel>
-                        </td>
-                        <!-- fin mensajes -->
-                    </tr>
-                    <tr>
-                        <td>
-                            Voluntario<br />
+                        </div>
+                        <div class="centered">
+                            <asp:RadioButton ID="rbPorNombre" runat="server" GroupName="1" ValidationGroup="1"
+                                AutoPostBack="True" OnCheckedChanged="rbPorName" Checked="False" Text=" Por Nombre" />&nbsp&nbsp
+                            <asp:RadioButton ID="rbPorDNI" runat="server" OnCheckedChanged="rbPorTipo" AutoPostBack="True"
+                                ValidationGroup="1" GroupName="1" Checked="True" Text=" Por DNI" />
+                        </div>
+                        <div style="margin-left: 30%; display: table; width: 40%;">
+                            <div style="display: table-row; width: 30%">
+                                <div style="display: table-cell; width: 20%;">
+                                    <div>
+                                        Voluntario Nº:&nbsp&nbsp&nbsp<asp:TextBox ID="txtN" runat="server" ReadOnly="True"
+                                            ViewStateMode="Enabled"></asp:TextBox>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-md-offset-1">
                             <table>
-                                <tr>
-                                    <td>
-                                        Nº:
-                                    </td>
-                                    <td>
-                                        <asp:TextBox ID="txtN" runat="server" ReadOnly="True" ViewStateMode="Enabled"></asp:TextBox>
-                                    </td>
-                                </tr>
-                            </table>
-                            <table>
-                                <tr>
-                                    <td>
-                                        <table>
-                                            <tr>
-                                                <td colspan="3">
-                                                    por nombre
-                                                </td>
-                                                <td>
-                                                    <asp:RadioButton ID="rbPorNombre" runat="server" GroupName="1" ValidationGroup="1"
-                                                        AutoPostBack="True" OnCheckedChanged="rbPorName" Checked="False" />&nbsp
-                                                </td>
-                                                <td colspan="3">
-                                                    Por documento
-                                                </td>
-                                                <td>
-                                                    <asp:RadioButton ID="rbPorDNI" runat="server" OnCheckedChanged="rbPorTipo" AutoPostBack="True"
-                                                        ValidationGroup="1" GroupName="1" Checked="True" />&nbsp
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                </tr>
                                 <tr>
                                     <asp:Panel ID="pnlNombre" runat="server" Visible="false">
                                         <td>
@@ -208,7 +186,8 @@
                                 </asp:Panel>
                             </table>
                             Fecha:&nbsp<asp:TextBox ID="txtFecha" runat="server" ReadOnly="True" ViewStateMode="Enabled"></asp:TextBox>
-                        <td>
+                        </div>
+                        <div class="col-md-3 col-md-offset-2">
                             <asp:Panel ID="pnlDuenio" runat="server" Visible="false">
                                 <h5>
                                     Datos del dueño
@@ -322,21 +301,31 @@
                                     </tr>
                                 </table>
                             </asp:Panel>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <asp:Panel ID="pnlRegistrar" runat="server" Visible="false">
-                                <asp:Button ID="btnRegistrar" runat="server" Text="Registrar" OnClick="btnRegistrarClick" />
-                            </asp:Panel>
-                            <!--<asp:Panel ID=pnllimpiar runat=server Visible=false>
-                                <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar" />
-                           </asp:Panel>-->
-                        </td>
-                    </tr>
-                </table>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="centered">
+                    <div class="centered">
+                        <div class="centered">
+                            <div style="margin-left: 30%; display: table; width: 40%;">
+                                <div style="display: table-row; width: 30%">
+                                    <div style="display: table-cell; width: 20%;">
+                                        <asp:Panel ID="pnlRegistrar" runat="server" Visible="false">
+                                            <asp:Button ID="btnRegistrar" runat="server" Text="Registrar" OnClick="btnRegistrarClick" />
+                                        </asp:Panel>
+                                    </div>
+                                    <div style="display: table-cell; width: 20%;">
+                                        <asp:Panel ID="pnllimpiar" runat="server" Visible="false">
+                                            <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar" />
+                                        </asp:Panel>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
     </div>
 </asp:Content>
