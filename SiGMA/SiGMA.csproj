@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Administracion.aspx" />
+    <Content Include="Adopciones.aspx" />
     <Content Include="AsignarPermisos.aspx" />
     <Content Include="assets\css\bootstrap.css" />
     <Content Include="assets\css\main.css" />
@@ -91,6 +92,7 @@
     <Content Include="CABMRazas.aspx" />
     <Content Include="CABMTipoDeDocumento.aspx" />
     <Content Include="ConsultarMascotas.aspx" />
+    <Content Include="ConsultarPerdida.aspx" />
     <Content Include="ConsultarUsuario.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -101,6 +103,7 @@
     <Content Include="Contrato.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="GenerarCodigoQR.aspx" />
+    <Content Include="Hallazgos.aspx" />
     <Content Include="imagenes\volver.png" />
     <Content Include="Login.aspx" />
     <Content Include="Account\ChangePassword.aspx" />
@@ -108,6 +111,7 @@
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="Mascotas.aspx" />
+    <Content Include="Perdidas.aspx" />
     <Content Include="PermisosInsuficientes.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="RegistrarAdopcion.aspx" />
@@ -146,6 +150,13 @@
     <Compile Include="Administracion.aspx.designer.cs">
       <DependentUpon>Administracion.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Adopciones.aspx.cs">
+      <DependentUpon>Adopciones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Adopciones.aspx.designer.cs">
+      <DependentUpon>Adopciones.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AsignarPermisos.aspx.cs">
       <DependentUpon>AsignarPermisos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -173,6 +184,13 @@
     </Compile>
     <Compile Include="ConsultarMascotas.aspx.designer.cs">
       <DependentUpon>ConsultarMascotas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ConsultarPerdida.aspx.cs">
+      <DependentUpon>ConsultarPerdida.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ConsultarPerdida.aspx.designer.cs">
+      <DependentUpon>ConsultarPerdida.aspx</DependentUpon>
     </Compile>
     <Compile Include="ConsultarUsuario.aspx.cs">
       <DependentUpon>ConsultarUsuario.aspx</DependentUpon>
@@ -205,6 +223,13 @@
     </Compile>
     <Compile Include="GenerarCodigoQR.aspx.designer.cs">
       <DependentUpon>GenerarCodigoQR.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Hallazgos.aspx.cs">
+      <DependentUpon>Hallazgos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Hallazgos.aspx.designer.cs">
+      <DependentUpon>Hallazgos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Handler1.ashx.cs">
       <DependentUpon>Handler1.ashx</DependentUpon>
@@ -257,6 +282,13 @@
     </Compile>
     <Compile Include="PaginaMaestra.Master.designer.cs">
       <DependentUpon>PaginaMaestra.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Perdidas.aspx.cs">
+      <DependentUpon>Perdidas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Perdidas.aspx.designer.cs">
+      <DependentUpon>Perdidas.aspx</DependentUpon>
     </Compile>
     <Compile Include="PermisosInsuficientes.aspx.cs">
       <DependentUpon>PermisosInsuficientes.aspx</DependentUpon>

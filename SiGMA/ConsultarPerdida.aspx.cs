@@ -10,7 +10,7 @@ using Herramientas;
 
 namespace SiGMA
 {
-    public partial class RegistrarPerdida : System.Web.UI.Page
+    public partial class ConsultarPerdida : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -39,6 +39,29 @@ namespace SiGMA
                 CargarCombos.cargarLocalidades(ref ddlLocalidadPerdida);
                 CargarCombos.cargarCalles(ref ddlCallePerdida);
                 rnvFechaPerdida.MaximumValue = DateTime.Now.ToShortDateString();
+                String modif = Request.QueryString["m"];
+                if (modif == "1")
+                {
+                    txtComentarios.Enabled = true;
+                    txtFechaPerdida.Enabled = false;
+                    calendario.Enabled = true;
+                    txtNroCallePerdida.Enabled = true;
+                    ddlBarrioPerdida.Enabled = true;
+                    ddlCallePerdida.Enabled = true;
+                    ddlLocalidadPerdida.Enabled = true;
+                    btnModificar.Visible = true;
+                }
+                else 
+                {
+                    txtComentarios.Enabled = false;
+                    txtFechaPerdida.Enabled = false;
+                    calendario.Enabled = false;
+                    txtNroCallePerdida.Enabled = false;
+                    ddlBarrioPerdida.Enabled = false;
+                    ddlCallePerdida.Enabled = false;
+                    ddlLocalidadPerdida.Enabled = false;
+                    btnModificar.Visible = false;
+                }
             }
         }
 
@@ -64,7 +87,7 @@ namespace SiGMA
             }
         }
 
-        private void MascotasPorDueño() 
+        private void MascotasPorDueño()
         {
             limpiarPagina();
             List<EMascota> mascotas = new List<EMascota>();
@@ -97,7 +120,7 @@ namespace SiGMA
             calendario.Visible = false;
         }
 
-        private void limpiarPagina() 
+        private void limpiarPagina()
         {
             pnlInfo.Visible = false;
             pnlAtento.Visible = false;
@@ -113,7 +136,8 @@ namespace SiGMA
             Session["imagen"] = null;
             var idMascota = Convert.ToInt32(lstMascotas.SelectedValue);
             EMascota mascota = new EMascota();
-            if (LogicaBDPerdida.BuscarMascotaARegistrarPerdida(idMascota, mascota))
+            EPerdida perdida = new EPerdida();
+            if (LogicaBDPerdida.BuscarMascotaAConsultarPerdida(idMascota, mascota, perdida))
             {
                 pnlRegistrarPerdida.Visible = true;
                 txtMascotaPerdida.Text = mascota.nombreMascota;
@@ -135,8 +159,21 @@ namespace SiGMA
                 ddlColor.SelectedValue = (mascota.color == null) ? null : mascota.color.idColor.ToString();
                 ddlEdad.SelectedValue = (mascota.edad == null) ? null : mascota.edad.idEdad.ToString();
                 ddlEspecie.SelectedValue = (mascota.especie == null) ? null : mascota.especie.idEspecie.ToString();
-                ddlRaza.SelectedValue = (mascota.raza == null) ? null :mascota.raza.idRaza.ToString();
+                ddlRaza.SelectedValue = (mascota.raza == null) ? null : mascota.raza.idRaza.ToString();
                 ddlSexo.SelectedValue = mascota.sexo.ToString();
+                if(perdida.domicilio != null)
+                {
+                    if(perdida.domicilio.barrio != null)
+                    {
+                        ddlLocalidadPerdida.SelectedValue = (perdida.domicilio.barrio.localidad == null) ? null : perdida.domicilio.barrio.localidad.idLocalidad.ToString();
+                        ddlBarrioPerdida.SelectedValue = perdida.domicilio.barrio.idBarrio.ToString();
+                        ddlCallePerdida.SelectedValue = (perdida.domicilio.calle == null) ? null : perdida.domicilio.calle.idCalle.ToString();
+                        txtNroCallePerdida.Text = perdida.domicilio.numeroCalle.ToString();
+                    }
+                }
+                Session["idPerdida"] = perdida.idPerdida;
+                txtFechaPerdida.Text = perdida.fecha.ToShortDateString();
+                txtComentarios.Text = perdida.comentarios.ToString();
                 Session["idMascota"] = idMascota;
 
                 if (mascota.imagen != null)
@@ -159,66 +196,12 @@ namespace SiGMA
             else
             {
                 pnlInfo.Visible = true;
-                lblInfo.Text = "La mascota no se encuentra en estado necesario para registrar una pérdida";
+                lblInfo.Text = "La mascota no se encuentra en estado: pérdida";
                 pnlCorrecto.Visible = false;
                 pnlAtento.Visible = false;
             }
         }
 
-        protected void btnSeleccionar_Click(object sender, EventArgs e)
-        {
-            //Session["imagen"] = null;
-            //var idMascota = Convert.ToInt32(lstMascotas.SelectedValue);
-            //pnlRegistrarPerdida.Visible = true;
-            //EMascota mascota = new EMascota();
-            //ECaracterMascota caracter = new ECaracterMascota();
-            //ECategoriaRaza categoria = new ECategoriaRaza();
-            //EPersona persona = new EPersona();
-            //EBarrio barrio = new EBarrio();
-            //ELocalidad localidad = new ELocalidad();
-            //ECalle calle = new ECalle();
-            //if (LogicaBDMascota.BuscarMascotaPorIdMascota(idMascota, mascota))
-            //{
-            //    txtMascotaPerdida.Text = mascota.nombreMascota;
-            //    mascota.duenio = new EDuenio();
-            //    txtNroCalle.Text = mascota.duenio.nroCalle.ToString();
-            //    txtDatosDueño.Text = (mascota.duenio.nombre == null) ? null : mascota.duenio.nombre.ToString();
-            //    txtDatosDueño.Text += (mascota.duenio.apellido == null) ? null : mascota.duenio.apellido.ToString();
-            //    ddlCalles.SelectedValue = (calle.idCalle == null) ? null : calle.idCalle.ToString();
-            //    ddlBarrios.SelectedValue = (mascota.duenio.barrio == null) ? null : mascota.duenio.barrio.idBarrio.ToString();
-            //    ddlLocalidades.SelectedValue = (mascota.duenio.barrio.localidad == null) ? null : mascota.duenio.barrio.localidad.idLocalidad.ToString();
-            //    ddlColor.SelectedValue = mascota.color.idColor.ToString();
-            //    ddlEdad.SelectedValue = mascota.edad.idEdad.ToString();
-            //    ddlEspecie.SelectedValue = mascota.especie.idEspecie.ToString();
-            //    ddlRaza.SelectedValue = mascota.raza.idRaza.ToString();
-            //    ddlSexo.SelectedValue = mascota.sexo.ToString();
-            //    Session["idMascota"] = idMascota;
-
-            //    if (mascota.imagen != null)
-            //    {
-            //        pnlImagen.Visible = true;
-            //        Session["imagen"] = mascota.imagen;
-            //        Handler1.AddMethod(ImageHandler_ObtenerImagenMascota);
-            //        imgprvw.Src = ResolveUrl("~/Handler1.ashx");
-            //        imgprvw.Width = 300;
-            //        imgprvw.Height = 250;
-            //    }
-            //    else
-            //    {
-            //        pnlImagen.Visible = false;
-            //        imgprvw.Width = 0;
-            //        imgprvw.Height = 0;
-            //    }
-
-            //}
-            //else
-            //{
-            //    pnlInfo.Visible = true;
-            //    lblInfo.Text = "No se encontro la mascota";
-            //    pnlCorrecto.Visible = false;
-            //    pnlAtento.Visible = false;
-            //}
-        }
         public byte[] ImageHandler_ObtenerImagenMascota(HttpContext context)
         {
             if (Session["imagen"] != null)
@@ -233,9 +216,10 @@ namespace SiGMA
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
             limpiarPagina();
+            lstMascotas.SelectedValue = null;
         }
 
-        protected void btnRegistrarPerdida_Click(object sender, EventArgs e)
+        protected void btnModificar_Click(object sender, EventArgs e)
         {
             try
             {
@@ -244,6 +228,7 @@ namespace SiGMA
                     EPerdida perdida = new EPerdida();
                     perdida.mascota = new EMascota();
                     perdida.mascota.idMascota = Convert.ToInt32(Session["idMascota"].ToString());
+                    perdida.idPerdida = Convert.ToInt32(Session["idPerdida"].ToString());
                     perdida.domicilio = new EDomicilio();
                     perdida.domicilio.barrio = new EBarrio();
                     perdida.domicilio.barrio.localidad = new ELocalidad();
@@ -251,6 +236,7 @@ namespace SiGMA
                     perdida.domicilio.barrio.idBarrio = int.Parse(ddlBarrioPerdida.SelectedValue);
                     perdida.domicilio.barrio.nombre = ddlBarrioPerdida.SelectedItem.Text;
                     perdida.domicilio.barrio.localidad.idLocalidad = int.Parse(ddlLocalidadPerdida.SelectedValue);
+                    perdida.domicilio.calle.idCalle = int.Parse(ddlCallePerdida.SelectedValue);
                     perdida.domicilio.barrio.localidad.nombre = ddlLocalidadPerdida.SelectedItem.Text;
                     perdida.domicilio.calle.nombre = ddlCallePerdida.SelectedItem.Text;
                     perdida.domicilio.numeroCalle = int.Parse(txtNroCallePerdida.Text);
@@ -266,16 +252,16 @@ namespace SiGMA
                         txtFechaPerdida.Focus();
                         return;
                     }
-                    if (LogicaBDPerdida.registrarPerdida(perdida))
+                    if (LogicaBDPerdida.modificarPerdida(perdida))
                     {
                         limpiarPagina();
                         pnlCorrecto.Visible = true;
-                        lblCorrecto.Text = "Pérdida Registrada Correctamente";
+                        lblCorrecto.Text = "Pérdida Modificada Correctamente";
                     }
                     else
                     {
                         pnlAtento.Visible = true;
-                        lblError.Text = "No se registro la pérdida. Verifique datos";
+                        lblError.Text = "No se modifico la pérdida. Verifique datos";
                     }
                 }
             }
@@ -285,6 +271,5 @@ namespace SiGMA
                 throw exc;
             }
         }
-
     }
 }

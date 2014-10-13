@@ -7,7 +7,7 @@ namespace Entidades
 {
     public class EBarrio
     {
-        public int idBarrio { get; set; }
+        public int? idBarrio { get; set; }
         public string nombre { get; set; }
         public ELocalidad localidad { get; set; }
     }

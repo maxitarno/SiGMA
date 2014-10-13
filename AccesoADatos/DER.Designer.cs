@@ -2345,11 +2345,13 @@ namespace AccesoADatos
         /// </summary>
         /// <param name="idEstado">Initial value of the idEstado property.</param>
         /// <param name="nombreEstado">Initial value of the nombreEstado property.</param>
-        public static Estados CreateEstados(global::System.Int32 idEstado, global::System.String nombreEstado)
+        /// <param name="ambito">Initial value of the ambito property.</param>
+        public static Estados CreateEstados(global::System.Int32 idEstado, global::System.String nombreEstado, global::System.String ambito)
         {
             Estados estados = new Estados();
             estados.idEstado = idEstado;
             estados.nombreEstado = nombreEstado;
+            estados.ambito = ambito;
             return estados;
         }
 
@@ -2411,7 +2413,7 @@ namespace AccesoADatos
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.String ambito
         {
@@ -2423,7 +2425,7 @@ namespace AccesoADatos
             {
                 OnambitoChanging(value);
                 ReportPropertyChanging("ambito");
-                _ambito = StructuralObject.SetValidValue(value, true);
+                _ambito = StructuralObject.SetValidValue(value, false);
                 ReportPropertyChanged("ambito");
                 OnambitoChanged();
             }
@@ -4041,6 +4043,78 @@ namespace AccesoADatos
         private global::System.Int32 _idEstado;
         partial void OnidEstadoChanging(global::System.Int32 value);
         partial void OnidEstadoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> idLocalidadPerdida
+        {
+            get
+            {
+                return _idLocalidadPerdida;
+            }
+            set
+            {
+                OnidLocalidadPerdidaChanging(value);
+                ReportPropertyChanging("idLocalidadPerdida");
+                _idLocalidadPerdida = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("idLocalidadPerdida");
+                OnidLocalidadPerdidaChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _idLocalidadPerdida;
+        partial void OnidLocalidadPerdidaChanging(Nullable<global::System.Int32> value);
+        partial void OnidLocalidadPerdidaChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> idCallePerdida
+        {
+            get
+            {
+                return _idCallePerdida;
+            }
+            set
+            {
+                OnidCallePerdidaChanging(value);
+                ReportPropertyChanging("idCallePerdida");
+                _idCallePerdida = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("idCallePerdida");
+                OnidCallePerdidaChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _idCallePerdida;
+        partial void OnidCallePerdidaChanging(Nullable<global::System.Int32> value);
+        partial void OnidCallePerdidaChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String nroCallePerdida
+        {
+            get
+            {
+                return _nroCallePerdida;
+            }
+            set
+            {
+                OnnroCallePerdidaChanging(value);
+                ReportPropertyChanging("nroCallePerdida");
+                _nroCallePerdida = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("nroCallePerdida");
+                OnnroCallePerdidaChanged();
+            }
+        }
+        private global::System.String _nroCallePerdida;
+        partial void OnnroCallePerdidaChanging(global::System.String value);
+        partial void OnnroCallePerdidaChanged();
 
         #endregion
 

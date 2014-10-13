@@ -1,5 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PaginaMaestra.Master" AutoEventWireup="true" CodeBehind="Mascotas.aspx.cs" Inherits="SiGMA.Mascotas" %>
-<asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PaginaMaestra.Master" AutoEventWireup="true" CodeBehind="Perdidas.aspx.cs" Inherits="SiGMA.Perdidas" %>
+<asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">    
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,36 +24,34 @@
 <div class="container pt">
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2 centered">
-                <h3>MASCOTAS</h3>
+                <h3>PERDIDAS</h3>
                 <h4 >Elija que desea hacer en el menú inferior</h4>
         </div>
         </div>
 		<div class="row mt centered">	
 			<div class="col-lg-4">
-				<a class="zoom green" href="RegistrarMascota.aspx"><img class="img-responsive" src="assets/img/mascotas/registrarmascota.jpg" alt="" width="200px" height="300px"/></a>
+				<a class="zoom green" href="RegistrarPerdida.aspx"><img class="img-responsive" src="assets/img/mascotas/registrarmascota.jpg" alt="" width="200px" height="300px"/></a>
 				<p class="col-lg-4">REGISTRAR</p>
 			</div>
 			<div class="col-lg-4">
-				<a class="zoom green" href="ConsultarMascotas.aspx"><img class="img-responsive" src="assets/img/mascotas/consultarmascota.jpg" alt="" width="200px" height="300px"/></a>
+				<a class="zoom green" href="ConsultarPerdida.aspx"><img class="img-responsive" src="assets/img/mascotas/consultarmascota.jpg" alt="" width="200px" height="300px"/></a>
 				<p class="col-lg-4">CONSULTAR</p>
 			</div>
 			<div class="col-lg-4">
-				<a class="zoom green" href="Perdidas.aspx"><img class="img-responsive" src="assets/img/mascotas/registrarperdida.jpg" alt="" width="200px" height="300px" /></a>
-				<p class="col-lg-4">PERDIDAS</p>
+				<a class="zoom green" href="ConsultarPerdida.aspx?m=1"><img class="img-responsive" src="assets/img/mascotas/registrarperdida.jpg" alt="" width="200px" height="300px" /></a>
+				<p class="col-lg-4">MODIFICAR</p>
 			</div>
 		</div><!-- /row -->
 		<div class="row mt centered">	
 			<div class="col-lg-4">
-				<a class="zoom green" href="Hallazgos.aspx"><img class="img-responsive" src="assets/img/mascotas/registrarhallazgo.jpg" alt="" width="200px" height="300px" /></a>
-				<p class="col-lg-4">HALLAZGOS</p>
+				
 			</div>
 			<div class="col-lg-4">
-				<a class="zoom green" href="Adopciones.aspx"><img class="img-responsive" src="assets/img/mascotas/registraradopcion.jpg" alt="" width="200px" height="300px" /></a>
-				<p class="col-lg-4">ADOPCIONES</p>
-			</div>
-			<div class="col-lg-4">
-				<a class="zoom green" href="Default.aspx"><img class="img-responsive" src="assets/img/mascotas/volver.jpg" alt="" width="200px" height="300px" /></a>
+				<a class="zoom green" href="Mascotas.aspx"><img class="img-responsive" src="assets/img/mascotas/volver.jpg" alt="" width="200px" height="300px" /></a>
 				<p class="col-lg-4">VOLVER</p>
+			</div>
+			<div class="col-lg-4">
+				
 			</div>
 		</div><!-- /row -->
 	</div><!-- /container -->

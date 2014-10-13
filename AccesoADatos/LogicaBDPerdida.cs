@@ -23,6 +23,9 @@ namespace AccesoADatos
                     var calle = ""+perdida.domicilio.calle.nombre +" "+ perdida.domicilio.numeroCalle;
                     var localBarrio = ", " + perdida.domicilio.barrio.nombre + ", " + perdida.domicilio.barrio.localidad.nombre;
                     bdPerdida.ubicacionPerdida = calle + localBarrio;
+                    bdPerdida.idLocalidadPerdida = perdida.domicilio.barrio.localidad.idLocalidad;
+                    bdPerdida.idCallePerdida = perdida.domicilio.calle.idCalle;
+                    bdPerdida.nroCallePerdida = perdida.domicilio.numeroCalle.ToString();
                     bdPerdida.idUsuario = perdida.usuario.user;
                     bdPerdida.FechaHoraPerdida = perdida.fecha;
                     bdPerdida.observaciones = perdida.comentarios;
@@ -30,6 +33,43 @@ namespace AccesoADatos
                     LogicaBDMascota.modificarEstado("Perdida", perdida.mascota.idMascota, ref mapaEntidades);  
                     bdPerdida.idEstado = mapaEntidades.Estados.Where(es => es.ambito == "Perdida" && es.nombreEstado == "Abierta").First().idEstado;
                     mapaEntidades.AddToPerdidas(bdPerdida);
+                    mapaEntidades.SaveChanges();
+                    transaction.Complete();
+                    b = true;
+                }
+                catch (System.Data.EntityCommandCompilationException exc)
+                {
+                    b = false;
+                    throw exc;
+                }
+                return b;
+            }
+        }
+
+        public static bool modificarPerdida(EPerdida perdida)
+        {
+            using (TransactionScope transaction = new TransactionScope())
+            {
+                bool b = false;
+                try
+                {
+                    SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+                    var bdPerdida = mapaEntidades.Perdidas.Where(p => p.idPerdida == perdida.idPerdida);
+                    foreach (var perd in bdPerdida)
+                    {
+                        var calle = "" + perdida.domicilio.calle.nombre + " " + perdida.domicilio.numeroCalle;
+                        var localBarrio = ", " + perdida.domicilio.barrio.nombre + ", " + perdida.domicilio.barrio.localidad.nombre;
+                        perd.ubicacionPerdida = calle + localBarrio;
+                        perd.idLocalidadPerdida = perdida.domicilio.barrio.localidad.idLocalidad;
+                        perd.idBarrioPerdida = perdida.domicilio.barrio.idBarrio;
+                        perd.idCallePerdida = perdida.domicilio.calle.idCalle;
+                        perd.nroCallePerdida = perdida.domicilio.numeroCalle.ToString();
+                        perd.idUsuario = perdida.usuario.user;
+                        perd.FechaHoraPerdida = perdida.fecha;
+                        perd.observaciones = perdida.comentarios;
+                        break;
+                    }
+                    //bdPerdida.mapaPerdida = perdida.mapaPerdida;
                     mapaEntidades.SaveChanges();
                     transaction.Complete();
                     b = true;
@@ -76,6 +116,252 @@ namespace AccesoADatos
                 {                    
                     throw;
                 }            
+        }
+
+        public static bool BuscarMascotaARegistrarPerdida(int idMascota, EMascota mascota)
+        {
+            bool b = false;
+            try
+            {
+                SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+                var consulta = from MascotasBD in mapaEntidades.Mascotas
+                               join ColoresBD in mapaEntidades.Colores on MascotasBD.idColor equals ColoresBD.idColor
+                               join edadesBD in mapaEntidades.Edades on MascotasBD.idEdad equals edadesBD.idEdad
+                               join especiesBD in mapaEntidades.Especies on MascotasBD.idEspecie equals especiesBD.idEspecie
+                               join DuenioBD in mapaEntidades.Duenios on MascotasBD.idDuenio equals DuenioBD.idDuenio into group1
+                               from G1 in group1.DefaultIfEmpty()
+                               join PersonaBD in mapaEntidades.Personas on G1.idPersona equals PersonaBD.idPersona into group2
+                               from G2 in group2.DefaultIfEmpty()
+                               join RazaBD in mapaEntidades.Razas on MascotasBD.idRaza equals RazaBD.idRaza
+                               join CategoriaRazaBD in mapaEntidades.CategoriaRazas on RazaBD.idCategoriaRaza equals CategoriaRazaBD.idCategoriaRazas
+                               join CaracterBD in mapaEntidades.CaracteresMascota on MascotasBD.idCaracter equals CaracterBD.idCaracter into group3
+                               from G3 in group3.DefaultIfEmpty()
+                               join BarrioBD in mapaEntidades.Barrios on G2.idBarrio equals BarrioBD.idBarrio into group4
+                               from G4 in group4.DefaultIfEmpty()
+                               join LocalidadBD in mapaEntidades.Localidades on G4.idLocalidad equals LocalidadBD.idLocalidad into group5
+                               from G5 in group5.DefaultIfEmpty()
+                               join calleBD in mapaEntidades.Calles on G2.idCalle equals calleBD.idCalle into group6
+                               from G6 in group6.DefaultIfEmpty()
+                               where ((MascotasBD.idEstado == 1 || MascotasBD.idEstado == 4 || MascotasBD.idEstado == 5) && MascotasBD.idMascota == idMascota)
+                               select new
+                               {
+                                   nombre = MascotasBD.nombreMascota,
+                                   estado = MascotasBD.idEstado,
+                                   idEspecie = MascotasBD.idEspecie,
+                                   especie = especiesBD.nombreEspecie,
+                                   idEdad = MascotasBD.idEdad,
+                                   edad = edadesBD.nombreEdad,
+                                   raza = RazaBD.nombreRaza,
+                                   idRaza = MascotasBD.idRaza,
+                                   idColor = MascotasBD.idColor,
+                                   color = ColoresBD.nombreColor,
+                                   tratoA = MascotasBD.tratoAnimales,
+                                   tratoN = MascotasBD.tratoNinios,
+                                   sexo = MascotasBD.sexo,
+                                   categoria = CategoriaRazaBD.nombreCategoriaRaza,
+                                   idCaracter = G3.idCaracter,
+                                   caracter = G3.descripcion,
+                                   id = MascotasBD.idMascota,
+                                   imagen = MascotasBD.imagen,
+                                   dueñoNombre = (G2 == null) ? null : G2.nombre,
+                                   dueñoApellido = (G2 == null) ? null : G2.apellido,
+                                   domicilio = (G2 == null) ? null : G2.domicilio,
+                                   idBarrio = (G4 == null) ? 0 : G4.idBarrio,
+                                   barrio = (G4 == null) ? null : G4.nombre,
+                                   localidad = (G5 == null) ? null : G5.nombre,
+                                   calle = (G6 == null) ? 0 : G6.idCalle,
+                                   nroCalle = (G2.nroCalle == null) ? 0 : G2.nroCalle
+                               };
+                foreach (var registro in consulta)
+                {
+                    mascota.caracter = new ECaracterMascota();
+                    mascota.caracter.idCaracter = registro.idCaracter;
+                    mascota.caracter.descripcion = registro.caracter;
+                    mascota.raza = new ERaza();
+                    mascota.raza.CategoriaRaza = new ECategoriaRaza();
+                    mascota.raza.CategoriaRaza.nombreCategoriaRaza = registro.categoria;
+                    mascota.raza.idRaza = registro.idRaza;
+                    mascota.raza.nombreRaza = registro.raza;
+                    mascota.color = new EColor();
+                    mascota.color.idColor = registro.idColor;
+                    mascota.color.nombreColor = registro.color;
+                    mascota.nombreMascota = registro.nombre;
+                    mascota.sexo = registro.sexo;
+                    mascota.tratoAnimal = registro.tratoA;
+                    mascota.tratoNiños = registro.tratoN;
+                    mascota.idMascota = registro.id;
+                    mascota.estado = new EEstado();
+                    mascota.estado.idEstado = registro.estado;
+                    mascota.edad = new EEdad();
+                    mascota.edad.idEdad = registro.idEdad;
+                    mascota.edad.nombreEdad = registro.edad;
+                    mascota.especie = new EEspecie();
+                    mascota.especie.idEspecie = registro.idEspecie;
+                    mascota.especie.nombreEspecie = registro.especie;
+                    mascota.duenio = new EDuenio();
+                    mascota.duenio.apellido = registro.dueñoApellido;
+                    mascota.duenio.nombre = registro.dueñoNombre;
+                    mascota.duenio.barrio = new EBarrio();
+                    mascota.duenio.barrio.idBarrio = registro.idBarrio;
+                    mascota.duenio.barrio.nombre = registro.barrio;
+                    mascota.duenio.barrio.localidad = new ELocalidad();
+                    mascota.duenio.barrio.localidad.nombre = registro.localidad;
+                    mascota.duenio.domicilio = new ECalle();
+                    mascota.duenio.domicilio.idCalle = registro.calle;
+                    mascota.duenio.nroCalle = registro.nroCalle;
+                    if (registro.imagen != null)
+                    {
+                        mascota.imagen = registro.imagen;
+                    }
+                    else
+                    {
+                        mascota.imagen = null;
+                    }
+                }
+                if (mascota.estado != null)
+                    b = true;
+                else
+                    b = false;
+            }
+            catch (System.Data.EntityCommandCompilationException exc)
+            {
+                b = false;
+                throw exc;
+            }
+            return b;
+        }
+
+        public static bool BuscarMascotaAConsultarPerdida(int idMascota, EMascota mascota, EPerdida perdida)
+        {
+            bool b = false;
+            try
+            {
+                SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+                var consulta = from MascotasBD in mapaEntidades.Mascotas
+                               join PerdidasBD in mapaEntidades.Perdidas on MascotasBD.idMascota equals PerdidasBD.idMascota into group0
+                               from G0 in group0.DefaultIfEmpty()
+                               join ColoresBD in mapaEntidades.Colores on MascotasBD.idColor equals ColoresBD.idColor
+                               join edadesBD in mapaEntidades.Edades on MascotasBD.idEdad equals edadesBD.idEdad
+                               join especiesBD in mapaEntidades.Especies on MascotasBD.idEspecie equals especiesBD.idEspecie
+                               join DuenioBD in mapaEntidades.Duenios on MascotasBD.idDuenio equals DuenioBD.idDuenio into group1
+                               from G1 in group1.DefaultIfEmpty()
+                               join PersonaBD in mapaEntidades.Personas on G1.idPersona equals PersonaBD.idPersona into group2
+                               from G2 in group2.DefaultIfEmpty()
+                               join RazaBD in mapaEntidades.Razas on MascotasBD.idRaza equals RazaBD.idRaza
+                               join CategoriaRazaBD in mapaEntidades.CategoriaRazas on RazaBD.idCategoriaRaza equals CategoriaRazaBD.idCategoriaRazas
+                               join CaracterBD in mapaEntidades.CaracteresMascota on MascotasBD.idCaracter equals CaracterBD.idCaracter into group3
+                               from G3 in group3.DefaultIfEmpty()
+                               join BarrioBD in mapaEntidades.Barrios on G2.idBarrio equals BarrioBD.idBarrio into group4
+                               from G4 in group4.DefaultIfEmpty()
+                               join LocalidadBD in mapaEntidades.Localidades on G4.idLocalidad equals LocalidadBD.idLocalidad into group5
+                               from G5 in group5.DefaultIfEmpty()
+                               join calleBD in mapaEntidades.Calles on G2.idCalle equals calleBD.idCalle into group6
+                               from G6 in group6.DefaultIfEmpty()
+                               where ((MascotasBD.idEstado == 3) && MascotasBD.idMascota == idMascota)
+                               select new
+                               {
+                                   nombre = MascotasBD.nombreMascota,
+                                   estado = MascotasBD.idEstado,
+                                   idEspecie = MascotasBD.idEspecie,
+                                   especie = especiesBD.nombreEspecie,
+                                   idEdad = MascotasBD.idEdad,
+                                   edad = edadesBD.nombreEdad,
+                                   raza = RazaBD.nombreRaza,
+                                   idRaza = MascotasBD.idRaza,
+                                   idColor = MascotasBD.idColor,
+                                   color = ColoresBD.nombreColor,
+                                   tratoA = MascotasBD.tratoAnimales,
+                                   tratoN = MascotasBD.tratoNinios,
+                                   sexo = MascotasBD.sexo,
+                                   categoria = CategoriaRazaBD.nombreCategoriaRaza,
+                                   idCaracter = G3.idCaracter,
+                                   caracter = G3.descripcion,
+                                   id = MascotasBD.idMascota,
+                                   imagen = MascotasBD.imagen,
+                                   dueñoNombre = (G2 == null) ? null : G2.nombre,
+                                   dueñoApellido = (G2 == null) ? null : G2.apellido,
+                                   domicilio = (G2 == null) ? null : G2.domicilio,
+                                   idBarrio = (G4 == null) ? 0 : G4.idBarrio,
+                                   barrio = (G4 == null) ? null : G4.nombre,
+                                   localidad = (G5 == null) ? null : G5.nombre,
+                                   calle = (G6 == null) ? 0 : G6.idCalle,
+                                   nroCalle = (G2.nroCalle == null) ? 0 : G2.nroCalle,
+                                   idPerdida = (G0.idPerdida == null) ? 0 : G0.idPerdida,
+                                   idLocalidadPerdidad = (G0.idLocalidadPerdida == null) ? 0 : G0.idLocalidadPerdida,
+                                   fechaPerdida = (G0.FechaHoraPerdida == null) ? null : G0.FechaHoraPerdida,
+                                   idBarrioPerdida = (G0.idBarrioPerdida == null) ? 0 : G0.idBarrioPerdida,
+                                   idCallePerdida = (G0.idCallePerdida == null) ? 0 : G0.idCallePerdida,
+                                   nroCallePerdida = (G0.nroCallePerdida == null) ? null : G0.nroCallePerdida,
+                                   comentarios = G0.observaciones
+                               };
+                foreach (var registro in consulta)
+                {
+                    perdida.domicilio = new EDomicilio();
+                    perdida.domicilio.barrio = new EBarrio();
+                    perdida.domicilio.barrio.localidad = new ELocalidad();
+                    perdida.domicilio.calle = new ECalle();
+                    perdida.domicilio.barrio.idBarrio = registro.idBarrioPerdida;
+                    perdida.domicilio.barrio.localidad.idLocalidad = registro.idLocalidadPerdidad;
+                    perdida.domicilio.calle.idCalle = registro.idCallePerdida;
+                    perdida.domicilio.numeroCalle = Convert.ToInt32(registro.nroCallePerdida);
+                    perdida.idPerdida = registro.idPerdida;
+                    perdida.fecha = Convert.ToDateTime(registro.fechaPerdida);
+                    perdida.comentarios = registro.comentarios;
+                    mascota.caracter = new ECaracterMascota();
+                    mascota.caracter.idCaracter = registro.idCaracter;
+                    mascota.caracter.descripcion = registro.caracter;
+                    mascota.raza = new ERaza();
+                    mascota.raza.CategoriaRaza = new ECategoriaRaza();
+                    mascota.raza.CategoriaRaza.nombreCategoriaRaza = registro.categoria;
+                    mascota.raza.idRaza = registro.idRaza;
+                    mascota.raza.nombreRaza = registro.raza;
+                    mascota.color = new EColor();
+                    mascota.color.idColor = registro.idColor;
+                    mascota.color.nombreColor = registro.color;
+                    mascota.nombreMascota = registro.nombre;
+                    mascota.sexo = registro.sexo;
+                    mascota.tratoAnimal = registro.tratoA;
+                    mascota.tratoNiños = registro.tratoN;
+                    mascota.idMascota = registro.id;
+                    mascota.estado = new EEstado();
+                    mascota.estado.idEstado = registro.estado;
+                    mascota.edad = new EEdad();
+                    mascota.edad.idEdad = registro.idEdad;
+                    mascota.edad.nombreEdad = registro.edad;
+                    mascota.especie = new EEspecie();
+                    mascota.especie.idEspecie = registro.idEspecie;
+                    mascota.especie.nombreEspecie = registro.especie;
+                    mascota.duenio = new EDuenio();
+                    mascota.duenio.apellido = registro.dueñoApellido;
+                    mascota.duenio.nombre = registro.dueñoNombre;
+                    mascota.duenio.barrio = new EBarrio();
+                    mascota.duenio.barrio.idBarrio = registro.idBarrio;
+                    mascota.duenio.barrio.nombre = registro.barrio;
+                    mascota.duenio.barrio.localidad = new ELocalidad();
+                    mascota.duenio.barrio.localidad.nombre = registro.localidad;
+                    mascota.duenio.domicilio = new ECalle();
+                    mascota.duenio.domicilio.idCalle = registro.calle;
+                    mascota.duenio.nroCalle = registro.nroCalle;
+                    if (registro.imagen != null)
+                    {
+                        mascota.imagen = registro.imagen;
+                    }
+                    else
+                    {
+                        mascota.imagen = null;
+                    }
+                }
+                if (mascota.estado != null)
+                    b = true;
+                else
+                    b = false;
+            }
+            catch (System.Data.EntityCommandCompilationException exc)
+            {
+                b = false;
+                throw exc;
+            }
+            return b;
         }
     }
 }
