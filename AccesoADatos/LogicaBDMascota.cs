@@ -1024,11 +1024,12 @@ namespace AccesoADatos
         }
 
         //Metodo que modifica el estado de una mascota, parametros: String del nuevo estado de la mascota y el id de la mascota a modificar y la transaccion
-        public static void modificarEstado(string estado, int idMascotaParam, ref SiGMAEntities mapa)
+        public static void modificarEstado(string estado, int idMascotaParam, ref SiGMAEntities mapa, int id)
         {
             try
             {                    
                 Mascotas bdMascota = mapa.Mascotas.Where(m => m.idMascota == idMascotaParam).First();
+                bdMascota.idDuenio = id;
                 bdMascota.idEstado = mapa.Estados.Where(es => es.ambito == "Mascota" && es.nombreEstado == estado).First().idEstado; 
             }
             catch (Exception)
@@ -1043,6 +1044,18 @@ namespace AccesoADatos
             var qonda = mapa.ExecuteStoreQuery<Decimal>("SELECT IDENT_CURRENT('Mascotas') + IDENT_INCR('Mascotas')");
             string asd = qonda.FirstOrDefault().ToString();
             return int.Parse(asd);
+        }
+        public static void modificarEstado(string estado, int idMascotaParam, ref SiGMAEntities mapa)
+        {
+            try
+            {
+                Mascotas bdMascota = mapa.Mascotas.Where(m => m.idMascota == idMascotaParam).First();
+                bdMascota.idEstado = mapa.Estados.Where(es => es.ambito == "Mascota" && es.nombreEstado == estado).First().idEstado;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
     }
 }

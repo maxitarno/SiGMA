@@ -22,7 +22,7 @@ namespace AccesoADatos
                     adopcionBD.idMascota = adopcion.mascota.idMascota;
                     adopcionBD.observaciones = adopcion.observaciones;
                     adopcionBD.idEstado = mapaEntidades.Estados.Where(es => es.ambito == "Adopcion" && es.nombreEstado == "Abierta").First().idEstado;
-                    LogicaBDMascota.modificarEstado("Adoptada", adopcion.mascota.idMascota,ref mapaEntidades);                   
+                    LogicaBDMascota.modificarEstado("Adoptada", adopcion.mascota.idMascota,ref mapaEntidades, adopcion.duenio.idDuenio);                   
                     mapaEntidades.AddToAdopciones(adopcionBD);
                     mapaEntidades.SaveChanges();
                     transaccion.Complete();
@@ -33,6 +33,13 @@ namespace AccesoADatos
                     return false;
                 }
             }
+        }
+        public static int obtenerProximoIdAdopcion()
+        {
+            SiGMAEntities mapa = Conexion.crearSegunServidor();
+            var qonda = mapa.ExecuteStoreQuery<Decimal>("SELECT IDENT_CURRENT('Adopciones') + IDENT_INCR('Adopciones')");
+            string asd = qonda.FirstOrDefault().ToString();
+            return int.Parse(asd);
         }
     }
 }
