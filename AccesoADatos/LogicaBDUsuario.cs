@@ -275,5 +275,57 @@ namespace AccesoADatos
                 throw exc;
             }
         }
+       public static List<EUsuario> BuscarUsuariosDuenio(string nombre)
+       {
+           List<EUsuario> usuarios = new List<EUsuario>();
+           SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+           IQueryable<Usuarios> aux = from usuariosBuscados in mapaEntidades.Usuarios
+                                      from personasBuscadas in mapaEntidades.Personas
+                                      from DuenioBuscados in mapaEntidades.Duenios
+                                      where (usuariosBuscados.user.Contains(nombre) && usuariosBuscados.estado == true && usuariosBuscados.user == personasBuscadas.user && personasBuscadas.idPersona == DuenioBuscados.idPersona)
+                                      select usuariosBuscados;
+           try
+           {
+               foreach (var usuarioBD in aux)
+               {
+                   EUsuario usuario = new EUsuario();
+                   usuario.user = usuarioBD.user;
+                   usuarios.Add(usuario);
+               }
+           }
+           catch (System.Data.EntityCommandCompilationException exc)
+           {
+               throw exc;
+           }
+           return usuarios;
+       }
+       //fin del metodo
+       //metodo para buscar usuarios por tipo y nº de documento
+       public static List<EUsuario> BuscarUsuariosDuenio(int tipo, string dni)
+       {
+           List<EUsuario> usuarios = new List<EUsuario>();
+           SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+           IQueryable<Usuarios> consulta = from personasBD in mapaEntidades.Personas
+                                           from usuariosBD in mapaEntidades.Usuarios
+                                           from DuenioBuscados in mapaEntidades.Duenios
+                                           where (personasBD.idPersona == DuenioBuscados.idPersona && personasBD.user == usuariosBD.user && personasBD.nroDocumento == dni && personasBD.idTipoDocumento == tipo && usuariosBD.estado == true)
+                                           select usuariosBD;
+           try
+           {
+               foreach (var usuarioBD in consulta)
+               {
+                   EUsuario usuario = new EUsuario();
+                   usuario.user = usuarioBD.user;
+                   usuarios.Add(usuario);
+               }
+           }
+           catch (System.Data.EntityCommandCompilationException exc)
+           {
+               throw exc;
+           }
+           return usuarios;
+       }
+        //fin metodo
+        //metodo para buscar persona
     }
 }

@@ -136,7 +136,7 @@ namespace SiGMA
             if (rbPorNombre.Checked)
             {
                 List<EUsuario> usuarios = new List<EUsuario>();
-                usuarios = LogicaBDUsuario.BuscarUsuarios(txtNombreDuenio.Text);
+                usuarios = LogicaBDUsuario.BuscarUsuariosDuenio(txtNombreDuenio.Text);
                 if (usuarios.Count != 0)
                 {
                     lstResultadosDuenios.DataSource = usuarios;
@@ -161,7 +161,7 @@ namespace SiGMA
                 else
                 {
                     List<EUsuario> usuarios = new List<EUsuario>();
-                    usuarios = LogicaBDUsuario.BuscarUsuarios(int.Parse(ddlTipo.SelectedValue), txtDNI.Text);
+                    usuarios = LogicaBDUsuario.BuscarUsuariosDuenio(int.Parse(ddlTipo.SelectedValue), txtDNI.Text);
                     if (usuarios.Count != 0)
                     {
                         lstResultadosDuenios.DataSource = usuarios;
