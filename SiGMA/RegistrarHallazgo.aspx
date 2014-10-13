@@ -108,7 +108,10 @@
                         <div style="display: table-cell; width: 30%;">
                             <asp:Panel Visible="true" runat="server" ID="pnlImagen">
                                 <img id="imgprvw" style="border: 2px solid #000000; height: 135px; width: 215px;"
-                                    runat="server"  src="~/App_Themes/TemaSigma/imagenes/sin_imagen_disponible.jpg"/>
+                                    runat="server" src="~/App_Themes/TemaSigma/imagenes/sin_imagen_disponible.jpg"/>
+                            </asp:Panel>
+                            <asp:Panel Visible="true" runat="server" ID="pnlPreview">
+                                <img id="preview" width="215px" style="margin-left: 27%" height="135px" hidden />
                             </asp:Panel>
                         </div>
                         <div style="display: table-cell; width: 22%; vertical-align: top;">
@@ -132,6 +135,9 @@
                                                 onselectedindexchanged="ddlEspecie_SelectedIndexChanged">
                                             </asp:DropDownList>
                                         </td>
+                                        <td>
+                                            <asp:CustomValidator ID="cvEspecie" runat="server" ErrorMessage="*" 
+                                                ForeColor="Red" onservervalidate="cvEspecie_ServerValidate"></asp:CustomValidator></td>
                                     </tr>
                                     <tr>
                                         <td>
@@ -141,6 +147,9 @@
                                             <asp:DropDownList ID="ddlRaza" Enabled="false" runat="server" Width="100%" AppendDataBoundItems="False">
                                             </asp:DropDownList>
                                         </td>
+                                        <td>
+                                            <asp:CustomValidator ID="cvRaza" runat="server" ErrorMessage="*" 
+                                                ForeColor="Red" onservervalidate="cvRaza_ServerValidate"></asp:CustomValidator></td>
                                     </tr>
                                     <tr>
                                         <td>
@@ -159,6 +168,9 @@
                                             <asp:DropDownList ID="ddlSexo" Enabled="false" runat="server" Width="100%">
                                             </asp:DropDownList>
                                         </td>
+                                        <td>
+                                            <asp:CustomValidator ID="cvSexo" runat="server" ErrorMessage="*" 
+                                                ForeColor="Red" onservervalidate="cvSexo_ServerValidate"></asp:CustomValidator></td>
                                     </tr>
                                     <tr>
                                         <td>
@@ -168,6 +180,9 @@
                                             <asp:DropDownList ID="ddlColor" Enabled="False" runat="server" Width="100%" AppendDataBoundItems="True">
                                             </asp:DropDownList>
                                         </td>
+                                        <td>
+                                            <asp:CustomValidator ID="cvColor" runat="server" ErrorMessage="*" 
+                                                ForeColor="Red" onservervalidate="cvColor_ServerValidate"></asp:CustomValidator></td>
                                         </tr> 
                                     <asp:Panel ID="pnlInputFoto" runat="server">
                                     <tr>
@@ -175,7 +190,7 @@
                                                 Foto:
                                           </td>
                                         <td>
-                                <input style="width:100%" type="file" runat="server"  id="fuImagen"   onchange="showimagepreview(this,'imgprvw')" /> 
+                                <input style="width:100%" type="file" runat="server"  id="fuImagen" onchange="showimagepreview(this, 'preview')" /> 
                                 <script type="text/javascript">
                                     function showimagepreview(input, image) {
                                         if (input.files && input.files[0]) {
@@ -300,7 +315,7 @@
                 if (input.files && input.files[0]) {
                     var filerdr = new FileReader();
                     filerdr.onload = function (e) {
-                        $('#imgprvw').attr('src', e.target.result);
+                        $('#preview').attr('src', e.target.result);
                         document.getElementById(image).style.display = 'block';
                     }
                     filerdr.readAsDataURL(input.files[0]);

@@ -29,15 +29,21 @@ namespace AccesoADatos
                     }
                     else
                     {
-                        bdHallazgo.idMascota = LogicaBDMascota.obtenerProximoIdMascota();
+                        int proxIdMascota = LogicaBDMascota.obtenerProximoIdMascota();
+                        bdHallazgo.idMascota = proxIdMascota;
+                        hallazgo.mascota.idMascota = proxIdMascota;
                         LogicaBDMascota.registrarMascota(hallazgo.mascota, ref mapa);
                     }
                     bdHallazgo.observaciones = hallazgo.observaciones;
                     bdHallazgo.idEstado = mapa.Estados.Where(es => es.ambito == "Hallazgo" && es.nombreEstado == "Abierta").First().idEstado;
-                    bdHallazgo.ubicacionHallazgo = hallazgo.domicilio.calle + " " + hallazgo.domicilio.numeroCalle;
+                    bdHallazgo.ubicacionHallazgo = hallazgo.domicilio.calle.nombre + " " + hallazgo.domicilio.numeroCalle;
                     mapa.AddToHallazgos(bdHallazgo);
                     mapa.SaveChanges();
                     transaction.Complete();
+                    if (hallazgo.perdida == null)
+                    {
+                        LogicaBDImagen.guardarImagen(hallazgo.mascota.imagen, hallazgo.mascota);
+                    }
                 }
                 catch (Exception ex)
                 {

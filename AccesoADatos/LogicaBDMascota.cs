@@ -78,12 +78,7 @@ namespace AccesoADatos
                 bdMascota.idColor = mascota.color.idColor;
                 bdMascota.idEdad = mascota.edad.idEdad;                               
                 bdMascota.sexo = mascota.sexo;
-                mapaEntidades.AddToMascotas(bdMascota);
-                //if (mascota.imagen != null)
-                //{
-                //    mascota.idMascota = mapaEntidades.Mascotas.OrderByDescending(m => m.idMascota).First().idMascota;
-                //    LogicaBDImagen.guardarImagen(mascota.imagen, mascota);
-                //}                    
+                mapaEntidades.AddToMascotas(bdMascota);                              
             }
             catch (Exception exc)
             {                    
@@ -1045,7 +1040,6 @@ namespace AccesoADatos
         public static int obtenerProximoIdMascota()
         {
             SiGMAEntities mapa = Conexion.crearSegunServidor();
-            //return mapa.Mascotas.OrderByDescending(m => m.idMascota).FirstOrDefault().idMascota + 1;            
             var qonda = mapa.ExecuteStoreQuery<Decimal>("SELECT IDENT_CURRENT('Mascotas') + IDENT_INCR('Mascotas')");
             string asd = qonda.FirstOrDefault().ToString();
             return int.Parse(asd);

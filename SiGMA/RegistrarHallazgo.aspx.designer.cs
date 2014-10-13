@@ -166,6 +166,15 @@ namespace SiGMA {
         protected global::System.Web.UI.HtmlControls.HtmlImage imgprvw;
         
         /// <summary>
+        /// Control pnlPreview.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlPreview;
+        
+        /// <summary>
         /// Control pnlHallazgoPerdidaMascota.
         /// </summary>
         /// <remarks>
@@ -193,6 +202,15 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.DropDownList ddlEspecie;
         
         /// <summary>
+        /// Control cvEspecie.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator cvEspecie;
+        
+        /// <summary>
         /// Control ddlRaza.
         /// </summary>
         /// <remarks>
@@ -200,6 +218,15 @@ namespace SiGMA {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlRaza;
+        
+        /// <summary>
+        /// Control cvRaza.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator cvRaza;
         
         /// <summary>
         /// Control ddlEdad.
@@ -220,6 +247,15 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.DropDownList ddlSexo;
         
         /// <summary>
+        /// Control cvSexo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator cvSexo;
+        
+        /// <summary>
         /// Control ddlColor.
         /// </summary>
         /// <remarks>
@@ -227,6 +263,15 @@ namespace SiGMA {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlColor;
+        
+        /// <summary>
+        /// Control cvColor.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator cvColor;
         
         /// <summary>
         /// Control pnlInputFoto.

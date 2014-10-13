@@ -70,7 +70,10 @@ namespace SiGMA
                 ddlSexo.Enabled = false;
                 ddlColor.Enabled = false;
                 pnlInputFoto.Visible = false;
+                pnlImagen.Visible = true;
+                pnlPreview.Visible = false;
                 CargarCombos.cargarComboRazas(ref ddlRaza);
+                limpiarCampos();
             }
             else
             {
@@ -85,12 +88,10 @@ namespace SiGMA
                 ddlSexo.Enabled = true;
                 ddlColor.Enabled = true;
                 pnlInputFoto.Visible = true;
-                txtNombreMascota.Text = "";
+                pnlImagen.Visible = false;
+                pnlPreview.Visible = true;
                 ddlRaza.Items.Clear();
-                ddlEspecie.SelectedIndex = -1;
-                ddlEdad.SelectedIndex = -1;
-                ddlColor.SelectedIndex = -1;
-                ddlSexo.SelectedIndex = -1;
+                limpiarCampos();
                 imgprvw.Src = "~/App_Themes/TemaSigma/imagenes/sin_imagen_disponible.jpg";
             }
             pnlCorrecto.Visible = false;
@@ -288,6 +289,8 @@ namespace SiGMA
                 hallazgo.domicilio.barrio.localidad = new ELocalidad();
                 hallazgo.domicilio.barrio.idBarrio = int.Parse(ddlBarrios.SelectedValue);
                 hallazgo.domicilio.barrio.localidad.idLocalidad = int.Parse(ddlLocalidades.SelectedValue);
+                hallazgo.domicilio.calle = new ECalle();
+                hallazgo.domicilio.calle.nombre = ddlCalles.SelectedItem.Text;
                 hallazgo.domicilio.numeroCalle = int.Parse(txtNroCalle.Text);
                 hallazgo.usuario = new EUsuario() { user = Session["UsuarioLogueado"].ToString() };
                 try
@@ -307,6 +310,41 @@ namespace SiGMA
         protected void ddlEspecie_SelectedIndexChanged(object sender, EventArgs e)
         {
             CargarCombos.cargarRazas(ref ddlRaza, int.Parse(ddlEspecie.SelectedValue));
+        }
+        
+        protected void cvEspecie_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            args.IsValid = Validaciones.verificarSeleccionEnDdl(ref ddlEspecie);
+        }
+
+        protected void cvRaza_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            args.IsValid = Validaciones.verificarSeleccionEnDdl(ref ddlRaza);
+        }
+
+        protected void cvSexo_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            args.IsValid = Validaciones.verificarSeleccionEnDdl(ref ddlSexo);
+        }
+
+        protected void cvColor_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            args.IsValid = Validaciones.verificarSeleccionEnDdl(ref ddlColor);
+        }
+
+        private void limpiarCampos()
+        {
+            txtNombreMascota.Text = "";
+            ddlEspecie.SelectedIndex = -1;
+            ddlEdad.SelectedIndex = -1;
+            ddlColor.SelectedIndex = -1;
+            ddlSexo.SelectedIndex = -1;
+            ddlBarrios.SelectedIndex = -1;
+            ddlCalles.SelectedIndex = -1;
+            ddlLocalidades.SelectedIndex = -1;
+            txtFecha.Text = "";
+            txtNroCalle.Text = "";
+            txtComentarios.Text = "";
         }
     }
 }
