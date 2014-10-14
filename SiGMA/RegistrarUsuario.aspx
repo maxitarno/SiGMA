@@ -80,7 +80,7 @@
                     </tr>
                     <tr>
                         <td>
-                            Documento:
+                           Nro. de Documento:
                         </td>
                         <td>
                             <asp:TextBox ID="txtDocumento" runat="server"></asp:TextBox></td><td>

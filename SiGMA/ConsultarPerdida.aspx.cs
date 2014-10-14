@@ -173,7 +173,10 @@ namespace SiGMA
                 }
                 Session["idPerdida"] = perdida.idPerdida;
                 txtFechaPerdida.Text = perdida.fecha.ToShortDateString();
-                txtComentarios.Text = perdida.comentarios.ToString();
+                if (perdida.comentarios != null)
+                {
+                    txtComentarios.Text = perdida.comentarios.ToString();
+                }
                 Session["idMascota"] = idMascota;
 
                 if (mascota.imagen != null)

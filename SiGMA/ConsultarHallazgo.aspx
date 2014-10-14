@@ -25,7 +25,7 @@
     <div class="panel panel-default">
         <div class="panel-heading">
             <h3 class="panel-title">
-                Registrar Hallazgo</h3>
+                <asp:Label ID="lblTitulo"  runat="server" Text="Label"></asp:Label></h3>
         </div>
         <div class="panel-body">
         <div style="margin-left:30%; width: 30%">        

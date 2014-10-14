@@ -33,9 +33,11 @@ namespace SiGMA
                 if (mod == "1")
                 {
                     paraModificar(true);
+                    lblTitulo.Text = "Modificar Hallazgo";
                 }
                 else
                 {
+                    lblTitulo.Text = "Consultar Hallazgo";
                     paraModificar(false);
                 }
             }
