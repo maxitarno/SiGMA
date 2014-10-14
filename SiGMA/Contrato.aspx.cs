@@ -12,8 +12,8 @@ namespace SiGMA
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Page.IsPostBack)
-            {
+            //if (!Page.IsPostBack)
+            //{
                 EMascota mascota = (EMascota)Session["Mascota"];
                 EPersona persona = (EPersona)Session["Dueño"];
                 ContratoWEb acuerdo = new ContratoWEb();
@@ -38,10 +38,10 @@ namespace SiGMA
                 row["sexo"] = mascota.sexo;
                 row["id"] = int.Parse(Session["IdVoluntario"].ToString());
                 dt.Rows.Add(row);
-                CrContrato.ReportSource = acuerdo;
                 acuerdo.SetDataSource(ds);
-                CrContrato.RefreshReport();
-            }
+                CrContrato.ReportSource = acuerdo;                
+                CrContrato.RefreshReport();               
+            //}
         }
         public void BtnAceptarClick(object sender, EventArgs e)
         {

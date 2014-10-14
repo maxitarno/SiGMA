@@ -29,7 +29,7 @@
                     </h3>
                 </div>
                 <div class="panel-body">
-                    <CR:CrystalReportViewer ID="CrContrato" runat="server" AutoDataBind="true" />
+                    <CR:CrystalReportViewer ID="CrContrato" runat="server" AutoDataBind="true" PrintMode="Pdf" />
                     <div style="margin-left: 30%; display: table; width: 40%;">
                         <div style="display: table-row; width: 30%">
                             <div style="display: table-cell; width: 20%;">
