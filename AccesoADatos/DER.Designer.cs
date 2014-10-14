@@ -53,6 +53,7 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_RolesXUsuario_Roles", "Roles", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Roles), "RolesXUsuario", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.RolesXUsuario), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_RolesXUsuario_Usuarios", "Usuarios", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Usuarios), "RolesXUsuario", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.RolesXUsuario), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Sesiones_Usuarios", "Usuarios", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Usuarios), "Sesiones", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Sesiones), true)]
+[assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Hallazgos_Calles", "Calles", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(AccesoADatos.Calles), "Hallazgos", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Hallazgos), true)]
 
 #endregion
 
@@ -1460,6 +1461,28 @@ namespace AccesoADatos
                 }
             }
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("SiGMAModel", "FK_Hallazgos_Calles", "Hallazgos")]
+        public EntityCollection<Hallazgos> Hallazgos
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Hallazgos>("SiGMAModel.FK_Hallazgos_Calles", "Hallazgos");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Hallazgos>("SiGMAModel.FK_Hallazgos_Calles", "Hallazgos", value);
+                }
+            }
+        }
 
         #endregion
 
@@ -2782,6 +2805,54 @@ namespace AccesoADatos
         private global::System.Int32 _idEstado;
         partial void OnidEstadoChanging(global::System.Int32 value);
         partial void OnidEstadoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> idCalle
+        {
+            get
+            {
+                return _idCalle;
+            }
+            set
+            {
+                OnidCalleChanging(value);
+                ReportPropertyChanging("idCalle");
+                _idCalle = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("idCalle");
+                OnidCalleChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _idCalle;
+        partial void OnidCalleChanging(Nullable<global::System.Int32> value);
+        partial void OnidCalleChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> nroCalle
+        {
+            get
+            {
+                return _nroCalle;
+            }
+            set
+            {
+                OnnroCalleChanging(value);
+                ReportPropertyChanging("nroCalle");
+                _nroCalle = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("nroCalle");
+                OnnroCalleChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _nroCalle;
+        partial void OnnroCalleChanging(Nullable<global::System.Int32> value);
+        partial void OnnroCalleChanged();
 
         #endregion
 
@@ -2936,6 +3007,44 @@ namespace AccesoADatos
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Usuarios>("SiGMAModel.FK_Hallazgos_Sesiones", "Usuarios", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("SiGMAModel", "FK_Hallazgos_Calles", "Calles")]
+        public Calles Calles
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Calles>("SiGMAModel.FK_Hallazgos_Calles", "Calles").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Calles>("SiGMAModel.FK_Hallazgos_Calles", "Calles").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Calles> CallesReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Calles>("SiGMAModel.FK_Hallazgos_Calles", "Calles");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Calles>("SiGMAModel.FK_Hallazgos_Calles", "Calles", value);
                 }
             }
         }

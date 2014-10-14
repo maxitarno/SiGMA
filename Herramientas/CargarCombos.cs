@@ -45,6 +45,7 @@ namespace Herramientas
         //Borrar este metodo
         public static void cargarBarrio(ref DropDownList ddl)
         {
+            ddl.Items.Clear();
             ddl.Items.Add(new ListItem("SIN ASIGNAR", "0"));
             List<EBarrio> barrios = Datos.BuscarBarrios();
             foreach (EBarrio item in barrios)
@@ -176,6 +177,7 @@ namespace Herramientas
         }
         public static void cargarCalles(ref DropDownList ddl)
         {
+            ddl.Items.Clear();
             List<ECalle> calles = Datos.BuscarCalle();
             foreach (ECalle item in calles)
             {

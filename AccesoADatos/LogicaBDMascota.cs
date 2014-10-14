@@ -766,8 +766,8 @@ namespace AccesoADatos
                                     sexo = MascotasBD.sexo,
                                     categoria = CategoriaRazaBD.nombreCategoriaRaza,
                                     idCategoria = CategoriaRazaBD.idCategoriaRazas,
-                                    idCaracter = G3.idCaracter,
-                                    caracter = G3.descripcion,
+                                    idCaracter = (G3 == null) ? 0 : G3.idCaracter,
+                                    caracter = (G3 == null) ? null : G3.descripcion,
                                     id = MascotasBD.idMascota,
                                     imagen = MascotasBD.imagen,
                                 };

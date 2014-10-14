@@ -10,7 +10,7 @@
 namespace SiGMA {
     
     
-    public partial class RegistrarHallazgo {
+    public partial class ConsultarHallazgo {
         
         /// <summary>
         /// Control pnlCorrecto.
@@ -47,24 +47,6 @@ namespace SiGMA {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblError;
-        
-        /// <summary>
-        /// Control rbYaPerdida.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rbYaPerdida;
-        
-        /// <summary>
-        /// Control rbNuevaMascota.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rbNuevaMascota;
         
         /// <summary>
         /// Control pnlFiltros.
@@ -166,15 +148,6 @@ namespace SiGMA {
         protected global::System.Web.UI.HtmlControls.HtmlImage imgprvw;
         
         /// <summary>
-        /// Control pnlPreview.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlPreview;
-        
-        /// <summary>
         /// Control pnlHallazgoPerdidaMascota.
         /// </summary>
         /// <remarks>
@@ -238,15 +211,6 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.DropDownList ddlEdad;
         
         /// <summary>
-        /// Control cvEdad.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator cvEdad;
-        
-        /// <summary>
         /// Control ddlSexo.
         /// </summary>
         /// <remarks>
@@ -281,24 +245,6 @@ namespace SiGMA {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CustomValidator cvColor;
-        
-        /// <summary>
-        /// Control pnlInputFoto.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlInputFoto;
-        
-        /// <summary>
-        /// Control fuImagen.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputFile fuImagen;
         
         /// <summary>
         /// Control ddlLocalidades.

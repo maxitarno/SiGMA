@@ -7,6 +7,7 @@ namespace Entidades
 {
     public class EHallazgo
     {
+        public int idHallazgo { get; set; }
         public EMascota mascota { get; set; }
         public EDomicilio domicilio { get; set; }
         public string observaciones { get; set; }

@@ -1,6 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PaginaMaestra.Master" AutoEventWireup="true"
-    CodeBehind="RegistrarHallazgo.aspx.cs" Inherits="SiGMA.RegistrarHallazgo" MaintainScrollPositionOnPostback="true" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PaginaMaestra.Master" AutoEventWireup="true" CodeBehind="ConsultarHallazgo.aspx.cs" MaintainScrollPositionOnPostback="true" Inherits="SiGMA.ConsultarHallazgo" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -42,20 +40,8 @@
                         ×</button>
                         <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
                 </asp:Panel>                
-                </div>
-        <div style="margin-left: 30%; display: table; width: 40%;">        
-            <div style="display: table-row; width: 30%">
-                <div style="display: table-cell; width: 20%;">
-                    <asp:RadioButton ID="rbYaPerdida" runat="server" Text="Mascota Hallada" GroupName="TipoHallazgo"
-                        AutoPostBack="True" OnCheckedChanged="rbYaPerdida_CheckedChanged" />
-                </div>
-                <div style="display: table-cell; width: 20%;">
-                    <asp:RadioButton ID="rbNuevaMascota" runat="server" Text="Mascota Rescatada" GroupName="TipoHallazgo"
-                        AutoPostBack="True" OnCheckedChanged="rbNuevaMascota_CheckedChanged" />
-                </div>
-            </div>
-        </div>        
-        <asp:Panel ID="pnlFiltros" runat="server" Visible="false">
+                </div>               
+        <asp:Panel ID="pnlFiltros" runat="server" Visible="true">
             <div style="margin-left: 30%; display: table; width: 40%;">   
                 <div style="display: table-row; width: 30%">
                  <div style="display: table-cell; width: 20%; vertical-align: top;">                    
@@ -109,10 +95,7 @@
                             <asp:Panel Visible="true" runat="server" ID="pnlImagen">
                                 <img id="imgprvw" style="border: 2px solid #000000; height: 135px; width: 215px;"
                                     runat="server" src="~/App_Themes/TemaSigma/imagenes/sin_imagen_disponible.jpg"/>
-                            </asp:Panel>
-                            <asp:Panel Visible="true" runat="server" ID="pnlPreview">
-                                <img id="preview" width="215px" style="margin-left: 27%" height="135px" hidden />
-                            </asp:Panel>
+                            </asp:Panel>                            
                         </div>
                         <div style="display: table-cell; width: 22%; vertical-align: top;">
                             <asp:Panel ID="pnlHallazgoPerdidaMascota" runat="server" Visible="true">
@@ -159,9 +142,6 @@
                                             <asp:DropDownList ID="ddlEdad" Enabled="false" runat="server" Width="100%" AppendDataBoundItems="True">
                                             </asp:DropDownList>
                                         </td>
-                                        <td>
-                                            <asp:CustomValidator ID="cvEdad" runat="server" ErrorMessage="*" 
-                                                ForeColor="Red" onservervalidate="cvEdad_ServerValidate"></asp:CustomValidator></td>
                                     </tr>
                                     <tr>
                                         <td>
@@ -186,17 +166,7 @@
                                         <td>
                                             <asp:CustomValidator ID="cvColor" runat="server" ErrorMessage="*" 
                                                 ForeColor="Red" onservervalidate="cvColor_ServerValidate"></asp:CustomValidator></td>
-                                        </tr> 
-                                    <asp:Panel ID="pnlInputFoto" runat="server">
-                                    <tr>
-                                        <td>
-                                                Foto:
-                                          </td>
-                                        <td>
-                                <input style="width:100%" type="file" runat="server"  id="fuImagen" onchange="showimagepreview(this,'preview')" />                                                               
-                            </td>                                                   
-                        </tr>  
-                                    </asp:Panel>                                                                            
+                                        </tr>                                                        
                                 </table>
                             </asp:Panel>
                         </div>
@@ -300,17 +270,5 @@
                         </asp:Panel>                       
                         </div>   
         </div>
-    </div>   
-    <script type="text/javascript">
-        function showimagepreview(input, image) {
-            if (input.files && input.files[0]) {
-                var filerdr = new FileReader();
-                filerdr.onload = function (e) {
-                    $('#preview').attr('src', e.target.result);
-                    document.getElementById(image).style.display = 'block';
-                }
-                filerdr.readAsDataURL(input.files[0]);
-            }
-        }
-                                    </script>      
+    </div>        
 </asp:Content>
