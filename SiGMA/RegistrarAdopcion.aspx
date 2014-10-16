@@ -55,13 +55,6 @@
                                 <div style="display: table-cell; width: 20%;">
                                     <asp:TextBox ID="txtFecha" runat="server" ReadOnly="True" ViewStateMode="Enabled"></asp:TextBox>
                                 </div>
-                                &nbsp
-                                <div style="display: table-cell; width: 20%;">
-                                    Voluntario:
-                                </div>
-                                <div style="display: table-cell; width: 20%;">
-                                    <asp:TextBox ID="txtN" runat="server" ReadOnly="True" ViewStateMode="Enabled"></asp:TextBox>
-                                </div>
                             </div>
                         </div>
                     </div>

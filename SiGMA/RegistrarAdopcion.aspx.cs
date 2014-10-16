@@ -37,7 +37,6 @@ namespace SiGMA
                 CargarCombos.cargarEdad(ref ddlEdad);
                 CargarCombos.cargarEspecies(ref ddlEspecies);
                 CargarCombos.cargarSexo(ref ddlSexo);
-                txtN.Text = Session["IdVoluntario"].ToString();
                 if (Session["Si"] != null)
                 {
                     if (Session["Si"].ToString().Equals("Si"))
@@ -332,7 +331,7 @@ namespace SiGMA
                 EAdopcion adopcion = new EAdopcion();
                 adopcion.mascota = new EMascota();
                 adopcion.duenio = new EDuenio();
-                adopcion.idVoluntario = int.Parse(txtN.Text);
+                adopcion.idVoluntario = int.Parse(Session["IdAdopcion"].ToString());
                 adopcion.mascota.idMascota = int.Parse(Session["IdMascota"].ToString());
                 adopcion.fecha = DateTime.Parse(txtFecha.Text);
                 adopcion.duenio.idDuenio = int.Parse(Session["Duenio"].ToString());
