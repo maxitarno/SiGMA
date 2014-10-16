@@ -35,6 +35,7 @@ namespace SiGMA
             row["edad"] = mascota.edad.nombreEdad;
             row["sexo"] = mascota.sexo;
             row["id"] = int.Parse(Session["IdVoluntario"].ToString());
+            row["na"] = int.Parse(Session["na"].ToString());
             dt.Rows.Add(row);
             acuerdo.SetDataSource(ds);
             CrContrato.ReportSource = acuerdo;                
