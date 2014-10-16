@@ -313,6 +313,8 @@ namespace SiGMA {
             
             private global::System.Data.DataColumn columnid;
             
+            private global::System.Data.DataColumn columnna;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ContratoAdopcionDataTable() {
@@ -484,6 +486,14 @@ namespace SiGMA {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn naColumn {
+                get {
+                    return this.columnna;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -536,7 +546,8 @@ namespace SiGMA {
                         string raza, 
                         string edad, 
                         string sexo, 
-                        int id) {
+                        int id, 
+                        int na) {
                 ContratoAdopcionRow rowContratoAdopcionRow = ((ContratoAdopcionRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         numero_de_documento,
@@ -555,7 +566,8 @@ namespace SiGMA {
                         raza,
                         edad,
                         sexo,
-                        id};
+                        id,
+                        na};
                 rowContratoAdopcionRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowContratoAdopcionRow);
                 return rowContratoAdopcionRow;
@@ -595,6 +607,7 @@ namespace SiGMA {
                 this.columnedad = base.Columns["edad"];
                 this.columnsexo = base.Columns["sexo"];
                 this.columnid = base.Columns["id"];
+                this.columnna = base.Columns["na"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -634,6 +647,8 @@ namespace SiGMA {
                 base.Columns.Add(this.columnsexo);
                 this.columnid = new global::System.Data.DataColumn("id", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnid);
+                this.columnna = new global::System.Data.DataColumn("na", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnna);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1052,6 +1067,22 @@ namespace SiGMA {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int na {
+                get {
+                    try {
+                        return ((int)(this[this.tableContratoAdopcion.naColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'na\' de la tabla \'ContratoAdopcion\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableContratoAdopcion.naColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool Isnumero_de_documentoNull() {
                 return this.IsNull(this.tableContratoAdopcion.numero_de_documentoColumn);
             }
@@ -1252,6 +1283,18 @@ namespace SiGMA {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetidNull() {
                 this[this.tableContratoAdopcion.idColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsnaNull() {
+                return this.IsNull(this.tableContratoAdopcion.naColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetnaNull() {
+                this[this.tableContratoAdopcion.naColumn] = global::System.Convert.DBNull;
             }
         }
         

@@ -12,7 +12,7 @@
   <xs:element name="DatosReportes" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DatosReportes" msprop:Generator_UserDSName="DatosReportes">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="ContratoAdopcion" msprop:Generator_TableClassName="ContratoAdopcionDataTable" msprop:Generator_TableVarName="tableContratoAdopcion" msprop:Generator_RowChangedName="ContratoAdopcionRowChanged" msprop:Generator_TablePropName="ContratoAdopcion" msprop:Generator_RowDeletingName="ContratoAdopcionRowDeleting" msprop:Generator_RowChangingName="ContratoAdopcionRowChanging" msprop:Generator_RowEvHandlerName="ContratoAdopcionRowChangeEventHandler" msprop:Generator_RowDeletedName="ContratoAdopcionRowDeleted" msprop:Generator_RowClassName="ContratoAdopcionRow" msprop:Generator_UserTableName="ContratoAdopcion" msprop:Generator_RowEvArgName="ContratoAdopcionRowChangeEvent">
+        <xs:element name="ContratoAdopcion" msprop:Generator_TableClassName="ContratoAdopcionDataTable" msprop:Generator_TableVarName="tableContratoAdopcion" msprop:Generator_TablePropName="ContratoAdopcion" msprop:Generator_RowDeletingName="ContratoAdopcionRowDeleting" msprop:Generator_RowChangingName="ContratoAdopcionRowChanging" msprop:Generator_RowEvHandlerName="ContratoAdopcionRowChangeEventHandler" msprop:Generator_RowDeletedName="ContratoAdopcionRowDeleted" msprop:Generator_UserTableName="ContratoAdopcion" msprop:Generator_RowChangedName="ContratoAdopcionRowChanged" msprop:Generator_RowEvArgName="ContratoAdopcionRowChangeEvent" msprop:Generator_RowClassName="ContratoAdopcionRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="numero_x0020_de_x0020_documento" msprop:Generator_ColumnVarNameInTable="columnnumero_de_documento" msprop:Generator_ColumnPropNameInRow="numero_de_documento" msprop:Generator_ColumnPropNameInTable="numero_de_documentoColumn" msprop:Generator_UserColumnName="numero de documento" type="xs:int" minOccurs="0" />
@@ -32,6 +32,7 @@
               <xs:element name="edad" msprop:Generator_ColumnVarNameInTable="columnedad" msprop:Generator_ColumnPropNameInRow="edad" msprop:Generator_ColumnPropNameInTable="edadColumn" msprop:Generator_UserColumnName="edad" type="xs:string" minOccurs="0" />
               <xs:element name="sexo" msprop:Generator_ColumnVarNameInTable="columnsexo" msprop:Generator_ColumnPropNameInRow="sexo" msprop:Generator_ColumnPropNameInTable="sexoColumn" msprop:Generator_UserColumnName="sexo" type="xs:string" minOccurs="0" />
               <xs:element name="id" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" minOccurs="0" />
+              <xs:element name="na" msprop:Generator_ColumnVarNameInTable="columnna" msprop:Generator_ColumnPropNameInRow="na" msprop:Generator_ColumnPropNameInTable="naColumn" msprop:Generator_UserColumnName="na" type="xs:int" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

@@ -42,6 +42,7 @@ namespace SiGMA
                 {
                     if (Session["Si"].ToString().Equals("Si"))
                     {
+                        btnRegistrar.Text = "Registrar adopción";
                         EPersona persona = (EPersona)Session["Dueño"];
                         EMascota mascota = (EMascota)Session["Mascota"];
                         txtNombreD.Text = persona.nombre;
@@ -69,12 +70,14 @@ namespace SiGMA
                         {
                             pnlBuscar.Visible = true;
                             pnlDocumento.Visible = true;
+                            btnRegistrar.Text = "Generar contrato";
                         }
                     }
                     else
                     {
                         pnlDocumento.Visible = true;
                         pnlBuscar.Visible = true;
+                        btnRegistrar.Text = "Generar contrato";
                     }
                     pnlNombre.Visible = false;
                     pnlInfo.Visible = false;
@@ -82,7 +85,7 @@ namespace SiGMA
                     pnlBuscarMascota.Visible = false;
                     pnlAtento.Visible = false;
                     pnlResultadosDuenio.Visible = false;
-                    pnllimpiar.Visible = false;
+                    //pnllimpiar.Visible = false;
                     txtNombreDuenio.Enabled = false;
                     ddlTipo.Enabled = true;
                     txtNº.Enabled = false;
@@ -92,6 +95,7 @@ namespace SiGMA
         }
         public void rbPorTipo(object sender, EventArgs e)
         {
+            btnRegistrar.Text = "Generar contrato";
             pnlNombre.Visible = false;
             pnlInfo.Visible = false;
             pnlMascota.Visible = false;
@@ -102,7 +106,7 @@ namespace SiGMA
             pnlResultadosDuenio.Visible = false;
             pnlDuenio.Visible = false;
             pnlMascota.Visible = false;
-            pnllimpiar.Visible = false;
+            //pnllimpiar.Visible = false;
             pnlRegistrar.Visible = false;
             pnlBuscar.Visible = true;
             txtNombreDuenio.Enabled = false;
@@ -112,6 +116,7 @@ namespace SiGMA
         }
         public void rbPorName(object sender, EventArgs e)
         {
+            btnRegistrar.Text = "Generar contrato";
             pnlNombre.Visible = true;
             pnlInfo.Visible = false;
             pnlMascota.Visible = false;
@@ -122,7 +127,7 @@ namespace SiGMA
             pnlResultadosDuenio.Visible = false;
             pnlDuenio.Visible = false;
             pnlMascota.Visible = false;
-            pnllimpiar.Visible = false;
+            //pnllimpiar.Visible = false;
             pnlRegistrar.Visible = false;
             pnlBuscar.Visible = true;
             txtNombreDuenio.Enabled = true;
@@ -274,7 +279,7 @@ namespace SiGMA
                 lstResultadosMascotas.DataBind();
                 pnlMascota.Visible = true;
                 pnlResultadosMascotas.Visible = true;
-                pnllimpiar.Visible = false;
+                //pnllimpiar.Visible = false;
                 pnlCorrecto.Visible = false;
                 pnlInfo.Visible = false;
                 pnlAtento.Visible = false;
@@ -301,7 +306,7 @@ namespace SiGMA
                 txtSexo.Text = mascota.sexo;
                 txtEdad.Text = mascota.edad.nombreEdad;
                 txtNombreM.Text = mascota.nombreMascota;
-                pnllimpiar.Visible = true;
+                //pnllimpiar.Visible = true;
                 pnlRegistrar.Visible = true;
                 Session["IdMascota"] = mascota.idMascota;
                 pnlCorrecto.Visible = false;
@@ -354,6 +359,7 @@ namespace SiGMA
             }
             else
             {
+                Session["na"] = LogicaBDAdopcion.obtenerProximoIdAdopcion();
                 Response.Redirect("Contrato.aspx");
             }
         }
