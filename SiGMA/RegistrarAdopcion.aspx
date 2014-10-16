@@ -25,35 +25,36 @@
                         Registrar Adopción
                     </h3>
                 </div>
-                <div class="panel-body">
-                    <div class="centered">
-                        <asp:Panel runat="server" ID="pnlCorrecto" class="alert alert-dismissable alert-success"
-                            Visible="false">
-                            <button class="close" type="button" data-dismiss="alert">
-                                ×</button>
-                            <asp:Label ID="lblResultado1" runat="server" Text=""></asp:Label>
-                        </asp:Panel>
-                        <asp:Panel runat="server" ID="pnlInfo" class="alert alert-dismissable alert-info"
-                            Visible="false">
-                            <button class="close" type="button" data-dismiss="alert">
-                                ×</button>
-                            <asp:Label ID="lblResultado2" runat="server" Text=""></asp:Label>
-                        </asp:Panel>
-                        <asp:Panel runat="server" ID="pnlAtento" class="alert alert-dismissable alert-danger"
-                            Visible="false">
-                            <button class="close" type="button" data-dismiss="alert">
-                                ×</button>
-                            <asp:Label ID="lblResultado3" runat="server" Text=""></asp:Label>
-                        </asp:Panel>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="col-md-4 col-md-offset-4">
+                            <asp:Panel runat="server" ID="pnlCorrecto" class="alert alert-dismissable alert-success"
+                                Visible="false">
+                                <button class="close" type="button" data-dismiss="alert">
+                                    ×</button>
+                                <asp:Label ID="lblResultado1" runat="server" Text=""></asp:Label>
+                            </asp:Panel>
+                            <asp:Panel runat="server" ID="pnlInfo" class="alert alert-dismissable alert-info"
+                                Visible="false">
+                                <button class="close" type="button" data-dismiss="alert">
+                                    ×</button>
+                                <asp:Label ID="lblResultado2" runat="server" Text=""></asp:Label>
+                            </asp:Panel>
+                            <asp:Panel runat="server" ID="pnlAtento" class="alert alert-dismissable alert-danger"
+                                Visible="false">
+                                <button class="close" type="button" data-dismiss="alert">
+                                    ×</button>
+                                <asp:Label ID="lblResultado3" runat="server" Text=""></asp:Label>
+                            </asp:Panel>
+                        </div>
                     </div>
+                </div>
+                <div class="panel-body">
                     <div class="centered">
                         <div style="margin-left: 30%; display: table; width: 40%;">
                             <div style="display: table-row; width: 30%">
                                 <div style="display: table-cell; width: 20%;">
-                                    Fecha:
-                                </div>
-                                <div style="display: table-cell; width: 20%;">
-                                    <asp:TextBox ID="txtFecha" runat="server" ReadOnly="True" ViewStateMode="Enabled"></asp:TextBox>
+                                    Fecha:&nbsp<asp:TextBox ID="txtFecha" runat="server" ReadOnly="True" ViewStateMode="Enabled"></asp:TextBox>
                                 </div>
                             </div>
                         </div>
