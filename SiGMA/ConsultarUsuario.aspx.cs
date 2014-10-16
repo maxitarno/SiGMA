@@ -76,6 +76,7 @@ namespace SiGMA
                 pnlInfo.Visible = false;
                 pnlAtento.Visible = false;
                 lstResultados.Items.Clear();
+                pnlSeleccionar.Visible = true;
                 List<EUsuario> usuarios = new List<EUsuario>();
                 if (Validaciones.verificarSoloNumeros(txtNºDeDocumento.Text))
                 {
@@ -124,6 +125,7 @@ namespace SiGMA
                 pnlInfo.Visible = false;
                 pnlAtento.Visible = false;
                 lstResultados.Items.Clear();
+                pnlSeleccionar.Visible = true;
                 List<EUsuario> usuarios = new List<EUsuario>();
                 usuarios = LogicaBDUsuario.BuscarUsuarios(txtUsuario.Text);
                 if (usuarios.Count != 0)
@@ -200,7 +202,7 @@ namespace SiGMA
                 pnlphonefixed.Visible = true;
                 pnlresult.Visible = true;
                 pnlResultados.Visible = true;
-                pnlSeleccionar.Visible = true;
+                pnlSeleccionar.Visible = false;
                 pnlsurname.Visible = true;
                 pnlTelefonFijo.Visible = true;
                 pnlTelefonoCelular.Visible = true;
@@ -213,6 +215,7 @@ namespace SiGMA
                 pnlDdlCalle.Visible = true;
                 ddlCalle.SelectedValue = (calle.idCalle == null) ? "0" : calle.idCalle.ToString();
                 pnlCalle.Visible = true;
+                pnlBuscar.Visible = false;
             }
             else
             {
@@ -512,6 +515,7 @@ namespace SiGMA
                 txtUsuario.ReadOnly = false;
                 pnlCalle.Visible = false;
                 pnlDdlCalle.Visible = false;
+                pnlBuscar.Visible = true;
             }
         }
         public void RdbPorPersona(object sender, EventArgs e)
@@ -552,6 +556,7 @@ namespace SiGMA
             txtUsuario.ReadOnly = false;
             pnlCalle.Visible = false;
             pnlDdlCalle.Visible = false;
+            pnlBuscar.Visible = true;
         }
         public void DdlBarrio_SelectedIndexChanged(object sender, EventArgs e)
         {

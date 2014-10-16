@@ -47,7 +47,7 @@
                 </div>
             </div>
             <div class="panel-body">
-                <div class="col-md-1 col-md-offset-0">
+                <div class="col-md-3 col-md-offset-1">
                     <div style="margin-left: 30%; display: table; width: 40%;">
                         <div style="display: table-row; width: 40%">
                             <table>
@@ -80,8 +80,7 @@
                                     </td>
                                     <td>
                                         <asp:Panel ID="pnlBuscar" runat="server" Visible="false">
-                                            <asp:Button ID="btnBuscar" runat="server" Text="Buscar" OnClick="btnBuscarClick"
-                                                CssClass="btn-primary" />
+                                            <asp:Button ID="btnBuscar" runat="server" Text="Buscar" OnClick="btnBuscarClick" />
                                         </asp:Panel>
                                     </td>
                                 </tr>
@@ -134,14 +133,13 @@
                         <div style="display: table-row; width: 30%">
                             <asp:Panel ID="pnlSeleccionar" runat="server" Visible="false">
                                 <div style="display: table-cell; width: 20%;">
-                                    <asp:Button ID="btnSeleccionar" runat="server" Text="Seleccionar" OnClick="btnAceptarClick"
-                                        CssClass="btn-primary" />
+                                    <asp:Button ID="btnSeleccionar" runat="server" Text="Seleccionar" OnClick="btnAceptarClick" />
                                 </div>
                             </asp:Panel>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-1 col-md-offset-4">
+                <div class="col-md-3 col-md-offset-2">
                     <div style="margin-left: 30%; display: table; width: 40%;">
                         <div style="display: table-row; width: 30%">
                             <table>
@@ -302,19 +300,19 @@
                                             <td>
                                                 <asp:Panel ID="pnlModificar" runat="server" Visible="false">
                                                     <asp:Button ID="btnModificar" runat="server" Text="Modificar" OnClick="btnModificarClick"
-                                                        ValidationGroup="2" CssClass="btn-primary" />
+                                                        ValidationGroup="2" />
                                                 </asp:Panel>
                                             </td>
                                             <td>
                                                 <asp:Panel ID="pnlEliminar" runat="server" Visible="false">
                                                     <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" OnClick="btnEliminarClick"
-                                                        ValidationGroup="3" CssClass="btn-primary" />
+                                                        ValidationGroup="3" />
                                                 </asp:Panel>
                                             </td>
                                             <td>
                                                 <asp:Panel ID="pnlLimpiar" runat="server" Visible="false">
                                                     <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar" OnClick="btnLimpiarClick"
-                                                        CssClass="btn-primary" />
+                                                        />
                                                 </asp:Panel>
                                             </td>
                                         </tr>

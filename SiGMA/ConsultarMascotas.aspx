@@ -61,7 +61,7 @@
             </div>
 
             <div class="panel-body">
-                <div class="col-md-1 col-md-offset-1">
+                <div class="col-md-3 col-md-offset-1">
                     <div style="margin-left: 30%; display: table; width: 40%;">
                         <div style="display: table-row; width: 30%">
                             <div style="display: table-cell; width: 20%;">
@@ -217,7 +217,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-1 col-md-offset-4">
+                <div class="col-md-3 col-md-offset-2">
                     <table>
                         <asp:Panel ID="pnlDatos" runat="server" Visible="false">
                             <tr>
@@ -285,7 +285,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <input type="file" runat="server" id="File1" onchange="showimagepreview(this)" class="bg-primary" />
+                                    <input type="file" runat="server" id="File1" onchange="showimagepreview(this)" />
                                 </td>
                                 <td>
                                 </td>
