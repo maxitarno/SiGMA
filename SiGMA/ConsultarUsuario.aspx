@@ -47,23 +47,13 @@
                 </div>
             </div>
             <div class="panel-body">
+                <div class="centered">
+                    <asp:RadioButton ID="rbPorPersona" runat="server" GroupName="1" ValidationGroup="1"
+                        AutoPostBack="True" OnCheckedChanged="RdbPorPersona" Text="Por persona" />
+                    <asp:RadioButton ID="rbPorUsuario" runat="server" GroupName="1" ValidationGroup="1"
+                        AutoPostBack="True" OnCheckedChanged="RdbPorUsuario" Checked="True" Text="Por usuario" />
+                </div>
                 <div class="col-md-3 col-md-offset-1">
-                    <div style="margin-left: 30%; display: table; width: 40%;">
-                        <div style="display: table-row; width: 40%">
-                            <table>
-                                <tr>
-                                    <td>
-                                        <asp:RadioButton ID="rbPorPersona" runat="server" GroupName="1" ValidationGroup="1"
-                                            AutoPostBack="True" OnCheckedChanged="RdbPorPersona" Text="Por persona" />
-                                    </td>
-                                    <td>
-                                        <asp:RadioButton ID="rbPorUsuario" runat="server" GroupName="1" ValidationGroup="1"
-                                            AutoPostBack="True" OnCheckedChanged="RdbPorUsuario" Checked="True" Text="Por usuario" />
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
                     <div style="margin-left: 30%; display: table; width: 40%;">
                         <div style="display: table-row; width: 40%">
                             <table>
