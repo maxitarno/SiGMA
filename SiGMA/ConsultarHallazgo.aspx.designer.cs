@@ -184,15 +184,6 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.DropDownList ddlEspecie;
         
         /// <summary>
-        /// Control cvEspecie.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator cvEspecie;
-        
-        /// <summary>
         /// Control ddlRaza.
         /// </summary>
         /// <remarks>
@@ -200,15 +191,6 @@ namespace SiGMA {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlRaza;
-        
-        /// <summary>
-        /// Control cvRaza.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator cvRaza;
         
         /// <summary>
         /// Control ddlEdad.
@@ -229,15 +211,6 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.DropDownList ddlSexo;
         
         /// <summary>
-        /// Control cvSexo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator cvSexo;
-        
-        /// <summary>
         /// Control ddlColor.
         /// </summary>
         /// <remarks>
@@ -245,15 +218,6 @@ namespace SiGMA {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlColor;
-        
-        /// <summary>
-        /// Control cvColor.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator cvColor;
         
         /// <summary>
         /// Control ddlLocalidades.
@@ -337,12 +301,21 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.TextBox txtComentarios;
         
         /// <summary>
-        /// Control btnRegistrarHallazgo.
+        /// Control btnModificarHallazgo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnRegistrarHallazgo;
+        protected global::System.Web.UI.WebControls.Button btnModificarHallazgo;
+        
+        /// <summary>
+        /// Control ibtnRegresar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton ibtnRegresar;
     }
 }

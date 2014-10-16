@@ -301,6 +301,7 @@ namespace SiGMA
                     pnlCorrecto.Visible = true;
                     lblCorrecto.Text = "Hallazgo registrado exisotamente";
                     SetFocus(lblCorrecto);
+                    limpiarCampos();
                 }
                 catch (Exception)
                 {
@@ -354,6 +355,11 @@ namespace SiGMA
         protected void cvEdad_ServerValidate(object source, ServerValidateEventArgs args)
         {
             args.IsValid = Validaciones.verificarSeleccionEnDdl(ref ddlEdad);
+        }
+
+        protected void ibtnRegresar_Click(object sender, ImageClickEventArgs e)
+        {
+            Response.Redirect("Hallazgos.aspx");
         }
     }
 }

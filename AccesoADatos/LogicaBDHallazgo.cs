@@ -38,6 +38,7 @@ namespace AccesoADatos
                     bdHallazgo.idEstado = mapa.Estados.Where(es => es.ambito == "Hallazgo" && es.nombreEstado == "Abierta").First().idEstado;
                     bdHallazgo.nroCalle = hallazgo.domicilio.numeroCalle;
                     bdHallazgo.idCalle = hallazgo.domicilio.calle.idCalle;
+                    bdHallazgo.idUsuario = hallazgo.usuario.user;
                     mapa.AddToHallazgos(bdHallazgo);
                     mapa.SaveChanges();
                     transaction.Complete();
@@ -101,6 +102,45 @@ namespace AccesoADatos
             else
             {
                 return null;
+            }
+        }
+
+        public static void modificarHallazgo(EHallazgo hallazgo)
+        {
+            using(TransactionScope trans = new TransactionScope())
+            {
+                try
+                {
+                    SiGMAEntities mapa = Conexion.crearSegunServidor();
+                    Hallazgos bdHallazgo = mapa.Hallazgos.Where(h => h.idHallazgo == hallazgo.idHallazgo).First();
+                    bdHallazgo.fechaHoraHallazgo = hallazgo.fechaHallazgo;
+                    bdHallazgo.idBarrioHallazgo = hallazgo.domicilio.barrio.idBarrio;
+                    bdHallazgo.observaciones = hallazgo.observaciones;
+                    bdHallazgo.idCalle = hallazgo.domicilio.calle.idCalle;
+                    bdHallazgo.nroCalle = hallazgo.domicilio.numeroCalle;
+                    bdHallazgo.idUsuario = hallazgo.usuario.user;
+                    modificarEstado("Modificada", hallazgo, ref mapa);
+                    mapa.SaveChanges();
+                    trans.Complete();
+                }
+                catch(Exception)
+                {
+                    trans.Dispose();
+                    throw;
+                }
+            }
+        }
+
+        public static void modificarEstado(string estado, EHallazgo hallazgo,ref SiGMAEntities mapa)
+        {
+            try
+            {
+                Hallazgos bdHallazgo = mapa.Hallazgos.Where(h => h.idHallazgo == hallazgo.idHallazgo).First();
+                bdHallazgo.idEstado = mapa.Estados.Where(e => e.ambito == "Hallazgo" && e.nombreEstado == estado).First().idEstado;
+            }
+            catch (Exception)
+            {
+                throw;
             }
         }
     }

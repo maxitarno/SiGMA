@@ -1022,22 +1022,7 @@ namespace AccesoADatos
                 return null;
             }
         }
-
-        //Metodo que modifica el estado de una mascota, parametros: String del nuevo estado de la mascota y el id de la mascota a modificar y la transaccion
-        public static void modificarEstado(string estado, int idMascotaParam, ref SiGMAEntities mapa, int id)
-        {
-            try
-            {                    
-                Mascotas bdMascota = mapa.Mascotas.Where(m => m.idMascota == idMascotaParam).First();
-                bdMascota.idDuenio = id;
-                bdMascota.idEstado = mapa.Estados.Where(es => es.ambito == "Mascota" && es.nombreEstado == estado).First().idEstado; 
-            }
-            catch (Exception)
-            {                    
-                throw;
-            }  
-        }
-
+           
         public static int obtenerProximoIdMascota()
         {
             SiGMAEntities mapa = Conexion.crearSegunServidor();
@@ -1045,6 +1030,8 @@ namespace AccesoADatos
             string asd = qonda.FirstOrDefault().ToString();
             return int.Parse(asd);
         }
+
+
         public static void modificarEstado(string estado, int idMascotaParam, ref SiGMAEntities mapa)
         {
             try
@@ -1055,6 +1042,20 @@ namespace AccesoADatos
             catch (Exception)
             {
                 throw;
+            }
+        }
+
+
+        public static void asignarDueño(EMascota mascot, int idDueño, ref SiGMAEntities mapa)
+        {
+            try
+            {
+                Mascotas bdMascot = mapa.Mascotas.Where(m => m.idMascota == mascot.idMascota).First();
+                bdMascot.idDuenio = idDueño;
+            }
+            catch (Exception)
+            {
+
             }
         }
     }

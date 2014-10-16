@@ -114,13 +114,10 @@
                                         </td>
                                         <td>
                                             <asp:DropDownList ID="ddlEspecie" runat="server" Width="100%" 
-                                                AutoPostBack="true" Enabled="false" AppendDataBoundItems="true" 
-                                                onselectedindexchanged="ddlEspecie_SelectedIndexChanged">
+                                                AutoPostBack="true" Enabled="false" AppendDataBoundItems="true">
                                             </asp:DropDownList>
                                         </td>
-                                        <td>
-                                            <asp:CustomValidator ID="cvEspecie" runat="server" ErrorMessage="*" 
-                                                ForeColor="Red" onservervalidate="cvEspecie_ServerValidate"></asp:CustomValidator></td>
+                                        <td></td>
                                     </tr>
                                     <tr>
                                         <td>
@@ -131,8 +128,7 @@
                                             </asp:DropDownList>
                                         </td>
                                         <td>
-                                            <asp:CustomValidator ID="cvRaza" runat="server" ErrorMessage="*" 
-                                                ForeColor="Red" onservervalidate="cvRaza_ServerValidate"></asp:CustomValidator></td>
+                                            </td>
                                     </tr>
                                     <tr>
                                         <td>
@@ -152,8 +148,7 @@
                                             </asp:DropDownList>
                                         </td>
                                         <td>
-                                            <asp:CustomValidator ID="cvSexo" runat="server" ErrorMessage="*" 
-                                                ForeColor="Red" onservervalidate="cvSexo_ServerValidate"></asp:CustomValidator></td>
+                                           </td>
                                     </tr>
                                     <tr>
                                         <td>
@@ -164,8 +159,7 @@
                                             </asp:DropDownList>
                                         </td>
                                         <td>
-                                            <asp:CustomValidator ID="cvColor" runat="server" ErrorMessage="*" 
-                                                ForeColor="Red" onservervalidate="cvColor_ServerValidate"></asp:CustomValidator></td>
+                                            </td>
                                         </tr>                                                        
                                 </table>
                             </asp:Panel>
@@ -218,15 +212,16 @@
                                             Fecha del Hallazgo:
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="txtFecha" runat="server" Width="100%"></asp:TextBox>
-                                            <%--<asp:ImageButton ID="imgFechaPerdida" runat="server" CausesValidation="False"
-                            ImageUrl="~/App_Themes/TemaSigma/imagenes/ico_calendar.gif"  /> <asp:Calendar ID="calendario" runat="server" BorderColor="Black" 
+                                            <asp:TextBox ID="txtFecha" runat="server" Width="100%"></asp:TextBox></td>
+                                            <%--<td>
+                                            <asp:ImageButton ID="imgFechaHallazgo" runat="server" CausesValidation="False"
+                            ImageUrl="~/App_Themes/TemaSigma/imagenes/ico_calendar.gif" onclick="imgFechaPerdida_Click"  /> <asp:Calendar ID="calendario" runat="server" BorderColor="Black" 
                                     BorderWidth="1px" Visible="False" onselectionchanged="calendario_SelectionChanged">
                                      <DayHeaderStyle BackColor="White" Font-Bold="True" ForeColor="Black" />
                                     <DayStyle ForeColor="Black" />
                                     <TitleStyle BackColor="Black" ForeColor="White" />
-                                    </asp:Calendar>--%>
-                                        </td>
+                                    </asp:Calendar>
+                                        </td>--%>
                                         <td>
                                             <asp:RequiredFieldValidator ID="rfvFecha" runat="server" ErrorMessage="*" ForeColor="Red"
                                                 ControlToValidate="txtFecha"></asp:RequiredFieldValidator>
@@ -257,8 +252,8 @@
                                         <td>
                                         </td>
                                         <td>
-                                            <asp:Button ID="btnRegistrarHallazgo" runat="server" Text="Registrar"
-                                                OnClick="btnRegistrarHallazgo_Click" />
+                                            <asp:Button ID="btnModificarHallazgo" runat="server" Text="Modificar"
+                                                OnClick="btnModificarHallazgo_Click" />
                                         </td>
                                         <td>
                                         </td>
@@ -270,5 +265,11 @@
                         </asp:Panel>                       
                         </div>   
         </div>
-    </div>        
+    </div> 
+    <div class="centered">
+        <asp:ImageButton ID="ibtnRegresar" runat="server" 
+            ImageUrl="~/imagenes/volver.png" onclick="ibtnRegresar_Click"/>
+        </br>
+        Volver
+    </div>     
 </asp:Content>

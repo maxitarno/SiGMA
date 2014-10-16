@@ -300,7 +300,13 @@
                         </asp:Panel>                       
                         </div>   
         </div>
-    </div>   
+    </div> 
+    <div class="centered">
+        <asp:ImageButton ID="ibtnRegresar" runat="server" 
+            ImageUrl="~/imagenes/volver.png" onclick="ibtnRegresar_Click"/>
+        </br>
+        Volver
+    </div>  
     <script type="text/javascript">
         function showimagepreview(input, image) {
             if (input.files && input.files[0]) {
