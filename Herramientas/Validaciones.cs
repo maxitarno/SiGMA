@@ -37,6 +37,25 @@ namespace Herramientas
                 return false;
             }
         }
+        public static bool verificarSoloLetras(string texto)
+        {
+            if (!texto.Equals(""))
+            {
+                foreach (char ch in texto)
+                {
+                    if (!Char.IsLetter(ch) && ch != 32)
+                    {
+                        return false;
+                    }
+                }
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public static bool verificarDecimal(string texto)
         {
             foreach (char c in texto)
@@ -51,6 +70,19 @@ namespace Herramientas
         public static bool Fecha(string fecha, out DateTime fechaRetorno)
         {
             if (DateTime.TryParse(fecha, out fechaRetorno))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public static bool contarCaracteres(string texto) 
+        {
+
+            if (texto.Length >= 8)
             {
                 return true;
             }

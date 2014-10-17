@@ -67,6 +67,7 @@ namespace SiGMA
                 pnlEliminar.Visible = false;
                 pnlCalle.Visible = false;
                 pnlDdlCalle.Visible = false;
+                rnvFechaPerdida.MaximumValue = DateTime.Now.ToShortDateString();
             }
         }
         public void btnBuscarClick(object sender, EventArgs e){
@@ -149,6 +150,19 @@ namespace SiGMA
                 }
             }
         }
+
+        protected void imgFechaPerdida_click(object sender, ImageClickEventArgs e)
+        {
+            calendario.Visible = true;
+        }
+
+        protected void calendario_SelectionChanged(object sender, EventArgs e)
+        {
+            txtFecha.Text = calendario.SelectedDate.ToString("d");
+            calendario.Visible = false;
+        }
+
+
         public void btnAceptarClick(object sender, EventArgs e)
         {
             pnlAtento.Visible = false;

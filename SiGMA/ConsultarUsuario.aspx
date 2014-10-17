@@ -189,7 +189,7 @@
                                     <td>
                                         <asp:Panel runat="server" Visible="false" ID="pnlDdlCalle">
                                             <asp:DropDownList ID="ddlCalle" Enabled="true" runat="server" CssClass="DropDownList"
-                                                Width="300px">
+                                                Width="293px">
                                             </asp:DropDownList>
                                             <asp:TextBox ID="txtNº" runat="server" CssClass="TextBox" Width="50px"></asp:TextBox>
                                         </asp:Panel>
@@ -217,8 +217,20 @@
                                     </td>
                                     <td>
                                         <asp:Panel ID="pnlFecha" runat="server" Visible="false">
-                                            <asp:TextBox ID="txtFecha" runat="server" CssClass="TextBox" TextMode="SingleLine"
-                                                Text="  /  /" Width="350px"></asp:TextBox>
+                                            <asp:TextBox ID="txtFecha" runat="server" CssClass="TextBox" TextMode="SingleLine" Enabled="false"
+                                                Text="  /  /" Width="90%"></asp:TextBox>
+                                                <asp:ImageButton ID="imgFechaPerdida" runat="server" CausesValidation="False"
+                                                ImageUrl="~/App_Themes/TemaSigma/imagenes/ico_calendar.gif" OnClick="imgFechaPerdida_click"  /> 
+                                                <asp:Calendar ID="calendario" runat="server" BorderColor="Black" 
+                                                        BorderWidth="1px" Visible="False" onselectionchanged="calendario_SelectionChanged">
+                                                            <DayHeaderStyle BackColor="White" Font-Bold="True" ForeColor="Black" />
+                                                        <DayStyle ForeColor="Black" />
+                                                        <TitleStyle BackColor="Black" ForeColor="White" />
+                                                        </asp:Calendar>
+                                                    <asp:RangeValidator ID="rnvFechaPerdida" runat="server" ErrorMessage="La fecha no puede ser superior a la actual" 
+                                                        ForeColor="Red" ControlToValidate="txtFecha" SetFocusOnError="True" 
+                                                        MinimumValue="01/01/2013" Type="Date" Font-Size="XX-Small" 
+                                                        ></asp:RangeValidator>
                                         </asp:Panel>
                                     </td>
                                     <td>
@@ -317,4 +329,6 @@
         <div class="centered">
             <asp:ImageButton ID="ibtnRegresar" runat="server" ImageUrl="~/imagenes/volver.png"
                 OnClick="BtnRegresarClick" /><br />VOLVER
+    </div>
+    </div>
 </asp:Content>

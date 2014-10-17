@@ -98,6 +98,26 @@ namespace SiGMA
         {
             args.IsValid = Validaciones.verificarSoloNumeros(txtDocumento.Text);
         }
+
+        protected void cvLetrasNombre_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            args.IsValid = Validaciones.verificarSoloLetras(txtNombre.Text);
+        }
+
+        protected void cvLetrasApellido_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            args.IsValid = Validaciones.verificarSoloLetras(txtApellido.Text);
+        }
+
+        protected void cvTipoDoc_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            args.IsValid = Validaciones.verificarSeleccionEnDdl(ref ddlTipoDocumento);
+        }
+
+        protected void cvContraseña_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            args.IsValid = Validaciones.contarCaracteres(txtContra.Text);
+        }
     }
 }
    

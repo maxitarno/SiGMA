@@ -45,7 +45,7 @@
                 </div>
             </div>
             <div class="panel-body">
-                <div class="col-md-2 col-md-offset-4">
+                <div class="col-md-3 col-md-offset-5">
                 <table>
                     <tr>
                         <td>
@@ -54,8 +54,11 @@
                         <td>
                             <asp:TextBox ID="txtNombre" runat="server"></asp:TextBox></td><td>
                             <asp:RequiredFieldValidator ID="rfvNombre" runat="server" ErrorMessage="*" ForeColor="Red"
-                                ControlToValidate="txtNombre" Display="Dynamic"></asp:RequiredFieldValidator></td>
-                   
+                                ControlToValidate="txtNombre" Display="Dynamic"></asp:RequiredFieldValidator>
+                            <asp:CustomValidator ID="cvLetrasNombre" runat="server" 
+                                ErrorMessage="Solo Letras" ForeColor="Red" ControlToValidate="txtNombre" 
+                                onservervalidate="cvLetrasNombre_ServerValidate"  Display="Dynamic"></asp:CustomValidator></td>
+                        
                     </tr>
                     <tr>
                         <td>
@@ -65,6 +68,9 @@
                             <asp:TextBox ID="txtApellido" runat="server"></asp:TextBox></td><td>
                             <asp:RequiredFieldValidator ID="rfvApellido" runat="server" ErrorMessage="*" ForeColor="Red"
                                 ControlToValidate="txtApellido" Display="Dynamic"></asp:RequiredFieldValidator>
+                            <asp:CustomValidator ID="cvLetrasApellido" runat="server" 
+                                ErrorMessage="Solo Letras" ForeColor="Red" ControlToValidate="txtApellido" 
+                                onservervalidate="cvLetrasApellido_ServerValidate" Display="Dynamic"></asp:CustomValidator>
                         </td>
                     </tr>
                     <tr>
@@ -72,10 +78,11 @@
                             Tipo de Documento:
                         </td>
                         <td>
-                            <asp:DropDownList ID="ddlTipoDocumento" runat="server">
+                            <asp:DropDownList ID="ddlTipoDocumento" runat="server"  Width="210px">
                             </asp:DropDownList></td><td>
-                            <asp:RequiredFieldValidator ID="rfvTipoDocumento" runat="server" ErrorMessage="*"
-                                ForeColor="Red" ControlToValidate="ddlTipoDocumento" Display="Dynamic"></asp:RequiredFieldValidator>
+                                <asp:CustomValidator ID="cvTipoDoc" runat="server" ErrorMessage="*" ForeColor="Red"
+                                    ControlToValidate="ddlTipoDocumento" 
+                                    onservervalidate="cvTipoDoc_ServerValidate" ></asp:CustomValidator>
                         </td>
                     </tr>
                     <tr>
@@ -106,9 +113,12 @@
                             Contraseña:
                         </td>
                         <td>
-                            <asp:TextBox ID="txtContra" runat="server" MaxLength="10" TextMode="Password"></asp:TextBox></td><td>
+                            <asp:TextBox ID="txtContra" runat="server" MaxLength="16" TextMode="Password"></asp:TextBox></td><td>
                             <asp:RequiredFieldValidator ID="rfvContra" runat="server" ErrorMessage="*" ForeColor="Red"
                                 ControlToValidate="txtContra" Display="Dynamic"></asp:RequiredFieldValidator>
+                            <asp:CustomValidator ID="cvContraseña" runat="server" 
+                                ErrorMessage="Minimo 8 caracteres" ControlToValidate="txtContra" ForeColor="Red" 
+                                onservervalidate="cvContraseña_ServerValidate" Display="Dynamic"></asp:CustomValidator>
                         </td>
                     </tr>
                     <tr>
@@ -116,7 +126,8 @@
                             <asp:Label ID="lblRepetirContraseña" runat="server" Text="Repetir Contraseña:"></asp:Label>
                         </td>
                         <td>
-                            <asp:TextBox  ID="txtRepetirContra" runat="server" MaxLength="25" TextMode="Password"></asp:TextBox></td><td>
+                            <asp:TextBox  ID="txtRepetirContra" runat="server" MaxLength="16" 
+                                TextMode="Password"></asp:TextBox></td><td>
                             <asp:RequiredFieldValidator ID="rfvRepetirContra" runat="server" ErrorMessage="*"
                                 ForeColor="Red" ControlToValidate="txtRepetirContra" Display="Dynamic"></asp:RequiredFieldValidator>
                             <asp:CompareValidator ID="covPassword" runat="server" ErrorMessage="Las contraseñas no son iguales"
