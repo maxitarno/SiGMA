@@ -62,7 +62,7 @@
                             <div style="display: table-cell; width: 20%;">
                                 <asp:Panel ID="pnlBuscar" runat="server">
                                     <asp:Button ID="btnBuscar" runat="server" Text="Buscar" OnClick="BtnBuscarClick"
-                                        CausesValidation="False" CssClass="btn-primary" />
+                                        CausesValidation="False" />
                                 </asp:Panel>
                             </div>
                             <div style="display: table-cell; width: 20%;">
@@ -86,25 +86,25 @@
                             <div style="display: table-cell; width: 20%;">
                                 <asp:Panel ID="pnlRegistrar" runat="server">
                                     <asp:Button ID="btnRegistrar" runat="server" Text="Registrar" OnClick="BtnRegistrarClick"
-                                        ValidationGroup="1" CssClass="btn-primary" />
+                                        ValidationGroup="1" />
                                 </asp:Panel>
                             </div>
                             <div style="display: table-cell; width: 20%;">
                                 <asp:Panel ID="pnlSeleccionar" runat="server" Visible="false">
                                     <asp:Button ID="btnSeleccionar" runat="server" Text="Seleccionar" OnClick="BtnSeleccionarClick"
-                                        CausesValidation="False" CssClass="btn-primary" />
+                                        CausesValidation="False" />
                                 </asp:Panel>
                             </div>
                             <div style="display: table-cell; width: 20%;">
                                 <asp:Panel ID="pnlCambio" runat="server" Visible="false">
                                     <asp:Button ID="btnModificar" runat="server" Text="Modificar" OnClick="BtnModificarClick"
-                                        CausesValidation="true" CssClass="btn-primary" />
+                                        CausesValidation="true" />
                                 </asp:Panel>
                             </div>
                             <div style="display: table-cell; width: 20%;">
                                 <asp:Panel runat="server" ID="pnl8" Visible="false">
                                     <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar" OnClick="BtnLimpiarClick"
-                                        CausesValidation="False" CssClass="btn-primary" />
+                                        CausesValidation="False" />
                                 </asp:Panel>
                             </div>
                         </div>

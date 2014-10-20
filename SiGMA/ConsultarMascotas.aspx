@@ -59,7 +59,10 @@
                     </div>
                 </div>
             </div>
-
+            <div class="centered">
+                <asp:RadioButton ID="rbPorDuenio" runat="server" GroupName="1" ValidationGroup="1" AutoPostBack="True" OnCheckedChanged="RbPorDuenio" text="Por Dueño"/>&nbsp
+                <asp:RadioButton ID="rbPorMascota" runat="server" GroupName="1" ValidationGroup="1" AutoPostBack="True" OnCheckedChanged="RbPorMascota" Checked="True" text="Por Mascota"/>
+            </div>
             <div class="panel-body">
                 <div class="col-md-3 col-md-offset-1">
                     <div style="margin-left: 30%; display: table; width: 40%;">
@@ -74,16 +77,6 @@
                         <div style="display: table-row; width: 30%">
                             <div style="display: table-cell; width: 20%;">
                                 <table>
-                                    <tr>
-                                        <td>
-                                            Por dueño:<asp:RadioButton ID="rbPorDuenio" runat="server" GroupName="1" ValidationGroup="1"
-                                                AutoPostBack="True" OnCheckedChanged="RbPorDuenio" />&nbsp
-                                        </td>
-                                        <td>
-                                            Por mascota:<asp:RadioButton ID="rbPorMascota" runat="server" GroupName="1" ValidationGroup="1"
-                                                AutoPostBack="True" OnCheckedChanged="RbPorMascota" Checked="True" />
-                                        </td>
-                                    </tr>
                                     <tr>
                                         <td>
                                             <asp:Panel ID="pnlNombre" Visible="false" runat="server">

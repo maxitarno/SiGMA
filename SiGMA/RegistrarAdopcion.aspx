@@ -105,10 +105,10 @@
                             </div>
                             <asp:Panel ID="pnlResultadosDuenio" runat="server" Visible="false">
                                 <div style="display: table-row; width: 30%">
-                                    <div style="display: table-cell; width: 20%;">
+                                    <div style="display: table-cell; width: 10%;">
                                         Resultados:
                                     </div>
-                                    <div style="display: table-cell; width: 20%;">
+                                    <div style="display: table-cell; width: 80%;">
                                         <asp:ListBox ID="lstResultadosDuenios" runat="server" ViewStateMode="Enabled" Width="100%">
                                         </asp:ListBox>
                                     </div>
@@ -243,13 +243,15 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
-                                        Calle:<asp:TextBox ID="txtCalle" runat="server" ReadOnly="True" ViewStateMode="Enabled"
-                                            Enabled="False"></asp:TextBox>
+                                    <td style="display:inline">
+                                        Calle:
+                                        <asp:TextBox ID="txtCalle" runat="server" ReadOnly="True" ViewStateMode="Enabled"
+                                            Enabled="False" Width="80px"></asp:TextBox>
                                     </td>
-                                    <td>
-                                        Nº:<asp:TextBox ID="txtNro" runat="server" ReadOnly="True" ViewStateMode="Enabled"
-                                            Enabled="False"></asp:TextBox>
+                                    <td style="display:inline">
+                                        Nº:
+                                        <asp:TextBox ID="txtNro" runat="server" ReadOnly="True" ViewStateMode="Enabled"
+                                            Enabled="False" Width="80px"></asp:TextBox>
                                     </td>
                                 </tr>
                             </table>

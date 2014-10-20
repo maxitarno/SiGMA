@@ -67,24 +67,6 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.Label lblResultado3;
         
         /// <summary>
-        /// Control imgImagen.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel imgImagen;
-        
-        /// <summary>
-        /// Control imgprvw.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlImage imgprvw;
-        
-        /// <summary>
         /// Control rbPorDuenio.
         /// </summary>
         /// <remarks>
@@ -101,6 +83,24 @@ namespace SiGMA {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButton rbPorMascota;
+        
+        /// <summary>
+        /// Control imgImagen.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel imgImagen;
+        
+        /// <summary>
+        /// Control imgprvw.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlImage imgprvw;
         
         /// <summary>
         /// Control pnlNombre.

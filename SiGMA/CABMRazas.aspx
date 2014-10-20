@@ -140,24 +140,24 @@
                             <div style="display: table-cell; width: 20%;">
                                 <asp:Panel ID="pnlRegistrar" runat="server">
                                     <asp:Button ID="btnRegistrar" runat="server" Text="Registrar" ValidationGroup="1"
-                                        OnClick="BtnRegistrarClick" CssClass="btn-primary" />
+                                        OnClick="BtnRegistrarClick" />
                                 </asp:Panel>
                             </div>
                             <div style="display: table-cell; width: 20%;">
                                 <asp:Panel ID="pnlSeleccionar" runat="server" Visible="false">
                                     <asp:Button ID="btnSeleccionar" runat="server" Text="Seleccionar" CausesValidation="False"
-                                        OnClick="BtnSeleccionarClick" CssClass="btn-primary" />
+                                        OnClick="BtnSeleccionarClick" />
                                 </asp:Panel>
                             </div>
                             <div style="display: table-cell; width: 20%;">
                                 <asp:Panel ID="pnlCambio" runat="server" Visible="false">
                                     <asp:Button ID="btnModificar" runat="server" Text="Modificar" CausesValidation="False"
-                                        OnClick="BtnModificarClick" CssClass="btn-primary" />
+                                        OnClick="BtnModificarClick" />
                                 </asp:Panel>
                             </div>
                             <div style="display: table-cell; width: 20%;">
                                 <asp:Panel runat="server" ID="pnl8" Visible="false">
-                                    <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar" CssClass="btn-primary"
+                                    <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar" 
                                         CausesValidation="False" OnClick="BtnLimpiarClick" />
                                 </asp:Panel>
                             </div>
