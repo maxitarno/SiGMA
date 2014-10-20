@@ -374,5 +374,9 @@ namespace SiGMA
             pnlInfo.Visible = false;
             pnlAtento.Visible = false;
         }
+        public void BtnRegresarClick(object sender, EventArgs e)
+        {
+            Response.Redirect("Adopciones.aspx");
+        }
     }
 }
