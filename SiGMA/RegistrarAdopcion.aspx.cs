@@ -199,35 +199,45 @@ namespace SiGMA
             if (lstResultadosDuenios.SelectedValue != "")
             {
                 LogicaBDUsuario.BuscarUsuarios(lstResultadosDuenios.SelectedValue, usuario, persona, barrio, localidad, tipodoc, calle, duenio);
-                txtNombreD.Text = persona.nombre;
-                persona.tipoDocumento.nombre = tipodoc.nombre;
-                txtDNI.Text = persona.nroDocumento;
-                txtLocalidad.Text = localidad.nombre;
-                txtBarrio.Text = barrio.nombre;
-                txtCalle.Text = calle.nombre;
-                txtNro.Text = persona.nroCalle.ToString();
-                pnlDuenio.Visible = true;
-                ddlTipo.SelectedValue = tipodoc.idTipoDeDocumento.ToString();
-                txtTipoDeDocumento.Text = ddlTipo.SelectedItem.Text;
-                txtNombreDuenio.Text = lstResultadosDuenios.SelectedValue;
-                pnlResultadosDuenio.Visible = false;
-                txtNº.Text = persona.nroDocumento;
-                pnlBuscarMascota.Visible = true;
-                Session["Duenio"] = duenio.idDuenio;
-                pnlCorrecto.Visible = false;
-                pnlInfo.Visible = false;
-                pnlAtento.Visible = false;
-                pnlBuscar.Visible = false;
-                persona.barrio = barrio;
-                persona.domicilio = calle;
-                persona.localidad = localidad;
-                Session["Dueño"] = persona;
-                txtNombreDuenio.Enabled = false;
-                ddlTipo.Enabled = false;
-                txtNº.Enabled = false;
-                txtDNI.Enabled = false;
-                pnlDocumento.Visible = false;
-                pnlNombre.Visible = false;
+                if (calle.nombre != "" && barrio.nombre != "" && localidad.nombre != "")
+                {
+                    txtNombreD.Text = persona.nombre;
+                    persona.tipoDocumento.nombre = tipodoc.nombre;
+                    txtDNI.Text = persona.nroDocumento;
+                    txtLocalidad.Text = localidad.nombre;
+                    txtBarrio.Text = barrio.nombre;
+                    txtCalle.Text = calle.nombre;
+                    txtNro.Text = persona.nroCalle.ToString();
+                    pnlDuenio.Visible = true;
+                    ddlTipo.SelectedValue = tipodoc.idTipoDeDocumento.ToString();
+                    txtTipoDeDocumento.Text = ddlTipo.SelectedItem.Text;
+                    txtNombreDuenio.Text = lstResultadosDuenios.SelectedValue;
+                    pnlResultadosDuenio.Visible = false;
+                    txtNº.Text = persona.nroDocumento;
+                    pnlBuscarMascota.Visible = true;
+                    Session["Duenio"] = duenio.idDuenio;
+                    pnlCorrecto.Visible = false;
+                    pnlInfo.Visible = false;
+                    pnlAtento.Visible = false;
+                    pnlBuscar.Visible = false;
+                    persona.barrio = barrio;
+                    persona.domicilio = calle;
+                    persona.localidad = localidad;
+                    Session["Dueño"] = persona;
+                    txtNombreDuenio.Enabled = false;
+                    ddlTipo.Enabled = false;
+                    txtNº.Enabled = false;
+                    txtDNI.Enabled = false;
+                    pnlDocumento.Visible = false;
+                    pnlNombre.Visible = false;
+                }
+                else
+                {
+                    pnlInfo.Visible = true;
+                    lblResultado2.Text = "Debe seleccionar un Dueño con domicilio o registrar u nuevo dueño";
+                    pnlCorrecto.Visible = false;
+                    pnlAtento.Visible = false;
+                }
             }
             else
             {
