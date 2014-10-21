@@ -128,6 +128,7 @@ public  object adopciones { get; set; }protected void Page_Load(object sender, E
                 pnlDuenio.Visible = true;
                 pnlBuscar.Visible = false;
                 pnlAdopcion.Visible = true;
+                pnlRegistrar.Visible = true;
             }
             else
             {

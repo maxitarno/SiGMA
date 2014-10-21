@@ -113,9 +113,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-md-offset-1">
-                        <asp:Panel ID="pnlAdopcion" Visible=false runat=server>
-                             <h5>
+                    <div class="col-md-3 col-md-offset-2">
+                        <asp:Panel ID="pnlAdopcion" Visible="false" runat="server">
+                            <h5>
                                 Datos de la adopcion
                             </h5>
                             <table>
@@ -247,6 +247,24 @@
                         </asp:Panel>
                     </div>
                 </div>
+                 <div class="centered">
+                        <div class="centered">
+                            <div style="margin-left: 30%; display: table; width: 40%;">
+                                <div style="display: table-row; width: 30%">
+                                    <div style="display: table-cell; width: 20%;">
+                                        <asp:Panel ID="pnlRegistrar" runat="server" Visible="false">
+                                            <asp:Button ID="btnRegistrar" runat="server" Text="Generar contrato" />
+                                        </asp:Panel>
+                                    </div>
+                                    <%--<div style="display: table-cell; width: 20%;">
+                                        <asp:Panel ID="pnllimpiar" runat="server" Visible="false">
+                                            <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar" />
+                                        </asp:Panel>
+                                    </div>--%>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
             </div>
             <div class="centered">
                 <asp:ImageButton ID="ibtnRegresar" runat="server" ImageUrl="~/imagenes/volver.png"
