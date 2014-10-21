@@ -20,9 +20,9 @@ namespace SiGMA
             if (!Page.IsPostBack)
             {
                 Session["CamposQR"] = new List<string>();
-                EMascota mascota = LogicaBDMascota.BuscarMascotaPorIdMascota(int.Parse(Session["idMascota"].ToString()));                 
+                EMascota mascota = LogicaBDMascota.BuscarMascotaPorIdMascota(int.Parse(Session["idMascota"].ToString()));
                 mascota.duenio = LogicaBDDueño.buscarDueño(mascota.idMascota);
-                Session["Mascota"] = mascota;         
+                Session["Mascota"] = mascota;
                 if (mascota.duenio == null)
                 {
                     pnlDueño.Visible = false;
