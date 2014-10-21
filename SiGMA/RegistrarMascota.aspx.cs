@@ -135,6 +135,11 @@ namespace SiGMA
         {
             args.IsValid = Validaciones.verificarSeleccionEnDdl(ref ddlColor); 
         }
+
+        protected void BtnRegresarClick(object sender, ImageClickEventArgs e)
+        {
+            Response.Redirect("Mascotas.aspx");
+        }
        
     }
 }

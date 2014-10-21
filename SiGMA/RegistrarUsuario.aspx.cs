@@ -118,6 +118,12 @@ namespace SiGMA
         {
             args.IsValid = Validaciones.contarCaracteres(txtContra.Text);
         }
+
+        protected void BtnRegresarClick(object sender, ImageClickEventArgs e)
+        {
+
+            Response.Redirect("Usuarios.aspx");
+        }
     }
 }
    

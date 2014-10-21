@@ -35,7 +35,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-  <div class="centered">
+    <div class="centered">
         <div class="panel panel-default">
             <div class="panel-heading">
             <h3 class="panel-title">
@@ -231,6 +231,9 @@
                 </div>
         </div>
     </div>
+    </div><div class="centered">
+            <asp:ImageButton ID="ibtnRegresar" runat="server" ImageUrl="~/imagenes/volver.png"
+                OnClick="BtnRegresarClick" CausesValidation="False"/><br />VOLVER
     </div>
 </div>
 <script type="text/javascript">

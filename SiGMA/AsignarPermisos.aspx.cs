@@ -209,7 +209,7 @@ namespace SiGMA
             pnlCorrecto.Visible = false;
             pnlInfo.Visible = false;
             pnlPermisos.Visible = false;
-            ddlRol.SelectedValue = "-- Seleccione un rol --";
+            ddlRol.SelectedValue = "SIN ASIGNAR";
             lblRol.Text = "";
         }
 
@@ -219,7 +219,7 @@ namespace SiGMA
             string nombreRol = ddlRol.SelectedItem.Text;
             int idRol = Convert.ToInt32(ddlRol.SelectedValue);
             List<EPermiso> permisosRol = new List<EPermiso>();
-            if (ddlRol.SelectedItem.Value == "-- Seleccione un rol --")
+            if (ddlRol.SelectedItem.Value == "SIN ASIGNAR")
                 pnlPermisos.Visible = false;
             else
             {
@@ -286,6 +286,11 @@ namespace SiGMA
                     }
                 }
             }
+        }
+
+        protected void BtnRegresarClick(object sender, ImageClickEventArgs e)
+        {
+            Response.Redirect("Administracion.aspx");
         }
     }
 }

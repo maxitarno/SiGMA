@@ -136,5 +136,10 @@ namespace SiGMA
                 throw exc;
             }
         }
+
+        protected void BtnRegresarClick(object sender, ImageClickEventArgs e)
+        {
+            Response.Redirect("Administracion.aspx");
+        }
     }
 }

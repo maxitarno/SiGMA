@@ -286,5 +286,10 @@ namespace SiGMA
             }
         }
 
+        protected void BtnRegresarClick(object sender, ImageClickEventArgs e)
+        {
+            Response.Redirect("Perdidas.aspx");
+        }
+
     }
 }
