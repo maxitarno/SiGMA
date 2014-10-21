@@ -63,6 +63,7 @@ public  object adopciones { get; set; }protected void Page_Load(object sender, E
                         pnlBuscar.Visible = false;
                         pnlAdopcion.Visible = true;
                         pnlRegistrar.Visible = true;
+                        btnRegistrar.Text = "Modificar adopcion";
                     }
                 }
                 CargarCombos.cargarLocalidades(ref ddlLocalidad);
@@ -82,12 +83,31 @@ public  object adopciones { get; set; }protected void Page_Load(object sender, E
             pnlBuscar.Visible = true;
             pnlPorDocumento.Visible = true;
             pnlPorAdopcion.Visible = false;
+            pnlAtento.Visible = false;
+            pnlInfo.Visible = false;
+            pnlCorrecto.Visible = false;
+            pnlResultados.Visible = false;
+            pnlMascota.Visible = false;
+            pnlDuenio.Visible = false;
+            pnlDatos.Visible = false;
+            pnlAdopcion.Visible = false;
+            btnRegistrar.Text = "Generar Contrato";
         }
         public void RbPorN(object sender, EventArgs e)
         {
             pnlPorAdopcion.Visible = true;
             pnlPorDocumento.Visible = false;
             pnlBuscar.Visible = true;
+            pnlAtento.Visible = false;
+            pnlInfo.Visible = false;
+            pnlCorrecto.Visible = false;
+            pnlResultados.Visible = false;
+            pnlRegistrar.Visible = false;
+            pnlMascota.Visible = false;
+            pnlDuenio.Visible = false;
+            pnlDatos.Visible = false;
+            pnlAdopcion.Visible = false;
+            btnRegistrar.Text = "Generar Contrato";
         }
         public void BtnBuscarClick(object sender, EventArgs e)
         {
@@ -102,12 +122,15 @@ public  object adopciones { get; set; }protected void Page_Load(object sender, E
                     lstResultados.DataValueField = "idAdopcion";
                     lstResultados.DataBind();
                     pnlResultados.Visible = true;
+                    pnlAtento.Visible = false;
+                    pnlInfo.Visible = false;
+                    pnlCorrecto.Visible = false;
                 }
                 else
                 {
-                    lblResultado3.Text = "No se encontraron adopciones";
-                    pnlAtento.Visible = true;
-                    pnlInfo.Visible = false;
+                    lblResultado2.Text = "No se encontraron adopciones";
+                    pnlAtento.Visible = false;
+                    pnlInfo.Visible = true;
                     pnlCorrecto.Visible = false;
                 }
             }
@@ -122,12 +145,15 @@ public  object adopciones { get; set; }protected void Page_Load(object sender, E
                     lstResultados.DataValueField = "idAdopcion";
                     lstResultados.DataBind();
                     pnlResultados.Visible = true;
+                    pnlAtento.Visible = false;
+                    pnlInfo.Visible = false;
+                    pnlCorrecto.Visible = false;
                 }
                 else
                 {
-                    lblResultado3.Text = "No se encontraron adopciones";
-                    pnlAtento.Visible = true;
-                    pnlInfo.Visible = false;
+                    lblResultado2.Text = "No se encontraron adopciones";
+                    pnlAtento.Visible = false;
+                    pnlInfo.Visible = true;
                     pnlCorrecto.Visible = false;
                 }
             }
