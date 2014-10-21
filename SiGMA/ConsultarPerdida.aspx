@@ -49,8 +49,7 @@
         <div class="panel panel-default">
             <div class="panel-heading">
             <h3 class="panel-title">
-                   Registrar Perdida
-                </h3>
+                <asp:Label ID="lblTitulo"  runat="server" Text="Label"></asp:Label></h3>
             </div>
             <div class="panel panel-default">
             <div class="panel-body">

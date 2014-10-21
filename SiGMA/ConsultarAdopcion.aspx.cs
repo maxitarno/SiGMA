@@ -24,11 +24,12 @@ public  object adopciones { get; set; }protected void Page_Load(object sender, E
                 String mod = Request.QueryString["m"];
                 if (mod == "1")
                 {
-                    lblTitulo.Text = "Modificar Hallazgo";
+                    lblTitulo.Text = "Modificar Adopción";
+                    
                 }
                 else
                 {
-                    lblTitulo.Text = "Consultar Hallazgo";
+                    lblTitulo.Text = "Consultar Adopción";
                 }
                 if (rbPorDNI.Checked)
                 {

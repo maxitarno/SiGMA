@@ -50,6 +50,7 @@ namespace SiGMA
                     ddlCallePerdida.Enabled = true;
                     ddlLocalidadPerdida.Enabled = true;
                     btnModificar.Visible = true;
+                    lblTitulo.Text = "Modificar Pérdida";
                 }
                 else 
                 {
@@ -61,6 +62,7 @@ namespace SiGMA
                     ddlCallePerdida.Enabled = false;
                     ddlLocalidadPerdida.Enabled = false;
                     btnModificar.Visible = false;
+                    lblTitulo.Text = "Consultar Pérdida";
                 }
             }
         }
