@@ -22,6 +22,7 @@ namespace Entidades
         public DateTime fechaNacimiento { get; set; }
         public string sexo { get; set; }
         public EDuenio duenio { get; set; }
-        public byte[] imagen { get; set; }        
+        public byte[] imagen { get; set; }
+        public ECuidado cuidadoEspecial { get; set; }
     }
 }

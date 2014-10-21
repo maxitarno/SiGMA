@@ -143,7 +143,6 @@ namespace AccesoADatos
                     if (usuario.persona.Calles != null)
                         localidad.nombre = (usuario.persona.Calles.Localidades == null) ? "" : usuario.persona.Calles.Localidades.nombre;
                     barrio.nombre = (usuario.barrio == null) ? "" : usuario.barrio.nombre;
-
                 }
             }
             catch (System.Data.EntityCommandCompilationException exc)

@@ -94,6 +94,7 @@
     <Content Include="assets\js\hover.zoom.js" />
     <Content Include="CABMRazas.aspx" />
     <Content Include="CABMTipoDeDocumento.aspx" />
+    <Content Include="ConsultarAdopcion.aspx" />
     <Content Include="ConsultarHallazgo.aspx" />
     <Content Include="ConsultarMascotas.aspx" />
     <Content Include="ConsultarPerdida.aspx" />
@@ -182,6 +183,13 @@
     </Compile>
     <Compile Include="CABMTipoDeDocumento.aspx.designer.cs">
       <DependentUpon>CABMTipoDeDocumento.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ConsultarAdopcion.aspx.cs">
+      <DependentUpon>ConsultarAdopcion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ConsultarAdopcion.aspx.designer.cs">
+      <DependentUpon>ConsultarAdopcion.aspx</DependentUpon>
     </Compile>
     <Compile Include="ConsultarHallazgo.aspx.cs">
       <DependentUpon>ConsultarHallazgo.aspx</DependentUpon>
