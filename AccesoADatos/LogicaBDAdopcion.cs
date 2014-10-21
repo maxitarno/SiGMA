@@ -149,5 +149,25 @@ namespace AccesoADatos
                 throw exc;
             }
         }
+        public static Boolean ModificarAdopcion(EAdopcion adopcion, EPersona persona){
+            try
+            {
+                SiGMAEntities mapa = Conexion.crearSegunServidor();
+                Mascotas mascota = mapa.Mascotas.Where(m => m.idMascota == adopcion.mascota.idMascota).First();
+                mascota.nombreMascota = adopcion.mascota.nombreMascota;
+                Adopciones a = mapa.Adopciones.Where(adopcionBD => adopcionBD.idAdopcion == adopcion.idAdopcion).First();
+                a.idVoluntario = adopcion.idVoluntario;
+                a.fechaAdopcion = adopcion.fecha;
+                Personas personas = mapa.Personas.Where(personaBD => personaBD.idPersona == persona.idPersona).First();
+                personas.idBarrio = persona.barrio.idBarrio;
+                personas.Barrios.idLocalidad = persona.localidad.idLocalidad;
+                mapa.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
     }
 }

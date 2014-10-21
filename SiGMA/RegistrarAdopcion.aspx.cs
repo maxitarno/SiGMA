@@ -341,7 +341,7 @@ namespace SiGMA
                 EAdopcion adopcion = new EAdopcion();
                 adopcion.mascota = new EMascota();
                 adopcion.duenio = new EDuenio();
-                adopcion.idVoluntario = int.Parse(Session["IdAdopcion"].ToString());
+                adopcion.idVoluntario = int.Parse(Session["IdVoluntario"].ToString());
                 adopcion.mascota.idMascota = int.Parse(Session["IdMascota"].ToString());
                 adopcion.fecha = DateTime.Parse(txtFecha.Text);
                 adopcion.duenio.idDuenio = int.Parse(Session["Duenio"].ToString());
@@ -369,6 +369,7 @@ namespace SiGMA
             else
             {
                 Session["na"] = LogicaBDAdopcion.obtenerProximoIdAdopcion();
+                Session["Modificar"] = "No";
                 Response.Redirect("Contrato.aspx");
             }
         }

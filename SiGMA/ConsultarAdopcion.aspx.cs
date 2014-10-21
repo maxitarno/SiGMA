@@ -36,6 +36,40 @@ public  object adopciones { get; set; }protected void Page_Load(object sender, E
                     pnlPorDocumento.Visible = true;
                     pnlPorAdopcion.Visible = false;
                 }
+                if(Session["Si"] != null){
+                    if(Session["Si"].Equals("Si")){
+                        EPersona persona = (EPersona)Session["Dueño"];
+                        EAdopcion adopcion = (EAdopcion)Session["Adopcion"];
+                        txtTipoDeDocumento.Text = persona.tipoDocumento.nombre;
+                        txtSexo.Text = adopcion.mascota.sexo;
+                        txtRaza.Text = adopcion.mascota.raza.nombreRaza;
+                        txtNro.Text = (persona.nroCalle == null) ? "0" : persona.nroCalle.ToString();
+                        txtNombreM.Text = adopcion.mascota.nombreMascota;
+                        txtNombreD.Text = persona.nombre;
+                        txtNºAdopcion.Text = adopcion.idAdopcion.ToString();
+                        txtNumeroDocumento.Text = persona.nroDocumento;
+                        txtNro.Text = persona.nroCalle.ToString();
+                        txtNº.Text = persona.nroDocumento;
+                        txtLocalidad.Text = persona.localidad.nombre;
+                        txtEspecie.Text = adopcion.mascota.especie.nombreEspecie;
+                        txtEdad.Text = adopcion.mascota.edad.nombreEdad;
+                        txtCalle.Text = persona.domicilio.nombre;
+                        txtBarrio.Text = persona.barrio.nombre;
+                        pnlResultados.Visible = false;
+                        pnlPorDocumento.Visible = false;
+                        pnlPorAdopcion.Visible = false;
+                        pnlMascota.Visible = true;
+                        pnlDuenio.Visible = true;
+                        pnlBuscar.Visible = false;
+                        pnlAdopcion.Visible = true;
+                        pnlRegistrar.Visible = true;
+                    }
+                }
+                CargarCombos.cargarLocalidades(ref ddlLocalidad);
+                ddlCalle.Items.Clear();
+                ddlCalle.Items.Add(new ListItem("SIN ASIGNAR", "0"));
+                ddlBarrio.Items.Clear();
+                ddlBarrio.Items.Add(new ListItem("SIN ASIGNAR", "0"));
             }
         }
         public void ibtnRegresar_Click(object sender, EventArgs e)
@@ -129,6 +163,39 @@ public  object adopciones { get; set; }protected void Page_Load(object sender, E
                 pnlBuscar.Visible = false;
                 pnlAdopcion.Visible = true;
                 pnlRegistrar.Visible = true;
+                if (ddlLocalidad.SelectedValue.Equals("0") && txtNombreMascota.Text == "")
+                {
+                    Session["Dueño"] = persona;
+                    Session["Adopcion"] = adopcion;
+                    Session["Mascota"] = adopcion.mascota;
+                }
+                else if (txtNombreMascota.Text != "" && ddlLocalidad.SelectedValue.Equals("0"))
+                {
+                    adopcion.mascota.nombreMascota = txtNombreMascota.Text;
+                    Session["Dueño"] = persona;
+                    Session["Adopcion"] = adopcion;
+                    Session["Mascota"] = adopcion.mascota;
+                }
+                else if (!ddlLocalidad.SelectedValue.Equals("0") && txtNombreMascota.Text == "")
+                {
+                    persona.localidad.idLocalidad = int.Parse(ddlLocalidad.SelectedValue);
+                    persona.domicilio.idCalle = int.Parse(ddlCalle.SelectedValue);
+                    persona.barrio.idBarrio = int.Parse(ddlBarrio.SelectedValue);
+                    Session["Dueño"] = persona;
+                    Session["Adopcion"] = adopcion;
+                    Session["Mascota"] = adopcion.mascota;
+                }
+                else
+                {
+                    adopcion.mascota.nombreMascota = txtNombreMascota.Text;
+                    persona.localidad.idLocalidad = int.Parse(ddlLocalidad.SelectedValue);
+                    persona.domicilio.idCalle = int.Parse(ddlCalle.SelectedValue);
+                    persona.barrio.idBarrio = int.Parse(ddlBarrio.SelectedValue);
+                    Session["Dueño"] = persona;
+                    Session["Adopcion"] = adopcion;
+                    Session["Mascota"] = adopcion.mascota;
+                }
+                pnlDatos.Visible = true;
             }
             else
             {
@@ -136,6 +203,63 @@ public  object adopciones { get; set; }protected void Page_Load(object sender, E
                 pnlAtento.Visible = true;
                 pnlInfo.Visible = false;
                 pnlCorrecto.Visible = false;
+            }
+        }
+        public void BtnModificarClick(object sender, EventArgs e)
+        {
+            if (Session["Si"] != null && Session["Si"].ToString().Equals("Si"))
+            {
+                EAdopcion adopcion = new EAdopcion();
+                adopcion = (EAdopcion)Session["Adopcion"];
+                adopcion.idVoluntario = int.Parse(Session["IdVoluntario"].ToString());
+                adopcion.fecha = DateTime.Parse(DateTime.Now.ToShortDateString());
+                EPersona persona = new EPersona();
+                persona = (EPersona)Session["Dueño"];
+                if (LogicaBDAdopcion.ModificarAdopcion(adopcion, persona))
+                {
+                    pnlInfo.Visible = false;
+                    lblResultado1.Text = "Se registro correctamente";
+                    pnlCorrecto.Visible = true;
+                    pnlAtento.Visible = false;
+                    Session["Si"] = null;
+                    pnlBuscar.Visible = true;
+                    pnlDuenio.Visible = false;
+                    pnlMascota.Visible = false;
+                    pnlRegistrar.Visible = false;
+                }
+                else
+                {
+                    pnlInfo.Visible = false;
+                    lblResultado3.Text = "No se pudo registrar";
+                    pnlCorrecto.Visible = false;
+                    pnlAtento.Visible = true;
+                }
+            }
+            else
+            {
+                Session["na"] = LogicaBDAdopcion.obtenerProximoIdAdopcion() - 1;
+                Session["Modificar"] = "Si";
+                Response.Redirect("Contrato.aspx");
+            }
+        }
+        public void DdlBarrio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            pnlAtento.Visible = false;
+            pnlCorrecto.Visible = false;
+            if (!ddlLocalidad.SelectedValue.Equals("0"))
+            {
+                ddlBarrio.Items.Clear();
+                CargarCombos.cargarBarrio(ref ddlBarrio, int.Parse(ddlLocalidad.SelectedValue.ToString()));
+                pnlInfo.Visible = false;
+                ddlCalle.Items.Clear();
+                CargarCombos.cargarCalles(ref ddlCalle, int.Parse(ddlLocalidad.SelectedValue.ToString()));
+            }
+            else
+            {
+                ddlCalle.Items.Clear();
+                ddlCalle.Items.Add(new ListItem("SIN ASIGNAR", "0"));
+                ddlBarrio.Items.Clear();
+                ddlBarrio.Items.Add(new ListItem("SIN ASIGNAR", "0"));
             }
         }
     }

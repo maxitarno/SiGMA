@@ -44,12 +44,26 @@ namespace SiGMA
         public void BtnAceptarClick(object sender, EventArgs e)
         {
             Session["Si"] = "Si";
-            Response.Redirect("RegistrarAdopcion.aspx");
+            if (Session["Modificar"].Equals("No"))
+            {
+                Response.Redirect("RegistrarAdopcion.aspx");
+            }
+            else
+            {
+                Response.Redirect("ConsultarAdopcion.aspx");
+            }
         }
         public void BtnRechazarClick(object sender, EventArgs e)
         {
             Session["Si"] = "No";
-            Response.Redirect("RegistrarAdopcion.aspx");
+            if (Session["Modificar"].Equals("No"))
+            {
+                Response.Redirect("RegistrarAdopcion.aspx");
+            }
+            else
+            {
+                Response.Redirect("ConsultarAdopcion.aspx");
+            }
         }
     }
 }

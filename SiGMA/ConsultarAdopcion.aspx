@@ -108,6 +108,51 @@
                                                 </td>
                                             </tr>
                                         </asp:Panel>
+                                        <asp:Panel ID="pnlDatos" runat=server Visible=false>
+                                            <tr>
+                                                <td>
+                                                    <h5>
+                                                        Datos a modificar
+                                                    </h5>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Localidad:
+                                                </td>
+                                                <td>
+                                                    <asp:DropDownList ID="ddlLocalidad" runat="server" OnSelectedIndexChanged="DdlBarrio_SelectedIndexChanged" AutoPostBack="True" Width="220px">
+                                                    </asp:DropDownList>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Barrio:
+                                                </td>
+                                                <td>
+                                                    <asp:DropDownList ID="ddlBarrio" runat="server" Width="220px">
+                                                    </asp:DropDownList>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Calle:
+                                                </td>
+                                                <td>
+                                                    <asp:DropDownList ID="ddlCalle" runat="server" Width="110px">
+                                                    </asp:DropDownList>
+                                                    Nº:<asp:TextBox ID="txtNºCalle" runat="server" Width="22px"></asp:TextBox>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Nombre de la mascota:
+                                                </td>
+                                                <td>
+                                                    <asp:TextBox ID="txtNombreMascota" runat="server"></asp:TextBox>
+                                                </td>
+                                            </tr>
+                                        </asp:Panel>
                                     </table>
                                 </div>
                             </div>
@@ -253,7 +298,7 @@
                                 <div style="display: table-row; width: 30%">
                                     <div style="display: table-cell; width: 20%;">
                                         <asp:Panel ID="pnlRegistrar" runat="server" Visible="false">
-                                            <asp:Button ID="btnRegistrar" runat="server" Text="Generar contrato" />
+                                            <asp:Button ID="btnRegistrar" runat="server" Text="Generar contrato" OnClick="BtnModificarClick"/>
                                         </asp:Panel>
                                     </div>
                                     <%--<div style="display: table-cell; width: 20%;">
