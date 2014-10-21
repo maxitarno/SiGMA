@@ -25,11 +25,12 @@ public  object adopciones { get; set; }protected void Page_Load(object sender, E
                 if (mod == "1")
                 {
                     lblTitulo.Text = "Modificar Adopción";
-                    
+                    pnlDatos.Visible = true;
                 }
                 else
                 {
                     lblTitulo.Text = "Consultar Adopción";
+                    pnlDatos.Visible = false;
                 }
                 if (rbPorDNI.Checked)
                 {
@@ -222,7 +223,6 @@ public  object adopciones { get; set; }protected void Page_Load(object sender, E
                     Session["Adopcion"] = adopcion;
                     Session["Mascota"] = adopcion.mascota;
                 }
-                pnlDatos.Visible = true;
             }
             else
             {

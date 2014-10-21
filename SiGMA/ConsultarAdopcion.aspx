@@ -225,15 +225,22 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td style="display: inline">
-                                        Calle:
+                                <td>
+                                    Calle:
+                                </td>
+                                    <td>
+                                        
                                         <asp:TextBox ID="txtCalle" runat="server" ReadOnly="True" ViewStateMode="Enabled"
-                                            Enabled="False" Width="80px"></asp:TextBox>
+                                            Enabled="False"></asp:TextBox>
                                     </td>
+                                </tr>
+                                <tr>
+                                <td>
+                                    Nº de calle:
+                                </td>
                                     <td style="display: inline">
-                                        Nº:
                                         <asp:TextBox ID="txtNro" runat="server" ReadOnly="True" ViewStateMode="Enabled" Enabled="False"
-                                            Width="80px"></asp:TextBox>
+                                            ></asp:TextBox>
                                     </td>
                                 </tr>
                             </table>
