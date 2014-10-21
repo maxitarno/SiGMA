@@ -57,6 +57,8 @@ namespace AccesoADatos
                                from G3 in group3.DefaultIfEmpty()
                                join TipoBD in mapa.TipoDocumentos on G3.idTipoDocumento equals TipoBD.idTipoDocumento into group4
                                from G4 in group4.DefaultIfEmpty()
+                               join MascotaBD in mapa.Mascotas on G1.idMascota equals MascotaBD.idMascota into group5
+                               from G5 in group5.DefaultIfEmpty()
                                where (G4.idTipoDocumento == tipo && G3.nroDocumento.Contains(numero) && G1.Estados.ambito == "Adopcion" && (G1.Estados.nombreEstado == "Modifcada" || G1.Estados.nombreEstado == "Abierta"))
                                select new
                                {
@@ -65,11 +67,13 @@ namespace AccesoADatos
                                    duenio = G2,
                                    persona = G3,
                                    Tipo = G4,
+                                   mascota = G5
                                };
                 foreach (var registro in consulta)
                 {
                     EAdopcion adopcion = new EAdopcion();
                     adopcion.idAdopcion = registro.ado.idAdopcion;
+                    adopcion.nombre = registro.mascota.nombreMascota;
                     adopciones.Add(adopcion);
                 }
                 return adopciones;
@@ -85,14 +89,23 @@ namespace AccesoADatos
             {
                 SiGMAEntities mapa = Conexion.crearSegunServidor();
                 List<EAdopcion> adopciones = new List<EAdopcion>();
-                IQueryable<Adopciones> consulta = from AdopcionesBD in mapa.Adopciones
-                                                  join EstadosBD in mapa.Estados on AdopcionesBD.idEstado equals EstadosBD.idEstado
-                                                  where (AdopcionesBD.idAdopcion == numeroDeAdopcion && EstadosBD.ambito == "Adopcion" && (EstadosBD.nombreEstado == "Abierta" || EstadosBD.nombreEstado == "Modificada"))
-                                                  select AdopcionesBD;
+                var consulta = from AdopcionesBD in mapa.Adopciones
+                                                  join EstadosBD in mapa.Estados on AdopcionesBD.idEstado equals EstadosBD.idEstado into group1
+                                                  from G1 in group1.DefaultIfEmpty()
+                                                  join MascotasBD in mapa.Mascotas on AdopcionesBD.idMascota equals MascotasBD.idMascota into group2
+                                                  from G2 in group2.DefaultIfEmpty()
+                                                  where (AdopcionesBD.idAdopcion == numeroDeAdopcion && G1.ambito == "Adopcion" && (G1.nombreEstado == "Abierta" || G1.nombreEstado == "Modificada"))
+                                                  select new
+                                                  {
+                                                      adopcion = AdopcionesBD,
+                                                      mascota = G2
+                                                  };
                 foreach (var registro in consulta)
                 {
                     EAdopcion adopcion = new EAdopcion();
-                    adopcion.idAdopcion = registro.idAdopcion;
+                    adopcion.idAdopcion = registro.adopcion.idAdopcion;
+                    adopcion.mascota = new EMascota();
+                    adopcion.nombre = registro.mascota.nombreMascota;
                     adopciones.Add(adopcion);
                 }
                 return adopciones;

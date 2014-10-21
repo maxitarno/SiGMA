@@ -120,8 +120,8 @@ public  object adopciones { get; set; }protected void Page_Load(object sender, E
                 {
                     lstResultados.Items.Clear();
                     lstResultados.DataSource = adopciones;
-                    lstResultados.DataTextField = "idAdopcion";
                     lstResultados.DataValueField = "idAdopcion";
+                    lstResultados.DataTextField = "nombre";
                     lstResultados.DataBind();
                     pnlResultados.Visible = true;
                     pnlAtento.Visible = false;
@@ -143,7 +143,7 @@ public  object adopciones { get; set; }protected void Page_Load(object sender, E
                 {
                     lstResultados.Items.Clear();
                     lstResultados.DataSource = adopciones;
-                    lstResultados.DataTextField = "idAdopcion";
+                    lstResultados.DataTextField = "nombre";
                     lstResultados.DataValueField = "idAdopcion";
                     lstResultados.DataBind();
                     pnlResultados.Visible = true;
