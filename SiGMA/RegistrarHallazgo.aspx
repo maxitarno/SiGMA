@@ -102,10 +102,10 @@
                  </asp:Panel> 
                                                 
                 <asp:Panel ID="pnlMascotaSeleccionada" runat="server" Visible="false">
-                <div style="margin-left: 20%; display: table; width: 60%;">                
-                Datos de la mascota
+                <div style="margin-left: 20%; display: table; width: 60%;">  
                     <div style="display: table-row; width: 30%;">     
                         <div style="display: table-cell; width: 30%;">
+                        Datos de la mascota
                             <asp:Panel Visible="true" runat="server" ID="pnlImagen">
                                 <img id="imgprvw" style="border: 2px solid #000000; height: 135px; width: 215px;"
                                     runat="server" src="~/App_Themes/TemaSigma/imagenes/sin_imagen_disponible.jpg"/>
@@ -113,8 +113,6 @@
                             <asp:Panel Visible="true" runat="server" ID="pnlPreview">
                                 <img id="preview" width="215px" style="margin-left: 27%" height="135px" hidden />
                             </asp:Panel>
-                        </div>
-                        <div style="display: table-cell; width: 22%; vertical-align: top;">
                             <asp:Panel ID="pnlHallazgoPerdidaMascota" runat="server" Visible="true">
                                 <table>
                                     <tr>
@@ -200,10 +198,10 @@
                                 </table>
                             </asp:Panel>
                         </div>
-                    </div>
-                    Datos del hallazgo
-                        <div style="display: table-row; width: 30%">                            
-                            <div class="col-md-12 col-md-offset-1" style="padding-right: 1%; ">
+                        <div style="display: table-cell; width: 22%; vertical-align: top;">
+                            <div class="col-md-offset-1"  style="width: 120%; padding-right: 1%; ">
+                                                Datos del hallazgo
+
                                 <table>
                                     <tr>
                                         <td>
@@ -294,7 +292,11 @@
                                         </td>
                                     </tr>                                    
                                 </table>
-                                </div>                            
+                                </div>
+                        </div>
+                    </div>
+                        <div style="display: table-row; width: 30%">  
+                                        
                         </div>  
                         </div>                         
                         </asp:Panel>                       
@@ -303,7 +305,8 @@
     </div> 
     <div class="centered">
         <asp:ImageButton ID="ibtnRegresar" runat="server" 
-            ImageUrl="~/imagenes/volver.png" onclick="ibtnRegresar_Click"/>
+            ImageUrl="~/imagenes/volver.png" onclick="ibtnRegresar_Click" 
+            CausesValidation="False"/>
         </br>
         Volver
     </div>  
