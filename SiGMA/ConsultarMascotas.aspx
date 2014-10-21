@@ -291,8 +291,6 @@
                                 ValidationGroup="1" Style="float: left" />
                             <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" ValidationGroup="2" OnClick="BtnEliminarClick"
                                 Style="float: left" />
-                            <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar" OnClick="BtnLimpiarClick"
-                                Style="float: left" />
                             <asp:Button ID="btnGenerarQR" runat="server" Text="Generar Codigo QR" OnClick="btnGenerarQR_Click"
                                 Style="float: left" />
                         </asp:Panel>

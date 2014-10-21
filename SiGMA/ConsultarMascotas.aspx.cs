@@ -25,7 +25,6 @@ namespace SiGMA
                     if (!LogicaBDRol.verificarPermisosGrabacion(Session["UsuarioLogueado"].ToString(), "ConsultarMascotas.aspx"))
                     {
                         btnModificar.Visible = false;
-                        btnLimpiar.Visible = false;
                     }
                     if (!LogicaBDRol.verificarPermisosEliminacion(Session["UsuarioLogueado"].ToString(), "ConsultarMascotas.aspx"))
                         btnEliminar.Visible = false;
@@ -623,44 +622,7 @@ namespace SiGMA
                 lblResultado3.Text = "Debe seleccionar el estados de fallecido";
             }
         }
-        public void BtnLimpiarClick(object sender, EventArgs e)
-        {
-            pnlAtento.Visible = false;
-            pnlbotones.Visible = false;
-            pnlbtnSeleccionar.Visible = false;
-            pnlCorrecto.Visible = false;
-            pnlDatos.Visible = false;
-            pnlInfo.Visible = false;
-            pnlResultados.Visible = false;
-            pnlbotones.Visible = false;
-            txtMascota.Text = "";
-            Session["idMascota"] = 0;
-            txtNombreDueñio.Text = "";
-            imgImagen.Visible = false;
-            if (rbPorDuenio.Checked)
-            {
-                pnltxtNombreDueñio.Visible = true;
-                pnlNombre.Visible = true;
-                pnltxtMascota.Visible = false;
-                pnlmascota.Visible = false;
-            }
-            if (rbPorMascota.Checked)
-            {
-                pnltxtMascota.Visible = true;
-                pnlmascota.Visible = true;
-                pnltxtNombreDueñio.Visible = false;
-                pnlNombre.Visible = false;
-                ddlEspecie.SelectedValue = "0";
-                ddlEstado.SelectedValue = "0";
-                ddlRaza.SelectedValue = "0";
-                ddlSexo.SelectedValue = "0";
-                ddlTratoAnimales.SelectedValue = "0";
-                ddlTratoNinios.SelectedValue = "0";
-                txtMascota.Text = "";
-                ddlEdad.SelectedValue = "0";
-            }
-        }
-
+        
         protected void btnGenerarQR_Click(object sender, EventArgs e)
         {
             if (Session["idMascota"] != null)
