@@ -59,7 +59,7 @@ namespace AccesoADatos
                                from G4 in group4.DefaultIfEmpty()
                                join MascotaBD in mapa.Mascotas on G1.idMascota equals MascotaBD.idMascota into group5
                                from G5 in group5.DefaultIfEmpty()
-                               where (G4.idTipoDocumento == tipo && G3.nroDocumento.Contains(numero) && G1.Estados.ambito == "Adopcion" && (G1.Estados.nombreEstado == "Modifcada" || G1.Estados.nombreEstado == "Abierta"))
+                               where (G4.idTipoDocumento == tipo && G3.nroDocumento.Equals(numero) && G1.Estados.ambito == "Adopcion" && (G1.Estados.nombreEstado == "Modifcada" || G1.Estados.nombreEstado == "Abierta"))
                                select new
                                {
                                    est = EstadosBD,

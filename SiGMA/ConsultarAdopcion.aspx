@@ -165,7 +165,7 @@
                             <table>
                                 <tr>
                                     <td>
-                                        Nº de adopcion
+                                        Nº de adopcion:&nbsp&nbsp&nbsp
                                     </td>
                                     <td>
                                         <asp:TextBox ID="txtNºAdopcion" runat="server" Width="211px" Enabled=false></asp:TextBox>
@@ -224,13 +224,13 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                <td>
-                                    Domicilio:
-                                </td>
+                                    <td>
+                                        Domicilio:
+                                    </td>
                                     <td>
                                         <asp:TextBox ID="txtCalle" runat="server" ReadOnly="True" ViewStateMode="Enabled"
-                                            Enabled="False" Width="75%"></asp:TextBox> - <asp:TextBox ID="txtNro" runat="server" ReadOnly="True" ViewStateMode="Enabled" Enabled="False"
-                                            Width="20%"></asp:TextBox>
+                                            Enabled="False" Width="65%"></asp:TextBox> - <asp:TextBox ID="txtNro" runat="server" ReadOnly="True" ViewStateMode="Enabled" Enabled="False"
+                                            Width="25%"></asp:TextBox>
                                     </td>
                                 </tr>
                             </table>
