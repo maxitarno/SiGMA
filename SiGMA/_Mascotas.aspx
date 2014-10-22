@@ -1,5 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PaginaMaestra.Master" AutoEventWireup="true" CodeBehind="Administracion.aspx.cs" Inherits="SiGMA.Administracion" %>
-<asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PaginaMaestra.Master" AutoEventWireup="true" CodeBehind="_Mascotas.aspx.cs" Inherits="SiGMA._Mascotas" %>
+<asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">    
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,30 +30,28 @@
         </div>
 		<div class="row mt centered">	
 			<div class="col-lg-4">
-				<a class="zoom green" href="AsignarPermisos.aspx"><img class="img-responsive" src="assets/img/administracion/permisos.jpg" alt="" width="200px" height="300px"/></a>
-				<p class="col-lg-4">PERMISOS</p>
+				<a class="zoom green" href="RegistrarMascota.aspx"><img class="img-responsive" src="assets/img/mascotas/registrarmascota.jpg" alt="" width="200px" height="300px"/></a>
+				<p class="col-lg-4">REGISTRAR</p>
 			</div>
 			<div class="col-lg-4">
-				<a class="zoom green" href="RegistrarRoles.aspx"><img class="img-responsive" src="assets/img/administracion/roles.jpg" alt="" width="200px" height="300px"/></a>
-				<p class="col-lg-4">ROLES</p>
+				<a class="zoom green" href="ConsultarMascotas.aspx"><img class="img-responsive" src="assets/img/mascotas/consultarmascota.jpg" alt="" width="200px" height="300px"/></a>
+				<p class="col-lg-4">CONSULTAR</p>
 			</div>
 			<div class="col-lg-4">
-				<a class="zoom green" href="AsignarRol.aspx"><img class="img-responsive" src="assets/img/administracion/asignarrol.jpg" alt="" width="200px" height="300px" /></a>
-				<p class="col-lg-4">ASIGNAR ROL</p>
+				<a class="zoom green" href="ConsultarMascotas.aspx?m=1"><img class="img-responsive" src="assets/img/mascotas/modificarmascota.jpg" alt="" width="200px" height="300px"/></a>
+				<p class="col-lg-4">MODIFICAR</p>
 			</div>
 		</div><!-- /row -->
 		<div class="row mt centered">	
 			<div class="col-lg-4">
-				<a class="zoom green" href="CABMRazas.aspx"><img class="img-responsive" src="assets/img/administracion/razas.jpg" alt="" width="200px" height="300px" /></a>
-				<p class="col-lg-4">RAZAS</p>
+				
 			</div>
 			<div class="col-lg-4">
-				<a class="zoom green" href="CABMTipoDeDocumento.aspx"><img class="img-responsive" src="assets/img/administracion/documentos.jpg" alt="" width="200px" height="300px" /></a>
-				<p class="col-lg-4">TIPOS DOCS</p>
-			</div>
-			<div class="col-lg-4">
-				<a class="zoom green" href="Default.aspx"><img class="img-responsive" src="assets/img/mascotas/volver.jpg" alt="" width="200px" height="300px" /></a>
+				<a class="zoom green" href="Mascotas.aspx"><img class="img-responsive" src="assets/img/mascotas/volver.jpg" alt="" width="200px" height="300px" /></a>
 				<p class="col-lg-4">VOLVER</p>
+			</div>
+			<div class="col-lg-4">
+				
 			</div>
 		</div><!-- /row -->
 	</div><!-- /container -->

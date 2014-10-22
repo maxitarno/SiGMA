@@ -55,10 +55,19 @@ namespace SiGMA
                 {
                     pnlfiltros.Visible = true;
                 }
-                    /*Handler1.AddMethod(ImageHandler_ObtenerImagenMascota);
-                    imgprvw.Src = ResolveUrl("~/Handler1.ashx");
-                    imgprvw.Width = 300;
-                    imgprvw.Height = 200;*/
+                String mod = Request.QueryString["m"];
+                if (mod == "1")
+                {
+                    lblTitulo.Text = "Modificar Mascota";
+                    btnModificar.Visible = true;
+                    btnEliminar.Visible = true;
+                }
+                else
+                {
+                    lblTitulo.Text = "Consultar Mascota";
+                    btnModificar.Visible = false;
+                    btnEliminar.Visible = false;
+                }
             }
         }
         public void ddlRaza_SelectedIndexChanged(object sender, EventArgs e)
@@ -268,7 +277,6 @@ namespace SiGMA
                     pnlInfo.Visible = false;
                     pnlmascota.Visible = true;
                     pnltxtMascota.Visible = true;
-                    btnEliminar.Visible = true;
                     if (mascota.imagen != null) 
                     {
                         Session["imagen"] = mascota.imagen;
@@ -632,7 +640,7 @@ namespace SiGMA
         }
         public void BtnRegresarClick(object sender, EventArgs e)
         {
-            Response.Redirect("Mascotas.aspx");
+            Response.Redirect("_Mascotas.aspx");
         }
     }
 }

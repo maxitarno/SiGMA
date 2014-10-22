@@ -30,12 +30,12 @@
         </div>
 		<div class="row mt centered">	
 			<div class="col-lg-4">
-				<a class="zoom green" href="RegistrarMascota.aspx"><img class="img-responsive" src="assets/img/mascotas/registrarmascota.jpg" alt="" width="200px" height="300px"/></a>
-				<p class="col-lg-4">REGISTRAR</p>
+				<a class="zoom green" href="_Mascotas.aspx"><img class="img-responsive" src="assets/img/mascotas/registrarmascota.jpg" alt="" width="200px" height="300px"/></a>
+				<p class="col-lg-4">MASCOTAS</p>
 			</div>
 			<div class="col-lg-4">
-				<a class="zoom green" href="ConsultarMascotas.aspx"><img class="img-responsive" src="assets/img/mascotas/consultarmascota.jpg" alt="" width="200px" height="300px"/></a>
-				<p class="col-lg-4">CONSULTAR</p>
+				<a class="zoom green" href="Hallazgos.aspx"><img class="img-responsive" src="assets/img/mascotas/registrarhallazgo.jpg" alt="" width="200px" height="300px" /></a>
+				<p class="col-lg-4">HALLAZGOS</p>
 			</div>
 			<div class="col-lg-4">
 				<a class="zoom green" href="Perdidas.aspx"><img class="img-responsive" src="assets/img/mascotas/registrarperdida.jpg" alt="" width="200px" height="300px" /></a>
@@ -44,16 +44,16 @@
 		</div><!-- /row -->
 		<div class="row mt centered">	
 			<div class="col-lg-4">
-				<a class="zoom green" href="Hallazgos.aspx"><img class="img-responsive" src="assets/img/mascotas/registrarhallazgo.jpg" alt="" width="200px" height="300px" /></a>
-				<p class="col-lg-4">HALLAZGOS</p>
-			</div>
-			<div class="col-lg-4">
 				<a class="zoom green" href="Adopciones.aspx"><img class="img-responsive" src="assets/img/mascotas/registraradopcion.jpg" alt="" width="200px" height="300px" /></a>
 				<p class="col-lg-4">ADOPCIONES</p>
 			</div>
 			<div class="col-lg-4">
 				<a class="zoom green" href="Default.aspx"><img class="img-responsive" src="assets/img/mascotas/volver.jpg" alt="" width="200px" height="300px" /></a>
 				<p class="col-lg-4">VOLVER</p>
+			</div>
+			<div class="col-lg-4">
+			<%--	<a class="zoom green" href="Default.aspx"><img class="img-responsive" src="assets/img/mascotas/volver.jpg" alt="" width="200px" height="300px" /></a>
+				<p class="col-lg-4">VOLVER</p>--%>
 			</div>
 		</div><!-- /row -->
 	</div><!-- /container -->

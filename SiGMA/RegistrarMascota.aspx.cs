@@ -138,7 +138,7 @@ namespace SiGMA
 
         protected void BtnRegresarClick(object sender, ImageClickEventArgs e)
         {
-            Response.Redirect("Mascotas.aspx");
+            Response.Redirect("_Mascotas.aspx");
         }
        
     }

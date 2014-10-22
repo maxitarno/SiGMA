@@ -66,6 +66,7 @@
     <Content Include="Administracion.aspx" />
     <Content Include="Adopciones.aspx" />
     <Content Include="AsignarPermisos.aspx" />
+    <Content Include="AsignarRol.aspx" />
     <Content Include="assets\css\bootstrap.css" />
     <Content Include="assets\css\main.css" />
     <Content Include="assets\fonts\glyphicons-halflings-regular.svg" />
@@ -147,6 +148,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Inicio.aspx" />
+    <Content Include="_Mascotas.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Administracion.aspx.cs">
@@ -169,6 +171,13 @@
     </Compile>
     <Compile Include="AsignarPermisos.aspx.designer.cs">
       <DependentUpon>AsignarPermisos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AsignarRol.aspx.cs">
+      <DependentUpon>AsignarRol.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AsignarRol.aspx.designer.cs">
+      <DependentUpon>AsignarRol.aspx</DependentUpon>
     </Compile>
     <Compile Include="CABMRazas.aspx.cs">
       <DependentUpon>CABMRazas.aspx</DependentUpon>
@@ -397,6 +406,13 @@
     </Compile>
     <Compile Include="Usuarios.aspx.designer.cs">
       <DependentUpon>Usuarios.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="_Mascotas.aspx.cs">
+      <DependentUpon>_Mascotas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="_Mascotas.aspx.designer.cs">
+      <DependentUpon>_Mascotas.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
