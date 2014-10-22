@@ -63,7 +63,7 @@
                                                     N:
                                                 </td>
                                                 <td>
-                                                    <asp:TextBox ID="txtNDeAdopcion" runat="server"></asp:TextBox>
+                                                    <asp:TextBox ID="txtNDeAdopcion" runat="server" Width="211px"></asp:TextBox>
                                                 </td>
                                             </tr>
                                         </asp:Panel>
@@ -73,7 +73,7 @@
                                                     Tipo de documento:
                                                 </td>
                                                 <td>
-                                                    <asp:DropDownList ID="ddlTipo" runat="server">
+                                                    <asp:DropDownList ID="ddlTipo" runat="server" Width="100%">
                                                     </asp:DropDownList>
                                                 </td>
                                             </tr>
@@ -82,7 +82,7 @@
                                                     Nº de documento:
                                                 </td>
                                                 <td>
-                                                    <asp:TextBox ID="txtNº" runat="server"></asp:TextBox>
+                                                    <asp:TextBox ID="txtNº" runat="server" Width="211px"></asp:TextBox>
                                                 </td>
                                             </tr>
                                         </asp:Panel>
@@ -99,7 +99,7 @@
                                                     Resultados:
                                                 </td>
                                                 <td>
-                                                    <asp:ListBox ID="lstResultados" runat="server"></asp:ListBox>
+                                                    <asp:ListBox ID="lstResultados" runat="server" Width="100%"></asp:ListBox>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -136,12 +136,11 @@
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    Calle:
+                                                    Domicilio:
                                                 </td>
                                                 <td>
-                                                    <asp:DropDownList ID="ddlCalle" runat="server" Width="110px">
-                                                    </asp:DropDownList>
-                                                    Nº:<asp:TextBox ID="txtNºCalle" runat="server" Width="22px"></asp:TextBox>
+                                                    <asp:DropDownList ID="ddlCalle" runat="server" Width="75%">
+                                                    </asp:DropDownList> - <asp:TextBox ID="txtNºCalle" runat="server" Width="20%"></asp:TextBox>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -149,7 +148,7 @@
                                                     Nombre de la mascota:
                                                 </td>
                                                 <td>
-                                                    <asp:TextBox ID="txtNombreMascota" runat="server"></asp:TextBox>
+                                                    <asp:TextBox ID="txtNombreMascota" runat="server" Width="100%"></asp:TextBox>
                                                 </td>
                                             </tr>
                                         </asp:Panel>
@@ -169,7 +168,7 @@
                                         Nº de adopcion
                                     </td>
                                     <td>
-                                        <asp:TextBox ID="txtNºAdopcion" runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="txtNºAdopcion" runat="server" Width="211px" Enabled=false></asp:TextBox>
                                     </td>
                                 </tr>
                             </table>
@@ -185,7 +184,7 @@
                                     </td>
                                     <td>
                                         <asp:TextBox ID="txtNombreD" runat="server" ReadOnly="True" ViewStateMode="Enabled"
-                                            Enabled="False"></asp:TextBox>
+                                            Enabled="False" Width="211px"></asp:TextBox>
                                     </td>
                                 </tr>
                                 <tr>
@@ -194,7 +193,7 @@
                                     </td>
                                     <td>
                                         <asp:TextBox ID="txtTipoDeDocumento" runat="server" ReadOnly="True" ViewStateMode="Enabled"
-                                            Enabled="False"></asp:TextBox>
+                                            Enabled="False" Width="100%"></asp:TextBox>
                                     </td>
                                 </tr>
                                 <tr>
@@ -203,7 +202,7 @@
                                     </td>
                                     <td>
                                         <asp:TextBox ID="txtNumeroDocumento" runat="server" ReadOnly="True" ViewStateMode="Enabled"
-                                            Enabled="False"></asp:TextBox>
+                                            Enabled="False" Width="100%"></asp:TextBox>
                                     </td>
                                 </tr>
                                 <tr>
@@ -212,7 +211,7 @@
                                     </td>
                                     <td>
                                         <asp:TextBox ID="txtLocalidad" runat="server" ReadOnly="True" ViewStateMode="Enabled"
-                                            Enabled="False"></asp:TextBox>
+                                            Enabled="False" Width="100%"></asp:TextBox>
                                     </td>
                                 </tr>
                                 <tr>
@@ -221,26 +220,17 @@
                                     </td>
                                     <td>
                                         <asp:TextBox ID="txtBarrio" runat="server" ReadOnly="True" ViewStateMode="Enabled"
-                                            Enabled="False"></asp:TextBox>
+                                            Enabled="False" Width="100%"></asp:TextBox>
                                     </td>
                                 </tr>
                                 <tr>
                                 <td>
-                                    Calle:
+                                    Domicilio:
                                 </td>
                                     <td>
-                                        
                                         <asp:TextBox ID="txtCalle" runat="server" ReadOnly="True" ViewStateMode="Enabled"
-                                            Enabled="False"></asp:TextBox>
-                                    </td>
-                                </tr>
-                                <tr>
-                                <td>
-                                    Nº de calle:
-                                </td>
-                                    <td style="display: inline">
-                                        <asp:TextBox ID="txtNro" runat="server" ReadOnly="True" ViewStateMode="Enabled" Enabled="False"
-                                            ></asp:TextBox>
+                                            Enabled="False" Width="75%"></asp:TextBox> - <asp:TextBox ID="txtNro" runat="server" ReadOnly="True" ViewStateMode="Enabled" Enabled="False"
+                                            Width="20%"></asp:TextBox>
                                     </td>
                                 </tr>
                             </table>
@@ -256,7 +246,7 @@
                                     </td>
                                     <td>
                                         <asp:TextBox ID="txtNombreM" runat="server" ReadOnly="True" ViewStateMode="Enabled"
-                                            Enabled="False"></asp:TextBox>
+                                            Enabled="False" Width="100%"></asp:TextBox>
                                     </td>
                                 </tr>
                                 <tr>
@@ -265,7 +255,7 @@
                                     </td>
                                     <td>
                                         <asp:TextBox ID="txtEspecie" runat="server" ViewStateMode="Enabled" ReadOnly="true"
-                                            Enabled="False"></asp:TextBox>
+                                            Enabled="False" Width="100%"></asp:TextBox>
                                     </td>
                                 </tr>
                                 <tr>
@@ -274,7 +264,7 @@
                                     </td>
                                     <td>
                                         <asp:TextBox ID="txtRaza" runat="server" ReadOnly="True" ViewStateMode="Enabled"
-                                            Enabled="False"></asp:TextBox>
+                                            Enabled="False" Width="100%"></asp:TextBox>
                                     </td>
                                 </tr>
                                 <tr>
@@ -283,7 +273,7 @@
                                     </td>
                                     <td>
                                         <asp:TextBox ID="txtSexo" runat="server" ReadOnly="True" ViewStateMode="Enabled"
-                                            Enabled="False"></asp:TextBox>
+                                            Enabled="False" Width="100%"></asp:TextBox>
                                     </td>
                                 </tr>
                                 <tr>
@@ -292,7 +282,7 @@
                                     </td>
                                     <td>
                                         <asp:TextBox ID="txtEdad" runat="server" ReadOnly="True" ViewStateMode="Enabled"
-                                            Enabled="False"></asp:TextBox>
+                                            Enabled="False" Width="100%"></asp:TextBox>
                                     </td>
                                 </tr>
                             </table>
