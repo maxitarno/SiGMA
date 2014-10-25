@@ -124,35 +124,47 @@ namespace SiGMA
                 {
                     if (!ddlCategoria.SelectedValue.Equals("0"))
                     {
-                        if (txtNombre.Text != "")
+                        if (txtNombre.Text != "" && Validaciones.verificarSoloLetras(txtNombre.Text))
                         {
                             ERaza raza = new ERaza();
-                            raza.pesoRaza = txtPeso.Text;
-                            raza.nombreRaza = txtNombre.Text;
-                            raza.CategoriaRaza = new ECategoriaRaza();
-                            raza.cuidadoEspecial = new ECuidado();
-                            raza.especie = new EEspecie();
-                            raza.CategoriaRaza.idCategoriaRaza = int.Parse(ddlCategoria.SelectedValue.ToString());
-                            raza.cuidadoEspecial.idCuidado = int.Parse(ddlCuidadoEspecial.SelectedValue.ToString());
-                            raza.especie.idEspecie = int.Parse(ddlEspecies.SelectedValue.ToString());
-                            raza.idRaza = (int)Session["idraza"];
-                            if(Datos.ModificarRaza(raza)){
-                                pnlInfo.Visible = false;
-                                lblResultado1.Text = "Se modifico correctamente";
-                                pnlCorrecto.Visible = true;
-                                pnlAtento.Visible = false;
+                            if (float.Parse(txtPeso.Text) > 0 && txtPeso.Text != "" && Validaciones.verificarDecimal(txtPeso.Text))
+                            {
+                                raza.pesoRaza = txtPeso.Text;
+                                raza.nombreRaza = txtNombre.Text;
+                                raza.CategoriaRaza = new ECategoriaRaza();
+                                raza.cuidadoEspecial = new ECuidado();
+                                raza.especie = new EEspecie();
+                                raza.CategoriaRaza.idCategoriaRaza = int.Parse(ddlCategoria.SelectedValue.ToString());
+                                raza.cuidadoEspecial.idCuidado = int.Parse(ddlCuidadoEspecial.SelectedValue.ToString());
+                                raza.especie.idEspecie = int.Parse(ddlEspecies.SelectedValue.ToString());
+                                raza.idRaza = (int)Session["idraza"];
+                                if (Datos.ModificarRaza(raza))
+                                {
+                                    pnlInfo.Visible = false;
+                                    lblResultado1.Text = "Se modifico correctamente";
+                                    pnlCorrecto.Visible = true;
+                                    pnlAtento.Visible = false;
+                                }
+                                else
+                                {
+                                    pnlInfo.Visible = false;
+                                    lblResultado1.Text = "No se pudo modificar";
+                                    pnlCorrecto.Visible = false;
+                                    pnlAtento.Visible = true;
+                                }
                             }
-                            else{
-                                pnlInfo.Visible = false;
-                                lblResultado1.Text = "No se pudo modificar";
+                            else
+                            {
+                                pnlInfo.Visible = true;
+                                lblResultado1.Text = "Debe ingresar un peso valido";
                                 pnlCorrecto.Visible = false;
-                                pnlAtento.Visible = true;
+                                pnlAtento.Visible = false;
                             }
                         }
                         else
                         {
                             pnlInfo.Visible = true;
-                            lblResultado2.Text = "Debe ingresar un nombre";
+                            lblResultado2.Text = "Debe ingresar un nombre valido";
                             pnlCorrecto.Visible = false;
                             pnlAtento.Visible = false;
                         }
@@ -191,18 +203,30 @@ namespace SiGMA
                 {
                     if (!ddlEspecies.SelectedValue.Equals("0"))
                     {
-                        if(Datos.guardarRaza(raza)){
-                            lblResultado1.Text = "Se modifico correctamente";
-                            pnlCorrecto.Visible = true;
-                            pnlAtento.Visible = false;
-                            pnlInfo.Visible = false;
-                            pnl8.Visible = true;
+                        if (Validaciones.verificarDecimal(txtPeso.Text) && float.Parse(txtPeso.Text) > 0)
+                        {
+                            if (Datos.guardarRaza(raza))
+                            {
+                                lblResultado1.Text = "Se registro correctamente";
+                                pnlCorrecto.Visible = true;
+                                pnlAtento.Visible = false;
+                                pnlInfo.Visible = false;
+                                pnl8.Visible = true;
+                            }
+                            else
+                            {
+                                pnlCorrecto.Visible = false;
+                                pnlAtento.Visible = true;
+                                pnlInfo.Visible = false;
+                                lblResultado3.Text = "No se pudo registrar";
+                            }
                         }
-                        else{
+                        else
+                        {
                             pnlCorrecto.Visible = false;
-                            pnlAtento.Visible = true;
-                            pnlInfo.Visible = false;
-                            lblResultado3.Text = "No se pudo modificar";
+                            pnlAtento.Visible = false;
+                            pnlInfo.Visible = true;
+                            lblResultado2.Text = "Debe ingresar un peso valido";
                         }
                     }
                     else

@@ -91,5 +91,29 @@ namespace Herramientas
                 return false;
             }
         }
+        public static bool contarCaracteresMinimos(int numero, string texto)
+        {
+
+            if (texto.Length >= numero)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public static bool contarCaracteresMaximos(int numero, string texto)
+        {
+
+            if (texto.Length <= numero)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

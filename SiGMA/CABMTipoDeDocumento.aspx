@@ -20,33 +20,32 @@
 <asp:Content ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="centered">
         <div class="panel panel-default">
+            <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title">
                     Consultar, modificar tipos de documentos
                 </h3>
             </div>
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <div class="col-md-2 col-md-offset-4">
-                        <asp:Panel runat="server" ID="pnlCorrecto" class="alert alert-dismissable alert-success"
-                            Visible="false">
-                            <button class="close" type="button" data-dismiss="alert">
-                                ×</button>
-                            <asp:Label ID="lblResultado1" runat="server" Text=""></asp:Label>
-                        </asp:Panel>
-                        <asp:Panel runat="server" ID="pnlInfo" class="alert alert-dismissable alert-info"
-                            Visible="false">
-                            <button class="close" type="button" data-dismiss="alert">
-                                ×</button>
-                            <asp:Label ID="lblResultado2" runat="server" Text=""></asp:Label>
-                        </asp:Panel>
-                        <asp:Panel runat="server" ID="pnlAtento" class="alert alert-dismissable alert-danger"
-                            Visible="false">
-                            <button class="close" type="button" data-dismiss="alert">
-                                ×</button>
-                            <asp:Label ID="lblResultado3" runat="server" Text=""></asp:Label>
-                        </asp:Panel>
-                    </div>
+            <div class="panel-body">
+                <div style="margin-left: 30%; width: 30%;">
+                    <asp:Panel runat="server" ID="pnlCorrecto" class="alert alert-dismissable alert-success"
+                        Visible="false">
+                        <button class="close" type="button" data-dismiss="alert">
+                            ×</button>
+                        <asp:Label ID="lblResultado1" runat="server" Text=""></asp:Label>
+                    </asp:Panel>
+                    <asp:Panel runat="server" ID="pnlInfo" class="alert alert-dismissable alert-info"
+                        Visible="false">
+                        <button class="close" type="button" data-dismiss="alert">
+                            ×</button>
+                        <asp:Label ID="lblResultado2" runat="server" Text=""></asp:Label>
+                    </asp:Panel>
+                    <asp:Panel runat="server" ID="pnlAtento" class="alert alert-dismissable alert-danger"
+                        Visible="false">
+                        <button class="close" type="button" data-dismiss="alert">
+                            ×</button>
+                        <asp:Label ID="lblResultado3" runat="server" Text=""></asp:Label>
+                    </asp:Panel>
                 </div>
             </div>
             <div class="panel-body">
@@ -111,10 +110,12 @@
                     </div>
                 </div>
             </div>
+            </div>
         </div>
     </div>
     <div class="centered">
         <asp:ImageButton ID="ibtnRegresar" runat="server" ImageUrl="~/imagenes/volver.png"
-            OnClick="BtnRegresarClick" CausesValidation="False"/><br />VOLVER
+            OnClick="BtnRegresarClick" CausesValidation="False" /><br />
+        VOLVER
     </div>
 </asp:Content>

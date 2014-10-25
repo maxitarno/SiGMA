@@ -74,7 +74,7 @@ namespace SiGMA
         }
         public void BtnModificarClick(object sender, EventArgs e)
         {
-            if(txtNombre.Text != "" && Session["id"] != null)
+            if(Validaciones.verificarSoloLetras(txtNombre.Text) && Session["id"] != null)
             {
                 ETipoDeDocumento tipoDocumento = new ETipoDeDocumento();
                 tipoDocumento.idTipoDeDocumento = (int)Session["id"];
@@ -104,11 +104,13 @@ namespace SiGMA
                 pnlAtento.Visible = false;
                 pnlCorrecto.Visible = false;
                 pnlInfo.Visible = true;
-                lblResultado2.Text = "Debe ingresar un tipo de documento";
+                lblResultado2.Text = "Debe ingresar un nombre valido";
             }
         }
         public void BtnRegistrarClick(object sender, EventArgs e)
         {
+            if (Validaciones.verificarSoloLetras(txtNombre.Text))
+            {
                 ETipoDeDocumento tipoDocumento = new ETipoDeDocumento();
                 tipoDocumento.nombre = txtNombre.Text;
                 if (Datos.guardarTipoDocumento(tipoDocumento))
@@ -127,6 +129,14 @@ namespace SiGMA
                     pnlInfo.Visible = false;
                     lblResultado3.Text = "No se pudo registrar";
                 }
+            }
+            else
+            {
+                pnlAtento.Visible = false;
+                pnlCorrecto.Visible = false;
+                pnlInfo.Visible = true;
+                lblResultado2.Text = "Debe ingresar un nombre valido";
+            }
         }
         /*public void BtnEliminarClick(object sender, EventArgs e)
         {

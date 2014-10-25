@@ -289,7 +289,7 @@
                         </asp:Panel>
                     </div>
                 </div>
-                 <div class="centered">
+                <div class="centered">
                         <div class="centered">
                             <div style="margin-left: 30%; display: table; width: 40%;">
                                 <div style="display: table-row; width: 30%">
