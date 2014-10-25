@@ -273,7 +273,22 @@
                                     Fecha:
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="txtFecha" runat="server" CssClass="TextBox" Width="100%"></asp:TextBox>
+                                    <asp:Panel ID="pnlFecha" runat="server" Visible="true">
+                                            <asp:TextBox ID="txtFecha" runat="server" CssClass="TextBox" TextMode="SingleLine" Enabled="false"
+                                                Text="  /  /" Width="90%"></asp:TextBox>
+                                                <asp:ImageButton ID="imgFechaPerdida" runat="server" CausesValidation="False"
+                                                ImageUrl="~/App_Themes/TemaSigma/imagenes/ico_calendar.gif" OnClick="imgFechaPerdida_click"  /> 
+                                                <asp:Calendar ID="calendario" runat="server" BorderColor="Black" 
+                                                        BorderWidth="1px" Visible="False" onselectionchanged="calendario_SelectionChanged">
+                                                            <DayHeaderStyle BackColor="White" Font-Bold="True" ForeColor="Black" />
+                                                        <DayStyle ForeColor="Black" />
+                                                        <TitleStyle BackColor="Black" ForeColor="White" />
+                                                        </asp:Calendar>
+                                                    <asp:RangeValidator ID="rnvFechaPerdida" runat="server" ErrorMessage="La fecha no puede ser superior a la actual" 
+                                                        ForeColor="Red" ControlToValidate="txtFecha" SetFocusOnError="True" 
+                                                        MinimumValue="01/01/2013" Type="Date" Font-Size="XX-Small" 
+                                                        ></asp:RangeValidator>
+                                        </asp:Panel>
                                 </td>
                             </tr>
                             <tr>

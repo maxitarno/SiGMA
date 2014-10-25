@@ -14,10 +14,21 @@ namespace SiGMA
 {
     public partial class ConsultarMascotasaspx : System.Web.UI.Page
     {
+        protected void imgFechaPerdida_click(object sender, ImageClickEventArgs e)
+        {
+            calendario.Visible = true;
+        }
+
+        protected void calendario_SelectionChanged(object sender, EventArgs e)
+        {
+            txtFecha.Text = calendario.SelectedDate.ToString("d");
+            calendario.Visible = false;
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
             {
+                rnvFechaPerdida.MaximumValue = DateTime.Now.ToShortDateString();
                 if (Session["UsuarioLogueado"] != null)
                 {
                     if (!LogicaBDRol.verificarPermisoVisualizacion(Session["UsuarioLogueado"].ToString(), "ConsultarMascotas.aspx"))
