@@ -264,45 +264,65 @@ namespace SiGMA
                             {
                                 if (Validaciones.Fecha(txtFecha.Text, out fecha))
                                 {
-                                    persona.nombre = txtNombre.Text;
-                                    persona.nroDocumento = txtNºDeDocumento.Text;
-                                    persona.telefonoCelular = txtTelefonoCelular.Text;
-                                    persona.telefonoFijo = txtTelefonoFijo.Text;
-                                    persona.fechaNacimiento = fecha;
-                                    persona.apellido = txtApellido.Text;
-                                    persona.email = txtMail.Text;
-                                    persona.barrio = new EBarrio();
-                                    persona.barrio.idBarrio = int.Parse(ddlBarrios.SelectedValue);
-                                    persona.tipoDocumento = new ETipoDeDocumento();
-                                    persona.tipoDocumento.idTipoDeDocumento = int.Parse(ddlTipoDeDocumento.SelectedValue);
-                                    EUsuario usuario = new EUsuario();
-                                    usuario.user = txtUsuario.Text;
-                                    persona.domicilio = new ECalle();
-                                    persona.domicilio.idCalle = int.Parse(ddlCalle.SelectedValue.ToString());
-                                    if (usuario.user != "")
+                                    if (Validaciones.verificarSoloLetras(txtApellido.Text) && Validaciones.verificarSoloLetras(txtNombre.Text))
                                     {
-                                        if (LogicaBDUsuario.ModificarUsuario(persona, usuario))
+                                        if (Validaciones.verificarSoloNumeros(txtTelefonoFijo.Text) && Validaciones.verificarSoloNumeros(txtTelefonoCelular.Text))
                                         {
-                                            pnlCorrecto.Visible = true;
-                                            lblResultado1.Text = "Se modifico corretamente";
-                                            pnlAtento.Visible = false;
-                                            pnlInfo.Visible = false;
+                                            persona.nombre = txtNombre.Text;
+                                            persona.nroDocumento = txtNºDeDocumento.Text;
+                                            persona.telefonoCelular = txtTelefonoCelular.Text;
+                                            persona.telefonoFijo = txtTelefonoFijo.Text;
+                                            persona.fechaNacimiento = fecha;
+                                            persona.apellido = txtApellido.Text;
+                                            persona.email = txtMail.Text;
+                                            persona.barrio = new EBarrio();
+                                            persona.barrio.idBarrio = int.Parse(ddlBarrios.SelectedValue);
+                                            persona.tipoDocumento = new ETipoDeDocumento();
+                                            persona.tipoDocumento.idTipoDeDocumento = int.Parse(ddlTipoDeDocumento.SelectedValue);
+                                            EUsuario usuario = new EUsuario();
+                                            usuario.user = txtUsuario.Text;
+                                            persona.domicilio = new ECalle();
+                                            persona.domicilio.idCalle = int.Parse(ddlCalle.SelectedValue.ToString());
+                                            if (usuario.user != "")
+                                            {
+                                                if (LogicaBDUsuario.ModificarUsuario(persona, usuario))
+                                                {
+                                                    pnlCorrecto.Visible = true;
+                                                    lblResultado1.Text = "Se modifico corretamente";
+                                                    pnlAtento.Visible = false;
+                                                    pnlInfo.Visible = false;
+                                                }
+                                                else
+                                                {
+                                                    pnlCorrecto.Visible = false;
+                                                    pnlInfo.Visible = false;
+                                                    pnlAtento.Visible = true;
+                                                    lblResultado3.Text = "No se pudo modificar";
+                                                    pnlCorrecto.Visible = false;
+                                                }
+                                            }
+                                            else
+                                            {
+                                                pnlCorrecto.Visible = false;
+                                                pnlInfo.Visible = false;
+                                                pnlAtento.Visible = true;
+                                                lblResultado3.Text = "No se pudo modificar";
+                                                pnlCorrecto.Visible = false;
+                                            }
                                         }
                                         else
                                         {
-                                            pnlCorrecto.Visible = false;
-                                            pnlInfo.Visible = false;
-                                            pnlAtento.Visible = true;
-                                            lblResultado3.Text = "No se pudo modificar";
+                                            pnlInfo.Visible = true;
+                                            lblResultado2.Text = "Debe ingresar un numero de telefono valido";
+                                            pnlAtento.Visible = false;
                                             pnlCorrecto.Visible = false;
                                         }
                                     }
                                     else
                                     {
-                                        pnlCorrecto.Visible = false;
-                                        pnlInfo.Visible = false;
-                                        pnlAtento.Visible = true;
-                                        lblResultado3.Text = "No se pudo modificar";
+                                        pnlInfo.Visible = true;
+                                        lblResultado2.Text = "Debe ingresar un nombre valido";
+                                        pnlAtento.Visible = false;
                                         pnlCorrecto.Visible = false;
                                     }
                                 }
