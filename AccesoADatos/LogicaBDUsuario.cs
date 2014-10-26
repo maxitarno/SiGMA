@@ -112,6 +112,8 @@ namespace AccesoADatos
                            from G3 in group3.DefaultIfEmpty()
                            join calleBD in mapaEntidades.Calles on G1.idCalle equals calleBD.idCalle into group4
                            from G4 in group4.DefaultIfEmpty()
+                           join TipoBD in mapaEntidades.TipoDocumentos on G1.idTipoDocumento equals TipoBD.idTipoDocumento into group5
+                           from G5 in group5.DefaultIfEmpty()
                            where (G1.user == nombre && usuariosBD.estado == true)
                            select new 
                            {
@@ -120,6 +122,7 @@ namespace AccesoADatos
                                barrio = G2,
                                localidad = G3,
                                calle = G4,
+                               tipo = G5,
                             };
             try
             {
@@ -143,6 +146,7 @@ namespace AccesoADatos
                     if (usuario.persona.Calles != null)
                         localidad.nombre = (usuario.persona.Calles.Localidades == null) ? "" : usuario.persona.Calles.Localidades.nombre;
                     barrio.nombre = (usuario.barrio == null) ? "" : usuario.barrio.nombre;
+                    tipoDoc.nombre = usuario.tipo.nombre;
                 }
             }
             catch (System.Data.EntityCommandCompilationException exc)
