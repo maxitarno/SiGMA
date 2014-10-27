@@ -24,13 +24,17 @@ public  object adopciones { get; set; }protected void Page_Load(object sender, E
                 String mod = Request.QueryString["m"];
                 if (mod == "1")
                 {
+                    pnlRegistrar.Visible = true;
                     lblTitulo.Text = "Modificar Adopción";
                     pnlDatos.Visible = true;
+                    btnRegistrar.Visible = true;
                 }
                 else
                 {
                     lblTitulo.Text = "Consultar Adopción";
                     pnlDatos.Visible = false;
+                    pnlRegistrar.Visible = false;
+                    btnRegistrar.Visible = false;
                 }
                 if (rbPorDNI.Checked)
                 {
@@ -223,50 +227,62 @@ public  object adopciones { get; set; }protected void Page_Load(object sender, E
                     Session["Adopcion"] = adopcion;
                     Session["Mascota"] = adopcion.mascota;
                 }
+                Session["na"] = int.Parse(lstResultados.SelectedValue);
             }
             else
             {
-                lblResultado3.Text = "Debe seleccionar una adopcion";
-                pnlAtento.Visible = true;
-                pnlInfo.Visible = false;
+                lblResultado2.Text = "Debe seleccionar una adopcion";
+                pnlAtento.Visible = false;
+                pnlInfo.Visible = true;
                 pnlCorrecto.Visible = false;
             }
         }
         public void BtnModificarClick(object sender, EventArgs e)
         {
-            if (Session["Si"] != null && Session["Si"].ToString().Equals("Si"))
+            EMascota mascota = new EMascota();
+            mascota = (EMascota)Session["Mascota"];
+            if (Validaciones.verificarSoloLetras(mascota.nombreMascota))
             {
-                EAdopcion adopcion = new EAdopcion();
-                adopcion = (EAdopcion)Session["Adopcion"];
-                adopcion.idVoluntario = int.Parse(Session["IdVoluntario"].ToString());
-                adopcion.fecha = DateTime.Parse(DateTime.Now.ToShortDateString());
-                EPersona persona = new EPersona();
-                persona = (EPersona)Session["Dueño"];
-                if (LogicaBDAdopcion.ModificarAdopcion(adopcion, persona))
+                if (Session["Si"] != null && Session["Si"].ToString().Equals("Si"))
                 {
-                    pnlInfo.Visible = false;
-                    lblResultado1.Text = "Se registro correctamente";
-                    pnlCorrecto.Visible = true;
-                    pnlAtento.Visible = false;
-                    Session["Si"] = null;
-                    pnlBuscar.Visible = true;
-                    pnlDuenio.Visible = false;
-                    pnlMascota.Visible = false;
-                    pnlRegistrar.Visible = false;
+                    EAdopcion adopcion = new EAdopcion();
+                    adopcion = (EAdopcion)Session["Adopcion"];
+                    adopcion.idVoluntario = int.Parse(Session["IdVoluntario"].ToString());
+                    adopcion.fecha = DateTime.Parse(DateTime.Now.ToShortDateString());
+                    EPersona persona = new EPersona();
+                    persona = (EPersona)Session["Dueño"];
+                    if (LogicaBDAdopcion.ModificarAdopcion(adopcion, persona))
+                    {
+                        pnlInfo.Visible = false;
+                        lblResultado1.Text = "Se registro correctamente";
+                        pnlCorrecto.Visible = true;
+                        pnlAtento.Visible = false;
+                        Session["Si"] = null;
+                        pnlBuscar.Visible = true;
+                        pnlDuenio.Visible = false;
+                        pnlMascota.Visible = false;
+                        pnlRegistrar.Visible = false;
+                    }
+                    else
+                    {
+                        pnlInfo.Visible = false;
+                        lblResultado3.Text = "No se pudo registrar";
+                        pnlCorrecto.Visible = false;
+                        pnlAtento.Visible = true;
+                    }
                 }
                 else
                 {
-                    pnlInfo.Visible = false;
-                    lblResultado3.Text = "No se pudo registrar";
-                    pnlCorrecto.Visible = false;
-                    pnlAtento.Visible = true;
+                    Session["Modificar"] = "Si";
+                    Response.Redirect("Contrato.aspx");
                 }
             }
             else
             {
-                Session["na"] = LogicaBDAdopcion.obtenerProximoIdAdopcion() - 1;
-                Session["Modificar"] = "Si";
-                Response.Redirect("Contrato.aspx");
+                lblResultado2.Text = "Debe ingresar un nombre valido";
+                pnlAtento.Visible = false;
+                pnlInfo.Visible = true;
+                pnlCorrecto.Visible = false;
             }
         }
         public void DdlBarrio_SelectedIndexChanged(object sender, EventArgs e)

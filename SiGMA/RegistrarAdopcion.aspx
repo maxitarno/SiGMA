@@ -54,7 +54,17 @@
                         <div style="margin-left: 30%; display: table; width: 40%;">
                             <div style="display: table-row; width: 30%">
                                 <div style="display: table-cell; width: 20%;">
-                                    Fecha:&nbsp<asp:TextBox ID="txtFecha" runat="server" ReadOnly="True" ViewStateMode="Enabled"></asp:TextBox>
+                                    <asp:TextBox ID="txtFecha" Enabled="false" runat="server" Width="90%" ></asp:TextBox><asp:ImageButton ID="imgFechaPerdida" runat="server" CausesValidation="False"
+                                ImageUrl="~/App_Themes/TemaSigma/imagenes/ico_calendar.gif" OnClick="imgFechaPerdida_click"  Enabled="False" /> <asp:Calendar ID="calendario" runat="server" BorderColor="Black" 
+                                        BorderWidth="1px" Visible="False" onselectionchanged="calendario_SelectionChanged">
+                                            <DayHeaderStyle BackColor="White" Font-Bold="True" ForeColor="Black" />
+                                        <DayStyle ForeColor="Black" />
+                                        <TitleStyle BackColor="Black" ForeColor="White" />
+                                        </asp:Calendar>
+                                    <asp:RangeValidator ID="rnvFechaPerdida" runat="server" ErrorMessage="La fecha no puede ser superior a la actual" 
+                                        ForeColor="Red" ControlToValidate="txtFecha" SetFocusOnError="True" 
+                                        MinimumValue="01/01/2013" Type="Date" Font-Size="XX-Small" 
+                                        ></asp:RangeValidator>
                                 </div>
                             </div>
                         </div>
@@ -266,7 +276,7 @@
                                         Nombre de la mascota:
                                     </td>
                                     <td>
-                                        <asp:TextBox ID="txtNombreM" runat="server" ReadOnly="True" ViewStateMode="Enabled"
+                                        <asp:TextBox ID="txtNombreM" runat="server" ReadOnly="false" ViewStateMode="Enabled"
                                             Enabled="False"></asp:TextBox>
                                     </td>
                                 </tr>
