@@ -52,9 +52,18 @@
 				<p class="col-lg-4">TIPOS DOCS</p>
 			</div>
 			<div class="col-lg-4">
-				<a class="zoom green" href="Default.aspx"><img class="img-responsive" src="assets/img/mascotas/volver.jpg" alt="" width="200px" height="300px" /></a>
-				<p class="col-lg-4">VOLVER</p>
-			</div>
+                <a class="zoom green" href=""><img class="img-responsive" src="assets/img/administracion/listas.jpg" alt="" width="200px" height="300px" /></a>
+                <p class="col-lg-4">INFORMES</p>
+            </div>
+		</div><!-- /row -->
+        <div class="row mt centered">
+            <div class="col-lg-4">
+                <a class="zoom green" href="Default.aspx">
+                    <img class="img-responsive" src="assets/img/mascotas/volver.jpg" alt="" width="200px"
+                        height="300px" /></a>
+                <p class="col-lg-4">
+                    VOLVER</p>
+            </div>
 		</div><!-- /row -->
 	</div><!-- /container -->
 </asp:Content>
