@@ -184,5 +184,23 @@ namespace AccesoADatos
                 return false;
             }
         }
+        public static Boolean EliminarAdopcion(EAdopcion adopcion)
+        {
+            try
+            {
+                SiGMAEntities mapa = Conexion.crearSegunServidor();
+                Mascotas mascota = mapa.Mascotas.Where(m => m.idMascota == adopcion.mascota.idMascota).First();
+                mascota.idDuenio = null;
+                LogicaBDMascota.modificarEstado("En adopcion", mascota.idMascota, ref mapa);
+                Adopciones a = mapa.Adopciones.Where(adopcionBD => adopcionBD.idAdopcion == adopcion.idAdopcion).First();
+                mapa.DeleteObject(a);
+                mapa.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
     }
 }

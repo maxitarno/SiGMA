@@ -298,11 +298,11 @@
                                             <asp:Button ID="btnRegistrar" runat="server" Text="Generar contrato" OnClick="BtnModificarClick"/>
                                         </asp:Panel>
                                     </div>
-                                    <%--<div style="display: table-cell; width: 20%;">
-                                        <asp:Panel ID="pnllimpiar" runat="server" Visible="false">
-                                            <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar" />
+                                    <div style="display: table-cell; width: 20%;">
+                                        <asp:Panel ID="pnlEliminar" runat="server" Visible="false">
+                                            <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" OnClick="BtnEliminarClick"/>
                                         </asp:Panel>
-                                    </div>--%>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -28,6 +28,8 @@ public  object adopciones { get; set; }protected void Page_Load(object sender, E
                     lblTitulo.Text = "Modificar Adopción";
                     pnlDatos.Visible = true;
                     btnRegistrar.Visible = true;
+                    btnEliminar.Visible = true;
+                    pnlEliminar.Visible = true;
                 }
                 else
                 {
@@ -41,6 +43,7 @@ public  object adopciones { get; set; }protected void Page_Load(object sender, E
                     pnlBuscar.Visible = true;
                     pnlPorDocumento.Visible = true;
                     pnlPorAdopcion.Visible = false;
+                    pnlDatos.Visible = false;
                 }
                 if(Session["Si"] != null){
                     if(Session["Si"].Equals("Si")){
@@ -70,6 +73,9 @@ public  object adopciones { get; set; }protected void Page_Load(object sender, E
                         pnlAdopcion.Visible = true;
                         pnlRegistrar.Visible = true;
                         btnRegistrar.Text = "Modificar adopcion";
+                        btnEliminar.Visible = false;
+                        pnlRegistrar.Visible = true;
+                        pnlEliminar.Visible = false;
                     }
                 }
                 CargarCombos.cargarLocalidades(ref ddlLocalidad);
@@ -98,6 +104,8 @@ public  object adopciones { get; set; }protected void Page_Load(object sender, E
             pnlDatos.Visible = false;
             pnlAdopcion.Visible = false;
             btnRegistrar.Text = "Generar Contrato";
+            btnEliminar.Visible = false;
+            pnlEliminar.Visible = false;
         }
         public void RbPorN(object sender, EventArgs e)
         {
@@ -114,27 +122,39 @@ public  object adopciones { get; set; }protected void Page_Load(object sender, E
             pnlDatos.Visible = false;
             pnlAdopcion.Visible = false;
             btnRegistrar.Text = "Generar Contrato";
+            btnEliminar.Visible = false;
+            pnlEliminar.Visible = false;
         }
         public void BtnBuscarClick(object sender, EventArgs e)
         {
             if (rbPorNAdopcion.Checked)
             {
-                List<EAdopcion> adopciones = LogicaBDAdopcion.BuscarAdopcion(int.Parse(txtNDeAdopcion.Text));
-                if (adopciones.Count != 0)
+                if (Validaciones.verificarSoloNumeros(txtNDeAdopcion.Text))
                 {
-                    lstResultados.Items.Clear();
-                    lstResultados.DataSource = adopciones;
-                    lstResultados.DataValueField = "idAdopcion";
-                    lstResultados.DataTextField = "nombre";
-                    lstResultados.DataBind();
-                    pnlResultados.Visible = true;
-                    pnlAtento.Visible = false;
-                    pnlInfo.Visible = false;
-                    pnlCorrecto.Visible = false;
+                    List<EAdopcion> adopciones = LogicaBDAdopcion.BuscarAdopcion(int.Parse(txtNDeAdopcion.Text));
+                    if (adopciones.Count != 0)
+                    {
+                        lstResultados.Items.Clear();
+                        lstResultados.DataSource = adopciones;
+                        lstResultados.DataValueField = "idAdopcion";
+                        lstResultados.DataTextField = "nombre";
+                        lstResultados.DataBind();
+                        pnlResultados.Visible = true;
+                        pnlAtento.Visible = false;
+                        pnlInfo.Visible = false;
+                        pnlCorrecto.Visible = false;
+                    }
+                    else
+                    {
+                        lblResultado2.Text = "No se encontraron adopciones";
+                        pnlAtento.Visible = false;
+                        pnlInfo.Visible = true;
+                        pnlCorrecto.Visible = false;
+                    }
                 }
                 else
                 {
-                    lblResultado2.Text = "No se encontraron adopciones";
+                    lblResultado2.Text = "Debe ingresar un número de adopción";
                     pnlAtento.Visible = false;
                     pnlInfo.Visible = true;
                     pnlCorrecto.Visible = false;
@@ -228,6 +248,8 @@ public  object adopciones { get; set; }protected void Page_Load(object sender, E
                     Session["Mascota"] = adopcion.mascota;
                 }
                 Session["na"] = int.Parse(lstResultados.SelectedValue);
+                btnEliminar.Visible = true;
+                pnlEliminar.Visible = true;
             }
             else
             {
@@ -274,6 +296,8 @@ public  object adopciones { get; set; }protected void Page_Load(object sender, E
                 else
                 {
                     Session["Modificar"] = "Si";
+                    pnlEliminar.Visible = false;
+                    btnEliminar.Visible = false;
                     Response.Redirect("Contrato.aspx");
                 }
             }
@@ -303,6 +327,26 @@ public  object adopciones { get; set; }protected void Page_Load(object sender, E
                 ddlCalle.Items.Add(new ListItem("SIN ASIGNAR", "0"));
                 ddlBarrio.Items.Clear();
                 ddlBarrio.Items.Add(new ListItem("SIN ASIGNAR", "0"));
+            }
+        }
+        public void BtnEliminarClick(object sender, EventArgs e)
+        {
+            EAdopcion adopcion = (EAdopcion)Session["Adopcion"];
+            if (LogicaBDAdopcion.EliminarAdopcion(adopcion))
+            {
+                lblResultado1.Text = "Se elimmino correctamente";
+                pnlAtento.Visible = false;
+                pnlInfo.Visible = false;
+                pnlCorrecto.Visible = true;
+                rbPorDNI.Checked = true;
+                pnlDatos.Visible = false;
+            }
+            else
+            {
+                lblResultado3.Text = "No se pudo eliminar";
+                pnlAtento.Visible = true;
+                pnlInfo.Visible = false;
+                pnlCorrecto.Visible = false;
             }
         }
     }
