@@ -196,5 +196,14 @@ namespace Herramientas
                 ddl.Items.Add(new ListItem(item.nombre.ToString(), item.idCalle.ToString()));
             }
         }
+        public static void cargarEstado(ref DropDownList ddl, string ambito)
+        {
+            ddl.Items.Add(new ListItem("SIN ASIGNAR", "0"));
+            List<EEstado> estados = Datos.BuscarEstados(ambito);
+            foreach (EEstado item in estados)
+            {
+                ddl.Items.Add(new ListItem(item.nombreEstado.ToString(), item.idEstado.ToString()));
+            }
+        }   
     }
 }

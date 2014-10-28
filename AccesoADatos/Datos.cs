@@ -590,5 +590,32 @@ namespace AccesoADatos
                 }
             }
         }
+        public static List<EEstado> BuscarEstados(string ambito)
+        {
+            List<EEstado> estados = new List<EEstado>();
+            SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+            IQueryable<Estados> consulta = from EstadosDB in mapaEntidades.Estados
+                                           where(EstadosDB.ambito == ambito)
+                                           select EstadosDB;
+            try
+            {
+                foreach (var registro in consulta)
+                {
+                    EEstado estado = new EEstado();
+                    estado.idEstado = registro.idEstado;
+                    estado.nombreEstado = registro.nombreEstado;
+                    estados.Add(estado);
+                }
+            }
+            catch (System.Data.EntityCommandCompilationException exc)
+            {
+                throw exc;
+            }
+            catch (System.Data.EntityCommandExecutionException exc)
+            {
+                throw exc;
+            }
+            return estados;
+        }
     }
 }

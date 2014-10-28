@@ -52,7 +52,7 @@
 				<p class="col-lg-4">TIPOS DOCS</p>
 			</div>
 			<div class="col-lg-4">
-                <a class="zoom green" href=""><img class="img-responsive" src="assets/img/administracion/listas.jpg" alt="" width="200px" height="300px" /></a>
+                <a class="zoom green" href="SeleccionarInformes.aspx"><img class="img-responsive" src="assets/img/administracion/listas.jpg" alt="" width="200px" height="300px" /></a>
                 <p class="col-lg-4">INFORMES</p>
             </div>
 		</div><!-- /row -->
