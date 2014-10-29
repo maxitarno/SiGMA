@@ -27,7 +27,8 @@ namespace SiGMA
                 row["cantidad de perdidas promedio"] = float.Parse(mascotasPerdidas.Count.ToString()) / float.Parse(mascotas.Count.ToString());
                 row["cantidad de hallazgos promedio"] = float.Parse(mascotasHalladas.Count.ToString()) / float.Parse(mascotas.Count.ToString());
                 row["cantidad de adopciones promedio"] = float.Parse(mascotasAdoptadas.Count.ToString()) / float.Parse(mascotas.Count.ToString());
-                row["porcentaje de adopcion"] =  (float.Parse(mascotasAdoptadas.Count.ToString()) / float.Parse(mascotas.Count.ToString())) * 100.00;
+                row["porcentaje de adopcion"] =  (float.Parse(mascotasAdoptadas.Count.ToS  tring()) / float.Parse(mascotas.Count.ToString())) * 100.00;
+                row["porcentaje de 
                 dt.Rows.Add(row);
                 metricas.SetDataSource(ds);
                 crtListas.ReportSource = metricas;
