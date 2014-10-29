@@ -84,6 +84,8 @@ namespace SiGMA
                 pnlFiltros2.Visible = false;
                 pnlFiltros3.Visible = false;
                 pnlFiltros4.Visible = false;
+                Session["listas"] = "2";
+                Response.Redirect("listas.aspx");
             }
             if (ddlInforme.SelectedValue.Equals("3"))
             {
@@ -98,6 +100,13 @@ namespace SiGMA
                 pnlFiltros2.Visible = false;
                 pnlFiltros3.Visible = true;
                 pnlFiltros4.Visible = false;
+            }
+            if (ddlInforme.SelectedValue.Equals("5"))
+            {
+                pnlFiltros1.Visible = false;
+                pnlFiltros2.Visible = false;
+                pnlFiltros3.Visible = false;
+                pnlFiltros4.Visible = true;
             }
         }
     }

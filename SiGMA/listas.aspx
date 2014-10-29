@@ -1,4 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="listas.aspx.cs" Inherits="SiGMA.listas" MasterPageFile="~/PaginaMaestra.Master" %>
+
+<%@ Register Assembly="CrystalDecisions.Web, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304"
+    Namespace="CrystalDecisions.Web" TagPrefix="CR" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,6 +25,14 @@
                     <h3 class="panel-title">
                         Informe
                     </h3>
+                </div>
+                <div class="centered">
+                    <CR:CrystalReportViewer ID="crtListas" runat="server" AutoDataBind="true" />
+                </div>
+                <div class="centered">
+                    <asp:ImageButton ID="ibtnRegresar" runat="server" ImageUrl="~/imagenes/volver.png"
+                        OnClick="BtnRegresarClick" />
+                    <br /> VOLVER
                 </div>
             </div>
         </div>

@@ -50,7 +50,7 @@
                                                 Fecha:
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="txtFechaMascota" Enabled="false" runat="server" Width="90%"></asp:TextBox><asp:ImageButton
+                                                <asp:TextBox ID="txtFechaMascota" Enabled="false" runat="server" Width="90%" text="  /  /  "></asp:TextBox><asp:ImageButton
                                                 ID="imgFechaPerdida" runat="server" CausesValidation="False" ImageUrl="~/App_Themes/TemaSigma/imagenes/ico_calendar.gif"
                                                 OnClick="imgFechaPerdida_Click" />
                                             <asp:Calendar ID="calendario" runat="server" BorderColor="Black" BorderWidth="1px"
@@ -60,7 +60,7 @@
                                                 <TitleStyle BackColor="Black" ForeColor="White" />
                                             </asp:Calendar>
                                             <asp:RangeValidator ID="rnvMascota" runat="server" ErrorMessage="La fecha no puede ser superior a la actual"
-                                                ForeColor="Red" ControlToValidate="txtFechaPerdida" SetFocusOnError="True" MinimumValue="01/01/2013"
+                                                ForeColor="Red" ControlToValidate="txtFechaMascota" SetFocusOnError="True" MinimumValue="01/01/2013"
                                                 Type="Date" Font-Size="XX-Small"></asp:RangeValidator>
                                             </td>
                                         </tr>
@@ -109,7 +109,7 @@
                                                 Fecha de la adopción desde:
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="txtFechaAdopcion" Enabled="false" runat="server" Width="90%"></asp:TextBox><asp:ImageButton
+                                                <asp:TextBox ID="txtFechaAdopcion" Enabled="false" runat="server" Width="90%" Text="  /  /  "></asp:TextBox><asp:ImageButton
                                                 ID="ImageButton1" runat="server" CausesValidation="False" ImageUrl="~/App_Themes/TemaSigma/imagenes/ico_calendar.gif"
                                                 OnClick="imgFechaPerdida_Click" />
                                             <asp:Calendar ID="calendar1" runat="server" BorderColor="Black" BorderWidth="1px"
@@ -141,7 +141,7 @@
                                                 Fecha de el hallazgo desde:
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="txtFechaDelHallazgo" Enabled="false" runat="server" Width="90%"></asp:TextBox><asp:ImageButton
+                                                <asp:TextBox ID="txtFechaDelHallazgo" Enabled="false" runat="server" Width="90%" text="  /  /  "></asp:TextBox><asp:ImageButton
                                                 ID="ImageButton2" runat="server" CausesValidation="False" ImageUrl="~/App_Themes/TemaSigma/imagenes/ico_calendar.gif"
                                                 OnClick="imgFechaPerdida_Click" />
                                             <asp:Calendar ID="calendar2" runat="server" BorderColor="Black" BorderWidth="1px"
@@ -182,7 +182,7 @@
                                                 fecha de las perdidas desde:
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="txtFechaDeLaPerdida" Enabled="false" runat="server" Width="90%"></asp:TextBox><asp:ImageButton
+                                                <asp:TextBox ID="txtFechaDeLaPerdida" Enabled="false" runat="server" Width="90%" text="  /  /  "></asp:TextBox><asp:ImageButton
                                                 ID="ImageButton3" runat="server" CausesValidation="False" ImageUrl="~/App_Themes/TemaSigma/imagenes/ico_calendar.gif"
                                                 OnClick="imgFechaPerdida_Click" />
                                             <asp:Calendar ID="calendar3" runat="server" BorderColor="Black" BorderWidth="1px"
