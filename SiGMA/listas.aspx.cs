@@ -24,10 +24,10 @@ namespace SiGMA
                 DataTable dt = ds.Tables["Metricas"];
                 DataRow row = dt.NewRow();
                 Metricas metricas = new Metricas();
-                row["cantidad de perdidas promedio"] = mascotasPerdidas.Count / mascotas.Count;
-                row["cantidad de hallazgos promedio"] = mascotasHalladas.Count / mascotas.Count;
-                row["cantidad de adopciones promedio"] = mascotasAdoptadas.Count / mascotas.Count;
-                row["porcentaje de adopcion"] =  (mascotasAdoptadas.Count / mascotas.Count) * 100;
+                row["cantidad de perdidas promedio"] = float.Parse(mascotasPerdidas.Count.ToString()) / float.Parse(mascotas.Count.ToString());
+                row["cantidad de hallazgos promedio"] = float.Parse(mascotasHalladas.Count.ToString()) / float.Parse(mascotas.Count.ToString());
+                row["cantidad de adopciones promedio"] = float.Parse(mascotasAdoptadas.Count.ToString()) / float.Parse(mascotas.Count.ToString());
+                row["porcentaje de adopcion"] =  (float.Parse(mascotasAdoptadas.Count.ToString()) / float.Parse(mascotas.Count.ToString())) * 100.00;
                 dt.Rows.Add(row);
                 metricas.SetDataSource(ds);
                 crtListas.ReportSource = metricas;

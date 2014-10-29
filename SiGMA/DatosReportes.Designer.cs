@@ -2299,7 +2299,7 @@ namespace SiGMA {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public MetricasRow AddMetricasRow(int cantidad_de_perdidas_promedio, int cantidad_de_hallazgos_promedio, int cantidad_de_adopciones_promedio, int porcentaje_de_adopcion, string porcentaje_de_hallazgo, string porcentaje_de_perdida) {
+            public MetricasRow AddMetricasRow(decimal cantidad_de_perdidas_promedio, decimal cantidad_de_hallazgos_promedio, decimal cantidad_de_adopciones_promedio, decimal porcentaje_de_adopcion, decimal porcentaje_de_hallazgo, decimal porcentaje_de_perdida) {
                 MetricasRow rowMetricasRow = ((MetricasRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         cantidad_de_perdidas_promedio,
@@ -2341,17 +2341,17 @@ namespace SiGMA {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columncantidad_de_perdidas_promedio = new global::System.Data.DataColumn("cantidad de perdidas promedio", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columncantidad_de_perdidas_promedio = new global::System.Data.DataColumn("cantidad de perdidas promedio", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columncantidad_de_perdidas_promedio);
-                this.columncantidad_de_hallazgos_promedio = new global::System.Data.DataColumn("cantidad de hallazgos promedio", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columncantidad_de_hallazgos_promedio = new global::System.Data.DataColumn("cantidad de hallazgos promedio", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columncantidad_de_hallazgos_promedio);
-                this.columncantidad_de_adopciones_promedio = new global::System.Data.DataColumn("cantidad de adopciones promedio", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columncantidad_de_adopciones_promedio = new global::System.Data.DataColumn("cantidad de adopciones promedio", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columncantidad_de_adopciones_promedio);
-                this.columnporcentaje_de_adopcion = new global::System.Data.DataColumn("porcentaje de adopcion", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnporcentaje_de_adopcion = new global::System.Data.DataColumn("porcentaje de adopcion", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnporcentaje_de_adopcion);
-                this.columnporcentaje_de_hallazgo = new global::System.Data.DataColumn("porcentaje de hallazgo", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnporcentaje_de_hallazgo = new global::System.Data.DataColumn("porcentaje de hallazgo", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnporcentaje_de_hallazgo);
-                this.columnporcentaje_de_perdida = new global::System.Data.DataColumn("porcentaje de perdida", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnporcentaje_de_perdida = new global::System.Data.DataColumn("porcentaje de perdida", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnporcentaje_de_perdida);
             }
             
@@ -3638,10 +3638,10 @@ namespace SiGMA {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int cantidad_de_perdidas_promedio {
+            public decimal cantidad_de_perdidas_promedio {
                 get {
                     try {
-                        return ((int)(this[this.tableMetricas.cantidad_de_perdidas_promedioColumn]));
+                        return ((decimal)(this[this.tableMetricas.cantidad_de_perdidas_promedioColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'cantidad de perdidas promedio\' de la tabla \'Metricas\' es " +
@@ -3655,10 +3655,10 @@ namespace SiGMA {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int cantidad_de_hallazgos_promedio {
+            public decimal cantidad_de_hallazgos_promedio {
                 get {
                     try {
-                        return ((int)(this[this.tableMetricas.cantidad_de_hallazgos_promedioColumn]));
+                        return ((decimal)(this[this.tableMetricas.cantidad_de_hallazgos_promedioColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'cantidad de hallazgos promedio\' de la tabla \'Metricas\' es" +
@@ -3672,10 +3672,10 @@ namespace SiGMA {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int cantidad_de_adopciones_promedio {
+            public decimal cantidad_de_adopciones_promedio {
                 get {
                     try {
-                        return ((int)(this[this.tableMetricas.cantidad_de_adopciones_promedioColumn]));
+                        return ((decimal)(this[this.tableMetricas.cantidad_de_adopciones_promedioColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'cantidad de adopciones promedio\' de la tabla \'Metricas\' e" +
@@ -3689,10 +3689,10 @@ namespace SiGMA {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int porcentaje_de_adopcion {
+            public decimal porcentaje_de_adopcion {
                 get {
                     try {
-                        return ((int)(this[this.tableMetricas.porcentaje_de_adopcionColumn]));
+                        return ((decimal)(this[this.tableMetricas.porcentaje_de_adopcionColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'porcentaje de adopcion\' de la tabla \'Metricas\' es DBNull." +
@@ -3706,10 +3706,10 @@ namespace SiGMA {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string porcentaje_de_hallazgo {
+            public decimal porcentaje_de_hallazgo {
                 get {
                     try {
-                        return ((string)(this[this.tableMetricas.porcentaje_de_hallazgoColumn]));
+                        return ((decimal)(this[this.tableMetricas.porcentaje_de_hallazgoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'porcentaje de hallazgo\' de la tabla \'Metricas\' es DBNull." +
@@ -3723,10 +3723,10 @@ namespace SiGMA {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string porcentaje_de_perdida {
+            public decimal porcentaje_de_perdida {
                 get {
                     try {
-                        return ((string)(this[this.tableMetricas.porcentaje_de_perdidaColumn]));
+                        return ((decimal)(this[this.tableMetricas.porcentaje_de_perdidaColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'porcentaje de perdida\' de la tabla \'Metricas\' es DBNull.", e);
