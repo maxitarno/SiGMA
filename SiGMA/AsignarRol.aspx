@@ -101,7 +101,8 @@
                                     AppendDataBoundItems="true"> 
                                 </asp:DropDownList>
                             </td>
-                            <td><asp:Button ID="btnEliminarRol" runat="server" Text="Eliminar" /></td>
+                            <td><asp:Button ID="btnEliminarRol" runat="server" Text="Eliminar" 
+                                    onclick="btnEliminarRol_Click" /></td>
                         </tr>
                         <tr>
                             <td align="right" width="100px">Agregar Rol: </td>
@@ -110,7 +111,17 @@
                                     AppendDataBoundItems="true"> 
                                 </asp:DropDownList>
                             </td>
-                            <td><asp:Button ID="btnAsignarRol" runat="server" Text="Guardar" /></td>
+                            <td><asp:Button ID="btnAsignarRol" runat="server" Text="Guardar" 
+                                    onclick="btnAsignarRol_Click" /></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td align="left">
+                                <asp:DropDownList ID="ddlRolesTraspaso" visible="false" runat="server" AutoPostBack="true" 
+                                    AppendDataBoundItems="true"> 
+                                </asp:DropDownList>
+                            </td>
+                            <td></td>
                         </tr>
                     </table>
                 </asp:Panel>

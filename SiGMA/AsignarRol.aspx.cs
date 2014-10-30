@@ -24,7 +24,6 @@ namespace SiGMA
                 {
                     Response.Redirect("Login.aspx");
                 }
-                CargarCombos.cargarRoles(ref ddlRol);
             }
         }
 
@@ -54,15 +53,69 @@ namespace SiGMA
             var usuario = lstUsuarios.SelectedValue;
             pnlAsignalRol.Visible = true;
             txtUsuario.Text = usuario;
+            cargarRolUsuario(usuario);
+            quitarRolesParaAsignar(usuario);
+        }
+
+        private void quitarRolesParaAsignar(string usuario)
+        {
+            ddlRol.Items.Clear();
+            CargarCombos.cargarRoles(ref ddlRol);
+            List<ERol> roles = LogicaBDRol.cargarRolesSergunUsuario(usuario);
+            foreach (var item in roles)
+            {
+                ddlRol.SelectedValue = item.idRol.ToString();
+                ddlRol.Items.RemoveAt(ddlRol.SelectedIndex);
+            }   
+        }
+
+        protected void btnEliminarRol_Click(object sender, EventArgs e)
+        {
+            if (LogicaBDRol.eliminarRolAsignadoUsuario(Convert.ToInt32(ddlRolUsuario.SelectedValue), lstUsuarios.SelectedValue))
+            {
+                ddlRolUsuario.Items.RemoveAt(ddlRolUsuario.SelectedIndex);
+                quitarRolesParaAsignar(lstUsuarios.SelectedValue);
+                pnlInfo.Visible = false;
+                lblCorrecto.Text = "Rol eliminado del usuario correctamente";
+                pnlAtento.Visible = false;
+                pnlCorrecto.Visible = true;
+            }
+            else
+            {
+                pnlInfo.Visible = false;
+                lblError.Text = "Error al iliminar rol. Verifique datos";
+                pnlAtento.Visible = true;
+                pnlCorrecto.Visible = true;
+            }
+        }
+
+        protected void btnAsignarRol_Click(object sender, EventArgs e)
+        {
+            if (LogicaBDRol.guardarRolAsignadoUsuario(Convert.ToInt32(ddlRol.SelectedValue), lstUsuarios.SelectedValue))
+            {
+                ddlRolUsuario.Items.Clear();
+                cargarRolUsuario(lstUsuarios.SelectedValue);
+                ddlRol.Items.RemoveAt(Convert.ToInt32(ddlRol.SelectedIndex));
+                pnlInfo.Visible = false;
+                lblCorrecto.Text = "Rol asignado al usuario correctamente";
+                pnlAtento.Visible = false;
+                pnlCorrecto.Visible = true;
+            }
+            else
+            {
+                pnlInfo.Visible = false;
+                lblError.Text = "Error al iliminar rol. Verifique datos";
+                pnlAtento.Visible = true;
+                pnlCorrecto.Visible = true;
+            }
+        }
+
+        private void cargarRolUsuario(string usuario) 
+        {
             ddlRolUsuario.DataSource = LogicaBDRol.cargarRolesSergunUsuario(usuario);
             ddlRolUsuario.DataTextField = "nombreRol";
             ddlRolUsuario.DataValueField = "idRol";
             ddlRolUsuario.DataBind();
-            List<ERol> roles = LogicaBDRol.cargarRolesSergunUsuario(usuario);
-            foreach (var item in roles)
-            {
-                ddlRol.Items.Remove(item.nombreRol);    
-            }
         }
     }
 }

@@ -104,6 +104,54 @@ namespace AccesoADatos
             }
         }
         //fin metodo
+        //metodo para eliminar rol por usuario
+        public static bool eliminarRolAsignadoUsuario(int rol, string usuario) 
+        {
+            bool b = true;
+            try
+            {
+                SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+                RolesXUsuario rolBD = new RolesXUsuario();
+                if (rol != 0)
+                {
+                    rolBD = (from r in mapaEntidades.RolesXUsuario
+                             where (r.idRol == rol && r.user == usuario)
+                             select r).First();
+                    mapaEntidades.DeleteObject(rolBD);
+                    mapaEntidades.SaveChanges(System.Data.Objects.SaveOptions.DetectChangesBeforeSave);
+                    b = true;
+                }
+            }
+            catch (Exception exc)
+            {
+                b = false;
+                throw exc;
+            }
+            return b;
+        }    
+        //fin metodo
+        //metodo para guardar rol por usuario
+        public static bool guardarRolAsignadoUsuario(int rol, string usuario) 
+        {
+            bool b = true;
+            try
+            {
+                SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+                RolesXUsuario rolBD = new RolesXUsuario();
+                rolBD.idRol = rol;
+                rolBD.user = usuario;
+                mapaEntidades.AddToRolesXUsuario(rolBD);
+                mapaEntidades.SaveChanges();
+                b = true;
+            }
+            catch (Exception exc)
+            {
+                b = false;
+                throw exc;
+            }
+            return b;
+        }
+        //fin metodo
         //metodo para cargar permisos segun rol seleccionado
         public static List<EPermiso> cargarPermisosRol(int idRol)
         {
