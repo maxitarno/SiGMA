@@ -53,12 +53,12 @@ namespace SiGMA
                 foreach (var m in mascotas1)
                 {
                     DataRow row = dt.NewRow();
-                    row["Especie"] = m.nombreMascota;
+                    row["Especie"] = m.especie.nombreEspecie;
                     row["Raza"] = m.raza.nombreRaza;
                     row["edad"] = m.edad.nombreEdad;
                     row["nombre"] = m.nombreMascota;
                     row["estado"] = m.estado.nombreEstado;
-                    row["fecha"] = m.fechaNacimiento;
+                    row["fecha"] = m.fechaNacimiento.ToShortDateString();
                     dt.Rows.Add(row);
                 }
                 ListadoMascotas lista = new ListadoMascotas();

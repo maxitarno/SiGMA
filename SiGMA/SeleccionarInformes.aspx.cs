@@ -130,21 +130,21 @@ namespace SiGMA
                 if (!ddlEdad.SelectedValue.Equals("0"))
                 {
                     mascota.edad = new EEdad();
-                    mascota.edad.idEdad = int.Parse(ddlEdad.SelectedValue);
+                    mascota.edad.nombreEdad = ddlEdad.SelectedItem.Text;
                 } if (!ddlEspecies.SelectedValue.Equals("0"))
                 {
                     mascota.especie = new EEspecie();
-                    mascota.especie.idEspecie = int.Parse(ddlEspecies.SelectedValue);
+                    mascota.especie.nombreEspecie = ddlEspecies.SelectedItem.Text;
                 }
                 if (!ddlEstado.SelectedValue.Equals("0"))
                 {
                     mascota.estado = new EEstado();
-                    mascota.estado.idEstado = int.Parse(ddlEstado.SelectedValue);
+                    mascota.estado.nombreEstado = ddlEstado.SelectedItem.Text;
                 }
                 if (!ddlRaza.SelectedValue.Equals("0"))
                 {
                     mascota.raza = new ERaza();
-                    mascota.raza.idRaza = int.Parse(ddlRaza.SelectedValue);
+                    mascota.raza.nombreRaza = ddlRaza.SelectedItem.Text;
                 }
                 mascota.nombreMascota = "";
                 Session["mascotas"] = mascota;
