@@ -90,11 +90,11 @@ namespace SiGMA
                     mascota.raza = new ERaza();
                     mascota.raza.idRaza = int.Parse(ddlRaza.SelectedValue);
                 }
+                mascota.fechaNacimiento = DateTime.Parse(txtFechaMascota.Text);
                 pnlFiltros1.Visible = true;
                 pnlFiltros2.Visible = false;
                 pnlFiltros3.Visible = false;
                 pnlFiltros4.Visible = false;
-                mascota.nombreMascota = "";
                 Session["mascotas"] = mascota;
                 Session["listas"] = "1";
                 pnlGenerar.Visible = true;
