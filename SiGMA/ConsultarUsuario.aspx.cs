@@ -15,6 +15,19 @@ namespace SiGMA
         {
             if (!Page.IsPostBack)
             {
+                String mod = Request.QueryString["m"];
+                if (mod == "1")
+                {
+                    lblTitulo.Text = "Modificar Usuario";
+                    btnModificar.Visible = true;
+                    btnEliminar.Visible = true;
+                }
+                else
+                {
+                    lblTitulo.Text = "Consultar Usuario";
+                    btnModificar.Visible = false;
+                    btnEliminar.Visible = false;
+                }
                 if (Session["UsuarioLogueado"] != null)
                 {
                     if (!LogicaBDRol.verificarPermisoVisualizacion(Session["UsuarioLogueado"].ToString(), "ConsultarUsuario.aspx"))
@@ -205,7 +218,6 @@ namespace SiGMA
                 pnlEliminar.Visible = true;
                 pnlestate.Visible = true;
                 pnlFecha.Visible = true;
-                pnlLimpiar.Visible = true;
                 pnlLocalidades.Visible = true;
                 pnlMail.Visible = true;
                 pnlmails.Visible = true;
@@ -220,10 +232,7 @@ namespace SiGMA
                 pnlsurname.Visible = true;
                 pnlTelefonFijo.Visible = true;
                 pnlTelefonoCelular.Visible = true;
-                pnlLimpiar.Visible = true;
-                pnlModificar.Visible = true;
                 pnlEliminar.Visible = true;
-                btnEliminar.Visible = true;
                 pnlresult.Visible = false;
                 pnlResultados.Visible = false;
                 pnlDdlCalle.Visible = true;
@@ -394,7 +403,6 @@ namespace SiGMA
                     pnlEliminar.Visible = false;
                     pnlestate.Visible = false;
                     pnlFecha.Visible = false;
-                    pnlLimpiar.Visible = false;
                     pnlLocalidades.Visible = false;
                     pnlMail.Visible = false;
                     pnlmails.Visible = false;
@@ -447,67 +455,6 @@ namespace SiGMA
                 lblResultado3.Text = "No se elimino correctamente";
             }
         }
-        public void btnLimpiarClick(object sender, EventArgs e)
-        {
-            pnlAtento.Visible = false;
-            pnlCorrecto.Visible = false;
-            pnlInfo.Visible = false;
-            txtApellido.Text = "";
-            txtFecha.Text = "";
-            txtMail.Text = "";
-            txtNºDeDocumento.Text = "";
-            txtNombre.Text = "";
-            txtTelefonoCelular.Text = "";
-            txtTelefonoFijo.Text = "";
-            txtUsuario.Text = "";
-            lstResultados.Items.Clear();
-            pnlApellido.Visible = false;
-            pnlAtento.Visible = false;
-            pnlbarrio.Visible = false;
-            pnlBarrios.Visible = false;
-            pnldate.Visible = false;
-            pnlEliminar.Visible = false;
-            pnlestate.Visible = false;
-            pnlFecha.Visible = false;
-            pnlLimpiar.Visible = false;
-            pnlLocalidades.Visible = false;
-            pnlMail.Visible = false;
-            pnlmails.Visible = false;
-            pnlModificar.Visible = false;
-            pnlphone.Visible = false;
-            pnlphonefixed.Visible = false;
-            pnlresult.Visible = false;
-            pnlResultados.Visible = false;
-            pnlSeleccionar.Visible = false;
-            pnlsurname.Visible = false;
-            pnlTelefonFijo.Visible = false;
-            pnlTelefonoCelular.Visible = false;
-            if (rbPorUsuario.Checked)
-            {
-                pnlUsuario.Visible = true;
-                pnlUser.Visible = true;
-                pnlType.Visible = false;
-                pnlTipoDeDocumento.Visible = false;
-                pnlnumber.Visible = false;
-                pnlNºDeDocumento.Visible = false;
-                pnlBuscar.Visible = true;
-            }
-            if (rbPorPersona.Checked)
-            {
-                pnlType.Visible = true;
-                pnlTipoDeDocumento.Visible = true;
-                pnlUsuario.Visible = false;
-                pnlUser.Visible = false;
-                pnlnumber.Visible = true;
-                pnlNºDeDocumento.Visible = true;
-                pnlBuscar.Visible = true;
-            }
-            pnlname.Visible = false;
-            pnlNombre.Visible = false;
-            txtUsuario.ReadOnly = false;
-            pnlCalle.Visible = false;
-            pnlDdlCalle.Visible = false;
-        }
         public void RdbPorUsuario(object sender, EventArgs e)
         {
             if (rbPorUsuario.Checked)
@@ -528,7 +475,6 @@ namespace SiGMA
                 pnlEliminar.Visible = false;
                 pnlestate.Visible = false;
                 pnlFecha.Visible = false;
-                pnlLimpiar.Visible = false;
                 pnlLocalidades.Visible = false;
                 pnlMail.Visible = false;
                 pnlmails.Visible = false;
@@ -569,7 +515,6 @@ namespace SiGMA
             pnlEliminar.Visible = false;
             pnlestate.Visible = false;
             pnlFecha.Visible = false;
-            pnlLimpiar.Visible = false;
             pnlLocalidades.Visible = false;
             pnlMail.Visible = false;
             pnlmails.Visible = false;

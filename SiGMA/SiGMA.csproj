@@ -108,6 +108,7 @@
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\main.css" />
     <Content Include="Contrato.aspx" />
+    <Content Include="EnConstruccion.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="GenerarCodigoQR.aspx" />
     <Content Include="Hallazgos.aspx" />
@@ -254,6 +255,13 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DatosReportes.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="EnConstruccion.aspx.cs">
+      <DependentUpon>EnConstruccion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EnConstruccion.aspx.designer.cs">
+      <DependentUpon>EnConstruccion.aspx</DependentUpon>
     </Compile>
     <Compile Include="GenerarCodigoQR.aspx.cs">
       <DependentUpon>GenerarCodigoQR.aspx</DependentUpon>

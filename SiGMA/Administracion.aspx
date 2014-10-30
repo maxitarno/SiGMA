@@ -24,7 +24,7 @@
 <div class="container pt">
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2 centered">
-                <h3>MASCOTAS</h3>
+                <h3>ADMINISTRACIÓN</h3>
                 <h4 >Elija que desea hacer en el menú inferior</h4>
         </div>
         </div>
@@ -56,13 +56,19 @@
                 <p class="col-lg-4">INFORMES</p>
             </div>
 		</div><!-- /row -->
-        <div class="row mt centered">
-            <div class="col-lg-4">
-                <a class="zoom green" href="Default.aspx">
+        <div class="row mt centered">	
+			<div class="col-lg-4">
+				
+			</div>
+			<div class="col-lg-4">
+				 <a class="zoom green" href="Default.aspx">
                     <img class="img-responsive" src="assets/img/mascotas/volver.jpg" alt="" width="200px"
                         height="300px" /></a>
                 <p class="col-lg-4">
                     VOLVER</p>
+            </div>
+			<div class="col-lg-4">
+                
             </div>
 		</div><!-- /row -->
 	</div><!-- /container -->

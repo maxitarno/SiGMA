@@ -38,8 +38,8 @@
 				<p>CONSULTAR</p>
 			</div>
 			<div class="col-lg-4">
-				<a class="zoom green" href="Default.aspx"><img class="img-responsive" src="assets/img/usuarios/volver.jpg" alt="" width="200px" height="300px" /></a>
-				<p>VOLVER</p>
+				<a class="zoom green" href="ConsultarUsuario.aspx?m=1"><img class="img-responsive" src="assets/img/usuarios/modificarusuario.jpg" alt="" width="200px" height="300px"/></a>
+				<p>MODIFICAR</p>
 			</div>
 		</div><!-- /row -->
 		<div class="row mt centered">	
@@ -48,7 +48,8 @@
 				<p>VOLUNTARIOS</p>--%>
 			</div>
 			<div class="col-lg-4">
-				<%--<a class="zoom green" href="work01.html"><img class="img-responsive" src="assets/img/menu/veterinarias.png" alt="" width="300px" height="400px"/></a>
+				<a class="zoom green" href="Default.aspx"><img class="img-responsive" src="assets/img/usuarios/volver.jpg" alt="" width="200px" height="300px" /></a>
+				<p>VOLVER</p><%--<a class="zoom green" href="work01.html"><img class="img-responsive" src="assets/img/menu/veterinarias.png" alt="" width="300px" height="400px"/></a>
 				<p>VETERINARIAS</p>--%>
 			</div>
 			<div class="col-lg-4">

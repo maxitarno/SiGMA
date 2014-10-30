@@ -22,7 +22,7 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title">
-                    Consultar usuarios</h3>
+                <asp:Label ID="lblTitulo"  runat="server" Text="Label"></asp:Label></h3>
             </div>
             <div class="panel-body">
                 <div class="col-md-2 col-md-offset-5">
@@ -309,12 +309,6 @@
                                                 <asp:Panel ID="pnlEliminar" runat="server" Visible="false">
                                                     <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" OnClick="btnEliminarClick"
                                                         ValidationGroup="3" />
-                                                </asp:Panel>
-                                            </td>
-                                            <td>
-                                                <asp:Panel ID="pnlLimpiar" runat="server" Visible="false">
-                                                    <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar" OnClick="btnLimpiarClick"
-                                                        />
                                                 </asp:Panel>
                                             </td>
                                         </tr>
