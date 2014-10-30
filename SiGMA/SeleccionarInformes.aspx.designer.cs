@@ -292,6 +292,24 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.DropDownList ddlBarrioPerdida;
         
         /// <summary>
+        /// Control pnlGenerar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlGenerar;
+        
+        /// <summary>
+        /// Control BtnGenerar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnGenerar;
+        
+        /// <summary>
         /// Control ibtnRegresar.
         /// </summary>
         /// <remarks>

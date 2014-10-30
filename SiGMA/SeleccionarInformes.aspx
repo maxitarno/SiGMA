@@ -216,6 +216,9 @@
                                         </tr>
                                     </table>
                                 </asp:Panel>
+                                <asp:Panel ID=pnlGenerar runat=server Visible=false>
+                                    <asp:Button ID="BtnGenerar" runat="server" Text="Generar" OnClick="BtnGenerarClick"/>
+                                </asp:Panel>
                             </div>
                         </div>
                     </div>

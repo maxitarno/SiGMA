@@ -28,6 +28,7 @@ namespace SiGMA
                 rnvHallazgo.MaximumValue = DateTime.Now.ToShortDateString();
                 rnvAdopcion.MaximumValue = DateTime.Now.ToShortDateString();
                 rnvPerdida.MaximumValue = DateTime.Now.ToShortDateString();
+                pnlGenerar.Visible = false;
             }
         }
         public void BtnRegresarClick(object sender, EventArgs e)
@@ -93,10 +94,10 @@ namespace SiGMA
                 pnlFiltros2.Visible = false;
                 pnlFiltros3.Visible = false;
                 pnlFiltros4.Visible = false;
-                List<EMascota> mascotas = LogicaBDMascota.buscarMascotasFiltros(mascota);
-                Session["mascotas"] = mascotas;
+                mascota.nombreMascota = "";
+                Session["mascotas"] = mascota;
                 Session["listas"] = "1";
-                Response.Redirect("listas.aspx");
+                pnlGenerar.Visible = true;
             }
             if (ddlInforme.SelectedValue.Equals("2"))
             {
@@ -127,6 +128,13 @@ namespace SiGMA
                 pnlFiltros2.Visible = false;
                 pnlFiltros3.Visible = false;
                 pnlFiltros4.Visible = true;
+            }
+        }
+        public void BtnGenerarClick(object sender, EventArgs e)
+        {
+            if (ddlInforme.SelectedValue.ToString().Equals("1"))
+            {
+                Response.Redirect("listas.aspx");
             }
         }
     }
