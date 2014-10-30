@@ -105,6 +105,8 @@ namespace SiGMA
                 pnlFiltros3.Visible = false;
                 pnlFiltros4.Visible = false;
                 pnlInfo.Visible = false;
+                Session["listas"] = "3";
+                pnlGenerar.Visible = true;
             }
             if (ddlInforme.SelectedValue.Equals("4"))
             {
@@ -112,6 +114,8 @@ namespace SiGMA
                 pnlFiltros2.Visible = false;
                 pnlFiltros3.Visible = true;
                 pnlFiltros4.Visible = false;
+                Session["listas"] = "4";
+                pnlGenerar.Visible = true;
             }
             if (ddlInforme.SelectedValue.Equals("5"))
             {
@@ -120,6 +124,8 @@ namespace SiGMA
                 pnlFiltros3.Visible = false;
                 pnlFiltros4.Visible = true;
                 pnlInfo.Visible = false;
+                Session["listas"] = "5";
+                pnlGenerar.Visible = true;
             }
         }
         public void BtnGenerarClick(object sender, EventArgs e)
@@ -149,6 +155,17 @@ namespace SiGMA
                 mascota.nombreMascota = "";
                 Session["mascotas"] = mascota;
                 Response.Redirect("listas.aspx");
+            }
+            if(ddlInforme.SelectedValue.Equals("3")){
+
+            }
+            if (ddlInforme.SelectedValue.Equals("4"))
+            {
+
+            }
+            if (ddlInforme.SelectedValue.Equals("5"))
+            {
+
             }
         }
     }
