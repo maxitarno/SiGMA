@@ -50,14 +50,7 @@ namespace SiGMA
                 DataSet ds = new DatosReportes();
                 DataTable dt = ds.Tables["Mascotas"];
                 List<EMascota> mascotas1 = LogicaBDMascota.buscarMascotasFiltros(mascota);
-                List<EMascota> mascotas2 = new List<EMascota>();
                 foreach (var m in mascotas1)
-                {
-                    mascota = new EMascota();
-                    LogicaBDMascota.BuscarMascota(mascota, new ECategoriaRaza(), new ECaracterMascota(), new ECuidado(), m.idMascota);
-                    mascotas2.Add(mascota);
-                }
-                foreach (var m in mascotas2)
                 {
                     DataRow row = dt.NewRow();
                     row["Especie"] = m.nombreMascota;
@@ -67,11 +60,11 @@ namespace SiGMA
                     row["estado"] = m.estado.nombreEstado;
                     row["fecha"] = m.fechaNacimiento;
                     dt.Rows.Add(row);
-                    ListadoMascotas lista = new ListadoMascotas();
-                    lista.SetDataSource(ds);
-                    crtListas.ReportSource = lista;
-                    crtListas.RefreshReport();
                 }
+                ListadoMascotas lista = new ListadoMascotas();
+                lista.SetDataSource(ds);
+                crtListas.ReportSource = lista;
+                crtListas.RefreshReport();
             }
         }
         protected void BtnRegresarClick(object sender, ImageClickEventArgs e)

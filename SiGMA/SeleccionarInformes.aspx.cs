@@ -24,11 +24,12 @@ namespace SiGMA
                 CargarCombos.cargarEstado(ref ddlEstadoDelHallazgo, "Hallazgo");
                 CargarCombos.cargarEstado(ref ddlEstadoPerdida, "Perdida");
                 CargarCombos.cargarEstado(ref ddlEstadoDeAdopcion, "Adopcion");
-                rnvMascota.MaximumValue = DateTime.Now.ToShortDateString();
-                rnvHallazgo.MaximumValue = DateTime.Now.ToShortDateString();
-                rnvAdopcion.MaximumValue = DateTime.Now.ToShortDateString();
-                rnvPerdida.MaximumValue = DateTime.Now.ToShortDateString();
+                //rnvMascota.MaximumValue = DateTime.Now.ToShortDateString();
+                //rnvHallazgo.MaximumValue = DateTime.Now.ToShortDateString();
+                //rnvAdopcion.MaximumValue = DateTime.Now.ToShortDateString();
+                //rnvPerdida.MaximumValue = DateTime.Now.ToShortDateString();
                 pnlGenerar.Visible = false;
+                pnlInfo.Visible = false;
             }
         }
         public void BtnRegresarClick(object sender, EventArgs e)
@@ -37,32 +38,37 @@ namespace SiGMA
         }
         protected void calendario_SelectionChanged(object sender, EventArgs e)
         {
-            txtFechaAdopcion.Text = calendario.SelectedDate.ToString("d");
-            calendario.Visible = false;
+            txtFechaAdopcion.Text = calendar1.SelectedDate.ToString("d");
+            calendar1.Visible = false;
+            pnlInfo.Visible = false;
         }
 
         protected void imgFechaPerdida_Click(object sender, ImageClickEventArgs e)
         {
-            calendario.Visible = true;
+            //calendario.Visible = true;
             calendar1.Visible = true;
             calendar2.Visible = true;
             calendar3.Visible = true;
+            pnlInfo.Visible = false;
         }
         protected void calendario_SelectionChangedPerdida(object sender, EventArgs e)
         {
-            txtFechaDeLaPerdida.Text = calendario.SelectedDate.ToString("d");
-            calendario.Visible = false;
+            txtFechaDeLaPerdida.Text = calendar3.SelectedDate.ToString("d");
+            calendar3.Visible = false;
+            pnlInfo.Visible = false;
         }
         protected void calendario_SelectionChangedHallazgo(object sender, EventArgs e)
         {
-            txtFechaDelHallazgo.Text = calendario.SelectedDate.ToString("d");
-            calendario.Visible = false;
+            txtFechaDelHallazgo.Text = calendar2.SelectedDate.ToString("d");
+            calendar2.Visible = false;
+            pnlInfo.Visible = false;
         }
-        protected void calendario_SelectionChangedMascota(object sender, EventArgs e)
-        {
-            txtFechaMascota.Text = calendario.SelectedDate.ToString("d");
-            calendario.Visible = false;
-        }
+        //protected void calendario_SelectionChangedMascota(object sender, EventArgs e)
+        //{
+        //    txtFechaMascota.Text = calendario.SelectedDate.ToString("d");
+        //    calendario.Visible = false;
+        //    pnlInfo.Visible = false;
+        //}
         protected void ddlSelectedChanged(object sender, EventArgs e)
         {
             if (ddlInforme.SelectedValue.Equals("0"))
@@ -71,33 +77,17 @@ namespace SiGMA
                 pnlFiltros2.Visible = false;
                 pnlFiltros3.Visible = false;
                 pnlFiltros4.Visible = false;
+                pnlInfo.Visible = false;
             }
             if (ddlInforme.SelectedValue.Equals("1"))
             {
-                EMascota mascota = new EMascota();
-                if(!ddlEdad.SelectedValue.Equals("0")){
-                    mascota.edad = new EEdad();
-                    mascota.edad.idEdad = int.Parse(ddlEdad.SelectedValue);
-                }if(!ddlEspecies.SelectedValue.Equals("0")){
-                    mascota.especie = new EEspecie();
-                    mascota.especie.idEspecie = int.Parse(ddlEspecies.SelectedValue);
-                }
-                if(!ddlEstado.SelectedValue.Equals("0")){
-                    mascota.estado = new EEstado();
-                    mascota.estado.idEstado = int.Parse(ddlEstado.SelectedValue);
-                }
-                if(!ddlRaza.SelectedValue.Equals("0")){
-                    mascota.raza = new ERaza();
-                    mascota.raza.idRaza = int.Parse(ddlRaza.SelectedValue);
-                }
-                mascota.fechaNacimiento = DateTime.Parse(txtFechaMascota.Text);
                 pnlFiltros1.Visible = true;
                 pnlFiltros2.Visible = false;
                 pnlFiltros3.Visible = false;
                 pnlFiltros4.Visible = false;
-                Session["mascotas"] = mascota;
                 Session["listas"] = "1";
                 pnlGenerar.Visible = true;
+                pnlInfo.Visible = false;
             }
             if (ddlInforme.SelectedValue.Equals("2"))
             {
@@ -114,6 +104,7 @@ namespace SiGMA
                 pnlFiltros2.Visible = true;
                 pnlFiltros3.Visible = false;
                 pnlFiltros4.Visible = false;
+                pnlInfo.Visible = false;
             }
             if (ddlInforme.SelectedValue.Equals("4"))
             {
@@ -128,12 +119,35 @@ namespace SiGMA
                 pnlFiltros2.Visible = false;
                 pnlFiltros3.Visible = false;
                 pnlFiltros4.Visible = true;
+                pnlInfo.Visible = false;
             }
         }
         public void BtnGenerarClick(object sender, EventArgs e)
         {
             if (ddlInforme.SelectedValue.ToString().Equals("1"))
             {
+                EMascota mascota = new EMascota();
+                if (!ddlEdad.SelectedValue.Equals("0"))
+                {
+                    mascota.edad = new EEdad();
+                    mascota.edad.idEdad = int.Parse(ddlEdad.SelectedValue);
+                } if (!ddlEspecies.SelectedValue.Equals("0"))
+                {
+                    mascota.especie = new EEspecie();
+                    mascota.especie.idEspecie = int.Parse(ddlEspecies.SelectedValue);
+                }
+                if (!ddlEstado.SelectedValue.Equals("0"))
+                {
+                    mascota.estado = new EEstado();
+                    mascota.estado.idEstado = int.Parse(ddlEstado.SelectedValue);
+                }
+                if (!ddlRaza.SelectedValue.Equals("0"))
+                {
+                    mascota.raza = new ERaza();
+                    mascota.raza.idRaza = int.Parse(ddlRaza.SelectedValue);
+                }
+                mascota.nombreMascota = "";
+                Session["mascotas"] = mascota;
                 Response.Redirect("listas.aspx");
             }
         }

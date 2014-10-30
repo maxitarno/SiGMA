@@ -25,6 +25,28 @@
                         Seleccionar informe
                     </h3>
                 </div>
+                <div class="panel-body">
+                    <div class="col-md-2 col-md-offset-5">
+                        <asp:Panel runat="server" ID="pnlCorrecto" class="alert alert-dismissable alert-success"
+                            Visible="false">
+                            <button class="close" type="button" data-dismiss="alert">
+                                ×</button>
+                            <asp:Label ID="lblResultado1" runat="server" Text=""></asp:Label>
+                        </asp:Panel>
+                        <asp:Panel runat="server" ID="pnlInfo" class="alert alert-dismissable alert-info"
+                            Visible="false">
+                            <button class="close" type="button" data-dismiss="alert">
+                                ×</button>
+                            <asp:Label ID="lblResultado2" runat="server" Text=""></asp:Label>
+                        </asp:Panel>
+                        <asp:Panel runat="server" ID="pnlAtento" class="alert alert-dismissable alert-danger"
+                            Visible="false">
+                            <button class="close" type="button" data-dismiss="alert">
+                                ×</button>
+                            <asp:Label ID="lblResultado3" runat="server" Text=""></asp:Label>
+                        </asp:Panel>
+                    </div>
+                </div>
                 <div class="centered">
                     <div style="margin-left: 30%; display: table; width: 40%;">
                         <div style="display: table-row; width: 30%">
@@ -47,10 +69,10 @@
                                     <table>
                                         <tr>
                                             <td>
-                                                Fecha:
+                                                <%--Fecha:--%>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="txtFechaMascota" Enabled="false" runat="server" Width="90%" text="  /  /  "></asp:TextBox><asp:ImageButton
+                                                <%--<asp:TextBox ID="txtFechaMascota" Enabled="true" runat="server" Width="90%" text="01/01/2013"></asp:TextBox><asp:ImageButton
                                                 ID="imgFechaPerdida" runat="server" CausesValidation="False" ImageUrl="~/App_Themes/TemaSigma/imagenes/ico_calendar.gif"
                                                 OnClick="imgFechaPerdida_Click" />
                                             <asp:Calendar ID="calendario" runat="server" BorderColor="Black" BorderWidth="1px"
@@ -59,9 +81,9 @@
                                                 <DayStyle ForeColor="Black" />
                                                 <TitleStyle BackColor="Black" ForeColor="White" />
                                             </asp:Calendar>
-                                            <asp:RangeValidator ID="rnvMascota" runat="server" ErrorMessage="La fecha no puede ser superior a la actual"
+                                            <%--<asp:RangeValidator ID="rnvMascota" runat="server" ErrorMessage="La fecha no puede ser superior a la actual"
                                                 ForeColor="Red" ControlToValidate="txtFechaMascota" SetFocusOnError="True" MinimumValue="01/01/2013"
-                                                Type="Date" Font-Size="XX-Small"></asp:RangeValidator>
+                                                Type="Date" Font-Size="XX-Small"></asp:RangeValidator>--%>--%>
                                             </td>
                                         </tr>
                                         <tr>
@@ -118,9 +140,9 @@
                                                 <DayStyle ForeColor="Black" />
                                                 <TitleStyle BackColor="Black" ForeColor="White" />
                                             </asp:Calendar>
-                                            <asp:RangeValidator ID="rnvAdopcion" runat="server" ErrorMessage="La fecha no puede ser superior a la actual"
+                                            <%--<asp:RangeValidator ID="rnvAdopcion" runat="server" ErrorMessage="La fecha no puede ser superior a la actual"
                                                 ForeColor="Red" ControlToValidate="txtFechaAdopcion" SetFocusOnError="True" MinimumValue="01/01/2013"
-                                                Type="Date" Font-Size="XX-Small"></asp:RangeValidator>
+                                                Type="Date" Font-Size="XX-Small"></asp:RangeValidator>--%>
                                             </td>
                                         </tr>
                                         <tr>
@@ -150,9 +172,9 @@
                                                 <DayStyle ForeColor="Black" />
                                                 <TitleStyle BackColor="Black" ForeColor="White" />
                                             </asp:Calendar>
-                                            <asp:RangeValidator ID="rnvHallazgo" runat="server" ErrorMessage="La fecha no puede ser superior a la actual"
+                                            <%--<asp:RangeValidator ID="rnvHallazgo" runat="server" ErrorMessage="La fecha no puede ser superior a la actual"
                                                 ForeColor="Red" ControlToValidate="txtFechaDelHallazgo" SetFocusOnError="True" MinimumValue="01/01/2013"
-                                                Type="Date" Font-Size="XX-Small"></asp:RangeValidator>
+                                                Type="Date" Font-Size="XX-Small"></asp:RangeValidator>--%>
                                             </td>
                                         </tr>
                                         <tr>
@@ -191,9 +213,9 @@
                                                 <DayStyle ForeColor="Black" />
                                                 <TitleStyle BackColor="Black" ForeColor="White" />
                                             </asp:Calendar>
-                                            <asp:RangeValidator ID="rnvPerdida" runat="server" ErrorMessage="La fecha no puede ser superior a la actual"
+                                            <%--<asp:RangeValidator ID="rnvPerdida" runat="server" ErrorMessage="La fecha no puede ser superior a la actual"
                                                 ForeColor="Red" ControlToValidate="txtFechaDeLaPerdida" SetFocusOnError="True" MinimumValue="01/01/2013"
-                                                Type="Date" Font-Size="XX-Small"></asp:RangeValidator>
+                                                Type="Date" Font-Size="XX-Small"></asp:RangeValidator>--%>
                                             </td>
                                         </tr>
                                         <tr>
