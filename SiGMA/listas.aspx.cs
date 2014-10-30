@@ -44,6 +44,16 @@ namespace SiGMA
             if (Session["listas"].ToString().Equals("5"))
             {
             }
+            if (Session["listas"].ToString().Equals("1"))
+            {
+                DataSet ds = new DatosReportes();
+                DataTable dt = ds.Tables["Mascotas"];
+                List<EMascota> mascotas = (List<EMascota>)Session["mascota"];
+                foreach(var m in mascotas){
+                    EMascota mascota = new EMascota();
+                    LogicaBDMascota.BuscarMascota(mascota, new ECategoriaRaza(), new ECaracterMascota(), new ECuidado(), m.idMascota);
+
+            }
         }
         protected void BtnRegresarClick(object sender, ImageClickEventArgs e)
         {

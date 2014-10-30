@@ -272,6 +272,12 @@
     <Compile Include="Handler1.ashx.cs">
       <DependentUpon>Handler1.ashx</DependentUpon>
     </Compile>
+    <Compile Include="ListadoMascotas.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ListadoMascotas.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="listas.aspx.cs">
       <DependentUpon>listas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -494,6 +500,10 @@
     <EmbeddedResource Include="ContratoWEb.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ContratoWEb.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListadoMascotas.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ListadoMascotas.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Metricas.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

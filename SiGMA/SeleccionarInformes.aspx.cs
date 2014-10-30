@@ -73,10 +73,30 @@ namespace SiGMA
             }
             if (ddlInforme.SelectedValue.Equals("1"))
             {
+                EMascota mascota = new EMascota();
+                if(!ddlEdad.SelectedValue.Equals("0")){
+                    mascota.edad = new EEdad();
+                    mascota.edad.idEdad = int.Parse(ddlEdad.SelectedValue);
+                }if(!ddlEspecies.SelectedValue.Equals("0")){
+                    mascota.especie = new EEspecie();
+                    mascota.especie.idEspecie = int.Parse(ddlEspecies.SelectedValue);
+                }
+                if(!ddlEstado.SelectedValue.Equals("0")){
+                    mascota.estado = new EEstado();
+                    mascota.estado.idEstado = int.Parse(ddlEstado.SelectedValue);
+                }
+                if(!ddlRaza.SelectedValue.Equals("0")){
+                    mascota.raza = new ERaza();
+                    mascota.raza.idRaza = int.Parse(ddlRaza.SelectedValue);
+                }
                 pnlFiltros1.Visible = true;
                 pnlFiltros2.Visible = false;
                 pnlFiltros3.Visible = false;
                 pnlFiltros4.Visible = false;
+                List<EMascota> mascotas = LogicaBDMascota.buscarMascotasFiltros(mascota);
+                Session["mascotas"] = mascotas;
+                Session["listas"] = "1";
+                Response.Redirect("listas.aspx");
             }
             if (ddlInforme.SelectedValue.Equals("2"))
             {
