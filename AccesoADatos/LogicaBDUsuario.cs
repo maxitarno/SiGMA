@@ -238,6 +238,8 @@ namespace AccesoADatos
                            from G4 in group4.DefaultIfEmpty()
                            join dueniosBD in mapaEntidades.Duenios on G1.idPersona equals dueniosBD.idPersona into group5
                            from G5 in group5.DefaultIfEmpty()
+                           join tipoDocBD in mapaEntidades.TipoDocumentos on G1.idTipoDocumento equals tipoDocBD.idTipoDocumento into group6
+                           from G6 in group6.DefaultIfEmpty()
                            where (G1.user == nombre && usuariosBD.estado == true)
                            select new 
                            {
@@ -246,7 +248,8 @@ namespace AccesoADatos
                                barrio = G2,
                                localidad = G3,
                                calle = G4,
-                               duenio = G5
+                               duenio = G5,
+                               tipoDoc = G6
                             };
             try
             {
@@ -270,7 +273,7 @@ namespace AccesoADatos
                     localidad.nombre = (usuario.localidad == null) ? "" : usuario.localidad.nombre;
                     barrio.nombre = (usuario.barrio == null) ? "" : usuario.barrio.nombre;
                     duenio.idDuenio = usuario.duenio.idDuenio;
-                    tipoDoc.nombre = usuario.persona.TipoDocumentos.nombre;
+                    tipoDoc.nombre = usuario.tipoDoc.nombre;
                 }
             }
             catch (System.Data.EntityCommandCompilationException exc)

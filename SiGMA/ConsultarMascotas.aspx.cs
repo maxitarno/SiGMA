@@ -28,6 +28,7 @@ namespace SiGMA
         {
             if (!Page.IsPostBack)
             {
+                Session["imagenAdopcion"] = null;
                 rnvFechaPerdida.MaximumValue = DateTime.Now.ToShortDateString();
                 if (Session["UsuarioLogueado"] != null)
                 {
@@ -60,7 +61,7 @@ namespace SiGMA
                 pnlInfo.Visible = false;
                 pnlmascota.Visible = true;
                 pnltxtMascota.Visible = true;
-                CargarCombos.cargarEstado(ref ddlEstado);
+                CargarCombos.cargarEstado(ref ddlEstado, "Mascota");
                 CargarCombos.cargarCaracteresMascota(ref ddlCaracter);
                 if (rbPorMascota.Checked)
                 {
@@ -80,6 +81,10 @@ namespace SiGMA
                     btnEliminar.Visible = false;
                 }
             }
+            Handler1.AddMethod(ImageHandler_ObtenerImagenMascota);
+            imgprvw.Src = ResolveUrl("~/Handler1.ashx");
+            imgprvw.Width = 300;
+            imgprvw.Height = 200;
         }
         public void ddlRaza_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -325,9 +330,15 @@ namespace SiGMA
 
         public byte[] ImageHandler_ObtenerImagenMascota(HttpContext context)
         {
+            if (Session["imagenAdopcion"] != null) 
+            {
+                var imagen = (byte[])Session["imagenAdopcion"];
+                return imagen;
+            }
             if (Session["imagen"] != null)
             {
                 var imagen = (byte[])Session["imagen"];
+                Session["imagenAdopcion"] = (byte[])Session["imagen"]; // BORRAR GRONCHADA
                 Session["imagen"] = null;
                 return imagen;
             }
@@ -677,6 +688,7 @@ namespace SiGMA
                 pnlInfo.Visible = false;
                 pnlAtento.Visible = false;
                 lblResultado1.Text = "Mascota puesta en adopcion correctamente";
+
             }
             else
             {
