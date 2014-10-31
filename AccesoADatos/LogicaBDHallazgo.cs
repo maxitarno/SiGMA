@@ -143,5 +143,50 @@ namespace AccesoADatos
                 throw;
             }
         }
+        public static List<EHallazgo> buscarHallazgos()
+        {
+            List<EHallazgo> listaHallazgos = new List<EHallazgo>();
+            SiGMAEntities mapa = Conexion.crearSegunServidor();
+            var hallazgos = from hallazgosBD in mapa.Hallazgos
+                            join estadosBD in mapa.Estados on hallazgosBD.idEstado equals estadosBD.idEstado
+                            join barriosBD in mapa.Barrios on hallazgosBD.idBarrioHallazgo equals barriosBD.idBarrio
+                            select new
+                            {
+                                barrio = hallazgosBD.idBarrioHallazgo,
+                                localidad = barriosBD.idLocalidad,
+                                obser = hallazgosBD.observaciones,
+                                idHallazgo = hallazgosBD.idHallazgo,
+                                fecha = hallazgosBD.fechaHoraHallazgo,
+                                idCalle = hallazgosBD.idCalle,
+                                nroCalle = hallazgosBD.nroCalle,
+                                idMascota = hallazgosBD.idMascota,
+                            };
+            foreach (var item in hallazgos)
+            {
+                EHallazgo eHallaz = new EHallazgo();
+                eHallaz.domicilio = new EDomicilio();
+                eHallaz.domicilio.calle = new ECalle();
+                eHallaz.domicilio.barrio = new EBarrio();
+                eHallaz.domicilio.numeroCalle = (int)item.nroCalle;
+                eHallaz.domicilio.calle.idCalle = item.idCalle;
+                eHallaz.domicilio.barrio.idBarrio = item.barrio;
+                eHallaz.domicilio.barrio.localidad = new ELocalidad();
+                eHallaz.domicilio.barrio.localidad.idLocalidad = item.localidad;
+                eHallaz.observaciones = item.obser;
+                eHallaz.idHallazgo = item.idHallazgo;
+                eHallaz.fechaHallazgo = item.fecha;
+                eHallaz.mascota = new EMascota();
+                eHallaz.mascota.idMascota = item.idMascota;
+                listaHallazgos.Add(eHallaz);
+            }
+            if (listaHallazgos.Count != 0)
+            {
+                return listaHallazgos;
+            }
+            else
+            {
+                return null;
+            }
+        }
     }
 }
