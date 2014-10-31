@@ -140,9 +140,9 @@
                                                 <DayStyle ForeColor="Black" />
                                                 <TitleStyle BackColor="Black" ForeColor="White" />
                                             </asp:Calendar>
-                                            <asp:RangeValidator ID="rnvAdopcion" runat="server" ErrorMessage="La fecha no puede ser superior a la actual"
+                                            <%--<asp:RangeValidator ID="rnvAdopcion" runat="server" ErrorMessage="La fecha no puede ser superior a la actual"
                                                 ForeColor="Red" ControlToValidate="txtFechaAdopcion" SetFocusOnError="True" MinimumValue="01/01/2013"
-                                                Type="Date" Font-Size="XX-Small"></asp:RangeValidator>
+                                                Type="Date" Font-Size="XX-Small"></asp:RangeValidator>--%>
                                             </td>
                                         </tr>
                                         <tr>
@@ -172,9 +172,9 @@
                                                 <DayStyle ForeColor="Black" />
                                                 <TitleStyle BackColor="Black" ForeColor="White" />
                                             </asp:Calendar>
-                                            <asp:RangeValidator ID="rnvHallazgo" runat="server" ErrorMessage="La fecha no puede ser superior a la actual"
+                                            <%--<asp:RangeValidator ID="rnvHallazgo" runat="server" ErrorMessage="La fecha no puede ser superior a la actual"
                                                 ForeColor="Red" ControlToValidate="txtFechaDelHallazgo" SetFocusOnError="True" MinimumValue="01/01/2013"
-                                                Type="Date" Font-Size="XX-Small"></asp:RangeValidator>
+                                                Type="Date" Font-Size="XX-Small"></asp:RangeValidator>--%>
                                             </td>
                                         </tr>
                                         <tr>

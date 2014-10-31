@@ -25,8 +25,8 @@ namespace SiGMA
                 CargarCombos.cargarEstado(ref ddlEstadoPerdida, "Perdida");
                 CargarCombos.cargarEstado(ref ddlEstadoDeAdopcion, "Adopcion");
                 //rnvMascota.MaximumValue = DateTime.Now.ToShortDateString();
-                rnvHallazgo.MaximumValue = DateTime.Now.ToShortDateString();
-                rnvAdopcion.MaximumValue = DateTime.Now.ToShortDateString();
+                //rnvHallazgo.MaximumValue = DateTime.Now.ToShortDateString();
+                //rnvAdopcion.MaximumValue = DateTime.Now.ToShortDateString();
                 //rnvPerdida.MaximumValue = DateTime.Now.ToShortDateString();
                 pnlGenerar.Visible = false;
                 pnlInfo.Visible = false;
