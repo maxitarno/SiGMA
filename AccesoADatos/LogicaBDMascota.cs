@@ -770,7 +770,6 @@ namespace AccesoADatos
                                     caracter = (G3 == null) ? null : G3.descripcion,
                                     id = MascotasBD.idMascota,
                                     imagen = MascotasBD.imagen,
-                                    fecha = MascotasBD.fechaNacimiento,
                                 };
                     foreach (var registro in consulta)
                     {
@@ -801,7 +800,6 @@ namespace AccesoADatos
                         mascota.especie = new EEspecie();
                         mascota.especie.idEspecie = registro.idEspecie;
                         mascota.especie.nombreEspecie = registro.especie;
-                        mascota.fechaNacimiento = (registro.fecha == null) ? DateTime.Now : (DateTime)registro.fecha;
                         if (registro.imagen != null)
                         {
                             mascota.imagen = registro.imagen;
@@ -1047,6 +1045,21 @@ namespace AccesoADatos
             }
         }
 
+        public static bool ponerEnAdopcion(int idMascota) 
+        {
+            bool b = false;
+            try
+            {
+                 SiGMAEntities mapa = Conexion.crearSegunServidor();
+                 modificarEstado("En adopcion", idMascota, ref mapa);
+                 b = true;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return b;
+        }
 
         public static void asignarDueño(EMascota mascot, int idDueño, ref SiGMAEntities mapa)
         {

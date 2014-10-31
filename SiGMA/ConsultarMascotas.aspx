@@ -85,7 +85,7 @@
                                         </td>
                                         <td>
                                             <asp:Panel ID="pnltxtNombreDueñio" Visible="false" runat="server">
-                                                <asp:TextBox ID="txtNombreDueñio" runat="server"></asp:TextBox>
+                                                <asp:TextBox ID="txtNombreDueñio" runat="server"></asp:TextBox> 
                                             </asp:Panel>
                                         </td>
                                         <td>
@@ -102,11 +102,11 @@
                                         </td>
                                         <td>
                                             <asp:Panel ID="pnltxtMascota" Visible="false" runat="server">
-                                                <asp:TextBox ID="txtMascota" runat="server"></asp:TextBox>
+                                                <asp:TextBox ID="txtMascota" runat="server"></asp:TextBox> 
                                             </asp:Panel>
                                         </td>
                                     </tr>
-                                    <asp:Panel ID="pnlfiltros" runat=server Visible=false>
+                                    <asp:Panel ID="pnlfiltros" runat="server" Visible="false">
                                         <tr>
                                             <td>
                                                 Especie:
@@ -308,6 +308,8 @@
                                 Style="float: left" />
                             <asp:Button ID="btnGenerarQR" runat="server" Text="Generar Codigo QR" OnClick="btnGenerarQR_Click"
                                 Style="float: left" />
+                            <asp:Button ID="btnAdopcion" runat="server" Text="Poner en adopcion"  
+                                Style="float: left" onclick="btnAdopcion_Click" CausesValidation="false"/>
                         </asp:Panel>
                     </div>
                 </div>
@@ -315,7 +317,7 @@
         </div>
     </div>
     <div class="centered">
-        <asp:ImageButton ID="ibtnRegresar" runat="server" ImageUrl="~/imagenes/volver.png" OnClick="BtnRegresarClick"/>
+        <asp:ImageButton ID="ibtnRegresar" runat="server" ImageUrl="~/imagenes/volver.png" OnClick="BtnRegresarClick" CausesValidation="false"/>
         </br>
         VOLVER
     </div>

@@ -667,5 +667,25 @@ namespace SiGMA
         {
             Response.Redirect("_Mascotas.aspx");
         }
+
+        protected void btnAdopcion_Click(object sender, EventArgs e)
+        {
+            if (LogicaBDMascota.ponerEnAdopcion(Convert.ToInt32(Session["idMascota"].ToString())))
+            {
+                ddlEstado.SelectedValue = "En adopcion";
+                pnlCorrecto.Visible = true;
+                pnlInfo.Visible = false;
+                pnlAtento.Visible = false;
+                lblResultado1.Text = "Mascota puesta en adopcion correctamente";
+            }
+            else
+            {
+                pnlCorrecto.Visible = false;
+                pnlInfo.Visible = false;
+                pnlAtento.Visible = true;
+                lblResultado1.Text = "Error al poner en adopcion. Verifique datos";
+            }
+
+        }
     }
 }
