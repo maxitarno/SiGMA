@@ -202,5 +202,67 @@ namespace AccesoADatos
                 return false;
             }
         }
+        public static List<EAdopcion> BuscarAdopcion()
+        {
+            try
+            {
+                SiGMAEntities mapa = Conexion.crearSegunServidor();
+                List<EAdopcion> adopciones = new List<EAdopcion>();
+                var consulta = from AdopcionesBD in mapa.Adopciones
+                               join EstadosBD in mapa.Estados on AdopcionesBD.idEstado equals EstadosBD.idEstado into group1
+                               from G1 in group1.DefaultIfEmpty()
+                               join MascotasBD in mapa.Mascotas on AdopcionesBD.idMascota equals MascotasBD.idMascota into group2
+                               from G2 in group2.DefaultIfEmpty()
+                               join DuenioBD in mapa.Duenios on AdopcionesBD.idDuenio equals DuenioBD.idDuenio into group3
+                               from G3 in group3.DefaultIfEmpty()
+                               join PersonasBD in mapa.Personas on G3.idPersona equals PersonasBD.idPersona into group4
+                               from G4 in group4.DefaultIfEmpty()
+                               select new
+                               {
+                                   adopcion = AdopcionesBD,
+                                   mascota = G2,
+                                   persona = G4,
+                               };
+                foreach (var registro in consulta)
+                {
+                    EAdopcion adopcion = new EAdopcion();
+                    adopcion.duenio = (EDuenio)new EPersona();
+                    adopcion.duenio.apellido = registro.persona.apellido;
+                    adopcion.duenio.nombre = registro.persona.nombre;
+                    adopcion.idAdopcion = registro.adopcion.idAdopcion;
+                    adopcion.mascota = new EMascota();
+                    adopcion.nombre = registro.mascota.nombreMascota;
+                    adopciones.Add(adopcion);
+                }
+                return adopciones;
+            }
+            catch (Exception exc)
+            {
+                throw exc;
+            }
+        }
+        public static List<EAdopcion> BuscarAdopcionesPorFiltros(EAdopcion adopcion)
+        {
+            List<EAdopcion> adopciones = LogicaBDAdopcion.BuscarAdopcion();
+            if (adopcion.fecha.ToShortDateString() != "01/01/2013")
+            {
+                if (adopcion.estado != null)
+                {
+                    adopciones = adopciones.Where(a => (a.fecha >= adopcion.fecha) && a.estado.nombreEstado.Equals(adopcion.estado.nombreEstado)).ToList();
+                }
+                else
+                {
+                    adopciones = adopciones.Where(a => (a.fecha >= adopcion.fecha)).ToList();
+                }
+            }
+            else
+            {
+                if (adopcion.estado != null)
+                {
+                    adopciones = adopciones.Where(a => a.estado.nombreEstado == adopcion.estado.nombreEstado).ToList();
+                }
+            }
+            return adopciones;
+        }
     }
 }

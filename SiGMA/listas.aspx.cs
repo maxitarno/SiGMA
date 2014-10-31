@@ -43,6 +43,26 @@ namespace SiGMA
             }
             if (Session["listas"].ToString().Equals("5"))
             {
+                EPerdida perdida = new EPerdida();
+                perdida = (EPerdida)Session["p"];
+                DataSet ds = new DatosReportes();
+                DataTable dt = ds.Tables["Perdidas"];
+                List<EPerdida> perdidas = LogicaBDPerdida.BuscarPerdidasPorOpciones(perdida);
+                foreach (var p in perdidas)
+                {
+                    DataRow row = dt.NewRow();
+                    row["idPerdida"] = p.idPerdida;
+                    row["barrio"] = p.barrio.nombre;
+                    row["fecha"] = p.fecha;
+                    row["estado"] = p.estado.nombreEstado;
+                    row["nombre"] = p.usuario.user;
+                    row["nombreMascota"] = p.mascota.nombreMascota;
+                    dt.Rows.Add(row);
+                }
+                crListadoDePerdidas lista = new crListadoDePerdidas();
+                lista.SetDataSource(ds);
+                crtListas.ReportSource = lista;
+                crtListas.RefreshReport();
             }
             if (Session["listas"].ToString().Equals("1"))
             {

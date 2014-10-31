@@ -25,8 +25,8 @@ namespace SiGMA
                 CargarCombos.cargarEstado(ref ddlEstadoPerdida, "Perdida");
                 CargarCombos.cargarEstado(ref ddlEstadoDeAdopcion, "Adopcion");
                 //rnvMascota.MaximumValue = DateTime.Now.ToShortDateString();
-                //rnvHallazgo.MaximumValue = DateTime.Now.ToShortDateString();
-                //rnvAdopcion.MaximumValue = DateTime.Now.ToShortDateString();
+                rnvHallazgo.MaximumValue = DateTime.Now.ToShortDateString();
+                rnvAdopcion.MaximumValue = DateTime.Now.ToShortDateString();
                 //rnvPerdida.MaximumValue = DateTime.Now.ToShortDateString();
                 pnlGenerar.Visible = false;
                 pnlInfo.Visible = false;
@@ -165,7 +165,19 @@ namespace SiGMA
             }
             if (ddlInforme.SelectedValue.Equals("5"))
             {
-
+                EPerdida perdida = new EPerdida();
+                DateTime fecha = new DateTime();
+                if (DateTime.TryParse(txtFechaDeLaPerdida.Text, out fecha))
+                {
+                    perdida.fecha = DateTime.Parse(txtFechaDeLaPerdida.Text);
+                }
+                if (!ddlEstadoPerdida.SelectedValue.Equals("0"))
+                {
+                    perdida.estado = new EEstado();
+                    perdida.estado.nombreEstado = ddlEstado.SelectedItem.Text;
+                }
+                Session["p"] = perdida;
+                Response.Redirect("listas.aspx");
             }
         }
     }

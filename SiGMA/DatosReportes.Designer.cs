@@ -1587,6 +1587,8 @@ namespace SiGMA {
             
             private global::System.Data.DataColumn columnnombre;
             
+            private global::System.Data.DataColumn columnnombreMascota;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public PerdidasDataTable() {
@@ -1662,6 +1664,14 @@ namespace SiGMA {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn nombreMascotaColumn {
+                get {
+                    return this.columnnombreMascota;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1697,14 +1707,15 @@ namespace SiGMA {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public PerdidasRow AddPerdidasRow(string idPerdida, string barrio, string fecha, string estado, string nombre) {
+            public PerdidasRow AddPerdidasRow(int idPerdida, string barrio, System.DateTime fecha, string estado, string nombre, string nombreMascota) {
                 PerdidasRow rowPerdidasRow = ((PerdidasRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         idPerdida,
                         barrio,
                         fecha,
                         estado,
-                        nombre};
+                        nombre,
+                        nombreMascota};
                 rowPerdidasRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowPerdidasRow);
                 return rowPerdidasRow;
@@ -1732,21 +1743,24 @@ namespace SiGMA {
                 this.columnfecha = base.Columns["fecha"];
                 this.columnestado = base.Columns["estado"];
                 this.columnnombre = base.Columns["nombre"];
+                this.columnnombreMascota = base.Columns["nombreMascota"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnidPerdida = new global::System.Data.DataColumn("idPerdida", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnidPerdida = new global::System.Data.DataColumn("idPerdida", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnidPerdida);
                 this.columnbarrio = new global::System.Data.DataColumn("barrio", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnbarrio);
-                this.columnfecha = new global::System.Data.DataColumn("fecha", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnfecha = new global::System.Data.DataColumn("fecha", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnfecha);
                 this.columnestado = new global::System.Data.DataColumn("estado", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnestado);
                 this.columnnombre = new global::System.Data.DataColumn("nombre", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnnombre);
+                this.columnnombreMascota = new global::System.Data.DataColumn("nombreMascota", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnombreMascota);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3356,10 +3370,10 @@ namespace SiGMA {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string idPerdida {
+            public int idPerdida {
                 get {
                     try {
-                        return ((string)(this[this.tablePerdidas.idPerdidaColumn]));
+                        return ((int)(this[this.tablePerdidas.idPerdidaColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'idPerdida\' de la tabla \'Perdidas\' es DBNull.", e);
@@ -3388,10 +3402,10 @@ namespace SiGMA {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string fecha {
+            public System.DateTime fecha {
                 get {
                     try {
-                        return ((string)(this[this.tablePerdidas.fechaColumn]));
+                        return ((global::System.DateTime)(this[this.tablePerdidas.fechaColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'fecha\' de la tabla \'Perdidas\' es DBNull.", e);
@@ -3431,6 +3445,22 @@ namespace SiGMA {
                 }
                 set {
                     this[this.tablePerdidas.nombreColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string nombreMascota {
+                get {
+                    try {
+                        return ((string)(this[this.tablePerdidas.nombreMascotaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'nombreMascota\' de la tabla \'Perdidas\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePerdidas.nombreMascotaColumn] = value;
                 }
             }
             
@@ -3492,6 +3522,18 @@ namespace SiGMA {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetnombreNull() {
                 this[this.tablePerdidas.nombreColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsnombreMascotaNull() {
+                return this.IsNull(this.tablePerdidas.nombreMascotaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetnombreMascotaNull() {
+                this[this.tablePerdidas.nombreMascotaColumn] = global::System.Convert.DBNull;
             }
         }
         

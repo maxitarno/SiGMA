@@ -251,6 +251,12 @@
       <DependentUpon>ContratoWEb.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="crListadoDePerdidas.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crListadoDePerdidas.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="DatosReportes.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -508,6 +514,10 @@
     <EmbeddedResource Include="ContratoWEb.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ContratoWEb.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="crListadoDePerdidas.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crListadoDePerdidas.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="ListadoMascotas.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

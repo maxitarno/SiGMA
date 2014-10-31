@@ -363,5 +363,77 @@ namespace AccesoADatos
             }
             return b;
         }
+        public static List<EPerdida> BuscarPerdidas()
+        {
+            List<EPerdida> aux = new List<EPerdida>();
+            SiGMAEntities mapa = Conexion.crearSegunServidor();
+            var consulta = from PerdidasBD in mapa.Perdidas
+                           join EstadosBD in mapa.Estados on PerdidasBD.idEstado equals EstadosBD.idEstado into group1
+                           from G0 in group1.DefaultIfEmpty()
+                           join UsuarioBD in mapa.Usuarios on PerdidasBD.idUsuario equals UsuarioBD.user into group2
+                           from G1 in group2.DefaultIfEmpty()
+                           join MascotaBD in mapa.Mascotas on PerdidasBD.idMascota equals MascotaBD.idMascota into group3
+                           from G2 in group3.DefaultIfEmpty()
+                           join BarrioBD in mapa.Barrios on PerdidasBD.idBarrioPerdida equals BarrioBD.idBarrio into group4
+                           from G3 in group4.DefaultIfEmpty()
+                           select new
+                           {
+                               Barrio = G3,
+                               Mascota = G2,
+                               Usuario = G1,
+                               perdida = PerdidasBD,
+                               estado = G0,
+                           };
+            foreach (var registro in consulta)
+            {
+                EPerdida perdida = new EPerdida();
+                perdida.barrio = new EBarrio();
+                perdida.barrio.nombre = registro.Barrio.nombre;
+                perdida.estado = new EEstado();
+                perdida.usuario = new EUsuario();
+                perdida.usuario.user = registro.Usuario.user;
+                perdida.estado.nombreEstado = registro.estado.nombreEstado;
+                perdida.idPerdida = registro.perdida.idPerdida;
+                perdida.mascota = new EMascota();
+                perdida.mascota.nombreMascota = registro.Mascota.nombreMascota;
+                perdida.fecha = (DateTime)registro.perdida.FechaHoraPerdida;
+                aux.Add(perdida);
+            }
+            return aux;
+        }
+        public static List<EPerdida> BuscarPerdidasPorOpciones(EPerdida perdida){
+            List<EPerdida> perdidas = LogicaBDPerdida.BuscarPerdidas();
+            if(!perdida.fecha.Equals("01/01/2013")){
+                if(perdida.estado != null){
+                    if(perdida.barrio != null){
+                        perdidas = perdidas.Where(p => p.barrio.nombre == perdida.barrio.nombre && (p.fecha >= perdida.fecha) && p.estado.nombreEstado == perdida.estado.nombreEstado).ToList();
+                    }
+                    else{
+                        perdidas = perdidas.Where(p => (p.fecha >= perdida.fecha) && p.estado.nombreEstado == perdida.estado.nombreEstado).ToList();
+                    }
+                }
+                else{
+                    perdidas = perdidas.Where(p => (p.fecha >= perdida.fecha)).ToList();
+                }
+            }
+            else{
+                if (perdida.barrio != null)
+                {
+                    if (perdida.estado != null)
+                    {
+                        perdidas = perdidas.Where(p => p.barrio.nombre == perdida.barrio.nombre && p.estado.nombreEstado == perdida.estado.nombreEstado).ToList();
+                    }
+                    else
+                    {
+                        perdidas = perdidas.Where(p => p.barrio.nombre == perdida.barrio.nombre).ToList();
+                    }
+                }
+                else
+                {
+                    perdidas = perdidas.Where(p => p.estado.nombreEstado == perdida.estado.nombreEstado).ToList();
+                }
+            }
+            return perdidas;
+        }
     }
 }
