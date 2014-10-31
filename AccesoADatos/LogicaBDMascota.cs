@@ -1052,6 +1052,7 @@ namespace AccesoADatos
             {
                  SiGMAEntities mapa = Conexion.crearSegunServidor();
                  modificarEstado("En adopcion", idMascota, ref mapa);
+                 mapa.SaveChanges();
                  b = true;
             }
             catch (Exception)

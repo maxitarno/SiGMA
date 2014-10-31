@@ -307,7 +307,7 @@
                             <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" ValidationGroup="2" OnClick="BtnEliminarClick"
                                 Style="float: left" />
                             <asp:Button ID="btnGenerarQR" runat="server" Text="Generar Codigo QR" OnClick="btnGenerarQR_Click"
-                                Style="float: left" />
+                                Style="float: left" CausesValidation="false"/>
                             <asp:Button ID="btnAdopcion" runat="server" Text="Poner en adopcion"  
                                 Style="float: left" onclick="btnAdopcion_Click" CausesValidation="false"/>
                         </asp:Panel>

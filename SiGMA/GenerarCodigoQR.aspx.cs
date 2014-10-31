@@ -147,5 +147,10 @@ namespace SiGMA
                 chkEmail.Enabled = false;
             }
         }
+
+        protected void BtnRegresarClick(object sender, ImageClickEventArgs e)
+        {
+            Response.Redirect("_Mascotas.aspx");
+        }
     }
 }

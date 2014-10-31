@@ -672,7 +672,7 @@ namespace SiGMA
         {
             if (LogicaBDMascota.ponerEnAdopcion(Convert.ToInt32(Session["idMascota"].ToString())))
             {
-                ddlEstado.SelectedValue = "En adopcion";
+                ddlEstado.SelectedValue = "4";
                 pnlCorrecto.Visible = true;
                 pnlInfo.Visible = false;
                 pnlAtento.Visible = false;
