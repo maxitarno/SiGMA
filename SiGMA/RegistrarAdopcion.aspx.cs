@@ -405,7 +405,7 @@ namespace SiGMA
         }
         protected void lstResultadosMascotas_SelectedIndexChanged(object sender, EventArgs e) 
         {
-EMascota mascota = new EMascota();
+            EMascota mascota = new EMascota();
             ECaracterMascota caracter = new ECaracterMascota();
             ECategoriaRaza categoria = new ECategoriaRaza();
             ECuidado cuidado = new ECuidado();
@@ -437,5 +437,7 @@ EMascota mascota = new EMascota();
                 pnlAtento.Visible = false;
             }
         }
+
+
     }
 }

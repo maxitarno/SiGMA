@@ -143,7 +143,7 @@
                                         <asp:TextBox ID="txtNombreMascota" runat="server" ViewStateMode="Enabled"></asp:TextBox>
                                     </td>
                                     <td>
-                                        <asp:Button ID="btnBuscarMascota" runat="server" Text="Buscar" OnClick="btnBuscarMascotaClick" />
+                                        
                                     </td>
                                 </tr>
                                 <tr>
@@ -184,6 +184,9 @@
                                             ViewStateMode="Enabled" Width="100%">
                                         </asp:DropDownList>
                                     </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"><asp:Button ID="btnBuscarMascota" runat="server" Text="Buscar" OnClick="btnBuscarMascotaClick" /></td>
                                 </tr>
                             </asp:Panel>
                             <asp:Panel Visible="false" runat="server" ID="pnlResultadosMascotas">
