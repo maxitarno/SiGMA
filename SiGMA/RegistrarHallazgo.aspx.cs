@@ -302,6 +302,8 @@ namespace SiGMA
                     lblCorrecto.Text = "Hallazgo registrado exisotamente";
                     SetFocus(lblCorrecto);
                     limpiarCampos();
+                    pnlMascotaSeleccionada.Visible = false;
+                    pnlFiltros.Visible = false;
                 }
                 catch (Exception)
                 {

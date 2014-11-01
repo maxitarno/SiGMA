@@ -79,10 +79,10 @@ namespace SiGMA
                 }
                 mascota.observaciones = txtObservaciones.Text;                
                 mascota.alimentacionEspecial = txtAlimentacionEspecial.Text;
-                if (!txtFecha.Text.Equals(""))
-                {
-                    mascota.fechaNacimiento = DateTime.Parse(txtFecha.Text);
-                }               
+                //if (!txtFecha.Text.Equals(""))
+                //{
+                //    mascota.fechaNacimiento = DateTime.Parse(txtFecha.Text);
+                //}               
                 mascota.sexo = ddlSexo.SelectedValue;
                 mascota.caracter = new ECaracterMascota();
                 mascota.caracter.idCaracter = int.Parse(ddlCaracter.SelectedValue);

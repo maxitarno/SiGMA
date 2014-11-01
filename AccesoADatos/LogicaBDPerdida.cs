@@ -118,7 +118,7 @@ namespace AccesoADatos
                 }            
         }
 
-        public static bool BuscarMascotaARegistrarPerdida(int idMascota, EMascota mascota)
+        public static bool BuscarMascotaARegistrarPerdida(int idMascota, EMascota mascota, EDuenio duenio)
         {
             bool b = false;
             try
@@ -169,6 +169,7 @@ namespace AccesoADatos
                                    idBarrio = (G4 == null) ? 0 : G4.idBarrio,
                                    barrio = (G4 == null) ? null : G4.nombre,
                                    localidad = (G5 == null) ? null : G5.nombre,
+                                   idLcalidad = (G5 == null) ? 0 : G5.idLocalidad,
                                    calle = (G6 == null) ? 0 : G6.idCalle,
                                    nroCalle = (G2.nroCalle == null) ? 0 : G2.nroCalle
                                };
@@ -198,17 +199,17 @@ namespace AccesoADatos
                     mascota.especie = new EEspecie();
                     mascota.especie.idEspecie = registro.idEspecie;
                     mascota.especie.nombreEspecie = registro.especie;
-                    mascota.duenio = new EDuenio();
-                    mascota.duenio.apellido = registro.dueñoApellido;
-                    mascota.duenio.nombre = registro.dueñoNombre;
-                    mascota.duenio.barrio = new EBarrio();
-                    mascota.duenio.barrio.idBarrio = registro.idBarrio;
-                    mascota.duenio.barrio.nombre = registro.barrio;
-                    mascota.duenio.barrio.localidad = new ELocalidad();
-                    mascota.duenio.barrio.localidad.nombre = registro.localidad;
-                    mascota.duenio.domicilio = new ECalle();
-                    mascota.duenio.domicilio.idCalle = registro.calle;
-                    mascota.duenio.nroCalle = registro.nroCalle;
+                    duenio.apellido = registro.dueñoApellido;
+                    duenio.nombre = registro.dueñoNombre;
+                    duenio.barrio = new EBarrio();
+                    duenio.barrio.idBarrio = registro.idBarrio;
+                    duenio.barrio.nombre = registro.barrio;
+                    duenio.barrio.localidad = new ELocalidad();
+                    duenio.barrio.localidad.nombre = registro.localidad;
+                    duenio.barrio.localidad.idLocalidad = registro.idLcalidad;
+                    duenio.domicilio = new ECalle();
+                    duenio.domicilio.idCalle = registro.calle;
+                    duenio.nroCalle = registro.nroCalle;
                     if (registro.imagen != null)
                     {
                         mascota.imagen = registro.imagen;

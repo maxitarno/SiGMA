@@ -188,15 +188,15 @@
                                             onservervalidate="cvDdlSexo_ServerValidate"></asp:CustomValidator></td>
                                     
                                 </tr>
-                                <tr>
+                                <%--<tr>
                                     <td class="style2" width="100px">
-                                        Fecha:&nbsp
+                                        Fecha Nac.:&nbsp
                                     </td>
                                     <td class="style1" width="250px">
                                         <asp:TextBox ID="txtFecha" runat="server" TextMode="Date" width="250px"></asp:TextBox>
                                     </td>
                                     <td class="style3" ></td>
-                                </tr>
+                                </tr>--%>
                                 </table>
                         </asp:Panel>
                         <asp:Panel ID="pnlFoto" runat="server">

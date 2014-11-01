@@ -113,23 +113,24 @@ namespace SiGMA
             Session["imagen"] = null;
             var idMascota = Convert.ToInt32(lstMascotas.SelectedValue);
             EMascota mascota = new EMascota();
-            if (LogicaBDPerdida.BuscarMascotaARegistrarPerdida(idMascota, mascota))
+            EDuenio duenio = new EDuenio();
+            if (LogicaBDPerdida.BuscarMascotaARegistrarPerdida(idMascota, mascota, duenio))
             {
                 pnlRegistrarPerdida.Visible = true;
                 txtMascotaPerdida.Text = mascota.nombreMascota;
-                mascota.duenio = new EDuenio();
-                txtNroCalle.Text = mascota.duenio.nroCalle.ToString();
-                txtDatosDueño.Text = (mascota.duenio.nombre == null) ? null : mascota.duenio.nombre.ToString();
-                txtDatosDueño.Text += (mascota.duenio.apellido == null) ? null : mascota.duenio.apellido.ToString();
+                txtNroCalle.Text = duenio.nroCalle.ToString();
+                txtDatosDueño.Text = (duenio.nombre == null) ? null : duenio.nombre.ToString();
+                txtDatosDueño.Text += " ";
+                txtDatosDueño.Text += (duenio.apellido == null) ? null : duenio.apellido.ToString();
                 if (txtDatosDueño.Text == "")
                     txtDatosDueño.Text = "SIN ASIGNAR";
-                if (mascota.duenio.domicilio != null)
-                    ddlCalles.SelectedValue = (mascota.duenio.domicilio.idCalle == null) ? null : mascota.duenio.domicilio.idCalle.ToString();
+                if (duenio.domicilio != null)
+                    ddlCalles.SelectedValue = (duenio.domicilio.idCalle == null) ? null : duenio.domicilio.idCalle.ToString();
                 else
                     ddlCalles.SelectedValue = null;
-                ddlBarrios.SelectedValue = (mascota.duenio.barrio == null) ? null : mascota.duenio.barrio.idBarrio.ToString();
-                if (mascota.duenio.barrio != null)
-                    ddlLocalidades.SelectedValue = (mascota.duenio.barrio.localidad == null) ? null : mascota.duenio.barrio.localidad.idLocalidad.ToString();
+                ddlBarrios.SelectedValue = (duenio.barrio == null) ? null : duenio.barrio.idBarrio.ToString();
+                if (duenio.barrio != null)
+                    ddlLocalidades.SelectedValue = (duenio.barrio.localidad == null) ? null : duenio.barrio.localidad.idLocalidad.ToString();
                 else
                     ddlLocalidades.SelectedValue = null;
                 ddlColor.SelectedValue = (mascota.color == null) ? null : mascota.color.idColor.ToString();

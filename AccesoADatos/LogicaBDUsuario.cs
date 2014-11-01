@@ -177,6 +177,7 @@ namespace AccesoADatos
                     registro.nroDocumento = persona.nroDocumento;
                     registro.telefonoCelular = persona.telefonoCelular;
                     registro.telefonoFijo = persona.telefonoFijo;
+                    registro.nroCalle = persona.nroCalle;
                 }
                 b = true;
                 mapaEntidades.SaveChanges();
