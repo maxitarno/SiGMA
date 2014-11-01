@@ -199,35 +199,36 @@
                                 </tr>
                                 </table>
                         </asp:Panel>
-
-                        <table>
-                         <tr>
-                            <td class="style2" width="100px">
-                                Foto:&nbsp
-                            </td>
-                            <td class="style1" width="250px">
-                                <input type="file" runat="server"  id="fuImagen"  onchange="showimagepreview(this,'imgprvw')" />
-                            </td>
-                            <td class="style3" ></td>
-                        </tr>
-                        <tr>
-                            <td class="style2" width="100px">
-    
-                            </td>
-                            <td class="style1" width="250px">
-                                <img id="imgprvw" width="250px" height="170px" hidden /> 
-                            </td>
-                            <td class="style3" ></td>
-                        </tr>
-                            <tr>
-                                <td colspan="3">
-                                    <asp:Panel ID="pnlBtnRegistrar" runat="server">
-                                        <asp:Button ID="btnRegistrar" runat="server" Text="Registrar" 
-                                             onclick="btnRegistrar_Click" />
-                                    </asp:Panel>
-                                </td>                                    
+                        <asp:Panel ID="pnlFoto" runat="server">
+                            <table>
+                             <tr>
+                                <td class="style2" width="100px">
+                                    Foto:&nbsp
+                                </td>
+                                <td class="style1" width="250px">
+                                    <input type="file" runat="server"  id="fuImagen"  onchange="showimagepreview(this,'imgprvw')" />
+                                </td>
+                                <td class="style3" ></td>
                             </tr>
-                        </table>
+                            <tr>
+                                <td class="style2" width="100px">
+    
+                                </td>
+                                <td class="style1" width="250px">
+                                    <img id="imgprvw" width="250px" height="170px" hidden /> 
+                                </td>
+                                <td class="style3" ></td>
+                            </tr>
+                                <tr>
+                                    <td colspan="3">
+                                        <asp:Panel ID="pnlBtnRegistrar" runat="server">
+                                            <asp:Button ID="btnRegistrar" runat="server" Text="Registrar" 
+                                                 onclick="btnRegistrar_Click" />
+                                        </asp:Panel>
+                                    </td>                                    
+                                </tr>
+                            </table>
+                        </asp:Panel>
                 </div>
         </div>
     </div>

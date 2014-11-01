@@ -115,7 +115,8 @@
                             </asp:Panel>
                             <asp:Panel ID="pnlResultados" runat="server" Visible="false">
                                 <div style="display: table-cell; width: 20%;">
-                                    <asp:ListBox ID="lstResultados" runat="server" CssClass="TextBox" Width="200px">
+                                    <asp:ListBox ID="lstResultados" runat="server" CssClass="TextBox" Width="200px" 
+                                        AutoPostBack="True" onselectedindexchanged="lstResultados_SelectedIndexChanged">
                                     </asp:ListBox>
                                 </div>
                             </asp:Panel>
@@ -123,7 +124,7 @@
                         <div style="display: table-row; width: 30%">
                             <asp:Panel ID="pnlSeleccionar" runat="server" Visible="false">
                                 <div style="display: table-cell; width: 20%;">
-                                    <asp:Button ID="btnSeleccionar" runat="server" Text="Seleccionar" OnClick="btnAceptarClick" />
+                                    <asp:Button ID="btnSeleccionar" runat="server" visible="false" Text="Seleccionar" OnClick="btnAceptarClick" />
                                 </div>
                             </asp:Panel>
                         </div>
@@ -234,9 +235,9 @@
                                         </asp:Panel>
                                     </td>
                                     <td>
-                                        <asp:RequiredFieldValidator ID="rfvFechaDeNacimiento" runat="server" ErrorMessage="Debe ingresar una fecha"
+                                        <%--<asp:RequiredFieldValidator ID="rfvFechaDeNacimiento" runat="server" ErrorMessage="Debe ingresar una fecha"
                                             CssClass="Validator" Display="Dynamic" ControlToValidate="txtFecha" SetFocusOnError="True"
-                                            ValidationGroup="2"></asp:RequiredFieldValidator>
+                                            ValidationGroup="2"></asp:RequiredFieldValidator>--%>
                                     </td>
                                 </tr>
                                 <tr>

@@ -135,6 +135,7 @@ namespace SiGMA
 
         protected void lstMascotas_SelectedIndexChanged(object sender, EventArgs e)
         {
+            pnlRegistrarPerdida.Visible = false;
             Session["imagen"] = null;
             var idMascota = Convert.ToInt32(lstMascotas.SelectedValue);
             EMascota mascota = new EMascota();

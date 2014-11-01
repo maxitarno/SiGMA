@@ -99,16 +99,16 @@
                                                     Resultados:
                                                 </td>
                                                 <td>
-                                                    <asp:ListBox ID="lstResultados" runat="server" Width="100%"></asp:ListBox>
+                                                    <asp:ListBox ID="lstResultados" runat="server" Width="211px" AutoPostBack="true" OnSelectedIndexChanged="lstResultados_SelectedIndexChanged"></asp:ListBox>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <asp:Button ID="btnSeleccionar" runat="server" Text="Seleccionar" OnClick="BtnSeleccionarClick" />
+                                                    <asp:Button ID="btnSeleccionar" runat="server" Text="Seleccionar" Visible="false" OnClick="BtnSeleccionarClick" />
                                                 </td>
                                             </tr>
                                         </asp:Panel>
-                                        <asp:Panel ID="pnlDatos" runat=server Visible=false>
+                                        <asp:Panel ID="pnlDatos" runat="server" Visible="false">
                                             <tr>
                                                 <td>
                                                     <h5>

@@ -119,13 +119,15 @@
                                         Resultados:
                                     </div>
                                     <div style="display: table-cell; width: 80%;">
-                                        <asp:ListBox ID="lstResultadosDuenios" runat="server" ViewStateMode="Enabled" Width="100%">
+                                        <asp:ListBox ID="lstResultadosDuenios" runat="server" ViewStateMode="Enabled" 
+                                            Width="100%" AutoPostBack="True" 
+                                            onselectedindexchanged="lstResultadosDuenios_SelectedIndexChanged">
                                         </asp:ListBox>
                                     </div>
                                 </div>
                                 <div style="display: table-row; width: 30%">
                                     <div style="display: table-cell; width: 20%;">
-                                        <asp:Button ID="btnSeleccionarDuenio" runat="server" Text="Seleccionar" OnClick="btnSeleccionarDuenioClick"
+                                        <asp:Button ID="btnSeleccionarDuenio" runat="server" visible="false" Text="Seleccionar" OnClick="btnSeleccionarDuenioClick"
                                             ViewStateMode="Enabled" />
                                     </div>
                                 </div>

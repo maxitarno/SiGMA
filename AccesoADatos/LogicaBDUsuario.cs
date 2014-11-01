@@ -18,6 +18,7 @@ namespace AccesoADatos
                     Usuarios userBD = new Usuarios();
                     userBD.user = usuario.user;
                     userBD.password = usuario.password;
+                    userBD.estado = usuario.estado;
                     mapaEntidades.AddToUsuarios(userBD);
                     mapaEntidades.SaveChanges();
                     ERol rolDuenio = LogicaBDRol.ObtenerRol("Dueño");

@@ -182,7 +182,7 @@ namespace AccesoADatos
             IQueryable<Mascotas> consulta = from MascotasBD in mapaEntidades.Mascotas
                                             from DueniosBD in mapaEntidades.Duenios
                                             from PersonasBD in mapaEntidades.Personas
-                                            where (DueniosBD.idPersona == PersonasBD.idPersona && MascotasBD.idDuenio == DueniosBD.idDuenio && PersonasBD.nombre.Contains(duenio) && MascotasBD.idEstado != 6)
+                                            where (DueniosBD.idPersona == PersonasBD.idPersona && MascotasBD.idDuenio == DueniosBD.idDuenio && (PersonasBD.nombre.ToLower().Contains(duenio.ToLower()) || PersonasBD.apellido.ToLower().Contains(duenio.ToLower())) && MascotasBD.idEstado != 6)
                                             select MascotasBD;
             try
             {

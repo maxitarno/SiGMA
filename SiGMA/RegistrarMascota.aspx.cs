@@ -112,6 +112,7 @@ namespace SiGMA
             pnlDatos.Visible = !b;
             pnlBtnRegistrar.Visible = !b;
             fuImagen.Visible = !b;
+            pnlFoto.Visible = !b;
             if (!b)
             {
                 lblError.Text = mensaje;

@@ -30,7 +30,7 @@
         </div>
 		<div class="row mt centered">	
 			<div class="col-lg-4">
-				<a class="zoom green" href="_Mascotas.aspx"><img class="img-responsive" src="assets/img/mascotas/registrarmascota.jpg" alt="" width="200px" height="300px"/></a>
+				<a class="zoom green" href="_Mascotas.aspx"><img class="img-responsive" src="assets/img/mascotas/registrarmascota3.jpg" alt="" width="200px" height="300px"/></a>
 				<p class="col-lg-4">MASCOTAS</p>
 			</div>
 			<div class="col-lg-4">

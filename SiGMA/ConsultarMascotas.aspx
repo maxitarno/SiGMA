@@ -190,7 +190,8 @@
                                                             Resultados:
                                                         </td>
                                                         <td>
-                                                            <asp:ListBox ID="lstResultados" runat="server"></asp:ListBox>
+                                                            <asp:ListBox ID="lstResultados" runat="server" AutoPostBack="True" 
+                                                                onselectedindexchanged="lstResultados_SelectedIndexChanged"></asp:ListBox>
                                                         </td>
                                                     </tr>
                                                 </table>

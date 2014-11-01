@@ -202,64 +202,7 @@ namespace SiGMA
             }
         }
         public void btnSeleccionarDuenioClick(object sender, EventArgs e){
-            EDuenio duenio = new EDuenio();
-            EPersona persona = new EPersona();
-            EBarrio barrio = new EBarrio();
-            ELocalidad localidad = new ELocalidad();
-            ETipoDeDocumento tipodoc = new ETipoDeDocumento();
-            persona.tipoDocumento = tipodoc;
-            EUsuario usuario = new EUsuario();
-            ECalle calle = new ECalle();
-            if (lstResultadosDuenios.SelectedValue != "")
-            {
-                LogicaBDUsuario.BuscarUsuarios(lstResultadosDuenios.SelectedValue, usuario, persona, barrio, localidad, tipodoc, calle, duenio);
-                if (calle.nombre != "" && barrio.nombre != "" && localidad.nombre != "")
-                {
-                    txtNombreD.Text = persona.nombre;
-                    persona.tipoDocumento.nombre = tipodoc.nombre;
-                    txtDNI.Text = persona.nroDocumento;
-                    txtLocalidad.Text = localidad.nombre;
-                    txtBarrio.Text = barrio.nombre;
-                    txtCalle.Text = calle.nombre;
-                    txtNro.Text = persona.nroCalle.ToString();
-                    pnlDuenio.Visible = true;
-                    ddlTipo.SelectedValue = tipodoc.idTipoDeDocumento.ToString();
-                    txtTipoDeDocumento.Text = ddlTipo.SelectedItem.Text;
-                    txtNombreDuenio.Text = lstResultadosDuenios.SelectedValue;
-                    pnlResultadosDuenio.Visible = false;
-                    txtNº.Text = persona.nroDocumento;
-                    pnlBuscarMascota.Visible = true;
-                    Session["Duenio"] = duenio.idDuenio;
-                    pnlCorrecto.Visible = false;
-                    pnlInfo.Visible = false;
-                    pnlAtento.Visible = false;
-                    pnlBuscar.Visible = false;
-                    persona.barrio = barrio;
-                    persona.domicilio = calle;
-                    persona.localidad = localidad;
-                    Session["Dueño"] = persona;
-                    txtNombreDuenio.Enabled = false;
-                    ddlTipo.Enabled = false;
-                    txtNº.Enabled = false;
-                    txtDNI.Enabled = false;
-                    pnlDocumento.Visible = false;
-                    pnlNombre.Visible = false;
-                }
-                else
-                {
-                    pnlInfo.Visible = true;
-                    lblResultado2.Text = "Debe seleccionar un Dueño con domicilio o registrar u nuevo dueño";
-                    pnlCorrecto.Visible = false;
-                    pnlAtento.Visible = false;
-                }
-            }
-            else
-            {
-                pnlInfo.Visible = true;
-                lblResultado2.Text = "Debe seleccionar un Dueño";
-                pnlCorrecto.Visible = false;
-                pnlAtento.Visible = false;
-            }
+            
         }
         public void btnBuscarMascotaClick(object sender, EventArgs e)
         {
@@ -427,6 +370,68 @@ namespace SiGMA
         {
             txtFecha.Text = calendario.SelectedDate.ToString("d");
             calendario.Visible = false;
+        }
+
+        protected void lstResultadosDuenios_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            EDuenio duenio = new EDuenio();
+            EPersona persona = new EPersona();
+            EBarrio barrio = new EBarrio();
+            ELocalidad localidad = new ELocalidad();
+            ETipoDeDocumento tipodoc = new ETipoDeDocumento();
+            persona.tipoDocumento = tipodoc;
+            EUsuario usuario = new EUsuario();
+            ECalle calle = new ECalle();
+            if (lstResultadosDuenios.SelectedValue != "")
+            {
+                LogicaBDUsuario.BuscarUsuarios(lstResultadosDuenios.SelectedValue, usuario, persona, barrio, localidad, tipodoc, calle, duenio);
+                if (calle.nombre != "" && barrio.nombre != "" && localidad.nombre != "")
+                {
+                    txtNombreD.Text = persona.nombre;
+                    persona.tipoDocumento.nombre = tipodoc.nombre;
+                    txtDNI.Text = persona.nroDocumento;
+                    txtLocalidad.Text = localidad.nombre;
+                    txtBarrio.Text = barrio.nombre;
+                    txtCalle.Text = calle.nombre;
+                    txtNro.Text = persona.nroCalle.ToString();
+                    pnlDuenio.Visible = true;
+                    ddlTipo.SelectedValue = tipodoc.idTipoDeDocumento.ToString();
+                    txtTipoDeDocumento.Text = ddlTipo.SelectedItem.Text;
+                    txtNombreDuenio.Text = lstResultadosDuenios.SelectedValue;
+                    pnlResultadosDuenio.Visible = false;
+                    txtNº.Text = persona.nroDocumento;
+                    pnlBuscarMascota.Visible = true;
+                    Session["Duenio"] = duenio.idDuenio;
+                    pnlCorrecto.Visible = false;
+                    pnlInfo.Visible = false;
+                    pnlAtento.Visible = false;
+                    pnlBuscar.Visible = false;
+                    persona.barrio = barrio;
+                    persona.domicilio = calle;
+                    persona.localidad = localidad;
+                    Session["Dueño"] = persona;
+                    txtNombreDuenio.Enabled = false;
+                    ddlTipo.Enabled = false;
+                    txtNº.Enabled = false;
+                    txtDNI.Enabled = false;
+                    pnlDocumento.Visible = false;
+                    pnlNombre.Visible = false;
+                }
+                else
+                {
+                    pnlInfo.Visible = true;
+                    lblResultado2.Text = "Debe seleccionar un Dueño con domicilio o registrar u nuevo dueño";
+                    pnlCorrecto.Visible = false;
+                    pnlAtento.Visible = false;
+                }
+            }
+            else
+            {
+                pnlInfo.Visible = true;
+                lblResultado2.Text = "Debe seleccionar un Dueño";
+                pnlCorrecto.Visible = false;
+                pnlAtento.Visible = false;
+            }
         }
     }
 }

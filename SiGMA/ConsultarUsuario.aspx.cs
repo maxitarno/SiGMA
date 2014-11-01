@@ -178,76 +178,7 @@ namespace SiGMA
 
         public void btnAceptarClick(object sender, EventArgs e)
         {
-            pnlAtento.Visible = false;
-            pnlCorrecto.Visible = false;
-            pnlInfo.Visible = false;
-            EBarrio barrio = new EBarrio();
-            ELocalidad localidad = new ELocalidad();
-            ETipoDeDocumento tipodoc = new ETipoDeDocumento();
-            EPersona persona = new EPersona();
-            EUsuario usuario = new EUsuario();
-            ECalle calle = new ECalle();
-            if (lstResultados.SelectedValue != "")
-            {
-                LogicaBDUsuario.BuscarUsuarios(lstResultados.SelectedValue, usuario, persona, barrio, localidad, tipodoc, calle);
-                txtNº.Text = (persona.nroCalle == null) ? "0" : persona.nroCalle.Value.ToString();
-                txtUsuario.Text = usuario.user;
-                ddlTipoDeDocumento.SelectedValue = tipodoc.idTipoDeDocumento.ToString();
-                txtNºDeDocumento.Text = persona.nroDocumento;
-                txtApellido.Text = persona.apellido;
-                txtNombre.Text = persona.nombre; 
-                ddlLocalidades.SelectedValue = localidad.idLocalidad.ToString();
-                ddlBarrios.SelectedValue = barrio.idBarrio.ToString();
-                txtTelefonoFijo.Text = persona.telefonoFijo;
-                txtTelefonoCelular.Text = persona.telefonoCelular;
-                txtMail.Text = persona.email;
-                txtFecha.Text = persona.fechaNacimiento != null ? persona.fechaNacimiento.Value.ToShortDateString() : null;
-                Session["persona"] = persona.idPersona;
-                pnlUser.Visible = true;
-                pnlBuscar.Visible = true;
-                pnlUsuario.Visible = true;
-                pnlType.Visible = true;
-                pnlNºDeDocumento.Visible = true;
-                pnlTipoDeDocumento.Visible = true;
-                pnlnumber.Visible = true;
-                pnlTipoDeDocumento.Visible = true;
-                pnlApellido.Visible = true;
-                pnlbarrio.Visible = true;
-                pnlBarrios.Visible = true;
-                pnldate.Visible = true;
-                pnlEliminar.Visible = true;
-                pnlestate.Visible = true;
-                pnlFecha.Visible = true;
-                pnlLocalidades.Visible = true;
-                pnlMail.Visible = true;
-                pnlmails.Visible = true;
-                pnlModificar.Visible = true;
-                pnlname.Visible = true;
-                pnlNombre.Visible = true;
-                pnlphone.Visible = true;
-                pnlphonefixed.Visible = true;
-                pnlresult.Visible = true;
-                pnlResultados.Visible = true;
-                pnlSeleccionar.Visible = false;
-                pnlsurname.Visible = true;
-                pnlTelefonFijo.Visible = true;
-                pnlTelefonoCelular.Visible = true;
-                pnlEliminar.Visible = true;
-                pnlresult.Visible = false;
-                pnlResultados.Visible = false;
-                pnlDdlCalle.Visible = true;
-                ddlCalle.SelectedValue = (calle.idCalle == null) ? "0" : calle.idCalle.ToString();
-                pnlCalle.Visible = true;
-                pnlBuscar.Visible = false;
-            }
-            else
-            {
-                pnlInfo.Visible = true;
-                lblResultado2.Text = "Debe seleccionar un usuario";
-                pnlCorrecto.Visible = false;
-                pnlAtento.Visible = false;
-            }
-            txtUsuario.ReadOnly = true;
+            
         }
         public void btnModificarClick(object sender, EventArgs e)
         {
@@ -271,7 +202,7 @@ namespace SiGMA
                             pnlInfo.Visible = false;
                             if (Validaciones.verificarSoloNumeros(txtNºDeDocumento.Text) && Validaciones.contarCaracteresMaximos(8, txtNºDeDocumento.Text) &&Validaciones.contarCaracteresMinimos(8, txtNºDeDocumento.Text))
                             {
-                                if (Validaciones.Fecha(txtFecha.Text, out fecha))
+                                if (true == true) // Validaciones.Fecha(txtFecha.Text, out fecha)
                                 {
                                     if (Validaciones.verificarSoloLetras(txtApellido.Text) && Validaciones.verificarSoloLetras(txtNombre.Text))
                                     {
@@ -337,10 +268,10 @@ namespace SiGMA
                                 }
                                 else
                                 {
-                                    pnlInfo.Visible = true;
-                                    lblResultado2.Text = "Debe ingresar una fecha";
-                                    pnlAtento.Visible = false;
-                                    pnlCorrecto.Visible = false;
+                                    //pnlInfo.Visible = true;
+                                    //lblResultado2.Text = "Debe ingresar una fecha";
+                                    //pnlAtento.Visible = false;
+                                    //pnlCorrecto.Visible = false;
                                 }
                             }
                             else
@@ -551,6 +482,80 @@ namespace SiGMA
         public void BtnRegresarClick(object sender, EventArgs e)
         {
             Response.Redirect("Usuarios.aspx");
+        }
+
+        protected void lstResultados_SelectedIndexChanged(object sender, EventArgs e)
+        {
+pnlAtento.Visible = false;
+            pnlCorrecto.Visible = false;
+            pnlInfo.Visible = false;
+            EBarrio barrio = new EBarrio();
+            ELocalidad localidad = new ELocalidad();
+            ETipoDeDocumento tipodoc = new ETipoDeDocumento();
+            EPersona persona = new EPersona();
+            EUsuario usuario = new EUsuario();
+            ECalle calle = new ECalle();
+            if (lstResultados.SelectedValue != "")
+            {
+                LogicaBDUsuario.BuscarUsuarios(lstResultados.SelectedValue, usuario, persona, barrio, localidad, tipodoc, calle);
+                txtNº.Text = (persona.nroCalle == null) ? "0" : persona.nroCalle.Value.ToString();
+                txtUsuario.Text = usuario.user;
+                ddlTipoDeDocumento.SelectedValue = tipodoc.idTipoDeDocumento.ToString();
+                txtNºDeDocumento.Text = persona.nroDocumento;
+                txtApellido.Text = persona.apellido;
+                txtNombre.Text = persona.nombre; 
+                ddlLocalidades.SelectedValue = localidad.idLocalidad.ToString();
+                ddlBarrios.SelectedValue = barrio.idBarrio.ToString();
+                txtTelefonoFijo.Text = persona.telefonoFijo;
+                txtTelefonoCelular.Text = persona.telefonoCelular;
+                txtMail.Text = persona.email;
+                txtFecha.Text = persona.fechaNacimiento != null ? persona.fechaNacimiento.Value.ToShortDateString() : null;
+                Session["persona"] = persona.idPersona;
+                pnlUser.Visible = true;
+                pnlBuscar.Visible = true;
+                pnlUsuario.Visible = true;
+                pnlType.Visible = true;
+                pnlNºDeDocumento.Visible = true;
+                pnlTipoDeDocumento.Visible = true;
+                pnlnumber.Visible = true;
+                pnlTipoDeDocumento.Visible = true;
+                pnlApellido.Visible = true;
+                pnlbarrio.Visible = true;
+                pnlBarrios.Visible = true;
+                pnldate.Visible = true;
+                pnlEliminar.Visible = true;
+                pnlestate.Visible = true;
+                pnlFecha.Visible = true;
+                pnlLocalidades.Visible = true;
+                pnlMail.Visible = true;
+                pnlmails.Visible = true;
+                pnlModificar.Visible = true;
+                pnlname.Visible = true;
+                pnlNombre.Visible = true;
+                pnlphone.Visible = true;
+                pnlphonefixed.Visible = true;
+                pnlresult.Visible = true;
+                pnlResultados.Visible = true;
+                pnlSeleccionar.Visible = false;
+                pnlsurname.Visible = true;
+                pnlTelefonFijo.Visible = true;
+                pnlTelefonoCelular.Visible = true;
+                pnlEliminar.Visible = true;
+                pnlresult.Visible = false;
+                pnlResultados.Visible = false;
+                pnlDdlCalle.Visible = true;
+                ddlCalle.SelectedValue = (calle.idCalle == null) ? "0" : calle.idCalle.ToString();
+                pnlCalle.Visible = true;
+                pnlBuscar.Visible = false;
+            }
+            else
+            {
+                pnlInfo.Visible = true;
+                lblResultado2.Text = "Debe seleccionar un usuario";
+                pnlCorrecto.Visible = false;
+                pnlAtento.Visible = false;
+            }
+            txtUsuario.ReadOnly = true;
         }
 
     }

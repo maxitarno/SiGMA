@@ -44,6 +44,7 @@ namespace SiGMA
                     duenio.email = txtEmail.Text;
                     usuario.user = txtUsuario.Text;
                     usuario.password = txtContra.Text;
+                    usuario.estado = true;
                     if (LogicaBDUsuario.guardarUsuario(duenio, usuario))
                     {
                         mostrarResultado("", true);
