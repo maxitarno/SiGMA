@@ -49,7 +49,7 @@
                 </div>
             </div>
             <div class="panel-body">
-                <div class="col-md-2 col-md-offset-3">
+                <div class="col-md-1 col-md-offset-4">
                     <div style="margin-left: 30%; display: table; width: 40%;">
                         <div style="display: table-row; width: 30%">
                             <div style="display: table-cell; width: 20%;">
@@ -66,45 +66,45 @@
                             </div>
                             <div style="display: table-cell; width: 20%;">
                                 <asp:RequiredFieldValidator ID="rfvNombre" runat="server" ErrorMessage="Debe ingresar un tipo de documento"
-                                    ControlToValidate="txtNombre" ValidationGroup="1" Display="Dynamic"></asp:RequiredFieldValidator>
+                                    ControlToValidate="txtNombre" ValidationGroup="1" Display="Dynamic" Font-Underline="False" BorderColor="Red" ForeColor="Red"></asp:RequiredFieldValidator>
                             </div>
                         </div>
                     </div>
                     <div style="margin-left: 30%; display: table; width: 40%;">
                         <div style="display: table-row; width: 30%;">
                             <asp:Panel ID="pnlResultado" runat="server" Visible="false">
-                                <div style="display: table-cell; width: 20%;">
+                                <div style="display: table-cell; width: 10%;vertical-align:middle">
                                     Resultados:
                                 </div>
-                                <div style="display: table-cell; width: 20%;">
-                                    <asp:ListBox ID="lstResultados" runat="server"></asp:ListBox>
+                                <div style="display: table-cell; width: 70%;">
+                                    <asp:ListBox ID="lstResultados" runat="server" AutoPostBack="True" OnSelectedIndexChanged="BtnSeleccionarClick" Width=260px></asp:ListBox>
                                 </div>
                             </asp:Panel>
                         </div>
-                        <div style="display: table-row; width: 30%">
-                            <div style="display: table-cell; width: 20%;">
-                                <asp:Panel ID="pnlRegistrar" runat="server">
-                                    <asp:Button ID="btnRegistrar" runat="server" Text="Registrar" OnClick="BtnRegistrarClick"
-                                        ValidationGroup="1" />
-                                </asp:Panel>
-                            </div>
-                            <div style="display: table-cell; width: 20%;">
-                                <asp:Panel ID="pnlSeleccionar" runat="server" Visible="false">
-                                    <asp:Button ID="btnSeleccionar" runat="server" Text="Seleccionar" OnClick="BtnSeleccionarClick"
-                                        CausesValidation="False" />
-                                </asp:Panel>
-                            </div>
-                            <div style="display: table-cell; width: 20%;">
-                                <asp:Panel ID="pnlCambio" runat="server" Visible="false">
-                                    <asp:Button ID="btnModificar" runat="server" Text="Modificar" OnClick="BtnModificarClick"
-                                        CausesValidation="true" />
-                                </asp:Panel>
-                            </div>
-                            <div style="display: table-cell; width: 20%;">
-                                <asp:Panel runat="server" ID="pnl8" Visible="false">
-                                    <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar" OnClick="BtnLimpiarClick"
-                                        CausesValidation="False" />
-                                </asp:Panel>
+                        <div style="display: table-row; width: 30%;margin-left:30%;">
+                            <div style="display: table-cell inline; width: 20%;">
+                               <table>
+                                    <tr>
+                                        <td>
+                                            <asp:Panel ID="pnlRegistrar" runat="server">
+                                                <asp:Button ID="btnRegistrar" runat="server" Text="Registrar" OnClick="BtnRegistrarClick"
+                                                    ValidationGroup="1" />
+                                            </asp:Panel>
+                                        </td>
+                                        <td>
+                                            <asp:Panel ID="pnlCambio" runat="server" Visible="false">
+                                                <asp:Button ID="btnModificar" runat="server" Text="Modificar" OnClick="BtnModificarClick"
+                                                    CausesValidation="true" />
+                                            </asp:Panel>
+                                        </td>
+                                        <td>
+                                            <asp:Panel runat="server" ID="pnl8" Visible="false">
+                                                <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar" OnClick="BtnLimpiarClick"
+                                                    CausesValidation="False" />
+                                            </asp:Panel>
+                                        </td>
+                                    </tr>
+                               </table>
                             </div>
                         </div>
                     </div>

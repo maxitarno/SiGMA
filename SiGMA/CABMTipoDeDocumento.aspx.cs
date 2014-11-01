@@ -39,7 +39,6 @@ namespace SiGMA
                 pnlCorrecto.Visible = false;
                 pnlInfo.Visible = false;
                 pnlRegistrar.Visible = false;
-                pnlSeleccionar.Visible = true;
                 pnl8.Visible = true;
             }
             else
@@ -59,7 +58,6 @@ namespace SiGMA
                 Session["id"] = int.Parse(lstResultados.SelectedValue);
                 lstResultados.Items.Clear();
                 pnlCambio.Visible = true;
-                pnlSeleccionar.Visible = false;
                 pnlAtento.Visible = false;
                 pnlCorrecto.Visible = false;
                 pnlInfo.Visible = false;
@@ -172,7 +170,6 @@ namespace SiGMA
             pnlBuscar.Visible = true;
             pnlCambio.Visible = false;
             pnl8.Visible = false;
-            pnlSeleccionar.Visible = false;
             pnlResultado.Visible = false;
         }
         public void BtnRegresarClick(object sender, EventArgs e)
