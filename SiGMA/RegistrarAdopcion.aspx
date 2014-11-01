@@ -192,13 +192,13 @@
                                         Resultados:
                                     </td>
                                     <td>
-                                        <asp:ListBox ID="lstResultadosMascotas" runat="server" ViewStateMode="Enabled" Width="100%">
+                                        <asp:ListBox ID="lstResultadosMascotas" runat="server" ViewStateMode="Enabled" Width="100%" AutoPostBack="true" OnSelectedIndexChanged="lstResultadosMascotas_SelectedIndexChanged">
                                         </asp:ListBox>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <asp:Button ID="btnSeleccioarMascota" runat="server" Text="Seleccionar" OnClick="btnSeleccionarMascota" />
+                                        <asp:Button ID="btnSeleccioarMascota" runat="server" Visible="false" Text="Seleccionar" OnClick="btnSeleccionarMascota" />
                                     </td>
                                 </tr>
                             </asp:Panel>

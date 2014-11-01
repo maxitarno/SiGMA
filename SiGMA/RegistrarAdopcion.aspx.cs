@@ -260,37 +260,7 @@ namespace SiGMA
         }
         public void btnSeleccionarMascota(object sender, EventArgs e)
         {
-            EMascota mascota = new EMascota();
-            ECaracterMascota caracter = new ECaracterMascota();
-            ECategoriaRaza categoria = new ECategoriaRaza();
-            ECuidado cuidado = new ECuidado();
-            if (lstResultadosMascotas.SelectedValue != "")
-            {
-                LogicaBDMascota.BuscarMascota(mascota, categoria, caracter, cuidado, int.Parse(lstResultadosMascotas.SelectedValue));
-                txtNombreMascota.Text = mascota.nombreMascota;
-                txtRaza.Text = mascota.raza.nombreRaza;
-                txtSexo.Text = mascota.sexo;
-                txtEdad.Text = mascota.edad.nombreEdad;
-                txtNombreM.Text = mascota.nombreMascota;
-                //pnllimpiar.Visible = true;
-                pnlRegistrar.Visible = true;
-                Session["IdMascota"] = mascota.idMascota;
-                pnlCorrecto.Visible = false;
-                pnlInfo.Visible = false;
-                pnlAtento.Visible = false;
-                Session["Mascota"] = mascota;
-                pnlResultadosMascotas.Visible = false;
-                pnlBuscarMascota.Visible = false;
-                txtEspecie.Text = mascota.especie.nombreEspecie;
-                txtNombreM.Enabled = true;
-            }
-            else
-            {
-                pnlInfo.Visible = true;
-                lblResultado2.Text = "Debe seleccionar una mascota";
-                pnlCorrecto.Visible = false;
-                pnlAtento.Visible = false;
-            }
+            
         }
         public void btnRegistrarClick(object sender, EventArgs e)
         {
@@ -429,6 +399,40 @@ namespace SiGMA
             {
                 pnlInfo.Visible = true;
                 lblResultado2.Text = "Debe seleccionar un Dueño";
+                pnlCorrecto.Visible = false;
+                pnlAtento.Visible = false;
+            }
+        }
+        protected void lstResultadosMascotas_SelectedIndexChanged(object sender, EventArgs e) 
+        {
+EMascota mascota = new EMascota();
+            ECaracterMascota caracter = new ECaracterMascota();
+            ECategoriaRaza categoria = new ECategoriaRaza();
+            ECuidado cuidado = new ECuidado();
+            if (lstResultadosMascotas.SelectedValue != "")
+            {
+                LogicaBDMascota.BuscarMascota(mascota, categoria, caracter, cuidado, int.Parse(lstResultadosMascotas.SelectedValue));
+                txtNombreMascota.Text = mascota.nombreMascota;
+                txtRaza.Text = mascota.raza.nombreRaza;
+                txtSexo.Text = mascota.sexo;
+                txtEdad.Text = mascota.edad.nombreEdad;
+                txtNombreM.Text = mascota.nombreMascota;
+                //pnllimpiar.Visible = true;
+                pnlRegistrar.Visible = true;
+                Session["IdMascota"] = mascota.idMascota;
+                pnlCorrecto.Visible = false;
+                pnlInfo.Visible = false;
+                pnlAtento.Visible = false;
+                Session["Mascota"] = mascota;
+                pnlResultadosMascotas.Visible = false;
+                pnlBuscarMascota.Visible = false;
+                txtEspecie.Text = mascota.especie.nombreEspecie;
+                txtNombreM.Enabled = true;
+            }
+            else
+            {
+                pnlInfo.Visible = true;
+                lblResultado2.Text = "Debe seleccionar una mascota";
                 pnlCorrecto.Visible = false;
                 pnlAtento.Visible = false;
             }
