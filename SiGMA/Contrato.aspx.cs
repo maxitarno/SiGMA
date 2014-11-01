@@ -50,7 +50,7 @@ namespace SiGMA
             }
             else
             {
-                Response.Redirect("ConsultarAdopcion.aspx");
+                Response.Redirect("ConsultarAdopcion.aspx?m=1");
             }
         }
         public void BtnRechazarClick(object sender, EventArgs e)
@@ -62,7 +62,7 @@ namespace SiGMA
             }
             else
             {
-                Response.Redirect("ConsultarAdopcion.aspx");
+                Response.Redirect("ConsultarAdopcion.aspx?m=1");
             }
         }
     }

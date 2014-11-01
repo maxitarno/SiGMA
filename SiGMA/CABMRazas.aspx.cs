@@ -54,7 +54,6 @@ namespace SiGMA
                     pnlAtento.Visible = false;
                     pnlInfo.Visible = false;
                     pnlResultado.Visible = true;
-                    pnlSeleccionar.Visible = true;
                     pnl8.Visible = true;
                 }
                 else
@@ -68,37 +67,25 @@ namespace SiGMA
         }
         public void BtnSeleccionarClick(object sender, EventArgs e)
         {
-            if (lstResultados.Items.Count != 0)
+            if (lstResultados.SelectedValue != "")
             {
                 pnlRegistrar.Visible = false;
                 pnlCorrecto.Visible = false;
                 pnlAtento.Visible = false;
                 pnlInfo.Visible = false;
                 pnlResultado.Visible = true;
-                pnlSeleccionar.Visible = true;
-                if (lstResultados.SelectedValue != "")
-                {
-                    pnlCambio.Visible = true;
-                    pnlSeleccionar.Visible = false;
-                    pnl8.Visible = true;
-                    ERaza raza = new ERaza();
-                    raza = Datos.BuscarRaza(int.Parse(lstResultados.SelectedValue));
-                    ddlEspecies.SelectedValue = raza.especie.idEspecie.ToString();
-                    txtNombre.Text = raza.nombreRaza;
-                    ddlCategoria.SelectedValue = raza.CategoriaRaza.idCategoriaRaza.ToString();
-                    ddlCuidadoEspecial.SelectedValue = raza.cuidadoEspecial.idCuidado.ToString();
-                    txtPeso.Text = raza.pesoRaza;
-                    Session["idraza"] = int.Parse(lstResultados.SelectedValue.ToString());
-                    ddlEspecies.SelectedValue = raza.especie.idEspecie.ToString();
-                    pnlDatos.Visible = true;
-                }
-                else
-                {
-                    pnlCorrecto.Visible = false;
-                    pnlAtento.Visible = false;
-                    pnlInfo.Visible = true;
-                    lblResultado2.Text = "Debe seleccionar una especie";
-                }
+                pnlCambio.Visible = true;
+                pnl8.Visible = true;
+                ERaza raza = new ERaza();
+                raza = Datos.BuscarRaza(int.Parse(lstResultados.SelectedValue));
+                ddlEspecies.SelectedValue = raza.especie.idEspecie.ToString();
+                txtNombre.Text = raza.nombreRaza;
+                ddlCategoria.SelectedValue = raza.CategoriaRaza.idCategoriaRaza.ToString();
+                ddlCuidadoEspecial.SelectedValue = raza.cuidadoEspecial.idCuidado.ToString();
+                txtPeso.Text = raza.pesoRaza;
+                Session["idraza"] = int.Parse(lstResultados.SelectedValue.ToString());
+                ddlEspecies.SelectedValue = raza.especie.idEspecie.ToString();
+                pnlDatos.Visible = true;
             }
             else
             {
@@ -127,7 +114,7 @@ namespace SiGMA
                         if (txtNombre.Text != "" && Validaciones.verificarSoloLetras(txtNombre.Text))
                         {
                             ERaza raza = new ERaza();
-                            if (float.Parse(txtPeso.Text) > 0 && txtPeso.Text != "" && Validaciones.verificarDecimal(txtPeso.Text))
+                            if (txtPeso.Text != "")
                             {
                                 raza.pesoRaza = txtPeso.Text;
                                 raza.nombreRaza = txtNombre.Text;
@@ -148,7 +135,7 @@ namespace SiGMA
                                 else
                                 {
                                     pnlInfo.Visible = false;
-                                    lblResultado1.Text = "No se pudo modificar";
+                                    lblResultado2.Text = "No se pudo modificar";
                                     pnlCorrecto.Visible = false;
                                     pnlAtento.Visible = true;
                                 }
@@ -156,7 +143,7 @@ namespace SiGMA
                             else
                             {
                                 pnlInfo.Visible = true;
-                                lblResultado1.Text = "Debe ingresar un peso valido";
+                                lblResultado2.Text = "Debe ingresar un peso valido";
                                 pnlCorrecto.Visible = false;
                                 pnlAtento.Visible = false;
                             }
@@ -262,7 +249,6 @@ namespace SiGMA
             pnlDatos.Visible = true;
             pnlInfo.Visible = false;
             pnlResultado.Visible = false;
-            pnlSeleccionar.Visible = false;
             txtNombre.Text = "";
             pnlRegistrar.Visible = true;
             ddlCategoria.SelectedValue = "0";

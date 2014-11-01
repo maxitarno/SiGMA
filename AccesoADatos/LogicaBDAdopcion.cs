@@ -85,7 +85,7 @@ namespace AccesoADatos
                 throw exc;
             }
         }
-        public static List<EAdopcion> BuscarAdopcion(int numeroDeAdopcion)
+        public static List<EAdopcion> BuscarAdopcion(string nombreDeMascota)
         {
             try
             {
@@ -96,7 +96,7 @@ namespace AccesoADatos
                                                   from G1 in group1.DefaultIfEmpty()
                                                   join MascotasBD in mapa.Mascotas on AdopcionesBD.idMascota equals MascotasBD.idMascota into group2
                                                   from G2 in group2.DefaultIfEmpty()
-                                                  where (AdopcionesBD.idAdopcion == numeroDeAdopcion && G1.ambito == "Adopcion" && (G1.nombreEstado == "Abierta" || G1.nombreEstado == "Modificada"))
+                                                  where (G2.nombreMascota.StartsWith(nombreDeMascota) && G1.ambito == "Adopcion" && (G1.nombreEstado == "Abierta" || G1.nombreEstado == "Modificada"))
                                                   select new
                                                   {
                                                       adopcion = AdopcionesBD,

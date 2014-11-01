@@ -25,9 +25,9 @@
                     Consultar, modificar razas
                 </h3>
             </div>
-            <div class="centered">
-                <div class="panel panel-default">
+            <div class="panel panel-default">
                 <div class="panel-body">
+                <div class="col-md-3 col-md-offset-4">
                     <div style="margin-left:30%; width=30%;">
                         <asp:Panel runat="server" ID="pnlCorrecto" class="alert alert-dismissable alert-success"
                             Visible="false">
@@ -51,7 +51,7 @@
                 </div>
             </div>
             <div class="panel-body">
-                <div class="col-md-3 col-md-offset-3">
+                <div class="col-md-1 col-md-offset-4">
                     <div style="margin-left: 30%; display: table; width: 40%;">
                         <div style="display: table-row; width: 30%">
                             <div style="display: table-cell; width: 20%;">
@@ -61,7 +61,7 @@
                             </div>
                             <div style="display: table-cell; width: 20%;">
                                 <asp:Panel runat="server" ID="pnlDdlEspecie" Width="100%">
-                                    <asp:DropDownList ID="ddlEspecies" runat="server" Width="100%">
+                                    <asp:DropDownList ID="ddlEspecies" runat="server" Width="211px">
                                     </asp:DropDownList>
                                 </asp:Panel>
                             </div>
@@ -74,7 +74,7 @@
                             </div>
                             <div style="display: table-cell; width: 20%;">
                                 <asp:Panel ID="pnltxtNombre" runat="server">
-                                    <asp:TextBox ID="txtNombre" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="txtNombre" runat="server" Visible="true" Width="211px" EnableTheming="False"></asp:TextBox>
                                 </asp:Panel>
                             </div>
                             <div style="display: table-cell; width: 20%;">
@@ -85,18 +85,18 @@
                             </div>
                             <div style="display: table-cell; width: 20%;">
                                 <asp:RequiredFieldValidator ID="rfvNombre" runat="server" ErrorMessage="Debe ingresar un nombre de raza"
-                                    ControlToValidate="txtNombre" ValidationGroup="1" CssClass="Validator"></asp:RequiredFieldValidator>
+                                    ControlToValidate="txtNombre" ValidationGroup="1" CssClass="Validator" ForeColor="Red"></asp:RequiredFieldValidator>
                             </div>
                         </div>
                     </div>
                     <div style="margin-left: 30%; display: table; width: 40%;">
-                        <div style="display: table-row; width: 30%">
+                        <div style="display: table-row; width: 30%;">
                             <asp:Panel ID="pnlResultado" runat="server" Visible="false">
-                                <div style="display: table-cell; width: 20%;">
+                                <div style="display: table-cell; width: 20%;vertical-align:middle">
                                     Resultados:
                                 </div>
                                 <div style="display: table-cell; width: 20%;">
-                                    <asp:ListBox ID="lstResultados" runat="server"></asp:ListBox>
+                                    <asp:ListBox ID="lstResultados" runat="server" AutoPostBack="true" OnSelectedIndexChanged="BtnSeleccionarClick" Width="260px"></asp:ListBox>
                                 </div>
                             </asp:Panel>
                         </div>
@@ -107,8 +107,8 @@
                                 <div style="display: table-cell; width: 20%;">
                                     Categoria:
                                 </div>
-                                <div style="display: table-cell; width: 20%;">
-                                    <asp:DropDownList ID="ddlCategoria" runat="server" Width="100%">
+                                <div style="display: table-cell; width: 20%;vertical-align:middle">
+                                    <asp:DropDownList ID="ddlCategoria" runat="server" Width="211px">
                                     </asp:DropDownList>
                                 </div>
                             </div>
@@ -116,8 +116,8 @@
                                 <div style="display: table-cell; width: 20%;">
                                     Cuidado especial:
                                 </div>
-                                <div style="display: table-cell; width: 20%;">
-                                    <asp:DropDownList ID="ddlCuidadoEspecial" runat="server">
+                                <div style="display: table-cell; width: 20%;vertical-align:middle">
+                                    <asp:DropDownList ID="ddlCuidadoEspecial" runat="server" Width="211px">
                                         <asp:ListItem Value="0" Text="-- Seleccione un cuidado especial --"></asp:ListItem>
                                         <asp:ListItem Value="1" Text="Pequeño"></asp:ListItem>
                                         <asp:ListItem Value="2" Text="Grande"></asp:ListItem>
@@ -131,7 +131,7 @@
                                     Peso Raza:
                                 </div>
                                 <div style="display: table-cell; width: 20%;">
-                                    <asp:TextBox ID="txtPeso" runat="server" Width="100%"></asp:TextBox>
+                                    <asp:TextBox ID="txtPeso" runat="server" Width="211px"></asp:TextBox>
                                 </div>
                             </div>
                         </asp:Panel>
@@ -142,12 +142,6 @@
                                 <asp:Panel ID="pnlRegistrar" runat="server">
                                     <asp:Button ID="btnRegistrar" runat="server" Text="Registrar" ValidationGroup="1"
                                         OnClick="BtnRegistrarClick" />
-                                </asp:Panel>
-                            </div>
-                            <div style="display: table-cell; width: 20%;">
-                                <asp:Panel ID="pnlSeleccionar" runat="server" Visible="false">
-                                    <asp:Button ID="btnSeleccionar" runat="server" Text="Seleccionar" CausesValidation="False"
-                                        OnClick="BtnSeleccionarClick" />
                                 </asp:Panel>
                             </div>
                             <div style="display: table-cell; width: 20%;">

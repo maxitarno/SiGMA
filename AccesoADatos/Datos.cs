@@ -435,31 +435,33 @@ namespace AccesoADatos
             ERaza raza = new ERaza();
             SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
             var consulta = from razaDB in mapaEntidades.Razas
-                           from categoriaRazaDB in mapaEntidades.CategoriaRazas
-                           from cuidadoDB in mapaEntidades.CuidadosEspeciales
-                           where (razaDB.idRaza == id && razaDB.idCuidadoEspecial == cuidadoDB.idCuidadoEspecial && razaDB.idCategoriaRaza == categoriaRazaDB.idCategoriaRazas)
+                           join CategoriaRazaBD in mapaEntidades.CategoriaRazas on razaDB.idCategoriaRaza equals CategoriaRazaBD.idCategoriaRazas into group1
+                           from G1 in group1.DefaultIfEmpty()
+                           join CuidadoEspecialBD in mapaEntidades.CuidadosEspeciales on razaDB.idCuidadoEspecial equals CuidadoEspecialBD.idCuidadoEspecial into group2
+                           from G2 in group2.DefaultIfEmpty()
+                           join especiesBD in mapaEntidades.Especies on razaDB.idEspecie equals especiesBD.idEspecie into group3
+                           from G3 in group3.DefaultIfEmpty()
+                           where(razaDB.idRaza == id)
                            select new
                            {
-                               idRaza = razaDB.idRaza,
-                               nombre = razaDB.nombreRaza,
-                               categoria = razaDB.idCategoriaRaza,
-                               cuidado = razaDB.idCuidadoEspecial,
-                               peso = razaDB.PesoRaza,
-                               idEspecie = razaDB.idEspecie
+                               especie = G3,
+                               raza = razaDB,
+                               cuidado = G2,
+                               categoria = G1,
                            };
             try
             {
                 foreach (var registro in consulta)
                 {
-                    raza.nombreRaza = registro.nombre;
+                    raza.nombreRaza = registro.raza.nombreRaza;
                     raza.CategoriaRaza = new ECategoriaRaza();
-                    raza.CategoriaRaza.idCategoriaRaza = (int)registro.categoria;
+                    raza.CategoriaRaza.idCategoriaRaza = (int)registro.categoria.idCategoriaRazas;
                     raza.cuidadoEspecial = new ECuidado();
-                    raza.cuidadoEspecial.idCuidado = (int)registro.cuidado;
-                    raza.idRaza = registro.idRaza;
-                    raza.pesoRaza = registro.peso;
+                    raza.cuidadoEspecial.idCuidado = (int)registro.cuidado.idCuidadoEspecial;
+                    raza.idRaza = registro.raza.idRaza;
+                    raza.pesoRaza = registro.raza.PesoRaza;
                     raza.especie = new EEspecie();
-                    raza.especie.idEspecie = registro.idEspecie;
+                    raza.especie.idEspecie = registro.especie.idEspecie;
                 }
             }
             catch (Exception exc)

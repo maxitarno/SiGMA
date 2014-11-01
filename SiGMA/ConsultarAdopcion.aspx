@@ -47,7 +47,7 @@
                         </asp:Panel>
                     </div>
                     <div class="centered">
-                        <asp:RadioButton ID="rbPorNAdopcion" runat="server" GroupName="1" ValidationGroup="1"
+                        <asp:RadioButton ID="rbPorNombreMascota" runat="server" GroupName="1" ValidationGroup="1"
                             AutoPostBack="True" Checked="False" Text=" Por Nombre" OnCheckedChanged="RbPorN" />&nbsp&nbsp
                         <asp:RadioButton ID="rbPorDNI" runat="server" AutoPostBack="True" ValidationGroup="1"
                             GroupName="1" Checked="True" Text=" Por Documento" OnCheckedChanged="RbPorPersona" />
@@ -60,10 +60,10 @@
                                         <asp:Panel runat="server" Visible="false" ID="pnlPorAdopcion">
                                             <tr>
                                                 <td>
-                                                    N:
+                                                    Nombre de la mascota:
                                                 </td>
                                                 <td>
-                                                    <asp:TextBox ID="txtNDeAdopcion" runat="server" Width="211px"></asp:TextBox>
+                                                    <asp:TextBox ID="txtNombre" runat="server" Width="211px"></asp:TextBox>
                                                 </td>
                                             </tr>
                                         </asp:Panel>
@@ -140,7 +140,7 @@
                                                 </td>
                                                 <td>
                                                     <asp:DropDownList ID="ddlCalle" runat="server" Width="75%">
-                                                    </asp:DropDownList> - <asp:TextBox ID="txtNºCalle" runat="server" Width="20%"></asp:TextBox>
+                                                    </asp:DropDownList> - <asp:TextBox ID="txtNºCalle" runat="server" Width="15%"></asp:TextBox>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -246,7 +246,7 @@
                                     </td>
                                     <td>
                                         <asp:TextBox ID="txtNombreM" runat="server" ReadOnly="True" ViewStateMode="Enabled"
-                                            Enabled="False" Width="100%"></asp:TextBox>
+                                            Enabled="false" Width="100%"></asp:TextBox>
                                     </td>
                                 </tr>
                                 <tr>
