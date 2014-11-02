@@ -92,16 +92,16 @@
                                     <div style="display: table-cell; width: 20%;">
                                         Tipo de documento:
                                     </div>
-                                    <div style="display: table-cell; width: 20%;">
+                                    <div style="vertical-align:middle; display: table-cell; width: 20%;">
                                         <asp:DropDownList ID="ddlTipo" runat="server" ViewStateMode="Enabled" Width="100%">
                                         </asp:DropDownList>
                                     </div>
                                 </div>
                                 <div style="display: table-row; width: 30%">
-                                    <div style="display: table-cell; width: 20%;">
+                                    <div style=" display: table-cell; width: 20%;">
                                         Nº de doumento:
                                     </div>
-                                    <div style="display: table-cell; width: 20%;">
+                                    <div style="vertical-align:middle; display: table-cell; width: 20%;">
                                         <asp:TextBox ID="txtDNI" runat="server" ViewStateMode="Enabled"></asp:TextBox>
                                     </div>
                                 </div>
@@ -115,7 +115,7 @@
                             </div>
                             <asp:Panel ID="pnlResultadosDuenio" runat="server" Visible="false">
                                 <div style="display: table-row; width: 30%">
-                                    <div style="display: table-cell; width: 10%;">
+                                    <div style="display: table-cell; width: 10%;vertical-align:middle;">
                                         Resultados:
                                     </div>
                                     <div style="display: table-cell; width: 80%;">
@@ -258,15 +258,14 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td style="display:inline">
+                                    <td>
                                         Calle:
-                                        <asp:TextBox ID="txtCalle" runat="server" ReadOnly="True" ViewStateMode="Enabled"
-                                            Enabled="False" Width="80px"></asp:TextBox>
                                     </td>
-                                    <td style="display:inline">
-                                        Nº:
-                                        <asp:TextBox ID="txtNro" runat="server" ReadOnly="True" ViewStateMode="Enabled"
-                                            Enabled="False" Width="80px"></asp:TextBox>
+                                    <td>
+                                         
+                                        <asp:TextBox ID="txtCalle" runat="server" ReadOnly="True" ViewStateMode="Enabled"
+                                            Enabled="False" Width="150px"></asp:TextBox>-<asp:TextBox ID="txtNro" runat="server" ReadOnly="True" ViewStateMode="Enabled" Enabled="False"
+                                            Width="50px"></asp:TextBox>
                                     </td>
                                 </tr>
                             </table>

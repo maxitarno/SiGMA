@@ -216,10 +216,10 @@
                                                         Fecha desde:
                                                     </td>
                                                     <td>
-                                                        <asp:TextBox ID="txtFechaDeLaPerdida" Enabled="false" runat="server" Width="190px"
+                                                        <asp:TextBox ID="txtFechaDeLaPerdida" Enabled="true" runat="server" Width="190px"
                                                             Text="01/01/2013"></asp:TextBox><asp:ImageButton ID="ImageButton3" runat="server"
                                                                 CausesValidation="False" ImageUrl="~/App_Themes/TemaSigma/imagenes/ico_calendar.gif"
-                                                                OnClick="imgFechaPerdida_Click" />
+                                                                OnClick="imgFechaPerdida_Click" Enabled="false" />
                                                         <asp:Calendar ID="calendar3" runat="server" BorderColor="Black" BorderWidth="1px"
                                                             Visible="False" OnSelectionChanged="calendario_SelectionChangedPerdida">
                                                             <DayHeaderStyle BackColor="White" Font-Bold="True" ForeColor="Black" />

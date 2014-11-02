@@ -37,12 +37,13 @@ public  object adopciones { get; set; }protected void Page_Load(object sender, E
                     pnlRegistrar.Visible = false;
                     btnRegistrar.Visible = false;
                     pnlEliminar.Visible = false;
+                    pnlDatos.Visible = false;
                 }
                 if (rbPorDNI.Checked)
                 {
+                    txtNº.Text = "";
                     pnlBuscar.Visible = true;
                     pnlPorDocumento.Visible = true;
-                    pnlPorAdopcion.Visible = false;
                 }
                 if(Session["Si"] != null){
                     if(Session["Si"].Equals("Si")){
@@ -69,7 +70,7 @@ public  object adopciones { get; set; }protected void Page_Load(object sender, E
                         pnlMascota.Visible = true;
                         pnlDuenio.Visible = true;
                         pnlBuscar.Visible = false;
-                        pnlAdopcion.Visible = true;
+                        pnlAdopcion.Visible = false;
                         pnlRegistrar.Visible = true;
                         btnRegistrar.Text = "Modificar adopcion";
                         btnEliminar.Visible = false;
@@ -206,6 +207,9 @@ public  object adopciones { get; set; }protected void Page_Load(object sender, E
                     persona = (EPersona)Session["Dueño"];
                     if (LogicaBDAdopcion.ModificarAdopcion(adopcion, persona))
                     {
+                        txtNº.Text = "";
+                        pnlBuscar.Visible = true;
+                        pnlPorDocumento.Visible = true;
                         pnlInfo.Visible = false;
                         lblResultado1.Text = "Se registro correctamente";
                         pnlCorrecto.Visible = true;
@@ -215,6 +219,8 @@ public  object adopciones { get; set; }protected void Page_Load(object sender, E
                         pnlDuenio.Visible = false;
                         pnlMascota.Visible = false;
                         pnlRegistrar.Visible = false;
+                        pnlAdopcion.Visible = false;
+                        pnlDatos.Visible = false;
                     }
                     else
                     {
@@ -245,6 +251,7 @@ public  object adopciones { get; set; }protected void Page_Load(object sender, E
                     }
                     else if (!ddlLocalidad.SelectedValue.Equals("0") && txtNombreMascota.Text == "")
                     {
+                        persona.nroCalle = int.Parse(txtNºCalle.Text);
                         persona.localidad.nombre = ddlLocalidad.SelectedItem.Text;
                         persona.barrio.nombre = ddlBarrio.SelectedItem.Text;
                         persona.domicilio.nombre = ddlCalle.SelectedItem.Text;
@@ -264,6 +271,7 @@ public  object adopciones { get; set; }protected void Page_Load(object sender, E
                         persona.localidad.nombre = ddlLocalidad.SelectedItem.Text;
                         persona.barrio.nombre = ddlBarrio.SelectedItem.Text;
                         persona.domicilio.nombre = ddlCalle.SelectedItem.Text;
+                        persona.nroCalle = int.Parse(txtNºCalle.Text);
                         Session["Dueño"] = persona;
                         Session["Adopcion"] = adopcion;
                         Session["Mascota"] = adopcion.mascota;
@@ -311,7 +319,14 @@ public  object adopciones { get; set; }protected void Page_Load(object sender, E
                 pnlAtento.Visible = false;
                 pnlInfo.Visible = false;
                 pnlCorrecto.Visible = true;
-                rbPorDNI.Checked = true;
+                txtNº.Text = "";
+                pnlBuscar.Visible = true;
+                pnlPorDocumento.Visible = true;
+                pnlBuscar.Visible = true;
+                pnlDuenio.Visible = false;
+                pnlMascota.Visible = false;
+                pnlRegistrar.Visible = false;
+                pnlAdopcion.Visible = false;
                 pnlDatos.Visible = false;
             }
             else
@@ -351,13 +366,15 @@ public  object adopciones { get; set; }protected void Page_Load(object sender, E
                 pnlMascota.Visible = true;
                 pnlDuenio.Visible = true;
                 pnlBuscar.Visible = false;
-                pnlAdopcion.Visible = true;
                 pnlRegistrar.Visible = true;
                 Session["Dueño"] = persona;
                 Session["Adopcion"] = adopcion;
                 Session["Mascota"] = adopcion.mascota;
                 Session["na"] = int.Parse(lstResultados.SelectedValue);
                 pnlDatos.Visible = true;
+                if(lblTitulo.Text.Equals("Consultar Adopción")){
+                    pnlDatos.Visible = false;
+                }
             }
             else
             {
