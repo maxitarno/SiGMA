@@ -770,6 +770,7 @@ namespace AccesoADatos
                                     caracter = (G3 == null) ? null : G3.descripcion,
                                     id = MascotasBD.idMascota,
                                     imagen = MascotasBD.imagen,
+                                    fecha =  MascotasBD.fechaNacimiento,
                                 };
                     foreach (var registro in consulta)
                     {
@@ -800,6 +801,7 @@ namespace AccesoADatos
                         mascota.especie = new EEspecie();
                         mascota.especie.idEspecie = registro.idEspecie;
                         mascota.especie.nombreEspecie = registro.especie;
+                        mascota.fechaNacimiento = (registro.fecha == null) ? DateTime.Parse("24/12/2010") : DateTime.Parse(registro.fecha.ToString());
                         if (registro.imagen != null)
                         {
                             mascota.imagen = registro.imagen;
