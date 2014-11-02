@@ -26,7 +26,7 @@
                         <asp:Label ID="lblTitulo" runat="server" Text="Label"></asp:Label></h3>
                 </div>
                 <div class="panel-body">
-                    <div style="margin-left: 30%; width: 30%">
+                    <div style="margin-left:40%; width:25%;">
                         <asp:Panel runat="server" ID="pnlCorrecto" class="alert alert-dismissable alert-success"
                             Visible="false">
                             <button class="close" type="button" data-dismiss="alert">
