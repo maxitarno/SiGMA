@@ -137,20 +137,24 @@ namespace SiGMA
                 {
                     mascota.edad = new EEdad();
                     mascota.edad.nombreEdad = ddlEdad.SelectedItem.Text;
+                    mascota.edad.idEdad = int.Parse(ddlEdad.SelectedValue.ToString());
                 } if (!ddlEspecies.SelectedValue.Equals("0"))
                 {
                     mascota.especie = new EEspecie();
                     mascota.especie.nombreEspecie = ddlEspecies.SelectedItem.Text;
+                    mascota.especie.idEspecie = int.Parse(ddlEspecies.SelectedValue.ToString());
                 }
                 if (!ddlEstado.SelectedValue.Equals("0"))
                 {
                     mascota.estado = new EEstado();
                     mascota.estado.nombreEstado = ddlEstado.SelectedItem.Text;
+                    mascota.estado.idEstado = int.Parse(ddlEstado.SelectedValue.ToString());
                 }
                 if (!ddlRaza.SelectedValue.Equals("0"))
                 {
                     mascota.raza = new ERaza();
                     mascota.raza.nombreRaza = ddlRaza.SelectedItem.Text;
+                    mascota.raza.idRaza = int.Parse(ddlRaza.SelectedValue.ToString());
                 }
                 mascota.nombreMascota = "";
                 Session["mascotas"] = mascota;
@@ -180,5 +184,25 @@ namespace SiGMA
                 Response.Redirect("listas.aspx");
             }
         }
+        public void ddlRaza_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            List<ERaza> razas = new List<ERaza>();
+            if (!ddlEspecies.SelectedValue.Equals("0"))
+            {
+                int aux = int.Parse(ddlEspecies.SelectedValue);
+                CargarCombos.cargarRazas(ref ddlRaza, aux);
+                pnlInfo.Visible = false;
+                pnlAtento.Visible = false;
+                pnlCorrecto.Visible = false;
+            }
+            else
+            {
+                CargarCombos.cargarComboRazas(ref ddlRaza);
+                pnlInfo.Visible = false;
+                pnlAtento.Visible = false;
+                pnlCorrecto.Visible = false;
+            }
+        }
+
     }
 }

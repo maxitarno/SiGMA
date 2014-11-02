@@ -103,7 +103,7 @@
                                                         Especie:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                                                     </td>
                                                     <td>
-                                                        <asp:DropDownList ID="ddlEspecies" runat="server" Width="211px">
+                                                        <asp:DropDownList ID="ddlEspecies" runat="server" Width="211px" AutoPostBack="True" OnSelectedIndexChanged="ddlRaza_SelectedIndexChanged">
                                                         </asp:DropDownList>
                                                     </td>
                                                 </tr>
