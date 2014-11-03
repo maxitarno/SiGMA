@@ -414,25 +414,29 @@ namespace AccesoADatos
                     }
                 }
                 else{
-                    perdidas = perdidas.Where(p => (p.fecha >= perdida.fecha)).ToList();
+                    if (perdida.barrio != null)
+                    {
+                        perdidas = perdidas.Where(p => p.barrio.nombre == perdida.barrio.nombre && (p.fecha >= perdida.fecha)).ToList();
+                    }
+                    else{
+                            perdidas = perdidas.Where(p => (p.fecha >= perdida.fecha)).ToList();
+                    }
                 }
             }
-            else{
-                if (perdida.barrio != null)
+            else if (perdida.barrio != null)
+            {
+                if (perdida.estado != null)
                 {
-                    if (perdida.estado != null)
-                    {
-                        perdidas = perdidas.Where(p => p.barrio.nombre == perdida.barrio.nombre && p.estado.nombreEstado == perdida.estado.nombreEstado).ToList();
-                    }
-                    else
-                    {
-                        perdidas = perdidas.Where(p => p.barrio.nombre == perdida.barrio.nombre).ToList();
-                    }
+                    perdidas = perdidas.Where(p => p.barrio.nombre == perdida.barrio.nombre && p.estado.nombreEstado == perdida.estado.nombreEstado).ToList();
                 }
                 else
                 {
-                    perdidas = perdidas.Where(p => p.estado.nombreEstado == perdida.estado.nombreEstado).ToList();
+                    perdidas = perdidas.Where(p => p.barrio.nombre == perdida.barrio.nombre).ToList();
                 }
+            }
+            else
+            {
+                perdidas = perdidas.Where(p => p.estado.nombreEstado == perdida.estado.nombreEstado).ToList();
             }
             return perdidas;
         }

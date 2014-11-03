@@ -178,7 +178,14 @@ namespace SiGMA
                 if (!ddlEstadoPerdida.SelectedValue.Equals("0"))
                 {
                     perdida.estado = new EEstado();
-                    perdida.estado.nombreEstado = ddlEstado.SelectedItem.Text;
+                    perdida.estado.nombreEstado = ddlEstadoPerdida.SelectedItem.Text;
+                    perdida.estado.idEstado = int.Parse(ddlEstadoPerdida.SelectedValue.ToString());
+                }
+                if (!ddlBarrioPerdida.SelectedValue.Equals("0"))
+                {
+                    perdida.barrio = new EBarrio();
+                    perdida.barrio.idBarrio = int.Parse(ddlBarrioPerdida.SelectedValue.ToString());
+                    perdida.barrio.nombre = ddlBarrioPerdida.SelectedItem.Text;
                 }
                 Session["p"] = perdida;
                 Response.Redirect("listas.aspx");
