@@ -200,7 +200,7 @@ namespace SiGMA
                         if (!ddlBarrios.SelectedValue.Equals("0"))
                         {
                             pnlInfo.Visible = false;
-                            if (Validaciones.verificarSoloNumeros(txtNºDeDocumento.Text) && Validaciones.contarCaracteresMaximos(8, txtNºDeDocumento.Text) &&Validaciones.contarCaracteresMinimos(8, txtNºDeDocumento.Text))
+                            if (Validaciones.verificarSoloNumeros(txtNºDeDocumento.Text) && Validaciones.contarCaracteresMaximos(8, txtNºDeDocumento.Text) && Validaciones.contarCaracteresMinimos(8, txtNºDeDocumento.Text))
                             {
                                 if (true == true) // Validaciones.Fecha(txtFecha.Text, out fecha)
                                 {

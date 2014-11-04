@@ -281,6 +281,8 @@
                                         <td>
                                         </td>
                                     </tr>
+                                    <tr><td></td><td>
+                                        <asp:CheckBox ID="chkTwitter" runat="server" Text="Publicar en Twitter" /> </td></tr>
                                     <tr>
                                         <td>
                                         </td>

@@ -304,6 +304,13 @@ namespace SiGMA
                     limpiarCampos();
                     pnlMascotaSeleccionada.Visible = false;
                     pnlFiltros.Visible = false;
+                    if (chkTwitter.Checked)
+                    {
+                        var oAuth = new Herramientas.OAuthInfo();
+                        var tweet = new Herramientas.TinyTwitter(oAuth);
+                        tweet.UpdateStatus("Mascota hallada: Especie: " + hallazgo.mascota.especie.nombreEspecie + 
+                            ", Raza: " + hallazgo.mascota.raza.nombreRaza + ", Color: " + hallazgo.mascota.color.nombreColor);
+                    }
                 }
                 catch (Exception)
                 {
