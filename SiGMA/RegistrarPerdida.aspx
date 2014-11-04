@@ -151,6 +151,17 @@
                         </tr>
                         <tr>
                             <td>
+                                Localidad:
+                            </td>
+                            <td>
+                                <asp:DropDownList ID="ddlLocalidadPerdida" runat="server" Width="100%" 
+                                    AppendDataBoundItems="False" AutoPostBack="True" 
+                                    onselectedindexchanged="ddlLocalidadPerdida_SelectedIndexChanged">
+                                </asp:DropDownList>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
                                 Barrio:
                             </td>
                             <td>
@@ -158,15 +169,7 @@
                                 </asp:DropDownList>
                             </td>
                         </tr>
-                        <tr>
-                            <td>
-                                Localidad:
-                            </td>
-                            <td>
-                                <asp:DropDownList ID="ddlLocalidadPerdida" runat="server" Width="100%" AppendDataBoundItems="False">
-                                </asp:DropDownList>
-                            </td>
-                        </tr>
+                        
                                     
                             <tr>
                                 <td>

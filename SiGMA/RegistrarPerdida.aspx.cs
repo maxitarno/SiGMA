@@ -35,7 +35,6 @@ namespace SiGMA
                 CargarCombos.cargarBarrio(ref ddlBarrios);
                 CargarCombos.cargarLocalidades(ref ddlLocalidades);
                 CargarCombos.cargarCalles(ref ddlCalles);
-                CargarCombos.cargarBarrio(ref ddlBarrioPerdida);
                 CargarCombos.cargarLocalidades(ref ddlLocalidadPerdida);
                 CargarCombos.cargarCalles(ref ddlCallePerdida);
                 rnvFechaPerdida.MaximumValue = DateTime.Now.ToShortDateString();
@@ -290,6 +289,11 @@ namespace SiGMA
         protected void BtnRegresarClick(object sender, ImageClickEventArgs e)
         {
             Response.Redirect("Perdidas.aspx");
+        }
+
+        protected void ddlLocalidadPerdida_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CargarCombos.cargarBarrio(ref ddlBarrioPerdida, int.Parse(ddlLocalidadPerdida.SelectedValue));
         }
 
     }
