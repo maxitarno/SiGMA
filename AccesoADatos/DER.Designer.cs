@@ -54,6 +54,8 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_RolesXUsuario_Usuarios", "Usuarios", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Usuarios), "RolesXUsuario", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.RolesXUsuario), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Sesiones_Usuarios", "Usuarios", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Usuarios), "Sesiones", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Sesiones), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Hallazgos_Calles", "Calles", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(AccesoADatos.Calles), "Hallazgos", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Hallazgos), true)]
+[assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Veterinarias_Barrios", "Barrios", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(AccesoADatos.Barrios), "Veterinarias", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Veterinarias), true)]
+[assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Veterinarias_Calles", "Calles", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(AccesoADatos.Calles), "Veterinarias", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Veterinarias), true)]
 
 #endregion
 
@@ -504,6 +506,22 @@ namespace AccesoADatos
             }
         }
         private ObjectSet<Voluntarios> _Voluntarios;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Veterinarias> Veterinarias
+        {
+            get
+            {
+                if ((_Veterinarias == null))
+                {
+                    _Veterinarias = base.CreateObjectSet<Veterinarias>("Veterinarias");
+                }
+                return _Veterinarias;
+            }
+        }
+        private ObjectSet<Veterinarias> _Veterinarias;
 
         #endregion
 
@@ -707,6 +725,14 @@ namespace AccesoADatos
         public void AddToVoluntarios(Voluntarios voluntarios)
         {
             base.AddObject("Voluntarios", voluntarios);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Veterinarias EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToVeterinarias(Veterinarias veterinarias)
+        {
+            base.AddObject("Veterinarias", veterinarias);
         }
 
         #endregion
@@ -1292,6 +1318,28 @@ namespace AccesoADatos
                 }
             }
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("SiGMAModel", "FK_Veterinarias_Barrios", "Veterinarias")]
+        public EntityCollection<Veterinarias> Veterinarias
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Veterinarias>("SiGMAModel.FK_Veterinarias_Barrios", "Veterinarias");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Veterinarias>("SiGMAModel.FK_Veterinarias_Barrios", "Veterinarias", value);
+                }
+            }
+        }
 
         #endregion
 
@@ -1480,6 +1528,28 @@ namespace AccesoADatos
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Hallazgos>("SiGMAModel.FK_Hallazgos_Calles", "Hallazgos", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("SiGMAModel", "FK_Veterinarias_Calles", "Veterinarias")]
+        public EntityCollection<Veterinarias> Veterinarias
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Veterinarias>("SiGMAModel.FK_Veterinarias_Calles", "Veterinarias");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Veterinarias>("SiGMAModel.FK_Veterinarias_Calles", "Veterinarias", value);
                 }
             }
         }
@@ -6404,6 +6474,383 @@ namespace AccesoADatos
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Sesiones>("SiGMAModel.FK_Sesiones_Usuarios", "Sesiones", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="SiGMAModel", Name="Veterinarias")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Veterinarias : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Veterinarias object.
+        /// </summary>
+        /// <param name="idVeterinaria">Initial value of the idVeterinaria property.</param>
+        public static Veterinarias CreateVeterinarias(global::System.Int32 idVeterinaria)
+        {
+            Veterinarias veterinarias = new Veterinarias();
+            veterinarias.idVeterinaria = idVeterinaria;
+            return veterinarias;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 idVeterinaria
+        {
+            get
+            {
+                return _idVeterinaria;
+            }
+            set
+            {
+                if (_idVeterinaria != value)
+                {
+                    OnidVeterinariaChanging(value);
+                    ReportPropertyChanging("idVeterinaria");
+                    _idVeterinaria = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("idVeterinaria");
+                    OnidVeterinariaChanged();
+                }
+            }
+        }
+        private global::System.Int32 _idVeterinaria;
+        partial void OnidVeterinariaChanging(global::System.Int32 value);
+        partial void OnidVeterinariaChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> idCalle
+        {
+            get
+            {
+                return _idCalle;
+            }
+            set
+            {
+                OnidCalleChanging(value);
+                ReportPropertyChanging("idCalle");
+                _idCalle = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("idCalle");
+                OnidCalleChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _idCalle;
+        partial void OnidCalleChanging(Nullable<global::System.Int32> value);
+        partial void OnidCalleChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> idBarrio
+        {
+            get
+            {
+                return _idBarrio;
+            }
+            set
+            {
+                OnidBarrioChanging(value);
+                ReportPropertyChanging("idBarrio");
+                _idBarrio = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("idBarrio");
+                OnidBarrioChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _idBarrio;
+        partial void OnidBarrioChanging(Nullable<global::System.Int32> value);
+        partial void OnidBarrioChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> nroCalle
+        {
+            get
+            {
+                return _nroCalle;
+            }
+            set
+            {
+                OnnroCalleChanging(value);
+                ReportPropertyChanging("nroCalle");
+                _nroCalle = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("nroCalle");
+                OnnroCalleChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _nroCalle;
+        partial void OnnroCalleChanging(Nullable<global::System.Int32> value);
+        partial void OnnroCalleChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String telefono
+        {
+            get
+            {
+                return _telefono;
+            }
+            set
+            {
+                OntelefonoChanging(value);
+                ReportPropertyChanging("telefono");
+                _telefono = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("telefono");
+                OntelefonoChanged();
+            }
+        }
+        private global::System.String _telefono;
+        partial void OntelefonoChanging(global::System.String value);
+        partial void OntelefonoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> peluqueria
+        {
+            get
+            {
+                return _peluqueria;
+            }
+            set
+            {
+                OnpeluqueriaChanging(value);
+                ReportPropertyChanging("peluqueria");
+                _peluqueria = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("peluqueria");
+                OnpeluqueriaChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _peluqueria;
+        partial void OnpeluqueriaChanging(Nullable<global::System.Boolean> value);
+        partial void OnpeluqueriaChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> petShop
+        {
+            get
+            {
+                return _petShop;
+            }
+            set
+            {
+                OnpetShopChanging(value);
+                ReportPropertyChanging("petShop");
+                _petShop = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("petShop");
+                OnpetShopChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _petShop;
+        partial void OnpetShopChanging(Nullable<global::System.Boolean> value);
+        partial void OnpetShopChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> medicina
+        {
+            get
+            {
+                return _medicina;
+            }
+            set
+            {
+                OnmedicinaChanging(value);
+                ReportPropertyChanging("medicina");
+                _medicina = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("medicina");
+                OnmedicinaChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _medicina;
+        partial void OnmedicinaChanging(Nullable<global::System.Boolean> value);
+        partial void OnmedicinaChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> castraciones
+        {
+            get
+            {
+                return _castraciones;
+            }
+            set
+            {
+                OncastracionesChanging(value);
+                ReportPropertyChanging("castraciones");
+                _castraciones = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("castraciones");
+                OncastracionesChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _castraciones;
+        partial void OncastracionesChanging(Nullable<global::System.Boolean> value);
+        partial void OncastracionesChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String nombre
+        {
+            get
+            {
+                return _nombre;
+            }
+            set
+            {
+                OnnombreChanging(value);
+                ReportPropertyChanging("nombre");
+                _nombre = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("nombre");
+                OnnombreChanged();
+            }
+        }
+        private global::System.String _nombre;
+        partial void OnnombreChanging(global::System.String value);
+        partial void OnnombreChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String web
+        {
+            get
+            {
+                return _web;
+            }
+            set
+            {
+                OnwebChanging(value);
+                ReportPropertyChanging("web");
+                _web = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("web");
+                OnwebChanged();
+            }
+        }
+        private global::System.String _web;
+        partial void OnwebChanging(global::System.String value);
+        partial void OnwebChanged();
+
+        #endregion
+
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("SiGMAModel", "FK_Veterinarias_Barrios", "Barrios")]
+        public Barrios Barrios
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Barrios>("SiGMAModel.FK_Veterinarias_Barrios", "Barrios").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Barrios>("SiGMAModel.FK_Veterinarias_Barrios", "Barrios").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Barrios> BarriosReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Barrios>("SiGMAModel.FK_Veterinarias_Barrios", "Barrios");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Barrios>("SiGMAModel.FK_Veterinarias_Barrios", "Barrios", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("SiGMAModel", "FK_Veterinarias_Calles", "Calles")]
+        public Calles Calles
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Calles>("SiGMAModel.FK_Veterinarias_Calles", "Calles").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Calles>("SiGMAModel.FK_Veterinarias_Calles", "Calles").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Calles> CallesReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Calles>("SiGMAModel.FK_Veterinarias_Calles", "Calles");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Calles>("SiGMAModel.FK_Veterinarias_Calles", "Calles", value);
                 }
             }
         }

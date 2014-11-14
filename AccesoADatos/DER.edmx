@@ -30,6 +30,7 @@
           <EntitySet Name="Sesiones" EntityType="SiGMAModel.Store.Sesiones" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="TipoDocumentos" EntityType="SiGMAModel.Store.TipoDocumentos" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Usuarios" EntityType="SiGMAModel.Store.Usuarios" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Veterinarias" EntityType="SiGMAModel.Store.Veterinarias" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Voluntarios" EntityType="SiGMAModel.Store.Voluntarios" store:Type="Tables" Schema="dbo" />
           <AssociationSet Name="FK_Adopciones_Duenios" Association="SiGMAModel.Store.FK_Adopciones_Duenios">
             <End Role="Duenios" EntitySet="Duenios" />
@@ -166,6 +167,14 @@
           <AssociationSet Name="FK_Sesiones_Usuarios" Association="SiGMAModel.Store.FK_Sesiones_Usuarios">
             <End Role="Usuarios" EntitySet="Usuarios" />
             <End Role="Sesiones" EntitySet="Sesiones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Veterinarias_Barrios" Association="SiGMAModel.Store.FK_Veterinarias_Barrios">
+            <End Role="Barrios" EntitySet="Barrios" />
+            <End Role="Veterinarias" EntitySet="Veterinarias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Veterinarias_Calles" Association="SiGMAModel.Store.FK_Veterinarias_Calles">
+            <End Role="Calles" EntitySet="Calles" />
+            <End Role="Veterinarias" EntitySet="Veterinarias" />
           </AssociationSet>
           <AssociationSet Name="FK_Voluntarios_Personas" Association="SiGMAModel.Store.FK_Voluntarios_Personas">
             <End Role="Personas" EntitySet="Personas" />
@@ -406,6 +415,22 @@
           <Property Name="user" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="password" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="estado" Type="bit" />
+        </EntityType>
+        <EntityType Name="Veterinarias">
+          <Key>
+            <PropertyRef Name="idVeterinaria" />
+          </Key>
+          <Property Name="idVeterinaria" Type="int" Nullable="false" />
+          <Property Name="idCalle" Type="int" />
+          <Property Name="idBarrio" Type="int" />
+          <Property Name="nroCalle" Type="int" />
+          <Property Name="telefono" Type="varchar" MaxLength="100" />
+          <Property Name="peluqueria" Type="bit" />
+          <Property Name="petShop" Type="bit" />
+          <Property Name="medicina" Type="bit" />
+          <Property Name="castraciones" Type="bit" />
+          <Property Name="nombre" Type="varchar" MaxLength="100" />
+          <Property Name="web" Type="varchar" MaxLength="1000" />
         </EntityType>
         <EntityType Name="Voluntarios">
           <Key>
@@ -854,6 +879,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Veterinarias_Barrios">
+          <End Role="Barrios" Type="SiGMAModel.Store.Barrios" Multiplicity="0..1" />
+          <End Role="Veterinarias" Type="SiGMAModel.Store.Veterinarias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Barrios">
+              <PropertyRef Name="idBarrio" />
+            </Principal>
+            <Dependent Role="Veterinarias">
+              <PropertyRef Name="idBarrio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Veterinarias_Calles">
+          <End Role="Calles" Type="SiGMAModel.Store.Calles" Multiplicity="0..1" />
+          <End Role="Veterinarias" Type="SiGMAModel.Store.Veterinarias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Calles">
+              <PropertyRef Name="idCalle" />
+            </Principal>
+            <Dependent Role="Veterinarias">
+              <PropertyRef Name="idCalle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Voluntarios_Personas">
           <End Role="Personas" Type="SiGMAModel.Store.Personas" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -1038,6 +1087,15 @@
             <End Role="Calles" EntitySet="Calles" />
             <End Role="Hallazgos" EntitySet="Hallazgos" />
           </AssociationSet>
+          <EntitySet Name="Veterinarias" EntityType="SiGMAModel.Veterinarias" />
+          <AssociationSet Name="FK_Veterinarias_Barrios" Association="SiGMAModel.FK_Veterinarias_Barrios">
+            <End Role="Barrios" EntitySet="Barrios" />
+            <End Role="Veterinarias" EntitySet="Veterinarias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Veterinarias_Calles" Association="SiGMAModel.FK_Veterinarias_Calles">
+            <End Role="Calles" EntitySet="Calles" />
+            <End Role="Veterinarias" EntitySet="Veterinarias" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Adopciones">
           <Key>
@@ -1066,6 +1124,7 @@
           <NavigationProperty Name="Hallazgos" Relationship="SiGMAModel.FK_Hallazgos_Barrios" FromRole="Barrios" ToRole="Hallazgos" />
           <NavigationProperty Name="Perdidas" Relationship="SiGMAModel.FK_Perdidas_Barrios" FromRole="Barrios" ToRole="Perdidas" />
           <NavigationProperty Name="Personas" Relationship="SiGMAModel.FK_Personas_Barrios" FromRole="Barrios" ToRole="Personas" />
+          <NavigationProperty Name="Veterinarias" Relationship="SiGMAModel.FK_Veterinarias_Barrios" FromRole="Barrios" ToRole="Veterinarias" />
         </EntityType>
         <EntityType Name="Calles">
           <Key>
@@ -1077,6 +1136,7 @@
           <NavigationProperty Name="Localidades" Relationship="SiGMAModel.FK_Calles_Localidades" FromRole="Calles" ToRole="Localidades" />
           <NavigationProperty Name="Personas" Relationship="SiGMAModel.FK_Personas_Calles" FromRole="Calles" ToRole="Personas" />
           <NavigationProperty Name="Hallazgos" Relationship="SiGMAModel.FK_Hallazgos_Calles" FromRole="Calles" ToRole="Hallazgos" />
+          <NavigationProperty Name="Veterinarias" Relationship="SiGMAModel.FK_Veterinarias_Calles" FromRole="Calles" ToRole="Veterinarias" />
         </EntityType>
         <EntityType Name="CaracteresMascota">
           <Key>
@@ -1805,6 +1865,48 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Veterinarias">
+          <Key>
+            <PropertyRef Name="idVeterinaria" />
+          </Key>
+          <Property Type="Int32" Name="idVeterinaria" Nullable="false" />
+          <Property Type="Int32" Name="idCalle" />
+          <Property Type="Int32" Name="idBarrio" />
+          <Property Type="Int32" Name="nroCalle" />
+          <Property Type="String" Name="telefono" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="peluqueria" />
+          <Property Type="Boolean" Name="petShop" />
+          <Property Type="Boolean" Name="medicina" />
+          <Property Type="Boolean" Name="castraciones" />
+          <Property Type="String" Name="nombre" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="web" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Barrios" Relationship="SiGMAModel.FK_Veterinarias_Barrios" FromRole="Veterinarias" ToRole="Barrios" />
+          <NavigationProperty Name="Calles" Relationship="SiGMAModel.FK_Veterinarias_Calles" FromRole="Veterinarias" ToRole="Calles" />
+        </EntityType>
+        <Association Name="FK_Veterinarias_Barrios">
+          <End Type="SiGMAModel.Barrios" Role="Barrios" Multiplicity="0..1" />
+          <End Type="SiGMAModel.Veterinarias" Role="Veterinarias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Barrios">
+              <PropertyRef Name="idBarrio" />
+            </Principal>
+            <Dependent Role="Veterinarias">
+              <PropertyRef Name="idBarrio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Veterinarias_Calles">
+          <End Type="SiGMAModel.Calles" Role="Calles" Multiplicity="0..1" />
+          <End Type="SiGMAModel.Veterinarias" Role="Veterinarias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Calles">
+              <PropertyRef Name="idCalle" />
+            </Principal>
+            <Dependent Role="Veterinarias">
+              <PropertyRef Name="idCalle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2075,6 +2177,23 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Veterinarias">
+            <EntityTypeMapping TypeName="SiGMAModel.Veterinarias">
+              <MappingFragment StoreEntitySet="Veterinarias">
+                <ScalarProperty Name="web" ColumnName="web" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="castraciones" ColumnName="castraciones" />
+                <ScalarProperty Name="medicina" ColumnName="medicina" />
+                <ScalarProperty Name="petShop" ColumnName="petShop" />
+                <ScalarProperty Name="peluqueria" ColumnName="peluqueria" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="nroCalle" ColumnName="nroCalle" />
+                <ScalarProperty Name="idBarrio" ColumnName="idBarrio" />
+                <ScalarProperty Name="idCalle" ColumnName="idCalle" />
+                <ScalarProperty Name="idVeterinaria" ColumnName="idVeterinaria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -2095,7 +2214,7 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="DER">
+      <Diagram Name="DER" ZoomLevel="74">
         <EntityTypeShape EntityType="SiGMAModel.Adopciones" Width="1.5" PointX="7.5" PointY="7" Height="3.1340950520833326" IsExpanded="true" />
         <EntityTypeShape EntityType="SiGMAModel.Barrios" Width="1.5" PointX="0.75" PointY="7.75" Height="2.3648893229166674" IsExpanded="true" />
         <EntityTypeShape EntityType="SiGMAModel.Calles" Width="1.5" PointX="0.75" PointY="10.875" Height="1.9802864583333317" IsExpanded="true" />
@@ -2145,42 +2264,44 @@
           <ConnectorPoint PointX="1.875" PointY="7.75" />
         </AssociationConnector>
         <AssociationConnector Association="SiGMAModel.FK_Hallazgos_Barrios" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.2499999999999996" PointY="10.114889322916667" />
-          <ConnectorPoint PointX="2.625" PointY="10.489889322916667" />
-          <ConnectorPoint PointX="2.625" PointY="15.985385428385417" />
-          <ConnectorPoint PointX="2.7291666666666665" PointY="15.985385428385417" />
-          <ConnectorPoint PointX="2.8958333333333335" PointY="15.985385428385417" />
-          <ConnectorPoint PointX="3" PointY="15.985385428385417" />
+          <ConnectorPoint PointX="2.25" PointY="10.292189755208332" />
+          <ConnectorPoint PointX="2.5660744349011217" PointY="10.608264190109452" />
+          <ConnectorPoint PointX="2.7464255650988791" PointY="10.78861532030721" />
+          <ConnectorPoint PointX="2.765625" PointY="10.807814755208332" />
+          <ConnectorPoint PointX="2.765625" PointY="15.731946954164169" />
+          <ConnectorPoint PointX="3" PointY="15.731946954164169" />
         </AssociationConnector>
         <AssociationConnector Association="SiGMAModel.FK_Perdidas_Barrios" ManuallyRouted="false">
           <ConnectorPoint PointX="2.25" PointY="8.4564925130208337" />
-          <ConnectorPoint PointX="2.7916666666666665" PointY="8.4564925130208337" />
-          <ConnectorPoint PointX="2.9583333333333335" PointY="8.4564925130208337" />
+          <ConnectorPoint PointX="2.7682291666666665" PointY="8.4564925130208337" />
+          <ConnectorPoint PointX="2.9348958333333335" PointY="8.4564925130208337" />
           <ConnectorPoint PointX="3.6979166666666665" PointY="8.4564925130208337" />
           <ConnectorPoint PointX="3.8645833333333335" PointY="8.4564925130208337" />
+          <ConnectorPoint PointX="4.5104171666666675" PointY="8.4564925130208337" />
+          <ConnectorPoint PointX="4.6770838333333336" PointY="8.4564925130208337" />
           <ConnectorPoint PointX="7.125" PointY="8.4564925130208337" />
           <ConnectorPoint PointX="7.125" PointY="14.5" />
         </AssociationConnector>
         <AssociationConnector Association="SiGMAModel.FK_Personas_Barrios" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="9.5886921614583329" />
-          <ConnectorPoint PointX="2.7916666666666665" PointY="9.5886921614583329" />
-          <ConnectorPoint PointX="2.9583333333333335" PointY="9.5886921614583329" />
-          <ConnectorPoint PointX="3" PointY="9.5886921614583329" />
+          <ConnectorPoint PointX="2.25" PointY="9.6433649103597023" />
+          <ConnectorPoint PointX="2.5416666666666665" PointY="9.6433649103597023" />
+          <ConnectorPoint PointX="2.7083333333333335" PointY="9.6433649103597023" />
+          <ConnectorPoint PointX="2.7682291666666665" PointY="9.6433649103597023" />
+          <ConnectorPoint PointX="2.9348958333333335" PointY="9.6433649103597023" />
+          <ConnectorPoint PointX="3" PointY="9.6433649103597023" />
         </AssociationConnector>
         <AssociationConnector Association="SiGMAModel.FK_Calles_Localidades" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.875" PointY="6.9129850260416674" />
-          <ConnectorPoint PointX="2.875" PointY="12.117523350260417" />
-          <ConnectorPoint PointX="2.78125" PointY="12.117523350260417" />
-          <ConnectorPoint PointX="2.5416666666666661" PointY="12.117523350260417" />
-          <ConnectorPoint PointX="2.25" PointY="12.117523350260417" />
+          <ConnectorPoint PointX="2.8515625" PointY="6.9129850260416674" />
+          <ConnectorPoint PointX="2.8515625" PointY="12.146300716756182" />
+          <ConnectorPoint PointX="2.8489583333333335" PointY="12.146300716756182" />
+          <ConnectorPoint PointX="2.6041666666666665" PointY="12.146300716756182" />
+          <ConnectorPoint PointX="2.25" PointY="12.146300716756182" />
         </AssociationConnector>
         <AssociationConnector Association="SiGMAModel.FK_Personas_Calles" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="11.433761675130208" />
-          <ConnectorPoint PointX="2.5416666666666665" PointY="11.433761675130208" />
-          <ConnectorPoint PointX="2.7812499999999996" PointY="11.433761675130208" />
-          <ConnectorPoint PointX="2.7916666666666665" PointY="11.433761675130208" />
-          <ConnectorPoint PointX="2.9583333333333335" PointY="11.433761675130208" />
-          <ConnectorPoint PointX="3" PointY="11.433761675130208" />
+          <ConnectorPoint PointX="2.25" PointY="11.44815035837809" />
+          <ConnectorPoint PointX="2.5416666666666665" PointY="11.448150358378088" />
+          <ConnectorPoint PointX="2.9348958333333335" PointY="11.44815035837809" />
+          <ConnectorPoint PointX="3" PointY="11.44815035837809" />
         </AssociationConnector>
         <AssociationConnector Association="SiGMAModel.FK_Mascotas_CaracteresMascota" ManuallyRouted="false">
           <ConnectorPoint PointX="9.75" PointY="4.172841796875" />
@@ -2255,10 +2376,10 @@
           <ConnectorPoint PointX="4.5" PointY="15.586400553385417" />
         </AssociationConnector>
         <AssociationConnector Association="SiGMAModel.FK_Hallazgos_Sesiones" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="16.914842784104575" />
-          <ConnectorPoint PointX="2.5729166666666665" PointY="16.914842784104575" />
-          <ConnectorPoint PointX="2.8958333333333335" PointY="16.914842784104575" />
-          <ConnectorPoint PointX="3" PointY="16.914842784104575" />
+          <ConnectorPoint PointX="2.25" PointY="16.776397908328327" />
+          <ConnectorPoint PointX="2.5416666666666665" PointY="16.776397908328327" />
+          <ConnectorPoint PointX="2.7395833333333335" PointY="16.776397908328327" />
+          <ConnectorPoint PointX="3" PointY="16.776397908328327" />
         </AssociationConnector>
         <AssociationConnector Association="SiGMAModel.FK_Mascotas_Razas" ManuallyRouted="false">
           <ConnectorPoint PointX="9.75" PointY="22.095896809895834" />
@@ -2268,13 +2389,11 @@
           <ConnectorPoint PointX="11.6562525" PointY="13.134013671874996" />
         </AssociationConnector>
         <AssociationConnector Association="SiGMAModel.FK_Perdidas_Sesiones" ManuallyRouted="false">
-          <ConnectorPoint PointX="1.5" PointY="17.807190755208339" />
-          <ConnectorPoint PointX="1.5" PointY="18.463400065104171" />
-          <ConnectorPoint PointX="2.3917271400240296" PointY="18.463400065104171" />
-          <ConnectorPoint PointX="2.8020833333333335" PointY="18.463400065104171" />
-          <ConnectorPoint PointX="5.57349508974359" PointY="18.463400065104171" />
-          <ConnectorPoint PointX="5.7401617564102558" PointY="18.463400065104171" />
-          <ConnectorPoint PointX="6" PointY="18.463400065104171" />
+          <ConnectorPoint PointX="1.5" PointY="15.25" />
+          <ConnectorPoint PointX="1.5" PointY="14.59375" />
+          <ConnectorPoint PointX="2.5416666666666665" PointY="14.593749999999998" />
+          <ConnectorPoint PointX="2.8489583333333335" PointY="14.59375" />
+          <ConnectorPoint PointX="6" PointY="14.59375" />
         </AssociationConnector>
         <AssociationConnector Association="SiGMAModel.FK_PermisosXRoles_Permisos" ManuallyRouted="false">
           <ConnectorPoint PointX="2.25" PointY="25.547841796875" />
@@ -2290,26 +2409,28 @@
           <ConnectorPoint PointX="3" PointY="22.990143229166669" />
         </AssociationConnector>
         <AssociationConnector Association="SiGMAModel.FK_Personas_TipoDocumentos" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="18.688460538461534" />
-          <ConnectorPoint PointX="2.5764911015677869" PointY="18.361969436893744" />
-          <ConnectorPoint PointX="2.6943422317655457" PointY="18.244118306695988" />
-          <ConnectorPoint PointX="2.8125" PointY="18.125960538461534" />
-          <ConnectorPoint PointX="2.8125" PointY="12.927475085937502" />
-          <ConnectorPoint PointX="3" PointY="12.927475085937502" />
+          <ConnectorPoint PointX="2.25" PointY="18.626152846153843" />
+          <ConnectorPoint PointX="2.625" PointY="18.251152846153843" />
+          <ConnectorPoint PointX="2.625" PointY="12.781637792073564" />
+          <ConnectorPoint PointX="2.6822916666666665" PointY="12.781637792073564" />
+          <ConnectorPoint PointX="2.8489583333333335" PointY="12.781637792073564" />
+          <ConnectorPoint PointX="3" PointY="12.781637792073564" />
         </AssociationConnector>
         <AssociationConnector Association="SiGMAModel.FK_Personas_Usuarios" ManuallyRouted="false">
           <ConnectorPoint PointX="2.25" PointY="15.313460538461539" />
-          <ConnectorPoint PointX="2.5653853183995388" PointY="15.005409762350363" />
-          <ConnectorPoint PointX="2.6846146816004608" PointY="14.888953175037836" />
-          <ConnectorPoint PointX="2.6979166666666665" PointY="14.875960538461541" />
-          <ConnectorPoint PointX="2.6979166666666665" PointY="10.448131888020832" />
-          <ConnectorPoint PointX="2.7916666666666665" PointY="10.448131888020832" />
-          <ConnectorPoint PointX="2.9583333333333335" PointY="10.448131888020832" />
-          <ConnectorPoint PointX="3" PointY="10.448131888020832" />
+          <ConnectorPoint PointX="2.5660744349011204" PointY="14.99738610356042" />
+          <ConnectorPoint PointX="2.6839255650988791" PointY="14.879534973362663" />
+          <ConnectorPoint PointX="2.6875" PointY="14.875960538461541" />
+          <ConnectorPoint PointX="2.6875" PointY="10.286729820719405" />
+          <ConnectorPoint PointX="2.7682291666666665" PointY="10.286729820719405" />
+          <ConnectorPoint PointX="2.9348958333333335" PointY="10.286729820719405" />
+          <ConnectorPoint PointX="3" PointY="10.286729820719405" />
         </AssociationConnector>
         <AssociationConnector Association="SiGMAModel.FK_Voluntarios_Personas" ManuallyRouted="false">
           <ConnectorPoint PointX="3.78125" PointY="9.125" />
           <ConnectorPoint PointX="3.78125" PointY="6.8939925130208337" />
+          <ConnectorPoint PointX="4.5104171666666675" PointY="6.8939925130208328" />
+          <ConnectorPoint PointX="4.6770838333333336" PointY="6.8939925130208337" />
           <ConnectorPoint PointX="5.25" PointY="6.8939925130208337" />
         </AssociationConnector>
         <AssociationConnector Association="SiGMAModel.FK_RolesXUsuario_Roles" ManuallyRouted="false">
@@ -2335,12 +2456,27 @@
           <ConnectorPoint PointX="3" PointY="33.990143229166662" />
         </AssociationConnector>
         <AssociationConnector Association="SiGMAModel.FK_Hallazgos_Calles" >
-          <ConnectorPoint PointX="2.25" PointY="13.016433044471153" />
-          <ConnectorPoint PointX="2.65625" PointY="13.422683044471153" />
-          <ConnectorPoint PointX="2.65625" PointY="17.720373924604367" />
-          <ConnectorPoint PointX="2.7291666666666665" PointY="17.720373924604367" />
-          <ConnectorPoint PointX="2.8958333333333335" PointY="17.720373924604367" />
-          <ConnectorPoint PointX="3" PointY="17.720373924604367" />
+          <ConnectorPoint PointX="2.25" PointY="13.208734476762821" />
+          <ConnectorPoint PointX="2.65625" PointY="13.614984476762821" />
+          <ConnectorPoint PointX="2.65625" PointY="17.842252060934989" />
+          <ConnectorPoint PointX="3" PointY="17.842252060934989" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="SiGMAModel.Veterinarias" Width="1.5" PointX="4" PointY="1.75" Height="3.5186979166666674" />
+        <AssociationConnector Association="SiGMAModel.FK_Veterinarias_Barrios" >
+          <ConnectorPoint PointX="1.09375" PointY="7.75" />
+          <ConnectorPoint PointX="1.09375" PointY="3.40625" />
+          <ConnectorPoint PointX="4" PointY="3.40625" />
+        </AssociationConnector>
+        <AssociationConnector Association="SiGMAModel.FK_Veterinarias_Calles" >
+          <ConnectorPoint PointX="2.25" PointY="11.797225537567137" />
+          <ConnectorPoint PointX="2.625" PointY="11.797225537567137" />
+          <ConnectorPoint PointX="2.625" PointY="8.875" />
+          <ConnectorPoint PointX="2.7682291666666665" PointY="8.875" />
+          <ConnectorPoint PointX="2.9348958333333335" PointY="8.875" />
+          <ConnectorPoint PointX="3.6979166666666665" PointY="8.875" />
+          <ConnectorPoint PointX="3.8645833333333335" PointY="8.875" />
+          <ConnectorPoint PointX="4.5937505000000005" PointY="8.875" />
+          <ConnectorPoint PointX="4.5937505000000005" PointY="5.2686979166666674" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>
