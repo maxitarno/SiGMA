@@ -33,12 +33,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.Web, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
     <Reference Include="GMailSend">
       <HintPath>..\GMailSend.dll</HintPath>
     </Reference>
@@ -46,6 +40,9 @@
       <HintPath>..\packages\MessagingToolkit.QRCode.1.3.0\lib\MessagingToolkit.QRCode.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Pechkin">
+      <HintPath>..\packages\Pechkin.0.5.8.1\lib\net40\Pechkin.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Core" />
@@ -113,7 +110,6 @@
     <Content Include="GenerarCodigoQR.aspx" />
     <Content Include="Hallazgos.aspx" />
     <Content Include="imagenes\volver.png" />
-    <Content Include="listas.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Account\ChangePassword.aspx" />
     <Content Include="Account\ChangePasswordSuccess.aspx" />
@@ -245,23 +241,6 @@
     <Compile Include="Contrato.aspx.designer.cs">
       <DependentUpon>Contrato.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ContratoWEb.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ContratoWEb.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="crListadoDePerdidas.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>crListadoDePerdidas.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="DatosReportes.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DatosReportes.xsd</DependentUpon>
-    </Compile>
     <Compile Include="EnConstruccion.aspx.cs">
       <DependentUpon>EnConstruccion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -285,19 +264,6 @@
     </Compile>
     <Compile Include="Handler1.ashx.cs">
       <DependentUpon>Handler1.ashx</DependentUpon>
-    </Compile>
-    <Compile Include="ListadoMascotas.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ListadoMascotas.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="listas.aspx.cs">
-      <DependentUpon>listas.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="listas.aspx.designer.cs">
-      <DependentUpon>listas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -340,12 +306,6 @@
     </Compile>
     <Compile Include="Mascotas.aspx.designer.cs">
       <DependentUpon>Mascotas.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Metricas.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Metricas.rpt</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="PaginaMaestra.Master.cs">
       <DependentUpon>PaginaMaestra.Master</DependentUpon>
@@ -492,41 +452,12 @@
     <None Include="assets\js\.DS_Store" />
     <None Include="Content\bootstrap-theme.css.map" />
     <None Include="Content\bootstrap.css.map" />
-    <None Include="DatosReportes.xsc">
-      <DependentUpon>DatosReportes.xsd</DependentUpon>
-    </None>
-    <None Include="DatosReportes.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DatosReportes.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="DatosReportes.xss">
-      <DependentUpon>DatosReportes.xsd</DependentUpon>
-    </None>
     <None Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Handler1.ashx" />
     <Content Include="PaginaMaestra.Master" />
     <None Include="Scripts\jquery-2.1.1.min.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="ContratoWEb.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>ContratoWEb.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="crListadoDePerdidas.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>crListadoDePerdidas.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ListadoMascotas.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>ListadoMascotas.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Metricas.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>Metricas.cs</LastGenOutput>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
