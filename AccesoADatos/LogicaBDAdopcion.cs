@@ -75,7 +75,14 @@ namespace AccesoADatos
                 {
                     EAdopcion adopcion = new EAdopcion();
                     adopcion.idAdopcion = registro.ado.idAdopcion;
-                    adopcion.nombre = registro.mascota.nombreMascota;
+                    adopcion.nombre = registro.persona.nombre;
+                    adopcion.mascota = new EMascota();
+                    adopcion.mascota.nombreMascota = registro.mascota.nombreMascota;
+                    adopcion.idVoluntario = registro.ado.idAdopcion;
+                    adopcion.estado = new EEstado();
+                    adopcion.estado.nombreEstado = registro.est.nombreEstado;
+                    adopcion.fecha = registro.ado.fechaAdopcion;
+                    adopcion.observaciones = registro.ado.observaciones;
                     adopciones.Add(adopcion);
                 }
                 return adopciones;
@@ -222,16 +229,20 @@ namespace AccesoADatos
                                    adopcion = AdopcionesBD,
                                    mascota = G2,
                                    persona = G4,
+                                   estadoDeLaAdopcion = G1,
                                };
                 foreach (var registro in consulta)
                 {
                     EAdopcion adopcion = new EAdopcion();
-                    adopcion.duenio = (EDuenio)new EPersona();
-                    adopcion.duenio.apellido = registro.persona.apellido;
-                    adopcion.duenio.nombre = registro.persona.nombre;
-                    adopcion.idAdopcion = registro.adopcion.idAdopcion;
                     adopcion.mascota = new EMascota();
-                    adopcion.nombre = registro.mascota.nombreMascota;
+                    adopcion.mascota.idMascota = registro.mascota.idMascota;
+                    adopcion.mascota.nombreMascota = registro.mascota.nombreMascota;
+                    adopcion.nombre = registro.persona.apellido + " " + registro.persona.nombre;
+                    adopcion.idAdopcion = registro.adopcion.idAdopcion;
+                    adopcion.fecha = registro.adopcion.fechaAdopcion;
+                    adopcion.estado = new EEstado();
+                    adopcion.estado.nombreEstado = registro.estadoDeLaAdopcion.nombreEstado;
+                    adopcion.idVoluntario = registro.adopcion.idVoluntario;
                     adopciones.Add(adopcion);
                 }
                 return adopciones;

@@ -377,6 +377,10 @@ namespace AccesoADatos
                            from G2 in group3.DefaultIfEmpty()
                            join BarrioBD in mapa.Barrios on PerdidasBD.idBarrioPerdida equals BarrioBD.idBarrio into group4
                            from G3 in group4.DefaultIfEmpty()
+                           join LocalidadesBD in mapa.Localidades on PerdidasBD.idLocalidadPerdida equals LocalidadesBD.idLocalidad into group5
+                           from G4 in group5.DefaultIfEmpty()
+                           join CalleBD in mapa.Calles on PerdidasBD.idCallePerdida equals CalleBD.idCalle into group6
+                           from G5 in group6.DefaultIfEmpty()
                            select new
                            {
                                Barrio = G3,
@@ -384,12 +388,16 @@ namespace AccesoADatos
                                Usuario = G1,
                                perdida = PerdidasBD,
                                estado = G0,
+                               localidad = G4,
+                               calle =  G5,
                            };
             foreach (var registro in consulta)
             {
                 EPerdida perdida = new EPerdida();
                 perdida.barrio = new EBarrio();
                 perdida.barrio.nombre = registro.Barrio.nombre;
+                perdida.barrio.localidad = new ELocalidad();
+                perdida.barrio.localidad.nombre = (registro.perdida.idLocalidadPerdida == null) ? "" : registro.localidad.nombre;
                 perdida.estado = new EEstado();
                 perdida.usuario = new EUsuario();
                 perdida.usuario.user = registro.Usuario.user;
@@ -397,7 +405,14 @@ namespace AccesoADatos
                 perdida.idPerdida = registro.perdida.idPerdida;
                 perdida.mascota = new EMascota();
                 perdida.mascota.nombreMascota = registro.Mascota.nombreMascota;
+                perdida.mascota.idMascota = registro.Mascota.idMascota;
                 perdida.fecha = (DateTime)registro.perdida.FechaHoraPerdida;
+                perdida.domicilio = new EDomicilio();
+                perdida.domicilio.calle = new ECalle();
+                perdida.domicilio.calle.nombre = (registro.perdida.idCallePerdida == null) ? "" : registro.calle.nombre;
+                perdida.domicilio.numeroCalle = (registro.perdida.nroCallePerdida == null) ? 0 : int.Parse(registro.perdida.nroCallePerdida);
+                perdida.ubicacion = registro.perdida.ubicacionPerdida;
+                perdida.comentarios = registro.perdida.observaciones;
                 aux.Add(perdida);
             }
             return aux;

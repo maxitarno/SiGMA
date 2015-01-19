@@ -12,11 +12,34 @@
     <link href="assets/css/bootstrap.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="assets/css/main.css" rel="stylesheet">
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="assets/js/hover.zoom.js"></script>
     <script src="assets/js/hover.zoom.conf.js"></script>
+    <style type="text/css">
+        .GridView1 td
+        {
+            padding: 2px;
+            border: 1px solid #c1c1c1;
+            color: #717171;
+        }
+        .GridView1 th
+        {
+            padding: 2px 4px;
+            color: #fff;
+            background-color: #424242;
+            border-left: solid 1px #525252;
+            font-size:0.9em;
+        }
+        .GridView1 .alt
+        {
+            background-color: #EFEFEF;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <script type="text/javascript" src="Scripts/jquery-2.1.3.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi" ></script>
     <div class="centered">
         <div class="panel panel-default">
             <div class="panel panel-default">
@@ -260,7 +283,81 @@
                         </div>
                     </div>
                 </div>
-                <div class="centered">
+                    <center><asp:Label ID="lblTitulo" runat="server" Text=""></asp:Label></center>
+                    <br />
+                    <asp:Panel ID="pnlListadoDeMascotas" runat="server">
+                        <asp:GridView ID="grvListas" runat="server" AutoGenerateColumns="False" CssClass="GridView1">
+                        <HeaderStyle CssClass="encabezado" />
+                        <RowStyle CssClass="celdas" />
+                        <Columns>
+                            <asp:BoundField DataField="IdMascota" HeaderText="Id de la mascota"/>
+                            <asp:BoundField DataField="nombreMascota" HeaderText="Nombre de la mascota" />
+                            <asp:BoundField DataField="especie.nombreEspecie" HeaderText="Especie" />
+                            <asp:BoundField DataField="raza.nombreRaza" HeaderText="Raza" />
+                            <asp:BoundField DataField="estado.nombreEstado" HeaderText="Estado" />
+                            <asp:BoundField DataField="edad.nombreEdad" HeaderText="Edad" />
+                            <asp:BoundField DataField="sexo" HeaderText="Sexo" />
+                            <asp:BoundField DataField="fechaNacimiento" HeaderText="Fecha de nacimiento" />
+                        </Columns>
+                    </asp:GridView>
+                    </asp:Panel>
+                    <asp:Panel ID="pnlAdopciones" runat="server">
+                        <asp:GridView ID="grvAdopciones" runat="server" AutoGenerateColumns="false" CssClass="GridView1">
+                            <RowStyle CssClass="celdas" />
+                            <HeaderStyle CssClass="encabezado" />
+                            <Columns>
+                                <asp:BoundField DataField="idAdopcion" HeaderText="Id de adopción" />
+                                <asp:BoundField DataField="mascota.nombreMascota" HeaderText="Nombre de la mascota" />
+                                <asp:BoundField DataField="mascota.idMascota" HeaderText="Id de la mascota" />
+                                <asp:BoundField DataField="nombre" HeaderText="Nombre del dueñio" />
+                                <asp:BoundField DataField="idVoluntario" HeaderText="Id de Voluntario" />
+                                <asp:BoundField DataField="fecha" HeaderText="Fecha de adopcion" />
+                                <asp:BoundField DataField="estado.nombreEstado" HeaderText="Estado" />
+                            </Columns>
+                        </asp:GridView>
+                    </asp:Panel>
+                    <asp:Panel ID="pnlPerdidas" runat="server">
+                        <asp:GridView ID="grvPerdidas" runat="server" AutoGenerateColumns="false" CssClass="GridView1">
+                            <HeaderStyle CssClass="encabezado" />
+                            <RowStyle CssClass="celdas" />
+                            <Columns>
+                                <asp:BoundField DataField="usuario.user" HeaderText="Usuario" />
+                                <asp:BoundField DataField="barrio.localidad.nombre" HeaderText="Localidad" />
+                                <asp:BoundField DataField="barrio.nombre" HeaderText="Barrio" />
+                                <asp:BoundField DataField="domicilio.calle.nombre" HeaderText="Calle" />
+                                <asp:BoundField DataField="domicilio.numeroCalle" HeaderText="Nº" />
+                                <asp:BoundField DataField="mascota.nombreMascota" HeaderText="Mascota" />
+                                <asp:BoundField DataField="mascota.idMascota" HeaderText="Id" />
+                                <asp:BoundField DataField="fecha" HeaderText="Fecha" />
+                                <asp:BoundField DataField="comentarios" HeaderText="Comentario" />
+                                <asp:BoundField DataField="ubicacion" HeaderText="Ubicación" />
+                                <asp:BoundField DataField="estado.nombreEstado" HeaderText="Estado" />
+                            </Columns>
+                        </asp:GridView>
+                    </asp:Panel>
+                    <asp:Panel  ID="pnlHallazgos" runat="server" >
+                        <asp:GridView ID="grvHallazgos" runat="server" AutoGenerateColumns="false" CssClass="GridView1">
+                            <HeaderStyle CssClass="encabezado" />
+                            <RowStyle CssClass="celdas" />
+                            <Columns>
+                                <asp:BoundField DataField="idHallazgo" HeaderText="Id del hallazgo" />
+                                <asp:BoundField DataField="mascota.IdMascota" HeaderText="Id de la mascota" />
+                                <asp:BoundField DataField="mascota.nombreMascota" HeaderText="Nombre de la mascota" />
+                                <asp:BoundField DataField="domicilio.barrio.localidad.idLocalidad" HeaderText="Localidad" />
+                                <asp:BoundField DataField="domicilio.barrio.nombre" HeaderText="Barrio" />
+                                <asp:BoundField DataField="domicilio.calle.nombre" HeaderText="Calle" />
+                                <asp:BoundField DataField="domicilio.numeroCalle" HeaderText="Nº" />
+                                <asp:BoundField DataField="observaciones" HeaderText="observaciones" />
+                                <asp:BoundField DataField="perdida.idPerdida" HeaderText="Id de la perdida" />
+                                <asp:BoundField DataField="usuario.user" HeaderText="Ususario" />
+                                <asp:BoundField DataField="fechaHallazgo" HeaderText="Fecha del hallazgo" />
+                                <asp:BoundField DataField="estado.nombreEstado" HeaderText="Estado" />
+                            </Columns>
+                        </asp:GridView>
+                    </asp:Panel>
+                    <asp:Button ID="btnImprimirExcel" runat="server" Text="Imprimir Excel" 
+                        onclick="btnImprimirExcel_Click" />
+                        <div class="centered">
                     <asp:ImageButton ID="ibtnRegresar" runat="server" ImageUrl="~/imagenes/volver.png"
                         OnClick="BtnRegresarClick" CausesValidation="false"/>
                     <br /> VOLVER

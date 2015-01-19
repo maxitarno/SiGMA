@@ -170,7 +170,7 @@ public  object adopciones { get; set; }protected void Page_Load(object sender, E
                 {
                     lstResultados.Items.Clear();
                     lstResultados.DataSource = adopciones;
-                    lstResultados.DataTextField = "nombre";
+                    lstResultados.DataTextField = "mascota.nombreMascota";
                     lstResultados.DataValueField = "idAdopcion";
                     lstResultados.DataBind();
                     pnlResultados.Visible = true;

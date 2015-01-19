@@ -7,6 +7,10 @@ using System.Web.UI.WebControls;
 using AccesoADatos;
 using Entidades;
 using Herramientas;
+using Pechkin;
+using Entidades;
+using System.IO;
+using System.Text;
 namespace SiGMA
 {
     public partial class SeleccionarInformes : System.Web.UI.Page
@@ -42,7 +46,6 @@ namespace SiGMA
             calendar1.Visible = false;
             pnlInfo.Visible = false;
         }
-
         protected void imgFechaPerdida_Click(object sender, ImageClickEventArgs e)
         {
             //calendario.Visible = true;
@@ -85,7 +88,6 @@ namespace SiGMA
                 pnlFiltros2.Visible = false;
                 pnlFiltros3.Visible = false;
                 pnlFiltros4.Visible = false;
-                Session["listas"] = "1";
                 pnlGenerar.Visible = true;
                 pnlInfo.Visible = false;
             }
@@ -95,8 +97,14 @@ namespace SiGMA
                 pnlFiltros2.Visible = false;
                 pnlFiltros3.Visible = false;
                 pnlFiltros4.Visible = false;
-                Session["listas"] = "2";
-                Response.Redirect("listas.aspx");
+                pnlGenerar.Visible = true;
+                int mascotasAdoptadas = LogicaBDMascota.buscarMascotasPorEstado("Adoptada").Count;
+                int mascotasHalladas = LogicaBDMascota.buscarMascotasPorEstado("Hallada").Count;
+                int mascotasPerdidas = LogicaBDMascota.buscarMascotasPorEstado("Perdida").Count;
+                int mascotas = LogicaBDMascota.buscarMascotasPorNombre("").Count;
+                string pagina = "Grafico.htm?a=" + mascotasAdoptadas + "&p=" + mascotasPerdidas + "&h=" + mascotasHalladas + "&m=" + mascotas;
+                Response.Redirect(pagina);
+
             }
             if (ddlInforme.SelectedValue.Equals("3"))
             {
@@ -105,7 +113,6 @@ namespace SiGMA
                 pnlFiltros3.Visible = false;
                 pnlFiltros4.Visible = false;
                 pnlInfo.Visible = false;
-                Session["listas"] = "3";
                 pnlGenerar.Visible = true;
             }
             if (ddlInforme.SelectedValue.Equals("4"))
@@ -114,7 +121,6 @@ namespace SiGMA
                 pnlFiltros2.Visible = false;
                 pnlFiltros3.Visible = true;
                 pnlFiltros4.Visible = false;
-                Session["listas"] = "4";
                 pnlGenerar.Visible = true;
             }
             if (ddlInforme.SelectedValue.Equals("5"))
@@ -124,12 +130,12 @@ namespace SiGMA
                 pnlFiltros3.Visible = false;
                 pnlFiltros4.Visible = true;
                 pnlInfo.Visible = false;
-                Session["listas"] = "5";
                 pnlGenerar.Visible = true;
             }
         }
         public void BtnGenerarClick(object sender, EventArgs e)
         {
+            DateTime fecha;
             if (ddlInforme.SelectedValue.ToString().Equals("1"))
             {
                 EMascota mascota = new EMascota();
@@ -138,7 +144,8 @@ namespace SiGMA
                     mascota.edad = new EEdad();
                     mascota.edad.nombreEdad = ddlEdad.SelectedItem.Text;
                     mascota.edad.idEdad = int.Parse(ddlEdad.SelectedValue.ToString());
-                } if (!ddlEspecies.SelectedValue.Equals("0"))
+                }
+                if (!ddlEspecies.SelectedValue.Equals("0"))
                 {
                     mascota.especie = new EEspecie();
                     mascota.especie.nombreEspecie = ddlEspecies.SelectedItem.Text;
@@ -157,20 +164,59 @@ namespace SiGMA
                     mascota.raza.idRaza = int.Parse(ddlRaza.SelectedValue.ToString());
                 }
                 mascota.nombreMascota = "";
-                Session["mascotas"] = mascota;
-                Response.Redirect("listas.aspx");
+                List<EMascota> mascotas1 = LogicaBDMascota.buscarMascotasFiltros(mascota);
+                grvListas.DataSource = mascotas1;
+                grvListas.DataBind();
+                lblTitulo.Text = "LISTADO DE MASCOTAS";
             }
             if(ddlInforme.SelectedValue.Equals("3")){
-
+                EAdopcion adopcion = new EAdopcion();
+                fecha = new DateTime();
+                if (!ddlEstadoDeAdopcion.SelectedValue.Equals("0"))
+                {
+                    adopcion.estado = new EEstado();
+                    adopcion.estado.nombreEstado = ddlEstadoDeAdopcion.SelectedValue.ToString();
+                }
+                if (DateTime.TryParse(txtFechaAdopcion.Text, out fecha))
+                {
+                    fecha = DateTime.Parse(txtFechaAdopcion.Text);
+                }
+                List<EAdopcion> adopciones = LogicaBDAdopcion.BuscarAdopcionesPorFiltros(adopcion);
+                lblTitulo.Text = "LISTADO DE ADOPCIONES";
+                grvAdopciones.DataSource = adopciones;
+                grvAdopciones.DataBind();
             }
             if (ddlInforme.SelectedValue.Equals("4"))
             {
-
+                EHallazgo hallazgo = new EHallazgo();
+                fecha = new DateTime();
+                hallazgo.domicilio = new EDomicilio();
+                if (DateTime.TryParse(txtFechaDelHallazgo.Text, out fecha))
+                {
+                    hallazgo.fechaHallazgo = DateTime.Parse(txtFechaDelHallazgo.Text);
+                }
+                if (!ddlEstado.SelectedValue.Equals("0"))
+                {
+                    hallazgo.estado = new EEstado();
+                    hallazgo.estado.nombreEstado = ddlEstadoDelHallazgo.SelectedItem.Text;
+                    hallazgo.estado.idEstado = int.Parse(ddlBarrioHallazgo.SelectedValue.ToString());
+                }
+                if (!ddlBarrioHallazgo.SelectedValue.Equals("0"))
+                {
+                    hallazgo.domicilio = new EDomicilio();
+                    hallazgo.domicilio.barrio = new EBarrio();
+                    hallazgo.domicilio.barrio.nombre = ddlBarrioHallazgo.SelectedItem.Text;
+                    hallazgo.domicilio.barrio.idBarrio = int.Parse(ddlBarrioHallazgo.SelectedValue.ToString());
+                }
+                List<EHallazgo> hallazgos = LogicaBDHallazgo.BuscarHallazgosPorOpciones(hallazgo);
+                lblTitulo.Text = "LISTA DE HALLAZGOS";
+                grvHallazgos.DataSource = hallazgos;
+                grvHallazgos.DataBind();
             }
             if (ddlInforme.SelectedValue.Equals("5"))
             {
                 EPerdida perdida = new EPerdida();
-                DateTime fecha = new DateTime();
+                fecha = new DateTime();
                 if (DateTime.TryParse(txtFechaDeLaPerdida.Text, out fecha))
                 {
                     perdida.fecha = DateTime.Parse(txtFechaDeLaPerdida.Text);
@@ -187,8 +233,18 @@ namespace SiGMA
                     perdida.barrio.idBarrio = int.Parse(ddlBarrioPerdida.SelectedValue.ToString());
                     perdida.barrio.nombre = ddlBarrioPerdida.SelectedItem.Text;
                 }
-                Session["p"] = perdida;
-                Response.Redirect("listas.aspx");
+                List<EPerdida> perdidas = LogicaBDPerdida.BuscarPerdidasPorOpciones(perdida);
+                lblTitulo.Text = "LISTADO DE MASCOTAS PERDIDAS";
+                grvPerdidas.DataSource = perdidas;
+                grvPerdidas.DataBind();
+            }
+            if (ddlInforme.SelectedValue.Equals("2"))
+            {
+                pnlFiltros1.Visible = false;
+                pnlFiltros2.Visible = false;
+                pnlFiltros3.Visible = false;
+                pnlFiltros4.Visible = false;
+                pnlGenerar.Visible = false;
             }
         }
         public void ddlRaza_SelectedIndexChanged(object sender, EventArgs e)
@@ -210,6 +266,55 @@ namespace SiGMA
                 pnlCorrecto.Visible = false;
             }
         }
+        private void ExportarExel(string fileName, string contenType, GridView grvSeleccion)
+        {
+            Response.Clear();
+            Response.Buffer = true;
+            Response.AppendHeader("content-disposition", "atachament;filename=" + fileName);
+            Response.Charset = "";
+            Response.ContentType = contenType;
+            StringWriter sw = new StringWriter();
+            HtmlTextWriter hw = new HtmlTextWriter(sw);
+            FileInfo fi = new FileInfo(Server.MapPath("~/assets/css/bootstrap.css"));
+            StringBuilder sb = new StringBuilder();
+            StreamReader sr = fi.OpenText();
+            while (sr.Peek() >= 0)
+            {
+                sb.Append(sr.ReadLine());
+            }
+            sr.Close();
+            grvSeleccion.RenderControl(hw);
+            Response.Write("<html><head><style type='text/css'>" + sb.ToString() + "</style></head><body>" + sw.ToString() + "</body></html>");
+            Response.Flush();
+            Response.Close();
+            Response.End();
+        }
+        protected void btnImprimirExcel_Click(object sender, EventArgs e)
+        {
+            if (ddlInforme.SelectedValue.Equals("1"))
+            {
+                string archivo = ddlInforme.SelectedItem.Text + ".xlsx";
+                ExportarExel(archivo, "aplication/vnd.ms-excel", grvListas);
+            }
+            if (ddlInforme.SelectedValue.Equals("3"))
+            {
+                string archivo = ddlInforme.SelectedItem.Text + ".xlsx";
+                ExportarExel(archivo, "aplication/vnd.ms-excel", grvAdopciones);
+            }
+            if (ddlInforme.SelectedValue.Equals("4"))
+            {
+                string archivo = ddlInforme.SelectedItem.Text + ".xlsx";
+                ExportarExel(archivo, "aplication/vnd.ms-excel", grvHallazgos);
+            }
+            if (ddlInforme.SelectedValue.Equals("5"))
+            {
+                string archivo = ddlInforme.SelectedItem.Text + ".xlsx";
+                ExportarExel(archivo, "aplication/vnd.ms-excel", grvPerdidas);
+            }
+        }
+        public override void VerifyRenderingInServerForm(Control control)
+        {
 
+        }
     }
 }

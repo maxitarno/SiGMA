@@ -399,3 +399,21 @@ asp:Login
     width: 20%;
     position:fixed;
 }
+.GridView1 td
+{
+    padding: 2px;
+    border: 1px solid #c1c1c1;
+    color: #717171;
+}
+.GridView1 th
+{
+    padding: 2px 4px;
+    color: #fff;
+    background-color: #424242;
+    border-left: solid 1px #525252;
+    font-size:0.9em;
+}
+.GridView1 .alt
+{
+    background-color: #EFEFEF;
+}
