@@ -108,15 +108,13 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td align="left" style="width:157px">
+                                <td align="left" style="width:25%">
                                     Documento:  
                                 </td>
-                                <td style="width:157px">
-                                    <asp:Label ID="lblDocumento" runat="server" Text="" ></asp:Label>
+                                <td style="width:25%;">
+                                    <asp:Label ID="lblDocumento" runat="server" ></asp:Label>
                                 </td>
-                                <td>
-                                </td>
-                                <td align="center" colspan="2">
+                                <td align="center" colspan="3" style="width:50%">
                                     <h3>Domicilio</h3>
                                 </td>
                             </tr>
@@ -131,7 +129,7 @@
                                 <td align="left">
                                     Localidad:
                                 </td>
-                                <td   colspan="2">
+                                <td   colspan="2" style="width:25%">
                                     <asp:Label ID="lblLocalidad" runat="server" Text=""></asp:Label>
                                 </td>
                             </tr>
