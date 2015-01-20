@@ -94,24 +94,24 @@
                                     <asp:Label ID="lblNumeroDeAdopción" runat="server" Text=""></asp:Label>
                                 </td>
                                 <td></td>
-                                <td align="right" colspan="2">
+                                <td align="right" colspan="3">
                                         Fecha:
                                         <asp:Label ID="lblFecha" runat="server" Text=""></asp:Label>
                                 </td>
                                 <td></td>
                             </tr>
                             <tr>
-                                <td colspan="5" align="justify">
+                                <td colspan="5" align="left">
                                     <h2>
                                         Datos personales
                                     </h2>
                                 </td>
                             </tr>
                             <tr>
-                                <td align="left">
+                                <td align="left" style="width:157px">
                                     Documento:  
                                 </td>
-                                <td  >
+                                <td style="width:157px">
                                     <asp:Label ID="lblDocumento" runat="server" Text="" ></asp:Label>
                                 </td>
                                 <td>
