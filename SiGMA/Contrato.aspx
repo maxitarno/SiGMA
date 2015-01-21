@@ -22,6 +22,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <script type="text/javascript" src="Scripts/jquery-2.1.3.js"></script>
     <script type="text/javascript" src="Scripts/jquery.print.js"></script>
+    <script type="text/javascript" src=""></script>
     <script type="text/javascript">
 
         // When the document is ready, initialize the link so
@@ -31,8 +32,7 @@
             function () {
 
                 // Hook up the print link.
-                $("a")
-                    .attr("href", "javascript:void( 0 )")
+                $("#imprimir")
                     .click(
                         function () {
                             // Print the DIV.
@@ -267,7 +267,7 @@
                         </table>                     
                     </div>
                     <p>
-                        <a>Imprimir</a>
+                        <a id="imprimir">Imprimir</a>
                     </p>
                     <div style="margin-left: 30%; display: table; width: 40%;">
                         <div style="display: table-row; width: 30%">
