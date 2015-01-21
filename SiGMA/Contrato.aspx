@@ -33,11 +33,12 @@
 
                 // Hook up the print link.
                 $("#imprimir")
+                //.attr("href", "javascript:void(0)")
                     .click(
                         function () {
                             // Print the DIV.
-                            $(".printable").print();
-
+                            //$(".printable").print();
+                            window.print();
                             // Cancel click event.
                             return (false);
                         }
