@@ -10,6 +10,6 @@
 namespace SiGMA {
     
     
-    public partial class Default {
+    public partial class RegistrarVeterinaria {
     }
 }
