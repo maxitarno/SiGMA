@@ -8,7 +8,6 @@ using AccesoADatos;
 using Entidades;
 using Herramientas;
 using Pechkin;
-using Entidades;
 using System.IO;
 using System.Text;
 namespace SiGMA
@@ -132,6 +131,7 @@ namespace SiGMA
                 pnlInfo.Visible = false;
                 pnlGenerar.Visible = true;
             }
+            pnlImprimir.Visible = false;
         }
         public void BtnGenerarClick(object sender, EventArgs e)
         {
@@ -246,6 +246,7 @@ namespace SiGMA
                 pnlFiltros4.Visible = false;
                 pnlGenerar.Visible = false;
             }
+            pnlImprimir.Visible = true;
         }
         public void ddlRaza_SelectedIndexChanged(object sender, EventArgs e)
         {

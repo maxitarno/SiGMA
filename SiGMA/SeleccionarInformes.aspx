@@ -355,9 +355,11 @@
                             </Columns>
                         </asp:GridView>
                     </asp:Panel>
-                    <asp:Button ID="btnImprimirExcel" runat="server" Text="Imprimir Excel" 
+                    <asp:Panel ID="pnlImprimir" runat="server" Visible="false">
+                        <asp:Button ID="btnImprimirExcel" runat="server" Text="Imprimir Excel" 
                         onclick="btnImprimirExcel_Click" />
-                        <div class="centered">
+                    </asp:Panel>
+                    <div class="centered">
                     <asp:ImageButton ID="ibtnRegresar" runat="server" ImageUrl="~/imagenes/volver.png"
                         OnClick="BtnRegresarClick" CausesValidation="false"/>
                     <br /> VOLVER
