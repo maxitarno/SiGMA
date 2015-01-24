@@ -46,7 +46,7 @@
             </div>
         </div>
         <div class="panel-body">
-            <div class="col-md-offset-5 col-md-2">
+            <div class="col-md-offset-3 col-md-5">
                 <table style="margin-left: 25%; width=50%;">
                     <tr>
                         <td>
@@ -64,8 +64,11 @@
                     <tr>
                         <td colspan="2">
                             <asp:CheckBox ID="chkPeluqueria" runat="server" Text="Peluqueria"/>
+                            <br />
                             <asp:CheckBox ID="chkPetShop" runat="server" Text="PetShop"/>
+                            <br />
                             <asp:CheckBox ID="chkMedicinas" runat="server" Text="Medicinas"/>
+                            <br />
                             <asp:CheckBox ID="chkCastraciones" runat="server" Text="Castraciones"/>
                         </td>
                     </tr>

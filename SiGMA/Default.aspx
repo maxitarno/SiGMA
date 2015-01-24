@@ -47,7 +47,7 @@
 				<p class="col-lg-4">VOLUNTARIOS</p>
 			</div>
 			<div class="col-lg-4">
-				<a class="zoom green" href="RegistrarVeterinaria.aspx"><img class="img-responsive" src="assets/img/menu/veterinarias.png" alt="" width="200px" height="300px"/></a>
+				<a class="zoom green" href="Veterinarias.aspx"><img class="img-responsive" src="assets/img/menu/veterinarias.png" alt="" width="200px" height="300px"/></a>
 				<p class="col-lg-4">VETERINARIAS</p>
 			</div>
 			<div class="col-lg-4">

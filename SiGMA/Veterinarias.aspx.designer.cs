@@ -10,6 +10,6 @@
 namespace SiGMA {
     
     
-    public partial class Usuarios {
+    public partial class Veterinarias {
     }
 }
