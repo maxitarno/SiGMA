@@ -1,5 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="RegistrarVeterinaria.aspx.cs" Inherits="SiGMA.RegistrarVeterinaria" MasterPageFile="PaginaMaestra.Master" %>
-<asp:Content ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="CAMBVeterinarias.aspx.cs" Inherits="SiGMA.CAMBVeterinarias" MasterPageFile="~/PaginaMaestra.Master" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,7 +15,7 @@
     <script src="assets/js/hover.zoom.js"></script>
     <script src="assets/js/hover.zoom.conf.js"></script>
 </asp:Content>
-<asp:Content ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
     <div class="centered">
         <div class="panel panel-default">
             <div class="panel panel-heading">
@@ -50,15 +50,64 @@
                 <table style="margin-left: 25%; width:50%;">
                     <tr>
                         <td>
-                            Nombre:
+                            <asp:RadioButton ID="rbPorNombre" runat="server" />
                         </td>
                         <td>
-                            <asp:TextBox ID="txtNombre" runat="server" Width="100%"></asp:TextBox>
-                        </td>
-                        <td>
-                            <asp:RequiredFieldValidator ID="rfvNombre" Text="Debe ingresar un nombre" ControlToValidate="txtNombre" Display="Dynamic" BorderColor="Red" runat="server"></asp:RequiredFieldValidator>
+                            <asp:RadioButton ID="rbPorDomicilio" runat="server" />
                         </td>
                     </tr>
+                    <tr>
+                        <asp:Panel ID="pnlNombre" runat="server">
+                            <td>
+                                Nombre:
+                            </td>
+                            <td>
+                                <asp:TextBox ID="txtNombre" runat="server" Width="100%"></asp:TextBox>
+                            </td>
+                        </asp:Panel>
+                        <td>
+                            <asp:Button ID="btnBuscar" runat="server" Text="Buscar" />
+                        </td>
+                    </tr>
+                    <asp:Panel ID="pnlDomicilio" runat="server">
+                        <tr>
+                        <td>
+                            Localidad:
+                        </td>
+                        <td>
+                            <asp:DropDownList ID="ddlLocalidad" runat="server" Width="100%">
+                            </asp:DropDownList>
+                        </td>
+                    </tr>
+                        <tr>
+                        <td>
+                            Barrio:
+                        </td>
+                        <td>
+                            <asp:DropDownList ID="ddlBarrio" runat="server" Width="100%">
+                            </asp:DropDownList>
+                        </td>
+                    </tr>
+                        <tr>
+                        <td>
+                            Calle:
+                        </td>
+                        <td>
+                            <asp:TextBox ID="txtCalle" runat="server" Width="50%"></asp:TextBox>Nº<asp:TextBox ID="txtNº" runat="server" Width="25%"></asp:TextBox>
+                        </td>
+                    </tr>
+                    </asp:Panel>
+                    <asp:Panel ID="pnlResultados" runat="server">
+                        <tr>
+                        <td>
+                            Resultados:
+                        </td>
+                        <td>
+                            <asp:ListBox ID="lstResultados" runat="server"></asp:ListBox>
+                        </td>
+                    </tr>
+                    </asp:Panel>
+                    <asp:Panel ID="pnlDatos" runat="server">
                     <tr>
                         <td colspan="2">
                             Realiza:
@@ -85,40 +134,13 @@
                     </tr>
                     <tr>
                         <td>
-                            Localidad:
-                        </td>
-                        <td>
-                            <asp:DropDownList ID="ddlLocalidad" runat="server" Width="100%" OnSelectedIndexChanged="SeleccionarLocalidad" AutoPostBack="true">
-                            </asp:DropDownList>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Barrio:
-                        </td>
-                        <td>
-                            <asp:DropDownList ID="ddlBarrio" runat="server" Width="100%" AppendDataBoundItems="True">
-                            </asp:DropDownList>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Calle:
-                        </td>
-                        <td>
-                            <asp:DropDownList ID="ddlCalle" runat="server" Width="50%"  AppendDataBoundItems="True">
-                            </asp:DropDownList>
-                            Nº<asp:TextBox ID="txtNº" runat="server" Width="25%"></asp:TextBox>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
                             T.E.:
                         </td>
                         <td>
                             <asp:TextBox ID="txtTE" runat="server"></asp:TextBox>
                         </td>
                     </tr>
+                    </asp:Panel>
                 </table>
             </div>
         </div>
@@ -127,9 +149,13 @@
                 <div style="margin-left: 30%; display: table; width: 40%;">
                     <div style="display: table-row; width: 30%">
                         <div style="display: table-cell; width: 20%;">
-                            <asp:Panel ID="pnlRegistrar" runat="server" Visible="true">
-                                <asp:Button ID="btnRegistrar" runat="server" Text="Registrar" 
-                                    onclick="btnRegistrar_Click" />
+                            <asp:Panel ID="pnlRegistrar" runat="server" Visible="false">
+                                <asp:Button ID="btnRegistrar" runat="server" Text="Registrar" />
+                            </asp:Panel>
+                        </div>
+                        <div style="display: table-cell; width: 20%;">
+                            <asp:Panel ID="pnlEliminar" runat="server" Visible="false">
+                                <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" />
                             </asp:Panel>
                         </div>
                     </div>
