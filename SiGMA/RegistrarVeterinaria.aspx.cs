@@ -30,8 +30,10 @@ namespace SiGMA
 
         protected void btnRegistrar_Click(object sender, EventArgs e)
         {
-            if(Validaciones.verificarSoloLetras(txtNombre.Text)){
-                if(Validaciones.verificarSeleccionEnDdl(ref ddlLocalidad)){
+            if (Validaciones.verificarSoloLetras(txtNombre.Text))
+            {
+                if (Validaciones.verificarSeleccionEnDdl(ref ddlLocalidad))
+                {
                     if (Validaciones.verificarSeleccionEnDdl(ref ddlBarrio))
                     {
                         if (Validaciones.verificarSeleccionEnDdl(ref ddlCalle))
@@ -71,10 +73,52 @@ namespace SiGMA
                                         pnlInfo.Visible = false;
                                     }
                                 }
+                                else
+                                {
+                                    pnlCorrecto.Visible = false;
+                                    lblInfo.Text = "Debe ingresar un número de telefono valido";
+                                    pnlAtento.Visible = false;
+                                    pnlInfo.Visible = true;
+                                }
+                            }
+                            else
+                            {
+                                pnlCorrecto.Visible = false;
+                                lblError.Text = "Debe ingresar un número de calle valido";
+                                pnlAtento.Visible = true;
+                                pnlInfo.Visible = false;
                             }
                         }
+                        else
+                        {
+                            pnlCorrecto.Visible = false;
+                            lblError.Text = "Debe seleccionar una calle";
+                            pnlAtento.Visible = true;
+                            pnlInfo.Visible = false;
+                        }
+                    }
+                    else
+                    {
+                        pnlCorrecto.Visible = false;
+                        lblError.Text = "Debe ingresar un barrio";
+                        pnlAtento.Visible = true;
+                        pnlInfo.Visible = false;
                     }
                 }
+                else
+                {
+                    pnlCorrecto.Visible = false;
+                    lblError.Text = "Debe ingresar una localidad";
+                    pnlAtento.Visible = true;
+                    pnlInfo.Visible = false;
+                }
+            }
+            else
+            {
+                pnlCorrecto.Visible = false;
+                lblError.Text = "Debe ingresar un nombre valido";
+                pnlAtento.Visible = true;
+                pnlInfo.Visible = false;
             }
         }
     }
