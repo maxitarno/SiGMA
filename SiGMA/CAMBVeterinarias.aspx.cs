@@ -19,8 +19,8 @@ namespace SiGMA
         }
         public void selectedIndexChange(object sender, EventArgs e)
         {
-            CargarCombos.cargarBarrio(ref ddlBarrio, int.Parse(ddlLocalidad.SelectedValue.ToString());
-
+            CargarCombos.cargarBarrio(ref ddlBarrio, int.Parse(ddlLocalidad.SelectedValue.ToString()));
+            CargarCombos.cargarCalles(ref ddlCalle, int.Parse(ddlCalle.SelectedValue.ToString()));
         }
     }
 }
