@@ -67,8 +67,14 @@ namespace AccesoADatos
             {
                 List<EVeterinaria> veterinarias = new List<EVeterinaria>();
                 var consulta = from VeterinariaBD in mapa.Veterinarias
-                                                    where(VeterinariaBD.idBarrio == veterinaria.domicilio.barrio.idBarrio ||  VeterinariaBD.idCalle == veterinaria.domicilio.calle.idCalle)
-                                                    select VeterinariaBD;
+                               join BarrioBD in mapa.Barrios on VeterinariaBD.idBarrio equals BarrioBD.idBarrio into group1
+                               from G1 in group1.DefaultIfEmpty()
+                               join LocalidadBD in mapa.Localidades on G1.idLocalidad equals LocalidadBD.idLocalidad into group2
+                               from G2 in group2.DefaultIfEmpty()
+                               join CalleBD in mapa.Calles on VeterinariaBD.idCalle equals CalleBD.idCalle into group3
+                               from G3 in group2.DefaultIfEmpty()
+                               where((G1.idBarrio == veterinaria.domicilio.barrio.idBarrio) || (G3.idLocalidad == veterinaria.domicilio.barrio.localidad.idLocalidad) || (VeterinariaBD.Calles.idCalle == veterinaria.domicilio.calle.idCalle))
+                               select VeterinariaBD;
                 foreach(var registro in consulta){
                     veterinaria = new EVeterinaria();
                     veterinaria.id = registro.idVeterinaria;

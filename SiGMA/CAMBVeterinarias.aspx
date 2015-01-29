@@ -111,7 +111,7 @@
                             Resultados:
                         </td>
                         <td>
-                            <asp:ListBox ID="lstResultados" runat="server" AutoPostBack="True"></asp:ListBox>
+                            <asp:ListBox ID="lstResultados" runat="server" AutoPostBack="True" OnSelectedIndexChanged="selected"></asp:ListBox>
                         </td>
                     </tr>
                     </asp:Panel>

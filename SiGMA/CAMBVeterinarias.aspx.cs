@@ -16,6 +16,8 @@ namespace SiGMA
             if (!Page.IsPostBack)
             {
                 CargarCombos.cargarLocalidades(ref ddlLocalidad);
+                CargarCombos.cargarCalles(ref ddlCalle);
+                CargarCombos.cargarBarrio(ref ddlBarrio);
             }
         }
         protected void BtnRegresarClick(object sender, ImageClickEventArgs e)
@@ -33,6 +35,7 @@ namespace SiGMA
             veterinaria.domicilio = new EDomicilio();
             veterinaria.domicilio.barrio = new EBarrio();
             veterinaria.domicilio.calle = new ECalle();
+            veterinaria.domicilio.barrio.localidad = new ELocalidad();
             if (rbPorNombre.Checked)
             {
                 lstResultados.Items.Clear();
@@ -46,9 +49,13 @@ namespace SiGMA
                 {
                     veterinaria.domicilio.barrio.idBarrio = int.Parse(ddlBarrio.SelectedValue.ToString());
                 }
-                else if (!ddlCalle.SelectedValue.Equals("0"))
+                if (!ddlCalle.SelectedValue.Equals("0"))
                 {
                     veterinaria.domicilio.calle.idCalle = int.Parse(ddlCalle.SelectedValue.ToString());
+                }
+                if (!ddlLocalidad.SelectedValue.Equals("0"))
+                {
+                    veterinaria.domicilio.barrio.localidad.idLocalidad = int.Parse(ddlLocalidad.SelectedValue.ToString());
                 }
                 lstResultados.Items.Clear();
                 lstResultados.DataSource = LogicaBDVeterinaria.BuscarPorDomicilio(veterinaria);
