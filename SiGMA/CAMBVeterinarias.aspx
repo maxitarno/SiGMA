@@ -49,17 +49,17 @@
             <div class="col-md-offset-1 col-md-5">
                 <table>
                     <tr>
-                        <td Width="12.5%">
-                            <asp:RadioButton ID="rbPorNombre" runat="server" Text="" />
-                        </td>
                         <td Width="25%">
                             Por Nombre
                         </td>
                         <td Width="12.5%">
-                            <asp:RadioButton ID="rbPorDomicilio" runat="server" Text="" />
+                            <asp:RadioButton ID="rbPorNombre" runat="server" Text="" GroupName="1" Checked="true" />
                         </td>
                         <td Width="25%">
                             Por Domicilio
+                        </td>
+                        <td Width="12.5%">
+                            <asp:RadioButton ID="rbPorDomicilio" runat="server" Text="" GroupName="1" />
                         </td>
                     </tr>
                     <tr>
@@ -111,7 +111,7 @@
                             Resultados:
                         </td>
                         <td>
-                            <asp:ListBox ID="lstResultados" runat="server"></asp:ListBox>
+                            <asp:ListBox ID="lstResultados" runat="server" AutoPostBack="True"></asp:ListBox>
                         </td>
                     </tr>
                     </asp:Panel>

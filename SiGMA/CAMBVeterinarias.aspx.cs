@@ -41,14 +41,8 @@ namespace SiGMA
                 lstResultados.DataTextField = "nombre";
                 lstResultados.DataBind();
             }
-            else
-            {
-                if (!ddlBarrio.SelectedValue.Equals("0") && !ddlCalle.SelectedValue.Equals("0"))
-                {
-                    veterinaria.domicilio.barrio.idBarrio = int.Parse(ddlBarrio.SelectedValue.ToString());
-                    veterinaria.domicilio.calle.idCalle = int.Parse(ddlCalle.SelectedValue.ToString());
-                }
-                else if (!ddlBarrio.SelectedValue.Equals("0"))
+            else if(rbPorDomicilio.Checked){
+                if (!ddlBarrio.SelectedValue.Equals("0"))
                 {
                     veterinaria.domicilio.barrio.idBarrio = int.Parse(ddlBarrio.SelectedValue.ToString());
                 }

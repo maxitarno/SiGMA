@@ -51,6 +51,7 @@ namespace AccesoADatos
                     EVeterinaria veterinaria = new EVeterinaria();
                     veterinaria.id = registro.idVeterinaria;
                     veterinaria.nombre = registro.nombre;
+                    veterinarias.Add(veterinaria);
                 }
                 return veterinarias;
             }
@@ -72,6 +73,7 @@ namespace AccesoADatos
                     veterinaria = new EVeterinaria();
                     veterinaria.id = registro.idVeterinaria;
                     veterinaria.nombre = registro.nombre;
+                    veterinarias.Add(veterinaria);
                 }
                 return veterinarias;
             }
@@ -121,6 +123,5 @@ namespace AccesoADatos
                 throw exc;
             }
         }
-    
     }
 }

@@ -428,6 +428,7 @@
     </Compile>
     <Compile Include="Veterinarias.aspx.cs">
       <DependentUpon>Veterinarias.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Veterinarias.aspx.designer.cs">
       <DependentUpon>Veterinarias.aspx</DependentUpon>
