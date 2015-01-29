@@ -92,6 +92,7 @@
     <Content Include="assets\js\hover.zoom.js" />
     <Content Include="CABMRazas.aspx" />
     <Content Include="CABMTipoDeDocumento.aspx" />
+    <Content Include="CAMBVeterinarias.aspx" />
     <Content Include="ConsultarAdopcion.aspx" />
     <Content Include="ConsultarHallazgo.aspx" />
     <Content Include="ConsultarMascotas.aspx" />
@@ -124,6 +125,7 @@
     <Content Include="RegistrarMascota.aspx" />
     <Content Include="RegistrarPerdida.aspx" />
     <Content Include="RegistrarRoles.aspx" />
+    <Content Include="RegistrarVeterinaria.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-2.1.1-vsdoc.js" />
@@ -137,6 +139,7 @@
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
     <Content Include="Usuarios.aspx" />
+    <Content Include="Veterinarias.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -191,6 +194,13 @@
     </Compile>
     <Compile Include="CABMTipoDeDocumento.aspx.designer.cs">
       <DependentUpon>CABMTipoDeDocumento.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CAMBVeterinarias.aspx.cs">
+      <DependentUpon>CAMBVeterinarias.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CAMBVeterinarias.aspx.designer.cs">
+      <DependentUpon>CAMBVeterinarias.aspx</DependentUpon>
     </Compile>
     <Compile Include="ConsultarAdopcion.aspx.cs">
       <DependentUpon>ConsultarAdopcion.aspx</DependentUpon>
@@ -381,6 +391,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegistrarVeterinaria.aspx.cs">
+      <DependentUpon>RegistrarVeterinaria.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegistrarVeterinaria.aspx.designer.cs">
+      <DependentUpon>RegistrarVeterinaria.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SeleccionarInformes.aspx.cs">
       <DependentUpon>SeleccionarInformes.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -408,6 +425,12 @@
     </Compile>
     <Compile Include="Usuarios.aspx.designer.cs">
       <DependentUpon>Usuarios.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Veterinarias.aspx.cs">
+      <DependentUpon>Veterinarias.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Veterinarias.aspx.designer.cs">
+      <DependentUpon>Veterinarias.aspx</DependentUpon>
     </Compile>
     <Compile Include="_Mascotas.aspx.cs">
       <DependentUpon>_Mascotas.aspx</DependentUpon>

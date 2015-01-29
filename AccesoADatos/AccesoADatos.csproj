@@ -64,6 +64,7 @@
     <Compile Include="LogicaBDPerdida.cs" />
     <Compile Include="LogicaBDRol.cs" />
     <Compile Include="LogicaBDUsuario.cs" />
+    <Compile Include="LogicaBDVeterinaria.cs" />
     <Compile Include="LogicaBDVoluntario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

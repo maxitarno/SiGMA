@@ -45,7 +45,7 @@ namespace AccesoADatos
             {
                 List<EVeterinaria> veterinarias = new List<EVeterinaria>();
                 var consulta = from VeterinariaBD in mapa.Veterinarias
-                                                    where(VeterinariaBD.nombre.StartsWith(nombre))
+                                                    where(VeterinariaBD.nombre.Contains(nombre))
                                                     select VeterinariaBD;
                 foreach(var registro in consulta){
                     EVeterinaria veterinaria = new EVeterinaria();

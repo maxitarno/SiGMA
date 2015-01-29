@@ -65,6 +65,7 @@
     <Compile Include="EUsuario.cs" />
     <Compile Include="EPermiso.cs" />
     <Compile Include="ERol.cs" />
+    <Compile Include="EVeterinaria.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
