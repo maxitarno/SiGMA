@@ -72,7 +72,8 @@
                             </td>
                         </asp:Panel>
                         <td>
-                            <asp:Button ID="btnBuscar" runat="server" Text="Buscar" />
+                            <asp:Button ID="btnBuscar" runat="server" Text="Buscar" 
+                                onclick="btnBuscar_Click" />
                         </td>
                     </tr>
                     <asp:Panel ID="pnlDomicilio" runat="server" Width="100%">
@@ -81,7 +82,7 @@
                                 Localidad:
                             </td>
                         <td colspan="2">
-                            <asp:DropDownList ID="ddlLocalidad" runat="server" Width="100%" AutoPostBack="True">
+                            <asp:DropDownList ID="ddlLocalidad" runat="server" Width="100%" AutoPostBack="True" OnSelectedIndexChanged="selectedIndexChange">
                             </asp:DropDownList>
                         </td>
                     </tr>
@@ -90,7 +91,7 @@
                             Barrio:
                         </td>
                         <td colspan="2">
-                            <asp:DropDownList ID="ddlBarrio" runat="server" Width="100%">
+                            <asp:DropDownList ID="ddlBarrio" runat="server" Width="100%" AutoPostBack="True">
                             </asp:DropDownList>
                         </td>
                     </tr>
@@ -99,7 +100,7 @@
                             Calle:
                         </td>
                         <td colspan="2">
-                            <asp:DropDownList ID="ddlCalle" runat="server">
+                            <asp:DropDownList ID="ddlCalle" runat="server" AutoPostBack="True">
                             </asp:DropDownList>
                         </td>
                     </tr>
@@ -119,7 +120,7 @@
             <div class="col-md-5 col-md-offset-1">
                 <table>
                     <tr>
-                        <td colspan="2">
+                        <td>
                             <asp:Panel ID="pnlGoogle" runat="server" Width="100%" BorderStyle="Solid">
                             </asp:Panel>
                         </td>
@@ -167,7 +168,7 @@
                     <div style="display: table-row; width: 30%">
                         <div style="display: table-cell; width: 20%;">
                             <asp:Panel ID="pnlRegistrar" runat="server" Visible="false">
-                                <asp:Button ID="btnRegistrar" runat="server" Text="Registrar" />
+                                
                             </asp:Panel>
                         </div>
                         <div style="display: table-cell; width: 20%;">

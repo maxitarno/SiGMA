@@ -420,7 +420,7 @@
           <Key>
             <PropertyRef Name="idVeterinaria" />
           </Key>
-          <Property Name="idVeterinaria" Type="int" Nullable="false" />
+          <Property Name="idVeterinaria" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="idCalle" Type="int" />
           <Property Name="idBarrio" Type="int" />
           <Property Name="nroCalle" Type="int" />

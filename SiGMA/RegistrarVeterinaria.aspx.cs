@@ -84,7 +84,7 @@ namespace SiGMA
                             else
                             {
                                 pnlCorrecto.Visible = false;
-                                lblError.Text = "Debe ingresar un número de calle valido";
+                                lblInfo.Text = "Debe ingresar un número de calle valido";
                                 pnlAtento.Visible = false;
                                 pnlInfo.Visible = true;
                             }
@@ -92,7 +92,7 @@ namespace SiGMA
                         else
                         {
                             pnlCorrecto.Visible = false;
-                            lblError.Text = "Debe seleccionar una calle";
+                            lblInfo.Text = "Debe seleccionar una calle";
                             pnlAtento.Visible = false;
                             pnlInfo.Visible = true;
                         }
@@ -100,7 +100,7 @@ namespace SiGMA
                     else
                     {
                         pnlCorrecto.Visible = false;
-                        lblError.Text = "Debe ingresar un barrio";
+                        lblInfo.Text = "Debe ingresar un barrio";
                         pnlAtento.Visible = false;
                         pnlInfo.Visible = true;
                     }
@@ -108,7 +108,7 @@ namespace SiGMA
                 else
                 {
                     pnlCorrecto.Visible = false;
-                    lblError.Text = "Debe ingresar una localidad";
+                    lblInfo.Text = "Debe ingresar una localidad";
                     pnlAtento.Visible = false;
                     pnlInfo.Visible = true;
                 }
@@ -116,7 +116,7 @@ namespace SiGMA
             else
             {
                 pnlCorrecto.Visible = false;
-                lblError.Text = "Debe ingresar un nombre valido";
+                lblInfo.Text = "Debe ingresar un nombre valido";
                 pnlAtento.Visible = false;
                 pnlInfo.Visible = true;
             }

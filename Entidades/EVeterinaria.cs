@@ -15,5 +15,6 @@ namespace Entidades
         public string contacto { get; set; }
         public EDomicilio domicilio { get; set; }
         public string telefono { get; set; }
+        public int id { get; set; }
     }
 }
