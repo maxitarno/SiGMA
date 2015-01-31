@@ -49,16 +49,16 @@
             <div class="col-md-offset-1 col-md-5">
                 <table>
                     <tr>
-                        <td Width="25%">
+                        <td align="left">
                             Por Nombre
                         </td>
-                        <td Width="12.5%">
+                        <td>
                             <asp:RadioButton ID="rbPorNombre" runat="server" Text="" GroupName="1" Checked="true" />
                         </td>
-                        <td Width="25%">
+                        <td align="left">
                             Por Domicilio
                         </td>
-                        <td Width="12.5%">
+                        <td>
                             <asp:RadioButton ID="rbPorDomicilio" runat="server" Text="" GroupName="1" />
                         </td>
                     </tr>
@@ -67,8 +67,8 @@
                             <td>
                                 Nombre:
                             </td>
-                            <td colspan="2">
-                                <asp:TextBox ID="txtNombre" runat="server" Width="100%"></asp:TextBox>
+                            <td>
+                                <asp:TextBox ID="txtNombre" runat="server" style="width:250px"></asp:TextBox>
                             </td>
                         </asp:Panel>
                         <td>
@@ -82,41 +82,41 @@
                                 Localidad:
                             </td>
                         <td>
-                            <asp:DropDownList ID="ddlLocalidad" runat="server" Width="100%" AutoPostBack="True" OnSelectedIndexChanged="selectedIndexChange">
+                            <asp:DropDownList ID="ddlLocalidad" runat="server" style="width:250px" AutoPostBack="True" OnSelectedIndexChanged="selectedIndexChange" Width="250px">
                             </asp:DropDownList>
                         </td>
                     </tr>
                         <tr>
-                        <td>
-                            Barrio:
-                        </td>
-                        <td>
-                            <asp:DropDownList ID="ddlBarrio" runat="server" Width="100%" AutoPostBack="True">
-                            </asp:DropDownList>
-                        </td>
-                    </tr>
+                            <td>
+                                Barrio:
+                            </td>
+                            <td>
+                                <asp:DropDownList ID="ddlBarrio" runat="server"  AutoPostBack="True" Width="250px">
+                                </asp:DropDownList>
+                            </td>
+                        </tr>
                         <tr>
-                        <td>
-                            Calle:
-                        </td>
-                        <td>
-                            <asp:DropDownList ID="ddlCalle" runat="server" AutoPostBack="True">
-                            </asp:DropDownList>
-                        </td>
-                        <td>
-                            Nº<asp:TextBox ID="txtNº" runat="server"></asp:TextBox>
-                        </td>
-                    </tr>
+                            <td>
+                                Calle:
+                            </td>
+                            <td>
+                                <asp:DropDownList ID="ddlCalle" runat="server" AutoPostBack="True" Width="250px">
+                                </asp:DropDownList>
+                            </td>
+                            <td>
+                                Nº<asp:TextBox ID="txtNº" runat="server" Width="50px"></asp:TextBox>
+                            </td>
+                        </tr>
                     </asp:Panel>
                     <asp:Panel ID="pnlResultados" runat="server">
                         <tr>
-                        <td>
-                            Resultados:
-                        </td>
-                        <td>
-                            <asp:ListBox ID="lstResultados" runat="server" AutoPostBack="True" OnSelectedIndexChanged="selected"></asp:ListBox>
-                        </td>
-                    </tr>
+                            <td>
+                                Resultados:
+                            </td>
+                            <td>
+                                <asp:ListBox ID="lstResultados" runat="server" AutoPostBack="True" OnSelectedIndexChanged="selected" Width="250px"></asp:ListBox>
+                            </td>
+                        </tr>
                     </asp:Panel>
                 </table>
             </div>
@@ -124,41 +124,50 @@
                 <table>
                     <tr>
                         <td>
-                            <asp:Panel ID="pnlGoogle" runat="server" Width="100%" BorderStyle="Solid">
+                            <asp:Panel ID="pnlGoogle" runat="server" Width="250px" BorderStyle="Solid" Height="250px">
                             </asp:Panel>
                         </td>
                     </tr>
                     <asp:Panel ID="pnlDatos" runat="server">
                         <tr>
-                        <td colspan="2">
-                            Realiza:
-                        </td>
-                    </tr>
+                            <td align="left">
+                                Realiza:
+                            </td>
+                        </tr>
                         <tr>
-                        <td colspan="2">
-                            <asp:CheckBox ID="chkPeluqueria" runat="server" Text="Peluqueria"/>
-                            <br />
-                            <asp:CheckBox ID="chkPetShop" runat="server" Text="PetShop"/>
-                            <br />
-                            <asp:CheckBox ID="chkMedicinas" runat="server" Text="Medicinas"/>
-                            <br />
-                            <asp:CheckBox ID="chkCastraciones" runat="server" Text="Castraciones"/>
-                        </td>
-                    </tr>
+                            <td style="float:left">
+                                <asp:CheckBox ID="chkPeluqueria" runat="server" Text="Peluqueria"/>
+                            </td>
+                        </tr>
                         <tr>
-                        <td>
-                            Contacto:
-                        </td>
-                        <td>
-                            <asp:TextBox ID="txtContacto" runat="server" Width="100%"></asp:TextBox>  
-                        </td>
-                    </tr>
+                            <td style="float:left">
+                                <asp:CheckBox ID="chkPetShop" runat="server" Text="PetShop" /> 
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="float:left">
+                                <asp:CheckBox ID="chkMedicinas" runat="server" Text="Medicinas"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="float:left">
+                                <asp:CheckBox ID="chkCastraciones" runat="server" Text="Castraciones"/>                                    
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Contacto:
+                            </td>
+                            <td>
+                                <asp:TextBox ID="txtContacto" runat="server" Width="250px"></asp:TextBox>  
+                            </td>
+                        </tr>
                         <tr>
                             <td>
                                 T.E.:
                             </td>
                             <td>
-                                <asp:TextBox ID="txtTE" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="txtTE" runat="server" Width="250px"></asp:TextBox>
                             </td>
                         </tr>
                     </asp:Panel>
