@@ -106,27 +106,52 @@ namespace AccesoADatos
                                    barrio = G1,
                                };
                 foreach(var registro in consulta){
-                    veterinaria = new EVeterinaria();
                     veterinaria.id = registro.veterinaria.idVeterinaria;
-                    veterinaria.nombre = registro.veterinaria.nombre;
+                    veterinaria.nombre = registro.veterinaria.nombre.ToString();
                     veterinaria.castraciones = (registro.veterinaria.castraciones == null) ? false : (bool)registro.veterinaria.castraciones;
                     veterinaria.contacto = registro.veterinaria.web;
-                    veterinaria.domicilio.barrio = new EBarrio();
                     veterinaria.domicilio.barrio.idBarrio = registro.barrio.idBarrio;
-                    veterinaria.domicilio.barrio.localidad = new ELocalidad();
                     veterinaria.domicilio.barrio.localidad.idLocalidad = registro.localidad.idLocalidad;
-                    veterinaria.domicilio.calle = new ECalle();
                     veterinaria.domicilio.calle.idCalle = registro.veterinaria.idCalle;
                     veterinaria.id = registro.veterinaria.idVeterinaria;
                     veterinaria.medicina = (registro.veterinaria.medicina == null) ? false : (bool)registro.veterinaria.medicina;
                     veterinaria.peluqueria = (registro.veterinaria.peluqueria == null) ? false : (bool)registro.veterinaria.peluqueria;
                     veterinaria.petshop = (registro.veterinaria.petShop == null) ? false : (bool)registro.veterinaria.petShop;
-                    veterinaria.telefono = (registro.veterinaria.telefono == null) ? "" : registro.veterinaria.telefono;   
+                    veterinaria.telefono = (registro.veterinaria.telefono == null) ? "" : registro.veterinaria.telefono.ToString();   
                 }
             }
             catch (Exception exc)
             {
                 throw exc;
+            }
+        }
+        public static Boolean Modificar(EVeterinaria veterinaria)
+        {
+            SiGMAEntities mapa = Conexion.crearSegunServidor();
+            using (TransactionScope transaccion = new TransactionScope())
+            {
+                try
+                {
+                    Veterinarias veterinaria1 = mapa.Veterinarias.Where(veterinariaBD => veterinariaBD.idVeterinaria == veterinaria.id).First();
+                    veterinaria1.web = veterinaria.contacto;
+                    veterinaria1.telefono = veterinaria.telefono;
+                    veterinaria1.petShop = veterinaria.petshop;
+                    veterinaria1.peluqueria = veterinaria.peluqueria;
+                    veterinaria1.nroCalle = veterinaria.domicilio.numeroCalle;
+                    veterinaria1.nombre = veterinaria.nombre;
+                    veterinaria1.medicina = veterinaria.medicina;
+                    veterinaria1.idCalle = veterinaria.domicilio.calle.idCalle;
+                    veterinaria1.idBarrio = veterinaria.domicilio.barrio.idBarrio;
+                    veterinaria1.castraciones = veterinaria.castraciones;
+                    mapa.SaveChanges();
+                    transaccion.Complete();
+                    return true;
+                }
+                catch (Exception)
+                {
+                    transaccion.Dispose();
+                    return false;
+                }
             }
         }
     }

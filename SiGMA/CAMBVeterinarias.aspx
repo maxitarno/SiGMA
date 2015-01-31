@@ -81,7 +81,7 @@
                             <td>
                                 Localidad:
                             </td>
-                        <td colspan="2">
+                        <td>
                             <asp:DropDownList ID="ddlLocalidad" runat="server" Width="100%" AutoPostBack="True" OnSelectedIndexChanged="selectedIndexChange">
                             </asp:DropDownList>
                         </td>
@@ -90,7 +90,7 @@
                         <td>
                             Barrio:
                         </td>
-                        <td colspan="2">
+                        <td>
                             <asp:DropDownList ID="ddlBarrio" runat="server" Width="100%" AutoPostBack="True">
                             </asp:DropDownList>
                         </td>
@@ -99,9 +99,12 @@
                         <td>
                             Calle:
                         </td>
-                        <td colspan="2">
+                        <td>
                             <asp:DropDownList ID="ddlCalle" runat="server" AutoPostBack="True">
                             </asp:DropDownList>
+                        </td>
+                        <td>
+                            Nº<asp:TextBox ID="txtNº" runat="server"></asp:TextBox>
                         </td>
                     </tr>
                     </asp:Panel>
@@ -167,8 +170,8 @@
                 <div style="margin-left: 30%; display: table; width: 40%;">
                     <div style="display: table-row; width: 30%">
                         <div style="display: table-cell; width: 20%;">
-                            <asp:Panel ID="pnlRegistrar" runat="server" Visible="false">
-                                
+                            <asp:Panel ID="pnlModificar" runat="server" Visible="true">
+                                <asp:Button ID="btnModificar" runat="server" Text="Modificar" OnClick="Modificar"/>
                             </asp:Panel>
                         </div>
                         <div style="display: table-cell; width: 20%;">

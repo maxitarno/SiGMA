@@ -148,6 +148,15 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.DropDownList ddlCalle;
         
         /// <summary>
+        /// Control txtNº.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtNº;
+        
+        /// <summary>
         /// Control pnlResultados.
         /// </summary>
         /// <remarks>
@@ -238,13 +247,22 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.TextBox txtTE;
         
         /// <summary>
-        /// Control pnlRegistrar.
+        /// Control pnlModificar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlRegistrar;
+        protected global::System.Web.UI.WebControls.Panel pnlModificar;
+        
+        /// <summary>
+        /// Control btnModificar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnModificar;
         
         /// <summary>
         /// Control pnlEliminar.
