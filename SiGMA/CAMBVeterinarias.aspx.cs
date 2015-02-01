@@ -15,6 +15,12 @@ namespace SiGMA
         {
             if (!Page.IsPostBack)
             {
+                pnlDomicilio.Visible = false;
+                pnlGoogle.Visible = false;
+                pnlModificar.Visible = false;
+                pnlNombre.Visible = true;
+                pnlResultados.Visible = false;
+                pnlDatos.Visible = false;
                 CargarCombos.cargarLocalidades(ref ddlLocalidad);
                 CargarCombos.cargarCalles(ref ddlCalle);
                 CargarCombos.cargarBarrio(ref ddlBarrio);
@@ -38,6 +44,12 @@ namespace SiGMA
             veterinaria.domicilio.barrio.localidad = new ELocalidad();
             if (rbPorNombre.Checked)
             {
+                pnlDomicilio.Visible = false;
+                pnlGoogle.Visible = false;
+                pnlModificar.Visible = false;
+                pnlNombre.Visible = false;
+                pnlResultados.Visible = false;
+                pnlDatos.Visible = false;
                 lstResultados.Items.Clear();
                 lstResultados.DataSource = LogicaBDVeterinaria.BuscarPorNombre(txtNombre.Text);
                 lstResultados.DataValueField = "id";
@@ -45,6 +57,12 @@ namespace SiGMA
                 lstResultados.DataBind();
             }
             else if(rbPorDomicilio.Checked){
+                pnlDomicilio.Visible = true;
+                pnlGoogle.Visible = false;
+                pnlModificar.Visible = false;
+                pnlNombre.Visible = true;
+                pnlResultados.Visible = false;
+                pnlDatos.Visible = false;
                 if (!ddlBarrio.SelectedValue.Equals("0"))
                 {
                     veterinaria.domicilio.barrio.idBarrio = int.Parse(ddlBarrio.SelectedValue.ToString());
@@ -156,6 +174,24 @@ namespace SiGMA
                 pnlAtento.Visible = false;
             }
 
+        }
+        public void RbPorDomicilio(object sender, EventArgs e)
+        {
+            pnlDomicilio.Visible = true;
+            pnlGoogle.Visible = false;
+            pnlModificar.Visible = false;
+            pnlNombre.Visible = false;
+            pnlResultados.Visible = false;
+            pnlDatos.Visible = false;
+        }
+        public void RbPorNombre(object sender, EventArgs e)
+        {
+            pnlDomicilio.Visible = false;
+            pnlGoogle.Visible = false;
+            pnlModificar.Visible = false;
+            pnlNombre.Visible = true;
+            pnlResultados.Visible = false;
+            pnlDatos.Visible = false;
         }
     }
 }

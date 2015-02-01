@@ -46,22 +46,32 @@
             </div>
         </div>
         <div class="panel-body">
-            <div class="col-md-offset-1 col-md-5">
+            <div class="row">
+                <div class="col-md-5 col-md-offset-5">
+                    <div class="centered">
+                        <table>
+                            <tr>
+                                <td align="left">
+                                    Por Nombre
+                                </td>                 
+                                <td>
+                                    <asp:RadioButton ID="rbPorNombre" runat="server" Text="" GroupName="1" Checked="true" OnCheckedChanged="RbPorNombre" AutoPostBack="True" />
+                                </td>
+                                <td align="left">
+                                    Por Domicilio
+                                </td>
+                                <td>
+                                    <asp:RadioButton ID="rbPorDomicilio" runat="server" Text="" GroupName="1" OnCheckedChanged="RbPorDomicilio" AutoPostBack="True" />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-offset-1 col-md-5">
                 <table>
-                    <tr>
-                        <td align="left">
-                            Por Nombre
-                        </td>
-                        <td>
-                            <asp:RadioButton ID="rbPorNombre" runat="server" Text="" GroupName="1" Checked="true" />
-                        </td>
-                        <td align="left">
-                            Por Domicilio
-                        </td>
-                        <td>
-                            <asp:RadioButton ID="rbPorDomicilio" runat="server" Text="" GroupName="1" />
-                        </td>
-                    </tr>
                     <tr>
                         <asp:Panel ID="pnlNombre" runat="server">
                             <td>
@@ -120,10 +130,10 @@
                     </asp:Panel>
                 </table>
             </div>
-            <div class="col-md-5 col-md-offset-1">
+                <div class="col-md-5 col-md-offset-1">
                 <table>
                     <tr>
-                        <td>
+                        <td colspan="3">
                             <asp:Panel ID="pnlGoogle" runat="server" Width="250px" BorderStyle="Solid" Height="250px">
                             </asp:Panel>
                         </td>
@@ -155,23 +165,25 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <td align="left" style="width:50%">
                                 Contacto:
                             </td>
-                            <td>
+                            <td style="width:50%">
                                 <asp:TextBox ID="txtContacto" runat="server" Width="250px"></asp:TextBox>  
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <td style="width:50%" align="left">
                                 T.E.:
                             </td>
-                            <td>
+                            <td style="width:50%">
                                 <asp:TextBox ID="txtTE" runat="server" Width="250px"></asp:TextBox>
                             </td>
+                            <td></td>
                         </tr>
                     </asp:Panel>
                 </table>
+            </div>
             </div>
         </div>
         <div class="centered">
