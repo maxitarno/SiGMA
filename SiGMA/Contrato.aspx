@@ -29,7 +29,9 @@
         // page will print.
         $(
             function () {
-
+                document.all.item("noprint").style.visibility = 'hidden'
+                document.all.item("noprint1").style.visibility = 'hidden'
+                document.all.item("botones").style.visibility = 'hidden'
                 // Hook up the print link.
                 $("#imprimir")
                 //.attr("href", "javascript:void(0)")
@@ -38,6 +40,9 @@
                             // Print the DIV.
                             //$(".printable").print();
                             window.print();
+                            document.all.item("noprint").style.visibility = 'visible'
+                            document.all.item("noprint1").style.visibility = 'visible'
+                            document.all.item("botones").style.visibility = 'visible'
                             // Cancel click event.
                             return (false);
                         }
@@ -269,6 +274,7 @@
                     <p>
                         <a id="imprimir">Imprimir</a>
                     </p>
+                    <div id="botones">
                     <div style="margin-left: 30%; display: table; width: 40%;">
                         <div style="display: table-row; width: 30%">
                             <div style="display: table-cell; width: 20%;">
@@ -279,7 +285,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                    </div>
             </div>
         </div>
     </div>

@@ -11,7 +11,8 @@
 </head>
 <body>
 <form id="Form1" runat="server">
-   <div class="navbar navbar-inverse navbar-static-top">
+  <div id="noprint1">
+     <div class="navbar navbar-inverse navbar-static-top">
       <div class="container">
         <div class="header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -46,6 +47,7 @@
             </LoggedInTemplate>
         </asp:LoginView>
     </div>
+  </div>
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             
         </asp:ContentPlaceHolder>
@@ -54,7 +56,8 @@
         
     </asp:ContentPlaceHolder>
 
-    <div id="footer">
+    <div id="noprint">
+        <div id="footer">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-4">
@@ -77,6 +80,7 @@
 		
 		</div>
 	</div>
+    </div>
     
     <script src="Scripts/jquery-2.1.1.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>

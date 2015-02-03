@@ -195,7 +195,7 @@ public  object adopciones { get; set; }protected void Page_Load(object sender, E
         {
             EMascota mascota = new EMascota();
             mascota = (EMascota)Session["Mascota"];
-            if (Validaciones.verificarSoloLetras(mascota.nombreMascota))
+            if (mascota != null && Validaciones.verificarSoloLetras(mascota.nombreMascota))
             {
                 if (Session["Si"] != null && Session["Si"].ToString().Equals("Si"))
                 {
