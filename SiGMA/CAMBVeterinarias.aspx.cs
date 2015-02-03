@@ -21,9 +21,36 @@ namespace SiGMA
                 pnlNombre.Visible = true;
                 pnlResultados.Visible = false;
                 pnlDatos.Visible = false;
+                btnModificar.Visible = false;
                 CargarCombos.cargarLocalidades(ref ddlLocalidad);
                 CargarCombos.cargarCalles(ref ddlCalle);
                 CargarCombos.cargarBarrio(ref ddlBarrio);
+                String mod = Request.QueryString["m"];
+                if (mod == "1")
+                {
+                    lblTitulo.Text = "Modificar Usuario";
+                    btnModificar.Visible = true;
+                    //btnEliminar.Visible = true;
+                }
+                else
+                {
+                    lblTitulo.Text = "Consultar Usuario";
+                    btnModificar.Visible = false;
+                    btnEliminar.Visible = false;
+                }
+                if (Session["UsuarioLogueado"] != null)
+                {
+                    if (!LogicaBDRol.verificarPermisoVisualizacion(Session["UsuarioLogueado"].ToString(), "CAMBVeterinarias.aspx"))
+                        Response.Redirect("PermisosInsuficientes.aspx");
+                    if (!LogicaBDRol.verificarPermisosGrabacion(Session["UsuarioLogueado"].ToString(), "CAMBVeterinarias.aspx"))
+                        btnModificar.Visible = false;
+                    //if (!LogicaBDRol.verificarPermisosEliminacion(Session["UsuarioLogueado"].ToString(), "ConsultarUsuario.aspx"))
+                    //    btnEliminar.Visible = false;
+                }
+                else
+                {
+                    Response.Redirect("Login.aspx");
+                }
             }
         }
         protected void BtnRegresarClick(object sender, ImageClickEventArgs e)
@@ -47,8 +74,8 @@ namespace SiGMA
                 pnlDomicilio.Visible = false;
                 pnlGoogle.Visible = false;
                 pnlModificar.Visible = false;
-                pnlNombre.Visible = false;
-                pnlResultados.Visible = false;
+                pnlNombre.Visible = true;
+                pnlResultados.Visible = true;
                 pnlDatos.Visible = false;
                 lstResultados.Items.Clear();
                 lstResultados.DataSource = LogicaBDVeterinaria.BuscarPorNombre(txtNombre.Text);
@@ -60,8 +87,8 @@ namespace SiGMA
                 pnlDomicilio.Visible = true;
                 pnlGoogle.Visible = false;
                 pnlModificar.Visible = false;
-                pnlNombre.Visible = true;
-                pnlResultados.Visible = false;
+                pnlNombre.Visible = false;
+                pnlResultados.Visible = true;
                 pnlDatos.Visible = false;
                 if (!ddlBarrio.SelectedValue.Equals("0"))
                 {
@@ -102,6 +129,12 @@ namespace SiGMA
             txtContacto.Text = veterinaria.contacto;
             txtTE.Text = veterinaria.telefono;
             Session["id"] = veterinaria.id;
+            pnlDomicilio.Visible = true;
+            pnlGoogle.Visible = true;
+            pnlModificar.Visible = true;
+            pnlNombre.Visible = true;
+            pnlResultados.Visible = false;
+            pnlDatos.Visible = true;
         }
         public void Modificar(object sender, EventArgs e)
         {
@@ -131,12 +164,24 @@ namespace SiGMA
                                     pnlInfo.Visible = false;
                                     pnlCorrecto.Visible = true;
                                     pnlAtento.Visible = false;
+                                    pnlDomicilio.Visible = false;
+                                    pnlGoogle.Visible = false;
+                                    pnlModificar.Visible = false;
+                                    pnlNombre.Visible = true;
+                                    pnlResultados.Visible = false;
+                                    pnlDatos.Visible = false;
                                 }
                                 else{
                                     lblError.Text = "No se pudo modificar";
                                     pnlInfo.Visible = false;
                                     pnlCorrecto.Visible = false;
                                     pnlAtento.Visible = true;
+                                    pnlDomicilio.Visible = false;
+                                    pnlGoogle.Visible = false;
+                                    pnlModificar.Visible = false;
+                                    pnlNombre.Visible = true;
+                                    pnlResultados.Visible = false;
+                                    pnlDatos.Visible = false;
                                 }
                             }
                             else{

@@ -20,7 +20,7 @@
         <div class="panel panel-default">
             <div class="panel panel-heading">
                 <h3 class="panel-title">
-                    Registrar veterinarias
+                    <asp:Label ID="lblTitulo" runat="server" Text=""></asp:Label>
                 </h3>
             </div>
         </div>
@@ -81,10 +81,6 @@
                                 <asp:TextBox ID="txtNombre" runat="server" style="width:250px"></asp:TextBox>
                             </td>
                         </asp:Panel>
-                        <td>
-                            <asp:Button ID="btnBuscar" runat="server" Text="Buscar" 
-                                onclick="btnBuscar_Click" />
-                        </td>
                     </tr>
                     <asp:Panel ID="pnlDomicilio" runat="server" Width="100%">
                         <tr>
@@ -118,6 +114,12 @@
                             </td>
                         </tr>
                     </asp:Panel>
+                    <tr>
+                       <td>
+                            <asp:Button ID="btnBuscar" runat="server" Text="Buscar" 
+                                onclick="btnBuscar_Click" />
+                        </td> 
+                    </tr>
                     <asp:Panel ID="pnlResultados" runat="server">
                         <tr>
                             <td>

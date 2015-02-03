@@ -29,11 +29,11 @@
 				<p class="col-lg-4">REGISTRAR</p>
 			</div>
 			<div class="col-lg-4">
-				<a class="zoom green" href="CAMBVeterinarias.aspx"><img class="img-responsive" src="assets/img/mascotas/consultarmascota.jpg" alt="" width="200px" height="300px"/></a>
+				<a class="zoom green" href="CAMBVeterinarias.aspx?m=2"><img class="img-responsive" src="assets/img/mascotas/consultarmascota.jpg" alt="" width="200px" height="300px"/></a>
 				<p class="col-lg-4">CONSULTAR</p>
 			</div>
 			<div class="col-lg-4">
-				<a class="zoom green" href="CAMBVeterinarias.aspx"><img class="img-responsive" src="assets/img/mascotas/registrarhallazgo.jpg" alt="" width="200px" height="300px" /></a>
+				<a class="zoom green" href="CAMBVeterinarias.aspx?m=1"><img class="img-responsive" src="assets/img/mascotas/registrarhallazgo.jpg" alt="" width="200px" height="300px" /></a>
 				<p class="col-lg-4">MODIFICAR</p>
 			</div>
 		</div><!-- /row -->
