@@ -109,6 +109,7 @@
     <Content Include="EnConstruccion.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="GenerarCodigoQR.aspx" />
+    <Content Include="Grafico.htm" />
     <Content Include="Hallazgos.aspx" />
     <Content Include="imagenes\volver.png" />
     <Content Include="Login.aspx" />
