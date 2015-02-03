@@ -65,13 +65,22 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="2">
+                        <td colspan="2" style="float:left">
                             <asp:CheckBox ID="chkPeluqueria" runat="server" Text="Peluqueria"/>
-                            <br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="float:left" colspan="2">
                             <asp:CheckBox ID="chkPetShop" runat="server" Text="PetShop"/>
-                            <br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="float:left" colspan="2">
                             <asp:CheckBox ID="chkMedicinas" runat="server" Text="Medicinas"/>
-                            <br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="float:left" colspan="2">
                             <asp:CheckBox ID="chkCastraciones" runat="server" Text="Castraciones"/>
                         </td>
                     </tr>
@@ -106,7 +115,7 @@
                             Calle:
                         </td>
                         <td>
-                            <asp:DropDownList ID="ddlCalle" runat="server" Width="50%"  AppendDataBoundItems="True">
+                            <asp:DropDownList ID="ddlCalle" runat="server" Width="65%"  AppendDataBoundItems="True" style="float:left">
                             </asp:DropDownList>
                             Nº<asp:TextBox ID="txtNº" runat="server" Width="25%"></asp:TextBox>
                         </td>

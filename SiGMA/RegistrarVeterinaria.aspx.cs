@@ -16,6 +16,15 @@ namespace SiGMA
             if (!Page.IsPostBack)
             {
                 CargarCombos.cargarLocalidades(ref ddlLocalidad);
+                if (Session["UsuarioLogueado"] != null)
+                {
+                    if (!LogicaBDRol.verificarPermisoVisualizacion(Session["UsuarioLogueado"].ToString(), "RegistrarVeterinaria.aspx"))
+                        Response.Redirect("PermisosInsuficientes.aspx");
+                }
+                else
+                {
+                    Response.Redirect("Login.aspx");
+                }
             }
         }
         protected void BtnRegresarClick(object sender, ImageClickEventArgs e)
