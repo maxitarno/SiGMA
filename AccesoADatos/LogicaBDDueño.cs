@@ -34,30 +34,38 @@ namespace AccesoADatos
                            join barriosBD in mapaEntidades.Barrios on personasBD.idBarrio equals barriosBD.idBarrio
                            into tempPersonaBarrio
                            from subBarriosBD in tempPersonaBarrio.DefaultIfEmpty()
-                           join mascotasBD in mapaEntidades.Mascotas on dueñosBD.idDuenio equals mascotasBD.idDuenio
+                           join callesBD in mapaEntidades.Calles on personasBD.idCalle equals callesBD.idCalle into tempPersonaCalle
+                           from subCallesBD in tempPersonaCalle.DefaultIfEmpty()
+                           join mascotasBD in mapaEntidades.Mascotas on dueñosBD.idDuenio equals mascotasBD.idDuenio                           
                            where (mascotasBD.idMascota == idMascota)
                            select new
                            {    
                                personasBD,
                                idBarrio = subBarriosBD != null ? subBarriosBD.idBarrio : -1,
-                               nombreBarrio = subBarriosBD != null ? subBarriosBD.nombre : string.Empty
+                               nombreBarrio = subBarriosBD != null ? subBarriosBD.nombre : string.Empty,
+                               idCalle = subCallesBD != null ? subCallesBD.idCalle : -1,
+                               nombreCalle = subCallesBD != null ? subCallesBD.nombre : string.Empty                              
                            };
             EDuenio dueño = null;
 
             if (consulta.Count() != 0)
             {
                 dueño = new EDuenio();
+                dueño.domicilio = new EDomicilio();
                 dueño.apellido = consulta.Select(a => a.personasBD.apellido).First();
                 dueño.nombre = consulta.Select(a => a.personasBD.nombre).First();
+                dueño.domicilio.numeroCalle = consulta.Select(a => a.personasBD.nroCalle).First();
                 if (consulta.Select(a => a.idBarrio).First() != -1)
                 {
-                    dueño.barrio = new EBarrio();
-                    dueño.barrio.idBarrio = consulta.Select(a => a.idBarrio).First();
-                    dueño.barrio.nombre = consulta.Select(a => a.nombreBarrio).First();
+                    dueño.domicilio.barrio = new EBarrio();
+                    dueño.domicilio.barrio.idBarrio = consulta.Select(a => a.idBarrio).First();
+                    dueño.domicilio.barrio.nombre = consulta.Select(a => a.nombreBarrio).First();
                 }
-                if (consulta.Select(a => a.personasBD.domicilio).First() != null)
+                if (consulta.Select(a => a.idCalle).First() != -1)
                 {
-                    dueño.domicilio.nombre = consulta.Select(a => a.personasBD.domicilio).First();
+                    dueño.domicilio.calle = new ECalle();
+                    dueño.domicilio.calle.idCalle = consulta.Select(a => a.idCalle).First();
+                    dueño.domicilio.calle.nombre = consulta.Select(a => a.nombreCalle).First();
                 }
                 dueño.email = consulta.Select(a => a.personasBD.email).First();
                 if (consulta.Select(a => a.personasBD.telefonoCelular).First() != null)

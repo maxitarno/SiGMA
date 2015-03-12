@@ -56,7 +56,7 @@ namespace Herramientas
                         datosQR += " Nombre del dueño: " + mascota.duenio.nombre + " " + mascota.duenio.apellido;
                         break;
                     case "Direccion":
-                        datosQR += " Direccion: " + mascota.duenio.domicilio + " B°: " +mascota.duenio.barrio.nombre;
+                        datosQR += " Direccion: " + mascota.duenio.domicilio.nombre + " B°: " +mascota.duenio.barrio.nombre;
                         break;
                     case "Email":
                         datosQR += " Email: " + mascota.duenio.email;
