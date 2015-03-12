@@ -50,22 +50,21 @@ namespace AccesoADatos
 
             if (consulta.Count() != 0)
             {
-                dueño = new EDuenio();
-                dueño.domicilio = new EDomicilio();
+                dueño = new EDuenio();                
                 dueño.apellido = consulta.Select(a => a.personasBD.apellido).First();
                 dueño.nombre = consulta.Select(a => a.personasBD.nombre).First();
-                dueño.domicilio.numeroCalle = consulta.Select(a => a.personasBD.nroCalle).First();
+                dueño.nroCalle = consulta.Select(a => a.personasBD.nroCalle).First();
                 if (consulta.Select(a => a.idBarrio).First() != -1)
                 {
-                    dueño.domicilio.barrio = new EBarrio();
-                    dueño.domicilio.barrio.idBarrio = consulta.Select(a => a.idBarrio).First();
-                    dueño.domicilio.barrio.nombre = consulta.Select(a => a.nombreBarrio).First();
+                    dueño.barrio = new EBarrio();
+                    dueño.barrio.idBarrio = consulta.Select(a => a.idBarrio).First();
+                    dueño.barrio.nombre = consulta.Select(a => a.nombreBarrio).First();
                 }
                 if (consulta.Select(a => a.idCalle).First() != -1)
                 {
-                    dueño.domicilio.calle = new ECalle();
-                    dueño.domicilio.calle.idCalle = consulta.Select(a => a.idCalle).First();
-                    dueño.domicilio.calle.nombre = consulta.Select(a => a.nombreCalle).First();
+                    dueño.domicilio = new ECalle();
+                    dueño.domicilio.idCalle = consulta.Select(a => a.idCalle).First();
+                    dueño.domicilio.nombre = consulta.Select(a => a.nombreCalle).First();
                 }
                 dueño.email = consulta.Select(a => a.personasBD.email).First();
                 if (consulta.Select(a => a.personasBD.telefonoCelular).First() != null)

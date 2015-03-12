@@ -124,7 +124,7 @@ namespace SiGMA
 
         protected void chkTelefono_CheckedChanged(object sender, EventArgs e)
         {
-            actualizarCampos("Telefono", chkTelefonoCel.Checked);
+            actualizarCampos("TelefonoCel", chkTelefonoCel.Checked);
 
         }
         private void habilitarCheckboxes()
