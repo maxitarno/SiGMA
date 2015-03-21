@@ -49,7 +49,7 @@ namespace SiGMA
             txtRol.Text = rol.nombreRol;
             txtDescripcionRol.Text = rol.descripcionRol;
             txtRol.Enabled = false;
-            if (ddlRol.SelectedValue == "-- Seleccione un rol --")
+            if (ddlRol.SelectedValue == "SIN ASIGNAR")
                 limpiarPagina();
         }
 
@@ -62,7 +62,7 @@ namespace SiGMA
                     ERol rol = new ERol();
                     rol.nombreRol = txtRol.Text;
                     rol.descripcionRol = txtDescripcionRol.Text;
-                    if (ddlRol.SelectedValue != "-- Seleccione un rol --")
+                    if (ddlRol.SelectedValue != "SIN ASIGNAR")
                         rol.idRol = Convert.ToInt32(ddlRol.SelectedValue);
                     if (LogicaBDRol.guardarRol(rol))
                     {
@@ -88,7 +88,7 @@ namespace SiGMA
 
         private void limpiarPagina()
         {
-            ddlRol.SelectedValue = "-- Seleccione un rol --";
+            ddlRol.SelectedValue = "SIN ASIGNAR";
             txtDescripcionRol.Text = "";
             txtRol.Text = "";
             pnlModificacionRol.Visible = false;
