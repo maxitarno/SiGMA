@@ -44,8 +44,8 @@ namespace SiGMA
                         Response.Redirect("PermisosInsuficientes.aspx");
                     if (!LogicaBDRol.verificarPermisosGrabacion(Session["UsuarioLogueado"].ToString(), "CAMBVeterinarias.aspx"))
                         btnModificar.Visible = false;
-                    //if (!LogicaBDRol.verificarPermisosEliminacion(Session["UsuarioLogueado"].ToString(), "ConsultarUsuario.aspx"))
-                    //    btnEliminar.Visible = false;
+                    if (!LogicaBDRol.verificarPermisosEliminacion(Session["UsuarioLogueado"].ToString(), "CAMBVeterinarias.aspx"))
+                        btnEliminar.Visible = false;
                 }
                 else
                 {

@@ -102,7 +102,7 @@
                                 </asp:DropDownList>
                             </td>
                             <td><asp:Button ID="btnEliminarRol" runat="server" Text="Eliminar" 
-                                    onclick="btnEliminarRol_Click" /></td>
+                                    onclick="btnEliminarRol_Click" visible="false"/></td>
                         </tr>
                         <tr>
                             <td align="right" width="100px">Agregar Rol: </td>
@@ -112,7 +112,7 @@
                                 </asp:DropDownList>
                             </td>
                             <td><asp:Button ID="btnAsignarRol" runat="server" Text="Guardar" 
-                                    onclick="btnAsignarRol_Click" /></td>
+                                    onclick="btnAsignarRol_Click" visible="false" /></td>
                         </tr>
                         <tr>
                             <td></td>

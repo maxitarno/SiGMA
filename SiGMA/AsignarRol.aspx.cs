@@ -18,11 +18,16 @@ namespace SiGMA
             {
                 if (Session["UsuarioLogueado"] != null)
                 {
-
+                    if (!LogicaBDRol.verificarPermisoVisualizacion(Session["UsuarioLogueado"].ToString(), "AsignarRol.aspx"))
+                        Response.Redirect("PermisosInsuficientes.aspx");
+                    if (LogicaBDRol.verificarPermisosGrabacion(Session["UsuarioLogueado"].ToString(), "AsignarRol.aspx"))
+                        btnAsignarRol.Visible = true;
+                    if (LogicaBDRol.verificarPermisosEliminacion(Session["UsuarioLogueado"].ToString(), "AsignarRol.aspx"))
+                        btnEliminarRol.Visible = true;
                 }
                 else
                 {
-                    Response.Redirect("Login.aspx");
+                    Response.Redirect("Login.aspx"); 
                 }
             }
         }

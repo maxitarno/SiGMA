@@ -19,6 +19,10 @@ namespace SiGMA
         {
             if (!Page.IsPostBack)
             {
+                if (Session["UsuarioLogueado"] == null)
+                {
+                    Response.Redirect("Login.aspx");
+                }
                 Session["CamposQR"] = new List<string>();
                 EMascota mascota = LogicaBDMascota.BuscarMascotaPorIdMascota(int.Parse(Session["idMascota"].ToString()));
                 mascota.duenio = LogicaBDDueño.buscarDueño(mascota.idMascota);

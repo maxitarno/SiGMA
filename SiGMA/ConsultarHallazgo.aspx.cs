@@ -20,6 +20,13 @@ namespace SiGMA
                 {
                     Response.Redirect("Login.aspx");
                 }
+                else
+                {
+                    if (!LogicaBDRol.verificarPermisoVisualizacion(Session["UsuarioLogueado"].ToString(), "ConsultarHallazgo.aspx"))
+                        Response.Redirect("PermisosInsuficientes.aspx");
+                    if (!LogicaBDRol.verificarPermisosGrabacion(Session["UsuarioLogueado"].ToString(), "ConsultarHallazgo.aspx"))
+                        btnModificarHallazgo.Visible = false;
+                }
                 CargarCombos.cargarLocalidades(ref ddlLocalidades);
                 CargarCombos.cargarEspecies(ref ddlEspecie);                
                 CargarCombos.cargarEdad(ref ddlEdad);

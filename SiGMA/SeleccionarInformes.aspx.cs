@@ -18,6 +18,8 @@ namespace SiGMA
         {
             if (!Page.IsPostBack)
             {
+                if (!LogicaBDRol.verificarPermisoVisualizacion(Session["UsuarioLogueado"].ToString(), "Administracion"))
+                    Response.Redirect("PermisosInsuficientes.aspx");
                 CargarCombos.cargarComboRazas(ref ddlRaza);
                 CargarCombos.cargarBarrio(ref ddlBarrioHallazgo);
                 CargarCombos.cargarBarrio(ref ddlBarrioPerdida);

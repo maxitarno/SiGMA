@@ -20,6 +20,8 @@ namespace SiGMA
                 {
                     if (!LogicaBDRol.verificarPermisoVisualizacion(Session["UsuarioLogueado"].ToString(), "RegistrarVeterinaria.aspx"))
                         Response.Redirect("PermisosInsuficientes.aspx");
+                    if (!LogicaBDRol.verificarPermisosGrabacion(Session["UsuarioLogueado"].ToString(), "RegistrarVeterinaria.aspx"))
+                        btnRegistrar.Visible = false;
                 }
                 else
                 {

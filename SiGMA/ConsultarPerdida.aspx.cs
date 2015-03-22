@@ -22,6 +22,10 @@ namespace SiGMA
                         pnlVoluntario.Visible = true;
                     else
                         MascotasPorDueño();
+                    if (!LogicaBDRol.verificarPermisoVisualizacion(Session["UsuarioLogueado"].ToString(), "ConsultarPerdida.aspx"))
+                        Response.Redirect("PermisosInsuficientes.aspx");
+                    if (!LogicaBDRol.verificarPermisosGrabacion(Session["UsuarioLogueado"].ToString(), "ConsultarPerdida.aspx"))
+                        btnModificar.Visible = false; 
                 }
                 else
                 {

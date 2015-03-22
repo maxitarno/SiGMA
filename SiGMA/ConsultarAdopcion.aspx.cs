@@ -20,6 +20,15 @@ public  object adopciones { get; set; }protected void Page_Load(object sender, E
                 {
                     Response.Redirect("Login.aspx");
                 }
+                else
+                {
+                    if (!LogicaBDRol.verificarPermisoVisualizacion(Session["UsuarioLogueado"].ToString(), "ConsultarAdopcion.aspx"))
+                        Response.Redirect("PermisosInsuficientes.aspx");
+                    if (!LogicaBDRol.verificarPermisosGrabacion(Session["UsuarioLogueado"].ToString(), "ConsultarAdopcion.aspx"))
+                        btnRegistrar.Visible = false;
+                    if (!LogicaBDRol.verificarPermisosEliminacion(Session["UsuarioLogueado"].ToString(), "ConsultarAdopcion.aspx"))
+                        btnEliminar.Visible = false;
+                }
                 CargarCombos.cargarTipoDocumento(ref ddlTipo);
                 String mod = Request.QueryString["m"];
                 if (mod == "1")
