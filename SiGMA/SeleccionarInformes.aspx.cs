@@ -141,6 +141,10 @@ namespace SiGMA
             if (ddlInforme.SelectedValue.ToString().Equals("1"))
             {
                 EMascota mascota = new EMascota();
+                pnlListadoDeMascotas.Visible = true;
+                pnlAdopciones.Visible = false;
+                pnlHallazgos.Visible = false;
+                pnlPerdidas.Visible = false;
                 if (!ddlEdad.SelectedValue.Equals("0"))
                 {
                     mascota.edad = new EEdad();
@@ -173,6 +177,10 @@ namespace SiGMA
             }
             if(ddlInforme.SelectedValue.Equals("3")){
                 EAdopcion adopcion = new EAdopcion();
+                pnlListadoDeMascotas.Visible = false;
+                pnlAdopciones.Visible = true;
+                pnlHallazgos.Visible = false;
+                pnlPerdidas.Visible = false;
                 fecha = new DateTime();
                 if (!ddlEstadoDeAdopcion.SelectedValue.Equals("0"))
                 {
@@ -193,6 +201,10 @@ namespace SiGMA
                 EHallazgo hallazgo = new EHallazgo();
                 fecha = new DateTime();
                 hallazgo.domicilio = new EDomicilio();
+                pnlListadoDeMascotas.Visible = false;
+                pnlAdopciones.Visible = false;
+                pnlHallazgos.Visible = true;
+                pnlPerdidas.Visible = false;
                 if (DateTime.TryParse(txtFechaDelHallazgo.Text, out fecha))
                 {
                     hallazgo.fechaHallazgo = DateTime.Parse(txtFechaDelHallazgo.Text);
@@ -219,6 +231,10 @@ namespace SiGMA
             {
                 EPerdida perdida = new EPerdida();
                 fecha = new DateTime();
+                pnlListadoDeMascotas.Visible = false;
+                pnlAdopciones.Visible = false;
+                pnlHallazgos.Visible = false;
+                pnlPerdidas.Visible = true;
                 if (DateTime.TryParse(txtFechaDeLaPerdida.Text, out fecha))
                 {
                     perdida.fecha = DateTime.Parse(txtFechaDeLaPerdida.Text);
