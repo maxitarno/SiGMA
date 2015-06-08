@@ -12,5 +12,6 @@ namespace Entidades
         public string password { get; set; }
         public List<ERol> rolesUsuario { get; set; }
         public bool estado { get; set; }
+        public string token { get; set; }
     }
 }

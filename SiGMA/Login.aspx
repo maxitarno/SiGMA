@@ -30,18 +30,28 @@
             <div class="panel-body">
                 <div>
                     <div class="centered" >
-                        <asp:Login ID="login" runat="server" TitleText="" onauthenticate="login_Authenticate" style="margin-left:auto;margin-right:auto">
-                            <LoginButtonStyle/>
-                            <TextBoxStyle/>
+                        <asp:Login ID="login" runat="server" TitleText="" 
+                            onauthenticate="login_Authenticate" style="margin-left:auto;margin-right:auto" 
+                            FailureText="Usuario y/o Contraseña Incorrecto o No Validado" 
+                            PasswordLabelText="Contraseña:" 
+                            PasswordRequiredErrorMessage="Contraseña Requerida" RememberMeText="Recordarme" 
+                            UserNameLabelText="Usuario:" UserNameRequiredErrorMessage="Usuario Requerido">
                         </asp:Login>
                         <br />
                         No tiene un usuario? <input value="Crear Usuario" type="button" onclick="RegistrarUsuario()"/>
+                        <br />
+                        Validar usuario creado <input value="Validar Usuario" type="button" onclick="ValidarUsuario()"/>
                     </div>
                 </div>
                 <script type="text/javascript" >
                     function RegistrarUsuario() {
                         location.href = "RegistrarUsuario.aspx";
                     }
+                    </script>
+                    <script type="text/javascript" >
+                        function ValidarUsuario() {
+                            location.href = "ValidarUsuario.aspx";
+                        }
                     </script>
             </div>
        </div>

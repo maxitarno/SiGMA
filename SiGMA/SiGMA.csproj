@@ -140,6 +140,7 @@
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
     <Content Include="Usuarios.aspx" />
+    <Content Include="ValidarUsuario.aspx" />
     <Content Include="Veterinarias.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -426,6 +427,13 @@
     </Compile>
     <Compile Include="Usuarios.aspx.designer.cs">
       <DependentUpon>Usuarios.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ValidarUsuario.aspx.cs">
+      <DependentUpon>ValidarUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ValidarUsuario.aspx.designer.cs">
+      <DependentUpon>ValidarUsuario.aspx</DependentUpon>
     </Compile>
     <Compile Include="Veterinarias.aspx.cs">
       <DependentUpon>Veterinarias.aspx</DependentUpon>

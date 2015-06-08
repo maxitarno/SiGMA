@@ -14,11 +14,14 @@ namespace AccesoADatos
             {
                 try
                 {
+                    LogicaBDToken token = new LogicaBDToken();
+                    var tokenNuevoUsuario = token.GenerarToken(4, 10);
                     SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
                     Usuarios userBD = new Usuarios();
                     userBD.user = usuario.user;
                     userBD.password = usuario.password;
                     userBD.estado = usuario.estado;
+                    userBD.token = tokenNuevoUsuario;
                     mapaEntidades.AddToUsuarios(userBD);
                     mapaEntidades.SaveChanges();
                     ERol rolDuenio = LogicaBDRol.ObtenerRol("Dueño");
@@ -65,6 +68,7 @@ namespace AccesoADatos
                 {
                     EUsuario usuario = new EUsuario();
                     usuario.user = usuarioBD.user;
+                    usuario.token = usuarioBD.token;
                     usuarios.Add(usuario);
                 }
             }
@@ -334,6 +338,23 @@ namespace AccesoADatos
            return usuarios;
        }
         //fin metodo
-        //metodo para buscar persona
+        //metodo para Validacion de Usuario por Token
+        public static void ValidarUsuario(string usuario)
+        {
+            try
+            {
+                SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+                var usuarios = mapaEntidades.Usuarios.Where(usuariobuscado => usuariobuscado.user == usuario);
+                foreach (var registro in usuarios)
+                {
+                    registro.token = null;
+                }
+                mapaEntidades.SaveChanges();
+            }
+            catch (InvalidOperationException exc)
+            {
+                throw exc;
+            }
+        }
     }
 }

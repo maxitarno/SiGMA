@@ -27,15 +27,25 @@ namespace SiGMA
             usuario.password = login.Password;
             if (LogicaBDLogin.esUsuario(usuario))
             {
-                Session["UsuarioLogueado"] = usuario.user;
-                Session["IdDueño"] = LogicaBDDueño.buscarIdDueñoPorUsuario(usuario.user).ToString();
-                Session["IdVoluntario"] = LogicaBDVoluntario.buscarIdVoluntarioPorUsuario(usuario.user).ToString();
-                //aca hay que verificar el rol, HACER!!!!
-                HttpCookie cook = new HttpCookie("idDueño");
-                cook.Value = Session["IdDueño"].ToString();
-                cook.Expires = DateTime.Now.AddDays(1);
-                Response.Cookies.Add(cook);
-                e.Authenticated = true;
+                EUsuario usuario2 = new EUsuario();
+                usuario2 = LogicaBDUsuario.BuscarUsuarios(login.UserName).First();
+                if(String.IsNullOrEmpty(usuario2.token))
+                {
+                    Session["UsuarioLogueado"] = usuario.user;
+                    Session["IdDueño"] = LogicaBDDueño.buscarIdDueñoPorUsuario(usuario.user).ToString();
+                    Session["IdVoluntario"] = LogicaBDVoluntario.buscarIdVoluntarioPorUsuario(usuario.user).ToString();
+                    //aca hay que verificar el rol, HACER!!!!
+                    HttpCookie cook = new HttpCookie("idDueño");
+                    cook.Value = Session["IdDueño"].ToString();
+                    cook.Expires = DateTime.Now.AddDays(1);
+                    Response.Cookies.Add(cook);
+
+                    e.Authenticated = true;
+                }
+                else
+                {
+                    e.Authenticated = false;
+                }  
             }
             else
             {

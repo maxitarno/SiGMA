@@ -15,8 +15,8 @@ namespace AccesoADatos
             if(nombrePC.Equals("GON-PC"))
             {
                 cadenaConexion = "metadata=res://*/DER.csdl|res://*/DER.ssdl|res://*/DER.msl;provider=System.Data.SqlClient;provider connection string=\"data source=GON-PC;initial catalog=SiGMA;integrated security=True;multipleactiveresultsets=True;App=EntityFramework\"";
-            }        
-            else if(nombrePC.Equals("ULTRA-MAX"))
+            }
+            else if (nombrePC.Equals("ULTRA-MAX") || nombrePC.Equals("MAXI_NTB"))
             {
                 cadenaConexion="metadata=res://*/DER.csdl|res://*/DER.ssdl|res://*/DER.msl;provider=System.Data.SqlClient;provider connection string=\"Data Source=(local);Initial Catalog=SiGMA;Integrated Security=True\"";
             }
