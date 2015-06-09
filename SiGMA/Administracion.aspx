@@ -25,7 +25,7 @@
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2 centered">
                 <h3>ADMINISTRACIÓN</h3>
-                <h4 >Elija que desea hacer en el menú inferior</h4>
+                <h4>Elija que desea hacer en el menú inferior</h4>
         </div>
         </div>
 		<div class="row">	
@@ -57,7 +57,7 @@
 			</div>
 			<div class="col-lg-4 col-md-4">
 				<div class="thumbnail">
-                    <a class="zoom green" href="CABMTipoDeDocumento.aspx"><img class="img-responsive img-circle" src="assets/img/administracion/documentos.jpg" alt="" width="200px" height="300px" /></a>
+                    <a class="zoom green" href="CABMTipoDeDocumento.aspx"><img class="img-responsive img-circle" src="assets/img/administracion/documentos.jpg" alt="" width="200px" height="295px" /></a>
 				    <div class="caption centered"><h4>TIPOS DOCS</h4> </div>
                 </div>
 			</div>
@@ -69,17 +69,16 @@
             </div>
 		</div><!-- /row -->
         <div class="row">	
-			<div class="col-lg-4">
+			<div class="col-lg-4 col-md-4">
 				
 			</div>
-			<div class="col-lg-4">
-				 <a class="zoom green" href="Default.aspx">
-                    <img class="img-responsive" src="assets/img/mascotas/volver.jpg" alt="" width="200px"
-                        height="300px" /></a>
-                <p class="col-lg-4">
-                    VOLVER</p>
+			<div class="col-lg-4 col-md-4">
+                <div class="thumbnail">
+                    <a class="zoom green" href="Default.aspx"><img class="img-responsive img-circle" src="assets/img/mascotas/volver.jpg" alt="" width="200px" height="300px" /></a>
+				    <div class="caption centered"><h4>VOLVER</h4> </div>
+                </div>
             </div>
-			<div class="col-lg-4">
+			<div class="col-lg-4 col-md-4">
                 
             </div>
 		</div><!-- /row -->

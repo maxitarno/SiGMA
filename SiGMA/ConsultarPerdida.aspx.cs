@@ -42,7 +42,7 @@ namespace SiGMA
                 CargarCombos.cargarBarrio(ref ddlBarrioPerdida);
                 CargarCombos.cargarLocalidades(ref ddlLocalidadPerdida);
                 CargarCombos.cargarCalles(ref ddlCallePerdida);
-                //rnvFechaPerdida.MaximumValue = DateTime.Now.ToShortDateString();
+                //txtFechaPerdida.Text = DateTime.Now.ToShortDateString();
                 String modif = Request.QueryString["m"];
                 if (modif == "1")
                 {
@@ -74,20 +74,30 @@ namespace SiGMA
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
             List<EMascota> mascotas = new List<EMascota>();
-            mascotas = LogicaBDMascota.buscarMascotasPorNombre(txtMascota.Text);
+            mascotas = LogicaBDMascota.buscarMascotasPerdidas(txtMascota.Text);
             limpiarPagina();
-            if (mascotas.Count != 0)
+            if(mascotas != null)
             {
-                pnlDueño.Visible = true;
-                lstMascotas.DataSource = mascotas;
-                lstMascotas.DataTextField = "nombreMascota";
-                lstMascotas.DataValueField = "idMascota";
-                lstMascotas.DataBind();
+                if (mascotas.Count != 0)
+                {
+                    pnlDueño.Visible = true;
+                    lstMascotas.DataSource = mascotas;
+                    lstMascotas.DataTextField = "nombreMascota";
+                    lstMascotas.DataValueField = "idMascota";
+                    lstMascotas.DataBind();
+                }
+                else
+                {
+                    pnlInfo.Visible = true;
+                    lblInfo.Text = "No se encontraron mascotas perdidas";
+                    pnlAtento.Visible = false;
+                    pnlCorrecto.Visible = false;
+                }
             }
             else
             {
                 pnlInfo.Visible = true;
-                lblInfo.Text = "No se encontraron mascotas";
+                lblInfo.Text = "No se encontraron mascotas perdidas";
                 pnlAtento.Visible = false;
                 pnlCorrecto.Visible = false;
             }

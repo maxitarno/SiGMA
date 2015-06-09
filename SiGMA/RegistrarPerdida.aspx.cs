@@ -41,7 +41,7 @@ namespace SiGMA
                 CargarCombos.cargarCalles(ref ddlCalles);
                 CargarCombos.cargarLocalidades(ref ddlLocalidadPerdida);
                 CargarCombos.cargarCalles(ref ddlCallePerdida);
-                rnvFechaPerdida.MaximumValue = DateTime.Now.ToShortDateString();
+                //rnvFechaPerdida.MaximumValue = DateTime.Now.ToShortDateString();
             }
         }
 
@@ -91,13 +91,13 @@ namespace SiGMA
 
         protected void imgFechaPerdida_click(object sender, ImageClickEventArgs e)
         {
-            calendario.Visible = true;
+            //calendario.Visible = true;
         }
 
         protected void calendario_SelectionChanged(object sender, EventArgs e)
         {
-            txtFechaPerdida.Text = calendario.SelectedDate.ToString("d");
-            calendario.Visible = false;
+            //txtFechaPerdida.Text = calendario.SelectedDate.ToString("d");
+            //calendario.Visible = false;
         }
 
         private void limpiarPagina() 

@@ -440,65 +440,65 @@ namespace SiGMA
                     if (permisosRol[i].pantalla == "ConsultarPerdida.aspx")
                     {
                         if (permisosRol[i].idPermiso == 1)
-                            chkConsultarMascotasL.Checked = true;
+                            chkConsultarPerdidasL.Checked = true;
                         if (permisosRol[i].idPermiso == 2)
-                            chkConsultarMascotasG.Checked = true;
+                            chkConsultarPerdidasG.Checked = true;
                         if (permisosRol[i].idPermiso == 3)
-                            chkConsultarMascotasE.Checked = true;
+                            chkConsultarPerdidasE.Checked = true;
                     }
                     if (permisosRol[i].pantalla == "RegistrarPerdida.aspx")
                     {
                         if (permisosRol[i].idPermiso == 1)
-                            chkRegistrarMascotasL.Checked = true;
+                            chkRegistrarPerdidasL.Checked = true;
                         if (permisosRol[i].idPermiso == 2)
-                            chkRegistrarMascotasG.Checked = true;
+                            chkRegistrarPerdidasG.Checked = true;
                         if (permisosRol[i].idPermiso == 3)
-                            chkRegistrarMascotasE.Checked = true;
+                            chkRegistrarPerdidasE.Checked = true;
                     }
                     if (permisosRol[i].pantalla == "ConsultarHallazgo.aspx")
                     {
                         if (permisosRol[i].idPermiso == 1)
-                            chkConsultarMascotasL.Checked = true;
+                            chkConsultarHallazgosL.Checked = true;
                         if (permisosRol[i].idPermiso == 2)
-                            chkConsultarMascotasG.Checked = true;
+                            chkConsultarHallazgosG.Checked = true;
                         if (permisosRol[i].idPermiso == 3)
-                            chkConsultarMascotasE.Checked = true;
+                            chkConsultarHallazgosE.Checked = true;
                     }
                     if (permisosRol[i].pantalla == "RegistrarHallazgo.aspx")
                     {
                         if (permisosRol[i].idPermiso == 1)
-                            chkRegistrarMascotasL.Checked = true;
+                            chkRegistrarHallazgosL.Checked = true;
                         if (permisosRol[i].idPermiso == 2)
-                            chkRegistrarMascotasG.Checked = true;
+                            chkRegistrarHallazgosG.Checked = true;
                         if (permisosRol[i].idPermiso == 3)
-                            chkRegistrarMascotasE.Checked = true;
+                            chkRegistrarHallazgosE.Checked = true;
                     }
                     if (permisosRol[i].pantalla == "ConsultarAdopcion.aspx")
                     {
                         if (permisosRol[i].idPermiso == 1)
-                            chkConsultarMascotasL.Checked = true;
+                            chkConsultarAdopcionesL.Checked = true;
                         if (permisosRol[i].idPermiso == 2)
-                            chkConsultarMascotasG.Checked = true;
+                            chkConsultarAdopcionesG.Checked = true;
                         if (permisosRol[i].idPermiso == 3)
-                            chkConsultarMascotasE.Checked = true;
+                            chkConsultarAdopcionesE.Checked = true;
                     }
-                    if (permisosRol[i].pantalla == "RegistrarPerdida.aspx")
+                    if (permisosRol[i].pantalla == "RegistrarAdopcion.aspx")
                     {
                         if (permisosRol[i].idPermiso == 1)
-                            chkRegistrarMascotasL.Checked = true;
+                            chkRegistrarAdopcionesL.Checked = true;
                         if (permisosRol[i].idPermiso == 2)
-                            chkRegistrarMascotasG.Checked = true;
+                            chkRegistrarAdopcionesG.Checked = true;
                         if (permisosRol[i].idPermiso == 3)
-                            chkRegistrarMascotasE.Checked = true;
+                            chkRegistrarAdopcionesE.Checked = true;
                     }
                     if (permisosRol[i].pantalla == "RegistrarVeterinaria.aspx")
                     {
                         if (permisosRol[i].idPermiso == 1)
-                            chkRegistrarMascotasL.Checked = true;
+                            chkRegistrarVeterinariaL.Checked = true;
                         if (permisosRol[i].idPermiso == 2)
-                            chkRegistrarMascotasG.Checked = true;
+                            chkRegistrarVeterinariaG.Checked = true;
                         if (permisosRol[i].idPermiso == 3)
-                            chkRegistrarMascotasE.Checked = true;
+                            chkRegistrarVeterinariaE.Checked = true;
                     }
                     if (permisosRol[i].pantalla == "Administracion")
                     {

@@ -31,19 +31,19 @@
 		<div class="row">	
 			<div class="col-lg-4 col-md-4">
 				<div class="thumbnail">    
-				   <a class="zoom green" href="RegistrarAdopcion.aspx"><img class="img-responsive img-circle" src="assets/img/mascotas/registrarmascota.jpg" alt="" width="200px" height="300px"/></a>
+				   <a class="zoom green" href="RegistrarAdopcion.aspx"><img class="img-responsive img-circle" src="assets/img/mascotas/registrarmascotafinal.jpg" alt="" width="200px" height="300px"/></a>
 				   <div class="caption centered"><h4>REGISTRAR</h4> </div>
                 </div>
 			</div>
 			<div class="col-lg-4 col-md-4">
 				<div class="thumbnail">    
-				   <a class="zoom green" href="ConsultarAdopcion.aspx"><img class="img-responsive img-circle" src="assets/img/mascotas/consultarmascota.jpg" alt="" width="200px" height="300px"/></a>
+				   <a class="zoom green" href="ConsultarAdopcion.aspx"><img class="img-responsive img-circle" src="assets/img/mascotas/consultarmascotafinal.jpg" alt="" width="200px" height="300px"/></a>
 				   <div class="caption centered"><h4>CONSULTAR</h4> </div>
                 </div>
 			</div>
 			<div class="col-lg-4 col-md-4">
 				<div class="thumbnail">    
-				   <a class="zoom green" href="ConsultarAdopcion.aspx?m=1"><img class="img-responsive img-circle" src="assets/img/mascotas/modificaradopcion.jpg" alt="" width="200px" height="300px" /></a>
+				   <a class="zoom green" href="ConsultarAdopcion.aspx?m=1"><img class="img-responsive img-circle" src="assets/img/mascotas/modificarmascotafinal.jpg" alt="" width="200px" height="300px" /></a>
 				   <div class="caption centered"><h4>MODIFICAR</h4> </div>
                 </div>
 			</div>

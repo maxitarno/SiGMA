@@ -271,8 +271,6 @@ namespace AccesoADatos
             return b;
         }
 
-        
-
         public static bool Eliminar(int idMascota)
         {
             SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
@@ -1076,5 +1074,30 @@ namespace AccesoADatos
 
             }
         }
+
+        public static List<EMascota> buscarMascotasPerdidas(string nombre){
+            List<EMascota> listaMascotas = null;
+            List<int> listaIdMascotas = null;
+            SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+            var consulta = from mascotasBD in mapaEntidades.Mascotas
+                           join estadosBD in mapaEntidades.Estados on mascotasBD.idEstado equals estadosBD.idEstado
+                           where (estadosBD.nombreEstado == "Perdida" && mascotasBD.nombreMascota.StartsWith(nombre))
+                           select mascotasBD.idMascota;
+            if (consulta.Count() != 0)
+            {
+                listaIdMascotas = new List<int>();
+                foreach (var item in consulta)
+                {
+                    listaIdMascotas.Add(item);
+                }
+                listaMascotas = BuscarMascotasPorIdMascota(listaIdMascotas);
+                return listaMascotas;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
     }
 }

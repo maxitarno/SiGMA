@@ -19,11 +19,6 @@
     <script src="assets/js/hover.zoom.js"></script>
     <script src="assets/js/hover.zoom.conf.js"></script>
     <link href="assets/calendario_dw/calendario_dw-estilos.css" type="text/css" rel="STYLESHEET"/>
-   <style type="text/css">
-   body{
-      font-family: tahoma, verdana, sans-serif;
-   }
-   </style>
    <script type="text/javascript" src="assets/calendario_dw/jquery-1.4.4.min.js"></script>
    <script type="text/javascript" src="assets/calendario_dw/calendario_dw.js"></script>
    
@@ -154,7 +149,7 @@
                                             Calle y Nro:
                                         </td>
                                         <td>
-                                            <asp:DropDownList ID="ddlCallePerdida" runat="server" Width="72%" AppendDataBoundItems="True">
+                                            <asp:DropDownList ID="ddlCallePerdida" class="pull-left" runat="server" Width="75%" AppendDataBoundItems="True">
                                             </asp:DropDownList>
                                             -
                                             <asp:TextBox ID="txtNroCallePerdida" runat="server" Width="20%"></asp:TextBox>
@@ -183,7 +178,7 @@
                                             Fecha Pérdida:
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="txtFechaPerdida" class="campofecha" runat="server"></asp:TextBox>
+                                            <asp:TextBox ID="txtFechaPerdida" class="campofecha pull-left" runat="server"  Width="90%" ></asp:TextBox>
                                         </td>
                                     </tr>
                                     <tr>
