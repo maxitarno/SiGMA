@@ -21,38 +21,45 @@
     <script src="assets/js/hover.zoom.conf.js"></script>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<div class="container pt">
+<div class="container fluid">
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2 centered">
                 <h3>USUARIOS</h3>
                 <h4 >Elija que desea hacer en el menú inferior</h4>
         </div>
         </div>
-		<div class="row mt centered">	
-			<div class="col-lg-4">
-				<a class="zoom green" href="RegistrarUsuario.aspx"><img class="img-responsive" src="assets/img/usuarios/registrarusuario.jpg" alt="" width="200px" height="300px"/></a>
-				<p>REGISTRAR</p>
+		<div class="row">	
+			<div class="col-lg-4 col-md-4">
+				<div class="thumbnail">
+                    <a class="zoom green" href="RegistrarUsuario.aspx"><img class="img-responsive img-circle" src="assets/img/usuarios/registrarusuario.jpg" alt="" width="200px" height="300px"/></a>
+				    <div class="caption centered"><h4>REGISTRAR</h4> </div>
+                </div>
 			</div>
-			<div class="col-lg-4">
-				<a class="zoom green" href="ConsultarUsuario.aspx"><img class="img-responsive" src="assets/img/usuarios/consultarusuario.jpg" alt="" width="200px" height="300px"/></a>
-				<p>CONSULTAR</p>
+			<div class="col-lg-4 col-md-4">
+                <div class="thumbnail">
+                    <a class="zoom green" href="ConsultarUsuario.aspx"><img class="img-responsive img-circle" src="assets/img/usuarios/consultarusuario.jpg" alt="" width="200px" height="300px"/></a>
+				    <div class="caption centered"><h4>CONSULTAR</h4> </div>
+                </div>
 			</div>
-			<div class="col-lg-4">
-				<a class="zoom green" href="ConsultarUsuario.aspx?m=1"><img class="img-responsive" src="assets/img/usuarios/modificarusuario.jpg" alt="" width="200px" height="300px"/></a>
-				<p>MODIFICAR</p>
+			<div class="col-lg-4 col-md-4">
+				<div class="thumbnail">
+                    <a class="zoom green" href="ConsultarUsuario.aspx?m=1"><img class="img-responsive img-circle" src="assets/img/usuarios/modificarusuario.jpg" alt="" width="200px" height="300px"/></a>
+				    <div class="caption centered"><h4>MODIFICAR</h4> </div>
+                </div>
 			</div>
 		</div><!-- /row -->
-		<div class="row mt centered">	
-			<div class="col-lg-4">
+		<div class="row ">	
+			<div class="col-lg-4 col-md-4">
 				<%--<a class="zoom green" href="work01.html"><img class="img-responsive" src="assets/img/menu/voluntarios.png" alt="" width="300px" height="400px"/></a>
 				<p>VOLUNTARIOS</p>--%>
 			</div>
-			<div class="col-lg-4">
-				<a class="zoom green" href="Default.aspx"><img class="img-responsive" src="assets/img/usuarios/volver.jpg" alt="" width="200px" height="300px" /></a>
-				<p>VOLVER</p><%--<a class="zoom green" href="work01.html"><img class="img-responsive" src="assets/img/menu/veterinarias.png" alt="" width="300px" height="400px"/></a>
-				<p>VETERINARIAS</p>--%>
+			<div class="col-lg-4 col-md-4">
+				<div class="thumbnail">
+                     <a class="zoom green" href="Default.aspx"><img class="img-responsive img-circle" src="assets/img/usuarios/volver.jpg" alt="" width="200px" height="300px" /></a>
+				    <div class="caption centered"><h4>VOLVER</h4> </div>
+                </div>
 			</div>
-			<div class="col-lg-4">
+			<div class="col-lg-4 col-md-4">
 				<%--<a class="zoom green" href="work01.html"><img class="img-responsive" src="assets/img/menu/administracion.png" alt="" width="300px" height="400px"/></a>
 				<p>ADMINISTRACIÓN</p>--%>
 			</div>

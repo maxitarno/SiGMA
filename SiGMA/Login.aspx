@@ -35,7 +35,7 @@
                             FailureText="Usuario y/o Contraseña Incorrecto o No Validado" 
                             PasswordLabelText="Contraseña:" 
                             PasswordRequiredErrorMessage="Contraseña Requerida" RememberMeText="Recordarme" 
-                            UserNameLabelText="Usuario:" UserNameRequiredErrorMessage="Usuario Requerido">
+                            UserNameLabelText="Usuario:" UserNameRequiredErrorMessage="Usuario Requerido" LoginButtonText="Ingresar">
                         </asp:Login>
                         <br />
                         No tiene un usuario? <input value="Crear Usuario" type="button" onclick="RegistrarUsuario()"/>
