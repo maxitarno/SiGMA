@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PaginaMaestra.Master" AutoEventWireup="true"
     CodeBehind="ConsultarPerdida.aspx.cs" Inherits="SiGMA.ConsultarPerdida" %>
 
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,9 +14,27 @@
     <link href="assets/css/bootstrap.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="assets/css/main.css" rel="stylesheet">
+    
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="assets/js/hover.zoom.js"></script>
     <script src="assets/js/hover.zoom.conf.js"></script>
+    <link href="assets/calendario_dw/calendario_dw-estilos.css" type="text/css" rel="STYLESHEET"/>
+   <style type="text/css">
+   body{
+      font-family: tahoma, verdana, sans-serif;
+   }
+   </style>
+   <script type="text/javascript" src="assets/calendario_dw/jquery-1.4.4.min.js"></script>
+   <script type="text/javascript" src="assets/calendario_dw/calendario_dw.js"></script>
+   
+   <script type="text/javascript">
+       (function ($) {
+           $(document).ready(function () {
+               $(".campofecha").calendarioDW();
+           })
+       })(jQuery);
+      </script>
+
     <script type="text/javascript">
         function checkTextAreaMaxLength(textBox, e, length) {
 
@@ -164,18 +183,7 @@
                                             Fecha Pérdida:
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="txtFechaPerdida" Enabled="false" runat="server" Width="90%"></asp:TextBox><asp:ImageButton
-                                                ID="imgFechaPerdida" runat="server" CausesValidation="False" ImageUrl="~/App_Themes/TemaSigma/imagenes/ico_calendar.gif"
-                                                OnClick="imgFechaPerdida_click" />
-                                            <asp:Calendar ID="calendario" runat="server" BorderColor="Black" BorderWidth="1px"
-                                                Visible="False" OnSelectionChanged="calendario_SelectionChanged">
-                                                <DayHeaderStyle BackColor="White" Font-Bold="True" ForeColor="Black" />
-                                                <DayStyle ForeColor="Black" />
-                                                <TitleStyle BackColor="Black" ForeColor="White" />
-                                            </asp:Calendar>
-                                            <asp:RangeValidator ID="rnvFechaPerdida" runat="server" ErrorMessage="La fecha no puede ser superior a la actual"
-                                                ForeColor="Red" ControlToValidate="txtFechaPerdida" SetFocusOnError="True" MinimumValue="01/01/2013"
-                                                Type="Date" Font-Size="XX-Small"></asp:RangeValidator>
+                                            <asp:TextBox ID="txtFechaPerdida" class="campofecha" runat="server"></asp:TextBox>
                                         </td>
                                     </tr>
                                     <tr>

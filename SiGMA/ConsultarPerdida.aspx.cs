@@ -42,13 +42,13 @@ namespace SiGMA
                 CargarCombos.cargarBarrio(ref ddlBarrioPerdida);
                 CargarCombos.cargarLocalidades(ref ddlLocalidadPerdida);
                 CargarCombos.cargarCalles(ref ddlCallePerdida);
-                rnvFechaPerdida.MaximumValue = DateTime.Now.ToShortDateString();
+                //rnvFechaPerdida.MaximumValue = DateTime.Now.ToShortDateString();
                 String modif = Request.QueryString["m"];
                 if (modif == "1")
                 {
                     txtComentarios.Enabled = true;
-                    txtFechaPerdida.Enabled = false;
-                    calendario.Enabled = true;
+                    //txtFechaPerdida.Enabled = false;
+                    //calendario.Enabled = true;
                     txtNroCallePerdida.Enabled = true;
                     ddlBarrioPerdida.Enabled = true;
                     ddlCallePerdida.Enabled = true;
@@ -59,8 +59,8 @@ namespace SiGMA
                 else 
                 {
                     txtComentarios.Enabled = false;
-                    txtFechaPerdida.Enabled = false;
-                    calendario.Enabled = false;
+                    //txtFechaPerdida.Enabled = false;
+                    //calendario.Enabled = false;
                     txtNroCallePerdida.Enabled = false;
                     ddlBarrioPerdida.Enabled = false;
                     ddlCallePerdida.Enabled = false;
@@ -117,13 +117,13 @@ namespace SiGMA
 
         protected void imgFechaPerdida_click(object sender, ImageClickEventArgs e)
         {
-            calendario.Visible = true;
+            //calendario.Visible = true;
         }
 
         protected void calendario_SelectionChanged(object sender, EventArgs e)
         {
-            txtFechaPerdida.Text = calendario.SelectedDate.ToString("d");
-            calendario.Visible = false;
+            //txtFechaPerdida.Text = calendario.SelectedDate.ToString("d");
+            //calendario.Visible = false;
         }
 
         private void limpiarPagina()

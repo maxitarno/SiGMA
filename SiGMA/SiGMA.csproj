@@ -64,6 +64,14 @@
     <Content Include="Adopciones.aspx" />
     <Content Include="AsignarPermisos.aspx" />
     <Content Include="AsignarRol.aspx" />
+    <Content Include="assets\calendario_dw\101.png" />
+    <Content Include="assets\calendario_dw\105.png" />
+    <Content Include="assets\calendario_dw\106.png" />
+    <Content Include="assets\calendario_dw\193.png" />
+    <Content Include="assets\calendario_dw\calendario.png" />
+    <Content Include="assets\calendario_dw\calendario_dw-estilos.css" />
+    <Content Include="assets\calendario_dw\calendario_dw.js" />
+    <Content Include="assets\calendario_dw\jquery-1.4.4.min.js" />
     <Content Include="assets\css\bootstrap.css" />
     <Content Include="assets\css\main.css" />
     <Content Include="assets\fonts\glyphicons-halflings-regular.svg" />

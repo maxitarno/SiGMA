@@ -27,10 +27,10 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-     <div class="centered">
+     <div class="conteiner fluid">
         <div class="panel panel-default">
             <div class="panel-heading">
-            <h3 class="panel-title">
+            <h3 class="panel-title centered">
                 Asignar permisos a usuarios</h3>
         </div>
 
@@ -68,7 +68,7 @@
     </div>
 
     <div class="panel-body">
-        <div class="col-md-2 col-md-offset-4">
+        <div class="col-md-4 col-md-offset-4">
                 <asp:Panel ID="pnlPermisos" runat="server" Visible="false">
                     <asp:Label ID="lblRol" runat="server" Text="" CssClass="pagination-centered"></asp:Label>
                     <br />
@@ -115,12 +115,53 @@
                             <td align="center"><asp:CheckBox ID="chkAsignarPermisosG" runat="server" /></td>
                             <td align="center"><asp:CheckBox ID="chkAsignarPermisosE" runat="server" /></td>
                         </tr>
+                        <tr>
+                            <td >ConsultarPerdidas</td>
+                            <td align="center"><asp:CheckBox ID="chkConsultarPerdidasL" runat="server" /></td>
+                            <td align="center"><asp:CheckBox ID="chkConsultarPerdidasG" runat="server" /></td>
+                            <td align="center"><asp:CheckBox ID="chkConsultarPerdidasE" runat="server" /></td>
+                        </tr>
+                        <tr>
+                            <td>RegistrarPerdidas</td>
+                            <td align="center"><asp:CheckBox ID="chkRegistrarPerdidasL" runat="server" /></td>
+                            <td align="center"><asp:CheckBox ID="chkRegistrarPerdidasG" runat="server" /></td>
+                            <td align="center"><asp:CheckBox ID="chkRegistrarPerdidasE" runat="server" /></td>
+                        </tr>
+                        <tr>
+                            <td>ConsultarHallazgos</td>
+                            <td align="center"><asp:CheckBox ID="chkConsultarHallazgosL" runat="server" /></td>
+                            <td align="center"><asp:CheckBox ID="chkConsultarHallazgosG" runat="server" /></td>
+                            <td align="center"><asp:CheckBox ID="chkConsultarHallazgosE" runat="server" /></td>
+                        </tr>
+                        <tr>
+                            <td>RegistrarHallazgos</td>
+                            <td align="center"><asp:CheckBox ID="chkRegistrarHallazgosL" runat="server" /></td>
+                            <td align="center"><asp:CheckBox ID="chkRegistrarHallazgosG" runat="server" /></td>
+                            <td align="center"><asp:CheckBox ID="chkRegistrarHallazgosE" runat="server" /></td>
+                        </tr>
+                        <tr>
+                            <td>ConsultarAdopciones</td>
+                            <td align="center"><asp:CheckBox ID="chkConsultarAdopcionesL" runat="server" /></td>
+                            <td align="center"><asp:CheckBox ID="chkConsultarAdopcionesG" runat="server" /></td>
+                            <td align="center"><asp:CheckBox ID="chkConsultarAdopcionesE" runat="server" /></td>
+                        </tr>
+                        <tr>
+                            <td>RegistrarAdopciones</td>
+                            <td align="center"><asp:CheckBox ID="chkRegistrarAdopcionesL" runat="server" /></td>
+                            <td align="center"><asp:CheckBox ID="chkRegistrarAdopcionesG" runat="server" /></td>
+                            <td align="center"><asp:CheckBox ID="chkRegistrarAdopcionesE" runat="server" /></td>
+                        </tr>
+                        <tr>
+                            <td>RegistrarVeterinaria</td>
+                            <td align="center"><asp:CheckBox ID="chkRegistrarVeterinariaL" runat="server" /></td>
+                            <td align="center"><asp:CheckBox ID="chkRegistrarVeterinariaG" runat="server" /></td>
+                            <td align="center"><asp:CheckBox ID="chkRegistrarVeterinariaE" runat="server" /></td>
+                        </tr>
                     </table>
                     <br />
                     <asp:Button ID="btnGuardar" runat="server" Text="Guardar" 
                         onclick="btnGuardar_Click"/>
                 </asp:Panel>
-                
             </div>
         </div>
     </div>

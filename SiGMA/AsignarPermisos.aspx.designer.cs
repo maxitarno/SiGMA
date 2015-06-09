@@ -265,6 +265,195 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.CheckBox chkAsignarPermisosE;
         
         /// <summary>
+        /// chkConsultarPerdidasL control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkConsultarPerdidasL;
+        
+        /// <summary>
+        /// chkConsultarPerdidasG control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkConsultarPerdidasG;
+        
+        /// <summary>
+        /// chkConsultarPerdidasE control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkConsultarPerdidasE;
+        
+        /// <summary>
+        /// chkRegistrarPerdidasL control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkRegistrarPerdidasL;
+        
+        /// <summary>
+        /// chkRegistrarPerdidasG control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkRegistrarPerdidasG;
+        
+        /// <summary>
+        /// chkRegistrarPerdidasE control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkRegistrarPerdidasE;
+        
+        /// <summary>
+        /// chkConsultarHallazgosL control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkConsultarHallazgosL;
+        
+        /// <summary>
+        /// chkConsultarHallazgosG control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkConsultarHallazgosG;
+        
+        /// <summary>
+        /// chkConsultarHallazgosE control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkConsultarHallazgosE;
+        
+        /// <summary>
+        /// chkRegistrarHallazgosL control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkRegistrarHallazgosL;
+        
+        /// <summary>
+        /// chkRegistrarHallazgosG control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkRegistrarHallazgosG;
+        
+        /// <summary>
+        /// chkRegistrarHallazgosE control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkRegistrarHallazgosE;
+        
+        /// <summary>
+        /// chkConsultarAdopcionesL control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkConsultarAdopcionesL;
+        
+        /// <summary>
+        /// chkConsultarAdopcionesG control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkConsultarAdopcionesG;
+        
+        /// <summary>
+        /// chkConsultarAdopcionesE control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkConsultarAdopcionesE;
+        
+        /// <summary>
+        /// chkRegistrarAdopcionesL control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkRegistrarAdopcionesL;
+        
+        /// <summary>
+        /// chkRegistrarAdopcionesG control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkRegistrarAdopcionesG;
+        
+        /// <summary>
+        /// chkRegistrarAdopcionesE control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkRegistrarAdopcionesE;
+        
+        /// <summary>
+        /// chkRegistrarVeterinariaL control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkRegistrarVeterinariaL;
+        
+        /// <summary>
+        /// chkRegistrarVeterinariaG control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkRegistrarVeterinariaG;
+        
+        /// <summary>
+        /// chkRegistrarVeterinariaE control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkRegistrarVeterinariaE;
+        
+        /// <summary>
         /// btnGuardar control.
         /// </summary>
         /// <remarks>
