@@ -75,6 +75,10 @@ namespace SiGMA
         //}
         protected void ddlSelectedChanged(object sender, EventArgs e)
         {
+            pnlAdopciones.Visible = false;
+            pnlHallazgos.Visible = false;
+            pnlListadoDeMascotas.Visible = false;
+            pnlPerdidas.Visible = false;
             if (ddlInforme.SelectedValue.Equals("0"))
             {
                 pnlFiltros1.Visible = false;
