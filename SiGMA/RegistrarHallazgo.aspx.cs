@@ -261,11 +261,14 @@ namespace SiGMA
                     mascota.nombreMascota = txtNombreMascota.Text;
                     mascota.especie = new EEspecie();
                     mascota.especie.idEspecie = int.Parse(ddlEspecie.SelectedValue);
+                    mascota.especie.nombreEspecie = ddlEspecie.SelectedItem.Text;
                     mascota.raza = new ERaza();
                     mascota.raza.idRaza = int.Parse(ddlRaza.SelectedValue);
+                    mascota.raza.nombreRaza = ddlRaza.SelectedItem.Text;
                     mascota.sexo = ddlSexo.SelectedValue;
                     mascota.color = new EColor();
                     mascota.color.idColor = int.Parse(ddlColor.SelectedValue);
+                    mascota.color.nombreColor = ddlColor.SelectedItem.Text;
                     mascota.edad = new EEdad();
                     mascota.edad.idEdad = int.Parse(ddlEdad.SelectedValue);
                     mascota.estado = new EEstado();
@@ -313,10 +316,18 @@ namespace SiGMA
                     pnlFiltros.Visible = false;
                     if (chkTwitter.Checked)
                     {
-                        var oAuth = new Herramientas.OAuthInfo();
-                        var tweet = new Herramientas.TinyTwitter(oAuth);
-                        tweet.UpdateStatus("Mascota hallada: Especie: " + hallazgo.mascota.especie.nombreEspecie + 
-                            ", Raza: " + hallazgo.mascota.raza.nombreRaza + ", Color: " + hallazgo.mascota.color.nombreColor);
+                        var tweet = new Herramientas.GestorTwitter();
+                        string mensaje = "Mascota hallada: Especie: " + hallazgo.mascota.especie.nombreEspecie +
+                                ", Raza: " + hallazgo.mascota.raza.nombreRaza + ", Color: " + hallazgo.mascota.color.nombreColor;
+                        var imagen = hallazgo.mascota.imagen;
+                        if (imagen != null)
+                        {
+                            tweet.PublicarTweetConFoto(imagen, mensaje);                            
+                        }
+                        else
+                        {
+                            tweet.PublicarTweetSoloTexto(mensaje);
+                        }
                     }
                 }
                 catch (Exception)
