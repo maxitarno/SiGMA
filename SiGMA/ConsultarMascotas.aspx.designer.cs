@@ -256,6 +256,15 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.DropDownList ddlTratoNinios;
         
         /// <summary>
+        /// ibtnBuscarOtro control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton ibtnBuscarOtro;
+        
+        /// <summary>
         /// pnlResultados control.
         /// </summary>
         /// <remarks>
@@ -373,40 +382,13 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.TextBox txtFecha;
         
         /// <summary>
-        /// imgFechaPerdida control.
+        /// fuImagenMascota control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton imgFechaPerdida;
-        
-        /// <summary>
-        /// calendario control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Calendar calendario;
-        
-        /// <summary>
-        /// rnvFechaPerdida control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RangeValidator rnvFechaPerdida;
-        
-        /// <summary>
-        /// File1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputFile File1;
+        protected global::System.Web.UI.HtmlControls.HtmlInputFile fuImagenMascota;
         
         /// <summary>
         /// pnlbotones control.

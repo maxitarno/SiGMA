@@ -19,6 +19,19 @@
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="assets/js/hover.zoom.js"></script>
     <script src="assets/js/hover.zoom.conf.js"></script>
+
+     <link href="assets/calendario_dw/calendario_dw-estilos.css" type="text/css" rel="STYLESHEET"/>
+   <script type="text/javascript" src="assets/calendario_dw/jquery-1.4.4.min.js"></script>
+   <script type="text/javascript" src="assets/calendario_dw/calendario_dw.js"></script>
+   
+   <script type="text/javascript">
+       (function ($) {
+           $(document).ready(function () {
+               $(".campofecha").calendarioDW();
+           })
+       })(jQuery);
+      </script>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="centered">
@@ -210,7 +223,7 @@
                                             Fecha del Hallazgo:
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="txtFecha" runat="server" Width="100%"></asp:TextBox></td>
+                                         <asp:TextBox ID="txtFecha" class="campofecha pull-left" runat="server"  Width="90%" ></asp:TextBox>
                                             <%--<td>
                                             <asp:ImageButton ID="imgFechaHallazgo" runat="server" CausesValidation="False"
                             ImageUrl="~/App_Themes/TemaSigma/imagenes/ico_calendar.gif" onclick="imgFechaPerdida_Click"  /> <asp:Calendar ID="calendario" runat="server" BorderColor="Black" 
@@ -221,8 +234,8 @@
                                     </asp:Calendar>
                                         </td>--%>
                                         <td>
-                                            <asp:RequiredFieldValidator ID="rfvFecha" runat="server" ErrorMessage="*" ForeColor="Red"
-                                                ControlToValidate="txtFecha"></asp:RequiredFieldValidator>
+                                            <%--<asp:RequiredFieldValidator ID="rfvFecha" runat="server" ErrorMessage="*" ForeColor="Red"
+                                                ControlToValidate="txtFecha"></asp:RequiredFieldValidator>--%>
                                         </td>
                                     </tr>
                                     <tr>

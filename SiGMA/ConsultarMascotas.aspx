@@ -16,6 +16,20 @@
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="assets/js/hover.zoom.js"></script>
     <script src="assets/js/hover.zoom.conf.js"></script>
+
+    <link href="assets/calendario_dw/calendario_dw-estilos.css" type="text/css" rel="STYLESHEET"/>
+   <script type="text/javascript" src="assets/calendario_dw/jquery-1.4.4.min.js"></script>
+   <script type="text/javascript" src="assets/calendario_dw/calendario_dw.js"></script>
+   
+   <script type="text/javascript">
+       (function ($) {
+           $(document).ready(function () {
+               $(".campofecha").calendarioDW();
+           })
+       })(jQuery);
+      </script>
+
+
     <script type="text/javascript">
         function showimagepreview(input) {
             if (input.files && input.files[0]) {
@@ -180,6 +194,15 @@
                                                 </asp:DropDownList>
                                             </td>
                                         </tr>
+                                        <tr>
+                                            <td>
+                                                
+                                            </td>
+                                            <td>
+                                                <asp:ImageButton ID="ibtnBuscarOtro" runat="server" ImageUrl="~/imagenes/buscar.jpg" OnClick="BtnBuscarOtroClick" CausesValidation="false" Width="65%" Visible="false"/>
+                                                <br>
+                                            </td>
+                                        </tr>
                                     </asp:Panel>
                                     <tr>
                                         <td>
@@ -213,7 +236,7 @@
                 </div>
                 <div class="col-md-3 col-md-offset-2">
                     <table>
-                        <asp:Panel ID="pnlDatos" runat="server" Visible="false">
+                        <asp:Panel ID="pnlDatos" runat="server">
                             <tr>
                                 <td>
                                     Categoria:
@@ -275,9 +298,8 @@
                                 </td>
                                 <td>
                                     <asp:Panel ID="pnlFecha" runat="server" Visible="true">
-                                            <asp:TextBox ID="txtFecha" runat="server" CssClass="TextBox" TextMode="SingleLine" Enabled="false"
-                                                Text="  /  /" Width="90%"></asp:TextBox>
-                                                <asp:ImageButton ID="imgFechaPerdida" runat="server" CausesValidation="False"
+                                                 <asp:TextBox ID="txtFecha" class="campofecha pull-left" CssClass="TextBox" runat="server" Enabled="false" Width="90%" ></asp:TextBox>
+                                                <%--<asp:ImageButton ID="imgFechaPerdida" runat="server" CausesValidation="False"
                                                 ImageUrl="~/App_Themes/TemaSigma/imagenes/ico_calendar.gif" OnClick="imgFechaPerdida_click"  /> 
                                                 <asp:Calendar ID="calendario" runat="server" BorderColor="Black" 
                                                         BorderWidth="1px" Visible="False" onselectionchanged="calendario_SelectionChanged">
@@ -288,13 +310,13 @@
                                                     <asp:RangeValidator ID="rnvFechaPerdida" runat="server" ErrorMessage="La fecha no puede ser superior a la actual" 
                                                         ForeColor="Red" ControlToValidate="txtFecha" SetFocusOnError="True" 
                                                         MinimumValue="01/01/2013" Type="Date" Font-Size="XX-Small" 
-                                                        ></asp:RangeValidator>
+                                                        ></asp:RangeValidator>--%>
                                         </asp:Panel>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <input type="file" runat="server" id="File1" onchange="showimagepreview(this)" />
+                                    <input type="file" runat="server" id="fuImagenMascota" onchange="showimagepreview(this)" />
                                 </td>
                                 <td>
                                 </td>
@@ -304,7 +326,7 @@
                     <div style="margin-left: auto; margin-right: auto">
                         <asp:Panel ID="pnlbotones" runat="server" Visible="false" Width="600px">
                             <asp:Button ID="btnModificar" runat="server" Text="Modificar" OnClick="BtnModificarClick"
-                                ValidationGroup="1" Style="float: left" />
+                                 Style="float: left" />
                             <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" ValidationGroup="2" OnClick="BtnEliminarClick"
                                 Style="float: left" />
                             <asp:Button ID="btnGenerarQR" runat="server" Text="Generar Codigo QR" OnClick="btnGenerarQR_Click"

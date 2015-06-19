@@ -16,22 +16,35 @@ namespace SiGMA
     {
         protected void imgFechaPerdida_click(object sender, ImageClickEventArgs e)
         {
-            calendario.Visible = true;
+            //calendario.Visible = true;
         }
 
         protected void calendario_SelectionChanged(object sender, EventArgs e)
         {
-            txtFecha.Text = calendario.SelectedDate.ToString("d");
-            calendario.Visible = false;
+            //txtFecha.Text = calendario.SelectedDate.ToString("d");
+            //calendario.Visible = false;
         }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
             {
                 Session["imagenAdopcion"] = null;
-                rnvFechaPerdida.MaximumValue = DateTime.Now.ToShortDateString();
+                //rnvFechaPerdida.MaximumValue = DateTime.Now.ToShortDateString();
                 if (Session["UsuarioLogueado"] != null)
                 {
+                    String mod = Request.QueryString["m"];
+                    if (mod == "1")
+                    {
+                        lblTitulo.Text = "Modificar Mascota";
+                        btnModificar.Visible = true;
+                        btnEliminar.Visible = true;
+                    }
+                    else
+                    {
+                        lblTitulo.Text = "Consultar Mascota";
+                        btnModificar.Visible = false;
+                        btnEliminar.Visible = false;
+                    }
                     if (!LogicaBDRol.verificarPermisoVisualizacion(Session["UsuarioLogueado"].ToString(), "ConsultarMascotas.aspx"))
                         Response.Redirect("PermisosInsuficientes.aspx");
                     if (!LogicaBDRol.verificarPermisosGrabacion(Session["UsuarioLogueado"].ToString(), "ConsultarMascotas.aspx"))
@@ -66,19 +79,6 @@ namespace SiGMA
                 if (rbPorMascota.Checked)
                 {
                     pnlfiltros.Visible = true;
-                }
-                String mod = Request.QueryString["m"];
-                if (mod == "1")
-                {
-                    lblTitulo.Text = "Modificar Mascota";
-                    btnModificar.Visible = true;
-                    btnEliminar.Visible = true;
-                }
-                else
-                {
-                    lblTitulo.Text = "Consultar Mascota";
-                    btnModificar.Visible = false;
-                    btnEliminar.Visible = false;
                 }
             }
             Handler1.AddMethod(ImageHandler_ObtenerImagenMascota);
@@ -159,16 +159,16 @@ namespace SiGMA
                 mascotas = LogicaBDMascota.BuscarMascotaPorduenio(txtNombreDueñio.Text);
                 if (mascotas.Count != 0)
                 {
-                    lstResultados.Items.Clear();
-                    pnlbtnSeleccionar.Visible = false;
-                    pnlResultados.Visible = true;
-                    lstResultados.DataSource = mascotas;
-                    lstResultados.DataTextField = "nombreMascota";
-                    lstResultados.DataValueField = "idMascota";
-                    lstResultados.DataBind();
-                    pnlCorrecto.Visible = false;
-                    pnlInfo.Visible = false;
-                    pnlAtento.Visible = false;
+                        lstResultados.Items.Clear();
+                        pnlbtnSeleccionar.Visible = false;
+                        pnlResultados.Visible = true;
+                        lstResultados.DataSource = mascotas;
+                        lstResultados.DataTextField = "nombreMascota";
+                        lstResultados.DataValueField = "idMascota";
+                        lstResultados.DataBind();
+                        pnlCorrecto.Visible = false;
+                        pnlInfo.Visible = false;
+                        pnlAtento.Visible = false;
                 }
                 else
                 {
@@ -226,20 +226,18 @@ namespace SiGMA
                 mascotas = LogicaBDMascota.buscarMascotasFiltros(mascota);
                 if (mascotas != null)
                 {
-                    lstResultados.Items.Clear();
-                    pnlNombre.Visible = false;
-                    pnltxtNombreDueñio.Visible = false;
-                    pnlbtnSeleccionar.Visible = false;
-                    pnlResultados.Visible = true;
-                    lstResultados.DataSource = mascotas;
-                    lstResultados.DataTextField = "nombreMascota";
-                    lstResultados.DataValueField = "idMascota";
-                    lstResultados.DataBind();
-                    pnlNombre.Visible = false;
-                    pnltxtNombreDueñio.Visible = false;
-                    pnlCorrecto.Visible = false;
-                    pnlInfo.Visible = false;
-                    pnlAtento.Visible = false;
+                        lstResultados.Items.Clear();
+                        pnlNombre.Visible = false;
+                        pnltxtNombreDueñio.Visible = false;
+                        pnlbtnSeleccionar.Visible = false;
+                        pnlResultados.Visible = true;
+                        lstResultados.DataSource = mascotas;
+                        lstResultados.DataTextField = "nombreMascota";
+                        lstResultados.DataValueField = "idMascota";
+                        lstResultados.DataBind();
+                        pnlCorrecto.Visible = false;
+                        pnlInfo.Visible = false;
+                        pnlAtento.Visible = false;
                 }
                 else
                 {
@@ -250,6 +248,27 @@ namespace SiGMA
                     pnlCorrecto.Visible = false;
                 }
             }
+        }
+
+        private void modificacion(bool p)
+        {
+            txtAlimentacionEspecial.Enabled = p;
+            txtObservaciones.Enabled = p;
+            txtAlimentacionEspecial.Enabled = p;
+            txtFecha.Enabled = p;
+            txtMascota.Enabled = p;
+            txtCategoria.Enabled = p;
+            txtCuidadoEspecial.Enabled = p;
+            ddlCaracter.Enabled = p;
+            ddlColor.Enabled = p;
+            ddlEdad.Enabled = p;
+            ddlEspecie.Enabled = p;
+            ddlEstado.Enabled = p;
+            ddlRaza.Enabled = p;
+            ddlSexo.Enabled = p;
+            ddlTratoAnimales.Enabled = p;
+            ddlTratoNinios.Enabled = p;
+            fuImagenMascota.Disabled = !p;
         }
         public void BtnSeleccionarClick(object sender, EventArgs e)
         {
@@ -340,9 +359,9 @@ namespace SiGMA
                                                     mascota.color.idColor = int.Parse(ddlColor.SelectedValue);
                                                     mascota.caracter = new ECaracterMascota();
                                                     mascota.caracter.idCaracter = int.Parse(ddlCaracter.SelectedValue);
-                                                    if (File1.PostedFile.ContentLength != 0)
+                                                    if (fuImagenMascota.PostedFile.ContentLength != 0)
                                                     {
-                                                        if (!GestorImagen.verificarTamaño(File1.PostedFile.ContentLength))
+                                                        if (!GestorImagen.verificarTamaño(fuImagenMascota.PostedFile.ContentLength))
                                                         {
                                                             pnlInfo.Visible = true;
                                                             lblResultado2.Text = "El tamaño de la imagen no debe superar 1Mb";
@@ -351,7 +370,7 @@ namespace SiGMA
                                                         }
                                                         else
                                                         {
-                                                            byte[] imagen = GestorImagen.obtenerArrayBytes(File1.PostedFile.InputStream, File1.PostedFile.ContentLength);
+                                                            byte[] imagen = GestorImagen.obtenerArrayBytes(fuImagenMascota.PostedFile.InputStream, fuImagenMascota.PostedFile.ContentLength);
                                                             if (LogicaBDMascota.ModificarMascota(mascota, imagen))
                                                             {
                                                                 Session["imagen"] = imagen;
@@ -607,6 +626,55 @@ namespace SiGMA
             Response.Redirect("_Mascotas.aspx");
         }
 
+        public void BtnBuscarOtroClick(object sender, EventArgs e)
+        {
+            modificacion(true);
+            limpiarControles();
+        }
+
+        private void limpiarControles()
+        {
+            if (rbPorDuenio.Checked)
+            {
+                pnltxtNombreDueñio.Visible = true;
+                pnlNombre.Visible = true;
+                pnltxtMascota.Visible = false;
+                pnlmascota.Visible = false;
+                pnlfiltros.Visible = false;
+            }
+            if (rbPorMascota.Checked)
+            {
+                pnltxtMascota.Visible = true;
+                pnlmascota.Visible = true;
+                pnltxtNombreDueñio.Visible = false;
+                pnlNombre.Visible = false;
+                pnlfiltros.Visible = true;
+                ddlEspecie.SelectedValue = "0";
+                ddlEstado.SelectedValue = "0";
+                ddlRaza.SelectedValue = "0";
+                ddlSexo.SelectedValue = "0";
+                ddlTratoAnimales.SelectedValue = "0";
+                ddlTratoNinios.SelectedValue = "0";
+                txtMascota.Text = "";
+                ddlEdad.SelectedValue = "0";
+            }
+            pnlboton.Visible = false;
+            pnlDatos.Visible = false;
+            pnlbtnSeleccionar.Visible = false;
+            pnlboton.Visible = true;
+            pnlResultados.Visible = false;
+            pnlbotones.Visible = false;
+            txtMascota.Text = "";
+            Session["idMascota"] = 0;
+            txtNombreDueñio.Text = "";
+            imgImagen.Visible = false;
+            btnModificar.Visible = false;
+            btnEliminar.Visible = false;
+            btnGenerarQR.Visible = false;
+            btnAdopcion.Visible = false;
+            ibtnBuscarOtro.Visible = false;
+        }
+
         protected void btnAdopcion_Click(object sender, EventArgs e)
         {
             if (LogicaBDMascota.ponerEnAdopcion(Convert.ToInt32(Session["idMascota"].ToString())))
@@ -685,6 +753,7 @@ namespace SiGMA
                     pnlboton.Visible = false;
                     pnlResultados.Visible = false;
                     pnlbtnSeleccionar.Visible = false;
+                    ibtnBuscarOtro.Visible = true;
                 }
                 else
                 {
@@ -695,6 +764,15 @@ namespace SiGMA
                 }
                 pnltxtNombreDueñio.Visible = false;
                 pnlNombre.Visible = false;
+                String mod = Request.QueryString["m"];
+                if (mod == "1")
+                {
+                    modificacion(true);
+                }
+                else 
+                {
+                    modificacion(false);
+                }
             }
             else
             {
