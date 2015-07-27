@@ -37,13 +37,11 @@ namespace SiGMA
                     {
                         lblTitulo.Text = "Modificar Mascota";
                         btnModificar.Visible = true;
-                        btnEliminar.Visible = true;
                     }
                     else
                     {
                         lblTitulo.Text = "Consultar Mascota";
                         btnModificar.Visible = false;
-                        btnEliminar.Visible = false;
                     }
                     if (!LogicaBDRol.verificarPermisoVisualizacion(Session["UsuarioLogueado"].ToString(), "ConsultarMascotas.aspx"))
                         Response.Redirect("PermisosInsuficientes.aspx");
@@ -51,8 +49,6 @@ namespace SiGMA
                     {
                         btnModificar.Visible = false;
                     }
-                    if (!LogicaBDRol.verificarPermisosEliminacion(Session["UsuarioLogueado"].ToString(), "ConsultarMascotas.aspx"))
-                        btnEliminar.Visible = false;
                 }
                 else
                 {
@@ -169,6 +165,7 @@ namespace SiGMA
                         pnlCorrecto.Visible = false;
                         pnlInfo.Visible = false;
                         pnlAtento.Visible = false;
+                        pnlNo.Visible = false;//modificado
                 }
                 else
                 {
@@ -177,6 +174,7 @@ namespace SiGMA
                     lblResultado2.Text = "No se encontraron mascotas";
                     pnlAtento.Visible = false;
                     pnlCorrecto.Visible = false;
+                    pnlNo.Visible = false;//modificado
                 }
             }
             else if (rbPorMascota.Checked)
@@ -269,6 +267,7 @@ namespace SiGMA
             ddlTratoAnimales.Enabled = p;
             ddlTratoNinios.Enabled = p;
             fuImagenMascota.Disabled = !p;
+            pnlNo.Visible = p;//modificado
         }
         public void BtnSeleccionarClick(object sender, EventArgs e)
         {
@@ -359,6 +358,7 @@ namespace SiGMA
                                                     mascota.color.idColor = int.Parse(ddlColor.SelectedValue);
                                                     mascota.caracter = new ECaracterMascota();
                                                     mascota.caracter.idCaracter = int.Parse(ddlCaracter.SelectedValue);
+                                                    mascota.noMostrar = chNoMostrar.Checked;//modificado
                                                     if (fuImagenMascota.PostedFile.ContentLength != 0)
                                                     {
                                                         if (!GestorImagen.verificarTamaño(fuImagenMascota.PostedFile.ContentLength))
@@ -410,6 +410,7 @@ namespace SiGMA
                                                                 pnlDatos.Visible = false;
                                                                 pnlbotones.Visible = false;
                                                                 imgImagen.Visible = false;
+                                                                pnlNo.Visible = false;//modificado
                                                             }
                                                             else
                                                             {
@@ -418,6 +419,7 @@ namespace SiGMA
                                                                 pnlAtento.Visible = true;
                                                                 lblResultado3.Text = "No se pudo modificar";
                                                                 pnlCorrecto.Visible = false;
+                                                                pnlNo.Visible = false;//modificado
                                                             }
                                                         }
                                                     }
@@ -461,6 +463,7 @@ namespace SiGMA
                                                             }
                                                             pnlboton.Visible = true;
                                                             pnlDatos.Visible = false;
+                                                            pnlNo.Visible = false;//modificado
                                                         }
                                                         else
                                                         {
@@ -669,10 +672,10 @@ namespace SiGMA
             txtNombreDueñio.Text = "";
             imgImagen.Visible = false;
             btnModificar.Visible = false;
-            btnEliminar.Visible = false;
             btnGenerarQR.Visible = false;
             btnAdopcion.Visible = false;
             ibtnBuscarOtro.Visible = false;
+            pnlNo.Visible = false;//modificado
         }
 
         protected void btnAdopcion_Click(object sender, EventArgs e)
@@ -773,6 +776,7 @@ namespace SiGMA
                 {
                     modificacion(false);
                 }
+                chNoMostrar.Checked = mascota.noMostrar;
             }
             else
             {

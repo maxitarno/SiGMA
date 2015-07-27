@@ -56,6 +56,7 @@ namespace AccesoADatos
                         mascota.idMascota = mapaEntidades.Mascotas.OrderByDescending(m => m.idMascota).First().idMascota;
                         LogicaBDImagen.guardarImagen(mascota.imagen, mascota);
                     }
+                    bdMascota.noMostrar = false;//registra por defecto que se pueda ver
                     transaction.Complete();
                 }
                 catch (Exception exc)
@@ -78,6 +79,7 @@ namespace AccesoADatos
                 bdMascota.idColor = mascota.color.idColor;
                 bdMascota.idEdad = mascota.edad.idEdad;                               
                 bdMascota.sexo = mascota.sexo;
+                bdMascota.noMostrar = false;//por defecto
                 mapaEntidades.AddToMascotas(bdMascota);                              
             }
             catch (Exception exc)
@@ -123,7 +125,8 @@ namespace AccesoADatos
                                    imagen = MascotasBD.imagen,
                                    razaN = RazaBD.nombreRaza,
                                    edadN = EdadesBD.nombreEdad,
-                                   nombreEspecie =EspeciesBD.nombreEspecie
+                                   nombreEspecie =EspeciesBD.nombreEspecie,
+                                   noMostrar = MascotasBD.noMostrar//modifique
                                };
                 foreach (var registro in consulta)
                 {
@@ -165,6 +168,7 @@ namespace AccesoADatos
                     {
                         mascota.imagen = null;
                     }
+                    mascota.noMostrar = (bool)registro.noMostrar;//modificado
                 }
                 b = true;
             }
@@ -191,6 +195,7 @@ namespace AccesoADatos
                     EMascota mascota = new EMascota();
                     mascota.nombreMascota = registro.nombreMascota;
                     mascota.idMascota = registro.idMascota;
+                    mascota.noMostrar = (bool)registro.noMostrar;//modificado
                     mascotas.Add(mascota);
                 }
             }
@@ -217,6 +222,7 @@ namespace AccesoADatos
                     EMascota mascota = new EMascota();
                     mascota.nombreMascota = registro.nombreMascota;
                     mascota.idMascota = registro.idMascota;
+                    mascota.noMostrar = (bool)registro.noMostrar;//modificado
                     mascotas.Add(mascota);
                 }
             }
@@ -249,6 +255,7 @@ namespace AccesoADatos
                     registro.tratoAnimales = mascota.tratoAnimal;
                     registro.tratoNinios = mascota.tratoNiños;
                     registro.idCaracter = mascota.caracter.idCaracter;
+                    registro.noMostrar = mascota.noMostrar;//modificar
                 }
                 if (imagen != null)
                 {
@@ -297,7 +304,7 @@ namespace AccesoADatos
                 }
             }
             return b;
-        }
+        }//no se usa
 
         //Metodo que busca una mascota realmente por idMascota, sin filtros fantasmas, y devuelve la mascota con todos sus datos
         //en su estructura
@@ -339,6 +346,7 @@ namespace AccesoADatos
                                    caracter = G3.descripcion,
                                    id = MascotasBD.idMascota,
                                    imagen = MascotasBD.imagen,
+                                   noMostrar = MascotasBD.noMostrar,//modificado
                                };
                 foreach (var registro in consulta)
                 {                    
@@ -367,7 +375,8 @@ namespace AccesoADatos
                     mascota.edad.nombreEdad = registro.edad;
                     mascota.especie = new EEspecie();
                     mascota.especie.idEspecie = registro.idEspecie;
-                    mascota.especie.nombreEspecie = registro.especie;                   
+                    mascota.especie.nombreEspecie = registro.especie;
+                    mascota.noMostrar = (bool)registro.noMostrar;//modificado
                     if (registro.imagen != null)
                     {
                         mascota.imagen = registro.imagen;
@@ -769,6 +778,7 @@ namespace AccesoADatos
                                     id = MascotasBD.idMascota,
                                     imagen = MascotasBD.imagen,
                                     fecha =  MascotasBD.fechaNacimiento,
+                                    noMostrar = MascotasBD.noMostrar,//modificado
                                 };
                     foreach (var registro in consulta)
                     {
@@ -800,6 +810,7 @@ namespace AccesoADatos
                         mascota.especie.idEspecie = registro.idEspecie;
                         mascota.especie.nombreEspecie = registro.especie;
                         mascota.fechaNacimiento = (registro.fecha == null) ? DateTime.Parse("24/12/2010") : DateTime.Parse(registro.fecha.ToString());
+                        mascota.noMostrar = (bool)registro.noMostrar;//modificado
                         if (registro.imagen != null)
                         {
                             mascota.imagen = registro.imagen;

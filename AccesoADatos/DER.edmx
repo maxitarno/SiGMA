@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="SiGMAModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="SiGMAModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="SiGMAModelStoreContainer">
           <EntitySet Name="Adopciones" EntityType="SiGMAModel.Store.Adopciones" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Barrios" EntityType="SiGMAModel.Store.Barrios" store:Type="Tables" Schema="dbo" />
@@ -310,6 +310,7 @@
           <Property Name="idDuenio" Type="int" />
           <Property Name="idCaracter" Type="int" />
           <Property Name="imagen" Type="varbinary(max)" />
+          <Property Name="noMostrar" Type="bit" />
         </EntityType>
         <EntityType Name="Perdidas">
           <Key>
@@ -918,8 +919,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SiGMAModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
@@ -1270,6 +1270,7 @@
           <NavigationProperty Name="Especies" Relationship="SiGMAModel.FK_Mascotas_Especies" FromRole="Mascotas" ToRole="Especies" />
           <NavigationProperty Name="Estados" Relationship="SiGMAModel.FK_Mascotas_Estados" FromRole="Mascotas" ToRole="Estados" />
           <NavigationProperty Name="Razas" Relationship="SiGMAModel.FK_Mascotas_Razas" FromRole="Mascotas" ToRole="Razas" />
+          <Property Type="Boolean" Name="noMostrar" />
         </EntityType>
         <EntityType Name="Perdidas">
           <Key>
@@ -2041,6 +2042,7 @@
           <EntitySetMapping Name="Mascotas">
             <EntityTypeMapping TypeName="SiGMAModel.Mascotas">
               <MappingFragment StoreEntitySet="Mascotas">
+                <ScalarProperty Name="noMostrar" ColumnName="noMostrar" />
                 <ScalarProperty Name="idMascota" ColumnName="idMascota" />
                 <ScalarProperty Name="nombreMascota" ColumnName="nombreMascota" />
                 <ScalarProperty Name="idEstado" ColumnName="idEstado" />

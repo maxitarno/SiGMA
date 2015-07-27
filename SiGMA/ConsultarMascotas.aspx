@@ -92,6 +92,13 @@
                             <div style="display: table-cell; width: 20%;">
                                 <table>
                                     <tr>
+                                        <asp:Panel ID="pnlNo" runat=server visible=false>
+                                            <td colspan = 2 align =justify>
+                                                No mostrar mascota&nbsp<asp:CheckBox ID="chNoMostrar" Visible = "true" runat = "server"/>
+                                            </td>
+                                        </asp:Panel>
+                                    </tr>
+                                    <tr>
                                         <td>
                                             <asp:Panel ID="pnlNombre" Visible="false" runat="server">
                                                 Nombre:
@@ -327,8 +334,6 @@
                         <asp:Panel ID="pnlbotones" runat="server" Visible="false" Width="600px">
                             <asp:Button ID="btnModificar" runat="server" Text="Modificar" OnClick="BtnModificarClick"
                                  Style="float: left" />
-                            <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" ValidationGroup="2" OnClick="BtnEliminarClick"
-                                Style="float: left" />
                             <asp:Button ID="btnGenerarQR" runat="server" Text="Generar Codigo QR" OnClick="btnGenerarQR_Click"
                                 Style="float: left" CausesValidation="false"/>
                             <asp:Button ID="btnAdopcion" runat="server" Text="Poner en adopcion"  

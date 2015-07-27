@@ -25,5 +25,6 @@ namespace Entidades
         public EDuenio duenio { get; set; }
         public byte[] imagen { get; set; }
         public ECuidado cuidadoEspecial { get; set; }
+        public bool noMostrar { get; set; }
     }
 }
