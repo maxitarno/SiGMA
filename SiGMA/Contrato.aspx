@@ -23,7 +23,7 @@
     <script type="text/javascript" src="Scripts/jquery.print.js"></script>
     <script type="text/javascript" src=""></script>
     <script type="text/javascript">
-
+        
         // When the document is ready, initialize the link so
         // that when it is clicked, the printable area of the
         // page will print.
@@ -32,6 +32,7 @@
                 document.all.item("noprint").style.visibility = 'hidden'
                 document.all.item("noprint1").style.visibility = 'hidden'
                 document.all.item("botones").style.visibility = 'hidden'
+                document.all.item("b").style.visibility = 'hidden'
                 // Hook up the print link.
                 $("#imprimir")
                 //.attr("href", "javascript:void(0)")
@@ -39,10 +40,13 @@
                         function () {
                             // Print the DIV.
                             //$(".printable").print();
+                            document.all.item("a").style.visibility = "hidden"
                             window.print();
+                            document.all.item("a").style.visibility = "visible"
                             document.all.item("noprint").style.visibility = 'visible'
                             document.all.item("noprint1").style.visibility = 'visible'
                             document.all.item("botones").style.visibility = 'visible'
+                            document.all.item("b").style.visibility = 'visible'
                             // Cancel click event.
                             return (false);
                         }
@@ -54,226 +58,223 @@
   
     </script>
     <style type="text/css">
-  
         h1 {
-            font-size: 180% ;
+            font-size:small;
             }
   
         h2 {
             border-bottom: 1px solid #999999 ;
+            font-size:small;
             }
   
         .printable {
-            border: 1px dotted #CCCCCC ;
-            padding: 10px 10px 10px 10px ;
+            padding: 0px 0px 0px 0px ;
+            font-size:small;
             }
   
         img {
             background-color: #E0E0E0 ;
-            border: 1px solid #666666 ;
-            padding: 5px 5px 5px 5px ;
+            padding: 0px 0px 0px 0px ;
             }
-
+        .td
+        {
+            font-size:small;
+        }
     </style>
-    <div class="container pt">
-        <div class="centered">
-            <div class="panel panel-default">
-                <div class="panel-heading">
+    <div class="container pt" style="height:888px">
+        <div class="centered" style="height:800px">
+            <div class="panel panel-default" style="height:800px">
+                <div class="panel-heading" id=b>
                     <h3 class="panel-title">
                         Contrato
                     </h3>
                 </div>
                 <div class="panel-body">
-                    <div class="printable">
-                        <table style="border-style:solid" width="1000">
+                    <div class="printable" style="border:solid">
+                        <table width="1500">
                             <tr>
-                                <td colspan="5" align="center">
+                                <td colspan="7" align="center">
                                         <h1>
                                             CONTRATO DE ADOPCIÓN
                                         </h1>
                                 </td>
                             </tr>
                             <tr>
-                                <td align="left" colspan="2">
+                                <td align="left" colspan="3" class=td>
                                     Nº de adopción:&nbsp
                                     <asp:Label ID="lblNumeroDeAdopción" runat="server" Text=""></asp:Label>
                                 </td>
-                                <td></td>
-                                <td align="right" colspan="3">
+                                <td align="right" colspan="3" class=td>
                                         Fecha:
-                                        <asp:Label ID="lblFecha" runat="server" Text=""></asp:Label>
+                                        <asp:Label ID="lblFecha" runat="server" Text="" ></asp:Label>
                                 </td>
-                                <td></td>
                             </tr>
                             <tr>
-                                <td colspan="5" align="left">
+                                <td colspan="7" align="left">
                                     <h2>
                                         Datos personales
                                     </h2>
                                 </td>
                             </tr>
                             <tr>
-                                <td align="left" style="width:25%">
+                                <td align="left" style="width:25%" class=td>
                                     Documento:  
                                 </td>
                                 <td style="width:25%;">
-                                    <asp:Label ID="lblDocumento" runat="server" ></asp:Label>
+                                    <asp:Label ID="lblDocumento" runat="server"  ></asp:Label>
                                 </td>
-                                <td align="center" colspan="3" style="width:50%">
+                                <td align="center" colspan="4" style="width:50%" class=td>
                                     <h3>Domicilio</h3>
                                 </td>
                             </tr>
                             <tr>
-                                <td align="left">
+                                <td align="left" class=td>
                                     Apellido y nombre: 
                                 </td>
                                 <td  >
-                                    <asp:Label ID="lblApellidoYNombre" runat="server" Text=""></asp:Label>
+                                    <asp:Label ID="lblApellidoYNombre" runat="server" Text="" ></asp:Label>
                                 </td>
                                 <td></td>
-                                <td align="left">
+                                <td align="left" class=td>
                                     Localidad:
                                 </td>
                                 <td   colspan="2" style="width:25%">
-                                    <asp:Label ID="lblLocalidad" runat="server" Text=""></asp:Label>
+                                    <asp:Label ID="lblLocalidad" runat="server" Text="" ></asp:Label>
                                 </td>
                             </tr>
                             <tr>
-                                <td align="left">
+                                <td align="left" class=td>
                                    Telefono fijo: 
                                 </td>
-                                <td  >
-                                    <asp:Label ID="lblTelefonoFijo" runat="server" Text=""></asp:Label> 
+                                <td>
+                                    <asp:Label ID="lblTelefonoFijo" runat="server" Text="" ></asp:Label> 
                                 </td>
                                 <td></td>
-                                <td align="left">
+                                <td align="left" class=td>
                                     Barrio: 
                                 </td>
                                 <td   colspan="2">
-                                    <asp:Label ID="lblBarrio" runat="server" Text=""></asp:Label>
+                                    <asp:Label ID="lblBarrio" runat="server" Text="" ></asp:Label>
                                 </td>
                             </tr>
                             <tr>
-                                <td align="left">
+                                <td align="left" class=td>
                                     Email: 
                                 </td>
-                                <td  >
-                                    <asp:Label ID="lblEmail" runat="server" Text=""></asp:Label>
+                                <td>
+                                    <asp:Label ID="lblEmail" runat="server" Text="" ></asp:Label>
                                 </td>
                                 <td></td>
-                                <td align="left">
+                                <td align="left" class=td>
                                     Dirección: 
                                 </td>
-                                <td colspan="2"  >
-                                    <asp:Label ID="lblCalleYNumero" runat="server" Text=""></asp:Label>
+                                <td colspan="2">
+                                    <asp:Label ID="lblCalleYNumero" runat="server" Text="" ></asp:Label>
                                 </td>
                             </tr>
                             <tr>
-                                <td align="justify" colspan="5">
+                                <td align="justify" colspan="7">
                                     <h2>Datos de la mascota</h2>
                                 </td>
                             </tr>
                             <tr>
-                                <td align="left">
+                                <td align="left" class=td>
                                     Id de la mascota:
                                 </td>
-                                <td  > 
-                                    <asp:Label ID="lblId" runat="server" Text=""></asp:Label>
+                                <td> 
+                                    <asp:Label ID="lblId" runat="server" Text="" ></asp:Label>
                                 </td>
-                            </tr>
-                            <tr>
-                                <td align="left">
+                                <td></td>
+                                <td align="left" class=td>
                                     Nombre: 
                                 </td>
-                                <td  >
-                                    <asp:Label ID="lblNombre" runat="server" Text=""></asp:Label>
+                                <td>
+                                    <asp:Label ID="lblNombre" runat="server" Text="" ></asp:Label>
                                 </td>
                             </tr>
                             <tr>
-                                <td align="left">
+                                <td align="left" class=td>
                                     Especie: 
                                 </td>
-                                <td  >
-                                    <asp:Label ID="lblEspecie" runat="server" Text=""></asp:Label>
+                                <td>
+                                    <asp:Label ID="lblEspecie" runat="server" Text="" ></asp:Label>
                                 </td>
-                            </tr>
-                            <tr>
-                                <td align="left">
+                                <td></td>
+                                <td align="left" class=td>
                                     Raza: 
                                 </td>
-                                <td  >
-                                    <asp:Label ID="lblRaza" runat="server" Text=""></asp:Label>
+                                <td>
+                                    <asp:Label ID="lblRaza" runat="server" Text="" ></asp:Label>
                                 </td>
                             </tr>
                             <tr>
-                                <td align="left">
+                                <td align="left" class=td>
                                     Edad: 
                                 </td>
-                                <td  >
-                                    <asp:Label ID="lblEdad" runat="server" Text=""></asp:Label>
+                                <td>
+                                    <asp:Label ID="lblEdad" runat="server" Text="" ></asp:Label>
                                 </td>
-                            </tr>
-                            <tr>
-                                <td align="left">
+                                <td></td>
+                                <td align="left" class=td>
                                     Sexo: 
                                 </td>
-                                <td  >
-                                    <asp:Label ID="lblSexo" runat="server" Text=""></asp:Label>
+                                <td>
+                                    <asp:Label ID="lblSexo" runat="server" Text="" ></asp:Label>
                                 </td>
                             </tr>
                             <tr>
-                                <td align="center" colspan="5">
+                                <td align="center" colspan="7">
                                     <h2>Condiciones</h2>
-                                    <br />
                                 </td>
                             </tr>
                             <tr>
-                                <td align="justify" colspan="3">
+                                <td align="left" colspan="7" class=td>
                                     El adoptante se compromete a:
-                                    <br />
                                 </td>
                             </tr>
                             <tr>
-                                <td align="justify" colspan="5">
+                                <td align="left" colspan="7" class=td>
                                     <p>
                                         * Proporcionarle todos los cuidados higienicos-sanitarios, cuidar su habitat,su necesidad de hacer ejercicio y darle cariño.
-                                        <br />
-                                        * Devolverlo en el caso de que por cualquier circunstancia no pueda atenderlo correctamente (nunca cambiar de 		dueño sin dar aviso).
-                                        <br />
-		                                * Darle cobijo por la noche y en ausencia de los propietarios.
-                                        <br />
-		                                * Ponerle un collar en el que se identifique el nombre y dirección de los propietarios.
+                                        <br/>
+                                        * Devolverlo en el caso de que por cualquier circunstancia no pueda atenderlo correctamente (nunca cambiar de dueño sin dar aviso).
+                                        <br/>
+                                        * Darle cobijo por la noche y en ausencia de los propietarios.
+                                        <br/>
+                                        * Ponerle un collar en el que se identifique el nombre y dirección de los propietarios.
                                         <br />    
                                     </p>
                                 </td>
                             </tr>
                             <tr>
-                                <td align="center" colspan="5">
-                                    Esta adopción fue registrada por el voluntario Nº: <asp:Label ID="lblNumeroDeVoluntario" runat="server"
-                                        Text=""></asp:Label>
+                                <td align="center" colspan="7" class=td>
+                                    Esta adopción fue registrada por el voluntario Nº: <asp:Label ID="lblNumeroDeVoluntario" runat="server" Text="" ></asp:Label>
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="5">
+                                <td colspan="7">
                                     <br />
                                 </td>
                             </tr>
                             <tr>
-                                <td></td>
-                                <td style="border-top-style:ridge" width="300px">>
+                                <td width="50px">
+                                </td>
+                                <td style="border-top-style:ridge" width="500px" class=td>
                                     Firma del voluntario
                                 </td>
-                                <td></td>
-                                <td style="border-top-style:ridge" width="300px">
+                                <td width="50px"></td>
+                                <td style="border-top-style:ridge" width="500px" class=td>
                                     Firma del adoptante
                                 </td>
-                                <td></td>
+                                <td width="200px"></td>
                             </tr>
                         </table>                     
                     </div>
-                    <p>
-                        <a id="imprimir">Imprimir</a>
-                    </p>
+                    <div id=a>
+                        <p>
+                            <a id="imprimir">Imprimir</a>
+                        </p>
+                    </div>
                     <div id="botones">
                     <div style="margin-left: 30%; display: table; width: 40%;">
                         <div style="display: table-row; width: 30%">
@@ -288,6 +289,7 @@
                     </div>
             </div>
         </div>
+    </div>
     </div>
     <!-- /container -->
 </asp:Content>
