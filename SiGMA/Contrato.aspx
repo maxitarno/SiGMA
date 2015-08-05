@@ -41,7 +41,7 @@
                             // Print the DIV.
                             //$(".printable").print();
                             document.all.item("a").style.visibility = "hidden"
-                            window.print();
+                            window.print(document.getElementById("printable"));
                             document.all.item("a").style.visibility = "visible"
                             document.all.item("noprint").style.visibility = 'visible'
                             document.all.item("noprint1").style.visibility = 'visible'
@@ -270,13 +270,13 @@
                             </tr>
                         </table>                     
                     </div>
-                    <div id=a>
+                    <div id=a style="height:10px">
                         <p>
                             <a id="imprimir">Imprimir</a>
                         </p>
                     </div>
-                    <div id="botones">
-                    <div style="margin-left: 30%; display: table; width: 40%;">
+                    <div id="botones" style="height:100px">
+                        <div style="margin-left: 30%; display: table; width: 40%;">
                         <div style="display: table-row; width: 30%">
                             <div style="display: table-cell; width: 20%;">
                                 <asp:Button ID="BtnAceptar" runat="server" Text="Aceptar" OnClick="BtnAceptarClick"/>
@@ -287,9 +287,9 @@
                         </div>
                     </div>
                     </div>
+                </div>
             </div>
         </div>
-    </div>
     </div>
     <!-- /container -->
 </asp:Content>
