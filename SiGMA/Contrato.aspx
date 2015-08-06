@@ -22,7 +22,7 @@
     <script type="text/javascript" src="Scripts/jquery-2.1.3.js"></script>
     <script type="text/javascript" src="Scripts/jquery.print.js"></script>
     <script type="text/javascript" src=""></script>
-    <script type="text/javascript">
+    <!--<script type="text/javascript">
         
         // When the document is ready, initialize the link so
         // that when it is clicked, the printable area of the
@@ -56,41 +56,53 @@
             }
             );
   
-    </script>
-    <style type="text/css">
-        h1 {
-            font-size:small;
-            }
-  
-        h2 {
-            border-bottom: 1px solid #999999 ;
-            font-size:small;
-            }
-  
-        .printable {
-            padding: 0px 0px 0px 0px ;
-            font-size:small;
-            }
-  
-        img {
-            background-color: #E0E0E0 ;
-            padding: 0px 0px 0px 0px ;
-            }
-        .td
+    </script>-->
+    <script type="text/javascript">
+        function imprimir(id)
         {
-            font-size:small;
+            var a = document.getElementById(id);
+            var Popup = window.open('about:blank', id,'widh=1000, height=800');
+            Popup.document.writeln('<html><head>');
+            Popup.document.writeln('<style type="text/css">');
+            Popup.document.writeln('h1 {');
+            Popup.document.writeln('font-size:small;');
+            Popup.document.writeln('}');
+            Popup.document.writeln('h2 {');
+            Popup.document.writeln('border-bottom: 1px solid #999999;');
+            Popup.document.writeln('font-size:small;');
+            Popup.document.writeln('}');
+            Popup.document.writeln('.printable {');
+            Popup.document.writeln('padding: 0px 0px 0px 0px ;');
+            Popup.document.writeln('font-size:small;');
+            Popup.document.writeln('}');
+            Popup.document.writeln('img {');
+            Popup.document.writeln('background-color: #E0E0E0;');
+            Popup.document.writeln('padding: 0px 0px 0px 0px;');
+            Popup.document.writeln('}');
+            Popup.document.writeln('.td');
+            Popup.document.writeln('{');
+            Popup.document.writeln('font-size:small;');
+            Popup.document.writeln('}')
+            Popup.document.writeln('.no-print{display: none;}');
+            Popup.document.writeln('</style>');
+            Popup.document.writeln('</head><body>');
+            Popup.document.writeln('<a href="javascript:;" onclick="window.print();">Imprimir</a>');
+            Popup.document.writeln(a.innerHTML);
+            Popup.document.writeln('</body></html>');
+            Popup.document.close();
+            Popup.focus();
         }
-    </style>
-    <div class="container pt" style="height:888px">
-        <div class="centered" style="height:800px">
-            <div class="panel panel-default" style="height:800px">
+    </script>
+    <div class="container pt">
+        <div class="centered">
+            <div class="panel panel-default">
                 <div class="panel-heading" id=b>
                     <h3 class="panel-title">
                         Contrato
                     </h3>
                 </div>
                 <div class="panel-body">
-                    <div class="printable" style="border:solid">
+                    <div class="printable" style="border:solid" id=contrato>
                         <table width="1500">
                             <tr>
                                 <td colspan="7" align="center">
@@ -272,7 +284,7 @@
                     </div>
                     <div id=a style="height:10px">
                         <p>
-                            <a id="imprimir">Imprimir</a>
+                            <a id="imprimir" href="javascript:;" onclick="imprimir('contrato')">Imprimir</a>
                         </p>
                     </div>
                     <div id="botones" style="height:100px">
