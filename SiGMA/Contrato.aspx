@@ -22,75 +22,22 @@
     <script type="text/javascript" src="Scripts/jquery-2.1.3.js"></script>
     <script type="text/javascript" src="Scripts/jquery.print.js"></script>
     <script type="text/javascript" src=""></script>
-    <!--<script type="text/javascript">
-        
-        // When the document is ready, initialize the link so
-        // that when it is clicked, the printable area of the
-        // page will print.
-        $(
-            function () {
-                document.all.item("noprint").style.visibility = 'hidden'
-                document.all.item("noprint1").style.visibility = 'hidden'
-                document.all.item("botones").style.visibility = 'hidden'
-                document.all.item("b").style.visibility = 'hidden'
-                // Hook up the print link.
-                $("#imprimir")
-                //.attr("href", "javascript:void(0)")
-                    .click(
-                        function () {
-                            // Print the DIV.
-                            //$(".printable").print();
-                            document.all.item("a").style.visibility = "hidden"
-                            window.print(document.getElementById("printable"));
-                            document.all.item("a").style.visibility = "visible"
-                            document.all.item("noprint").style.visibility = 'visible'
-                            document.all.item("noprint1").style.visibility = 'visible'
-                            document.all.item("botones").style.visibility = 'visible'
-                            document.all.item("b").style.visibility = 'visible'
-                            // Cancel click event.
-                            return (false);
-                        }
-                        )
-                ;
-
-            }
-            );
-  
-    </script>-->
     <script type="text/javascript">
         function imprimir(id)
         {
             var a = document.getElementById(id);
-            var Popup = window.open('about:blank', id,'widh=1000, height=800');
-            Popup.document.writeln('<html><head>');
-            Popup.document.writeln('<style type="text/css">');
-            Popup.document.writeln('h1 {');
-            Popup.document.writeln('font-size:small;');
-            Popup.document.writeln('}');
-            Popup.document.writeln('h2 {');
-            Popup.document.writeln('border-bottom: 1px solid #999999;');
-            Popup.document.writeln('font-size:small;');
-            Popup.document.writeln('}');
-            Popup.document.writeln('.printable {');
-            Popup.document.writeln('padding: 0px 0px 0px 0px ;');
-            Popup.document.writeln('font-size:small;');
-            Popup.document.writeln('}');
-            Popup.document.writeln('img {');
-            Popup.document.writeln('background-color: #E0E0E0;');
-            Popup.document.writeln('padding: 0px 0px 0px 0px;');
-            Popup.document.writeln('}');
-            Popup.document.writeln('.td');
-            Popup.document.writeln('{');
-            Popup.document.writeln('font-size:small;');
-            Popup.document.writeln('}')
-            Popup.document.writeln('.no-print{display: none;}');
-            Popup.document.writeln('</style>');
-            Popup.document.writeln('</head><body>');
-            Popup.document.writeln('<a href="javascript:;" onclick="window.print();">Imprimir</a>');
-            Popup.document.writeln(a.innerHTML);
-            Popup.document.writeln('</body></html>');
+            var Popup = window.open('', 'Impresion');
+            Popup.document.open();
+            Popup.document.writeln('<HTML><HEAD>');
+            Popup.document.writeln('<style type="text/css">{');
+            Popup.document.writeln('h1 {font-size:large;border-bottom-style:solid;}');
+            Popup.document.writeln('h2 {border-bottom: 1px solid #999999 ;font-size:small;}')
+            Popup.document.writeln('</style><HEAD><BODY>');
+            Popup.document.write(a.innerHTML);
+            Popup.document.writeln('</BODY></HTML>');
             Popup.document.close();
-            Popup.focus();
+            Popup.print();
+            Popup.close();
         }
     </script>
     <div class="container pt">
