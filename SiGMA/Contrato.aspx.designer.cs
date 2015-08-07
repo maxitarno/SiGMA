@@ -49,15 +49,6 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.Label lblApellidoYNombre;
         
         /// <summary>
-        /// Control lblLocalidad.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblLocalidad;
-        
-        /// <summary>
         /// Control lblTelefonoFijo.
         /// </summary>
         /// <remarks>
@@ -67,15 +58,6 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.Label lblTelefonoFijo;
         
         /// <summary>
-        /// Control lblBarrio.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblBarrio;
-        
-        /// <summary>
         /// Control lblEmail.
         /// </summary>
         /// <remarks>
@@ -83,6 +65,24 @@ namespace SiGMA {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblEmail;
+        
+        /// <summary>
+        /// Control lblLocalidad.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblLocalidad;
+        
+        /// <summary>
+        /// Control lblBarrio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblBarrio;
         
         /// <summary>
         /// Control lblCalleYNumero.

@@ -31,8 +31,8 @@
             Popup.document.writeln('<HTML><HEAD>');
             Popup.document.writeln('<style type="text/css">{');
             Popup.document.writeln('h1 {font-size:large;border-bottom-style:solid;}');
-            Popup.document.writeln('h2 {border-bottom: 1px solid #999999 ;font-size:small;}')
-            Popup.document.writeln('</style><HEAD><BODY>');
+            Popup.document.writeln('h2 {border-bottom: 1px solid #999999 ;font-size:large;}')
+            Popup.document.writeln('</style></HEAD><BODY>');
             Popup.document.write(a.innerHTML);
             Popup.document.writeln('</BODY></HTML>');
             Popup.document.close();
@@ -70,9 +70,9 @@
                             </tr>
                             <tr>
                                 <td colspan="7" align="left">
-                                    <h2>
+                                    <h1>
                                         Datos personales
-                                    </h2>
+                                    </h1>
                                 </td>
                             </tr>
                             <tr>
@@ -82,9 +82,6 @@
                                 <td style="width:25%;">
                                     <asp:Label ID="lblDocumento" runat="server"  ></asp:Label>
                                 </td>
-                                <td align="center" colspan="4" style="width:50%" class=td>
-                                    <h3>Domicilio</h3>
-                                </td>
                             </tr>
                             <tr>
                                 <td align="left" class=td>
@@ -93,27 +90,13 @@
                                 <td  >
                                     <asp:Label ID="lblApellidoYNombre" runat="server" Text="" ></asp:Label>
                                 </td>
-                                <td></td>
-                                <td align="left" class=td>
-                                    Localidad:
-                                </td>
-                                <td   colspan="2" style="width:25%">
-                                    <asp:Label ID="lblLocalidad" runat="server" Text="" ></asp:Label>
-                                </td>
-                            </tr>
+                            </tr>                          
                             <tr>
                                 <td align="left" class=td>
                                    Telefono fijo: 
                                 </td>
                                 <td>
                                     <asp:Label ID="lblTelefonoFijo" runat="server" Text="" ></asp:Label> 
-                                </td>
-                                <td></td>
-                                <td align="left" class=td>
-                                    Barrio: 
-                                </td>
-                                <td   colspan="2">
-                                    <asp:Label ID="lblBarrio" runat="server" Text="" ></asp:Label>
                                 </td>
                             </tr>
                             <tr>
@@ -123,7 +106,29 @@
                                 <td>
                                     <asp:Label ID="lblEmail" runat="server" Text="" ></asp:Label>
                                 </td>
-                                <td></td>
+                            </tr>
+                            <tr>
+                                <td align="left" colspan="4" style="width:50%" class=td>
+                                    <h2>Domicilio</h2>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="left" class=td>
+                                    Localidad:
+                                </td>
+                                <td   colspan="2" style="width:25%">
+                                    <asp:Label ID="lblLocalidad" runat="server" Text="" ></asp:Label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="left" class=td>
+                                    Barrio: 
+                                </td>
+                                <td   colspan="2">
+                                    <asp:Label ID="lblBarrio" runat="server" Text="" ></asp:Label>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td align="left" class=td>
                                     Dirección: 
                                 </td>
@@ -143,7 +148,8 @@
                                 <td> 
                                     <asp:Label ID="lblId" runat="server" Text="" ></asp:Label>
                                 </td>
-                                <td></td>
+                            </tr>
+                            <tr>
                                 <td align="left" class=td>
                                     Nombre: 
                                 </td>
@@ -158,7 +164,8 @@
                                 <td>
                                     <asp:Label ID="lblEspecie" runat="server" Text="" ></asp:Label>
                                 </td>
-                                <td></td>
+                            </tr>
+                            <tr>
                                 <td align="left" class=td>
                                     Raza: 
                                 </td>
@@ -173,7 +180,8 @@
                                 <td>
                                     <asp:Label ID="lblEdad" runat="server" Text="" ></asp:Label>
                                 </td>
-                                <td></td>
+                            </tr>
+                            <tr>
                                 <td align="left" class=td>
                                     Sexo: 
                                 </td>
@@ -183,26 +191,41 @@
                             </tr>
                             <tr>
                                 <td align="center" colspan="7">
-                                    <h2>Condiciones</h2>
+                                    <h1>Condiciones</h1>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    
                                 </td>
                             </tr>
                             <tr>
                                 <td align="left" colspan="7" class=td>
-                                    El adoptante se compromete a:
+                                    <h2>El adoptante se compromete a:</h2>
                                 </td>
                             </tr>
+                            <tr></tr>
                             <tr>
                                 <td align="left" colspan="7" class=td>
                                     <p>
                                         * Proporcionarle todos los cuidados higienicos-sanitarios, cuidar su habitat,su necesidad de hacer ejercicio y darle cariño.
+
                                         <br/>
                                         * Devolverlo en el caso de que por cualquier circunstancia no pueda atenderlo correctamente (nunca cambiar de dueño sin dar aviso).
+
                                         <br/>
                                         * Darle cobijo por la noche y en ausencia de los propietarios.
+
                                         <br/>
                                         * Ponerle un collar en el que se identifique el nombre y dirección de los propietarios.
+
                                         <br />    
                                     </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    
                                 </td>
                             </tr>
                             <tr>
@@ -215,21 +238,18 @@
                                     <br />
                                 </td>
                             </tr>
-                            <tr>
-                                <td width="50px">
-                                </td>
-                                <td style="border-top-style:ridge" width="500px" class=td>
+                            <tr style="padding: 0 100% 0 150%;display:inline">
+                                <td style="border-top-style:ridge" width="300px" class=td>
                                     Firma del voluntario
                                 </td>
-                                <td width="50px"></td>
-                                <td style="border-top-style:ridge" width="500px" class=td>
+                                <td width="300"></td>
+                                <td style="border-top-style:ridge" width="300px" class=td>
                                     Firma del adoptante
                                 </td>
-                                <td width="200px"></td>
                             </tr>
                         </table>                     
                     </div>
-                    <div id=a style="height:10px">
+                    <div id=a style="height:80px">
                         <p>
                             <a id="imprimir" href="javascript:;" onclick="imprimir('contrato')">Imprimir</a>
                         </p>
