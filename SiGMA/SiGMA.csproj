@@ -114,6 +114,7 @@
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\main.css" />
     <Content Include="Contrato.aspx" />
+    <Content Include="DefaultDueño.aspx" />
     <Content Include="EnConstruccion.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="GenerarCodigoQR.aspx" />
@@ -141,12 +142,14 @@
     <Content Include="Scripts\jquery-2.1.1.js" />
     <Content Include="Scripts\jquery-2.1.1.min.js" />
     <Content Include="SeleccionarInformes.aspx" />
+    <Content Include="SerVoluntario.aspx" />
     <Content Include="Styles\Site.css" />
     <Content Include="RegistrarUsuario.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="Sugerencia.aspx" />
     <Content Include="Usuarios.aspx" />
     <Content Include="ValidarUsuario.aspx" />
     <Content Include="Veterinarias.aspx" />
@@ -260,6 +263,13 @@
     </Compile>
     <Compile Include="Contrato.aspx.designer.cs">
       <DependentUpon>Contrato.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DefaultDueño.aspx.cs">
+      <DependentUpon>DefaultDueño.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DefaultDueño.aspx.designer.cs">
+      <DependentUpon>DefaultDueño.aspx</DependentUpon>
     </Compile>
     <Compile Include="EnConstruccion.aspx.cs">
       <DependentUpon>EnConstruccion.aspx</DependentUpon>
@@ -415,6 +425,13 @@
     <Compile Include="SeleccionarInformes.aspx.designer.cs">
       <DependentUpon>SeleccionarInformes.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SerVoluntario.aspx.cs">
+      <DependentUpon>SerVoluntario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SerVoluntario.aspx.designer.cs">
+      <DependentUpon>SerVoluntario.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -428,6 +445,13 @@
     </Compile>
     <Compile Include="Inicio.aspx.designer.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sugerencia.aspx.cs">
+      <DependentUpon>Sugerencia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sugerencia.aspx.designer.cs">
+      <DependentUpon>Sugerencia.aspx</DependentUpon>
     </Compile>
     <Compile Include="Usuarios.aspx.cs">
       <DependentUpon>Usuarios.aspx</DependentUpon>
