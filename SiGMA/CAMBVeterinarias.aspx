@@ -14,7 +14,7 @@
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="assets/js/hover.zoom.js"></script>
     <script src="assets/js/hover.zoom.conf.js"></script>
-</asp:Content>
+   </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
     <div class="centered">
         <div class="panel panel-default">
@@ -115,6 +115,12 @@
                         </tr>
                     </asp:Panel>
                     <tr>
+                        <td>
+                            <asp:Button ID="btnMapa" runat="server" Text="Ubicacion" 
+                                onclick="btnMapa_Click" />
+                        </td>
+                    </tr>
+                    <tr>
                        <td>
                             <asp:Button ID="btnBuscar" runat="server" Text="Buscar" 
                                 onclick="btnBuscar_Click" />
@@ -135,9 +141,7 @@
                 <div class="col-md-5 col-md-offset-1">
                 <table>
                     <tr>
-                        <td colspan="3">
-                            <asp:Panel ID="pnlGoogle" runat="server" Width="250px" BorderStyle="Solid" Height="250px">
-                            </asp:Panel>
+                        <td colspan="3">   
                         </td>
                     </tr>
                     <asp:Panel ID="pnlDatos" runat="server">

@@ -16,7 +16,6 @@ namespace SiGMA
             if (!Page.IsPostBack)
             {
                 pnlDomicilio.Visible = false;
-                pnlGoogle.Visible = false;
                 pnlModificar.Visible = false;
                 pnlNombre.Visible = true;
                 pnlResultados.Visible = false;
@@ -72,7 +71,6 @@ namespace SiGMA
             if (rbPorNombre.Checked)
             {
                 pnlDomicilio.Visible = false;
-                pnlGoogle.Visible = false;
                 pnlModificar.Visible = false;
                 pnlNombre.Visible = true;
                 pnlResultados.Visible = true;
@@ -85,7 +83,6 @@ namespace SiGMA
             }
             else if(rbPorDomicilio.Checked){
                 pnlDomicilio.Visible = true;
-                pnlGoogle.Visible = false;
                 pnlModificar.Visible = false;
                 pnlNombre.Visible = false;
                 pnlResultados.Visible = true;
@@ -130,7 +127,6 @@ namespace SiGMA
             txtTE.Text = veterinaria.telefono;
             Session["id"] = veterinaria.id;
             pnlDomicilio.Visible = true;
-            pnlGoogle.Visible = true;
             pnlModificar.Visible = true;
             pnlNombre.Visible = true;
             pnlResultados.Visible = false;
@@ -165,7 +161,6 @@ namespace SiGMA
                                     pnlCorrecto.Visible = true;
                                     pnlAtento.Visible = false;
                                     pnlDomicilio.Visible = false;
-                                    pnlGoogle.Visible = false;
                                     pnlModificar.Visible = false;
                                     pnlNombre.Visible = true;
                                     pnlResultados.Visible = false;
@@ -177,7 +172,6 @@ namespace SiGMA
                                     pnlCorrecto.Visible = false;
                                     pnlAtento.Visible = true;
                                     pnlDomicilio.Visible = false;
-                                    pnlGoogle.Visible = false;
                                     pnlModificar.Visible = false;
                                     pnlNombre.Visible = true;
                                     pnlResultados.Visible = false;
@@ -223,7 +217,6 @@ namespace SiGMA
         public void RbPorDomicilio(object sender, EventArgs e)
         {
             pnlDomicilio.Visible = true;
-            pnlGoogle.Visible = false;
             pnlModificar.Visible = false;
             pnlNombre.Visible = false;
             pnlResultados.Visible = false;
@@ -232,11 +225,15 @@ namespace SiGMA
         public void RbPorNombre(object sender, EventArgs e)
         {
             pnlDomicilio.Visible = false;
-            pnlGoogle.Visible = false;
             pnlModificar.Visible = false;
             pnlNombre.Visible = true;
             pnlResultados.Visible = false;
             pnlDatos.Visible = false;
+        }
+
+        protected void btnMapa_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("mapa.htm");
         }
     }
 }
