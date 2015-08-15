@@ -126,7 +126,6 @@
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
-    <Content Include="mapa.htm" />
     <Content Include="Mascotas.aspx" />
     <Content Include="Perdidas.aspx" />
     <Content Include="PermisosInsuficientes.aspx" />
@@ -153,6 +152,7 @@
     <Content Include="Sugerencia.aspx" />
     <Content Include="Usuarios.aspx" />
     <Content Include="ValidarUsuario.aspx" />
+    <Content Include="Veterinaria.htm" />
     <Content Include="Veterinarias.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
