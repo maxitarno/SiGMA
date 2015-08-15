@@ -233,7 +233,7 @@ namespace SiGMA
 
         protected void btnMapa_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Veterinaria.htm");
+            Response.Redirect("mapa.htm");
         }
     }
 }
