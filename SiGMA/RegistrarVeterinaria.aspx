@@ -65,23 +65,35 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="2" style="float:left">
-                            <asp:CheckBox ID="chkPeluqueria" runat="server" Text="Peluqueria"/>
+                        <td style="float:left">
+                            Peluqueria
+                        </td>
+                        <td style="float:left">
+                            <asp:CheckBox ID="chkPeluqueria" runat="server"/>
                         </td>
                     </tr>
                     <tr>
-                        <td style="float:left" colspan="2">
-                            <asp:CheckBox ID="chkPetShop" runat="server" Text="PetShop"/>
+                        <td style="float:left">
+                            PetShop
+                        </td>
+                        <td style="float:left">
+                            <asp:CheckBox ID="chkPetShop" runat="server"/>
                         </td>
                     </tr>
                     <tr>
-                        <td style="float:left" colspan="2">
-                            <asp:CheckBox ID="chkMedicinas" runat="server" Text="Medicinas"/>
+                        <td style="float:left; width:50%">
+                            Medicinas
+                        </td>
+                        <td style="float:left; width: 50%">
+                            <asp:CheckBox ID="chkMedicinas" runat="server"/>
                         </td>
                     </tr>
-                    <tr>
-                        <td style="float:left" colspan="2">
-                            <asp:CheckBox ID="chkCastraciones" runat="server" Text="Castraciones"/>
+                    <tr style="width:100%">
+                        <td style="width:50%;text-align:left">
+                            Castraciones
+                        </td>
+                        <td style="width:50%;float:left">
+                            <asp:CheckBox ID="chkCastraciones" runat="server"/>
                         </td>
                     </tr>
                     <tr>
