@@ -233,7 +233,8 @@ namespace SiGMA
 
         protected void btnMapa_Click(object sender, EventArgs e)
         {
-            Response.Redirect("mapa.htm");
+            string direccion = "argentina " + ddlLocalidad.SelectedItem.Text.ToLower() + " " + ddlCalle.SelectedItem.Text.ToLower() + " " + txtNº.Text;
+            Response.Redirect("mapa.htm?direccion=" + direccion);
         }
     }
 }
