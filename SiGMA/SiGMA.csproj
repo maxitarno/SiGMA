@@ -153,7 +153,6 @@
     <Content Include="Sugerencia.aspx" />
     <Content Include="Usuarios.aspx" />
     <Content Include="ValidarUsuario.aspx" />
-    <Content Include="Veterinaria.htm" />
     <Content Include="Veterinarias.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
