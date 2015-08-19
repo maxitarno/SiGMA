@@ -117,7 +117,8 @@ namespace AccesoADatos
                     veterinaria.medicina = (registro.veterinaria.medicina == null) ? false : (bool)registro.veterinaria.medicina;
                     veterinaria.peluqueria = (registro.veterinaria.peluqueria == null) ? false : (bool)registro.veterinaria.peluqueria;
                     veterinaria.petshop = (registro.veterinaria.petShop == null) ? false : (bool)registro.veterinaria.petShop;
-                    veterinaria.telefono = (registro.veterinaria.telefono == null) ? "" : registro.veterinaria.telefono.ToString();   
+                    veterinaria.telefono = (registro.veterinaria.telefono == null) ? "" : registro.veterinaria.telefono.ToString();
+                    veterinaria.domicilio.numeroCalle = (registro.veterinaria.nroCalle == null) ? 0 : (int)registro.veterinaria.nroCalle;//agregado
                 }
             }
             catch (Exception exc)

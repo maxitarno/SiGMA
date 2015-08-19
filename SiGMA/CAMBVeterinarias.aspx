@@ -115,12 +115,12 @@
                         </tr>
                     </asp:Panel>
                     <tr>
-                        <td>
-                            <asp:Button ID="btnMapa" runat="server" Text="Ubicacion" 
-                                onclick="btnMapa_Click" />
-                        </td>
-                    </tr>
-                    <tr>
+                       <td>
+                            <asp:Panel ID="pnlMapa" runat=server Visible=false>
+                                <asp:Button ID="btnMapa" runat="server" Text="Ubicacion" 
+                                    onclick="btnMapa_Click" />
+                            </asp:Panel>
+                       </td>
                        <td>
                             <asp:Button ID="btnBuscar" runat="server" Text="Buscar" 
                                 onclick="btnBuscar_Click" />

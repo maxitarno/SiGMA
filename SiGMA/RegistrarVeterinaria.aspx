@@ -65,23 +65,23 @@
                         </td>
                     </tr>
                     <tr>
-                        <td style="float:left">
+                        <td style="text-align:left; width:50%">
                             Peluqueria
                         </td>
-                        <td style="float:left">
+                        <td style="float:left; width:50%">
                             <asp:CheckBox ID="chkPeluqueria" runat="server"/>
                         </td>
                     </tr>
                     <tr>
-                        <td style="float:left">
+                        <td style="text-align:left; width:50%">
                             PetShop
                         </td>
-                        <td style="float:left">
+                        <td style="float:left; width:50%">
                             <asp:CheckBox ID="chkPetShop" runat="server"/>
                         </td>
                     </tr>
                     <tr>
-                        <td style="float:left; width:50%">
+                        <td style="text-align:left; width:50%">
                             Medicinas
                         </td>
                         <td style="float:left; width: 50%">
@@ -97,7 +97,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>
+                        <td style="text-align:left">
                             Contacto:
                         </td>
                         <td>
@@ -105,7 +105,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>
+                        <td style="text-align:left">
                             Localidad:
                         </td>
                         <td>
@@ -114,7 +114,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>
+                        <td style="text-align:left">
                             Barrio:
                         </td>
                         <td>
@@ -123,7 +123,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>
+                        <td style="text-align:left">
                             Calle:
                         </td>
                         <td>
@@ -133,7 +133,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>
+                        <td style="text-align:left">
                             T.E.:
                         </td>
                         <td>
@@ -145,7 +145,7 @@
         </div>
         <div class="centered">
             <div class="centered">
-                <div style="margin-left: 30%; display: table; width: 40%;">
+                <div style="margin-left: 34%; display: table; width: 40%;">
                     <div style="display: table-row; width: 30%">
                         <div style="display: table-cell; width: 20%;">
                             <asp:Panel ID="pnlRegistrar" runat="server" Visible="true">

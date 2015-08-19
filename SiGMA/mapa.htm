@@ -20,13 +20,18 @@
     function geocodeAddress(geocoder, resultsMap) {
         function getURLParameter(name) { return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [, ""])[1].replace(/\+/g, '%20')) || null }
         var direccion = getURLParameter("direccion");
+        var nombre = getURLParameter("nombre");
+        var telefono = getURLParameter("telefono");
+        var contacto = getURLParameter("contacto");
+        var texto = nombre + "\n" + telefono + "\n" + contacto;
         var address = direccion
         geocoder.geocode({ 'address': address }, function (results, status) {
             if (status === google.maps.GeocoderStatus.OK) {
                 resultsMap.setCenter(results[0].geometry.location);
                 var marker = new google.maps.Marker({
                     map: resultsMap,
-                    position: results[0].geometry.location
+                    position: results[0].geometry.location,
+                    title: texto
                 });
             } else {
                 alert('Geocode was not successful for the following reason: ' + status);

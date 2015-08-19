@@ -125,12 +125,14 @@ namespace SiGMA
             chkPetShop.Checked = veterinaria.petshop;
             txtContacto.Text = veterinaria.contacto;
             txtTE.Text = veterinaria.telefono;
+            txtNº.Text = veterinaria.domicilio.numeroCalle.ToString();//agregado
             Session["id"] = veterinaria.id;
             pnlDomicilio.Visible = true;
             pnlModificar.Visible = true;
             pnlNombre.Visible = true;
             pnlResultados.Visible = false;
             pnlDatos.Visible = true;
+            pnlMapa.Visible = true;
         }
         public void Modificar(object sender, EventArgs e)
         {
@@ -165,6 +167,7 @@ namespace SiGMA
                                     pnlNombre.Visible = true;
                                     pnlResultados.Visible = false;
                                     pnlDatos.Visible = false;
+                                    pnlMapa.Visible = false;
                                 }
                                 else{
                                     lblError.Text = "No se pudo modificar";
@@ -176,6 +179,7 @@ namespace SiGMA
                                     pnlNombre.Visible = true;
                                     pnlResultados.Visible = false;
                                     pnlDatos.Visible = false;
+                                    pnlMapa.Visible = false;
                                 }
                             }
                             else{
@@ -221,6 +225,7 @@ namespace SiGMA
             pnlNombre.Visible = false;
             pnlResultados.Visible = false;
             pnlDatos.Visible = false;
+            pnlMapa.Visible = false;
         }
         public void RbPorNombre(object sender, EventArgs e)
         {
@@ -229,12 +234,16 @@ namespace SiGMA
             pnlNombre.Visible = true;
             pnlResultados.Visible = false;
             pnlDatos.Visible = false;
+            pnlMapa.Visible = false;
         }
 
         protected void btnMapa_Click(object sender, EventArgs e)
         {
+            string nombre = txtNombre.Text;
+            string telefono = txtTE.Text; 
+            string contacto = txtContacto.Text;
             string direccion = "argentina " + ddlLocalidad.SelectedItem.Text.ToLower() + " " + ddlCalle.SelectedItem.Text.ToLower() + " " + txtNº.Text;
-            Response.Redirect("mapa.htm?direccion=" + direccion);
+            Response.Redirect("mapa.htm?direccion=" + direccion + "&nombre=" + nombre + "&telefono=" + telefono + "&contacto=" + contacto);
         }
     }
 }
