@@ -138,7 +138,7 @@
                     </asp:Panel>
                 </table>
             </div>
-                <div class="col-md-5 col-md-offset-1">
+                <div class="col-md-4 col-md-offset-0">
                 <table>
                     <tr>
                         <td colspan="3">   
@@ -151,16 +151,25 @@
                             </td>
                         </tr>
                         <tr>
+                            <td style="text-align:left">
+                                Peluqueria
+                            </td>
                             <td style="float:left">
-                                <asp:CheckBox ID="chkPeluqueria" runat="server" Text="Peluqueria" TextAlign="Left"/>
+                                <asp:CheckBox ID="chkPeluqueria" runat="server"/>
                             </td>
                         </tr>
                         <tr>
+                            <td style="text-align:left">
+                                PetShop
+                            </td>
                             <td style="float:left">
-                                <asp:CheckBox ID="chkPetShop" runat="server" Text="PetShop" TextAlign="Left" /> 
+                                <asp:CheckBox ID="chkPetShop" runat="server"/> 
                             </td>
                         </tr>
                         <tr>
+                            <td style="text-align:left">
+                                Medicinas
+                            </td>
                             <td style="float:left">
                                 <asp:CheckBox ID="chkMedicinas" runat="server"/>
                             </td>
