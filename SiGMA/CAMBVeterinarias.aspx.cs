@@ -13,6 +13,7 @@ namespace SiGMA
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            bool retorno = false;
             if (!Page.IsPostBack)
             {
                 pnlDomicilio.Visible = false;
@@ -49,6 +50,34 @@ namespace SiGMA
                 else
                 {
                     Response.Redirect("Login.aspx");
+                }
+                if (Session["r"] != null)
+                {
+                    retorno = (bool)Session["r"];
+                    if (retorno == true)
+                    {
+                        EVeterinaria veterinaria = (EVeterinaria)Session["veterinaria"];
+                        LogicaBDVeterinaria.Buscar(veterinaria);
+                        txtNombre.Text = veterinaria.nombre;
+                        ddlLocalidad.SelectedValue = veterinaria.domicilio.barrio.localidad.idLocalidad.ToString();
+                        ddlBarrio.SelectedValue = veterinaria.domicilio.barrio.idBarrio.ToString();
+                        ddlCalle.SelectedValue = veterinaria.domicilio.calle.idCalle.ToString();
+                        chkCastraciones.Checked = veterinaria.castraciones;
+                        chkMedicinas.Checked = veterinaria.medicina;
+                        chkPeluqueria.Checked = veterinaria.peluqueria;
+                        chkPetShop.Checked = veterinaria.petshop;
+                        txtContacto.Text = veterinaria.contacto;
+                        txtTE.Text = veterinaria.telefono;
+                        txtNº.Text = veterinaria.domicilio.numeroCalle.ToString();//agregado
+                        Session["id"] = veterinaria.id;
+                        pnlDomicilio.Visible = true;
+                        pnlModificar.Visible = true;
+                        pnlNombre.Visible = true;
+                        pnlResultados.Visible = false;
+                        pnlDatos.Visible = true;
+                        pnlMapa.Visible = true;
+                        Session["r"] = false;
+                    }
                 }
             }
         }
@@ -133,6 +162,7 @@ namespace SiGMA
             pnlResultados.Visible = false;
             pnlDatos.Visible = true;
             pnlMapa.Visible = true;
+            Session["veterinaria"] = veterinaria;
         }
         public void Modificar(object sender, EventArgs e)
         {
@@ -243,6 +273,7 @@ namespace SiGMA
             string telefono = txtTE.Text; 
             string contacto = txtContacto.Text;
             string direccion = "argentina " + ddlLocalidad.SelectedItem.Text.ToLower() + " " + ddlCalle.SelectedItem.Text.ToLower() + " " + txtNº.Text;
+            Session["r"] = true;
             Response.Redirect("mapa.htm?direccion=" + direccion + "&nombre=" + nombre + "&telefono=" + telefono + "&contacto=" + contacto);
         }
     }

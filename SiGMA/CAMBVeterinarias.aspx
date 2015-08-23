@@ -114,14 +114,14 @@
                             </td>
                         </tr>
                     </asp:Panel>
-                    <tr>
+                    <tr style="float:right">
                        <td>
                             <asp:Panel ID="pnlMapa" runat=server Visible=false>
                                 <asp:Button ID="btnMapa" runat="server" Text="Ubicacion" 
                                     onclick="btnMapa_Click" />
                             </asp:Panel>
-                       </td>
-                       <td>
+                        </td>
+                        <td>
                             <asp:Button ID="btnBuscar" runat="server" Text="Buscar" 
                                 onclick="btnBuscar_Click" />
                         </td> 
@@ -152,37 +152,40 @@
                         </tr>
                         <tr>
                             <td style="float:left">
-                                <asp:CheckBox ID="chkPeluqueria" runat="server" Text="Peluqueria"/>
+                                <asp:CheckBox ID="chkPeluqueria" runat="server" Text="Peluqueria" TextAlign="Left"/>
                             </td>
                         </tr>
                         <tr>
                             <td style="float:left">
-                                <asp:CheckBox ID="chkPetShop" runat="server" Text="PetShop" /> 
+                                <asp:CheckBox ID="chkPetShop" runat="server" Text="PetShop" TextAlign="Left" /> 
                             </td>
                         </tr>
                         <tr>
                             <td style="float:left">
-                                <asp:CheckBox ID="chkMedicinas" runat="server" Text="Medicinas"/>
+                                <asp:CheckBox ID="chkMedicinas" runat="server"/>
                             </td>
                         </tr>
                         <tr>
+                            <td style="text-align:left">
+                                Castraciones
+                            </td>
                             <td style="float:left">
-                                <asp:CheckBox ID="chkCastraciones" runat="server" Text="Castraciones"/>                                    
+                                <asp:CheckBox ID="chkCastraciones" runat="server"/>                                    
                             </td>
                         </tr>
                         <tr>
-                            <td align="left" style="width:50%">
+                            <td align="left">
                                 Contacto:
                             </td>
-                            <td style="width:50%">
+                            <td>
                                 <asp:TextBox ID="txtContacto" runat="server" Width="250px"></asp:TextBox>  
                             </td>
                         </tr>
                         <tr>
-                            <td style="width:50%" align="left">
+                            <td align="left">
                                 T.E.:
                             </td>
-                            <td style="width:50%">
+                            <td>
                                 <asp:TextBox ID="txtTE" runat="server" Width="250px"></asp:TextBox>
                             </td>
                             <td></td>
