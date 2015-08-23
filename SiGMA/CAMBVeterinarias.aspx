@@ -209,13 +209,13 @@
                 <div style="margin-left: 30%; display: table; width: 40%;">
                     <div style="display: table-row; width: 30%">
                         <div style="display: table-cell; width: 20%;">
-                            <asp:Panel ID="pnlModificar" runat="server" Visible="true">
-                                <asp:Button ID="btnModificar" runat="server" Text="Modificar" OnClick="Modificar"/>
+                            <asp:Panel ID="pnlEliminar" runat="server" Visible="false">
+                                <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" />
                             </asp:Panel>
                         </div>
                         <div style="display: table-cell; width: 20%;">
-                            <asp:Panel ID="pnlEliminar" runat="server" Visible="false">
-                                <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" />
+                            <asp:Panel ID="pnlModificar" runat="server" Visible="true">
+                                <asp:Button ID="btnModificar" runat="server" Text="Modificar" OnClick="Modificar"/>
                             </asp:Panel>
                         </div>
                     </div>

@@ -16,12 +16,11 @@ namespace SiGMA
             bool retorno = false;
             if (!Page.IsPostBack)
             {
-                pnlDomicilio.Visible = false;
                 pnlModificar.Visible = false;
+                pnlDomicilio.Visible = false;
                 pnlNombre.Visible = true;
                 pnlResultados.Visible = false;
                 pnlDatos.Visible = false;
-                btnModificar.Visible = false;
                 CargarCombos.cargarLocalidades(ref ddlLocalidad);
                 CargarCombos.cargarCalles(ref ddlCalle);
                 CargarCombos.cargarBarrio(ref ddlBarrio);
@@ -36,7 +35,7 @@ namespace SiGMA
                 {
                     lblTitulo.Text = "Consultar Usuario";
                     btnModificar.Visible = false;
-                    btnEliminar.Visible = false;
+                    //btnEliminar.Visible = false;
                 }
                 if (Session["UsuarioLogueado"] != null)
                 {
@@ -134,6 +133,9 @@ namespace SiGMA
                 lstResultados.DataTextField = "nombre";
                 lstResultados.DataBind();
             }
+            pnlAtento.Visible = false;
+            pnlCorrecto.Visible = false;
+            pnlInfo.Visible = false;
         }
         public void selected(object sender, EventArgs e)
         {
@@ -163,6 +165,9 @@ namespace SiGMA
             pnlDatos.Visible = true;
             pnlMapa.Visible = true;
             Session["veterinaria"] = veterinaria;
+            pnlAtento.Visible = false;
+            pnlCorrecto.Visible = false;
+            pnlInfo.Visible = false;
         }
         public void Modificar(object sender, EventArgs e)
         {
@@ -256,6 +261,14 @@ namespace SiGMA
             pnlResultados.Visible = false;
             pnlDatos.Visible = false;
             pnlMapa.Visible = false;
+            pnlInfo.Visible = false;
+            pnlCorrecto.Visible = false;
+            pnlAtento.Visible = false;
+            ddlBarrio.SelectedValue = "0";
+            ddlCalle.SelectedValue = "0";
+            ddlLocalidad.SelectedValue = "0";
+            txtNombre.Text = "";
+            txtNº.Text = "";
         }
         public void RbPorNombre(object sender, EventArgs e)
         {
@@ -265,6 +278,14 @@ namespace SiGMA
             pnlResultados.Visible = false;
             pnlDatos.Visible = false;
             pnlMapa.Visible = false;
+            pnlAtento.Visible = false;
+            pnlCorrecto.Visible = false;
+            pnlInfo.Visible = false;
+            ddlBarrio.SelectedValue = "0";
+            ddlCalle.SelectedValue = "0";
+            ddlLocalidad.SelectedValue = "0";
+            txtNombre.Text = "";
+            txtNº.Text = "";
         }
 
         protected void btnMapa_Click(object sender, EventArgs e)
@@ -274,7 +295,7 @@ namespace SiGMA
             string contacto = txtContacto.Text;
             string direccion = "argentina " + ddlLocalidad.SelectedItem.Text.ToLower() + " " + ddlCalle.SelectedItem.Text.ToLower() + " " + txtNº.Text;
             Session["r"] = true;
-            Response.Redirect("mapa.htm?direccion=" + direccion + "&nombre=" + nombre + "&telefono=" + telefono + "&contacto=" + contacto);
+            Response.Redirect("mapa.htm?direccion=" + direccion + "&nombre=" + nombre + "&telefono=" + telefono + "&contacto=" + contacto + "&m=" + Request.QueryString["m"]);
         }
     }
 }

@@ -35,7 +35,7 @@
                     animation: google.maps.Animation.DROP
                 });
             } else {
-                alert('Geocode was not successful for the following reason: ' + status);
+                alert('La dirección especificada no se encontro ');
             }
         });
     }
@@ -43,7 +43,14 @@
 </script>
 <script type="text/javascript">
     function BtnRegresarClick() {
-        location.href = "CAMBVeterinarias.aspx";
+        function getURLParameter(name) { return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [, ""])[1].replace(/\+/g, '%20')) || null }
+        var m = getURLParameter("m");
+        if (m == 2) {
+            location.href = "CAMBVeterinarias.aspx?m=2";
+        }
+        else {
+            location.href = "CAMBVeterinarias.aspx?m=1";
+        }
     }
 </script>
 </head>
