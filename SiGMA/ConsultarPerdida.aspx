@@ -144,6 +144,14 @@
                             </div>
                             <div style="display: table-cell; width: 22%; vertical-align: top;">
                                 <table>
+                                    <tr><!--agregado para el mapa-->
+                                        <td style="float:left">
+                                            <asp:Panel ID="pnlMapa" runat="server" Visible="false">
+                                                <asp:Button ID="btnMapa" runat="server" Text="Ubicación" 
+                                                    onclick="btnMapa_Click" />
+                                            </asp:Panel>
+                                        </td>
+                                    </tr><!--fin-->
                                     <tr>
                                         <td>
                                             Calle y Nro:

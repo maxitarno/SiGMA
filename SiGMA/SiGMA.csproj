@@ -127,6 +127,7 @@
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="mapa.htm" />
+    <Content Include="mapa1.htm" />
     <Content Include="Mascotas.aspx" />
     <Content Include="Perdidas.aspx" />
     <Content Include="PermisosInsuficientes.aspx" />

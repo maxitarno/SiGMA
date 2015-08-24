@@ -269,6 +269,7 @@ namespace AccesoADatos
                                    edad = edadesBD.nombreEdad,
                                    raza = RazaBD.nombreRaza,
                                    idRaza = MascotasBD.idRaza,
+                                   idCuidado = (RazaBD.idCuidadoEspecial == null) ? 0 : (int)RazaBD.idCuidadoEspecial,//agregado
                                    idColor = MascotasBD.idColor,
                                    color = ColoresBD.nombreColor,
                                    tratoA = MascotasBD.tratoAnimales,
@@ -343,6 +344,8 @@ namespace AccesoADatos
                     mascota.duenio.domicilio = new ECalle();
                     mascota.duenio.domicilio.idCalle = registro.calle;
                     mascota.duenio.nroCalle = registro.nroCalle;
+                    mascota.raza.cuidadoEspecial = new ECuidado();
+                    mascota.raza.cuidadoEspecial.idCuidado = registro.idCuidado;//agregado
                     if (registro.imagen != null)
                     {
                         mascota.imagen = registro.imagen;
