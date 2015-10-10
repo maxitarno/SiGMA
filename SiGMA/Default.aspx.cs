@@ -15,6 +15,16 @@ namespace SiGMA
             {
                 Response.Redirect("Login.aspx");
             }
+            else
+            {
+                if (Session["EsRol"] != null)
+                {
+                    if (Session["EsRol"].ToString() == "3")
+                        Response.Redirect("SeleccionDefault.aspx");
+                    if (Session["EsRol"].ToString() == "2")
+                        Response.Redirect("DefaultDueño.aspx");
+                }
+            }
         }
     }
 }

@@ -28,6 +28,7 @@ namespace SiGMA
         {
             if (!Page.IsPostBack)
             {
+                Session["buscarOtro"] = 0;
                 Session["imagenAdopcion"] = null;
                 //rnvFechaPerdida.MaximumValue = DateTime.Now.ToShortDateString();
                 if (Session["UsuarioLogueado"] != null)
@@ -276,11 +277,12 @@ namespace SiGMA
 
         public byte[] ImageHandler_ObtenerImagenMascota(HttpContext context)
         {
-            if (Session["imagenAdopcion"] != null) 
+            if (Session["imagenAdopcion"] != null && Convert.ToInt32(Session["buscarOtro"].ToString()) == 0) 
             {
                 var imagen = (byte[])Session["imagenAdopcion"];
                 return imagen;
             }
+            Session["buscarOtro"] = 0;
             if (Session["imagen"] != null)
             {
                 var imagen = (byte[])Session["imagen"];
@@ -632,6 +634,7 @@ namespace SiGMA
         public void BtnBuscarOtroClick(object sender, EventArgs e)
         {
             modificacion(true);
+            Session["buscarOtro"] = 1;
             limpiarControles();
         }
 

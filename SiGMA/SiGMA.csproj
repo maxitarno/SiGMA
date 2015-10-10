@@ -129,6 +129,7 @@
     <Content Include="mapa.htm" />
     <Content Include="mapa1.htm" />
     <Content Include="Mascotas.aspx" />
+    <Content Include="MisMascotas.aspx" />
     <Content Include="Perdidas.aspx" />
     <Content Include="PermisosInsuficientes.aspx" />
     <Content Include="Default.aspx" />
@@ -155,6 +156,7 @@
     <Content Include="Usuarios.aspx" />
     <Content Include="ValidarUsuario.aspx" />
     <Content Include="Veterinarias.aspx" />
+    <Content Include="VeterinariasBarrio.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -339,6 +341,13 @@
     <Compile Include="Mascotas.aspx.designer.cs">
       <DependentUpon>Mascotas.aspx</DependentUpon>
     </Compile>
+    <Compile Include="MisMascotas.aspx.cs">
+      <DependentUpon>MisMascotas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MisMascotas.aspx.designer.cs">
+      <DependentUpon>MisMascotas.aspx</DependentUpon>
+    </Compile>
     <Compile Include="PaginaMaestra.Master.cs">
       <DependentUpon>PaginaMaestra.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -475,6 +484,13 @@
     </Compile>
     <Compile Include="Veterinarias.aspx.designer.cs">
       <DependentUpon>Veterinarias.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="VeterinariasBarrio.aspx.cs">
+      <DependentUpon>VeterinariasBarrio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VeterinariasBarrio.aspx.designer.cs">
+      <DependentUpon>VeterinariasBarrio.aspx</DependentUpon>
     </Compile>
     <Compile Include="_Mascotas.aspx.cs">
       <DependentUpon>_Mascotas.aspx</DependentUpon>

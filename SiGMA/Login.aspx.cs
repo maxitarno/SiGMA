@@ -34,6 +34,7 @@ namespace SiGMA
                     Session["UsuarioLogueado"] = usuario.user;
                     Session["IdDueño"] = LogicaBDDueño.buscarIdDueñoPorUsuario(usuario.user).ToString();
                     Session["IdVoluntario"] = LogicaBDVoluntario.buscarIdVoluntarioPorUsuario(usuario.user).ToString();
+                    Session["EsRol"] = LogicaBDRol.verRolesSegunUsuario(usuario.user);
                     //aca hay que verificar el rol, HACER!!!!
                     HttpCookie cook = new HttpCookie("idDueño");
                     cook.Value = Session["IdDueño"].ToString();

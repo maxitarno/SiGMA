@@ -30,13 +30,13 @@
 		<div class="row">	
 			<div class="col-lg-4 col-md-4">
                 <div class="thumbnail">    
-				    <a class="zoom green" href="Usuarios.aspx"><img class="img-responsive img-circle" src="assets/img/menu/miperfil.png" alt="" width="200px" height="300px"/></a>
+				    <a class="zoom green" href="MiPerfil.aspx"><img class="img-responsive img-circle" src="assets/img/menu/miperfil.png" alt="" width="200px" height="300px"/></a>
 				    <div class="caption centered"><h4>MI PERFIL</h4> </div>
                  </div>
 			</div>
 			<div class="col-lg-4 col-md-4">
                 <div class="thumbnail"> 
-				    <a class="zoom green" href="Mascotas.aspx"><img class="img-responsive img-circle" src="assets/img/menu/mascotas.png" alt="" width="200px" height="300px"/></a>
+				    <a class="zoom green" href="MisMascotas.aspx"><img class="img-responsive img-circle" src="assets/img/menu/mascotas.png" alt="" width="200px" height="300px"/></a>
 				    <div class="caption centered"><h4>MIS MASCOTAS</h4> </div>
                 </div>
 			</div>
@@ -56,7 +56,7 @@
 			</div>
 			<div class="col-lg-4 col-md-4">
                 <div class="thumbnail">
-				    <a class="zoom green" href="Veterinarias.aspx"><img class="img-responsive img-circle" src="assets/img/menu/veterinarias.png" alt="" width="200px" height="300px"/></a>
+				    <a class="zoom green" href="VeterinariasBarrio.aspx"><img class="img-responsive img-circle" src="assets/img/menu/veterinarias.png" alt="" width="200px" height="300px"/></a>
 				    <div class="caption centered"><h4>VETERINARIAS</h4> </div>
                 </div>
 			</div>

@@ -237,6 +237,41 @@ namespace AccesoADatos
             return roles;
         }
 
+        //para control de ingreso y eleccion de Default
+        public static Int32 verRolesSegunUsuario(string usuarioNombre)
+        {
+         int admin = 0;
+         int dueño = 0;
+         List<ERol> roles = new List<ERol>();
+            SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+            IQueryable<Roles> consulta = from rolesDB in mapaEntidades.Roles
+                                         from rolesUsuariosBD in mapaEntidades.RolesXUsuario
+                                         from usuarioBD in mapaEntidades.Usuarios
+                                         where (usuarioBD.user == usuarioNombre && rolesUsuariosBD.idRol == rolesDB.idRol && rolesUsuariosBD.user == usuarioBD.user)
+                                         select rolesDB;
+            try
+            {
+                foreach (var registro in consulta)
+                {
+                    if (registro.idRol == 1)
+                        admin++;
+                    if (registro.idRol == 2)
+                        dueño++;
+                }
+            }
+            catch (System.Data.EntityCommandCompilationException exc)
+            {
+                throw exc;
+            }
+            if (admin != 0 && dueño != 0)
+                return 3;
+            if (admin != 0)
+                return 1;
+            if (dueño != 0)
+                return 2;
+            else return 0;
+        }
+
         //Eliminar rol por IdRol
         public static bool eliminarRol(ERol rol)
         {
