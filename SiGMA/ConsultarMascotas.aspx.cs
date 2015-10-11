@@ -623,6 +623,7 @@ namespace SiGMA
         {
             if (Session["idMascota"] != null)
             {
+                Session["pantalla"] = "ConsultarMascotas.aspx";
                 Response.Redirect("~/GenerarCodigoQR.aspx");
             }
         }

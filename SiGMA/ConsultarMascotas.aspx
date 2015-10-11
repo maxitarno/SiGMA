@@ -207,7 +207,6 @@
                                             </td>
                                             <td>
                                                 <asp:ImageButton ID="ibtnBuscarOtro" runat="server" ImageUrl="~/imagenes/buscar.jpg" OnClick="BtnBuscarOtroClick" CausesValidation="false" Width="65%" Visible="false"/>
-                                                <br>
                                             </td>
                                         </tr>
                                     </asp:Panel>

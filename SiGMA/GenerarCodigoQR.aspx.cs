@@ -154,7 +154,7 @@ namespace SiGMA
 
         protected void BtnRegresarClick(object sender, ImageClickEventArgs e)
         {
-            Response.Redirect("_Mascotas.aspx");
+            Response.Redirect(Session["pantalla"].ToString());
         }
     }
 }

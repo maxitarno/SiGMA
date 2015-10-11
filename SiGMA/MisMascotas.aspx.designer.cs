@@ -76,24 +76,6 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.Label lblResultado3;
         
         /// <summary>
-        /// imgImagen control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel imgImagen;
-        
-        /// <summary>
-        /// imgprvw control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlImage imgprvw;
-        
-        /// <summary>
         /// pnlResultados control.
         /// </summary>
         /// <remarks>
@@ -112,6 +94,24 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.ListBox lstResultados;
         
         /// <summary>
+        /// imgImagen control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel imgImagen;
+        
+        /// <summary>
+        /// imgprvw control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlImage imgprvw;
+        
+        /// <summary>
         /// pnlNo control.
         /// </summary>
         /// <remarks>
@@ -128,33 +128,6 @@ namespace SiGMA {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox chNoMostrar;
-        
-        /// <summary>
-        /// pnlNombre control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlNombre;
-        
-        /// <summary>
-        /// pnltxtNombreDueñio control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnltxtNombreDueñio;
-        
-        /// <summary>
-        /// txtNombreDueñio control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNombreDueñio;
         
         /// <summary>
         /// pnlmascota control.

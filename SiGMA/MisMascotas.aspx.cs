@@ -16,6 +16,7 @@ namespace SiGMA
         {
             if (!Page.IsPostBack)
             {
+            Session["buscarOtro"] = 0;
             Session["imagenAdopcion"] = null;
                 //rnvFechaPerdida.MaximumValue = DateTime.Now.ToShortDateString();
                 if (Session["UsuarioLogueado"] != null)
@@ -25,9 +26,8 @@ namespace SiGMA
                     if (!LogicaBDRol.verificarPermisoVisualizacion(Session["UsuarioLogueado"].ToString(), "MisMascotas.aspx"))
                         //Response.Redirect("PermisosInsuficientes.aspx");
                     if (!LogicaBDRol.verificarPermisosGrabacion(Session["UsuarioLogueado"].ToString(), "MisMascotas.aspx"))
-                    {
-                        btnModificar.Visible = false;
-                    }
+                    { } //btnModificar.Visible = false;
+
                 }
                 else
                 {
@@ -38,8 +38,6 @@ namespace SiGMA
                 CargarCombos.cargarEspecies(ref ddlEspecie);
                 CargarCombos.cargarComboRazas(ref ddlRaza);
                 CargarCombos.cargarSexo(ref ddlSexo);
-                pnlNombre.Visible = false;
-                pnltxtNombreDueñio.Visible = false;
                 pnlAtento.Visible = false;
                 pnlbotones.Visible = false;
                 pnlCorrecto.Visible = false;
@@ -74,7 +72,6 @@ namespace SiGMA
                 pnlCorrecto.Visible = false;
                 pnlInfo.Visible = false;
                 pnlAtento.Visible = false;
-                pnlNo.Visible = false;//modificado
             }
             else
             {
@@ -83,7 +80,6 @@ namespace SiGMA
                 lblResultado2.Text = "No se encontraron mascotas";
                 pnlAtento.Visible = false;
                 pnlCorrecto.Visible = false;
-                pnlNo.Visible = false;//modificado
             }
         }
 
@@ -109,6 +105,7 @@ namespace SiGMA
         protected void lstResultados_SelectedIndexChanged(object sender, EventArgs e)
         {
             Session["imagen"] = null;
+            Session["buscarOtro"] = 1;
             EMascota mascota = new EMascota();
             ECaracterMascota caracter = new ECaracterMascota();
             ECategoriaRaza categoria = new ECategoriaRaza();
@@ -157,10 +154,9 @@ namespace SiGMA
                         imgprvw.Height = 200;
                     }
                     imgImagen.Visible = true;
-                    pnlfiltros.Visible = true;
-                    pnlNombre.Visible = false;
-                    pnltxtNombreDueñio.Visible = false;
-                    pnlResultados.Visible = false;
+                    pnlfiltros.Visible = true;;
+                    pnlResultados.Visible = true;
+                    pnlNo.Visible = true;
                 }
                 else
                 {
@@ -168,9 +164,8 @@ namespace SiGMA
                     lblResultado2.Text = "No se encontraron mascota";
                     pnlCorrecto.Visible = false;
                     pnlAtento.Visible = false;
+                    pnlNo.Visible = true;
                 }
-                pnltxtNombreDueñio.Visible = false;
-                pnlNombre.Visible = false;
                 //String mod = Request.QueryString["m"];
                 //if (mod == "1")
                 //{
@@ -195,6 +190,7 @@ namespace SiGMA
         {
             if (Session["idMascota"] != null)
             {
+                Session["pantalla"] = "MisMascotas.aspx";
                 Response.Redirect("~/GenerarCodigoQR.aspx");
             }
         }
@@ -237,6 +233,35 @@ namespace SiGMA
                 lblResultado1.Text = "Error al poner en adopcion. Verifique datos";
             }
 
+        }
+
+        private void limpiarControles()
+        {
+            pnltxtMascota.Visible = false;
+            pnlmascota.Visible = false;
+            pnlfiltros.Visible = false;
+            pnltxtMascota.Visible = true;
+            pnlmascota.Visible = true;
+            pnlfiltros.Visible = true;
+            ddlEspecie.SelectedValue = "0";
+            ddlEstado.SelectedValue = "0";
+            ddlRaza.SelectedValue = "0";
+            ddlSexo.SelectedValue = "0";
+            ddlTratoAnimales.SelectedValue = "0";
+            ddlTratoNinios.SelectedValue = "0";
+            txtMascota.Text = "";
+            ddlEdad.SelectedValue = "0";
+            pnlDatos.Visible = false;
+            pnlResultados.Visible = false;
+            pnlbotones.Visible = false;
+            txtMascota.Text = "";
+            Session["idMascota"] = 0;
+            imgImagen.Visible = false;
+            btnModificar.Visible = false;
+            btnGenerarQR.Visible = false;
+            btnAdopcion.Visible = false;
+            //ibtnBuscarOtro.Visible = false;
+            pnlNo.Visible = false;//modificado
         }
 
         public void BtnModificarClick(object sender, EventArgs e)
@@ -329,8 +354,6 @@ namespace SiGMA
                                                                 lblResultado1.Text = "Se modifico corretamente";
                                                                 pnlAtento.Visible = false;
                                                                 pnlInfo.Visible = false;
-                                                                pnltxtNombreDueñio.Visible = true;
-                                                                pnlNombre.Visible = true;
                                                                 pnltxtMascota.Visible = false;
                                                                 pnlmascota.Visible = false;
                                                                 pnltxtMascota.Visible = true;
@@ -347,7 +370,7 @@ namespace SiGMA
                                                                 pnlDatos.Visible = false;
                                                                 pnlbotones.Visible = false;
                                                                 imgImagen.Visible = false;
-                                                                pnlNo.Visible = false;//modificado
+                                                                pnlNo.Visible = true;//modificado
                                                             }
                                                             else
                                                             {
@@ -356,7 +379,7 @@ namespace SiGMA
                                                                 pnlAtento.Visible = true;
                                                                 lblResultado3.Text = "No se pudo modificar";
                                                                 pnlCorrecto.Visible = false;
-                                                                pnlNo.Visible = false;//modificado
+                                                                pnlNo.Visible = true;//modificado
                                                             }
                                                         }
                                                     }
@@ -368,14 +391,11 @@ namespace SiGMA
                                                             lblResultado1.Text = "Se modifico corretamente";
                                                             pnlAtento.Visible = false;
                                                             pnlInfo.Visible = false;
-                                                            pnlResultados.Visible = false;
+                                                            pnlResultados.Visible = true;
                                                             pnlbotones.Visible = false;
                                                             txtMascota.Text = "";
                                                             Session["idMascota"] = 0;
-                                                            txtNombreDueñio.Text = "";
                                                             imgImagen.Visible = false;
-                                                            pnltxtNombreDueñio.Visible = true;
-                                                            pnlNombre.Visible = true;
                                                             pnltxtMascota.Visible = true;
                                                             pnlmascota.Visible = true;
                                                             pnlfiltros.Visible = true;
@@ -388,7 +408,7 @@ namespace SiGMA
                                                             txtMascota.Text = "";
                                                             ddlEdad.SelectedValue = "0";
                                                             pnlDatos.Visible = false;
-                                                            pnlNo.Visible = false;//modificado
+                                                            pnlNo.Visible = true;//modificado
                                                         }
                                                         else
                                                         {

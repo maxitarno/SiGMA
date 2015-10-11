@@ -45,7 +45,7 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title">
-                <asp:Label ID="lblTitulo"  runat="server" Text="Label"></asp:Label></h3>
+                <asp:Label ID="lblTitulo"  runat="server" Text="Mis Mascotas"></asp:Label></h3>
             </div>
             <div class="panel panel-default">
                 <div class="panel-body">
@@ -71,69 +71,57 @@
                     </div>
                 </div>
             </div>
+            <div>
+                <asp:Panel ID="pnlResultados" runat="server" Visible="false">
+                    Mis Mascostas<br />
+                    <asp:ListBox ID="lstResultados" runat="server" AutoPostBack="True" onselectedindexchanged="lstResultados_SelectedIndexChanged" Width="10%"></asp:ListBox>
+                </asp:Panel> 
+            </div>
             <div class="panel-body">
-                <div class="col-md-3 col-md-offset-1">
+                <div class="col-md-3 col-md-offset-2">
                     <div style="margin-left: 30%; display: table; width: 40%;">
                         <div style="display: table-row; width: 30%">
-                            <div style="display: table-cell; width: 20%;">
-                                <asp:Panel Visible="false" runat="server" ID="imgImagen">
-                                    <%--<img id="imgprvw" width="140px" height="140px"/>--%>
-                                    <img id="imgprvw" style="border: 2px solid #000000;" runat="server" src="~/App_Themes/TemaSigma/imagenes/sin_imagen_disponible.jpg" />
-                                </asp:Panel>
-                            </div>
+                            
                         </div>
                         <div style="display: table-row; width: 30%">
                             <div style="display: table-cell; width: 20%;">
                                 <table>
                                     <tr>
                                         <td>
-                                            <asp:Panel ID="pnlResultados" runat="server" Visible="false">
-                                                <table>
-                                                    <tr>
-                                                        <td>
+                                       </td>
+                                        <td>
+                                        <table>
+                                            <tr>
+                                                <td>
                                                             
-                                                        </td>
-                                                        <td>
-                                                            Mis Mascostas
-                                                            <asp:ListBox ID="lstResultados" runat="server" AutoPostBack="True" 
-                                                                onselectedindexchanged="lstResultados_SelectedIndexChanged" Width="100%"></asp:ListBox>
-                                                        </td>
-                                                    </tr>
-                                                </table>
-                                            </asp:Panel>
+                                                </td>
+                                                <td>
+                                                    <asp:Panel Visible="false" runat="server" ID="imgImagen">
+                                                    <img id="imgprvw" style="border: 2px solid #000000;" runat="server" src="~/App_Themes/TemaSigma/imagenes/sin_imagen_disponible.jpg" />
+                                                    </asp:Panel>
+                                                </td>
+                                            </tr>
+                                        </table>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <asp:Panel ID="pnlNo" runat=server visible=false>
-                                            <td colspan = 2 align =justify>
+                                    <td>
+                                    </td>
+                                            <td colspan = "2" align ="justify">
+                                            <asp:Panel ID="pnlNo" runat="server" visible="false">
                                                 No mostrar mascota&nbsp<asp:CheckBox ID="chNoMostrar" Visible = "true" runat = "server"/>
+                                            </asp:Panel>
                                             </td>
-                                        </asp:Panel>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <asp:Panel ID="pnlNombre" Visible="false" runat="server">
-                                                Nombre:
-                                            </asp:Panel>
-                                        </td>
-                                        <td>
-                                            <asp:Panel ID="pnltxtNombreDueñio" Visible="false" runat="server">
-                                                <asp:TextBox ID="txtNombreDueñio" runat="server"></asp:TextBox> 
-                                            </asp:Panel>
-                                        </td>
-                                        <td>
-                                            
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td valign="middle">
                                             <asp:Panel ID="pnlmascota" Visible="false" runat="server">
-                                                mascota:
+                                                Mascota:
                                             </asp:Panel>
                                         </td>
                                         <td>
                                             <asp:Panel ID="pnltxtMascota" Visible="false" runat="server">
-                                                <asp:TextBox ID="txtMascota" runat="server"></asp:TextBox> 
+                                                <asp:TextBox ID="txtMascota" runat="server" Width="100%"></asp:TextBox> 
                                             </asp:Panel>
                                         </td>
                                     </tr>
@@ -143,8 +131,8 @@
                                                 Especie:
                                             </td>
                                             <td>
-                                                <asp:DropDownList ID="ddlEspecie" runat="server" Width="100%" CssClass="DropDownList"
-                                                    OnSelectedIndexChanged="ddlRaza_SelectedIndexChanged" AutoPostBack="True" AppendDataBoundItems="true">
+                                                <asp:DropDownList ID="ddlEspecie" runat="server"  CssClass="DropDownList"
+                                                    OnSelectedIndexChanged="ddlRaza_SelectedIndexChanged" AutoPostBack="True" AppendDataBoundItems="true" Width="100%">
                                                 </asp:DropDownList>
                                             </td>
                                         </tr>
@@ -211,12 +199,12 @@
                                                 </asp:DropDownList>
                                             </td>
                                         </tr>
-                                        <tr>
+                                         <tr>
                                             <td>
                                                 
                                             </td>
                                             <td>
-                                                
+                                               
                                             </td>
                                         </tr>
                                     </asp:Panel>
@@ -225,7 +213,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 col-md-offset-2">
+                <div class="col-md-3 col-md-offset-1">
                     <table>
                         <asp:Panel ID="pnlDatos" runat="server">
                             <tr>
