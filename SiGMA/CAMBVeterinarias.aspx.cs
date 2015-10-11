@@ -295,7 +295,9 @@ namespace SiGMA
             string contacto = txtContacto.Text;
             string direccion = "argentina " + ddlLocalidad.SelectedItem.Text.ToLower() + " " + ddlCalle.SelectedItem.Text.ToLower() + " " + txtNº.Text;
             Session["r"] = true;
-            Response.Redirect("mapa.htm?direccion=" + direccion + "&nombre=" + nombre + "&telefono=" + telefono + "&contacto=" + contacto + "&m=" + Request.QueryString["m"]);
+            string pagina = "mapa.htm?direccion=" + direccion + "&nombre=" + nombre + "&telefono=" + telefono + "&contacto=" + contacto + "&m=" + Request.QueryString["m"];
+            string script = "window.open('" + pagina + "','popup', 'ModalPopUp', 'toolbar=no', 'scrollbars=no', 'location=no', 'statusbar=no', 'menubar=no', 'resizable=0', 'width=100', 'height=100', 'left = 490', 'top=300', 'modal=yes')";
+            ScriptManager.RegisterStartupScript(this, typeof(Page), "invocarfuncion", script, true);
         }
     }
 }
