@@ -619,5 +619,32 @@ namespace AccesoADatos
             }
             return estados;
         }
+        //metodo para buscar tipos de campaña
+        public static List<ETipoCampaña> buscarTipoCampañas()
+        {
+            List<ETipoCampaña> lstTipoCampañas = new List<ETipoCampaña>();
+            SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+            IQueryable<TipoCampañas> consulta = from TipoCampañasDB in mapaEntidades.TipoCampañas
+                                           select TipoCampañasDB;
+            try
+            {
+                foreach (var registro in consulta)
+                {
+                    ETipoCampaña tipoCampaña = new ETipoCampaña();
+                    tipoCampaña.idTipoCampaña = registro.idTipoCampaña;
+                    tipoCampaña.descripcion = registro.descripcion;
+                    lstTipoCampañas.Add(tipoCampaña);
+                }
+            }
+            catch (System.Data.EntityCommandCompilationException exc)
+            {
+                throw exc;
+            }
+            catch (System.Data.EntityCommandExecutionException exc)
+            {
+                throw exc;
+            }
+            return lstTipoCampañas;
+        }
     }
 }

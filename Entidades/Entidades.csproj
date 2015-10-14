@@ -61,6 +61,7 @@
     <Compile Include="EPersona.cs" />
     <Compile Include="EEstado.cs" />
     <Compile Include="ERaza.cs" />
+    <Compile Include="ETipoCampaña.cs" />
     <Compile Include="ETipoDeDocumento.cs" />
     <Compile Include="EUsuario.cs" />
     <Compile Include="EPermiso.cs" />

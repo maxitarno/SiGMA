@@ -204,6 +204,15 @@ namespace Herramientas
             {
                 ddl.Items.Add(new ListItem(item.nombreEstado.ToString(), item.idEstado.ToString()));
             }
-        }   
+        }
+        public static void cargarTipoCampaña(ref DropDownList ddl)
+        {
+            ddl.Items.Clear();
+            List<ETipoCampaña> lstTipoCampañas = Datos.buscarTipoCampañas();
+            foreach (ETipoCampaña item in lstTipoCampañas)
+            {
+                ddl.Items.Add(new ListItem(item.descripcion.ToString(), item.idTipoCampaña.ToString()));
+            }
+        }
     }
 }
