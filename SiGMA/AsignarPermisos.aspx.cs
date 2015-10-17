@@ -18,9 +18,9 @@ namespace SiGMA
             {
                 if (Session["UsuarioLogueado"] != null)
                 {
-                    if (!LogicaBDRol.verificarPermisoVisualizacion(Session["UsuarioLogueado"].ToString(), "AsignarPermisos.aspx"))
+                    if (!LogicaBDRol.verificarPermisoVisualizacion(Session["UsuarioLogueado"].ToString(), "Administracion"))
                         Response.Redirect("PermisosInsuficientes.aspx");
-                    if (!LogicaBDRol.verificarPermisosGrabacion(Session["UsuarioLogueado"].ToString(), "AsignarPermisos.aspx"))
+                    if (!LogicaBDRol.verificarPermisosGrabacion(Session["UsuarioLogueado"].ToString(), "Administracion"))
                         btnGuardar.Visible = false;
                 }
                 else
@@ -100,25 +100,6 @@ namespace SiGMA
                     permisoRol6.pantalla = "ConsultarUsuario.aspx";
                     if (permisoRol6.idPermiso != 0)
                         ListadoPermisos.Add(permisoRol6);
-
-                    // --------------- AsignarPermisos --------------- //
-                    EPermiso permisoRol7 = new EPermiso();
-                    permisoRol7.idPermiso = chkAsignarPermisosL.Checked ? 1 : 0;
-                    permisoRol7.pantalla = "AsignarPermisos.aspx";
-                    if (permisoRol7.idPermiso != 0)
-                        ListadoPermisos.Add(permisoRol7);
-
-                    EPermiso permisoRol8 = new EPermiso();
-                    permisoRol8.idPermiso = chkAsignarPermisosG.Checked ? 2 : 0;
-                    permisoRol8.pantalla = "AsignarPermisos.aspx";
-                    if (permisoRol8.idPermiso != 0)
-                        ListadoPermisos.Add(permisoRol8);
-
-                    EPermiso permisoRol9 = new EPermiso();
-                    permisoRol9.idPermiso = chkAsignarPermisosE.Checked ? 3 : 0;
-                    permisoRol9.pantalla = "AsignarPermisos.aspx";
-                    if (permisoRol9.idPermiso != 0)
-                        ListadoPermisos.Add(permisoRol9);
 
                     // --------------- ConsultarMascotas --------------- //
 

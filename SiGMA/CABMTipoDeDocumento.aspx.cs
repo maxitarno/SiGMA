@@ -15,9 +15,9 @@ namespace SiGMA
         {
             if (Session["UsuarioLogueado"] != null)
             {
-                if (!LogicaBDRol.verificarPermisoVisualizacion(Session["UsuarioLogueado"].ToString(), "CABMTipoDeDocumento.aspx"))
+                if (!LogicaBDRol.verificarPermisoVisualizacion(Session["UsuarioLogueado"].ToString(), "Administracion"))
                     Response.Redirect("PermisosInsuficientes.aspx");
-                if (!LogicaBDRol.verificarPermisosGrabacion(Session["UsuarioLogueado"].ToString(), "CABMTipoDeDocumento.aspx"))
+                if (!LogicaBDRol.verificarPermisosGrabacion(Session["UsuarioLogueado"].ToString(), "Administracion"))
                 {
                     btnRegistrar.Visible = false;
                     btnModificar.Visible = false;

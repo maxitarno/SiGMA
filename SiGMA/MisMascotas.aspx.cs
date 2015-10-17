@@ -81,6 +81,70 @@ namespace SiGMA
                 pnlAtento.Visible = false;
                 pnlCorrecto.Visible = false;
             }
+            if (Session["idMascota"] != null)
+                mostrarMascota(Convert.ToInt32(Session["idMascota"].ToString()));
+        }
+
+        private void mostrarMascota(int idMascota)
+        {
+            EMascota mascota = new EMascota();
+            ECaracterMascota caracter = new ECaracterMascota();
+            ECategoriaRaza categoria = new ECategoriaRaza();
+            ECuidado cuidado = new ECuidado();;
+            if (LogicaBDMascota.BuscarMascota(mascota, categoria, caracter, cuidado, idMascota))
+            {
+                ddlEstado.SelectedValue = mascota.estado.idEstado.ToString();
+                txtAlimentacionEspecial.Text = mascota.alimentacionEspecial;
+                ddlCaracter.SelectedValue = caracter.idCaracter.ToString();
+                txtCategoria.Text = categoria.nombreCategoriaRaza;
+                txtCuidadoEspecial.Text = cuidado.descripcion;
+                txtFecha.Text = mascota.fechaNacimiento.ToShortDateString().ToString();
+                txtMascota.Text = mascota.nombreMascota;
+                txtObservaciones.Text = mascota.observaciones;
+                if (mascota.tratoAnimal != null)
+                {
+                    ddlTratoAnimales.SelectedValue = mascota.tratoAnimal.ToString() == "false" ? "2" : "1";
+                }
+                if (mascota.tratoNiños != null)
+                {
+                    ddlTratoNinios.SelectedValue = mascota.tratoNiños.ToString() == "false" ? "2" : "1";
+                }
+                pnlDatos.Visible = true;
+                ddlColor.SelectedValue = mascota.color.idColor.ToString();
+                ddlEdad.SelectedValue = mascota.edad.idEdad.ToString();
+                ddlEspecie.SelectedValue = mascota.especie.idEspecie.ToString();
+                ddlRaza.SelectedValue = mascota.raza.idRaza.ToString();
+                ddlSexo.SelectedValue = mascota.sexo.ToString();
+                pnlbotones.Visible = true;
+                pnlInfo.Visible = false;
+                Session["idMascota"] = idMascota;
+                pnlAtento.Visible = false;
+                pnlCorrecto.Visible = false;
+                pnlInfo.Visible = false;
+                pnlmascota.Visible = true;
+                pnltxtMascota.Visible = true;
+                if (mascota.imagen != null)
+                {
+                    Session["imagen"] = mascota.imagen;
+                    Handler1.AddMethod(ImageHandler_ObtenerImagenMascota);
+                    imgprvw.Src = ResolveUrl("~/Handler1.ashx");
+                    imgprvw.Width = 300;
+                    imgprvw.Height = 200;
+                }
+                imgImagen.Visible = true;
+                pnlfiltros.Visible = true; ;
+                pnlResultados.Visible = true;
+                pnlNo.Visible = true;
+            }
+            else
+            {
+                pnlInfo.Visible = true;
+                lblResultado2.Text = "No se encontraron mascota";
+                pnlCorrecto.Visible = false;
+                pnlAtento.Visible = false;
+                pnlNo.Visible = true;
+            }
+            chNoMostrar.Checked = mascota.noMostrar;
         }
 
         public void ddlRaza_SelectedIndexChanged(object sender, EventArgs e)
@@ -106,67 +170,10 @@ namespace SiGMA
         {
             Session["imagen"] = null;
             Session["buscarOtro"] = 1;
-            EMascota mascota = new EMascota();
-            ECaracterMascota caracter = new ECaracterMascota();
-            ECategoriaRaza categoria = new ECategoriaRaza();
-            ECuidado cuidado = new ECuidado();
             if (lstResultados.SelectedValue != "")
             {
                 int idMascota = int.Parse(lstResultados.SelectedValue);
-                if (LogicaBDMascota.BuscarMascota(mascota, categoria, caracter, cuidado, idMascota))
-                {
-                    ddlEstado.SelectedValue = mascota.estado.idEstado.ToString();
-                    txtAlimentacionEspecial.Text = mascota.alimentacionEspecial;
-                    ddlCaracter.SelectedValue = caracter.idCaracter.ToString();
-                    txtCategoria.Text = categoria.nombreCategoriaRaza;
-                    txtCuidadoEspecial.Text = cuidado.descripcion;
-                    txtFecha.Text = mascota.fechaNacimiento.ToShortDateString().ToString();
-                    txtMascota.Text = mascota.nombreMascota;
-                    txtObservaciones.Text = mascota.observaciones;
-                    if (mascota.tratoAnimal != null)
-                    {
-                        ddlTratoAnimales.SelectedValue = mascota.tratoAnimal.ToString() == "false" ? "2" : "1";
-                    }
-                    if (mascota.tratoNiños != null)
-                    {
-                        ddlTratoNinios.SelectedValue = mascota.tratoNiños.ToString() == "false" ? "2" : "1";
-                    }
-                    pnlDatos.Visible = true;
-                    ddlColor.SelectedValue = mascota.color.idColor.ToString();
-                    ddlEdad.SelectedValue = mascota.edad.idEdad.ToString();
-                    ddlEspecie.SelectedValue = mascota.especie.idEspecie.ToString();
-                    ddlRaza.SelectedValue = mascota.raza.idRaza.ToString();
-                    ddlSexo.SelectedValue = mascota.sexo.ToString();
-                    pnlbotones.Visible = true;
-                    pnlInfo.Visible = false;
-                    Session["idMascota"] = idMascota;
-                    pnlAtento.Visible = false;
-                    pnlCorrecto.Visible = false;
-                    pnlInfo.Visible = false;
-                    pnlmascota.Visible = true;
-                    pnltxtMascota.Visible = true;
-                    if (mascota.imagen != null)
-                    {
-                        Session["imagen"] = mascota.imagen;
-                        Handler1.AddMethod(ImageHandler_ObtenerImagenMascota);
-                        imgprvw.Src = ResolveUrl("~/Handler1.ashx");
-                        imgprvw.Width = 300;
-                        imgprvw.Height = 200;
-                    }
-                    imgImagen.Visible = true;
-                    pnlfiltros.Visible = true;;
-                    pnlResultados.Visible = true;
-                    pnlNo.Visible = true;
-                }
-                else
-                {
-                    pnlInfo.Visible = true;
-                    lblResultado2.Text = "No se encontraron mascota";
-                    pnlCorrecto.Visible = false;
-                    pnlAtento.Visible = false;
-                    pnlNo.Visible = true;
-                }
-                chNoMostrar.Checked = mascota.noMostrar;
+                mostrarMascota(idMascota);
             }
             else
             {
