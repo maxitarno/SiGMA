@@ -46,6 +46,7 @@
     <Compile Include="EAdopcion.cs" />
     <Compile Include="EBarrio.cs" />
     <Compile Include="ECalle.cs" />
+    <Compile Include="ECampaña.cs" />
     <Compile Include="ECaracterMascota.cs" />
     <Compile Include="ECategoriaRaza.cs" />
     <Compile Include="EColor.cs" />
@@ -55,8 +56,10 @@
     <Compile Include="EEdad.cs" />
     <Compile Include="EEspecie.cs" />
     <Compile Include="EHallazgo.cs" />
+    <Compile Include="EHogarProvisorio.cs" />
     <Compile Include="ELocalidad.cs" />
     <Compile Include="EMascota.cs" />
+    <Compile Include="EPedidoDifusion.cs" />
     <Compile Include="EPerdida.cs" />
     <Compile Include="EPersona.cs" />
     <Compile Include="EEstado.cs" />
@@ -67,6 +70,7 @@
     <Compile Include="EPermiso.cs" />
     <Compile Include="ERol.cs" />
     <Compile Include="EVeterinaria.cs" />
+    <Compile Include="EVoluntario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

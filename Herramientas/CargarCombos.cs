@@ -172,6 +172,7 @@ namespace Herramientas
         }
         public static void cargarCuidados(ref DropDownList ddl)
         {
+            ddl.Items.Add(new ListItem("SIN ASIGNAR", "0"));
             List<ECuidado> categorias = Datos.BuscarCuidado();
             foreach (ECuidado item in categorias)
             {

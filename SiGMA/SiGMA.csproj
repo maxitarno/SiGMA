@@ -135,7 +135,9 @@
     <Content Include="PermisosInsuficientes.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="RegistrarAdopcion.aspx" />
+    <Content Include="RegistrarCampaña.aspx" />
     <Content Include="RegistrarHallazgo.aspx" />
+    <Content Include="RegistrarHogarProvisorio.aspx" />
     <Content Include="RegistrarMascota.aspx" />
     <Content Include="RegistrarPerdida.aspx" />
     <Content Include="RegistrarRoles.aspx" />
@@ -391,12 +393,26 @@
     <Compile Include="RegistrarAdopcion.aspx.designer.cs">
       <DependentUpon>RegistrarAdopcion.aspx</DependentUpon>
     </Compile>
+    <Compile Include="RegistrarCampaña.aspx.cs">
+      <DependentUpon>RegistrarCampaña.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegistrarCampaña.aspx.designer.cs">
+      <DependentUpon>RegistrarCampaña.aspx</DependentUpon>
+    </Compile>
     <Compile Include="RegistrarHallazgo.aspx.cs">
       <DependentUpon>RegistrarHallazgo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="RegistrarHallazgo.aspx.designer.cs">
       <DependentUpon>RegistrarHallazgo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrarHogarProvisorio.aspx.cs">
+      <DependentUpon>RegistrarHogarProvisorio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegistrarHogarProvisorio.aspx.designer.cs">
+      <DependentUpon>RegistrarHogarProvisorio.aspx</DependentUpon>
     </Compile>
     <Compile Include="RegistrarMascota.aspx.cs">
       <DependentUpon>RegistrarMascota.aspx</DependentUpon>

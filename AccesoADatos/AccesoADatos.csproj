@@ -55,12 +55,14 @@
       <DependentUpon>DER.edmx</DependentUpon>
     </Compile>
     <Compile Include="LogicaBDAdopcion.cs" />
+    <Compile Include="LogicaBDCampaña.cs" />
     <Compile Include="LogicaBDDueño.cs" />
     <Compile Include="LogicaBDEstado.cs" />
     <Compile Include="LogicaBDHallazgo.cs" />
     <Compile Include="LogicaBDImagen.cs" />
     <Compile Include="LogicaBDLogin.cs" />
     <Compile Include="LogicaBDMascota.cs" />
+    <Compile Include="LogicaBDPedidoDifusion.cs" />
     <Compile Include="LogicaBDPerdida.cs" />
     <Compile Include="LogicaBDRol.cs" />
     <Compile Include="LogicaBDToken.cs" />

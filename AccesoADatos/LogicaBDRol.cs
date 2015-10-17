@@ -458,6 +458,33 @@ namespace AccesoADatos
             }
             else { return false; }
         }
+
+        public static bool puedePublicarDifusion(string nombreUsuario)
+        {
+            EUsuario usuarioLogueado = new EUsuario();
+            SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+            var consulta = from rolesXUsuarioBD in mapaEntidades.RolesXUsuario
+                           join rolesBD in mapaEntidades.Roles on rolesXUsuarioBD.idRol equals rolesBD.idRol
+                           where (rolesXUsuarioBD.user == nombreUsuario && (rolesBD.nombre.Contains("Difusion")
+                           || rolesBD.nombre.Contains("Admin")))
+                           select rolesXUsuarioBD;
+            try
+            {
+                foreach (var registro in consulta)
+                {
+                    usuarioLogueado.user = registro.user;
+                }
+            }
+            catch (System.Data.EntityCommandCompilationException exc)
+            {
+                throw exc;
+            }
+            if (usuarioLogueado.user != null)
+            {
+                return true;
+            }
+            else { return false; } 
+        }
     }
 }
 

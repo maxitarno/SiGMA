@@ -49,7 +49,9 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Hallazgos_Perdidas", "Perdidas", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(AccesoADatos.Perdidas), "Hallazgos", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Hallazgos), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Hallazgos_Sesiones", "Usuarios", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Usuarios), "Hallazgos", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Hallazgos), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_PedidosDifusion_Hallazgos", "Hallazgos", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(AccesoADatos.Hallazgos), "PedidosDifusion", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.PedidosDifusion), true)]
+[assembly: EdmRelationshipAttribute("SiGMAModel", "FK_OcupacionXHogarProvisorio_HogaresProvisorios", "HogaresProvisorios", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.HogaresProvisorios), "OcupacionesXHogaresProvisorios", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.OcupacionesXHogaresProvisorios), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Mascotas_Razas", "Razas", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Razas), "Mascotas", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Mascotas), true)]
+[assembly: EdmRelationshipAttribute("SiGMAModel", "FK_OcupacionXHogarProvisorio_Mascotas", "Mascotas", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Mascotas), "OcupacionesXHogaresProvisorios", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.OcupacionesXHogaresProvisorios), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_PedidosDifusion_Mascotas", "Mascotas", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(AccesoADatos.Mascotas), "PedidosDifusion", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.PedidosDifusion), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_PedidosDifusion_Perdidas", "Perdidas", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(AccesoADatos.Perdidas), "PedidosDifusion", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.PedidosDifusion), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_PedidosDifusion_Usuarios", "Usuarios", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(AccesoADatos.Usuarios), "PedidosDifusion", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.PedidosDifusion), true)]
@@ -62,6 +64,7 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_RolesXUsuario_Roles", "Roles", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Roles), "RolesXUsuario", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.RolesXUsuario), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_RolesXUsuario_Usuarios", "Usuarios", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Usuarios), "RolesXUsuario", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.RolesXUsuario), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Sesiones_Usuarios", "Usuarios", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Usuarios), "Sesiones", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Sesiones), true)]
+[assembly: EdmRelationshipAttribute("SiGMAModel", "EspeciesXHogaresProvisorios", "Especies", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Especies), "HogaresProvisorios", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.HogaresProvisorios))]
 
 #endregion
 
@@ -324,6 +327,22 @@ namespace AccesoADatos
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
+        public ObjectSet<HogaresProvisorios> HogaresProvisorios
+        {
+            get
+            {
+                if ((_HogaresProvisorios == null))
+                {
+                    _HogaresProvisorios = base.CreateObjectSet<HogaresProvisorios>("HogaresProvisorios");
+                }
+                return _HogaresProvisorios;
+            }
+        }
+        private ObjectSet<HogaresProvisorios> _HogaresProvisorios;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
         public ObjectSet<Localidades> Localidades
         {
             get
@@ -352,6 +371,22 @@ namespace AccesoADatos
             }
         }
         private ObjectSet<Mascotas> _Mascotas;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<OcupacionesXHogaresProvisorios> OcupacionesXHogaresProvisorios
+        {
+            get
+            {
+                if ((_OcupacionesXHogaresProvisorios == null))
+                {
+                    _OcupacionesXHogaresProvisorios = base.CreateObjectSet<OcupacionesXHogaresProvisorios>("OcupacionesXHogaresProvisorios");
+                }
+                return _OcupacionesXHogaresProvisorios;
+            }
+        }
+        private ObjectSet<OcupacionesXHogaresProvisorios> _OcupacionesXHogaresProvisorios;
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -686,6 +721,14 @@ namespace AccesoADatos
         }
     
         /// <summary>
+        /// Deprecated Method for adding a new object to the HogaresProvisorios EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToHogaresProvisorios(HogaresProvisorios hogaresProvisorios)
+        {
+            base.AddObject("HogaresProvisorios", hogaresProvisorios);
+        }
+    
+        /// <summary>
         /// Deprecated Method for adding a new object to the Localidades EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddToLocalidades(Localidades localidades)
@@ -699,6 +742,14 @@ namespace AccesoADatos
         public void AddToMascotas(Mascotas mascotas)
         {
             base.AddObject("Mascotas", mascotas);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the OcupacionesXHogaresProvisorios EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToOcupacionesXHogaresProvisorios(OcupacionesXHogaresProvisorios ocupacionesXHogaresProvisorios)
+        {
+            base.AddObject("OcupacionesXHogaresProvisorios", ocupacionesXHogaresProvisorios);
         }
     
         /// <summary>
@@ -1787,6 +1838,30 @@ namespace AccesoADatos
         private global::System.Byte[] _imagen;
         partial void OnimagenChanging(global::System.Byte[] value);
         partial void OnimagenChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.TimeSpan> hora
+        {
+            get
+            {
+                return _hora;
+            }
+            set
+            {
+                OnhoraChanging(value);
+                ReportPropertyChanging("hora");
+                _hora = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("hora");
+                OnhoraChanged();
+            }
+        }
+        private Nullable<global::System.TimeSpan> _hora;
+        partial void OnhoraChanging(Nullable<global::System.TimeSpan> value);
+        partial void OnhoraChanged();
 
         #endregion
 
@@ -2717,6 +2792,28 @@ namespace AccesoADatos
                 }
             }
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("SiGMAModel", "EspeciesXHogaresProvisorios", "HogaresProvisorios")]
+        public EntityCollection<HogaresProvisorios> HogaresProvisorios
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<HogaresProvisorios>("SiGMAModel.EspeciesXHogaresProvisorios", "HogaresProvisorios");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<HogaresProvisorios>("SiGMAModel.EspeciesXHogaresProvisorios", "HogaresProvisorios", value);
+                }
+            }
+        }
 
         #endregion
 
@@ -3436,6 +3533,239 @@ namespace AccesoADatos
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<PedidosDifusion>("SiGMAModel.FK_PedidosDifusion_Hallazgos", "PedidosDifusion", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="SiGMAModel", Name="HogaresProvisorios")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class HogaresProvisorios : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new HogaresProvisorios object.
+        /// </summary>
+        /// <param name="idHogarProvisorio">Initial value of the idHogarProvisorio property.</param>
+        /// <param name="tieneNiños">Initial value of the tieneNiños property.</param>
+        /// <param name="cantMascotas">Initial value of the cantMascotas property.</param>
+        /// <param name="idVoluntario">Initial value of the idVoluntario property.</param>
+        /// <param name="idEstado">Initial value of the idEstado property.</param>
+        public static HogaresProvisorios CreateHogaresProvisorios(global::System.Int32 idHogarProvisorio, global::System.String tieneNiños, global::System.Int32 cantMascotas, global::System.Int32 idVoluntario, global::System.Int32 idEstado)
+        {
+            HogaresProvisorios hogaresProvisorios = new HogaresProvisorios();
+            hogaresProvisorios.idHogarProvisorio = idHogarProvisorio;
+            hogaresProvisorios.tieneNiños = tieneNiños;
+            hogaresProvisorios.cantMascotas = cantMascotas;
+            hogaresProvisorios.idVoluntario = idVoluntario;
+            hogaresProvisorios.idEstado = idEstado;
+            return hogaresProvisorios;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 idHogarProvisorio
+        {
+            get
+            {
+                return _idHogarProvisorio;
+            }
+            set
+            {
+                if (_idHogarProvisorio != value)
+                {
+                    OnidHogarProvisorioChanging(value);
+                    ReportPropertyChanging("idHogarProvisorio");
+                    _idHogarProvisorio = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("idHogarProvisorio");
+                    OnidHogarProvisorioChanged();
+                }
+            }
+        }
+        private global::System.Int32 _idHogarProvisorio;
+        partial void OnidHogarProvisorioChanging(global::System.Int32 value);
+        partial void OnidHogarProvisorioChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String tieneNiños
+        {
+            get
+            {
+                return _tieneNiños;
+            }
+            set
+            {
+                OntieneNiñosChanging(value);
+                ReportPropertyChanging("tieneNiños");
+                _tieneNiños = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("tieneNiños");
+                OntieneNiñosChanged();
+            }
+        }
+        private global::System.String _tieneNiños;
+        partial void OntieneNiñosChanging(global::System.String value);
+        partial void OntieneNiñosChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 cantMascotas
+        {
+            get
+            {
+                return _cantMascotas;
+            }
+            set
+            {
+                OncantMascotasChanging(value);
+                ReportPropertyChanging("cantMascotas");
+                _cantMascotas = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("cantMascotas");
+                OncantMascotasChanged();
+            }
+        }
+        private global::System.Int32 _cantMascotas;
+        partial void OncantMascotasChanging(global::System.Int32 value);
+        partial void OncantMascotasChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 idVoluntario
+        {
+            get
+            {
+                return _idVoluntario;
+            }
+            set
+            {
+                OnidVoluntarioChanging(value);
+                ReportPropertyChanging("idVoluntario");
+                _idVoluntario = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("idVoluntario");
+                OnidVoluntarioChanged();
+            }
+        }
+        private global::System.Int32 _idVoluntario;
+        partial void OnidVoluntarioChanging(global::System.Int32 value);
+        partial void OnidVoluntarioChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> idCuidadoEspecial
+        {
+            get
+            {
+                return _idCuidadoEspecial;
+            }
+            set
+            {
+                OnidCuidadoEspecialChanging(value);
+                ReportPropertyChanging("idCuidadoEspecial");
+                _idCuidadoEspecial = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("idCuidadoEspecial");
+                OnidCuidadoEspecialChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _idCuidadoEspecial;
+        partial void OnidCuidadoEspecialChanging(Nullable<global::System.Int32> value);
+        partial void OnidCuidadoEspecialChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 idEstado
+        {
+            get
+            {
+                return _idEstado;
+            }
+            set
+            {
+                OnidEstadoChanging(value);
+                ReportPropertyChanging("idEstado");
+                _idEstado = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("idEstado");
+                OnidEstadoChanged();
+            }
+        }
+        private global::System.Int32 _idEstado;
+        partial void OnidEstadoChanging(global::System.Int32 value);
+        partial void OnidEstadoChanged();
+
+        #endregion
+
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("SiGMAModel", "FK_OcupacionXHogarProvisorio_HogaresProvisorios", "OcupacionesXHogaresProvisorios")]
+        public EntityCollection<OcupacionesXHogaresProvisorios> OcupacionesXHogaresProvisorios
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<OcupacionesXHogaresProvisorios>("SiGMAModel.FK_OcupacionXHogarProvisorio_HogaresProvisorios", "OcupacionesXHogaresProvisorios");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<OcupacionesXHogaresProvisorios>("SiGMAModel.FK_OcupacionXHogarProvisorio_HogaresProvisorios", "OcupacionesXHogaresProvisorios", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("SiGMAModel", "EspeciesXHogaresProvisorios", "Especies")]
+        public EntityCollection<Especies> Especies
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Especies>("SiGMAModel.EspeciesXHogaresProvisorios", "Especies");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Especies>("SiGMAModel.EspeciesXHogaresProvisorios", "Especies", value);
                 }
             }
         }
@@ -4320,6 +4650,28 @@ namespace AccesoADatos
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("SiGMAModel", "FK_OcupacionXHogarProvisorio_Mascotas", "OcupacionesXHogaresProvisorios")]
+        public EntityCollection<OcupacionesXHogaresProvisorios> OcupacionesXHogaresProvisorios
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<OcupacionesXHogaresProvisorios>("SiGMAModel.FK_OcupacionXHogarProvisorio_Mascotas", "OcupacionesXHogaresProvisorios");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<OcupacionesXHogaresProvisorios>("SiGMAModel.FK_OcupacionXHogarProvisorio_Mascotas", "OcupacionesXHogaresProvisorios", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("SiGMAModel", "FK_PedidosDifusion_Mascotas", "PedidosDifusion")]
         public EntityCollection<PedidosDifusion> PedidosDifusion
         {
@@ -4332,6 +4684,254 @@ namespace AccesoADatos
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<PedidosDifusion>("SiGMAModel.FK_PedidosDifusion_Mascotas", "PedidosDifusion", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="SiGMAModel", Name="OcupacionesXHogaresProvisorios")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class OcupacionesXHogaresProvisorios : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new OcupacionesXHogaresProvisorios object.
+        /// </summary>
+        /// <param name="idOcupacion">Initial value of the idOcupacion property.</param>
+        /// <param name="idHogarProvisorio">Initial value of the idHogarProvisorio property.</param>
+        /// <param name="idMascota">Initial value of the idMascota property.</param>
+        /// <param name="fechaIngreso">Initial value of the fechaIngreso property.</param>
+        public static OcupacionesXHogaresProvisorios CreateOcupacionesXHogaresProvisorios(global::System.Int32 idOcupacion, global::System.Int32 idHogarProvisorio, global::System.Int32 idMascota, global::System.DateTime fechaIngreso)
+        {
+            OcupacionesXHogaresProvisorios ocupacionesXHogaresProvisorios = new OcupacionesXHogaresProvisorios();
+            ocupacionesXHogaresProvisorios.idOcupacion = idOcupacion;
+            ocupacionesXHogaresProvisorios.idHogarProvisorio = idHogarProvisorio;
+            ocupacionesXHogaresProvisorios.idMascota = idMascota;
+            ocupacionesXHogaresProvisorios.fechaIngreso = fechaIngreso;
+            return ocupacionesXHogaresProvisorios;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 idOcupacion
+        {
+            get
+            {
+                return _idOcupacion;
+            }
+            set
+            {
+                if (_idOcupacion != value)
+                {
+                    OnidOcupacionChanging(value);
+                    ReportPropertyChanging("idOcupacion");
+                    _idOcupacion = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("idOcupacion");
+                    OnidOcupacionChanged();
+                }
+            }
+        }
+        private global::System.Int32 _idOcupacion;
+        partial void OnidOcupacionChanging(global::System.Int32 value);
+        partial void OnidOcupacionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 idHogarProvisorio
+        {
+            get
+            {
+                return _idHogarProvisorio;
+            }
+            set
+            {
+                if (_idHogarProvisorio != value)
+                {
+                    OnidHogarProvisorioChanging(value);
+                    ReportPropertyChanging("idHogarProvisorio");
+                    _idHogarProvisorio = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("idHogarProvisorio");
+                    OnidHogarProvisorioChanged();
+                }
+            }
+        }
+        private global::System.Int32 _idHogarProvisorio;
+        partial void OnidHogarProvisorioChanging(global::System.Int32 value);
+        partial void OnidHogarProvisorioChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 idMascota
+        {
+            get
+            {
+                return _idMascota;
+            }
+            set
+            {
+                if (_idMascota != value)
+                {
+                    OnidMascotaChanging(value);
+                    ReportPropertyChanging("idMascota");
+                    _idMascota = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("idMascota");
+                    OnidMascotaChanged();
+                }
+            }
+        }
+        private global::System.Int32 _idMascota;
+        partial void OnidMascotaChanging(global::System.Int32 value);
+        partial void OnidMascotaChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime fechaIngreso
+        {
+            get
+            {
+                return _fechaIngreso;
+            }
+            set
+            {
+                if (_fechaIngreso != value)
+                {
+                    OnfechaIngresoChanging(value);
+                    ReportPropertyChanging("fechaIngreso");
+                    _fechaIngreso = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("fechaIngreso");
+                    OnfechaIngresoChanged();
+                }
+            }
+        }
+        private global::System.DateTime _fechaIngreso;
+        partial void OnfechaIngresoChanging(global::System.DateTime value);
+        partial void OnfechaIngresoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> fechaSalida
+        {
+            get
+            {
+                return _fechaSalida;
+            }
+            set
+            {
+                OnfechaSalidaChanging(value);
+                ReportPropertyChanging("fechaSalida");
+                _fechaSalida = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("fechaSalida");
+                OnfechaSalidaChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _fechaSalida;
+        partial void OnfechaSalidaChanging(Nullable<global::System.DateTime> value);
+        partial void OnfechaSalidaChanged();
+
+        #endregion
+
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("SiGMAModel", "FK_OcupacionXHogarProvisorio_HogaresProvisorios", "HogaresProvisorios")]
+        public HogaresProvisorios HogaresProvisorios
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<HogaresProvisorios>("SiGMAModel.FK_OcupacionXHogarProvisorio_HogaresProvisorios", "HogaresProvisorios").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<HogaresProvisorios>("SiGMAModel.FK_OcupacionXHogarProvisorio_HogaresProvisorios", "HogaresProvisorios").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<HogaresProvisorios> HogaresProvisoriosReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<HogaresProvisorios>("SiGMAModel.FK_OcupacionXHogarProvisorio_HogaresProvisorios", "HogaresProvisorios");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<HogaresProvisorios>("SiGMAModel.FK_OcupacionXHogarProvisorio_HogaresProvisorios", "HogaresProvisorios", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("SiGMAModel", "FK_OcupacionXHogarProvisorio_Mascotas", "Mascotas")]
+        public Mascotas Mascotas
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Mascotas>("SiGMAModel.FK_OcupacionXHogarProvisorio_Mascotas", "Mascotas").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Mascotas>("SiGMAModel.FK_OcupacionXHogarProvisorio_Mascotas", "Mascotas").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Mascotas> MascotasReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Mascotas>("SiGMAModel.FK_OcupacionXHogarProvisorio_Mascotas", "Mascotas");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Mascotas>("SiGMAModel.FK_OcupacionXHogarProvisorio_Mascotas", "Mascotas", value);
                 }
             }
         }

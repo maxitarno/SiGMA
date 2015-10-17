@@ -360,5 +360,29 @@ namespace AccesoADatos
                 throw exc;
             }
         }
+
+        public static bool verificarDomicilioRegistrado(string usuario)
+        {
+            SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+            IQueryable<Personas> consulta = from personasBD in mapaEntidades.Personas                                            
+                                            where (personasBD.user == usuario && personasBD.idBarrio != null 
+                                            && personasBD.idCalle != null && personasBD.nroCalle != null)
+                                            select personasBD;
+            try
+            {
+                if (consulta.Count() != 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (System.Data.EntityCommandCompilationException exc)
+            {
+                throw exc;
+            }           
+        }
     }
 }
