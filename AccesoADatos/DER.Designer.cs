@@ -46,6 +46,7 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Hallazgos_Estados", "Estados", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Estados), "Hallazgos", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Hallazgos), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Mascotas_Estados", "Estados", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Estados), "Mascotas", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Mascotas), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Perdidas_Estados", "Estados", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Estados), "Perdidas", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Perdidas), true)]
+[assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Voluntarios_Estados", "Estados", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(AccesoADatos.Estados), "Voluntarios", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Voluntarios), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Hallazgos_Perdidas", "Perdidas", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(AccesoADatos.Perdidas), "Hallazgos", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Hallazgos), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Hallazgos_Sesiones", "Usuarios", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Usuarios), "Hallazgos", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Hallazgos), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_PedidosDifusion_Hallazgos", "Hallazgos", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(AccesoADatos.Hallazgos), "PedidosDifusion", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.PedidosDifusion), true)]
@@ -3012,6 +3013,28 @@ namespace AccesoADatos
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Perdidas>("SiGMAModel.FK_Perdidas_Estados", "Perdidas", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("SiGMAModel", "FK_Voluntarios_Estados", "Voluntarios")]
+        public EntityCollection<Voluntarios> Voluntarios
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Voluntarios>("SiGMAModel.FK_Voluntarios_Estados", "Voluntarios");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Voluntarios>("SiGMAModel.FK_Voluntarios_Estados", "Voluntarios", value);
                 }
             }
         }
@@ -8521,6 +8544,54 @@ namespace AccesoADatos
         private global::System.Int32 _idPersona;
         partial void OnidPersonaChanging(global::System.Int32 value);
         partial void OnidPersonaChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> idEstado
+        {
+            get
+            {
+                return _idEstado;
+            }
+            set
+            {
+                OnidEstadoChanging(value);
+                ReportPropertyChanging("idEstado");
+                _idEstado = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("idEstado");
+                OnidEstadoChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _idEstado;
+        partial void OnidEstadoChanging(Nullable<global::System.Int32> value);
+        partial void OnidEstadoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String tipoVoluntario
+        {
+            get
+            {
+                return _tipoVoluntario;
+            }
+            set
+            {
+                OntipoVoluntarioChanging(value);
+                ReportPropertyChanging("tipoVoluntario");
+                _tipoVoluntario = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("tipoVoluntario");
+                OntipoVoluntarioChanged();
+            }
+        }
+        private global::System.String _tipoVoluntario;
+        partial void OntipoVoluntarioChanging(global::System.String value);
+        partial void OntipoVoluntarioChanged();
 
         #endregion
 
@@ -8545,6 +8616,44 @@ namespace AccesoADatos
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Adopciones>("SiGMAModel.FK_Adopciones_Voluntarios", "Adopciones", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("SiGMAModel", "FK_Voluntarios_Estados", "Estados")]
+        public Estados Estados
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Estados>("SiGMAModel.FK_Voluntarios_Estados", "Estados").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Estados>("SiGMAModel.FK_Voluntarios_Estados", "Estados").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Estados> EstadosReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Estados>("SiGMAModel.FK_Voluntarios_Estados", "Estados");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Estados>("SiGMAModel.FK_Voluntarios_Estados", "Estados", value);
                 }
             }
         }
