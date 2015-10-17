@@ -166,15 +166,6 @@ namespace SiGMA
                     pnlAtento.Visible = false;
                     pnlNo.Visible = true;
                 }
-                //String mod = Request.QueryString["m"];
-                //if (mod == "1")
-                //{
-                //    modificacion(true);
-                //}
-                //else 
-                //{
-                //    modificacion(false);
-                //}
                 chNoMostrar.Checked = mascota.noMostrar;
             }
             else

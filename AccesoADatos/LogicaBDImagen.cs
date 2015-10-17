@@ -22,7 +22,8 @@ namespace AccesoADatos
                     if (consulta.Count() != 0)
                     {
                         Mascotas bdMascota = consulta.First();
-                        bdMascota.imagen = imagen;
+                        if(imagen != null)
+                            bdMascota.imagen = imagen;
                         mapaEntidades.SaveChanges();
                         transaction.Complete();
                     }

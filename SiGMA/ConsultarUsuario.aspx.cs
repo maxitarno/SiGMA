@@ -80,7 +80,7 @@ namespace SiGMA
                 pnlEliminar.Visible = false;
                 pnlCalle.Visible = false;
                 pnlDdlCalle.Visible = false;
-                rnvFechaPerdida.MaximumValue = DateTime.Now.ToShortDateString();
+                //rnvFechaPerdida.MaximumValue = DateTime.Now.ToShortDateString();
             }
         }
         public void btnBuscarClick(object sender, EventArgs e){
@@ -164,16 +164,16 @@ namespace SiGMA
             }
         }
 
-        protected void imgFechaPerdida_click(object sender, ImageClickEventArgs e)
-        {
-            calendario.Visible = true;
-        }
+        //protected void imgFechaPerdida_click(object sender, ImageClickEventArgs e)
+        //{
+        //    calendario.Visible = true;
+        //}
 
-        protected void calendario_SelectionChanged(object sender, EventArgs e)
-        {
-            txtFecha.Text = calendario.SelectedDate.ToString("d");
-            calendario.Visible = false;
-        }
+        //protected void calendario_SelectionChanged(object sender, EventArgs e)
+        //{
+        //    txtFecha.Text = calendario.SelectedDate.ToString("d");
+        //    calendario.Visible = false;
+        //}
 
 
         public void btnAceptarClick(object sender, EventArgs e)
@@ -212,7 +212,7 @@ namespace SiGMA
                                             persona.nroDocumento = txtNºDeDocumento.Text;
                                             persona.telefonoCelular = txtTelefonoCelular.Text;
                                             persona.telefonoFijo = txtTelefonoFijo.Text;
-                                            persona.fechaNacimiento = fecha;
+                                            persona.fechaNacimiento = Convert.ToDateTime(txtFecha.Text);
                                             persona.apellido = txtApellido.Text;
                                             persona.email = txtMail.Text;
                                             persona.barrio = new EBarrio();
@@ -486,7 +486,7 @@ namespace SiGMA
 
         protected void lstResultados_SelectedIndexChanged(object sender, EventArgs e)
         {
-pnlAtento.Visible = false;
+            pnlAtento.Visible = false;
             pnlCorrecto.Visible = false;
             pnlInfo.Visible = false;
             EBarrio barrio = new EBarrio();

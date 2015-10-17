@@ -55,6 +55,7 @@ namespace SiGMA
                     ddlLocalidadPerdida.Enabled = true;
                     btnModificar.Visible = true;
                     lblTitulo.Text = "Modificar Pérdida";
+                    txtFechaPerdida.Enabled = true;
                 }
                 else 
                 {
@@ -67,6 +68,7 @@ namespace SiGMA
                     ddlLocalidadPerdida.Enabled = false;
                     btnModificar.Visible = false;
                     lblTitulo.Text = "Consultar Pérdida";
+                    txtFechaPerdida.Enabled = false;
                 }
                 //if (Session["r"] != null)
                 //{

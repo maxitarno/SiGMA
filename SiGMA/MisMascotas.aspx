@@ -171,7 +171,7 @@
                                             </td>
                                             <td>
                                                 <asp:DropDownList ID="ddlEstado" runat="server" CssClass="DropDownList" Width="100%"
-                                                    AppendDataBoundItems="true">
+                                                    AppendDataBoundItems="true" Enabled="false">
                                                 </asp:DropDownList>
                                             </td>
                                         </tr>
@@ -231,7 +231,7 @@
                                 </td>
                                 <td>
                                     <asp:TextBox ID="txtCuidadoEspecial" runat="server" Style="resize: none" TextMode="MultiLine"
-                                        Rows="5" Columns="25" CssClass="TextBox" Width="100%" Enabled="False"></asp:TextBox>
+                                        Rows="5" Columns="25" CssClass="TextBox" Width="100%" Enabled="true" ReadOnly="true"></asp:TextBox>
                                 </td>
                             </tr>
                             <tr>
@@ -259,7 +259,7 @@
                                 </td>
                                 <td>
                                     <asp:TextBox ID="txtObservaciones" runat="server" CssClass="TextBox" Width="100%"
-                                        Style="resize: none" TextMode="MultiLine" Rows="5" Columns="25" Enabled="False"></asp:TextBox>
+                                        Style="resize: none" TextMode="MultiLine" Rows="5" Columns="25" Enabled="True"></asp:TextBox>
                                 </td>
                             </tr>
                             <tr>
@@ -268,7 +268,7 @@
                                 </td>
                                 <td>
                                     <asp:TextBox ID="txtAlimentacionEspecial" runat="server" CssClass="TextBox" Width="100%"
-                                        Style="resize: none" TextMode="MultiLine" Rows="5" Columns="25" Enabled="False"></asp:TextBox>
+                                        Style="resize: none" TextMode="MultiLine" Rows="5" Columns="25" Enabled="True"></asp:TextBox>
                                 </td>
                             </tr>
                             <tr>

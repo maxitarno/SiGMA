@@ -167,10 +167,14 @@ namespace AccesoADatos
             try
             {
                 SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+                
                 var personas = mapaEntidades.Personas.Where(personaBuscada => personaBuscada.user == usuario.user);
                 var usuarios = mapaEntidades.Usuarios.Where(usuariobuscado => usuariobuscado.user == usuario.user);
+                Usuarios userBD = usuarios.First();
                 foreach (var registro in personas)
                 {
+                    if (usuario.password != null)
+                        userBD.password = usuario.password;
                     registro.apellido = persona.apellido;
                     registro.idCalle = persona.domicilio.idCalle;
                     registro.email = persona.email;

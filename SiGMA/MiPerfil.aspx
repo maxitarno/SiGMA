@@ -1,7 +1,6 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ConsultarUsuario.aspx.cs"
-    Inherits="SiGMA.ConsultarUsuario" MasterPageFile="~/PaginaMaestra.Master" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PaginaMaestra.Master" AutoEventWireup="true" CodeBehind="MiPerfil.aspx.cs" Inherits="SiGMA.MiPerfil" %>
 
-<asp:Content ContentPlaceHolderID="head" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,13 +26,14 @@
            })
        })(jQuery);
       </script>
+
 </asp:Content>
-<asp:Content ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="centered">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title">
-                <asp:Label ID="lblTitulo"  runat="server" Text="Label"></asp:Label></h3>
+                <asp:Label ID="lblTitulo"  runat="server" Text="Mi Perfil"></asp:Label></h3>
             </div>
             <div class="panel-body">
                 <div class="col-md-2 col-md-offset-5">
@@ -58,12 +58,6 @@
                 </div>
             </div>
             <div class="panel-body">
-                <div class="centered">
-                    <asp:RadioButton ID="rbPorPersona" runat="server" GroupName="1" ValidationGroup="1"
-                        AutoPostBack="True" OnCheckedChanged="RdbPorPersona" Text="Por persona" />
-                    <asp:RadioButton ID="rbPorUsuario" runat="server" GroupName="1" ValidationGroup="1"
-                        AutoPostBack="True" OnCheckedChanged="RdbPorUsuario" Checked="True" Text="Por usuario" />
-                </div>
                 <div class="col-md-3 col-md-offset-1">
                     <div style="margin-left: 30%; display: table; width: 40%;">
                         <div style="display: table-row; width: 40%">
@@ -76,13 +70,37 @@
                                     </td>
                                     <td>
                                         <asp:Panel ID="pnlUsuario" runat="server" Visible="false">
-                                            <asp:TextBox CssClass="TextBox" ID="txtUsuario" runat="server" Width="350px"></asp:TextBox>
+                                            <asp:TextBox CssClass="TextBox" ID="txtUsuario" runat="server" Width="350px" ReadOnly="true"></asp:TextBox>
                                         </asp:Panel>
                                     </td>
                                     <td>
-                                        <asp:Panel ID="pnlBuscar" runat="server" Visible="false">
-                                            <asp:Button ID="btnBuscar" runat="server" Text="Buscar" OnClick="btnBuscarClick" />
-                                        </asp:Panel>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Contraseña:
+                                    </td>
+                                    <td>
+                                        <asp:TextBox ID="txtContra" runat="server" MaxLength="16" TextMode="Password" Width="350px"></asp:TextBox></td><td>
+                                        <asp:RequiredFieldValidator ID="rfvContra" runat="server" ErrorMessage="*" ForeColor="Red"
+                                            ControlToValidate="txtContra" Display="Dynamic"></asp:RequiredFieldValidator>
+                                        <asp:CustomValidator ID="cvContraseña" runat="server" 
+                                            ErrorMessage="Minimo 8 caracteres" ControlToValidate="txtContra" ForeColor="Red" 
+                                            onservervalidate="cvContraseña_ServerValidate" Display="Dynamic"></asp:CustomValidator>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <asp:Label ID="lblRepetirContraseña" runat="server" Text="Repetir Contraseña:"></asp:Label>
+                                    </td>
+                                    <td>
+                                        <asp:TextBox  ID="txtRepetirContra" runat="server" MaxLength="16" 
+                                            TextMode="Password" Width="350px"></asp:TextBox></td><td>
+                                        <asp:RequiredFieldValidator ID="rfvRepetirContra" runat="server" ErrorMessage="*"
+                                            ForeColor="Red" ControlToValidate="txtRepetirContra" Display="Dynamic"></asp:RequiredFieldValidator>
+                                        <asp:CompareValidator ID="covPassword" runat="server" ErrorMessage="Las contraseñas no son iguales"
+                                            ControlToCompare="txtContra" ControlToValidate="txtRepetirContra" ForeColor="Red"
+                                            Display="Dynamic"></asp:CompareValidator>
                                     </td>
                                 </tr>
                                 <tr>
@@ -115,29 +133,6 @@
                                     </td>
                                 </tr>
                             </table>
-                        </div>
-                    </div>
-                    <div style="margin-left: 30%; display: table; width: 40%;">
-                        <div style="display: table-row; width: 30%">
-                            <asp:Panel ID="pnlresult" runat="server" Visible="false">
-                                <div style="display: table-cell; width: 20%;">
-                                    Resultados:
-                                </div>
-                            </asp:Panel>
-                            <asp:Panel ID="pnlResultados" runat="server" Visible="false">
-                                <div style="display: table-cell; width: 20%;">
-                                    <asp:ListBox ID="lstResultados" runat="server" CssClass="TextBox" Width="200px" 
-                                        AutoPostBack="True" onselectedindexchanged="lstResultados_SelectedIndexChanged">
-                                    </asp:ListBox>
-                                </div>
-                            </asp:Panel>
-                        </div>
-                        <div style="display: table-row; width: 30%">
-                            <asp:Panel ID="pnlSeleccionar" runat="server" Visible="false">
-                                <div style="display: table-cell; width: 20%;">
-                                    <asp:Button ID="btnSeleccionar" runat="server" visible="false" Text="Seleccionar" OnClick="btnAceptarClick" />
-                                </div>
-                            </asp:Panel>
                         </div>
                     </div>
                 </div>
@@ -181,7 +176,7 @@
                                 <tr>
                                     <td>
                                         <asp:Panel ID="pnlestate" runat="server" Visible="false">
-                                            Localidades:
+                                            Localidad:
                                         </asp:Panel>
                                     </td>
                                     <td>
@@ -210,7 +205,7 @@
                                 <tr>
                                     <td>
                                         <asp:Panel ID="pnlbarrio" runat="server" Visible="false">
-                                            Barrios:
+                                            Barrio:
                                         </asp:Panel>
                                     </td>
                                     <td>
@@ -297,15 +292,10 @@
                                         <tr>
                                             <td>
                                                 <asp:Panel ID="pnlModificar" runat="server" Visible="false">
-                                                    <asp:Button ID="btnModificar" runat="server" Text="Modificar" OnClick="btnModificarClick"
-                                                        ValidationGroup="2" />
+                                                    <asp:Button ID="btnModificar" runat="server" Text="Modificar" OnClick="btnModificarClick" />
                                                 </asp:Panel>
                                             </td>
                                             <td>
-                                                <asp:Panel ID="pnlEliminar" runat="server" Visible="false">
-                                                    <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" OnClick="btnEliminarClick"
-                                                        ValidationGroup="3" />
-                                                </asp:Panel>
                                             </td>
                                         </tr>
                                     </table>
@@ -322,3 +312,4 @@
     </div>
     </div>
 </asp:Content>
+

@@ -19,6 +19,16 @@
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="assets/js/hover.zoom.js"></script>
     <script src="assets/js/hover.zoom.conf.js"></script>
+    <link href="assets/calendario_dw/calendario_dw-estilos.css" type="text/css" rel="STYLESHEET"/>
+   <script type="text/javascript" src="assets/calendario_dw/jquery-1.4.4.min.js"></script>
+   <script type="text/javascript" src="assets/calendario_dw/calendario_dw.js"></script>
+   <script type="text/javascript">
+       (function ($) {
+           $(document).ready(function () {
+               $(".campofecha").calendarioDW();
+           })
+       })(jQuery);
+      </script>
     <style type="text/css">
         .style1
         {
@@ -188,15 +198,15 @@
                                             onservervalidate="cvDdlSexo_ServerValidate"></asp:CustomValidator></td>
                                     
                                 </tr>
-                                <%--<tr>
+                                <tr>
                                     <td class="style2" width="100px">
                                         Fecha Nac.:&nbsp
                                     </td>
                                     <td class="style1" width="250px">
-                                        <asp:TextBox ID="txtFecha" runat="server" TextMode="Date" width="250px"></asp:TextBox>
+                                          <asp:TextBox ID="txtFecha" class="campofecha pull-left" runat="server"  Width="90%" ></asp:TextBox>
                                     </td>
                                     <td class="style3" ></td>
-                                </tr>--%>
+                                </tr>
                                 </table>
                         </asp:Panel>
                         <asp:Panel ID="pnlFoto" runat="server">

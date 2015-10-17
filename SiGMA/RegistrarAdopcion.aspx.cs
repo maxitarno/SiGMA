@@ -94,7 +94,7 @@ namespace SiGMA
                     txtNº.Enabled = false;
                     txtDNI.Enabled = true;
                 }
-                rnvFechaPerdida.MaximumValue = DateTime.Now.ToShortDateString();
+                //rnvFechaPerdida.MaximumValue = DateTime.Now.ToShortDateString();
             }
         }
         public void rbPorTipo(object sender, EventArgs e)
@@ -331,16 +331,17 @@ namespace SiGMA
         {
             Response.Redirect("Adopciones.aspx");
         }
-        protected void imgFechaPerdida_click(object sender, ImageClickEventArgs e)
-        {
-            calendario.Visible = true;
-        }
 
-        protected void calendario_SelectionChanged(object sender, EventArgs e)
-        {
-            txtFecha.Text = calendario.SelectedDate.ToString("d");
-            calendario.Visible = false;
-        }
+        //protected void imgFechaPerdida_click(object sender, ImageClickEventArgs e)
+        //{
+        //    calendario.Visible = true;
+        //}
+
+        //protected void calendario_SelectionChanged(object sender, EventArgs e)
+        //{
+        //    txtFecha.Text = calendario.SelectedDate.ToString("d");
+        //    calendario.Visible = false;
+        //}
 
         protected void lstResultadosDuenios_SelectedIndexChanged(object sender, EventArgs e)
         {
