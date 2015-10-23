@@ -5206,6 +5206,30 @@ namespace AccesoADatos
         private global::System.String _user;
         partial void OnuserChanging(global::System.String value);
         partial void OnuserChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String tipo
+        {
+            get
+            {
+                return _tipo;
+            }
+            set
+            {
+                OntipoChanging(value);
+                ReportPropertyChanging("tipo");
+                _tipo = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("tipo");
+                OntipoChanged();
+            }
+        }
+        private global::System.String _tipo;
+        partial void OntipoChanging(global::System.String value);
+        partial void OntipoChanged();
 
         #endregion
 

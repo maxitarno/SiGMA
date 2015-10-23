@@ -80,6 +80,7 @@ namespace SiGMA
                     else
                     {
                         EPedidoDifusion pedido = new EPedidoDifusion();
+                        pedido.tipo = "Campaña";
                         pedido.estado = LogicaBDEstado.buscarEstadoPorNombre("Pendiente de Aceptacion");
                         pedido.campaña = campaña;
                         pedido.fecha = DateTime.Now;

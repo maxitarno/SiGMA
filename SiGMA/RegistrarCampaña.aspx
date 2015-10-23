@@ -130,8 +130,7 @@
                                             </td>
                                             <td>
                                             </td>
-                                        </tr>
-                                    </tr>
+                                        </tr>                                   
                                 </table>
                             </asp:Panel>
                         </div>

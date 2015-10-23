@@ -131,6 +131,7 @@
     <Content Include="Mascotas.aspx" />
     <Content Include="MiPerfil.aspx" />
     <Content Include="MisMascotas.aspx" />
+    <Content Include="ModerarPedidosDifusion.aspx" />
     <Content Include="Perdidas.aspx" />
     <Content Include="PermisosInsuficientes.aspx" />
     <Content Include="Default.aspx" />
@@ -357,6 +358,13 @@
     </Compile>
     <Compile Include="MisMascotas.aspx.designer.cs">
       <DependentUpon>MisMascotas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ModerarPedidosDifusion.aspx.cs">
+      <DependentUpon>ModerarPedidosDifusion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ModerarPedidosDifusion.aspx.designer.cs">
+      <DependentUpon>ModerarPedidosDifusion.aspx</DependentUpon>
     </Compile>
     <Compile Include="PaginaMaestra.Master.cs">
       <DependentUpon>PaginaMaestra.Master</DependentUpon>

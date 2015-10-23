@@ -12,7 +12,7 @@ namespace AccesoADatos
         {
             SiGMAEntities mapa = Conexion.crearSegunServidor();
             var consulta = mapa.Estados.Single(e => e.nombreEstado == estado);
-            return new EEstado { idEstado = consulta.idEstado, nombreEstado = consulta.nombreEstado };            
+            return new EEstado { idEstado = consulta.idEstado, nombreEstado = consulta.nombreEstado, ambito = consulta.ambito};            
         }
     }
 }

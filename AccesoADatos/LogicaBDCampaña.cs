@@ -58,5 +58,33 @@ namespace AccesoADatos
             var consulta = mapa.ExecuteStoreQuery<Decimal>("SELECT IDENT_CURRENT('Campañas') + IDENT_INCR('Campañas')");
             return int.Parse(consulta.FirstOrDefault().ToString());
         }
+
+        public static ECampaña buscarCampaña(int idCampaña)
+        {
+            SiGMAEntities mapa = Conexion.crearSegunServidor();
+            ECampaña retorno = null;
+            var consulta = from campañasBD in mapa.Campañas
+                           join tipoCampañaBD in mapa.TipoCampañas
+                           on campañasBD.idTipoCampaña equals tipoCampañaBD.idTipoCampaña
+                           where campañasBD.idCampaña == idCampaña
+                           select new
+                           {
+                               campañasBD,
+                               tipoCampañaBD
+                           };
+            foreach (var item in consulta)
+            {
+                retorno = new ECampaña();
+                retorno.idCampaña = item.campañasBD.idCampaña;
+                retorno.tipoCampaña = new ETipoCampaña();
+                retorno.tipoCampaña.idTipoCampaña = int.Parse(item.campañasBD.idTipoCampaña.ToString());
+                retorno.tipoCampaña.descripcion = item.tipoCampañaBD.descripcion;
+                retorno.fecha = item.campañasBD.fecha;
+                retorno.lugar = item.campañasBD.lugar;
+                retorno.imagen = item.campañasBD.imagen;
+                retorno.hora = Convert.ToDateTime(item.campañasBD.hora.ToString());
+            }
+            return retorno;
+        }
     }
 }

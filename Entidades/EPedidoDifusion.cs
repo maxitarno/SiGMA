@@ -16,5 +16,6 @@ namespace Entidades
         public EMascota mascota { get; set; }
         public DateTime fecha { get; set; }
         public EUsuario user { get; set; }
+        public string tipo { get; set; }
     }
 }
