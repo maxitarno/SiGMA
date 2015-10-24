@@ -7,6 +7,8 @@ using System.Web.UI.WebControls;
 using AccesoADatos;
 using Entidades;
 using Herramientas;
+using System.Threading;
+using System.Globalization;
 
 namespace SiGMA
 {
@@ -14,6 +16,8 @@ namespace SiGMA
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("es-ES");
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo("es-ES");
             if (!Page.IsPostBack)
             {
                 if (Session["UsuarioLogueado"] != null)
@@ -88,7 +92,7 @@ namespace SiGMA
             txtTelefonoFijo.Text = persona.telefonoFijo;
             txtTelefonoCelular.Text = persona.telefonoCelular;
             txtMail.Text = persona.email;
-            txtFecha.Text = persona.fechaNacimiento != null ? persona.fechaNacimiento.Value.ToShortDateString() : null;
+            txtFecha.Text = persona.fechaNacimiento != null ? persona.fechaNacimiento.Value.ToShortDateString() : DateTime.Today.ToShortDateString();
             Session["persona"] = persona.idPersona;
             pnlUser.Visible = true;
             pnlUsuario.Visible = true;

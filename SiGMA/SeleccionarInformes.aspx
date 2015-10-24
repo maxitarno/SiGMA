@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SeleccionarInformes.aspx.cs"
-    Inherits="SiGMA.SeleccionarInformes" MasterPageFile="PaginaMaestra.Master" %>
+    Inherits="SiGMA.SeleccionarInformes" MasterPageFile="PaginaMaestra.Master" Culture="Auto" UICulture="Auto" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -38,6 +38,8 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True">
+    </asp:ScriptManager>
     <script type="text/javascript" src="Scripts/jquery-2.1.3.js"></script>
     <script type="text/javascript" src="https://www.google.com/jsapi" ></script>
     <div class="centered">
@@ -102,25 +104,6 @@
                                     <div style="display: table-cell; width: 20%;">
                                         <asp:Panel runat="server" Visible="false" ID="pnlFiltros1">
                                             <table>
-                                                <%-- <tr>
-                                            <td>
-                                                Fecha:
-                                            </td>
-                                            <td>
-                                                <asp:TextBox ID="txtFechaMascota" Enabled="true" runat="server" Width="90%" text="01/01/2013"></asp:TextBox><asp:ImageButton
-                                                ID="imgFechaPerdida" runat="server" CausesValidation="False" ImageUrl="~/App_Themes/TemaSigma/imagenes/ico_calendar.gif"
-                                                OnClick="imgFechaPerdida_Click" />
-                                            <asp:Calendar ID="calendario" runat="server" BorderColor="Black" BorderWidth="1px"
-                                                Visible="False" OnSelectionChanged="calendario_SelectionChangedMascota">
-                                                <DayHeaderStyle BackColor="White" Font-Bold="True" ForeColor="Black" />
-                                                <DayStyle ForeColor="Black" />
-                                                <TitleStyle BackColor="Black" ForeColor="White" />
-                                            </asp:Calendar>
-                                            <asp:RangeValidator ID="rnvMascota" runat="server" ErrorMessage="La fecha no puede ser superior a la actual"
-                                                ForeColor="Red" ControlToValidate="txtFechaMascota" SetFocusOnError="True" MinimumValue="01/01/2013"
-                                                Type="Date" Font-Size="XX-Small"></asp:RangeValidator>
-                                            </td>
-                                        </tr>--%>
                                                 <tr>
                                                     <td>
                                                         Especie:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
@@ -163,29 +146,26 @@
                                             <table>
                                                 <tr>
                                                     <td>
-                                                        Fecha de la adopción desde:
+                                                        Fecha desde:
                                                     </td>
                                                     <td>
-                                                        <asp:TextBox ID="txtFechaAdopcion" Enabled="false" runat="server" Width="90%" Text="  /  /  "></asp:TextBox><asp:ImageButton
-                                                            ID="ImageButton1" runat="server" CausesValidation="False" ImageUrl="~/App_Themes/TemaSigma/imagenes/ico_calendar.gif"
-                                                            OnClick="imgFechaPerdida_Click" />
-                                                        <asp:Calendar ID="calendar1" runat="server" BorderColor="Black" BorderWidth="1px"
-                                                            Visible="False" OnSelectionChanged="calendario_SelectionChanged">
-                                                            <DayHeaderStyle BackColor="White" Font-Bold="True" ForeColor="Black" />
-                                                            <DayStyle ForeColor="Black" />
-                                                            <TitleStyle BackColor="Black" ForeColor="White" />
-                                                        </asp:Calendar>
-                                                        <%--<asp:RangeValidator ID="rnvAdopcion" runat="server" ErrorMessage="La fecha no puede ser superior a la actual"
-                                                ForeColor="Red" ControlToValidate="txtFechaAdopcion" SetFocusOnError="True" MinimumValue="01/01/2013"
-                                                Type="Date" Font-Size="XX-Small"></asp:RangeValidator>--%>
+                                                        <asp:TextBox ID="txtFechaAdopcion" runat="server"  Width="200px" />
+                                                        <asp:Image ID="Image1" runat="server" ImageUrl="~/assets/calendario_dw/calendario.png" />
+                                                        <ajaxToolkit:CalendarExtender ID="CalendarExtender1" 
+                                                            runat="server" TargetControlID="txtFechaAdopcion" 
+                                                            PopupButtonID="Image1">
+                                                        </ajaxToolkit:CalendarExtender>
+                                                        <asp:RangeValidator ID="rnvAdopcion" runat="server" ErrorMessage="La fecha no puede ser superior a la actual" 
+                                                        ForeColor="Red" ControlToValidate="txtFechaAdopcion" SetFocusOnError="True" 
+                                                        MinimumValue="01/01/2013" Type="Date" Font-Size="XX-Small" ></asp:RangeValidator>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        Estado de adopcion:
+                                                        Estado:
                                                     </td>
                                                     <td>
-                                                        <asp:DropDownList ID="ddlEstadoDeAdopcion" runat="server">
+                                                        <asp:DropDownList ID="ddlEstadoDeAdopcion" runat="server" Width="211px">
                                                         </asp:DropDownList>
                                                     </td>
                                                 </tr>
@@ -195,29 +175,26 @@
                                             <table>
                                                 <tr>
                                                     <td>
-                                                        Fecha de el hallazgo desde:
+                                                        Fecha desde:
                                                     </td>
                                                     <td>
-                                                        <asp:TextBox ID="txtFechaDelHallazgo" Enabled="false" runat="server" Width="90%"
-                                                            Text="  /  /  "></asp:TextBox><asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="False"
-                                                                ImageUrl="~/App_Themes/TemaSigma/imagenes/ico_calendar.gif" OnClick="imgFechaPerdida_Click" />
-                                                        <asp:Calendar ID="calendar2" runat="server" BorderColor="Black" BorderWidth="1px"
-                                                            Visible="False" OnSelectionChanged="calendario_SelectionChangedHallazgo">
-                                                            <DayHeaderStyle BackColor="White" Font-Bold="True" ForeColor="Black" />
-                                                            <DayStyle ForeColor="Black" />
-                                                            <TitleStyle BackColor="Black" ForeColor="White" />
-                                                        </asp:Calendar>
-                                                        <%--<asp:RangeValidator ID="rnvHallazgo" runat="server" ErrorMessage="La fecha no puede ser superior a la actual"
-                                                ForeColor="Red" ControlToValidate="txtFechaDelHallazgo" SetFocusOnError="True" MinimumValue="01/01/2013"
-                                                Type="Date" Font-Size="XX-Small"></asp:RangeValidator>--%>
+                                                        <asp:TextBox ID="txtFechaDelHallazgo" runat="server"  Width="200px" />
+                                                        <asp:Image ID="Image2" runat="server" ImageUrl="~/assets/calendario_dw/calendario.png" />
+                                                        <ajaxToolkit:CalendarExtender ID="CalendarExtender2" 
+                                                            runat="server" TargetControlID="txtFechaDelHallazgo" 
+                                                            PopupButtonID="Image2">
+                                                        </ajaxToolkit:CalendarExtender>
+                                                        <asp:RangeValidator ID="rnvHallazgo" runat="server" ErrorMessage="La fecha no puede ser superior a la actual" 
+                                                        ForeColor="Red" ControlToValidate="txtFechaDelHallazgo" SetFocusOnError="True" 
+                                                        MinimumValue="01/01/2013" Type="Date" Font-Size="XX-Small" ></asp:RangeValidator>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        Estado de el hallazgo:
+                                                        Estado:
                                                     </td>
                                                     <td>
-                                                        <asp:DropDownList ID="ddlEstadoDelHallazgo" runat="server">
+                                                        <asp:DropDownList ID="ddlEstadoDelHallazgo" runat="server" Width="211px">
                                                         </asp:DropDownList>
                                                     </td>
                                                 </tr>
@@ -226,7 +203,7 @@
                                                         Barrio:
                                                     </td>
                                                     <td>
-                                                        <asp:DropDownList ID="ddlBarrioHallazgo" runat="server">
+                                                        <asp:DropDownList ID="ddlBarrioHallazgo" runat="server" Width="211px">
                                                         </asp:DropDownList>
                                                     </td>
                                                 </tr>
@@ -239,19 +216,15 @@
                                                         Fecha desde:
                                                     </td>
                                                     <td>
-                                                        <asp:TextBox ID="txtFechaDeLaPerdida" Enabled="true" runat="server" Width="190px"
-                                                            Text="01/01/2013"></asp:TextBox><asp:ImageButton ID="ImageButton3" runat="server"
-                                                                CausesValidation="False" ImageUrl="~/App_Themes/TemaSigma/imagenes/ico_calendar.gif"
-                                                                OnClick="imgFechaPerdida_Click" Enabled="false" />
-                                                        <asp:Calendar ID="calendar3" runat="server" BorderColor="Black" BorderWidth="1px"
-                                                            Visible="False" OnSelectionChanged="calendario_SelectionChangedPerdida">
-                                                            <DayHeaderStyle BackColor="White" Font-Bold="True" ForeColor="Black" />
-                                                            <DayStyle ForeColor="Black" />
-                                                            <TitleStyle BackColor="Black" ForeColor="White" />
-                                                        </asp:Calendar>
-                                                        <%-- <asp:RangeValidator ID="rnvPerdida" runat="server" ErrorMessage="La fecha no puede ser superior a la actual"
-                                                ForeColor="Red" ControlToValidate="txtFechaDeLaPerdida" SetFocusOnError="True" MinimumValue="01/01/2013"
-                                                Type="Date" Font-Size="XX-Small"></asp:RangeValidator>--%>
+                                                        <asp:TextBox ID="txtFechaDeLaPerdida" runat="server"  Width="200px" />
+                                                        <asp:Image ID="Image3" runat="server" ImageUrl="~/assets/calendario_dw/calendario.png" />
+                                                        <ajaxToolkit:CalendarExtender ID="CalendarExtender3" 
+                                                            runat="server" TargetControlID="txtFechaDeLaPerdida" 
+                                                            PopupButtonID="Image3">
+                                                        </ajaxToolkit:CalendarExtender>
+                                                        <asp:RangeValidator ID="rnvPerdida" runat="server" ErrorMessage="La fecha no puede ser superior a la actual" 
+                                                        ForeColor="Red" ControlToValidate="txtFechaDeLaPerdida" SetFocusOnError="True" 
+                                                        MinimumValue="01/01/2013" Type="Date" Font-Size="XX-Small" ></asp:RangeValidator>
                                                     </td>
                                                 </tr>
                                                 <tr>

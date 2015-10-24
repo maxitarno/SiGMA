@@ -17,6 +17,8 @@ namespace SiGMA
             if (!Page.IsPostBack)
             {
                 CargarCombos.cargarTipoCampaña(ref ddlTipoCampaña);
+                rnvFechaCampaña.MinimumValue = DateTime.Now.ToShortDateString();
+                rnvFechaCampaña.MaximumValue = DateTime.Now.AddMonths(6).ToShortDateString();
             }
         }
 

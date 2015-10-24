@@ -41,7 +41,7 @@ namespace SiGMA
                 CargarCombos.cargarCalles(ref ddlCalles);
                 CargarCombos.cargarLocalidades(ref ddlLocalidadPerdida);
                 CargarCombos.cargarCalles(ref ddlCallePerdida);
-                //rnvFechaPerdida.MaximumValue = DateTime.Now.ToShortDateString();
+                rnvFechaPerdida.MaximumValue = DateTime.Now.ToShortDateString();
             }
         }
 
@@ -89,24 +89,13 @@ namespace SiGMA
             }
         }
 
-        protected void imgFechaPerdida_click(object sender, ImageClickEventArgs e)
-        {
-            //calendario.Visible = true;
-        }
-
-        protected void calendario_SelectionChanged(object sender, EventArgs e)
-        {
-            //txtFechaPerdida.Text = calendario.SelectedDate.ToString("d");
-            //calendario.Visible = false;
-        }
-
         private void limpiarPagina() 
         {
             pnlInfo.Visible = false;
             pnlAtento.Visible = false;
             pnlCorrecto.Visible = false;
             pnlRegistrarPerdida.Visible = false;
-            txtFechaPerdida.Text = "";
+            txtFecha.Text = "";
             txtComentarios.Text = "";
             //txtMapa.Text = "";
         }
@@ -260,14 +249,14 @@ namespace SiGMA
                     perdida.domicilio.numeroCalle = int.Parse(txtNroCallePerdida.Text);
                     perdida.usuario = new EUsuario();
                     perdida.usuario.user = Session["UsuarioLogueado"].ToString();
-                    perdida.fecha = Convert.ToDateTime(txtFechaPerdida.Text);
+                    perdida.fecha = Convert.ToDateTime(txtFecha.Text);
                     perdida.comentarios = txtComentarios.Text;
                     //perdida.mapaPerdida = txtMapa.Text;
                     if (perdida.fecha > DateTime.Now)
                     {
                         pnlInfo.Visible = true;
                         lblInfo.Text = "La fecha de pérdida no puede ser superior a la actual";
-                        txtFechaPerdida.Focus();
+                        txtFecha.Focus();
                         return;
                     }
                     if (LogicaBDPerdida.registrarPerdida(perdida))

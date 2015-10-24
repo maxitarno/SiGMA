@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ConsultarUsuario.aspx.cs"
-    Inherits="SiGMA.ConsultarUsuario" MasterPageFile="~/PaginaMaestra.Master" %>
+    Inherits="SiGMA.ConsultarUsuario" MasterPageFile="~/PaginaMaestra.Master" Culture="Auto" UICulture="Auto"%>
 
 <asp:Content ContentPlaceHolderID="head" runat="server">
     <meta charset="utf-8">
@@ -17,19 +17,13 @@
     <script src="assets/js/hover.zoom.js"></script>
     <script src="assets/js/hover.zoom.conf.js"></script>
     <link href="assets/calendario_dw/calendario_dw-estilos.css" type="text/css" rel="STYLESHEET"/>
-   <script type="text/javascript" src="assets/calendario_dw/jquery-1.4.4.min.js"></script>
-   <script type="text/javascript" src="assets/calendario_dw/calendario_dw.js"></script>
-   
-   <script type="text/javascript">
-       (function ($) {
-           $(document).ready(function () {
-               $(".campofecha").calendarioDW();
-           })
-       })(jQuery);
-      </script>
+
 </asp:Content>
 <asp:Content ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True">
+        </asp:ScriptManager>
     <div class="centered">
+        
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title">
@@ -229,7 +223,12 @@
                                     </td>
                                     <td>
                                         <asp:Panel ID="pnlFecha" runat="server" Visible="false">
-                                                <asp:TextBox ID="txtFecha" class="campofecha pull-left" runat="server"  Width="90%" ></asp:TextBox>
+                                                <asp:TextBox ID="txtFecha" runat="server"  Width="90%" />
+                                                <asp:Image ID="Image1" runat="server" ImageUrl="~/assets/calendario_dw/calendario.png" />
+                                                <ajaxToolkit:CalendarExtender ID="CalendarExtender1" 
+                                                    runat="server" TargetControlID="txtFecha" 
+                                                    PopupButtonID="Image1">
+                                                </ajaxToolkit:CalendarExtender>
                                         </asp:Panel>
                                     </td>
                                     <td>

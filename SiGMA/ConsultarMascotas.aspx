@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ConsultarMascotas.aspx.cs"
-    Inherits="SiGMA.ConsultarMascotasaspx" MasterPageFile="~/PaginaMaestra.Master" %>
+    Inherits="SiGMA.ConsultarMascotasaspx" MasterPageFile="~/PaginaMaestra.Master" Culture="Auto" UICulture="Auto"%>
 
 <asp:Content ContentPlaceHolderID="head" runat="server">
     <meta charset="utf-8">
@@ -18,18 +18,7 @@
     <script src="assets/js/hover.zoom.conf.js"></script>
 
     <link href="assets/calendario_dw/calendario_dw-estilos.css" type="text/css" rel="STYLESHEET"/>
-   <script type="text/javascript" src="assets/calendario_dw/jquery-1.4.4.min.js"></script>
-   <script type="text/javascript" src="assets/calendario_dw/calendario_dw.js"></script>
    
-   <script type="text/javascript">
-       (function ($) {
-           $(document).ready(function () {
-               $(".campofecha").calendarioDW();
-           })
-       })(jQuery);
-      </script>
-
-
     <script type="text/javascript">
         function showimagepreview(input) {
             if (input.files && input.files[0]) {
@@ -43,6 +32,8 @@
     </script>
 </asp:Content>
 <asp:Content ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True">
+    </asp:ScriptManager>
     <div class="centered">
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -304,19 +295,12 @@
                                 </td>
                                 <td>
                                     <asp:Panel ID="pnlFecha" runat="server" Visible="true">
-                                                 <asp:TextBox ID="txtFecha" class="campofecha pull-left" CssClass="TextBox" runat="server" Enabled="false" Width="90%" ></asp:TextBox>
-                                                <%--<asp:ImageButton ID="imgFechaPerdida" runat="server" CausesValidation="False"
-                                                ImageUrl="~/App_Themes/TemaSigma/imagenes/ico_calendar.gif" OnClick="imgFechaPerdida_click"  /> 
-                                                <asp:Calendar ID="calendario" runat="server" BorderColor="Black" 
-                                                        BorderWidth="1px" Visible="False" onselectionchanged="calendario_SelectionChanged">
-                                                            <DayHeaderStyle BackColor="White" Font-Bold="True" ForeColor="Black" />
-                                                        <DayStyle ForeColor="Black" />
-                                                        <TitleStyle BackColor="Black" ForeColor="White" />
-                                                        </asp:Calendar>
-                                                    <asp:RangeValidator ID="rnvFechaPerdida" runat="server" ErrorMessage="La fecha no puede ser superior a la actual" 
-                                                        ForeColor="Red" ControlToValidate="txtFecha" SetFocusOnError="True" 
-                                                        MinimumValue="01/01/2013" Type="Date" Font-Size="XX-Small" 
-                                                        ></asp:RangeValidator>--%>
+                                                <asp:TextBox ID="txtFecha" runat="server"  Width="90%" />
+                                                <asp:Image ID="Image1" runat="server" ImageUrl="~/assets/calendario_dw/calendario.png" />
+                                                <ajaxToolkit:CalendarExtender ID="CalendarExtender1" 
+                                                    runat="server" TargetControlID="txtFecha" 
+                                                    PopupButtonID="Image1">
+                                                </ajaxToolkit:CalendarExtender>
                                         </asp:Panel>
                                 </td>
                             </tr>

@@ -42,33 +42,29 @@ namespace SiGMA
                 CargarCombos.cargarBarrio(ref ddlBarrioPerdida);
                 CargarCombos.cargarLocalidades(ref ddlLocalidadPerdida);
                 CargarCombos.cargarCalles(ref ddlCallePerdida);
-                //txtFechaPerdida.Text = DateTime.Now.ToShortDateString();
+                txtFecha.Text = DateTime.Now.ToShortDateString();
                 String modif = Request.QueryString["m"];
                 if (modif == "1")
                 {
                     txtComentarios.Enabled = true;
-                    //txtFechaPerdida.Enabled = false;
-                    //calendario.Enabled = true;
                     txtNroCallePerdida.Enabled = true;
                     ddlBarrioPerdida.Enabled = true;
                     ddlCallePerdida.Enabled = true;
                     ddlLocalidadPerdida.Enabled = true;
                     btnModificar.Visible = true;
                     lblTitulo.Text = "Modificar Pérdida";
-                    txtFechaPerdida.Enabled = true;
                 }
                 else 
                 {
                     txtComentarios.Enabled = false;
-                    //txtFechaPerdida.Enabled = false;
-                    //calendario.Enabled = false;
                     txtNroCallePerdida.Enabled = false;
                     ddlBarrioPerdida.Enabled = false;
                     ddlCallePerdida.Enabled = false;
                     ddlLocalidadPerdida.Enabled = false;
                     btnModificar.Visible = false;
                     lblTitulo.Text = "Consultar Pérdida";
-                    txtFechaPerdida.Enabled = false;
+                    txtFecha.Enabled = false;
+                    Image1.Visible = false;
                 }
                 //if (Session["r"] != null)
                 //{
@@ -191,24 +187,13 @@ namespace SiGMA
             }
         }
 
-        protected void imgFechaPerdida_click(object sender, ImageClickEventArgs e)
-        {
-            //calendario.Visible = true;
-        }
-
-        protected void calendario_SelectionChanged(object sender, EventArgs e)
-        {
-            //txtFechaPerdida.Text = calendario.SelectedDate.ToString("d");
-            //calendario.Visible = false;
-        }
-
         private void limpiarPagina()
         {
             pnlInfo.Visible = false;
             pnlAtento.Visible = false;
             pnlCorrecto.Visible = false;
             pnlRegistrarPerdida.Visible = false;
-            txtFechaPerdida.Text = "";
+            txtFecha.Text = "";
             txtComentarios.Text = "";
             //txtMapa.Text = "";
             pnlMapa.Visible = false;
@@ -258,7 +243,7 @@ namespace SiGMA
                     }
                 }
                 Session["idPerdida"] = perdida.idPerdida;
-                txtFechaPerdida.Text = perdida.fecha.ToShortDateString();
+                txtFecha.Text = perdida.fecha.ToShortDateString();
                 if (perdida.comentarios != null)
                 {
                     txtComentarios.Text = perdida.comentarios.ToString();
@@ -332,14 +317,14 @@ namespace SiGMA
                     perdida.domicilio.numeroCalle = int.Parse(txtNroCallePerdida.Text);
                     perdida.usuario = new EUsuario();
                     perdida.usuario.user = Session["UsuarioLogueado"].ToString();
-                    perdida.fecha = Convert.ToDateTime(txtFechaPerdida.Text);
+                    perdida.fecha = Convert.ToDateTime(txtFecha.Text);
                     perdida.comentarios = txtComentarios.Text;
                     //perdida.mapaPerdida = txtMapa.Text;
                     if (perdida.fecha > DateTime.Now)
                     {
                         pnlInfo.Visible = true;
                         lblInfo.Text = "La fecha de pérdida no puede ser superior a la actual";
-                        txtFechaPerdida.Focus();
+                        txtFecha.Focus();
                         return;
                     }
                     if (LogicaBDPerdida.modificarPerdida(perdida))

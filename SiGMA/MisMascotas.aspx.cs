@@ -18,7 +18,7 @@ namespace SiGMA
             {
             Session["buscarOtro"] = 0;
             Session["imagenAdopcion"] = null;
-                //rnvFechaPerdida.MaximumValue = DateTime.Now.ToShortDateString();
+                rnvFechaPerdida.MaximumValue = DateTime.Now.ToShortDateString();
                 if (Session["UsuarioLogueado"] != null)
                 {
                         btnModificar.Visible = true; // aca ponerlo en false y cuando seleccione del listado ponerlo en true
@@ -98,7 +98,7 @@ namespace SiGMA
                 ddlCaracter.SelectedValue = caracter.idCaracter.ToString();
                 txtCategoria.Text = categoria.nombreCategoriaRaza;
                 txtCuidadoEspecial.Text = cuidado.descripcion;
-                txtFecha.Text = mascota.fechaNacimiento.ToShortDateString().ToString();
+                txtFecha.Text = mascota.fechaNacimiento == null ? null : mascota.fechaNacimiento.Value.ToShortDateString().ToString();
                 txtMascota.Text = mascota.nombreMascota;
                 txtObservaciones.Text = mascota.observaciones;
                 if (mascota.tratoAnimal != null)
@@ -406,7 +406,10 @@ namespace SiGMA
                                                             txtMascota.Text = "";
                                                             ddlEdad.SelectedValue = "0";
                                                             pnlDatos.Visible = false;
-                                                            pnlNo.Visible = true;//modificado
+                                                            pnlNo.Visible = false;
+                                                            pnltxtMascota.Visible = false;
+                                                            pnltxtMascota.Visible = false;
+                                                            pnlfiltros.Visible = false;
                                                         }
                                                         else
                                                         {

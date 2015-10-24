@@ -164,18 +164,6 @@ namespace SiGMA
             }
         }
 
-        //protected void imgFechaPerdida_click(object sender, ImageClickEventArgs e)
-        //{
-        //    calendario.Visible = true;
-        //}
-
-        //protected void calendario_SelectionChanged(object sender, EventArgs e)
-        //{
-        //    txtFecha.Text = calendario.SelectedDate.ToString("d");
-        //    calendario.Visible = false;
-        //}
-
-
         public void btnAceptarClick(object sender, EventArgs e)
         {
             

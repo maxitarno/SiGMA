@@ -35,44 +35,16 @@ namespace SiGMA
                 //rnvPerdida.MaximumValue = DateTime.Now.ToShortDateString();
                 pnlGenerar.Visible = false;
                 pnlInfo.Visible = false;
+                rnvPerdida.MaximumValue = DateTime.Now.ToShortDateString();
+                rnvAdopcion.MaximumValue = DateTime.Now.ToShortDateString();
+                rnvHallazgo.MaximumValue = DateTime.Now.ToShortDateString();
             }
         }
         public void BtnRegresarClick(object sender, EventArgs e)
         {
             Response.Redirect("Administracion.aspx");
         }
-        protected void calendario_SelectionChanged(object sender, EventArgs e)
-        {
-            txtFechaAdopcion.Text = calendar1.SelectedDate.ToString("d");
-            calendar1.Visible = false;
-            pnlInfo.Visible = false;
-        }
-        protected void imgFechaPerdida_Click(object sender, ImageClickEventArgs e)
-        {
-            //calendario.Visible = true;
-            calendar1.Visible = true;
-            calendar2.Visible = true;
-            calendar3.Visible = true;
-            pnlInfo.Visible = false;
-        }
-        protected void calendario_SelectionChangedPerdida(object sender, EventArgs e)
-        {
-            txtFechaDeLaPerdida.Text = calendar3.SelectedDate.ToString("d");
-            calendar3.Visible = false;
-            pnlInfo.Visible = false;
-        }
-        protected void calendario_SelectionChangedHallazgo(object sender, EventArgs e)
-        {
-            txtFechaDelHallazgo.Text = calendar2.SelectedDate.ToString("d");
-            calendar2.Visible = false;
-            pnlInfo.Visible = false;
-        }
-        //protected void calendario_SelectionChangedMascota(object sender, EventArgs e)
-        //{
-        //    txtFechaMascota.Text = calendario.SelectedDate.ToString("d");
-        //    calendario.Visible = false;
-        //    pnlInfo.Visible = false;
-        //}
+
         protected void ddlSelectedChanged(object sender, EventArgs e)
         {
             pnlAdopciones.Visible = false;

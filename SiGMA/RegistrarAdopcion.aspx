@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="RegistrarAdopcion.aspx.cs"
-    Inherits="SiGMA.RegistrarAdopcion" MasterPageFile="PaginaMaestra.Master" %>
+    Inherits="SiGMA.RegistrarAdopcion" MasterPageFile="PaginaMaestra.Master" Culture="Auto" UICulture="Auto"%>
 
 <asp:Content ContentPlaceHolderID="head" runat="server">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,18 +16,11 @@
     <script src="assets/js/hover.zoom.js"></script>
     <script src="assets/js/hover.zoom.conf.js"></script>
     <link href="assets/calendario_dw/calendario_dw-estilos.css" type="text/css" rel="STYLESHEET"/>
-   <script type="text/javascript" src="assets/calendario_dw/jquery-1.4.4.min.js"></script>
-   <script type="text/javascript" src="assets/calendario_dw/calendario_dw.js"></script>
-   
-   <script type="text/javascript">
-       (function ($) {
-           $(document).ready(function () {
-               $(".campofecha").calendarioDW();
-           })
-       })(jQuery);
-      </script>
+
 </asp:Content>
 <asp:Content ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True">
+    </asp:ScriptManager>
     <div class="centered">
         <div class="panel panel-default">
             <div class="panel panel-default>
@@ -65,7 +58,16 @@
                         <div style="margin-left: 30%; display: table; width: 40%;">
                             <div style="display: table-row; width: 30%">
                                 <div style="display: table-cell; width: 20%;">
-                                     <asp:TextBox ID="txtFecha" class="campofecha pull-left" runat="server"  Width="90%" ></asp:TextBox>
+                                     <asp:TextBox ID="txtFecha" runat="server"  Width="90%" />
+                                                <asp:Image ID="Image1" runat="server" ImageUrl="~/assets/calendario_dw/calendario.png" />
+                                                <ajaxToolkit:CalendarExtender ID="CalendarExtender1" 
+                                                    runat="server" TargetControlID="txtFecha" 
+                                                    PopupButtonID="Image1">
+                                                </ajaxToolkit:CalendarExtender>
+                                                <asp:RangeValidator ID="rnvFechaPerdida" runat="server" ErrorMessage="La fecha no puede ser superior a la actual" 
+                                                        ForeColor="Red" ControlToValidate="txtFecha" SetFocusOnError="True" 
+                                                        MinimumValue="01/01/2013" Type="Date" Font-Size="XX-Small" 
+                                                        ></asp:RangeValidator>
                                 </div>
                             </div>
                         </div>

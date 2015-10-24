@@ -20,7 +20,7 @@ namespace Entidades
         public ECaracterMascota caracter { get; set; }
         public string observaciones { get; set; }
         public string alimentacionEspecial { get; set; }
-        public DateTime fechaNacimiento { get; set; }
+        public DateTime? fechaNacimiento { get; set; }
         public string sexo { get; set; }
         public EDuenio duenio { get; set; }
         public byte[] imagen { get; set; }

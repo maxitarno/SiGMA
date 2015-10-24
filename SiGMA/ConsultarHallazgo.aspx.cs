@@ -46,6 +46,7 @@ namespace SiGMA
                 {
                     lblTitulo.Text = "Consultar Hallazgo";
                     paraModificar(false);
+                    Image1.Visible = false;
                 }
             }
         }

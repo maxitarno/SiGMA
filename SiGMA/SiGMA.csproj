@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AjaxControlToolkit">
+      <HintPath>..\packages\AjaxControlToolkit.15.1.3.0\lib\net40\AjaxControlToolkit.dll</HintPath>
+    </Reference>
     <Reference Include="GMailSend">
       <HintPath>..\GMailSend.dll</HintPath>
     </Reference>
@@ -73,6 +76,7 @@
     <Content Include="assets\calendario_dw\calendario_dw.js" />
     <Content Include="assets\calendario_dw\jquery-1.4.4.min.js" />
     <Content Include="assets\css\bootstrap.css" />
+    <Content Include="assets\css\datepicker.css" />
     <Content Include="assets\css\main.css" />
     <Content Include="assets\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="assets\img\blog01.jpg" />
@@ -536,6 +540,7 @@
     <Folder Include="App_Code\" />
     <Folder Include="App_Data\" />
     <Folder Include="App_Themes\TemaSigma\imagenes\" />
+    <Folder Include="bin\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account\Web.config" />

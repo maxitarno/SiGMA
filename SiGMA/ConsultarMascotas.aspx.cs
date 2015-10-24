@@ -14,16 +14,7 @@ namespace SiGMA
 {
     public partial class ConsultarMascotasaspx : System.Web.UI.Page
     {
-        protected void imgFechaPerdida_click(object sender, ImageClickEventArgs e)
-        {
-            //calendario.Visible = true;
-        }
 
-        protected void calendario_SelectionChanged(object sender, EventArgs e)
-        {
-            //txtFecha.Text = calendario.SelectedDate.ToString("d");
-            //calendario.Visible = false;
-        }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -720,7 +711,7 @@ namespace SiGMA
                     ddlCaracter.SelectedValue = caracter.idCaracter.ToString();
                     txtCategoria.Text = categoria.nombreCategoriaRaza;
                     txtCuidadoEspecial.Text = cuidado.descripcion;
-                    txtFecha.Text = mascota.fechaNacimiento.ToShortDateString().ToString();
+                    txtFecha.Text = mascota.fechaNacimiento == null ? null : mascota.fechaNacimiento.Value.ToShortDateString().ToString();
                     txtMascota.Text = mascota.nombreMascota;
                     txtObservaciones.Text = mascota.observaciones;
                     if (mascota.tratoAnimal != null)
