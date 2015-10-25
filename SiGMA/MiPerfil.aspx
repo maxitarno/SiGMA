@@ -17,6 +17,30 @@
     <script src="assets/js/hover.zoom.conf.js"></script>
     <link href="assets/calendario_dw/calendario_dw-estilos.css" type="text/css" rel="STYLESHEET"/>
 
+    <script type="text/javascript">
+        function verCamposContra() {
+            valor = document.getElementById("<%=chkCambiarContra.ClientID%>").checked;
+                if (valor == true) {
+                    $('#<%=pnlContraAnterior.ClientID %>').toggle();
+                    $('#<%=pnlContraAnteriorTxt.ClientID %>').toggle();
+                    $('#<%=pnlContraNueva.ClientID %>').toggle();
+                    $('#<%=pnlContraNuevaTxt.ClientID %>').toggle();
+                    $('#<%=pnlContraRepe.ClientID %>').toggle();
+                    $('#<%=pnlContraRepeTxt.ClientID %>').toggle();
+                    $('#<%=pnlModificarContraseña.ClientID %>').toggle();
+                }
+                else {
+                    $('#<%=pnlContraAnterior.ClientID %>').hide();
+                    $('#<%=pnlContraAnteriorTxt.ClientID %>').hide();
+                    $('#<%=pnlContraNueva.ClientID %>').hide();
+                    $('#<%=pnlContraNuevaTxt.ClientID %>').hide();
+                    $('#<%=pnlContraRepe.ClientID %>').hide();
+                    $('#<%=pnlContraRepeTxt.ClientID %>').hide();
+                    $('#<%=pnlModificarContraseña.ClientID %>').hide();
+                }
+        }
+        </script>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True">
@@ -50,7 +74,7 @@
                 </div>
             </div>
             <div class="panel-body">
-                <div class="col-md-3 col-md-offset-1">
+                <div class="col-md-3 col-md-offset-2">
                     <div style="margin-left: 30%; display: table; width: 40%;">
                         <div style="display: table-row; width: 40%">
                             <table>
@@ -62,37 +86,10 @@
                                     </td>
                                     <td>
                                         <asp:Panel ID="pnlUsuario" runat="server" Visible="false">
-                                            <asp:TextBox CssClass="TextBox" ID="txtUsuario" runat="server" Width="350px" ReadOnly="true"></asp:TextBox>
+                                            <asp:TextBox CssClass="TextBox" ID="txtUsuario" runat="server" Width="320px" ReadOnly="true"></asp:TextBox>
                                         </asp:Panel>
                                     </td>
                                     <td>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Contraseña:
-                                    </td>
-                                    <td>
-                                        <asp:TextBox ID="txtContra" runat="server" MaxLength="16" TextMode="Password" Width="350px"></asp:TextBox></td><td>
-                                        <asp:RequiredFieldValidator ID="rfvContra" runat="server" ErrorMessage="*" ForeColor="Red"
-                                            ControlToValidate="txtContra" Display="Dynamic"></asp:RequiredFieldValidator>
-                                        <asp:CustomValidator ID="cvContraseña" runat="server" 
-                                            ErrorMessage="Minimo 8 caracteres" ControlToValidate="txtContra" ForeColor="Red" 
-                                            onservervalidate="cvContraseña_ServerValidate" Display="Dynamic"></asp:CustomValidator>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <asp:Label ID="lblRepetirContraseña" runat="server" Text="Repetir Contraseña:"></asp:Label>
-                                    </td>
-                                    <td>
-                                        <asp:TextBox  ID="txtRepetirContra" runat="server" MaxLength="16" 
-                                            TextMode="Password" Width="350px"></asp:TextBox></td><td>
-                                        <asp:RequiredFieldValidator ID="rfvRepetirContra" runat="server" ErrorMessage="*"
-                                            ForeColor="Red" ControlToValidate="txtRepetirContra" Display="Dynamic"></asp:RequiredFieldValidator>
-                                        <asp:CompareValidator ID="covPassword" runat="server" ErrorMessage="Las contraseñas no son iguales"
-                                            ControlToCompare="txtContra" ControlToValidate="txtRepetirContra" ForeColor="Red"
-                                            Display="Dynamic"></asp:CompareValidator>
                                     </td>
                                 </tr>
                                 <tr>
@@ -103,7 +100,7 @@
                                     </td>
                                     <td>
                                         <asp:Panel ID="pnlTipoDeDocumento" runat="server" Visible="false">
-                                            <asp:DropDownList ID="ddlTipoDeDocumento" runat="server" CssClass="TextBox" Width="350px">
+                                            <asp:DropDownList ID="ddlTipoDeDocumento" runat="server" CssClass="TextBox" Width="320px">
                                             </asp:DropDownList>
                                         </asp:Panel>
                                     </td>
@@ -116,7 +113,7 @@
                                     </td>
                                     <td>
                                         <asp:Panel ID="pnlNºDeDocumento" runat="server" Visible="false">
-                                            <asp:TextBox CssClass="TextBox" ID="txtNºDeDocumento" runat="server" Width="350px"></asp:TextBox>
+                                            <asp:TextBox CssClass="TextBox" ID="txtNºDeDocumento" runat="server" Width="320px"></asp:TextBox>
                                         </asp:Panel>
                                     </td>
                                     <td>
@@ -124,13 +121,91 @@
                                             ControlToValidate="txtNºDeDocumento" CssClass="Validator" Display="Dynamic" ValidationGroup="2"></asp:RequiredFieldValidator>
                                     </td>
                                 </tr>
+                                <tr>
+                                    <td>
+                                        
+                                    </td>
+                                    <td>
+                                        <asp:CheckBox ID="chkCambiarContra" runat="server" Text="Cambiar contraseña" 
+                                             OnClick="verCamposContra()" />
+                                    </td>
+                                    <td>
+                                        
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                    <asp:Panel ID="pnlContraAnterior" runat="server">
+                                        <asp:Label ID="lblContraAnterior" runat="server" Text="Contraseña Anterior:"></asp:Label>
+                                    </asp:Panel>
+                                    </td>
+                                    <td>
+                                        <asp:Panel ID="pnlContraAnteriorTxt" runat="server">
+                                            <asp:TextBox ID="txtContraAnterior" runat="server" MaxLength="16" TextMode="Password" Width="320px"></asp:TextBox>
+                                        </asp:Panel>
+                                    </td>
+                                    <td>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="*" ForeColor="Red"
+                                            ControlToValidate="txtContraAnterior" Display="Dynamic" ValidationGroup="contra"></asp:RequiredFieldValidator>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                    <asp:Panel ID="pnlContraNueva" runat="server">
+                                        <asp:Label ID="lblNuevaContraseña" runat="server" Text="Nueva Contraseña:"></asp:Label>
+                                    </asp:Panel>
+                                    </td>
+                                    <td>
+                                    <asp:Panel ID="pnlContraNuevaTxt" runat="server">
+                                        <asp:TextBox ID="txtContraNueva" runat="server" MaxLength="16" TextMode="Password" Width="320px"></asp:TextBox>
+                                    </asp:Panel>
+                                    </td>
+                                    <td>
+                                        <asp:RequiredFieldValidator ID="rfvContra" runat="server" ErrorMessage="*" ForeColor="Red"
+                                            ControlToValidate="txtContraNueva" Display="Dynamic" ValidationGroup="contra"></asp:RequiredFieldValidator>
+                                        <asp:CustomValidator ID="cvContraseña" runat="server" 
+                                            ErrorMessage="Minimo 8 caracteres" ControlToValidate="txtContraNueva" ForeColor="Red" 
+                                            onservervalidate="cvContraseña_ServerValidate" Display="Dynamic" ValidationGroup="contra"></asp:CustomValidator>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <asp:Panel ID="pnlContraRepe" runat="server">
+                                        <asp:Label ID="lblRepetirContraseña" runat="server" Text="Repetir Contraseña:"></asp:Label>
+                                        </asp:Panel>
+                                    </td>
+                                    <td>
+                                        <asp:Panel ID="pnlContraRepeTxt" runat="server">
+                                            <asp:TextBox  ID="txtRepetirContra" runat="server" MaxLength="16" 
+                                            TextMode="Password" Width="320px"></asp:TextBox>
+                                        </asp:Panel>
+                                    </td>
+                                    <td>
+                                        <asp:RequiredFieldValidator ID="rfvRepetirContra" runat="server" ErrorMessage="*"
+                                            ForeColor="Red" ControlToValidate="txtRepetirContra" Display="Dynamic" ValidationGroup="contra"></asp:RequiredFieldValidator>
+                                        <asp:CompareValidator ID="covPassword" runat="server" ErrorMessage="Las contraseñas no coinciden"
+                                            ControlToCompare="txtContraNueva" ControlToValidate="txtRepetirContra" ForeColor="Red"
+                                            Display="Dynamic" ValidationGroup="contra"></asp:CompareValidator>
+                                    </td>
+                                </tr>
+                                <tr>
+                                <td></td>
+                                <td>
+                                    <asp:Panel ID="pnlModificarContraseña" runat="server">
+                                        <asp:Button ID="btnModificarContraseña" runat="server" 
+                                            Text="Modificar Contraseña" ValidationGroup="contra" 
+                                            onclick="btnModificarContraseña_Click"/>
+                                    </asp:Panel>
+                                </td>
+                                <td></td>
+                                </tr>
                             </table>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 col-md-offset-2">
+                <div class="col-md-3" >
                     <div style="margin-left: 30%; display: table; width: 40%;">
-                        <div style="display: table-row; width: 30%">
+                        <div style="display: table-row; width: 40%">
                             <table>
                                 <tr>
                                     <td>
@@ -288,6 +363,8 @@
                                 <div style="display: table-row; width: 30%">
                                     <table>
                                         <tr>
+                                        <td>
+                                            </td>
                                             <td>
                                                 <asp:Panel ID="pnlModificar" runat="server" Visible="false">
                                                     <asp:Button ID="btnModificar" runat="server" Text="Modificar" OnClick="btnModificarClick" />

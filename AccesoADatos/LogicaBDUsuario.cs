@@ -170,11 +170,8 @@ namespace AccesoADatos
                 
                 var personas = mapaEntidades.Personas.Where(personaBuscada => personaBuscada.user == usuario.user);
                 var usuarios = mapaEntidades.Usuarios.Where(usuariobuscado => usuariobuscado.user == usuario.user);
-                Usuarios userBD = usuarios.First();
                 foreach (var registro in personas)
                 {
-                    if (usuario.password != null)
-                        userBD.password = usuario.password;
                     registro.apellido = persona.apellido;
                     registro.idCalle = persona.domicilio.idCalle;
                     registro.email = persona.email;
@@ -187,6 +184,25 @@ namespace AccesoADatos
                     registro.telefonoFijo = persona.telefonoFijo;
                     registro.nroCalle = persona.nroCalle;
                 }
+                b = true;
+                mapaEntidades.SaveChanges();
+            }
+            catch (InvalidOperationException exc)
+            {
+                b = false;
+                throw exc;
+            }
+            return b;
+        }
+        public static bool ModificarContraseñaUsuario(EUsuario usuario)
+        {
+            bool b = false;
+            try
+            {
+                SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+                var usuarios = mapaEntidades.Usuarios.Where(usuariobuscado => usuariobuscado.user == usuario.user);
+                Usuarios userBD = usuarios.First();
+                userBD.password = usuario.password;
                 b = true;
                 mapaEntidades.SaveChanges();
             }
@@ -383,6 +399,26 @@ namespace AccesoADatos
             {
                 throw exc;
             }           
+        }
+
+        public static bool verificarContraseña(string usuario, string contra)
+        {
+            bool a = false;
+            try
+            {
+                SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+                var usuarios = mapaEntidades.Usuarios.Where(usuariobuscado => usuariobuscado.user == usuario);
+                foreach (var registro in usuarios)
+                {
+                    if (registro.password == contra)
+                        a = true;
+                }
+            }
+            catch (InvalidOperationException exc)
+            {
+                return a;
+            }
+            return a;
         }
     }
 }

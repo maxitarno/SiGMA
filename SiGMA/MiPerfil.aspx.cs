@@ -68,6 +68,13 @@ namespace SiGMA
                 pnlDdlCalle.Visible = false;
                 //rnvFechaPerdida.MaximumValue = DateTime.Now.ToShortDateString();
                 cargarMiPerfil();
+                pnlContraAnterior.Style.Add(HtmlTextWriterStyle.Display, "none");
+                pnlContraAnteriorTxt.Style.Add(HtmlTextWriterStyle.Display, "none");
+                pnlContraNueva.Style.Add(HtmlTextWriterStyle.Display, "none");
+                pnlContraNuevaTxt.Style.Add(HtmlTextWriterStyle.Display, "none");
+                pnlContraRepe.Style.Add(HtmlTextWriterStyle.Display, "none");
+                pnlContraRepeTxt.Style.Add(HtmlTextWriterStyle.Display, "none");
+                pnlModificarContraseña.Style.Add(HtmlTextWriterStyle.Display, "none");
             }
         }
 
@@ -146,19 +153,8 @@ namespace SiGMA
 
         protected void cvContraseña_ServerValidate(object source, ServerValidateEventArgs args)
         {
-            args.IsValid = Validaciones.contarCaracteres(txtContra.Text);
+            args.IsValid = Validaciones.contarCaracteres(txtContraNueva.Text);
         }
-
-        //protected void imgFechaPerdida_click(object sender, ImageClickEventArgs e)
-        //{
-        //    calendario.Visible = true;
-        //}
-
-        //protected void calendario_SelectionChanged(object sender, EventArgs e)
-        //{
-        //    txtFecha.Text = calendario.SelectedDate.ToString("d");
-        //    calendario.Visible = false;
-        //}
 
         public void btnModificarClick(object sender, EventArgs e)
         {
@@ -203,7 +199,7 @@ namespace SiGMA
                                                 persona.tipoDocumento.idTipoDeDocumento = int.Parse(ddlTipoDeDocumento.SelectedValue);
                                                 EUsuario usuario = new EUsuario();
                                                 usuario.user = txtUsuario.Text;
-                                                usuario.password = txtContra.Text;
+                                                usuario.password = txtContraNueva.Text;
                                                 persona.domicilio = new ECalle();
                                                 persona.domicilio.idCalle = int.Parse(ddlCalle.SelectedValue.ToString());
                                                 if (usuario.user != "")
@@ -214,6 +210,7 @@ namespace SiGMA
                                                         lblResultado1.Text = "Se modifico corretamente";
                                                         pnlAtento.Visible = false;
                                                         pnlInfo.Visible = false;
+                                                        chkCambiarContra.Checked = false;
                                                     }
                                                     else
                                                     {
@@ -309,5 +306,67 @@ namespace SiGMA
         {
             Response.Redirect("DefaultDueño.aspx");
         }
+
+        protected void btnModificarContraseña_Click(object sender, EventArgs e)
+        {
+            if(Page.IsValid)
+            {
+                EUsuario usuario = new EUsuario();
+                usuario.user = txtUsuario.Text;
+                usuario.password = txtContraNueva.Text;
+                if (LogicaBDUsuario.verificarContraseña(txtUsuario.Text, txtContraAnterior.Text))
+                {
+                    if (LogicaBDUsuario.ModificarContraseñaUsuario(usuario))
+                    {
+                        pnlCorrecto.Visible = true;
+                        lblResultado1.Text = "Contraseña modificada corretamente";
+                        pnlAtento.Visible = false;
+                        pnlInfo.Visible = false;
+                        chkCambiarContra.Checked = false;
+                        pnlContraAnterior.Style.Add(HtmlTextWriterStyle.Display, "none");
+                        pnlContraAnteriorTxt.Style.Add(HtmlTextWriterStyle.Display, "none");
+                        pnlContraNueva.Style.Add(HtmlTextWriterStyle.Display, "none");
+                        pnlContraNuevaTxt.Style.Add(HtmlTextWriterStyle.Display, "none");
+                        pnlContraRepe.Style.Add(HtmlTextWriterStyle.Display, "none");
+                        pnlContraRepeTxt.Style.Add(HtmlTextWriterStyle.Display, "none");
+                        pnlModificarContraseña.Style.Add(HtmlTextWriterStyle.Display, "none");
+                        chkCambiarContra.Checked = false;
+                    }
+                    else
+                    {
+                        pnlCorrecto.Visible = false;
+                        pnlInfo.Visible = false;
+                        pnlAtento.Visible = true;
+                        lblResultado3.Text = "No se pudo modificar la contraseña";
+                        pnlCorrecto.Visible = false;
+
+                    }
+                }
+                else
+                {
+                    chkCambiarContra.Checked = true;
+                    chkCambiarContra.Checked = false;
+                    pnlCorrecto.Visible = false;
+                    pnlInfo.Visible = false;
+                    pnlAtento.Visible = true;
+                    lblResultado3.Text = "Contraseña Incorrecta";
+                    pnlCorrecto.Visible = false;
+
+                }
+            }
+            if (txtContraNueva.Text.Length < 8)
+            {
+                chkCambiarContra.Checked = true;
+                pnlContraAnterior.Style.Add(HtmlTextWriterStyle.Display, "visible");
+                pnlContraAnteriorTxt.Style.Add(HtmlTextWriterStyle.Display, "visible");
+                pnlContraNueva.Style.Add(HtmlTextWriterStyle.Display, "visible");
+                pnlContraNuevaTxt.Style.Add(HtmlTextWriterStyle.Display, "visible");
+                pnlContraRepe.Style.Add(HtmlTextWriterStyle.Display, "visible");
+                pnlContraRepeTxt.Style.Add(HtmlTextWriterStyle.Display, "visible");
+                pnlModificarContraseña.Style.Add(HtmlTextWriterStyle.Display, "visible");
+            }
+            
+        }
+
     }
 }
