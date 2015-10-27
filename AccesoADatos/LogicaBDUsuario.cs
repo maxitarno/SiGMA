@@ -54,7 +54,7 @@ namespace AccesoADatos
                 }      
             }
         }
-        //metodo para buscar el usuario por usuarios
+        //metodo para buscar el usuario por nombre
         public static List<EUsuario> BuscarUsuarios(string nombre)
         {
             List<EUsuario> usuarios = new List<EUsuario>();
@@ -71,6 +71,36 @@ namespace AccesoADatos
                     usuario.token = usuarioBD.token;
                     usuarios.Add(usuario);
                 }
+            }
+            catch (System.Data.EntityCommandCompilationException exc)
+            {
+                throw exc;
+            }
+            return usuarios;
+        }
+        //fin del metodo
+        //metodo para buscar el usuario por email
+        public static List<EUsuario> BuscarUsuarioPorEmail(string email)
+        {
+            List<EUsuario> usuarios = new List<EUsuario>();
+            LogicaBDToken token = new LogicaBDToken();
+            var tokenPassword = token.GenerarToken(6, 12);
+            SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+            IQueryable<Usuarios> consulta = from personasBD in mapaEntidades.Personas
+                                            from usuariosBD in mapaEntidades.Usuarios
+                                            where (personasBD.email == email && usuariosBD.estado == true && usuariosBD.user == personasBD.user)
+                                            select usuariosBD;
+            try
+            {
+                foreach (var usuarioBD in consulta)
+                {
+                    usuarioBD.password = tokenPassword;
+                    EUsuario usuario = new EUsuario();
+                    usuario.user = usuarioBD.user;
+                    usuario.password = tokenPassword;
+                    usuarios.Add(usuario);
+                }
+                mapaEntidades.SaveChanges();
             }
             catch (System.Data.EntityCommandCompilationException exc)
             {

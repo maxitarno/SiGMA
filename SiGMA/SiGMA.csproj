@@ -138,6 +138,7 @@
     <Content Include="Perdidas.aspx" />
     <Content Include="PermisosInsuficientes.aspx" />
     <Content Include="Default.aspx" />
+    <Content Include="RecuperarContraseña.aspx" />
     <Content Include="RegistrarAdopcion.aspx" />
     <Content Include="RegistrarCampaña.aspx" />
     <Content Include="RegistrarHallazgo.aspx" />
@@ -396,6 +397,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RecuperarContraseña.aspx.cs">
+      <DependentUpon>RecuperarContraseña.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RecuperarContraseña.aspx.designer.cs">
+      <DependentUpon>RecuperarContraseña.aspx</DependentUpon>
     </Compile>
     <Compile Include="RegistrarAdopcion.aspx.cs">
       <DependentUpon>RegistrarAdopcion.aspx</DependentUpon>

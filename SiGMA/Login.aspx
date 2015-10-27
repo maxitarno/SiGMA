@@ -37,10 +37,12 @@
                             PasswordRequiredErrorMessage="Contraseña Requerida" RememberMeText="Recordarme" 
                             UserNameLabelText="Usuario:" UserNameRequiredErrorMessage="Usuario Requerido" LoginButtonText="Ingresar">
                         </asp:Login>
+                        <hr />
+                        <label style="width:230px">No tiene un usuario?</label> <input value="Crear Usuario" type="button" onclick="RegistrarUsuario()" style="width:220px"/>
                         <br />
-                        No tiene un usuario? <input value="Crear Usuario" type="button" onclick="RegistrarUsuario()"/>
+                        <label style="width:230px">Usuario no validado?</label> <input value="Validar Usuario" type="button" onclick="ValidarUsuario()" style="width:220px"/>
                         <br />
-                        Validar usuario creado <input value="Validar Usuario" type="button" onclick="ValidarUsuario()"/>
+                        <label style="width:230px">Contraseña olvidada?</label> <input value="Restrablecer Contraseña" type="button" onclick="RecuperarContra()" style="width:220px"/>
                     </div>
                 </div>
                 <script type="text/javascript" >
@@ -51,6 +53,11 @@
                     <script type="text/javascript" >
                         function ValidarUsuario() {
                             location.href = "ValidarUsuario.aspx";
+                        }
+                    </script>
+                    <script type="text/javascript" >
+                        function RecuperarContra() {
+                            location.href = "RecuperarContraseña.aspx";
                         }
                     </script>
             </div>
