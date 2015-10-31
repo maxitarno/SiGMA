@@ -94,6 +94,10 @@ namespace SiGMA
             if (LogicaBDMascota.BuscarMascota(mascota, categoria, caracter, cuidado, idMascota))
             {
                 ddlEstado.SelectedValue = mascota.estado.idEstado.ToString();
+                if (mascota.estado.idEstado.ToString() == "3")
+                    btnPerdida.Visible = false;
+                else
+                    btnPerdida.Visible = true;
                 txtAlimentacionEspecial.Text = mascota.alimentacionEspecial;
                 ddlCaracter.SelectedValue = caracter.idCaracter.ToString();
                 txtCategoria.Text = categoria.nombreCategoriaRaza;
@@ -498,6 +502,17 @@ namespace SiGMA
         public void BtnRegresarClick(object sender, EventArgs e)
         {
             Response.Redirect("DefaultDueño.aspx");
+        }
+
+        protected void btnPerdida_Click(object sender, EventArgs e)
+        {
+            EMascota mascota = new EMascota();
+            mascota.idMascota = (int)Session["idMascota"];
+            if (Session["idMascota"] != null)
+            {
+                Session["pantalla"] = "MisMascotas.aspx";
+                Response.Redirect("~/RegistrarPerdida.aspx");
+            }
         }
     }
 }

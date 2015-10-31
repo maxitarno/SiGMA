@@ -117,10 +117,6 @@
                                                 onselectedindexchanged="lstMascotas_SelectedIndexChanged" 
                                                 AutoPostBack="True"></asp:ListBox>
                                         </td>
-                                    <%--<td>
-                                           <asp:Button ID="btnSeleccionar" runat="server" Text="Cargar Formulario" 
-                                                 onclick="btnSeleccionar_Click" />
-                                        </td>--%>
                                         </tr>
                                     </table>
                                     </asp:Panel>

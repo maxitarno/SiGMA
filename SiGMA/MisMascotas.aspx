@@ -99,7 +99,7 @@
                                     <tr>
                                     <td>
                                     </td>
-                                            <td colspan = "2" align ="justify">
+                                            <td align ="justify">
                                             <asp:Panel ID="pnlNo" runat="server" visible="false">
                                                 No mostrar mascota&nbsp<asp:CheckBox ID="chNoMostrar" Visible = "true" runat = "server"/>
                                             </asp:Panel>
@@ -299,6 +299,8 @@
                                 Style="float: left" CausesValidation="false"/>
                             <asp:Button ID="btnAdopcion" runat="server" Text="Poner en adopcion"  
                                 Style="float: left" onclick="btnAdopcion_Click" CausesValidation="false"/>
+                            <asp:Button ID="btnPerdida" runat="server" Text="Registrar Perdida" 
+                                CausesValidation="false" Style="float: left" onclick="btnPerdida_Click"/>
                         </asp:Panel>
                     </div>
                 </div>

@@ -66,70 +66,6 @@ namespace SiGMA
                     txtFecha.Enabled = false;
                     Image1.Visible = false;
                 }
-                //if (Session["r"] != null)
-                //{
-                    //if ((bool)Session["r"])//rellena los datos
-                    //{
-                    //    EMascota mascota = (EMascota)Session["mascota"];
-                    //    EPerdida perdida = (EPerdida)Session["perdida"];
-                    //    pnlMapa.Visible = true;
-                    //    pnlRegistrarPerdida.Visible = true;
-                    //    txtMascotaPerdida.Text = mascota.nombreMascota;
-                    //    mascota.duenio = new EDuenio();
-                    //    txtNroCalle.Text = mascota.duenio.nroCalle.ToString();
-                    //    txtDatosDueño.Text = (mascota.duenio.nombre == null) ? null : mascota.duenio.nombre.ToString();
-                    //    txtDatosDueño.Text += (mascota.duenio.apellido == null) ? null : mascota.duenio.apellido.ToString();
-                    //    if (txtDatosDueño.Text == "")
-                    //        txtDatosDueño.Text = "SIN ASIGNAR";
-                    //    if (mascota.duenio.domicilio != null)
-                    //        ddlCalles.SelectedValue = (mascota.duenio.domicilio.idCalle == null) ? null : mascota.duenio.domicilio.idCalle.ToString();
-                    //    else
-                    //        ddlCalles.SelectedValue = null;
-                    //    ddlBarrios.SelectedValue = (mascota.duenio.barrio == null) ? null : mascota.duenio.barrio.idBarrio.ToString();
-                    //    if (mascota.duenio.barrio != null)
-                    //        ddlLocalidades.SelectedValue = (mascota.duenio.barrio.localidad == null) ? null : mascota.duenio.barrio.localidad.idLocalidad.ToString();
-                    //    else
-                    //        ddlLocalidades.SelectedValue = null;
-                    //    ddlColor.SelectedValue = (mascota.color == null) ? null : mascota.color.idColor.ToString();
-                    //    ddlEdad.SelectedValue = (mascota.edad == null) ? null : mascota.edad.idEdad.ToString();
-                    //    ddlEspecie.SelectedValue = (mascota.especie == null) ? null : mascota.especie.idEspecie.ToString();
-                    //    ddlRaza.SelectedValue = (mascota.raza == null) ? null : mascota.raza.idRaza.ToString();
-                    //    ddlSexo.SelectedValue = mascota.sexo.ToString();
-                    //    if (perdida.domicilio != null)
-                    //    {
-                    //        if (perdida.domicilio.barrio != null)
-                    //        {
-                    //            ddlLocalidadPerdida.SelectedValue = (perdida.domicilio.barrio.localidad == null) ? null : perdida.domicilio.barrio.localidad.idLocalidad.ToString();
-                    //            ddlBarrioPerdida.SelectedValue = perdida.domicilio.barrio.idBarrio.ToString();
-                    //            ddlCallePerdida.SelectedValue = (perdida.domicilio.calle == null) ? null : perdida.domicilio.calle.idCalle.ToString();
-                    //            txtNroCallePerdida.Text = perdida.domicilio.numeroCalle.ToString();
-                    //        }
-                    //    }
-                    //    Session["idPerdida"] = perdida.idPerdida;
-                    //    txtFechaPerdida.Text = perdida.fecha.ToShortDateString();
-                    //    if (perdida.comentarios != null)
-                    //    {
-                    //        txtComentarios.Text = perdida.comentarios.ToString();
-                    //    }
-                    //    Session["idMascota"] = mascota.idMascota;
-
-                    //    if (mascota.imagen != null)
-                    //    {
-                    //        pnlImagen.Visible = true;
-                    //        Session["imagen"] = mascota.imagen;
-                    //        Handler1.AddMethod(ImageHandler_ObtenerImagenMascota);
-                    //        imgprvw.Src = ResolveUrl("~/Handler1.ashx");
-                    //        imgprvw.Width = 300;
-                    //        imgprvw.Height = 250;
-                    //    }
-                    //    else
-                    //    {
-                    //        pnlImagen.Visible = false;
-                    //        imgprvw.Width = 0;
-                    //        imgprvw.Height = 0;
-                    //    }
-                    //}//fin
-                //}
             }
         }
 
@@ -212,9 +148,11 @@ namespace SiGMA
                 pnlMapa.Visible = true; //agregado
                 pnlRegistrarPerdida.Visible = true;
                 txtMascotaPerdida.Text = mascota.nombreMascota;
-                mascota.duenio = new EDuenio();
+                if (mascota.duenio == null) 
+                   mascota.duenio = new EDuenio();
                 txtNroCalle.Text = mascota.duenio.nroCalle.ToString();
                 txtDatosDueño.Text = (mascota.duenio.nombre == null) ? null : mascota.duenio.nombre.ToString();
+                txtDatosDueño.Text += " ";
                 txtDatosDueño.Text += (mascota.duenio.apellido == null) ? null : mascota.duenio.apellido.ToString();
                 if (txtDatosDueño.Text == "")
                     txtDatosDueño.Text = "SIN ASIGNAR";

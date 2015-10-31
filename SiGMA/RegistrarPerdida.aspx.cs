@@ -20,8 +20,15 @@ namespace SiGMA
                 {
                     if (!LogicaBDRol.verificarSoloDueño(Session["UsuarioLogueado"].ToString()))
                         pnlVoluntario.Visible = true;
-                    else
-                        MascotasPorDueño();
+                    else 
+                    {
+                        if (Session["idMascota"] != null && Session["pantalla"].ToString() == "MisMascotas.aspx")
+                        {
+                            cargarMascotaPerdida(Convert.ToInt32(Session["idMascota"].ToString()));
+                            return;
+                        }
+                    }
+                        
                     if (!LogicaBDRol.verificarPermisoVisualizacion(Session["UsuarioLogueado"].ToString(), "RegistrarPerdida.aspx"))
                         Response.Redirect("PermisosInsuficientes.aspx");
                     if (!LogicaBDRol.verificarPermisosGrabacion(Session["UsuarioLogueado"].ToString(), "RegistrarPerdida.aspx"))
@@ -31,18 +38,23 @@ namespace SiGMA
                 {
                     Response.Redirect("Login.aspx");
                 }
-                CargarCombos.cargarColor(ref ddlColor);
-                CargarCombos.cargarEdad(ref ddlEdad);
-                CargarCombos.cargarEspecies(ref ddlEspecie);
-                CargarCombos.cargarComboRazas(ref ddlRaza);
-                CargarCombos.cargarSexo(ref ddlSexo);
-                CargarCombos.cargarBarrio(ref ddlBarrios);
-                CargarCombos.cargarLocalidades(ref ddlLocalidades);
-                CargarCombos.cargarCalles(ref ddlCalles);
-                CargarCombos.cargarLocalidades(ref ddlLocalidadPerdida);
-                CargarCombos.cargarCalles(ref ddlCallePerdida);
-                rnvFechaPerdida.MaximumValue = DateTime.Now.ToShortDateString();
+                cargarCombos();
             }
+        }
+
+        public void cargarCombos()
+        {
+            CargarCombos.cargarColor(ref ddlColor);
+            CargarCombos.cargarEdad(ref ddlEdad);
+            CargarCombos.cargarEspecies(ref ddlEspecie);
+            CargarCombos.cargarComboRazas(ref ddlRaza);
+            CargarCombos.cargarSexo(ref ddlSexo);
+            CargarCombos.cargarBarrio(ref ddlBarrios);
+            CargarCombos.cargarLocalidades(ref ddlLocalidades);
+            CargarCombos.cargarCalles(ref ddlCalles);
+            CargarCombos.cargarLocalidades(ref ddlLocalidadPerdida);
+            CargarCombos.cargarCalles(ref ddlCallePerdida);
+            rnvFechaPerdida.MaximumValue = DateTime.Now.ToShortDateString();
         }
 
         protected void btnBuscar_Click(object sender, EventArgs e)
@@ -102,8 +114,14 @@ namespace SiGMA
 
         protected void lstMascotas_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Session["imagen"] = null;
             var idMascota = Convert.ToInt32(lstMascotas.SelectedValue);
+            cargarMascotaPerdida(idMascota);
+        }
+
+        public void cargarMascotaPerdida(int idMascota) 
+        {
+            cargarCombos();
+            Session["imagen"] = null;
             EMascota mascota = new EMascota();
             EDuenio duenio = new EDuenio();
             if (LogicaBDPerdida.BuscarMascotaARegistrarPerdida(idMascota, mascota, duenio))
@@ -128,7 +146,7 @@ namespace SiGMA
                 ddlColor.SelectedValue = (mascota.color == null) ? null : mascota.color.idColor.ToString();
                 ddlEdad.SelectedValue = (mascota.edad == null) ? null : mascota.edad.idEdad.ToString();
                 ddlEspecie.SelectedValue = (mascota.especie == null) ? null : mascota.especie.idEspecie.ToString();
-                ddlRaza.SelectedValue = (mascota.raza == null) ? null :mascota.raza.idRaza.ToString();
+                ddlRaza.SelectedValue = (mascota.raza == null) ? null : mascota.raza.idRaza.ToString();
                 ddlSexo.SelectedValue = mascota.sexo.ToString();
                 Session["idMascota"] = idMascota;
 
@@ -158,60 +176,6 @@ namespace SiGMA
             }
         }
 
-        protected void btnSeleccionar_Click(object sender, EventArgs e)
-        {
-            //Session["imagen"] = null;
-            //var idMascota = Convert.ToInt32(lstMascotas.SelectedValue);
-            //pnlRegistrarPerdida.Visible = true;
-            //EMascota mascota = new EMascota();
-            //ECaracterMascota caracter = new ECaracterMascota();
-            //ECategoriaRaza categoria = new ECategoriaRaza();
-            //EPersona persona = new EPersona();
-            //EBarrio barrio = new EBarrio();
-            //ELocalidad localidad = new ELocalidad();
-            //ECalle calle = new ECalle();
-            //if (LogicaBDMascota.BuscarMascotaPorIdMascota(idMascota, mascota))
-            //{
-            //    txtMascotaPerdida.Text = mascota.nombreMascota;
-            //    mascota.duenio = new EDuenio();
-            //    txtNroCalle.Text = mascota.duenio.nroCalle.ToString();
-            //    txtDatosDueño.Text = (mascota.duenio.nombre == null) ? null : mascota.duenio.nombre.ToString();
-            //    txtDatosDueño.Text += (mascota.duenio.apellido == null) ? null : mascota.duenio.apellido.ToString();
-            //    ddlCalles.SelectedValue = (calle.idCalle == null) ? null : calle.idCalle.ToString();
-            //    ddlBarrios.SelectedValue = (mascota.duenio.barrio == null) ? null : mascota.duenio.barrio.idBarrio.ToString();
-            //    ddlLocalidades.SelectedValue = (mascota.duenio.barrio.localidad == null) ? null : mascota.duenio.barrio.localidad.idLocalidad.ToString();
-            //    ddlColor.SelectedValue = mascota.color.idColor.ToString();
-            //    ddlEdad.SelectedValue = mascota.edad.idEdad.ToString();
-            //    ddlEspecie.SelectedValue = mascota.especie.idEspecie.ToString();
-            //    ddlRaza.SelectedValue = mascota.raza.idRaza.ToString();
-            //    ddlSexo.SelectedValue = mascota.sexo.ToString();
-            //    Session["idMascota"] = idMascota;
-
-            //    if (mascota.imagen != null)
-            //    {
-            //        pnlImagen.Visible = true;
-            //        Session["imagen"] = mascota.imagen;
-            //        Handler1.AddMethod(ImageHandler_ObtenerImagenMascota);
-            //        imgprvw.Src = ResolveUrl("~/Handler1.ashx");
-            //        imgprvw.Width = 300;
-            //        imgprvw.Height = 250;
-            //    }
-            //    else
-            //    {
-            //        pnlImagen.Visible = false;
-            //        imgprvw.Width = 0;
-            //        imgprvw.Height = 0;
-            //    }
-
-            //}
-            //else
-            //{
-            //    pnlInfo.Visible = true;
-            //    lblInfo.Text = "No se encontro la mascota";
-            //    pnlCorrecto.Visible = false;
-            //    pnlAtento.Visible = false;
-            //}
-        }
         public byte[] ImageHandler_ObtenerImagenMascota(HttpContext context)
         {
             if (Session["imagen"] != null)
@@ -246,6 +210,7 @@ namespace SiGMA
                     perdida.domicilio.barrio.localidad.idLocalidad = int.Parse(ddlLocalidadPerdida.SelectedValue);
                     perdida.domicilio.barrio.localidad.nombre = ddlLocalidadPerdida.SelectedItem.Text;
                     perdida.domicilio.calle.nombre = ddlCallePerdida.SelectedItem.Text;
+                    perdida.domicilio.calle.idCalle = int.Parse(ddlCallePerdida.SelectedValue);
                     perdida.domicilio.numeroCalle = int.Parse(txtNroCallePerdida.Text);
                     perdida.usuario = new EUsuario();
                     perdida.usuario.user = Session["UsuarioLogueado"].ToString();
@@ -281,7 +246,10 @@ namespace SiGMA
 
         protected void BtnRegresarClick(object sender, ImageClickEventArgs e)
         {
-            Response.Redirect("Perdidas.aspx");
+            if (Session["pantalla"].ToString() == "MisMascotas.aspx")
+                Response.Redirect("MisMascotas.aspx");
+            else
+                Response.Redirect("Perdidas.aspx");
         }
 
         protected void ddlLocalidadPerdida_SelectedIndexChanged(object sender, EventArgs e)

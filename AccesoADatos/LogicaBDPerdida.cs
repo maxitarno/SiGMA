@@ -286,6 +286,7 @@ namespace AccesoADatos
                                    idBarrio = (G4 == null) ? 0 : G4.idBarrio,
                                    barrio = (G4 == null) ? null : G4.nombre,
                                    localidad = (G5 == null) ? null : G5.nombre,
+                                   localidadId = (G5 == null) ? 0 : G5.idLocalidad,
                                    calle = (G6 == null) ? 0 : G6.idCalle,
                                    nroCalle = (G2.nroCalle == null) ? 0 : G2.nroCalle,
                                    idPerdida = (G0.idPerdida == null) ? 0 : G0.idPerdida,
@@ -341,6 +342,7 @@ namespace AccesoADatos
                     mascota.duenio.barrio.nombre = registro.barrio;
                     mascota.duenio.barrio.localidad = new ELocalidad();
                     mascota.duenio.barrio.localidad.nombre = registro.localidad;
+                    mascota.duenio.barrio.localidad.idLocalidad = registro.localidadId;
                     mascota.duenio.domicilio = new ECalle();
                     mascota.duenio.domicilio.idCalle = registro.calle;
                     mascota.duenio.nroCalle = registro.nroCalle;
