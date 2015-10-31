@@ -9,11 +9,19 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Web.Script.Serialization;
 using Tweetinvi;
+using Entidades;
 
 namespace Herramientas
 {
     public class GestorTwitter
     {
+        public string generarMensajeCampaña(ECampaña campaña)
+        {
+            return "Nueva campaña de " + campaña.tipoCampaña.descripcion + 
+                ", Fecha: " + campaña.fecha.ToShortDateString() + " a las " + campaña.hora.ToString("HH:mm") 
+                + " en " + campaña.lugar;
+        }
+
         public void PublicarTweetConFoto(byte[] file, string mensaje)
         {
             var credentials = TwitterCredentials.CreateCredentials("2821489066-0z7L9YNPsL4ykZvy0trXUPvrJIPybXc1m74CbQz", "zL7m27cUyjTLJWnAMwvlF23Be13jcLGTKawFpwHcyZNiW",

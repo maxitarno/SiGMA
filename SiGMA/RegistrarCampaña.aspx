@@ -86,7 +86,7 @@
                                             Fecha:
                                         </td>
                                         <td align="left">
-                                            <asp:TextBox ID="txtFecha" runat="server"  Width="90%" />
+                                            <asp:TextBox ID="txtFecha" runat="server"  />
                                                 <asp:Image ID="Image1" runat="server" ImageUrl="~/assets/calendario_dw/calendario.png" />
                                                 <ajaxToolkit:CalendarExtender ID="CalendarExtender1" 
                                                     runat="server" TargetControlID="txtFecha" 

@@ -77,5 +77,26 @@ namespace AccesoADatos
             }
             return lstPedidos;
         }
+
+        public static void modificarPedidoDifusion(EPedidoDifusion pedido)
+        {
+            using (TransactionScope trans = new TransactionScope())
+            {
+                try
+                {
+                    SiGMAEntities mapa = Conexion.crearSegunServidor();
+                    PedidosDifusion pedidoBD = mapa.PedidosDifusion.Where(p => p.idPedidoDifusion == pedido.idPedidoDifusion).First();
+                    pedidoBD.idEstado = pedido.estado.idEstado;
+                    pedidoBD.motivoRechazo = pedido.motivoRechazo;
+                    mapa.SaveChanges();
+                    trans.Complete();
+                }
+                catch (Exception)
+                {
+                    trans.Dispose();
+                    throw;
+                }
+            }
+        }
     }
 }

@@ -14,5 +14,12 @@ namespace AccesoADatos
             var consulta = mapa.Estados.Single(e => e.nombreEstado == estado);
             return new EEstado { idEstado = consulta.idEstado, nombreEstado = consulta.nombreEstado, ambito = consulta.ambito};            
         }
+
+        public static EEstado buscarEstado(EEstado estado)
+        {
+            SiGMAEntities mapa = Conexion.crearSegunServidor();
+            var consulta = mapa.Estados.Single(e => e.nombreEstado == estado.nombreEstado && e.ambito == estado.ambito);
+            return new EEstado { idEstado = consulta.idEstado, nombreEstado = consulta.nombreEstado, ambito = consulta.ambito };
+        }
     }
 }

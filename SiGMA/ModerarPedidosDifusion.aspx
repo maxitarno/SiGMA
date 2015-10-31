@@ -121,14 +121,16 @@
                                         <td align="left">
                                             <asp:TextBox ID="txtRechazo" runat="server" Visible="false" Enabled="false" Height="58px" 
                                                 MaxLength="100" TextMode="MultiLine" Width="190px"></asp:TextBox>
-                                        </td>   
+                                            <asp:CustomValidator ID="cvRechazo" runat="server" ErrorMessage="*" 
+                                                ForeColor="Red" onservervalidate="cvRechazo_ServerValidate"
+                                            ></asp:CustomValidator></td>   
                                     </tr>                                        
                                         <tr>
                                             <td>
                                             </td>
                                             <td align="left">
                                                 <asp:Button ID="btnAceptar" runat="server" style="margin-left: 12%" 
-                                                    Text="Aceptar"  />
+                                                    Text="Aceptar" onclick="btnAceptar_Click"  />
                                             </td>                                            
                                         </tr>                                    
                                 </table>

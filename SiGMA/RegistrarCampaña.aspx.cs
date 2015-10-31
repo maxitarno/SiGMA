@@ -63,20 +63,16 @@ namespace SiGMA
                     if (LogicaBDRol.puedePublicarDifusion(Session["UsuarioLogueado"].ToString()))
                     {
                         LogicaBDCampaña.registrarCampaña(campaña);
-                        var tweet = new Herramientas.GestorTwitter();
-                        string mensaje = "Nueva campaña de " + campaña.tipoCampaña.descripcion +
-                                ", Fecha: " + campaña.fecha.ToShortDateString() + " a las " + campaña.hora.ToString("HH:mm")
-                                + " en " + campaña.lugar;
+                        var tweet = new Herramientas.GestorTwitter();                        
                         var imagen = campaña.imagen;
                         if (imagen != null)
                         {
-                            tweet.PublicarTweetConFoto(imagen, mensaje);
+                            tweet.PublicarTweetConFoto(imagen, tweet.generarMensajeCampaña(campaña));
                         }
                         else
                         {
-                            tweet.PublicarTweetSoloTexto(mensaje);
+                            tweet.PublicarTweetSoloTexto(tweet.generarMensajeCampaña(campaña));
                         }
-                        pnlCorrecto.Visible = true;
                         lblCorrecto.Text = "Campaña registrada exitosamente";
                     }
                     else
@@ -87,15 +83,17 @@ namespace SiGMA
                         pedido.campaña = campaña;
                         pedido.fecha = DateTime.Now;
                         pedido.user = new EUsuario { user = Session["UsuarioLogueado"].ToString() };
-                        LogicaBDPedidoDifusion.registrarPedidoDifusion(pedido);
-                        pnlCorrecto.Visible = true;
+                        LogicaBDPedidoDifusion.registrarPedidoDifusion(pedido);                        
                         lblCorrecto.Text = "Campaña registrada exitosamente. \nPendiente de aceptacion";
                     }
+                    pnlCorrecto.Visible = true;
+                    pnlAtento.Visible = false;
                     SetFocus(lblCorrecto);                    
                 }
                 catch (Exception)
                 {
                     pnlAtento.Visible = true;
+                    pnlCorrecto.Visible = true;
                     lblError.Text = "Error al registrar la campaña";
                     SetFocus(pnlAtento);
                     throw;
