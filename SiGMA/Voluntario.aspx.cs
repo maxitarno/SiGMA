@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using AccesoADatos;
+using Entidades;
 
 namespace SiGMA
 {
@@ -58,7 +60,21 @@ namespace SiGMA
 
         private void cargarDatosHogar()
         {
-            throw new NotImplementedException();
+           EPersona persona = new EPersona();
+           EHogarProvisorio hogar = new EHogarProvisorio();
+           ECalle calle = new ECalle();
+           EBarrio barrio = new EBarrio();
+           LogicaBDVoluntario.cargarDatosHogarProvisorio(Session["UsuarioLogueado"].ToString(), persona, hogar, calle, barrio);
+           txtNombre.Text = persona.nombre;
+           txtEmail.Text = persona.email;
+           txtTelefono.Text = persona.telefonoCelular + '-' + persona.telefonoFijo;
+           ddlTipoHogar.SelectedValue = hogar.tipoHogar.ToString();
+           ddlCalle.SelectedValue = calle.idCalle.ToString();
+           txtNro.Text = persona.nroCalle.ToString();
+           ddlBarrio.SelectedValue = barrio.idBarrio.ToString();
+           ddlNumeroMascotas.SelectedValue = hogar.cantMascotas.ToString();
+           ddlTipoMascota.SelectedValue = hogar.AceptaEspecie.ToString();
+           ddlTieneNinios.SelectedValue = hogar.tieneNiños.ToString();
         }
 
         protected void BtnRegresarClick(object sender, ImageClickEventArgs e)

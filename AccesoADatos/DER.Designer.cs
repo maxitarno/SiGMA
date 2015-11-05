@@ -3581,15 +3581,21 @@ namespace AccesoADatos
         /// <param name="tieneNiños">Initial value of the tieneNiños property.</param>
         /// <param name="cantMascotas">Initial value of the cantMascotas property.</param>
         /// <param name="idVoluntario">Initial value of the idVoluntario property.</param>
+        /// <param name="idCuidadoEspecial">Initial value of the idCuidadoEspecial property.</param>
         /// <param name="idEstado">Initial value of the idEstado property.</param>
-        public static HogaresProvisorios CreateHogaresProvisorios(global::System.Int32 idHogarProvisorio, global::System.String tieneNiños, global::System.Int32 cantMascotas, global::System.Int32 idVoluntario, global::System.Int32 idEstado)
+        /// <param name="aceptaEspecie">Initial value of the AceptaEspecie property.</param>
+        /// <param name="tipoHogar">Initial value of the TipoHogar property.</param>
+        public static HogaresProvisorios CreateHogaresProvisorios(global::System.Int32 idHogarProvisorio, global::System.String tieneNiños, global::System.Int32 cantMascotas, global::System.Int32 idVoluntario, global::System.Int32 idCuidadoEspecial, global::System.Int32 idEstado, global::System.Int32 aceptaEspecie, global::System.Int32 tipoHogar)
         {
             HogaresProvisorios hogaresProvisorios = new HogaresProvisorios();
             hogaresProvisorios.idHogarProvisorio = idHogarProvisorio;
             hogaresProvisorios.tieneNiños = tieneNiños;
             hogaresProvisorios.cantMascotas = cantMascotas;
             hogaresProvisorios.idVoluntario = idVoluntario;
+            hogaresProvisorios.idCuidadoEspecial = idCuidadoEspecial;
             hogaresProvisorios.idEstado = idEstado;
+            hogaresProvisorios.AceptaEspecie = aceptaEspecie;
+            hogaresProvisorios.TipoHogar = tipoHogar;
             return hogaresProvisorios;
         }
 
@@ -3699,9 +3705,9 @@ namespace AccesoADatos
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int32> idCuidadoEspecial
+        public global::System.Int32 idCuidadoEspecial
         {
             get
             {
@@ -3716,8 +3722,8 @@ namespace AccesoADatos
                 OnidCuidadoEspecialChanged();
             }
         }
-        private Nullable<global::System.Int32> _idCuidadoEspecial;
-        partial void OnidCuidadoEspecialChanging(Nullable<global::System.Int32> value);
+        private global::System.Int32 _idCuidadoEspecial;
+        partial void OnidCuidadoEspecialChanging(global::System.Int32 value);
         partial void OnidCuidadoEspecialChanged();
     
         /// <summary>
@@ -3743,6 +3749,54 @@ namespace AccesoADatos
         private global::System.Int32 _idEstado;
         partial void OnidEstadoChanging(global::System.Int32 value);
         partial void OnidEstadoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 AceptaEspecie
+        {
+            get
+            {
+                return _AceptaEspecie;
+            }
+            set
+            {
+                OnAceptaEspecieChanging(value);
+                ReportPropertyChanging("AceptaEspecie");
+                _AceptaEspecie = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("AceptaEspecie");
+                OnAceptaEspecieChanged();
+            }
+        }
+        private global::System.Int32 _AceptaEspecie;
+        partial void OnAceptaEspecieChanging(global::System.Int32 value);
+        partial void OnAceptaEspecieChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 TipoHogar
+        {
+            get
+            {
+                return _TipoHogar;
+            }
+            set
+            {
+                OnTipoHogarChanging(value);
+                ReportPropertyChanging("TipoHogar");
+                _TipoHogar = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("TipoHogar");
+                OnTipoHogarChanged();
+            }
+        }
+        private global::System.Int32 _TipoHogar;
+        partial void OnTipoHogarChanging(global::System.Int32 value);
+        partial void OnTipoHogarChanged();
 
         #endregion
 
@@ -6236,11 +6290,13 @@ namespace AccesoADatos
         /// </summary>
         /// <param name="idPersona">Initial value of the idPersona property.</param>
         /// <param name="idTipoDocumento">Initial value of the idTipoDocumento property.</param>
-        public static Personas CreatePersonas(global::System.Int32 idPersona, global::System.Int32 idTipoDocumento)
+        /// <param name="email">Initial value of the email property.</param>
+        public static Personas CreatePersonas(global::System.Int32 idPersona, global::System.Int32 idTipoDocumento, global::System.String email)
         {
             Personas personas = new Personas();
             personas.idPersona = idPersona;
             personas.idTipoDocumento = idTipoDocumento;
+            personas.email = email;
             return personas;
         }
 
@@ -6374,7 +6430,7 @@ namespace AccesoADatos
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.String email
         {
@@ -6386,7 +6442,7 @@ namespace AccesoADatos
             {
                 OnemailChanging(value);
                 ReportPropertyChanging("email");
-                _email = StructuralObject.SetValidValue(value, true);
+                _email = StructuralObject.SetValidValue(value, false);
                 ReportPropertyChanged("email");
                 OnemailChanged();
             }
