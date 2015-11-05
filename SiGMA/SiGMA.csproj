@@ -165,6 +165,7 @@
     <Content Include="ValidarUsuario.aspx" />
     <Content Include="Veterinarias.aspx" />
     <Content Include="VeterinariasBarrio.aspx" />
+    <Content Include="Voluntario.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -534,6 +535,13 @@
     </Compile>
     <Compile Include="VeterinariasBarrio.aspx.designer.cs">
       <DependentUpon>VeterinariasBarrio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Voluntario.aspx.cs">
+      <DependentUpon>Voluntario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Voluntario.aspx.designer.cs">
+      <DependentUpon>Voluntario.aspx</DependentUpon>
     </Compile>
     <Compile Include="_Mascotas.aspx.cs">
       <DependentUpon>_Mascotas.aspx</DependentUpon>

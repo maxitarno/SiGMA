@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PaginaMaestra.Master" AutoEventWireup="true" CodeBehind="SerVoluntario.aspx.cs" Inherits="SiGMA.SerVoluntario" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PaginaMaestra.Master" AutoEventWireup="true" CodeBehind="Voluntario.aspx.cs" Inherits="SiGMA.Voluntario" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -25,7 +25,7 @@
         <div class="panel panel-default">
             <div class="panel-heading">
             <h3 class="panel-title">
-                Ser Voluntario</h3>
+               Voluntario</h3>
             </div>
 
             <div class="panel panel-default">
@@ -49,55 +49,50 @@
                 </div>
             </div>
             </div>
-            <div class="centered"><h4>Ser voluntario, implica compromiso y responsabilidad</h4> </div>
-            <br/>
-            <div class="centered"><h5>Puedes ser voluntario aportando tu casa como hogar provisorio para mascotas halladas, temporalmente sin dueño </h5></div>
-            <div class="centered"><h5>o puedes serlo incorporandote a las patrullas de busqueda de mascotas perdidas </h5></div>
-            <br/>
-            <div class="centered"><h5>En ambos casos, solicitaremos que llenes el formulario de solicitud de voluntariado con tus datos de contacto</h5></div>
+            <div class="centered"><h4> Recuerde que ser voluntario implica compromiso y responsabilidad</h4> </div>
             <br />
-            <div class="centered"><h6>¿Que tipo de voluntario desea ser?</h6></div>
-            <asp:DropDownList class="dropdown" ID="ddlTipoVoluntario" runat="server" AutoPostBack="true" 
-                AppendDataBoundItems="true" 
-                onselectedindexchanged="ddlTipoVoluntario_SelectedIndexChanged"> 
+            <div class="centered"><h5>¿Desear solicitar cambio de voluntariado?</h5></div>
+            <asp:DropDownList class="dropdown" ID="ddlTipoVoluntario" runat="server" AppendDataBoundItems="true" > 
                 <asp:listitem value ="0"> -- Seleccione -- </asp:listitem>
                 <asp:listitem value ="1" Text="Hogar"></asp:listitem>
                 <asp:listitem value ="2" Text="Busqueda"></asp:listitem>
                 <asp:listitem value ="3" Text="Ambos"></asp:listitem>
-                
             </asp:DropDownList>
+            <div class="centered"><asp:Button ID="btnCambioVoluntariado" runat="server" Text="Solicitar Cambio" /></div>
+            <br />
+            <div class="centered"><h5>¿Desear solicitar cambio de voluntariado?</h5><asp:Button ID="btnDejarVoluntariado" runat="server" Text="Dejar de serlo" /></div>
             <br />
             <div class="panel-body">
-                    <div>
-                        <div class="col-md-3 col-md-offset-4">
-                            <table>
-                                <tr style="height:30px">
-                                    <td align="right" width="200px">Nombre:</td>
-                                    <td align="left"><asp:TextBox ID="txtNombre" runat="server" Width="325px"></asp:TextBox></td>
-                                    <td><asp:RequiredFieldValidator ID="rfvNombreApellido" runat="server" 
-                                            ErrorMessage="*" ForeColor="Red" ControlToValidate="txtNombre"></asp:RequiredFieldValidator></td>
-                                </tr>
-                                <tr style="height:30px">
-                                    <td align="right" width="200px">Email:</td>
-                                    <td align="left"><asp:TextBox ID="txtEmail" runat="server" Width="325px"></asp:TextBox></td>
-                                    <td>
-                                        <asp:RequiredFieldValidator ID="rfvEmail" runat="server" ErrorMessage="*" 
-                                            ForeColor="Red" ControlToValidate="txtEmail"></asp:RequiredFieldValidator>
-                                        <asp:RegularExpressionValidator ID="revMail" runat="server" ErrorMessage="Formato de email incorrecto"
-                                    ForeColor="Red" ControlToValidate="txtEmail" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"
-                                    Display="Dynamic"></asp:RegularExpressionValidator>  
-                                            </td>
-                                </tr >
-                                <tr style="height:30px">
-                                    <td align="right" width="200px" >Telefono:</td>
-                                    <td align="left"><asp:TextBox ID="txtTelefono" runat="server" Width="325px"></asp:TextBox></td>
-                                    <td><asp:RequiredFieldValidator ID="rfvTelefono" runat="server" ErrorMessage="*" 
-                                            ForeColor="Red" ControlToValidate="txtTelefono"></asp:RequiredFieldValidator></td>
-                                </tr>
-                            </table>
-                        </div>
+                <div>
+                    <div class="col-md-3 col-md-offset-4">
+                        <table>
+                            <tr style="height:30px">
+                                <td align="right" width="200px">Nombre:</td>
+                                <td align="left"><asp:TextBox ID="txtNombre" runat="server" Width="325px"></asp:TextBox></td>
+                                <td><asp:RequiredFieldValidator ID="rfvNombreApellido" runat="server" 
+                                        ErrorMessage="*" ForeColor="Red" ControlToValidate="txtNombre"></asp:RequiredFieldValidator></td>
+                            </tr>
+                            <tr style="height:30px">
+                                <td align="right" width="200px">Email:</td>
+                                <td align="left"><asp:TextBox ID="txtEmail" runat="server" Width="325px"></asp:TextBox></td>
+                                <td>
+                                    <asp:RequiredFieldValidator ID="rfvEmail" runat="server" ErrorMessage="*" 
+                                        ForeColor="Red" ControlToValidate="txtEmail"></asp:RequiredFieldValidator>
+                                    <asp:RegularExpressionValidator ID="revMail" runat="server" ErrorMessage="Formato de email incorrecto"
+                                ForeColor="Red" ControlToValidate="txtEmail" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"
+                                Display="Dynamic"></asp:RegularExpressionValidator>  
+                                        </td>
+                            </tr >
+                            <tr style="height:30px">
+                                <td align="right" width="200px" >Telefono:</td>
+                                <td align="left"><asp:TextBox ID="txtTelefono" runat="server" Width="325px"></asp:TextBox></td>
+                                <td><asp:RequiredFieldValidator ID="rfvTelefono" runat="server" ErrorMessage="*" 
+                                        ForeColor="Red" ControlToValidate="txtTelefono"></asp:RequiredFieldValidator></td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
+            </div>
             <asp:Panel ID="pnlHogar" runat="server" Visible="false">
                 <div><h5>Datos Hogar</h5></div>
                 <div class="panel-body">
@@ -160,7 +155,36 @@
                                         </asp:DropDownList></td>
                                     <td></td>
                                 </tr>
+                                <tr style="height:30px">
+                                    <td align="right" width="200px">Mis Provisorias:</td>
+                                    <td align="left"> <asp:DropDownList ID="ddlMascotasEnHogar" runat="server">
+                                    </asp:DropDownList></td>
+                                    <td></td>
+                                </tr>
                             </table>
+                            <div class="centered"><h5>¿Desea actualizar los datos de su hogar?</h5></div>
+                            <div class="centered"><asp:Button ID="btnActualizarHogar" runat="server" Text="Actualizar Hogar"/></div>
+                            <asp:Panel ID="pnlMisProvisorias" runat="server" Visible="false">
+                                <table>
+                                    <tr style="height:30px">
+                                        <td align="right" width="200px">Mascota:</td>
+                                        <td align="left"><asp:TextBox ID="txtMascotaHogar" runat="server" Width="325px"></asp:TextBox></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr style="height:30px">
+                                        <td align="right" width="200px" >Especie:</td>
+                                        <td align="left"><asp:TextBox ID="txtEspecieHogar" runat="server" Width="325px"></asp:TextBox></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr style="height:30px">
+                                        <td align="right" width="200px">Raza:</td>
+                                        <td align="left"><asp:TextBox ID="txtRazaHogar" runat="server" Width="325px"></asp:TextBox></td>
+                                        <td></td>
+                                    </tr >
+                                </table>
+                                <div class="centered"><h5>¿No puede seguir cuidando a su mascota provisoria?</h5></div>
+                                <div class="centered"><asp:Button ID="btnSolicitarDevolucion" runat="server" Text="Solicitar Devolución"/></div>
+                            </asp:Panel>
                         </div>
                     </div>
                 </div>
@@ -186,23 +210,55 @@
                                         </asp:DropDownList></td>
                                     <td></td>
                                 </tr>
+                                <tr style="height:30px">
+                                    <td align="right" width="200px">Mascotas Perdidas:</td>
+                                    <td align="left"> <asp:DropDownList ID="ddlBusquedasBarrio" runat="server">
+                                    </asp:DropDownList></td>
+                                    <td></td>
+                                </tr>
                             </table>
+                            <br />
+                            <div class="centered"><h5>¿Desea actualizar sus datos de disponibilidad?</h5></div>
+                            <div class="centered"><asp:Button ID="btnActualizarBusqueda" runat="server" Text="Actualizar Disponibilidad"/></div>
+                            <asp:Panel ID="pnlMisBusquedas" runat="server" Visible="false">
+                                <table>
+                                    <tr style="height:30px">
+                                        <td align="right" width="200px">Mascota:</td>
+                                        <td align="left"><asp:TextBox ID="txtMascotaPerdida" runat="server" Width="325px"></asp:TextBox></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr style="height:30px">
+                                        <td align="right" width="200px" >Especie:</td>
+                                        <td align="left"><asp:TextBox ID="txtEspeciePerdida" runat="server" Width="325px"></asp:TextBox></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr style="height:30px">
+                                        <td align="right" width="200px">Raza:</td>
+                                        <td align="left"><asp:TextBox ID="txtRazaPerdida" runat="server" Width="325px"></asp:TextBox></td>
+                                        <td></td>
+                                    </tr >
+                                    <tr style="height:30px">
+                                        <td align="right" width="200px">Ver lugar pérdida:</td>
+                                        <td align="left"><asp:Button ID="btnMapa" runat="server" Text="Ubicación" /></td> 
+                                        <td></td>
+                                    </tr >
+                                </table>
+                                <div class="centered"><h5>¿Quisiera ver mas detalles de la mascota perdida?</h5></div>
+                                <div class="centered"><asp:Button ID="btnSolicitarDetallesPerdida" runat="server" Text="Ver Detalles Perdida"/></div>
+                            </asp:Panel>
                         </div>
                     </div>
                 </div>
             </asp:Panel>
             
-            <div class="centered">
-            <asp:Button ID="btnEnviar" style="margin-left: 39px" runat="server" 
-                                        Text="Enviar" onclick="btnEnviar_Click" />
-            </div>
         </div>
         <div class="centered">
             <asp:ImageButton ID="ibtnRegresar" runat="server" ImageUrl="~/imagenes/volver.png"
                 OnClick="BtnRegresarClick" CausesValidation="False"/><br />VOLVER
-    </div>
+        </div>
     </div>
 
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
 </asp:Content>
+

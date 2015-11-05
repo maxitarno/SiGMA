@@ -27,5 +27,30 @@ namespace AccesoADatos
                 return null;
             }
         }
+
+        public static int buscarTipoVoluntario(string usuario)
+        {
+            int vol = 0;
+            SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+            IQueryable<string> consulta = from personasBD in mapaEntidades.Personas 
+                                       join usuariosBD in mapaEntidades.Usuarios on personasBD.user equals usuariosBD.user
+                                       join voluntariosBD in mapaEntidades.Voluntarios on personasBD.idPersona equals voluntariosBD.idPersona
+                                       where (usuariosBD.user == usuario)
+                                       select voluntariosBD.tipoVoluntario;
+            if (consulta.Count() != 0)
+            {
+                if (consulta.First() == "Hogar")
+                    vol= 1;
+                if (consulta.First() == "Busqueda")
+                    vol= 2;
+                if (consulta.First() == "Ambos")
+                    vol= 3;
+            }
+            else
+            {
+                vol = 0;
+            }
+            return vol;
+        }
     }
 }

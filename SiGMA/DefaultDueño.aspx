@@ -43,7 +43,7 @@
 			<div class="col-lg-4 col-md-4">
 				<div class="thumbnail">
                     <a class="zoom green" href="SerVoluntario.aspx"><img class="img-responsive img-circle" src="assets/img/menu/servoluntario.png" alt="" width="200px" height="300px" /></a>
-				    <div class="caption centered"><h4>SER VOLUNTARIO</h4> </div>
+				    <div class="caption centered"><h4><asp:Label ID="lblVoluntario" runat="server" Text="SER VOLUNTARIO"></asp:Label></h4> </div>
                 </div>
 			</div>
 		</div><!-- /row -->

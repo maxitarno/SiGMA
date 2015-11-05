@@ -11,7 +11,27 @@ namespace SiGMA
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["UsuarioLogueado"] == null)
+            {
+                Response.Redirect("Login.aspx");
+            }
+            else
+            {
+                if (Session["EsRol"] != null)
+                {
+                    if (Session["EsRol"].ToString() == "1")
+                        Response.Redirect("Default.aspx");
+                }
+                if (Session["TipoVoluntario"].ToString() != "0")
+                {
+                    if (Session["TipoVoluntario"].ToString() == "1")
+                        lblVoluntario.Text = "VOL. HOGAR";
+                    if (Session["TipoVoluntario"].ToString() == "2")
+                        lblVoluntario.Text = "VOL. BUSQUEDA";
+                    if (Session["TipoVoluntario"].ToString() == "3")
+                        lblVoluntario.Text = "VOL. BUSQ/HOGAR";
+                }
+            }
         }
     }
 }

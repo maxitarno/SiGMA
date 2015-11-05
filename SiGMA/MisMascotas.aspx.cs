@@ -224,7 +224,7 @@ namespace SiGMA
                 pnlCorrecto.Visible = true;
                 pnlInfo.Visible = false;
                 pnlAtento.Visible = false;
-                lblResultado1.Text = "Mascota puesta en adopcion correctamente";
+                lblResultado1.Text = "Pedido de difusion de adopcion realizado";
 
             }
             else

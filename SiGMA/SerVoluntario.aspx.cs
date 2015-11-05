@@ -12,7 +12,10 @@ namespace SiGMA
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["TipoVoluntario"].ToString() != "0")
+            {
+                    Response.Redirect("Voluntario.aspx");
+            }
         }
 
         protected void ddlTipoVoluntario_SelectedIndexChanged(object sender, EventArgs e)
