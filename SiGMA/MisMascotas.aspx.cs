@@ -87,11 +87,11 @@ namespace SiGMA
 
         private void mostrarMascota(int idMascota)
         {
-            EMascota mascota = new EMascota();
+            EMascota mascota = LogicaBDMascota.BuscarMascotaPorIdMascota(idMascota);
             ECaracterMascota caracter = new ECaracterMascota();
             ECategoriaRaza categoria = new ECategoriaRaza();
-            ECuidado cuidado = new ECuidado();;
-            if (LogicaBDMascota.BuscarMascota(mascota, categoria, caracter, cuidado, idMascota))
+            ECuidado cuidado = new ECuidado();
+            if (mascota != null)
             {
                 ddlEstado.SelectedValue = mascota.estado.idEstado.ToString();
                 if (mascota.estado.idEstado.ToString() == "3")
@@ -99,9 +99,9 @@ namespace SiGMA
                 else
                     btnPerdida.Visible = true;
                 txtAlimentacionEspecial.Text = mascota.alimentacionEspecial;
-                ddlCaracter.SelectedValue = caracter.idCaracter.ToString();
-                txtCategoria.Text = categoria.nombreCategoriaRaza;
-                txtCuidadoEspecial.Text = cuidado.descripcion;
+                ddlCaracter.SelectedValue = mascota.caracter.idCaracter.ToString();
+                txtCategoria.Text = mascota.raza.CategoriaRaza.nombreCategoriaRaza;
+                txtCuidadoEspecial.Text = mascota.raza.cuidadoEspecial.descripcion;
                 txtFecha.Text = mascota.fechaNacimiento == null ? null : mascota.fechaNacimiento.Value.ToShortDateString().ToString();
                 txtMascota.Text = mascota.nombreMascota;
                 txtObservaciones.Text = mascota.observaciones;

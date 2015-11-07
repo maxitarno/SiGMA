@@ -278,7 +278,7 @@ namespace SiGMA
             {
                 var imagen = (byte[])Session["imagen"];
                 Session["imagenAdopcion"] = (byte[])Session["imagen"]; // BORRAR GRONCHADA
-                //Session["imagen"] = null;
+                //Session["imagen"] = null; //Verificar para que estaba esta linea q fue comentada
                 return imagen;
             }
             else
@@ -734,13 +734,14 @@ namespace SiGMA
             if (lstResultados.SelectedValue != "")
             {
                 int idMascota = int.Parse(lstResultados.SelectedValue);
-                if (LogicaBDMascota.BuscarMascota(mascota, categoria, caracter, cuidado, idMascota))
+                mascota = LogicaBDMascota.BuscarMascotaPorIdMascota(idMascota);
+                if (mascota != null)
                 {
                     ddlEstado.SelectedValue = mascota.estado.idEstado.ToString();
                     txtAlimentacionEspecial.Text = mascota.alimentacionEspecial;
-                    ddlCaracter.SelectedValue = caracter.idCaracter.ToString();
-                    txtCategoria.Text = categoria.nombreCategoriaRaza;
-                    txtCuidadoEspecial.Text = cuidado.descripcion;
+                    ddlCaracter.SelectedValue = mascota.caracter.idCaracter.ToString();
+                    txtCategoria.Text = mascota.raza.CategoriaRaza.nombreCategoriaRaza;
+                    txtCuidadoEspecial.Text = mascota.raza.cuidadoEspecial.descripcion;
                     txtFecha.Text = mascota.fechaNacimiento == null ? null : mascota.fechaNacimiento.Value.ToShortDateString().ToString();
                     txtMascota.Text = mascota.nombreMascota;
                     txtObservaciones.Text = mascota.observaciones;

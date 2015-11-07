@@ -60,14 +60,14 @@
             </asp:DropDownList>
             <div class="centered"><asp:Button ID="btnCambioVoluntariado" runat="server" Text="Solicitar Cambio" /></div>
             <br />
-            <div class="centered"><h5>¿Desear solicitar cambio de voluntariado?</h5><asp:Button ID="btnDejarVoluntariado" runat="server" Text="Dejar de serlo" /></div>
+            <div class="centered"><h5>¿Desear dejar de ser voluntario?</h5><asp:Button ID="btnDejarVoluntariado" runat="server" Text="Dejar de serlo" /></div>
             <br />
             <div class="panel-body">
                 <div>
                     <div class="col-md-3 col-md-offset-4">
                         <table>
                             <tr style="height:30px">
-                                <td align="right" width="200px">Nombre:</td>
+                                <td align="right" width="200px">Voluntario:</td>
                                 <td align="left"><asp:TextBox ID="txtNombre" runat="server" Width="325px"></asp:TextBox></td>
                                 <td><asp:RequiredFieldValidator ID="rfvNombreApellido" runat="server" 
                                         ErrorMessage="*" ForeColor="Red" ControlToValidate="txtNombre"></asp:RequiredFieldValidator></td>

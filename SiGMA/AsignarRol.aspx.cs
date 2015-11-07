@@ -122,5 +122,10 @@ namespace SiGMA
             ddlRolUsuario.DataValueField = "idRol";
             ddlRolUsuario.DataBind();
         }
+
+        protected void ibtnRegresar_Click(object sender, ImageClickEventArgs e)
+        {
+            Response.Redirect("Administracion.aspx");
+        }
     }
 }

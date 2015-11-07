@@ -65,7 +65,6 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_RolesXUsuario_Roles", "Roles", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Roles), "RolesXUsuario", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.RolesXUsuario), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_RolesXUsuario_Usuarios", "Usuarios", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Usuarios), "RolesXUsuario", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.RolesXUsuario), true)]
 [assembly: EdmRelationshipAttribute("SiGMAModel", "FK_Sesiones_Usuarios", "Usuarios", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AccesoADatos.Usuarios), "Sesiones", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Sesiones), true)]
-[assembly: EdmRelationshipAttribute("SiGMAModel", "EspeciesXHogaresProvisorios", "Especies", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.Especies), "HogaresProvisorios", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AccesoADatos.HogaresProvisorios))]
 
 #endregion
 
@@ -2793,28 +2792,6 @@ namespace AccesoADatos
                 }
             }
         }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("SiGMAModel", "EspeciesXHogaresProvisorios", "HogaresProvisorios")]
-        public EntityCollection<HogaresProvisorios> HogaresProvisorios
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<HogaresProvisorios>("SiGMAModel.EspeciesXHogaresProvisorios", "HogaresProvisorios");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<HogaresProvisorios>("SiGMAModel.EspeciesXHogaresProvisorios", "HogaresProvisorios", value);
-                }
-            }
-        }
 
         #endregion
 
@@ -3821,28 +3798,6 @@ namespace AccesoADatos
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<OcupacionesXHogaresProvisorios>("SiGMAModel.FK_OcupacionXHogarProvisorio_HogaresProvisorios", "OcupacionesXHogaresProvisorios", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("SiGMAModel", "EspeciesXHogaresProvisorios", "Especies")]
-        public EntityCollection<Especies> Especies
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Especies>("SiGMAModel.EspeciesXHogaresProvisorios", "Especies");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Especies>("SiGMAModel.EspeciesXHogaresProvisorios", "Especies", value);
                 }
             }
         }
@@ -8672,6 +8627,30 @@ namespace AccesoADatos
         private global::System.String _tipoVoluntario;
         partial void OntipoVoluntarioChanging(global::System.String value);
         partial void OntipoVoluntarioChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String disponibilidadHoraria
+        {
+            get
+            {
+                return _disponibilidadHoraria;
+            }
+            set
+            {
+                OndisponibilidadHorariaChanging(value);
+                ReportPropertyChanging("disponibilidadHoraria");
+                _disponibilidadHoraria = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("disponibilidadHoraria");
+                OndisponibilidadHorariaChanged();
+            }
+        }
+        private global::System.String _disponibilidadHoraria;
+        partial void OndisponibilidadHorariaChanging(global::System.String value);
+        partial void OndisponibilidadHorariaChanged();
 
         #endregion
 

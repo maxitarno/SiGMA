@@ -19,7 +19,7 @@ namespace SiGMA
                 {
                     pnlHogar.Visible = true;
                     cargarDatosHogar(); //cargar los datos del hogar del usuario logueado
-                    cargarComboMisProvisorias(); //cargar el combo con las mascotas provisorias que tiene
+                    //cargarComboMisProvisorias(); //cargar el combo con las mascotas provisorias que tiene
                 }
                 else if (Session["TipoVoluntario"].ToString() == "2")
                 {

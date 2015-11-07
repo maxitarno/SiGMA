@@ -246,8 +246,11 @@ namespace SiGMA
 
         protected void BtnRegresarClick(object sender, ImageClickEventArgs e)
         {
-            if (Session["pantalla"].ToString() == "MisMascotas.aspx")
-                Response.Redirect("MisMascotas.aspx");
+            if (Session["Pantalla"] != null)
+            {
+                if (Session["pantalla"].ToString() == "MisMascotas.aspx")
+                    Response.Redirect("MisMascotas.aspx");
+            }
             else
                 Response.Redirect("Perdidas.aspx");
         }

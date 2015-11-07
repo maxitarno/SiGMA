@@ -61,11 +61,11 @@ namespace AccesoADatos
                                           join usuariosBD in mapaEntidades.Usuarios on personasBD.user equals usuariosBD.user
                                           join voluntariosBD in mapaEntidades.Voluntarios on personasBD.idPersona equals voluntariosBD.idPersona
                                           join hogaresBD in mapaEntidades.HogaresProvisorios on voluntariosBD.idVoluntario equals hogaresBD.idVoluntario
-                                          join OcupacionesBD in mapaEntidades.OcupacionesXHogaresProvisorios on hogaresBD.idHogarProvisorio equals OcupacionesBD.idHogarProvisorio
                                           where (usuariosBD.user == usuario)
                                         select new
                                         {
-                                            nombre = personasBD.apellido + ' ' + personasBD.nombre,
+                                            apellido = personasBD.apellido,
+                                            nombre = personasBD.nombre,
                                             email = personasBD.email,
                                             tipoHogar = hogaresBD.TipoHogar,
                                             calle = personasBD.idCalle,
@@ -81,7 +81,7 @@ namespace AccesoADatos
                 hogar.cantMascotas = registro.cantidadMax;
                 hogar.AceptaEspecie = registro.tipoMascota;
                 hogar.tieneNiños = registro.tieneNiños;
-                persona.nombre = registro.nombre;
+                persona.nombre = registro.nombre + ' ' + registro.apellido;
                 persona.email = registro.email;
                 persona.nroCalle = registro.nroCalle;
                 calle.idCalle = registro.calle;

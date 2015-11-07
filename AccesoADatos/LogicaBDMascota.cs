@@ -307,7 +307,7 @@ namespace AccesoADatos
         //en su estructura
         public static EMascota BuscarMascotaPorIdMascota(int idMascota)
         {
-            EMascota mascota = new EMascota();
+            EMascota mascota = null;
             try
             {
                 SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
@@ -320,15 +320,19 @@ namespace AccesoADatos
                                join CategoriaRazaBD in mapaEntidades.CategoriaRazas on RazaBD.idCategoriaRaza equals CategoriaRazaBD.idCategoriaRazas
                                join CaracterBD in mapaEntidades.CaracteresMascota on MascotasBD.idCaracter equals CaracterBD.idCaracter into group3
                                from G3 in group3.DefaultIfEmpty()
+                               join cuidadosBD in mapaEntidades.CuidadosEspeciales on RazaBD.idCuidadoEspecial equals cuidadosBD.idCuidadoEspecial into group2
+                               from G2 in group2.DefaultIfEmpty(null)
                                where (MascotasBD.idMascota == idMascota)
                                select new
                                {
                                    nombre = MascotasBD.nombreMascota,
+                                   fechaNacimiento = MascotasBD.fechaNacimiento,
                                    idEstado = MascotasBD.idEstado,
                                    estado = EstadosBD.nombreEstado,
                                    idEspecie = MascotasBD.idEspecie,
                                    especie = especiesBD.nombreEspecie,
                                    idEdad = MascotasBD.idEdad,
+                                   observacion = MascotasBD.observaciones,
                                    edad = edadesBD.nombreEdad,
                                    raza = RazaBD.nombreRaza,
                                    idRaza = MascotasBD.idRaza,
@@ -336,17 +340,21 @@ namespace AccesoADatos
                                    color = ColoresBD.nombreColor,
                                    tratoA = MascotasBD.tratoAnimales,
                                    tratoN = MascotasBD.tratoNinios,
+                                   alimentacion = MascotasBD.alimentacionEspecial,
                                    sexo = MascotasBD.sexo,
                                    categoria = CategoriaRazaBD.nombreCategoriaRaza,
                                    idCategoria = CategoriaRazaBD.idCategoriaRazas,
-                                   idCaracter = G3.idCaracter,
-                                   caracter = G3.descripcion,
+                                   idCaracter = (G3 == null) ? 0 : G3.idCaracter,
+                                   caracter = (G3 == null) ? null : G3.descripcion,
+                                   idCuidado = (G2 == null) ? 0 : G2.idCuidadoEspecial,
+                                   descripcionCuidados = (G2 == null) ? null : G2.descripcion,
                                    id = MascotasBD.idMascota,
                                    imagen = MascotasBD.imagen,
                                    noMostrar = MascotasBD.noMostrar,//modificado
                                };
                 foreach (var registro in consulta)
-                {                    
+                {
+                    mascota = new EMascota();
                     mascota.caracter = new ECaracterMascota();
                     mascota.estado = new EEstado();
                     mascota.estado.nombreEstado = registro.estado;
@@ -355,6 +363,9 @@ namespace AccesoADatos
                     mascota.caracter.descripcion = registro.caracter;
                     mascota.raza = new ERaza();
                     mascota.raza.CategoriaRaza = new ECategoriaRaza();
+                    mascota.raza.cuidadoEspecial = new ECuidado();
+                    mascota.raza.cuidadoEspecial.idCuidado = registro.idCuidado;
+                    mascota.raza.cuidadoEspecial.descripcion = registro.descripcionCuidados;
                     mascota.raza.CategoriaRaza.idCategoriaRaza = registro.idCategoria;
                     mascota.raza.CategoriaRaza.nombreCategoriaRaza = registro.categoria;
                     mascota.raza.idRaza = registro.idRaza;
@@ -374,6 +385,9 @@ namespace AccesoADatos
                     mascota.especie.idEspecie = registro.idEspecie;
                     mascota.especie.nombreEspecie = registro.especie;
                     mascota.noMostrar = (bool)registro.noMostrar;//modificado
+                    mascota.fechaNacimiento = registro.fechaNacimiento;
+                    mascota.observaciones = registro.observacion;
+                    mascota.alimentacionEspecial = registro.alimentacion;
                     if (registro.imagen != null)
                     {
                         mascota.imagen = registro.imagen;
