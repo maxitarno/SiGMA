@@ -35,9 +35,10 @@ public  object adopciones { get; set; }protected void Page_Load(object sender, E
                 {
                     pnlRegistrar.Visible = true;
                     lblTitulo.Text = "Modificar Adopción";
-                    btnRegistrar.Visible = true;
-                    btnEliminar.Visible = true;
-                    pnlEliminar.Visible = true;
+                    if (Session["Si"] == "Si")
+                    {
+                        btnRegistrar.Visible = true;
+                    }
                 }
                 else
                 {
@@ -47,6 +48,7 @@ public  object adopciones { get; set; }protected void Page_Load(object sender, E
                     btnRegistrar.Visible = false;
                     pnlEliminar.Visible = false;
                     pnlDatos.Visible = false;
+                    btnEliminar.Visible = false;
                 }
                 if (rbPorDNI.Checked)
                 {
@@ -82,9 +84,7 @@ public  object adopciones { get; set; }protected void Page_Load(object sender, E
                         pnlAdopcion.Visible = false;
                         pnlRegistrar.Visible = true;
                         btnRegistrar.Text = "Modificar adopcion";
-                        btnEliminar.Visible = false;
                         pnlRegistrar.Visible = true;
-                        pnlEliminar.Visible = false;
                         pnlDatos.Visible = false;
                     }
                 }
@@ -117,6 +117,9 @@ public  object adopciones { get; set; }protected void Page_Load(object sender, E
             btnEliminar.Visible = false;
             pnlEliminar.Visible = false;
             pnlDatos.Visible = false;
+            btnRegistrar.Visible = false;
+            txtNº.Text = "";
+            txtNombre.Text = "";
         }
         public void RbPorN(object sender, EventArgs e)
         {
@@ -136,6 +139,9 @@ public  object adopciones { get; set; }protected void Page_Load(object sender, E
             btnEliminar.Visible = false;
             pnlEliminar.Visible = false;
             pnlDatos.Visible = false;
+            pnlRegistrar.Visible = false;
+            txtNº.Text = "";
+            txtNombre.Text = "";
         }
         public void BtnBuscarClick(object sender, EventArgs e)
         {
@@ -155,6 +161,7 @@ public  object adopciones { get; set; }protected void Page_Load(object sender, E
                         pnlAtento.Visible = false;
                         pnlInfo.Visible = false;
                         pnlCorrecto.Visible = false;
+                        btnRegistrar.Visible = false;
                     }
                     else
                     {
@@ -179,7 +186,7 @@ public  object adopciones { get; set; }protected void Page_Load(object sender, E
                 {
                     lstResultados.Items.Clear();
                     lstResultados.DataSource = adopciones;
-                    lstResultados.DataTextField = "mascota.nombreMascota";
+                    lstResultados.DataTextField = "nombre";
                     lstResultados.DataValueField = "idAdopcion";
                     lstResultados.DataBind();
                     pnlResultados.Visible = true;
@@ -223,7 +230,7 @@ public  object adopciones { get; set; }protected void Page_Load(object sender, E
                         lblResultado1.Text = "Se registro correctamente";
                         pnlCorrecto.Visible = true;
                         pnlAtento.Visible = false;
-                        Session["Si"] = null;
+                        //Session["Si"] = null;
                         pnlBuscar.Visible = true;
                         pnlDuenio.Visible = false;
                         pnlMascota.Visible = false;
@@ -287,7 +294,6 @@ public  object adopciones { get; set; }protected void Page_Load(object sender, E
                     }
                     Session["Modificar"] = "Si";
                     pnlEliminar.Visible = false;
-                    pnlEliminar.Visible = false;
                     Response.Redirect("Contrato.aspx");
                 }
             }
@@ -337,6 +343,9 @@ public  object adopciones { get; set; }protected void Page_Load(object sender, E
                 pnlRegistrar.Visible = false;
                 pnlAdopcion.Visible = false;
                 pnlDatos.Visible = false;
+                btnEliminar.Visible = false;
+                pnlEliminar.Visible = false;
+                btnRegistrar.Visible = false;
             }
             else
             {
@@ -344,6 +353,9 @@ public  object adopciones { get; set; }protected void Page_Load(object sender, E
                 pnlAtento.Visible = true;
                 pnlInfo.Visible = false;
                 pnlCorrecto.Visible = false;
+                btnEliminar.Visible = false;
+                pnlEliminar.Visible = false;
+                btnRegistrar.Visible = false;
             }
         }
         protected void lstResultados_SelectedIndexChanged(object sender, EventArgs e)
@@ -384,6 +396,9 @@ public  object adopciones { get; set; }protected void Page_Load(object sender, E
                 if(lblTitulo.Text.Equals("Consultar Adopción")){
                     pnlDatos.Visible = false;
                 }
+                btnRegistrar.Visible = true;
+                btnEliminar.Visible = true;
+                pnlEliminar.Visible = true;
             }
             else
             {

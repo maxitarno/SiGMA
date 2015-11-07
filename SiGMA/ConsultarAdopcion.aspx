@@ -295,7 +295,8 @@
                                 <div style="display: table-row; width: 30%">
                                     <div style="display: table-cell; width: 20%;">
                                         <asp:Panel ID="pnlRegistrar" runat="server" Visible="false">
-                                            <asp:Button ID="btnRegistrar" runat="server" Text="Generar contrato" OnClick="BtnModificarClick"/>
+                                            <asp:Button ID="btnRegistrar" runat="server" Text="Generar contrato" 
+                                                OnClick="BtnModificarClick" Visible="False"/>
                                         </asp:Panel>
                                     </div>
                                     <div style="display: table-cell; width: 20%;">
