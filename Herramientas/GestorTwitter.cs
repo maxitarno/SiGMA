@@ -22,6 +22,11 @@ namespace Herramientas
                 + " en " + campaña.lugar;
         }
 
+        public string generarMensajeAdopcion(EMascota mascota)
+        {
+            return "Mascota disponible para adopcion. Raza: " + mascota.raza.nombreRaza + ", edad: " + mascota.edad.descripcion;
+        }
+
         public void PublicarTweetConFoto(byte[] file, string mensaje)
         {
             var credentials = TwitterCredentials.CreateCredentials("2821489066-0z7L9YNPsL4ykZvy0trXUPvrJIPybXc1m74CbQz", "zL7m27cUyjTLJWnAMwvlF23Be13jcLGTKawFpwHcyZNiW",

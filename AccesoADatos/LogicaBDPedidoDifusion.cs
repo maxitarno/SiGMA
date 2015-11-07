@@ -27,6 +27,10 @@ namespace AccesoADatos
                         bdPedido.idCampaña = pedido.campaña.idCampaña;
                         LogicaBDCampaña.registrarCampaña(pedido.campaña, ref mapa);
                     }
+                    else if (pedido.tipo.Equals("Adopcion"))
+                    {
+                        bdPedido.idMascota = pedido.mascota.idMascota;
+                    }
                     mapa.AddToPedidosDifusion(bdPedido);
                     mapa.SaveChanges();
                     transaction.Complete();

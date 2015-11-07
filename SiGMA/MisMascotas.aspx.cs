@@ -218,23 +218,50 @@ namespace SiGMA
 
         protected void btnAdopcion_Click(object sender, EventArgs e)
         {
-            if (LogicaBDMascota.ponerEnAdopcion(Convert.ToInt32(Session["idMascota"].ToString())))
+            try
             {
-                ddlEstado.SelectedValue = "4";
+                if (LogicaBDRol.puedePublicarDifusion(Session["UsuarioLogueado"].ToString()))
+                {
+                    LogicaBDMascota.ponerEnAdopcion(Convert.ToInt32(Session["idMascota"].ToString()));
+                    ddlEstado.SelectedValue = "4";
+                    lblResultado1.Text = "Mascota disponible para adopcion";
+                    var tweet = new Herramientas.GestorTwitter();
+                    byte[] imagen = (byte[])Session["imagen"];
+                    EMascota mascota = new EMascota { raza = new ERaza { nombreRaza = ddlRaza.SelectedItem.Text }, 
+                        edad = new EEdad { descripcion = ddlEdad.SelectedItem.Text } };
+                    if (imagen != null)
+                    {
+                        tweet.PublicarTweetConFoto(imagen, tweet.generarMensajeAdopcion(mascota));
+                    }
+                    else
+                    {
+                        tweet.PublicarTweetSoloTexto(tweet.generarMensajeAdopcion(mascota));
+                    }
+                }
+                else
+                {
+                    EPedidoDifusion pedido = new EPedidoDifusion();
+                    pedido.tipo = "Adopción";
+                    pedido.estado = LogicaBDEstado.buscarEstadoPorNombre("Pendiente de Aceptacion");
+                    pedido.mascota = new EMascota { idMascota = Int32.Parse(Session["idMascota"].ToString()) };
+                    pedido.fecha = DateTime.Now;
+                    pedido.user = new EUsuario { user = Session["UsuarioLogueado"].ToString() };
+                    LogicaBDPedidoDifusion.registrarPedidoDifusion(pedido);
+                    lblResultado1.Text = "Pedido para poner en adopcion registrado.";
+                }
                 pnlCorrecto.Visible = true;
                 pnlInfo.Visible = false;
                 pnlAtento.Visible = false;
-                lblResultado1.Text = "Pedido de difusion de adopcion realizado";
-
+                SetFocus(pnlCorrecto);
             }
-            else
+            catch (Exception)
             {
                 pnlCorrecto.Visible = false;
                 pnlInfo.Visible = false;
                 pnlAtento.Visible = true;
-                lblResultado1.Text = "Error al poner en adopcion. Verifique datos";
+                lblResultado1.Text = "Error al poner la mascota en adopcion";
+                SetFocus(pnlAtento);                
             }
-
         }
 
         private void limpiarControles()
