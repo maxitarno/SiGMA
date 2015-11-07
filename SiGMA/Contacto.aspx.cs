@@ -28,7 +28,7 @@ namespace SiGMA
             string mensaje = "";
             mensaje += "Email: " + txtEmail.Text + "\n Nombre y Apellido: " + txtNombre.Text + "\n Telefono: " + txtTelefono.Text + "\n Observaciones: " + txtConsulta.Text + "\n \n";
             gmail g = new gmail();
-            g.fromAlias = "SIGMA"; // Si te fijás en la bandeja, aparecerá tu correo pero con nombre de remitente "ALDEA CAMPESTRE"
+            g.fromAlias = "SIGMA"; //  
             g.auth("infosigmasoftware@gmail.com", "Palangana321");
             g.To = "infosigmasoftware@gmail.com"; //DESTINATARIO/s
             g.Cc = "maxitarno@gmail.com";

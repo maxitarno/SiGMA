@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Entidades;
+using System.Transactions;
 
 namespace AccesoADatos
 {
@@ -66,8 +67,6 @@ namespace AccesoADatos
                                         {
                                             nombre = personasBD.apellido + ' ' + personasBD.nombre,
                                             email = personasBD.email,
-                                            telefonoCelular = personasBD.telefonoCelular,
-                                            telefonoFijo = personasBD.telefonoFijo,
                                             tipoHogar = hogaresBD.TipoHogar,
                                             calle = personasBD.idCalle,
                                             nroCalle = personasBD.nroCalle,
@@ -84,11 +83,39 @@ namespace AccesoADatos
                 hogar.tieneNiños = registro.tieneNiños;
                 persona.nombre = registro.nombre;
                 persona.email = registro.email;
-                persona.telefonoCelular = registro.telefonoCelular;
-                persona.telefonoFijo = registro.telefonoCelular;
                 persona.nroCalle = registro.nroCalle;
                 calle.idCalle = registro.calle;
                 barrio.idBarrio = registro.barrio;
+            }
+        }
+
+        public static Boolean RegistrarPedidoVoluntariado(string usuario, string email, string nombre, int tipoHogar, int barrioHogar, int cantMascMax, int tipoMasc, int calle, string nroCalle, int barrioBusq, string disponibilidad )
+        {
+            using (TransactionScope transaccion = new TransactionScope())
+            {
+                try
+                {
+                    //SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+                    //Adopciones adopcionBD = new Adopciones();
+                    //adopcionBD.idDuenio = adopcion.duenio.idDuenio;
+                    //adopcionBD.idVoluntario = adopcion.idVoluntario;
+                    //adopcionBD.fechaAdopcion = adopcion.fecha;
+                    //adopcionBD.idMascota = adopcion.mascota.idMascota;
+                    //adopcionBD.observaciones = adopcion.observaciones;
+                    //adopcionBD.idEstado = mapaEntidades.Estados.Where(es => es.ambito == "Adopcion" && es.nombreEstado == "Abierta").First().idEstado;
+                    //LogicaBDMascota.modificarEstado("Adoptada", adopcion.mascota.idMascota, ref mapaEntidades);
+                    //LogicaBDMascota.asignarDueño(adopcion.mascota, adopcion.duenio.idDuenio, ref mapaEntidades);
+                    //Mascotas bdMascota = mapaEntidades.Mascotas.Where(m => m.idMascota == adopcion.mascota.idMascota).First();
+                    //bdMascota.nombreMascota = adopcion.mascota.nombreMascota;
+                    //mapaEntidades.AddToAdopciones(adopcionBD);
+                    //mapaEntidades.SaveChanges();
+                    //transaccion.Complete();
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
             }
         }
     }

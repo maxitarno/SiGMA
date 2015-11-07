@@ -110,7 +110,7 @@
                                 </tr>
                                 <tr style="height:30px">
                                     <td align="right" width="200px">Calle:</td>
-                                    <asp:DropDownList ID="ddlCalle" Enabled="true" runat="server" CssClass="DropDownList"
+                                    <td><asp:DropDownList ID="ddlCalle" Enabled="true" runat="server" CssClass="DropDownList"
                                                 Width="293px">
                                             </asp:DropDownList></td>
                                 </tr>
