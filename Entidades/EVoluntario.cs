@@ -9,5 +9,8 @@ namespace Entidades
     {
         public EPersona persona { get; set; }
         public int idVoluntario { get; set; }
+        public int? idEstado { get; set; }
+        public string tipoVoluntario { get; set; }
+        public string disponibilidadHoraria { get; set; }
     }
 }

@@ -118,5 +118,83 @@ namespace AccesoADatos
                 }
             }
         }
+
+        public static List<EMascota> cargarDatosProvisorias(string usuario)
+        {
+            List<EMascota> mascotas = new List<EMascota>();
+            SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+            var consulta = from MascotasBD in mapaEntidades.Mascotas
+                                            join OcupacionesBD in mapaEntidades.OcupacionesXHogaresProvisorios on MascotasBD.idMascota equals OcupacionesBD.idMascota
+                                            join HogaresBD in mapaEntidades.HogaresProvisorios on OcupacionesBD.idHogarProvisorio equals HogaresBD.idHogarProvisorio
+                                            join voluntariosBD in mapaEntidades.Voluntarios on HogaresBD.idVoluntario equals voluntariosBD.idVoluntario
+                                            join personasBD in mapaEntidades.Personas on voluntariosBD.idPersona equals personasBD.idPersona
+                                            join usuariosBD in mapaEntidades.Usuarios on personasBD.user equals usuariosBD.user
+                                            where (usuariosBD.user == usuario)
+                                            select new
+                                           {
+                                               nombre = MascotasBD.nombreMascota,
+                                               idEspecie = MascotasBD.idEspecie,
+                                               idRaza = MascotasBD.idRaza,
+                                               id = MascotasBD.idMascota,
+                                               sexo = MascotasBD.sexo,
+                                           };
+            foreach (var registro in consulta)
+            {
+                EMascota mascota = new EMascota();
+                mascota.raza = new ERaza();
+                mascota.raza.CategoriaRaza = new ECategoriaRaza();
+                mascota.raza.idRaza = registro.idRaza;
+                mascota.nombreMascota = registro.nombre;
+                mascota.sexo = registro.sexo;
+                mascota.idMascota = registro.id;
+                mascota.especie = new EEspecie();
+                mascota.especie.idEspecie = registro.idEspecie;
+                mascotas.Add(mascota);
+            }
+            return mascotas;
+        }
+
+        public static bool dejarDeSerVoluntario(int idVoluntario)
+        {
+            bool b = false;
+            try
+            {
+                SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+                Voluntarios voluntarioBD = mapaEntidades.Voluntarios.Where(m => m.idVoluntario == idVoluntario).First();
+                voluntarioBD.idEstado = LogicaBDEstado.buscarEstado(new EEstado { nombreEstado = "Solicitud Baja", ambito = "Voluntario" }).idEstado;
+                b = true;
+                mapaEntidades.SaveChanges();
+            }
+            catch (Exception)
+            {
+                b = false;
+            }
+            return b;
+        }
+
+        public static EVoluntario buscarVoluntarioPorId(int idVoluntario)
+        {
+            EVoluntario voluntario = new EVoluntario();
+            SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+            IQueryable<Voluntarios> consulta = from voluntariosBD in mapaEntidades.Voluntarios
+                                   where (voluntariosBD.idVoluntario == idVoluntario)
+                                   select voluntariosBD;
+            try
+            {
+                foreach (var registro in consulta)
+                {
+                    voluntario.idEstado = registro.idEstado;
+                    voluntario.idVoluntario = registro.idVoluntario;
+                    voluntario.disponibilidadHoraria = registro.disponibilidadHoraria;
+                    voluntario.tipoVoluntario = registro.tipoVoluntario;
+                }
+            }
+            catch (System.Data.EntityCommandCompilationException exc)
+            {
+                throw exc;
+            }
+            return voluntario;
+        }
+
     }
 }

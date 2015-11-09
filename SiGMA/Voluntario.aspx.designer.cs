@@ -85,6 +85,15 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.Button btnCambioVoluntariado;
         
         /// <summary>
+        /// pnlDejarDeSer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlDejarDeSer;
+        
+        /// <summary>
         /// btnDejarVoluntariado control.
         /// </summary>
         /// <remarks>
@@ -148,15 +157,6 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.TextBox txtTelefono;
         
         /// <summary>
-        /// rfvTelefono control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvTelefono;
-        
-        /// <summary>
         /// pnlHogar control.
         /// </summary>
         /// <remarks>
@@ -184,6 +184,15 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.DropDownList ddlCalle;
         
         /// <summary>
+        /// RequiredFieldValidator3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
+        
+        /// <summary>
         /// txtNro control.
         /// </summary>
         /// <remarks>
@@ -209,6 +218,15 @@ namespace SiGMA {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlBarrio;
+        
+        /// <summary>
+        /// RequiredFieldValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
         
         /// <summary>
         /// ddlNumeroMascotas control.
@@ -274,22 +292,31 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.TextBox txtMascotaHogar;
         
         /// <summary>
-        /// txtEspecieHogar control.
+        /// txtSexoHogar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEspecieHogar;
+        protected global::System.Web.UI.WebControls.TextBox txtSexoHogar;
         
         /// <summary>
-        /// txtRazaHogar control.
+        /// ddlEspecieHogar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtRazaHogar;
+        protected global::System.Web.UI.WebControls.DropDownList ddlEspecieHogar;
+        
+        /// <summary>
+        /// ddlRazaHogar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlRazaHogar;
         
         /// <summary>
         /// btnSolicitarDevolucion control.
@@ -328,13 +355,13 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.DropDownList ddlBarrioBusqueda;
         
         /// <summary>
-        /// ddlBusquedasBarrio control.
+        /// ddlBusquedasMascota control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlBusquedasBarrio;
+        protected global::System.Web.UI.WebControls.DropDownList ddlBusquedasMascota;
         
         /// <summary>
         /// btnActualizarBusqueda control.
