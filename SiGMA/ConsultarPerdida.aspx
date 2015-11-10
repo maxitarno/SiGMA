@@ -141,8 +141,10 @@
                                     <tr><!--agregado para el mapa-->
                                         <td style="float:left">
                                             <asp:Panel ID="pnlMapa" runat="server" Visible="false">
-                                                <asp:Button ID="btnMapa" runat="server" Text="Ubicación" 
-                                                    onclick="btnMapa_Click" />
+                                                &nbsp;<br />
+                                                <input id="hidden1" type="hidden" runat=server/>
+                                                &nbsp;<asp:Button ID="btnUbicación" runat="server" Text="Ubicación" 
+                                                    onclick="Button1_Click" />
                                             </asp:Panel>
                                         </td>
                                     </tr><!--fin-->

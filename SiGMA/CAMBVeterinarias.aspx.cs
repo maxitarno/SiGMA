@@ -27,13 +27,13 @@ namespace SiGMA
                 String mod = Request.QueryString["m"];
                 if (mod == "1")
                 {
-                    lblTitulo.Text = "Modificar Usuario";
+                    lblTitulo.Text = "Modificar Vetrinarias";
                     btnModificar.Visible = true;
                     //btnEliminar.Visible = true;
                 }
                 else
                 {
-                    lblTitulo.Text = "Consultar Usuario";
+                    lblTitulo.Text = "Consultar Vetrinaria";
                     btnModificar.Visible = false;
                     //btnEliminar.Visible = false;
                 }
@@ -291,13 +291,12 @@ namespace SiGMA
         protected void btnMapa_Click(object sender, EventArgs e)
         {
             string nombre = txtNombre.Text;
-            string telefono = txtTE.Text; 
+            string telefono = txtTE.Text;
             string contacto = txtContacto.Text;
             string direccion = "argentina " + ddlLocalidad.SelectedItem.Text.ToLower() + " " + ddlCalle.SelectedItem.Text.ToLower() + " " + txtNº.Text;
             Session["r"] = true;
-            string pagina = "mapa.htm?direccion=" + direccion + "&nombre=" + nombre + "&telefono=" + telefono + "&contacto=" + contacto + "&m=" + Request.QueryString["m"];
-            string script = "window.open('" + pagina + "','popup', 'ModalPopUp', 'toolbar=no', 'scrollbars=no', 'location=no', 'statusbar=no', 'menubar=no', 'resizable=0', 'width=100', 'height=100', 'left = 490', 'top=300', 'modal=yes')";
-            ScriptManager.RegisterStartupScript(this, typeof(Page), "invocarfuncion", script, true);
+            string pagina = "mapaVeterinaria.htm?direccion=" + direccion + "&nombre=" + nombre + "&telefono=" + telefono + "&contacto=" + contacto + "&m=" + Request.QueryString["m"];
+            Response.Write("<script>window.open('" + pagina + "','popup', 'ModalPopUp', 'toolbar=no', 'scrollbars=no', 'location=no', 'statusbar=no', 'menubar=no', 'resizable=0', 'width=100', 'height=100', 'left = 490', 'top=300', 'modal=yes')</script>");
         }
     }
 }

@@ -221,18 +221,22 @@
                                                     runat="server" TargetControlID="txtFecha" 
                                                     PopupButtonID="Image1">
                                                 </ajaxToolkit:CalendarExtender>
-                                        </td>--%>
-                                        <td>
-                                            <%--<asp:RequiredFieldValidator ID="rfvFecha" runat="server" ErrorMessage="*" ForeColor="Red"
-                                                ControlToValidate="txtFecha"></asp:RequiredFieldValidator>--%>
                                         </td>
+                                        <caption>
+                                            --%&gt;
+                                            <td>
+                                                <%--<asp:RequiredFieldValidator ID="rfvFecha" runat="server" ErrorMessage="*" ForeColor="Red"
+                                                ControlToValidate="txtFecha"></asp:RequiredFieldValidator>--%>
+                                            </td>
+                                        </caption>
                                     </tr>
                                     <tr>
                                         <td>
                                             Lugar:
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="txtMapa" runat="server" Width="100%" Text="Acá iría el mapa con el punto donde se hallo"></asp:TextBox>
+                                            <asp:Button ID="btnUbicación" runat="server" onclick="btnUbicación_Click" 
+                                                Text="Ubicación" />
                                         </td>
                                         <td>
                                         </td>

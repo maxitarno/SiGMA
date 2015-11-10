@@ -123,14 +123,15 @@
     <Content Include="GenerarCodigoQR.aspx" />
     <Content Include="Grafico.htm" />
     <Content Include="Hallazgos.aspx" />
+    <Content Include="mapaHallazgos.htm" />
     <Content Include="imagenes\volver.png" />
     <Content Include="Login.aspx" />
     <Content Include="Account\ChangePassword.aspx" />
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
-    <Content Include="mapa.htm" />
-    <Content Include="mapa1.htm" />
+    <Content Include="mapaVeterinaria.htm" />
+    <Content Include="mapaPerdida.htm" />
     <Content Include="Mascotas.aspx" />
     <Content Include="MiPerfil.aspx" />
     <Content Include="MisMascotas.aspx" />

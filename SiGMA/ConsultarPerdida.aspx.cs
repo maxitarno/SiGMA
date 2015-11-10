@@ -12,6 +12,8 @@ namespace SiGMA
 {
     public partial class ConsultarPerdida : System.Web.UI.Page
     {
+        string direccion = " ";
+        string cuidado = " ";
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -205,6 +207,24 @@ namespace SiGMA
                 }
                 Session["mascota"] = mascota;//agregado
                 Session["perdida"] = perdida;//agregado
+                if(mascota.raza.cuidadoEspecial.idCuidado == 0){
+                    cuidado = "0";
+                }
+                else if (mascota.raza.cuidadoEspecial.idCuidado == 1 || mascota.raza.cuidadoEspecial.idCuidado == 4)
+                {
+                    cuidado = "2";
+                }
+                else if (mascota.raza.cuidadoEspecial.idCuidado == 2)
+                {
+                    cuidado = "8";
+                }
+                else if (mascota.raza.cuidadoEspecial.idCuidado == 3)
+                {
+                    cuidado = "4";
+                }
+                direccion = "argentina " + ddlLocalidadPerdida.SelectedItem.Text.ToLower() + " " + ddlCallePerdida.SelectedItem.Text.ToLower() + " " + txtNroCallePerdida.Text;
+                //agregado
+                hidden1.Value = "mapa1.htm?direccion=" + direccion + "&cuidado=" + cuidado;
             }
             else
             {
@@ -290,27 +310,28 @@ namespace SiGMA
             Response.Redirect("Perdidas.aspx");
         }
 
-        protected void btnMapa_Click(object sender, EventArgs e)
+        protected void Button1_Click(object sender, EventArgs e)
         {
-            string cuidado = "";
+            cuidado = "";
             EMascota mascota = (EMascota)Session["mascota"];
-            if(mascota.raza.cuidadoEspecial.idCuidado == 0){
+            if (mascota.raza.cuidadoEspecial.idCuidado == 0)
+            {
                 cuidado = "0";
             }
-            else if(mascota.raza.cuidadoEspecial.idCuidado == 1 || mascota.raza.cuidadoEspecial.idCuidado == 4){
+            else if (mascota.raza.cuidadoEspecial.idCuidado == 1 || mascota.raza.cuidadoEspecial.idCuidado == 4)
+            {
                 cuidado = "2";
             }
-            else if(mascota.raza.cuidadoEspecial.idCuidado == 2){
+            else if (mascota.raza.cuidadoEspecial.idCuidado == 2)
+            {
                 cuidado = "8";
             }
-            else if(mascota.raza.cuidadoEspecial.idCuidado == 3){
+            else if (mascota.raza.cuidadoEspecial.idCuidado == 3)
+            {
                 cuidado = "4";
             }
-            string direccion = "argentina " + ddlLocalidadPerdida.SelectedItem.Text.ToLower() + " " + ddlCallePerdida.SelectedItem.Text.ToLower() + " " + txtNroCallePerdida.Text;
-            Session["r"] = true;
-            string pagina = "mapa1.htm?direccion="+direccion +"&cuidado="+cuidado;
-            string script = "window.open('" + pagina + "','popup', 'ModalPopUp', 'toolbar=no', 'scrollbars=no', 'location=no', 'statusbar=no', 'menubar=no', 'resizable=0', 'width=100', 'height=100', 'left = 490', 'top=300', 'modal=yes')";
-            ScriptManager.RegisterStartupScript(this, typeof(Page), "invocarfuncion", script, true);
+            direccion = "mapaPerdida.htm?direccion=argentina " + ddlLocalidadPerdida.SelectedItem.Text.ToLower() + " " + ddlCallePerdida.SelectedItem.Text.ToLower() + " " + txtNroCallePerdida.Text + "&cuidado=" + cuidado;
+            Response.Write("<script> window.open('" + direccion + "','popup','width=800,height=500') </script>");
         }
     }
 }

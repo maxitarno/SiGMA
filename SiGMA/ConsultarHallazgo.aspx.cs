@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using Herramientas;
 using Entidades;
 using AccesoADatos;
+using System.Text;
 
 namespace SiGMA
 {
@@ -58,7 +59,6 @@ namespace SiGMA
             ddlBarrios.Enabled = b;
             txtNroCalle.Enabled = b;
             txtFecha.Enabled = b;
-            txtMapa.Enabled = b;
             txtComentarios.Enabled = b;
             //imgFechaHallazgo.Enabled = b;
             btnModificarHallazgo.Visible = b;
@@ -279,6 +279,14 @@ namespace SiGMA
         protected void ibtnRegresar_Click(object sender, ImageClickEventArgs e)
         {
             Response.Redirect("Hallazgos.aspx");
+        }
+
+        protected void btnUbicación_Click(object sender, EventArgs e)
+        {
+            string nombre = txtNombreMascota.Text;
+            string direccion = "argentina " + ddlLocalidades.SelectedItem.Text + " " + ddlCalles.SelectedItem.Text + " " + txtNroCalle.Text;
+            string pagina = "mapaHallazgos.htm?direccion=" + direccion + "&nombre=" + nombre + "&m=" + Request.QueryString["m"];
+            Response.Write("<script>window.open('" + pagina + "','mapa','popup', 'ModalPopUp', 'toolbar=no', 'scrollbars=no', 'location=no', 'statusbar=no', 'menubar=no', 'resizable=0', 'width=250', 'height=100', 'left = 490', 'top=300', 'modal=yes');</script>");
         }
 
         //protected void calendario_SelectionChanged(object sender, EventArgs e)
