@@ -295,7 +295,7 @@ namespace SiGMA
             string direccion = "argentina " + ddlLocalidad.SelectedItem.Text.ToLower() + " " + ddlCalle.SelectedItem.Text.ToLower() + " " + txtNº.Text;
             Session["r"] = true;
             string pagina = "mapaVeterinaria.htm?direccion=" + direccion + "&nombre=" + nombre + "&telefono=" + telefono + "&contacto=" + contacto + "&m=" + Request.QueryString["m"];
-            Response.Write("<script>window.open('" + pagina + "','popup', 'ModalPopUp', 'toolbar=no', 'scrollbars=no', 'location=no', 'statusbar=no', 'menubar=no', 'resizable=0', 'width=100', 'height=100', 'left = 490', 'top=300', 'modal=yes')</script>");
+            Response.Write("<script>window.open('" + pagina + "','popup','width=800,height=500')</script>");
         }
     }
 }

@@ -286,7 +286,7 @@ namespace SiGMA
             string nombre = txtNombreMascota.Text;
             string direccion = "argentina " + ddlLocalidades.SelectedItem.Text + " " + ddlCalles.SelectedItem.Text + " " + txtNroCalle.Text;
             string pagina = "mapaHallazgos.htm?direccion=" + direccion + "&nombre=" + nombre + "&m=" + Request.QueryString["m"];
-            Response.Write("<script>window.open('" + pagina + "','mapa','popup', 'ModalPopUp', 'toolbar=no', 'scrollbars=no', 'location=no', 'statusbar=no', 'menubar=no', 'resizable=0', 'width=250', 'height=100', 'left = 490', 'top=300', 'modal=yes');</script>");
+            Response.Write("<script>window.open('" + pagina + "','popup','width=800,height=500');</script>");
         }
 
         //protected void calendario_SelectionChanged(object sender, EventArgs e)
