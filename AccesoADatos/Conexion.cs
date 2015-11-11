@@ -28,7 +28,11 @@ namespace AccesoADatos
             {
                 cadenaConexion = "metadata=res://*/DER.csdl|res://*/DER.ssdl|res://*/DER.msl;provider=System.Data.SqlClient;provider connection string=\"Data Source=(local);Initial Catalog=SiGMA;Integrated Security=True\"";
             }
-             return new SiGMAEntities(cadenaConexion);
+            else if (nombrePC.Equals("NICOLAS"))
+            {
+                cadenaConexion = "metadata=res://*/DER.csdl|res://*/DER.ssdl|res://*/DER.msl;provider=System.Data.SqlClient;provider connection string=\"Data Source=NICOLAS\\SQLEXPRESS;Initial Catalog=SiGMA;Integrated Security=True\"";
+            }
+            return new SiGMAEntities(cadenaConexion);
         }
     }
 }

@@ -13,7 +13,6 @@ namespace SiGMA
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            bool retorno = false;
             if (!Page.IsPostBack)
             {
                 pnlModificar.Visible = false;
