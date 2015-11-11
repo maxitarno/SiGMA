@@ -45,9 +45,10 @@ namespace AccesoADatos
             {
                 List<EVeterinaria> veterinarias = new List<EVeterinaria>();
                 var consulta = from VeterinariaBD in mapa.Veterinarias
-                                                    where(VeterinariaBD.nombre.Contains(nombre))
-                                                    select VeterinariaBD;
-                foreach(var registro in consulta){
+                               where (VeterinariaBD.nombre.Contains(nombre))
+                               select VeterinariaBD;
+                foreach (var registro in consulta)
+                {
                     EVeterinaria veterinaria = new EVeterinaria();
                     veterinaria.id = registro.idVeterinaria;
                     veterinaria.nombre = registro.nombre;
@@ -73,9 +74,10 @@ namespace AccesoADatos
                                from G2 in group2.DefaultIfEmpty()
                                join CalleBD in mapa.Calles on VeterinariaBD.idCalle equals CalleBD.idCalle into group3
                                from G3 in group2.DefaultIfEmpty()
-                               where((G1.idBarrio == veterinaria.domicilio.barrio.idBarrio) || (G3.idLocalidad == veterinaria.domicilio.barrio.localidad.idLocalidad) || (VeterinariaBD.Calles.idCalle == veterinaria.domicilio.calle.idCalle))
+                               where ((G1.idBarrio == veterinaria.domicilio.barrio.idBarrio) || (G3.idLocalidad == veterinaria.domicilio.barrio.localidad.idLocalidad) || (VeterinariaBD.Calles.idCalle == veterinaria.domicilio.calle.idCalle))
                                select VeterinariaBD;
-                foreach(var registro in consulta){
+                foreach (var registro in consulta)
+                {
                     veterinaria = new EVeterinaria();
                     veterinaria.id = registro.idVeterinaria;
                     veterinaria.nombre = registro.nombre;
@@ -105,7 +107,8 @@ namespace AccesoADatos
                                    localidad = G2,
                                    barrio = G1,
                                };
-                foreach(var registro in consulta){
+                foreach (var registro in consulta)
+                {
                     veterinaria.id = registro.veterinaria.idVeterinaria;
                     veterinaria.nombre = registro.veterinaria.nombre.ToString();
                     veterinaria.castraciones = (registro.veterinaria.castraciones == null) ? false : (bool)registro.veterinaria.castraciones;
@@ -153,6 +156,35 @@ namespace AccesoADatos
                     transaccion.Dispose();
                     return false;
                 }
+            }
+        }
+        public static List<EVeterinaria> BuscarPorDomicilio1(EVeterinaria veterinaria)
+        {
+            SiGMAEntities mapa = Conexion.crearSegunServidor();
+            try
+            {
+                List<EVeterinaria> veterinarias = new List<EVeterinaria>();
+                var consulta = from VeterinariaBD in mapa.Veterinarias
+                               join BarrioBD in mapa.Barrios on VeterinariaBD.idBarrio equals BarrioBD.idBarrio into group1
+                               from G1 in group1.DefaultIfEmpty()
+                               join LocalidadBD in mapa.Localidades on G1.idLocalidad equals LocalidadBD.idLocalidad into group2
+                               from G2 in group2.DefaultIfEmpty()
+                               join CalleBD in mapa.Calles on VeterinariaBD.idCalle equals CalleBD.idCalle into group3
+                               from G3 in group2.DefaultIfEmpty()
+                               where (G1.idBarrio == veterinaria.domicilio.barrio.idBarrio)
+                               select VeterinariaBD;
+                foreach (var registro in consulta)
+                {
+                    veterinaria = new EVeterinaria();
+                    veterinaria.id = registro.idVeterinaria;
+                    veterinaria.nombre = registro.nombre;
+                    veterinarias.Add(veterinaria);
+                }
+                return veterinarias;
+            }
+            catch (Exception exc)
+            {
+                throw exc;
             }
         }
     }

@@ -48,9 +48,17 @@
             <div class="panel-body">
                 <div>
                     <div class="col-md-4 col-md-offset-4">
-                        <asp:DropDownList ID="ddlBarrio" runat="server">
+                        <asp:DropDownList ID="ddlBarrio" runat="server" 
+                            onselectedindexchanged="ddlBarrio_SelectedIndexChanged" 
+                            AutoPostBack="True">
                             
                         </asp:DropDownList>
+                    </div>
+                </div>
+                <div>
+                    <div class="col-md-4 col-md-offset-4">
+                        <asp:ListBox ID="lstVeterinarias" runat="server" Width="250px" 
+                            AutoPostBack="True"></asp:ListBox>
                     </div>
                 </div>
             </div>
