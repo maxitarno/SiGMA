@@ -56,7 +56,7 @@
                             <asp:TextBox ID="txtNombre" runat="server" Width="100%"></asp:TextBox>
                         </td>
                         <td>
-                            <asp:RequiredFieldValidator ID="rfvNombre" Text="Debe ingresar un nombre" ControlToValidate="txtNombre" Display="Dynamic" BorderColor="Red" runat="server"></asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="rfvNombre" Text="Debe ingresar un nombre" ControlToValidate="txtNombre" Display="Dynamic" BorderColor="Red" runat="server" ForeColor="Red"></asp:RequiredFieldValidator>
                         </td>
                     </tr>
                     <tr>
@@ -103,6 +103,13 @@
                         <td>
                             <asp:TextBox ID="txtContacto" runat="server" Width="100%"></asp:TextBox>  
                         </td>
+                        <td>
+                            <asp:RegularExpressionValidator ID="revContacto" runat="server" 
+                                ErrorMessage="Formato de email incorrecto" ControlToValidate="txtContacto" 
+                                ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" 
+                                Display="Dynamic" ForeColor="Red"></asp:RegularExpressionValidator>
+                            <asp:RequiredFieldValidator ID="rfvContacto" runat="server" ErrorMessage="Debe ingresar un contacto" ControlToValidate="txtContacto" ForeColor="Red"></asp:RequiredFieldValidator>
+                        </td>
                     </tr>
                     <tr>
                         <td style="text-align:left">
@@ -138,6 +145,9 @@
                         </td>
                         <td>
                             <asp:TextBox ID="txtTE" runat="server"></asp:TextBox>
+                        </td>
+                        <td>
+                            <asp:RequiredFieldValidator ID="rfvTelefono" runat="server" ErrorMessage="Debe ingresar un telefono" ControlToValidate="txtTE" ForeColor="Red"></asp:RequiredFieldValidator>
                         </td>
                     </tr>
                 </table>

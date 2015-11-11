@@ -73,12 +73,15 @@
                 <div class="col-md-offset-1 col-md-5">
                 <table>
                     <tr>
-                        <asp:Panel ID="pnlNombre" runat="server">
+                        <asp:Panel ID="pnlNombre" runat="server" ForeColor="Red">
                             <td>
                                 Nombre:
                             </td>
                             <td>
                                 <asp:TextBox ID="txtNombre" runat="server" style="width:250px"></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:RequiredFieldValidator ID="rfvNombre" runat="server" ErrorMessage="Debe ingresar un nombre" ForeColor="Red" Display="Dynamic" ControlToValidate="txtNombre" ValidationGroup="1"></asp:RequiredFieldValidator>
                             </td>
                         </asp:Panel>
                     </tr>
@@ -141,7 +144,7 @@
                 <div class="col-md-4 col-md-offset-0">
                 <table>
                     <tr>
-                        <td colspan="3">   
+                        <td>   
                         </td>
                     </tr>
                     <asp:Panel ID="pnlDatos" runat="server">
@@ -189,6 +192,10 @@
                             <td>
                                 <asp:TextBox ID="txtContacto" runat="server" Width="250px"></asp:TextBox>  
                             </td>
+                            <td>
+                                <asp:RegularExpressionValidator ID="revContacto" runat="server" ErrorMessage="Formato de email incorrecto" ControlToValidate="txtContacto" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" Display="Dynamic" ForeColor="Red" ValidationGroup="1"></asp:RegularExpressionValidator>
+                                <asp:RequiredFieldValidator ID="rfvContacto" runat="server" ErrorMessage="Debe ingresar un contacto" ControlToValidate="txtContacto" ForeColor="Red" ValidationGroup="1"></asp:RequiredFieldValidator>
+                            </td>
                         </tr>
                         <tr>
                             <td align="left">
@@ -197,7 +204,9 @@
                             <td>
                                 <asp:TextBox ID="txtTE" runat="server" Width="250px"></asp:TextBox>
                             </td>
-                            <td></td>
+                            <td>
+                                <asp:RequiredFieldValidator ID="rfvTelefono" runat="server" ErrorMessage="Debe ingresar un telefono" ControlToValidate="txtTE" ValidationGroup="1" ForeColor="Red"></asp:RequiredFieldValidator>
+                            </td>
                         </tr>
                     </asp:Panel>
                 </table>
@@ -215,7 +224,7 @@
                         </div>
                         <div style="display: table-cell; width: 20%;">
                             <asp:Panel ID="pnlModificar" runat="server" Visible="true">
-                                <asp:Button ID="btnModificar" runat="server" Text="Modificar" OnClick="Modificar"/>
+                                <asp:Button ID="btnModificar" runat="server" Text="Modificar" OnClick="Modificar" ValidationGroup="1" />
                             </asp:Panel>
                         </div>
                     </div>
