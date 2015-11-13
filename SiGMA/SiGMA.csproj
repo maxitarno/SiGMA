@@ -132,6 +132,7 @@
     <Content Include="Account\Register.aspx" />
     <Content Include="mapaVeterinaria.htm" />
     <Content Include="mapaPerdida.htm" />
+    <Content Include="mapaVeterinarias.htm" />
     <Content Include="Mascotas.aspx" />
     <Content Include="MiPerfil.aspx" />
     <Content Include="MisMascotas.aspx" />

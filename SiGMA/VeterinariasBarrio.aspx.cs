@@ -34,10 +34,25 @@ namespace SiGMA
             veterinaria.domicilio.barrio = new EBarrio();
             veterinaria.domicilio.barrio.idBarrio = int.Parse(ddlBarrio.SelectedValue);
             veterinarias = LogicaBDVeterinaria.BuscarPorDomicilio1(veterinaria);
+            string nombre = "";
+            string telefono = "";
+            string contacto = "";
+            string direccion = "";
             lstVeterinarias.DataSource = veterinarias;
-            lstVeterinarias.DataTextField = "nombre";
             lstVeterinarias.DataValueField = "id";
+            lstVeterinarias.DataTextField = "nombre";
             lstVeterinarias.DataBind();
+            string pagina = "";
+            for (int i = 0; i < veterinarias.Count; i++)
+            {
+                nombre = nombre + (veterinarias[i].nombre + ",").ToString();
+                telefono = telefono + (veterinarias[i].telefono + ",").ToString();
+                contacto = contacto + (veterinarias[i].contacto + ",").ToString();
+                direccion = direccion + ("argentina " + veterinarias[i].domicilio.barrio.localidad.nombre.ToLower().ToString() + " " + veterinarias[i].domicilio.calle.nombre.ToLower().ToString() + " " + veterinarias[i].domicilio.numeroCalle.ToString() + ",").ToString();
+            }
+            pagina = "mapaVeterinarias.htm?direccion=" + direccion;// + "&nombre=" + nombre + "&telefono=" + telefono + "&contacto=" + contacto;
+            //pagina = "mapaVeterinarias.htm";
+            Response.Write("<script>window.open('" + pagina + "','popup','width=800,height=500')</script>");
         }
     }
 }

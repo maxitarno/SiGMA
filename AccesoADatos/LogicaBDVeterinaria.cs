@@ -178,6 +178,15 @@ namespace AccesoADatos
                     veterinaria = new EVeterinaria();
                     veterinaria.id = registro.idVeterinaria;
                     veterinaria.nombre = registro.nombre;
+                    veterinaria.domicilio = new EDomicilio();
+                    veterinaria.domicilio.calle = new ECalle();
+                    veterinaria.domicilio.barrio = new EBarrio();
+                    veterinaria.domicilio.barrio.localidad = new ELocalidad();
+                    veterinaria.domicilio.calle.nombre = registro.Calles.nombre;
+                    veterinaria.domicilio.numeroCalle = (registro.nroCalle == null)? 0 : (int)registro.nroCalle;
+                    veterinaria.domicilio.barrio.localidad.nombre = registro.Barrios.Localidades.nombre;
+                    veterinaria.telefono = registro.telefono;
+                    veterinaria.contacto = registro.web;
                     veterinarias.Add(veterinaria);
                 }
                 return veterinarias;
