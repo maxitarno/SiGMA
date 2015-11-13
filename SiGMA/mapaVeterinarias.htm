@@ -18,22 +18,21 @@
             var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
             var geocoder = new google.maps.Geocoder();
             geocodeAddress(geocoder, map);
-   
+
             marker.setMap(map);
         }
         function geocodeAddress(geocoder, resultsMap) {
             function getURLParameter(name) { return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [, ""])[1].replace(/\+/g, '%20')) || null }
             var direccion = getURLParameter("direccion").toString();
             var nombre = getURLParameter("nombre").toString();
-            var contacto = getURLParameter("contacto").toString();
-            var telefono = getURLParameter("telefono").toString();
+//            var contacto = getURLParameter("contacto").toString();
+//            var telefono = getURLParameter("telefono").toString();
             var direcciones = direccion.split(",");
-            var nombres = nombre.split(",");
-            var contactos = contacto.split(",");
-            var telefonos = telefono.split(",");
+//            var nombres = nombre.split(",");
+//            var contactos = contacto.split(",");
+//            var telefonos = telefono.split(",");
             for (i = 0; i < direcciones.length; i++) {
-                //var texto = nombres[i].toString() + "\n" + contactos[i].toString() + "\n" + telefonos[i].toString() + "\n";
-                alert(direcciones[i].toString());
+                var texto = nombres[i].toString() //+ "\n" + contactos[i].toString() + "\n" + telefonos[i].toString() + "\n"
                 var address = direcciones[i].toString();
                 geocoder.geocode({ 'address': address }, function (results, status) {
                     if (status === google.maps.GeocoderStatus.OK) {
@@ -41,7 +40,7 @@
                         var marker = new google.maps.Marker({
                             map: resultsMap,
                             position: results[0].geometry.location,
-                            title: 'anduvo',
+                            title: texto,
                             animation: google.maps.Animation.DROP
                         });
                     } else {
@@ -49,9 +48,9 @@
                     }
                 });
             }
-            google.maps.event.addDomListener(window, 'load', initialize);
-            google.maps.event.addDomListener(window, 'resize', initialize);
         }
+        google.maps.event.addDomListener(window, 'load', initialize);
+        google.maps.event.addDomListener(window, 'resize', initialize);
     </script>
 </head>
 <body>

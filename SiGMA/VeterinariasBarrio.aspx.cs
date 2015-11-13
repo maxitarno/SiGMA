@@ -45,13 +45,20 @@ namespace SiGMA
             string pagina = "";
             for (int i = 0; i < veterinarias.Count; i++)
             {
-                nombre = nombre + (veterinarias[i].nombre + ",").ToString();
-                telefono = telefono + (veterinarias[i].telefono + ",").ToString();
-                contacto = contacto + (veterinarias[i].contacto + ",").ToString();
-                direccion = direccion + ("argentina " + veterinarias[i].domicilio.barrio.localidad.nombre.ToLower().ToString() + " " + veterinarias[i].domicilio.calle.nombre.ToLower().ToString() + " " + veterinarias[i].domicilio.numeroCalle.ToString() + ",").ToString();
+                nombre = nombre + veterinarias[i].nombre.ToString();
+                telefono = telefono + veterinarias[i].telefono;
+                contacto = contacto + veterinarias[i].contacto;
+                direccion = direccion + ("argentina " + veterinarias[i].domicilio.barrio.localidad.nombre.ToLower().ToString() + " " + veterinarias[i].domicilio.calle.nombre.ToLower().ToString() + " " + veterinarias[i].domicilio.numeroCalle.ToString()).ToString();
+                if (i != (veterinarias.Count - 1))
+                {
+                    direccion += ",";
+                    contacto += ",";
+                    nombre += ",";
+                    telefono += ",";
+                }
             }
-            pagina = "mapaVeterinarias.htm?direccion=" + direccion;// + "&nombre=" + nombre + "&telefono=" + telefono + "&contacto=" + contacto;
-            //pagina = "mapaVeterinarias.htm";
+            pagina = "mapaVeterinarias.htm?direccion=" + direccion + "&nombre=" + nombre;// + "&telefono=" + telefono + "&contacto=" + contacto;
+            //pagina = "mapaVeterinarias.htm?direccion=argentina cordoba capital colon 123,argentina cordoba capital colon 146";
             Response.Write("<script>window.open('" + pagina + "','popup','width=800,height=500')</script>");
         }
     }
