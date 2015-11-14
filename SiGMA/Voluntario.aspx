@@ -87,11 +87,6 @@
                                 Display="Dynamic"></asp:RegularExpressionValidator>  
                                         </td>
                             </tr >
-                            <tr style="height:30px">
-                                <td align="right" width="200px" >Telefono:</td>
-                                <td align="left"><asp:TextBox ID="txtTelefono" runat="server" Width="325px"></asp:TextBox></td>
-                                <td></td>
-                            </tr>
                         </table>
                     </div>
                 </div>
@@ -227,7 +222,9 @@
                                 </tr>
                                 <tr style="height:30px">
                                     <td align="right" width="200px">Mascotas Perdidas:</td>
-                                    <td align="left"> <asp:DropDownList ID="ddlBusquedasMascota" runat="server">
+                                    <td align="left"> <asp:DropDownList ID="ddlBusquedasMascota" runat="server" 
+                                             AutoPostBack="True" 
+                                            onselectedindexchanged="ddlBusquedasMascota_SelectedIndexChanged">
                                     </asp:DropDownList></td>
                                     <td></td>
                                 </tr>
@@ -239,17 +236,23 @@
                                 <table>
                                     <tr style="height:30px">
                                         <td align="right" width="200px">Mascota:</td>
-                                        <td align="left"><asp:TextBox ID="txtMascotaPerdida" runat="server" Width="325px"></asp:TextBox></td>
+                                        <td align="left"><asp:TextBox ID="txtMascotaPerdida" runat="server" Width="325px" ReadOnly="true"></asp:TextBox></td>
                                         <td></td>
                                     </tr>
                                     <tr style="height:30px">
                                         <td align="right" width="200px" >Especie:</td>
-                                        <td align="left"><asp:TextBox ID="txtEspeciePerdida" runat="server" Width="325px"></asp:TextBox></td>
+                                        <td align="left">
+                                        <asp:DropDownList ID="ddlEspeciePerdida" runat="server" CssClass="DropDownList" AppendDataBoundItems="true" Width="325px" Enabled="false">
+                                                </asp:DropDownList>
+                                        </td>
                                         <td></td>
                                     </tr>
                                     <tr style="height:30px">
                                         <td align="right" width="200px">Raza:</td>
-                                        <td align="left"><asp:TextBox ID="txtRazaPerdida" runat="server" Width="325px"></asp:TextBox></td>
+                                        <td align="left">
+                                        <asp:DropDownList ID="ddlRazaPerdida" runat="server" Width="325px" CssClass="DropDownList" AppendDataBoundItems="true" Enabled="false">
+                                                </asp:DropDownList>
+                                        </td>
                                         <td></td>
                                     </tr >
                                     <tr style="height:30px">
@@ -259,7 +262,8 @@
                                     </tr >
                                 </table>
                                 <div class="centered"><h5>¿Quisiera ver mas detalles de la mascota perdida?</h5></div>
-                                <div class="centered"><asp:Button ID="btnSolicitarDetallesPerdida" runat="server" Text="Ver Detalles Perdida"/></div>
+                                <div class="centered"><asp:Button ID="btnSolicitarDetallesPerdida" runat="server" 
+                                        Text="Ver Detalles Perdida" onclick="btnSolicitarDetallesPerdida_Click"/></div>
                             </asp:Panel>
                         </div>
                     </div>

@@ -23,7 +23,15 @@ namespace SiGMA
                     if (!LogicaBDRol.verificarSoloDueño(Session["UsuarioLogueado"].ToString()))
                         pnlVoluntario.Visible = true;
                     else
+                    {
+                        if (Session["idMascota"] != null && Session["pantalla"].ToString() == "Voluntario.aspx")
+                        {
+                            cargarDatosMascotaPerdida(Convert.ToInt32(Session["idMascota"].ToString()));
+                            btnModificar.Visible = false; 
+                            return;
+                        }
                         MascotasPorDueño();
+                    }
                     if (!LogicaBDRol.verificarPermisoVisualizacion(Session["UsuarioLogueado"].ToString(), "ConsultarPerdida.aspx"))
                         Response.Redirect("PermisosInsuficientes.aspx");
                     if (!LogicaBDRol.verificarPermisosGrabacion(Session["UsuarioLogueado"].ToString(), "ConsultarPerdida.aspx"))
@@ -138,11 +146,10 @@ namespace SiGMA
             Session["r"] = false;
         }
 
-        protected void lstMascotas_SelectedIndexChanged(object sender, EventArgs e)
+        public void cargarDatosMascotaPerdida(int idMascota)
         {
-            pnlRegistrarPerdida.Visible = false;
-            Session["imagen"] = null;
-            var idMascota = Convert.ToInt32(lstMascotas.SelectedValue);
+             pnlRegistrarPerdida.Visible = false;
+                        Session["imagen"] = null;
             EMascota mascota = new EMascota();
             EPerdida perdida = new EPerdida();
             if (LogicaBDPerdida.BuscarMascotaAConsultarPerdida(idMascota, mascota, perdida))
@@ -222,7 +229,7 @@ namespace SiGMA
                 {
                     cuidado = "4";
                 }
-                direccion = "argentina " + ddlLocalidadPerdida.SelectedItem.Text.ToLower() + " " + ddlCallePerdida.SelectedItem.Text.ToLower() + " " + txtNroCallePerdida.Text;
+                direccion = "argentina " + ddlLocalidadPerdida.SelectedItem.Text.ToLower() + " " + ddlCallePerdida.SelectedItem.Text.ToLower() + " " + txtNroCallePerdida.Text; //QUE ES ESTO ????? 
                 //agregado
                 hidden1.Value = "mapa1.htm?direccion=" + direccion + "&cuidado=" + cuidado;
             }
@@ -233,6 +240,12 @@ namespace SiGMA
                 pnlCorrecto.Visible = false;
                 pnlAtento.Visible = false;
             }
+        }
+
+        protected void lstMascotas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var idMascota = Convert.ToInt32(lstMascotas.SelectedValue);
+            cargarDatosMascotaPerdida(idMascota);  
         }
 
         public byte[] ImageHandler_ObtenerImagenMascota(HttpContext context)

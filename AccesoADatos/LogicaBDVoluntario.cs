@@ -196,5 +196,51 @@ namespace AccesoADatos
             return voluntario;
         }
 
+        public static void registrarSolicitudDevolucion(int idMascota)
+        {
+            try
+            {
+                SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+                Mascotas mascotaBD = mapaEntidades.Mascotas.Where(m => m.idMascota == idMascota).First();
+                mascotaBD.idEstado = LogicaBDEstado.buscarEstado(new EEstado { nombreEstado = "Solicitud Devolucion", ambito = "Mascota" }).idEstado;
+                mapaEntidades.SaveChanges();
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        public static void cargarDatosBusqueda(string usuario, EPersona persona, EBarrio barrio)
+        {
+            SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+            var hogares = from personasBD in mapaEntidades.Personas
+                          join usuariosBD in mapaEntidades.Usuarios on personasBD.user equals usuariosBD.user
+                          join voluntariosBD in mapaEntidades.Voluntarios on personasBD.idPersona equals voluntariosBD.idPersona
+                          where (usuariosBD.user == usuario)
+                          select new
+                          {
+                              apellido = personasBD.apellido,
+                              nombre = personasBD.nombre,
+                              email = personasBD.email,
+                              barrio = personasBD.idBarrio,
+                          };
+            foreach (var registro in hogares)
+            {
+                persona.nombre = registro.nombre + ' ' + registro.apellido;
+                persona.email = registro.email;
+                barrio.idBarrio = registro.barrio;
+            }
+        }
+
+        public static List<EPerdida> cargarPerdidasBarrioVoluntario(string barrio)
+        {
+            List<EPerdida> perdidas = LogicaBDPerdida.BuscarPerdidas();
+            var estadoAbierta = LogicaBDEstado.buscarEstado(new EEstado { nombreEstado = "Abierta", ambito = "Perdida" }).nombreEstado;
+            var estadoModificada = LogicaBDEstado.buscarEstado(new EEstado { nombreEstado = "Modificada", ambito = "Perdida" }).nombreEstado;
+            var estadoPublicada = LogicaBDEstado.buscarEstado(new EEstado { nombreEstado = "Publicada", ambito = "Perdida" }).nombreEstado;
+            perdidas = perdidas.Where(p => p.barrio.nombre == barrio && (p.estado.nombreEstado == estadoAbierta || p.estado.nombreEstado == estadoModificada || p.estado.nombreEstado == estadoModificada)).ToList();
+            return perdidas;
+        }
     }
 }

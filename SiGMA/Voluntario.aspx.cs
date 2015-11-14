@@ -16,39 +16,60 @@ namespace SiGMA
         {
             if (Session["TipoVoluntario"].ToString() != "0")
             {
-                CargarCombos.cargarEspecies(ref ddlEspecieHogar);
-                CargarCombos.cargarComboRazas(ref ddlRazaHogar);
-                CargarCombos.cargarBarrio(ref ddlBarrio);
-                CargarCombos.cargarBarrio(ref ddlBarrioBusqueda);
-                CargarCombos.cargarCalles(ref ddlCalle);
-                if (Session["TipoVoluntario"].ToString() == "1")
+                if (Session["VoluntarioCargado"] != null && Session["VoluntarioCargado"].ToString() == "True")
                 {
-                    pnlHogar.Visible = true;
-                    cargarDatosHogar(); //cargar los datos del hogar del usuario logueado
-                    cargarComboMisProvisorias(); //cargar el combo con las mascotas provisorias que tiene
-                    verificarEstadoVoluntario(); //chequea que el voluntario no este con solucitud de baja / inactivo / etc
+                    if (Session["idMascota"] != null && Session["pantalla"].ToString() == "Voluntario.aspx")
+                    {
+                        cargarDatosPagina();
+                    }
                 }
-                else if (Session["TipoVoluntario"].ToString() == "2")
+                else
                 {
-                    pnlBusqueda.Visible = true;
-                    cargarDatosBusqueda(); //cargar los datos de la dispoibilidad del usuario logueado
-                    cargarComboPerdidasBarrio(); //cargar el combo con las mascotas perdidas en el barrio del usuario logueado
-                    verificarEstadoVoluntario(); //chequea que el voluntario no este con solucitud de baja / inactivo / etc
-                }
-                else if (Session["TipoVoluntario"].ToString() == "3")
-                {
-                    pnlHogar.Visible = true;
-                    pnlBusqueda.Visible = true;
-                    cargarDatosHogar(); //cargar los datos del hogar del usuario logueado
-                    cargarComboMisProvisorias(); //cargar el combo con las mascotas provisorias que tiene
-                    cargarDatosBusqueda(); //cargar los datos de la dispoibilidad del usuario logueado
-                    cargarComboPerdidasBarrio(); //cargar el combo con las mascotas perdidas en el barrio del usuario logueado
-                    verificarEstadoVoluntario(); //chequea que el voluntario no este con solucitud de baja / inactivo / etc
+                    cargarDatosPagina();
                 }
             }
             else 
             {
                 Response.Redirect("SerVoluntario.aspx");
+            }
+        }
+
+        private void cargarDatosPagina()
+        {
+            CargarCombos.cargarEspecies(ref ddlEspecieHogar);
+            CargarCombos.cargarEspecies(ref ddlEspeciePerdida);
+            CargarCombos.cargarComboRazas(ref ddlRazaHogar);
+            CargarCombos.cargarComboRazas(ref ddlRazaPerdida);
+            CargarCombos.cargarBarrio(ref ddlBarrio);
+            CargarCombos.cargarBarrio(ref ddlBarrioBusqueda);
+            CargarCombos.cargarCalles(ref ddlCalle);
+
+            if (Session["TipoVoluntario"].ToString() == "1")
+            {
+                pnlHogar.Visible = true;
+                cargarDatosHogar(); //cargar los datos del hogar del usuario logueado
+                cargarComboMisProvisorias(); //cargar el combo con las mascotas provisorias que tiene
+                verificarEstadoVoluntario(); //chequea que el voluntario no este con solucitud de baja / inactivo / etc
+                Session["VoluntarioCargado"] = true;
+            }
+            else if (Session["TipoVoluntario"].ToString() == "2")
+            {
+                pnlBusqueda.Visible = true;
+                cargarDatosBusqueda(); //cargar los datos de la dispoibilidad del usuario logueado
+                cargarComboPerdidasBarrio(); //cargar el combo con las mascotas perdidas en el barrio del usuario logueado
+                verificarEstadoVoluntario(); //chequea que el voluntario no este con solucitud de baja / inactivo / etc
+                Session["VoluntarioCargado"] = true;
+            }
+            else if (Session["TipoVoluntario"].ToString() == "3")
+            {
+                pnlHogar.Visible = true;
+                pnlBusqueda.Visible = true;
+                cargarDatosHogar(); //cargar los datos del hogar del usuario logueado
+                cargarComboMisProvisorias(); //cargar el combo con las mascotas provisorias que tiene
+                cargarDatosBusqueda(); //cargar los datos de la dispoibilidad del usuario logueado
+                cargarComboPerdidasBarrio(); //cargar el combo con las mascotas perdidas en el barrio del usuario logueado
+                verificarEstadoVoluntario(); //chequea que el voluntario no este con solucitud de baja / inactivo / etc
+                Session["VoluntarioCargado"] = true;
             }
         }
 
@@ -71,12 +92,39 @@ namespace SiGMA
 
         private void cargarComboPerdidasBarrio()
         {
-            throw new NotImplementedException();
+            if (ddlBarrioBusqueda.SelectedValue != "0")
+            {
+                List<EPerdida> perdidas = LogicaBDVoluntario.cargarPerdidasBarrioVoluntario(ddlBarrioBusqueda.SelectedItem.Text);
+                if (perdidas != null)
+                {
+                    ddlBusquedasMascota.Enabled = true;
+                    foreach (EPerdida item in perdidas)
+                    {
+                        ddlBusquedasMascota.Items.Add(new ListItem(item.mascota.nombreMascota.ToString(), item.mascota.idMascota.ToString()));
+                    }
+                    ddlBusquedasMascota_SelectedIndexChanged(null, null);
+                }
+                else 
+                {
+                    ddlBusquedasMascota.Items.Insert(0, "No hay perdidas en el barrio");
+                    ddlBusquedasMascota.Enabled = false;
+                }
+            }
+            else
+            {
+                ddlBusquedasMascota.Items.Insert(0, "No hay barrio seleccionado");
+                ddlBusquedasMascota.Enabled = false;
+            }
         }
 
         private void cargarDatosBusqueda()
         {
-            throw new NotImplementedException();
+            EPersona persona = new EPersona();
+            EBarrio barrio = new EBarrio();
+            LogicaBDVoluntario.cargarDatosBusqueda(Session["UsuarioLogueado"].ToString(), persona, barrio);
+            txtNombre.Text = persona.nombre;
+            txtEmail.Text = persona.email;
+            ddlBarrioBusqueda.SelectedValue = barrio.idBarrio == null ? null : barrio.idBarrio.ToString();
         }
 
         private void cargarComboMisProvisorias()
@@ -107,7 +155,6 @@ namespace SiGMA
            LogicaBDVoluntario.cargarDatosHogarProvisorio(Session["UsuarioLogueado"].ToString(), persona, hogar, calle, barrio);
            txtNombre.Text = persona.nombre;
            txtEmail.Text = persona.email;
-           txtTelefono.Text = persona.telefonoCelular + '-' + persona.telefonoFijo;
            ddlTipoHogar.SelectedValue = hogar.tipoHogar.ToString();
            ddlCalle.SelectedValue = calle.idCalle == null ? null : calle.idCalle.ToString();
            txtNro.Text = persona.nroCalle.ToString();
@@ -147,6 +194,11 @@ namespace SiGMA
                 lblCorrecto.Text = "Solicitud de baja registrada";
                 if (provisorias.Count != 0)
                 {
+                    foreach (EMascota item in provisorias)
+                    {
+                        LogicaBDVoluntario.registrarSolicitudDevolucion(item.idMascota);
+                    }
+                    
                     pnlInfo.Visible = true;
                     lblInfo.Text = "Nos pondremos en contacto con usted para la devolución de las mascotas provisorias";
                 }
@@ -157,6 +209,35 @@ namespace SiGMA
                 lblError.Text = "Error al enviar solicitud";
             }
         }
+
+        protected void ddlBusquedasMascota_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            List<EPerdida> perdidas = LogicaBDVoluntario.cargarPerdidasBarrioVoluntario(ddlBarrioBusqueda.SelectedItem.Text);
+            foreach (EPerdida item in perdidas)
+            {
+                EMascota mascota = LogicaBDMascota.BuscarMascotaPorIdMascota(item.mascota.idMascota);
+                if (ddlBusquedasMascota.SelectedValue == mascota.idMascota.ToString())
+                {
+                    txtMascotaPerdida.Text = mascota.nombreMascota;
+                    ddlRazaPerdida.SelectedValue = mascota.raza.idRaza.ToString();
+                    ddlEspeciePerdida.SelectedValue = mascota.especie.idEspecie.ToString();
+                    pnlMisBusquedas.Visible = true;
+                }
+            }
+        }
+
+        protected void btnSolicitarDetallesPerdida_Click(object sender, EventArgs e)
+        {
+            Session["idMascota"] = ddlBusquedasMascota.SelectedValue;
+            EMascota mascota = new EMascota();
+            mascota.idMascota = Convert.ToInt32(Session["idMascota"].ToString());
+            if (Session["idMascota"] != null)
+            {
+                Session["pantalla"] = "Voluntario.aspx";
+                Response.Redirect("~/ConsultarPerdida.aspx");
+            }
+        }
+
 
     }
 }

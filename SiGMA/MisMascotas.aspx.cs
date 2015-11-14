@@ -534,7 +534,7 @@ namespace SiGMA
         protected void btnPerdida_Click(object sender, EventArgs e)
         {
             EMascota mascota = new EMascota();
-            mascota.idMascota = (int)Session["idMascota"];
+            mascota.idMascota = Convert.ToInt32(Session["idMascota"].ToString());
             if (Session["idMascota"] != null)
             {
                 Session["pantalla"] = "MisMascotas.aspx";

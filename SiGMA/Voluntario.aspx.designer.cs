@@ -148,15 +148,6 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.RegularExpressionValidator revMail;
         
         /// <summary>
-        /// txtTelefono control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTelefono;
-        
-        /// <summary>
         /// pnlHogar control.
         /// </summary>
         /// <remarks>
@@ -391,22 +382,22 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.TextBox txtMascotaPerdida;
         
         /// <summary>
-        /// txtEspeciePerdida control.
+        /// ddlEspeciePerdida control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEspeciePerdida;
+        protected global::System.Web.UI.WebControls.DropDownList ddlEspeciePerdida;
         
         /// <summary>
-        /// txtRazaPerdida control.
+        /// ddlRazaPerdida control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtRazaPerdida;
+        protected global::System.Web.UI.WebControls.DropDownList ddlRazaPerdida;
         
         /// <summary>
         /// btnMapa control.
