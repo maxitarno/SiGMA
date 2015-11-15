@@ -18,8 +18,6 @@
             var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
             var geocoder = new google.maps.Geocoder();
             geocodeAddress(geocoder, map);
-
-            marker.setMap(map);
         }
         function geocodeAddress(geocoder, resultsMap) {
             function getURLParameter(name) { return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [, ""])[1].replace(/\+/g, '%20')) || null }
@@ -40,7 +38,7 @@
                         var marker = new google.maps.Marker({
                             map: resultsMap,
                             position: results[0].geometry.location,
-                            //title: 'llego',
+                            title: i.toString(),
                             animation: google.maps.Animation.DROP
                         });
                     } else {
