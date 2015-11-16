@@ -76,6 +76,15 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.DropDownList ddlTipoVoluntario;
         
         /// <summary>
+        /// pnlDatoPersona control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlDatoPersona;
+        
+        /// <summary>
         /// txtNombre control.
         /// </summary>
         /// <remarks>
@@ -83,15 +92,6 @@ namespace SiGMA {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNombre;
-        
-        /// <summary>
-        /// rfvNombreApellido control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvNombreApellido;
         
         /// <summary>
         /// txtEmail control.
@@ -148,15 +148,6 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.DropDownList ddlCalle;
         
         /// <summary>
-        /// RequiredFieldValidator1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
-        
-        /// <summary>
         /// txtNro control.
         /// </summary>
         /// <remarks>
@@ -200,6 +191,15 @@ namespace SiGMA {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlTipoMascota;
+        
+        /// <summary>
+        /// ddlTieneNinios control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlTieneNinios;
         
         /// <summary>
         /// pnlBusqueda control.

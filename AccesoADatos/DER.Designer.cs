@@ -3558,18 +3558,16 @@ namespace AccesoADatos
         /// <param name="tieneNiños">Initial value of the tieneNiños property.</param>
         /// <param name="cantMascotas">Initial value of the cantMascotas property.</param>
         /// <param name="idVoluntario">Initial value of the idVoluntario property.</param>
-        /// <param name="idCuidadoEspecial">Initial value of the idCuidadoEspecial property.</param>
         /// <param name="idEstado">Initial value of the idEstado property.</param>
         /// <param name="aceptaEspecie">Initial value of the AceptaEspecie property.</param>
         /// <param name="tipoHogar">Initial value of the TipoHogar property.</param>
-        public static HogaresProvisorios CreateHogaresProvisorios(global::System.Int32 idHogarProvisorio, global::System.String tieneNiños, global::System.Int32 cantMascotas, global::System.Int32 idVoluntario, global::System.Int32 idCuidadoEspecial, global::System.Int32 idEstado, global::System.Int32 aceptaEspecie, global::System.Int32 tipoHogar)
+        public static HogaresProvisorios CreateHogaresProvisorios(global::System.Int32 idHogarProvisorio, global::System.String tieneNiños, global::System.Int32 cantMascotas, global::System.Int32 idVoluntario, global::System.Int32 idEstado, global::System.Int32 aceptaEspecie, global::System.Int32 tipoHogar)
         {
             HogaresProvisorios hogaresProvisorios = new HogaresProvisorios();
             hogaresProvisorios.idHogarProvisorio = idHogarProvisorio;
             hogaresProvisorios.tieneNiños = tieneNiños;
             hogaresProvisorios.cantMascotas = cantMascotas;
             hogaresProvisorios.idVoluntario = idVoluntario;
-            hogaresProvisorios.idCuidadoEspecial = idCuidadoEspecial;
             hogaresProvisorios.idEstado = idEstado;
             hogaresProvisorios.AceptaEspecie = aceptaEspecie;
             hogaresProvisorios.TipoHogar = tipoHogar;
@@ -3678,30 +3676,6 @@ namespace AccesoADatos
         private global::System.Int32 _idVoluntario;
         partial void OnidVoluntarioChanging(global::System.Int32 value);
         partial void OnidVoluntarioChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 idCuidadoEspecial
-        {
-            get
-            {
-                return _idCuidadoEspecial;
-            }
-            set
-            {
-                OnidCuidadoEspecialChanging(value);
-                ReportPropertyChanging("idCuidadoEspecial");
-                _idCuidadoEspecial = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("idCuidadoEspecial");
-                OnidCuidadoEspecialChanged();
-            }
-        }
-        private global::System.Int32 _idCuidadoEspecial;
-        partial void OnidCuidadoEspecialChanging(global::System.Int32 value);
-        partial void OnidCuidadoEspecialChanged();
     
         /// <summary>
         /// No Metadata Documentation available.

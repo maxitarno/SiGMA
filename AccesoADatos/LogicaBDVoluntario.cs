@@ -36,7 +36,7 @@ namespace AccesoADatos
             IQueryable<string> consulta = from personasBD in mapaEntidades.Personas 
                                        join usuariosBD in mapaEntidades.Usuarios on personasBD.user equals usuariosBD.user
                                        join voluntariosBD in mapaEntidades.Voluntarios on personasBD.idPersona equals voluntariosBD.idPersona
-                                       where (usuariosBD.user == usuario)
+                                          where (usuariosBD.user == usuario)
                                        select voluntariosBD.tipoVoluntario;
             if (consulta.Count() != 0)
             {
@@ -52,6 +52,35 @@ namespace AccesoADatos
                 vol = 0;
             }
             return vol;
+        }
+
+        public static string buscarEstadoVoluntario(string usuario) 
+        {
+            string vol = "";
+            SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+            IQueryable<int?> consulta = from personasBD in mapaEntidades.Personas
+                                          join usuariosBD in mapaEntidades.Usuarios on personasBD.user equals usuariosBD.user
+                                          join voluntariosBD in mapaEntidades.Voluntarios on personasBD.idPersona equals voluntariosBD.idPersona
+                                          where (usuariosBD.user == usuario)
+                                          select voluntariosBD.idEstado;
+            if (consulta.Count() != 0)
+            {
+                if (consulta.First() == 32)
+                    vol = "Activo" ;
+                if (consulta.First() == 33)
+                    vol = "Inactivo";
+                if (consulta.First() == 34)
+                    vol = "Pendiente";
+                if (consulta.First() == 35)
+                    vol = "Rechazado";
+                if (consulta.First() == 36)
+                    vol = "Solicitud Baja";
+            }
+            else
+            {
+                vol = "";
+            }
+            return vol;        
         }
 
         public static void cargarDatosHogarProvisorio(string usuario, EPersona persona, EHogarProvisorio hogar, ECalle calle, EBarrio barrio)
@@ -89,27 +118,77 @@ namespace AccesoADatos
             }
         }
 
-        public static Boolean RegistrarPedidoVoluntariado(string usuario, string email, string nombre, int tipoHogar, int barrioHogar, int cantMascMax, int tipoMasc, int calle, string nroCalle, int barrioBusq, string disponibilidad )
+        public static Boolean RegistrarPedidoVoluntariado(string usuario, string email, string nombre, int? tipoHogar, int? barrioHogar, int? cantMascMax, int? tipoMasc, int? calle, string nroCalle, string tieneNiños, int? barrioBusq, string disponibilidad)
         {
             using (TransactionScope transaccion = new TransactionScope())
             {
                 try
                 {
-                    //SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
-                    //Adopciones adopcionBD = new Adopciones();
-                    //adopcionBD.idDuenio = adopcion.duenio.idDuenio;
-                    //adopcionBD.idVoluntario = adopcion.idVoluntario;
-                    //adopcionBD.fechaAdopcion = adopcion.fecha;
-                    //adopcionBD.idMascota = adopcion.mascota.idMascota;
-                    //adopcionBD.observaciones = adopcion.observaciones;
-                    //adopcionBD.idEstado = mapaEntidades.Estados.Where(es => es.ambito == "Adopcion" && es.nombreEstado == "Abierta").First().idEstado;
-                    //LogicaBDMascota.modificarEstado("Adoptada", adopcion.mascota.idMascota, ref mapaEntidades);
-                    //LogicaBDMascota.asignarDueño(adopcion.mascota, adopcion.duenio.idDuenio, ref mapaEntidades);
-                    //Mascotas bdMascota = mapaEntidades.Mascotas.Where(m => m.idMascota == adopcion.mascota.idMascota).First();
-                    //bdMascota.nombreMascota = adopcion.mascota.nombreMascota;
-                    //mapaEntidades.AddToAdopciones(adopcionBD);
-                    //mapaEntidades.SaveChanges();
-                    //transaccion.Complete();
+                    SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+                    if (barrioBusq == null && disponibilidad == null)
+                    {
+                        if (tipoHogar != null && nroCalle != null)
+                        {
+                            Voluntarios voluntarioBD = new Voluntarios();
+                            voluntarioBD.idPersona = mapaEntidades.Personas.Where(personaBuscada => personaBuscada.user == usuario).First().idPersona;
+                            voluntarioBD.idEstado = LogicaBDEstado.buscarEstado(new EEstado { nombreEstado = "Pendiente", ambito = "Voluntario" }).idEstado;
+                            voluntarioBD.tipoVoluntario = "Hogar";
+                            HogaresProvisorios HogarBD = new HogaresProvisorios();
+                            HogarBD.tieneNiños = tieneNiños;
+                            HogarBD.TipoHogar = Convert.ToInt32(tipoHogar);
+                            HogarBD.idVoluntario = voluntarioBD.idVoluntario;
+                            HogarBD.idEstado = LogicaBDEstado.buscarEstado(new EEstado { nombreEstado = "Pendiente", ambito = "Hogar" }).idEstado;
+                            HogarBD.AceptaEspecie = Convert.ToInt32(tipoMasc);
+                            HogarBD.cantMascotas = Convert.ToInt32(cantMascMax);
+                            Personas personaBD = mapaEntidades.Personas.Where(personaBuscada => personaBuscada.user == usuario).First();
+                            personaBD.idBarrio = Convert.ToInt32(barrioHogar);
+                            personaBD.idCalle = Convert.ToInt32(calle);
+                            personaBD.nroCalle = Convert.ToInt32(nroCalle);
+                            mapaEntidades.AddToVoluntarios(voluntarioBD);
+                            mapaEntidades.AddToHogaresProvisorios(HogarBD);
+                            mapaEntidades.SaveChanges();
+                            transaccion.Complete();
+                        }
+                    }
+                    else if (tipoHogar == null && nroCalle == null)
+                    {
+                        if (barrioBusq != null && disponibilidad != null)
+                        {
+                            Voluntarios voluntarioBD = new Voluntarios();
+                            voluntarioBD.idPersona = mapaEntidades.Personas.Where(personaBuscada => personaBuscada.user == usuario).First().idPersona;
+                            voluntarioBD.idEstado = LogicaBDEstado.buscarEstado(new EEstado { nombreEstado = "Pendiente", ambito = "Voluntario" }).idEstado;
+                            voluntarioBD.tipoVoluntario = "Busqueda";
+                            voluntarioBD.disponibilidadHoraria = disponibilidad;
+                            Personas personaBD = mapaEntidades.Personas.Where(personaBuscada => personaBuscada.user == usuario).First();
+                            personaBD.idBarrio = Convert.ToInt32(barrioBusq);
+                            mapaEntidades.AddToVoluntarios(voluntarioBD);
+                            mapaEntidades.SaveChanges();
+                            transaccion.Complete();
+                        }
+                    }
+                    else
+                    {
+                        Voluntarios voluntarioBD = new Voluntarios();
+                        voluntarioBD.idPersona = mapaEntidades.Personas.Where(personaBuscada => personaBuscada.user == usuario).First().idPersona;
+                        voluntarioBD.idEstado = LogicaBDEstado.buscarEstado(new EEstado { nombreEstado = "Pendiente", ambito = "Voluntario" }).idEstado;
+                        voluntarioBD.tipoVoluntario = "Ambos";
+                        voluntarioBD.disponibilidadHoraria = disponibilidad;
+                        HogaresProvisorios HogarBD = new HogaresProvisorios();
+                        HogarBD.tieneNiños = tieneNiños;
+                        HogarBD.TipoHogar = Convert.ToInt32(tipoHogar);
+                        HogarBD.idVoluntario = voluntarioBD.idPersona;
+                        HogarBD.idEstado = LogicaBDEstado.buscarEstado(new EEstado { nombreEstado = "Pendiente", ambito = "Hogar" }).idEstado;
+                        HogarBD.AceptaEspecie = Convert.ToInt32(tipoMasc);
+                        HogarBD.cantMascotas = Convert.ToInt32(cantMascMax);
+                        Personas personaBD = mapaEntidades.Personas.Where(personaBuscada => personaBuscada.user == usuario).First();
+                        personaBD.idBarrio = Convert.ToInt32(barrioHogar);
+                        personaBD.idCalle = Convert.ToInt32(calle);
+                        personaBD.nroCalle = Convert.ToInt32(nroCalle);
+                        mapaEntidades.AddToVoluntarios(voluntarioBD);
+                        mapaEntidades.AddToHogaresProvisorios(HogarBD);
+                        mapaEntidades.SaveChanges();
+                        transaccion.Complete();
+                    }
                     return true;
                 }
                 catch (Exception)
@@ -211,7 +290,7 @@ namespace AccesoADatos
             }
         }
 
-        public static void cargarDatosBusqueda(string usuario, EPersona persona, EBarrio barrio)
+        public static void cargarDatosBusqueda(string usuario, EPersona persona, EBarrio barrio, EVoluntario voluntario)
         {
             SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
             var hogares = from personasBD in mapaEntidades.Personas
@@ -224,12 +303,14 @@ namespace AccesoADatos
                               nombre = personasBD.nombre,
                               email = personasBD.email,
                               barrio = personasBD.idBarrio,
+                              disponibilidad = voluntariosBD.disponibilidadHoraria,
                           };
             foreach (var registro in hogares)
             {
                 persona.nombre = registro.nombre + ' ' + registro.apellido;
                 persona.email = registro.email;
                 barrio.idBarrio = registro.barrio;
+                voluntario.disponibilidadHoraria = registro.disponibilidad;
             }
         }
 
@@ -241,6 +322,41 @@ namespace AccesoADatos
             var estadoPublicada = LogicaBDEstado.buscarEstado(new EEstado { nombreEstado = "Publicada", ambito = "Perdida" }).nombreEstado;
             perdidas = perdidas.Where(p => p.barrio.nombre == barrio && (p.estado.nombreEstado == estadoAbierta || p.estado.nombreEstado == estadoModificada || p.estado.nombreEstado == estadoModificada)).ToList();
             return perdidas;
+        }
+
+        public static void actualizarDisponibilidadVoluntario(int idVoluntario, string disponibilidad)
+        {
+            try
+            {
+                SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+                Voluntarios voluntarioBD = mapaEntidades.Voluntarios.Where(m => m.idVoluntario == idVoluntario).First();
+                voluntarioBD.disponibilidadHoraria = disponibilidad;
+                mapaEntidades.SaveChanges();
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        public static void actualizarHogarVoluntario(int idVoluntario, string usuario, string tipoHogar, string calle, string nro, string barrio, string cantMasc, string especie, string tieneNiños)
+        {
+            try
+            {
+                SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+                HogaresProvisorios hogarBD = mapaEntidades.HogaresProvisorios.Where(m => m.idVoluntario == idVoluntario).First();
+                Personas personasBD = mapaEntidades.Personas.Where(personaBuscada => personaBuscada.user == usuario).First();
+                hogarBD.TipoHogar = Convert.ToInt32(tipoHogar);
+                hogarBD.cantMascotas = Convert.ToInt32(cantMasc);
+                hogarBD.AceptaEspecie = Convert.ToInt32(especie);
+                hogarBD.tieneNiños = tieneNiños;
+                personasBD.idBarrio = Convert.ToInt32(barrio);
+                personasBD.idCalle = Convert.ToInt32(calle);
+                personasBD.nroCalle = Convert.ToInt32(nro);
+                mapaEntidades.SaveChanges();
+            }
+            catch (Exception)
+            {
+            }
         }
     }
 }

@@ -26,6 +26,7 @@ namespace SiGMA
                     {
                         if (Session["idMascota"] != null && Session["pantalla"].ToString() == "Voluntario.aspx")
                         {
+                            cargarDatosPagina();
                             cargarDatosMascotaPerdida(Convert.ToInt32(Session["idMascota"].ToString()));
                             btnModificar.Visible = false; 
                             return;
@@ -41,41 +42,46 @@ namespace SiGMA
                 {
                     Response.Redirect("Login.aspx");
                 }
-                CargarCombos.cargarColor(ref ddlColor);
-                CargarCombos.cargarEdad(ref ddlEdad);
-                CargarCombos.cargarEspecies(ref ddlEspecie);
-                CargarCombos.cargarComboRazas(ref ddlRaza);
-                CargarCombos.cargarSexo(ref ddlSexo);
-                CargarCombos.cargarBarrio(ref ddlBarrios);
-                CargarCombos.cargarLocalidades(ref ddlLocalidades);
-                CargarCombos.cargarCalles(ref ddlCalles);
-                CargarCombos.cargarBarrio(ref ddlBarrioPerdida);
-                CargarCombos.cargarLocalidades(ref ddlLocalidadPerdida);
-                CargarCombos.cargarCalles(ref ddlCallePerdida);
-                txtFecha.Text = DateTime.Now.ToShortDateString();
-                String modif = Request.QueryString["m"];
-                if (modif == "1")
-                {
-                    txtComentarios.Enabled = true;
-                    txtNroCallePerdida.Enabled = true;
-                    ddlBarrioPerdida.Enabled = true;
-                    ddlCallePerdida.Enabled = true;
-                    ddlLocalidadPerdida.Enabled = true;
-                    btnModificar.Visible = true;
-                    lblTitulo.Text = "Modificar Pérdida";
-                }
-                else 
-                {
-                    txtComentarios.Enabled = false;
-                    txtNroCallePerdida.Enabled = false;
-                    ddlBarrioPerdida.Enabled = false;
-                    ddlCallePerdida.Enabled = false;
-                    ddlLocalidadPerdida.Enabled = false;
-                    btnModificar.Visible = false;
-                    lblTitulo.Text = "Consultar Pérdida";
-                    txtFecha.Enabled = false;
-                    Image1.Visible = false;
-                }
+                cargarDatosPagina();
+            }
+        }
+
+        private void cargarDatosPagina()
+        {
+            CargarCombos.cargarColor(ref ddlColor);
+            CargarCombos.cargarEdad(ref ddlEdad);
+            CargarCombos.cargarEspecies(ref ddlEspecie);
+            CargarCombos.cargarComboRazas(ref ddlRaza);
+            CargarCombos.cargarSexo(ref ddlSexo);
+            CargarCombos.cargarBarrio(ref ddlBarrios);
+            CargarCombos.cargarLocalidades(ref ddlLocalidades);
+            CargarCombos.cargarCalles(ref ddlCalles);
+            CargarCombos.cargarBarrio(ref ddlBarrioPerdida);
+            CargarCombos.cargarLocalidades(ref ddlLocalidadPerdida);
+            CargarCombos.cargarCalles(ref ddlCallePerdida);
+            txtFecha.Text = DateTime.Now.ToShortDateString();
+            String modif = Request.QueryString["m"];
+            if (modif == "1")
+            {
+                txtComentarios.Enabled = true;
+                txtNroCallePerdida.Enabled = true;
+                ddlBarrioPerdida.Enabled = true;
+                ddlCallePerdida.Enabled = true;
+                ddlLocalidadPerdida.Enabled = true;
+                btnModificar.Visible = true;
+                lblTitulo.Text = "Modificar Pérdida";
+            }
+            else
+            {
+                txtComentarios.Enabled = false;
+                txtNroCallePerdida.Enabled = false;
+                ddlBarrioPerdida.Enabled = false;
+                ddlCallePerdida.Enabled = false;
+                ddlLocalidadPerdida.Enabled = false;
+                btnModificar.Visible = false;
+                lblTitulo.Text = "Consultar Pérdida";
+                txtFecha.Enabled = false;
+                Image1.Visible = false;
             }
         }
 
@@ -320,6 +326,12 @@ namespace SiGMA
 
         protected void BtnRegresarClick(object sender, ImageClickEventArgs e)
         {
+            if (Session["Pantalla"] != null)
+            {
+                if (Session["pantalla"].ToString() == "Voluntario.aspx")
+                    Response.Redirect("Voluntario.aspx");
+            }
+            else
             Response.Redirect("Perdidas.aspx");
         }
 

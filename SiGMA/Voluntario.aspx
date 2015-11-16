@@ -52,13 +52,16 @@
             <div class="centered"><h4> Recuerde que ser voluntario implica compromiso y responsabilidad</h4> </div>
             <br />
             <div class="centered"><h5>¿Desear solicitar cambio de voluntariado?</h5></div>
-            <asp:DropDownList class="dropdown" ID="ddlTipoVoluntario" runat="server" AppendDataBoundItems="true" > 
+            <asp:DropDownList class="dropdown" ID="ddlTipoVoluntario" runat="server" 
+                AppendDataBoundItems="true" 
+                onselectedindexchanged="ddlTipoVoluntario_SelectedIndexChanged" > 
                 <asp:listitem value ="0"> -- Seleccione -- </asp:listitem>
                 <asp:listitem value ="1" Text="Hogar"></asp:listitem>
                 <asp:listitem value ="2" Text="Busqueda"></asp:listitem>
                 <asp:listitem value ="3" Text="Ambos"></asp:listitem>
             </asp:DropDownList>
-            <div class="centered"><asp:Button ID="btnCambioVoluntariado" runat="server" Text="Solicitar Voluntariado" /></div>
+            <div class="centered"><asp:Button ID="btnCambioVoluntariado" runat="server" 
+                    Text="Solicitar Voluntariado" onclick="btnCambioVoluntariado_Click" /></div>
             <br />
             <asp:Panel ID="pnlDejarDeSer" runat="server" Visible="false">
                 <div class="centered"><h5>¿Desear dejar de ser voluntario?</h5>
@@ -72,9 +75,8 @@
                         <table>
                             <tr style="height:30px">
                                 <td align="right" width="200px">Voluntario:</td>
-                                <td align="left"><asp:TextBox ID="txtNombre" runat="server" Width="325px"></asp:TextBox></td>
-                                <td><asp:RequiredFieldValidator ID="rfvNombreApellido" runat="server" 
-                                        ErrorMessage="*" ForeColor="Red" ControlToValidate="txtNombre"></asp:RequiredFieldValidator></td>
+                                <td align="left"><asp:TextBox ID="txtNombre" runat="server" Width="325px" ReadOnly="true"></asp:TextBox></td>
+                                <td></td>
                             </tr>
                             <tr style="height:30px">
                                 <td align="right" width="200px">Email:</td>
@@ -150,7 +152,6 @@
                                 <tr style="height:30px">
                                     <td align="right" width="200px">Tiene Niños:</td>
                                     <td align="left"><asp:DropDownList ID="ddlTieneNinios" runat="server" Width="100%">
-                                        <asp:ListItem Selected="True" Value="0" Text="-- Seleccione una opción --"></asp:ListItem>
                                         <asp:ListItem Text="Si" Value="1"></asp:ListItem>
                                         <asp:ListItem Value="2" Text="No"></asp:ListItem>
                                     </asp:DropDownList></td>
@@ -166,7 +167,8 @@
                                 </tr>
                             </table>
                             <div class="centered"><h5>¿Desea actualizar los datos de su hogar?</h5></div>
-                            <div class="centered"><asp:Button ID="btnActualizarHogar" runat="server" Text="Actualizar Hogar"/></div>
+                            <div class="centered"><asp:Button ID="btnActualizarHogar" runat="server" 
+                                    Text="Actualizar Hogar" onclick="btnActualizarHogar_Click"/></div>
                             <asp:Panel ID="pnlMisProvisorias" runat="server" Visible="false">
                                 <table>
                                     <tr style="height:30px">
@@ -193,7 +195,8 @@
                                     </tr >
                                 </table>
                                 <div class="centered"><h5>¿No puede seguir cuidando a su mascota provisoria?</h5></div>
-                                <div class="centered"><asp:Button ID="btnSolicitarDevolucion" runat="server" Text="Solicitar Devolución"/></div>
+                                <div class="centered"><asp:Button ID="btnSolicitarDevolucion" runat="server" 
+                                        Text="Solicitar Devolución" onclick="btnSolicitarDevolucion_Click"/></div>
                             </asp:Panel>
                         </div>
                     </div>
@@ -208,15 +211,17 @@
                                 <tr style="height:30px">
                                     <td align="right" width="200px">Disponibilidad Horaria</td>
                                     <td align="left"><asp:DropDownList ID="ddlDisponibilidadHoraria" runat="server" Width="325px" AppendDataBoundItems="True">
-                                        <asp:listitem value ="1"> Por la mañana </asp:listitem>
-                                        <asp:listitem value ="2"> Por la tarde </asp:listitem>
-                                        <asp:listitem value ="3"> Por la noche </asp:listitem>
+                                        <asp:listitem value ="1" Text="Por la mañana"></asp:listitem>
+                                        <asp:listitem value ="2" Text="Por la tarde"></asp:listitem>
+                                        <asp:listitem value ="3" Text="Por la noche"></asp:listitem>
                                         </asp:DropDownList></td>
                                     <td></td>
                                 </tr>
                                 <tr style="height:30px">
                                     <td align="right" width="200px">Barrio Domicilio:</td>
-                                    <td align="left"><asp:DropDownList ID="ddlBarrioBusqueda" runat="server" Width="325px" AppendDataBoundItems="True">
+                                    <td align="left"><asp:DropDownList ID="ddlBarrioBusqueda" runat="server" 
+                                            Width="325px" AppendDataBoundItems="True" 
+                                            onselectedindexchanged="ddlBarrioBusqueda_SelectedIndexChanged" AutoPostBack="true">
                                         </asp:DropDownList></td>
                                     <td></td>
                                 </tr>
@@ -231,7 +236,8 @@
                             </table>
                             <br />
                             <div class="centered"><h5>¿Desea actualizar sus datos de disponibilidad?</h5></div>
-                            <div class="centered"><asp:Button ID="btnActualizarBusqueda" runat="server" Text="Actualizar Disponibilidad"/></div>
+                            <div class="centered"><asp:Button ID="btnActualizarBusqueda" runat="server" 
+                                    Text="Actualizar Disponibilidad" onclick="btnActualizarBusqueda_Click"/></div>
                             <asp:Panel ID="pnlMisBusquedas" runat="server" Visible="false">
                                 <table>
                                     <tr style="height:30px">
@@ -257,7 +263,8 @@
                                     </tr >
                                     <tr style="height:30px">
                                         <td align="right" width="200px">Ver lugar pérdida:</td>
-                                        <td align="left"><asp:Button ID="btnMapa" runat="server" Text="Ubicación" /></td> 
+                                        <td align="left"><asp:Button ID="btnMapa" runat="server" Text="Ubicación" 
+                                                onclick="btnMapa_Click" /></td> 
                                         <td></td>
                                     </tr >
                                 </table>

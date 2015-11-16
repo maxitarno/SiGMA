@@ -14,24 +14,32 @@ namespace SiGMA
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["TipoVoluntario"].ToString() != "0")
+            if (!Page.IsPostBack)
             {
-                if (Session["VoluntarioCargado"] != null && Session["VoluntarioCargado"].ToString() == "True")
+                if (Session["TipoVoluntario"].ToString() != "0")
                 {
-                    if (Session["idMascota"] != null && Session["pantalla"].ToString() == "Voluntario.aspx")
+                    if (Session["VoluntarioCargado"] != null && Session["VoluntarioCargado"].ToString() == "True")
+                    {
+                        if (Session["idMascota"] != null && Session["pantalla"].ToString() == "Voluntario.aspx")
+                        {
+                            cargarDatosPagina();
+                        }
+                        else if (Session["pantalla"] != null && Session["pantalla"].ToString() == "")
+                            cargarDatosPagina();
+                    }
+                    else
                     {
                         cargarDatosPagina();
                     }
                 }
                 else
                 {
-                    cargarDatosPagina();
+                    Response.Redirect("SerVoluntario.aspx");
                 }
             }
-            else 
-            {
-                Response.Redirect("SerVoluntario.aspx");
-            }
+            pnlAtento.Visible = false;
+            pnlCorrecto.Visible = false;
+            pnlInfo.Visible = false;
         }
 
         private void cargarDatosPagina()
@@ -86,6 +94,7 @@ namespace SiGMA
                 pnlBusqueda.Visible = false;
                 pnlInfo.Visible = true;
                 lblInfo.Text = "El voluntario no se encuentra activo, pero puede solicitar voluntariado";
+                return;
             }
 
         }
@@ -94,8 +103,9 @@ namespace SiGMA
         {
             if (ddlBarrioBusqueda.SelectedValue != "0")
             {
+                ddlBusquedasMascota.Items.Clear();
                 List<EPerdida> perdidas = LogicaBDVoluntario.cargarPerdidasBarrioVoluntario(ddlBarrioBusqueda.SelectedItem.Text);
-                if (perdidas != null)
+                if (perdidas.Count != 0)
                 {
                     ddlBusquedasMascota.Enabled = true;
                     foreach (EPerdida item in perdidas)
@@ -121,10 +131,19 @@ namespace SiGMA
         {
             EPersona persona = new EPersona();
             EBarrio barrio = new EBarrio();
-            LogicaBDVoluntario.cargarDatosBusqueda(Session["UsuarioLogueado"].ToString(), persona, barrio);
+            EVoluntario voluntario = new EVoluntario();
+            LogicaBDVoluntario.cargarDatosBusqueda(Session["UsuarioLogueado"].ToString(), persona, barrio, voluntario);
             txtNombre.Text = persona.nombre;
             txtEmail.Text = persona.email;
             ddlBarrioBusqueda.SelectedValue = barrio.idBarrio == null ? null : barrio.idBarrio.ToString();
+            if (voluntario.disponibilidadHoraria == "Por la mañana")
+                ddlDisponibilidadHoraria.SelectedValue = "1";
+            else if (voluntario.disponibilidadHoraria == "Por la tarde")
+                ddlDisponibilidadHoraria.SelectedValue = "2";
+            else if (voluntario.disponibilidadHoraria == "Por la noche")
+                ddlDisponibilidadHoraria.SelectedValue = "3";
+            else
+                ddlDisponibilidadHoraria.SelectedValue = "1";
         }
 
         private void cargarComboMisProvisorias()
@@ -166,6 +185,7 @@ namespace SiGMA
 
         protected void BtnRegresarClick(object sender, ImageClickEventArgs e)
         {
+            Session["pantalla"] = ""; 
             Response.Redirect("DefaultDueño.aspx");
         }
 
@@ -238,6 +258,84 @@ namespace SiGMA
             }
         }
 
+        protected void btnSolicitarDevolucion_Click(object sender, EventArgs e)
+        {
+            LogicaBDVoluntario.registrarSolicitudDevolucion(Convert.ToInt32(ddlMascotasEnHogar.SelectedValue.ToString()));
+            pnlInfo.Visible = true;
+            lblInfo.Text = "Nos pondremos en contacto con usted para la devolución de la mascota";
+        }
 
+        protected void btnActualizarBusqueda_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                LogicaBDVoluntario.actualizarDisponibilidadVoluntario(Convert.ToInt32(Session["IdVoluntario"].ToString()), ddlDisponibilidadHoraria.SelectedItem.Text);
+                pnlCorrecto.Visible=true;
+                lblCorrecto.Text="Disponibilidad actualizada correctamente";
+            }
+            catch (Exception)
+            {
+                pnlAtento.Visible = true;
+                lblError.Text = "Ha ocurrido un error al actualizar la disponibilidad";
+            }
+            
+        }
+
+        protected void ddlBarrioBusqueda_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cargarComboPerdidasBarrio();
+        }
+
+        protected void btnActualizarHogar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Validaciones.verificarSoloNumeros(txtNro.Text))
+                {
+                    LogicaBDVoluntario.actualizarHogarVoluntario(Convert.ToInt32(Session["IdVoluntario"].ToString()), Session["UsuarioLogueado"].ToString(), ddlTipoHogar.SelectedValue, ddlCalle.SelectedValue, txtNro.Text, ddlBarrio.SelectedValue, ddlNumeroMascotas.SelectedValue, ddlTipoMascota.SelectedValue, ddlTieneNinios.SelectedValue);
+                    pnlCorrecto.Visible = true;
+                    lblCorrecto.Text = "Hogar actualizado correctamente";
+                }
+                else
+                {
+                    lblInfo.Text = "Debe ingresar un número de calle valido";
+                    pnlInfo.Visible = true;
+                }
+            }
+            catch (Exception)
+            {
+                pnlAtento.Visible = true;
+                lblError.Text = "Ha ocurrido un error al actualizar el hogar";
+            }
+        }
+
+        protected void btnCambioVoluntariado_Click(object sender, EventArgs e)
+        {
+            if (ddlTipoVoluntario.SelectedValue == "0")
+            {
+                pnlInfo.Visible = true;
+                lblInfo.Text = "Seleccione un tipo de voluntariado";
+                return;
+            }
+            Session["cambioVoluntariado"] = ddlTipoVoluntario.SelectedValue;
+            if (Session["cambioVoluntariado"].ToString() == Session["TipoVoluntario"].ToString())
+            {
+                lblInfo.Text = "Usted es esa clase de voluntario, si desea solicitar cambio, seleccione otro tipo de voluntariado";
+                pnlInfo.Visible = true;
+                return;
+            }
+            Session["pantalla"] = "Voluntario.aspx";
+            Response.Redirect("~/SerVoluntario.aspx");
+        }
+
+        protected void btnMapa_Click(object sender, EventArgs e)
+        {
+            var idMascota = ddlBusquedasMascota.SelectedValue;
+        }
+
+        protected void ddlTipoVoluntario_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

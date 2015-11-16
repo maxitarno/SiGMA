@@ -36,6 +36,7 @@ namespace SiGMA
                     Session["IdVoluntario"] = LogicaBDVoluntario.buscarIdVoluntarioPorUsuario(usuario.user).ToString();
                     Session["EsRol"] = LogicaBDRol.verRolesSegunUsuario(usuario.user);
                     Session["TipoVoluntario"] = LogicaBDVoluntario.buscarTipoVoluntario(usuario.user).ToString();
+                    Session["EstadoVoluntario"] = LogicaBDVoluntario.buscarEstadoVoluntario(usuario.user).ToString();
                     //aca hay que verificar el rol, HACER!!!!
                     HttpCookie cook = new HttpCookie("idDueño");
                     cook.Value = Session["IdDueño"].ToString();

@@ -351,7 +351,6 @@
           <Property Name="tieneNiños" Type="varchar" Nullable="false" MaxLength="15" />
           <Property Name="cantMascotas" Type="int" Nullable="false" />
           <Property Name="idVoluntario" Type="int" Nullable="false" />
-          <Property Name="idCuidadoEspecial" Type="int" Nullable="false" />
           <Property Name="idEstado" Type="int" Nullable="false" />
           <Property Name="AceptaEspecie" Type="int" Nullable="false" />
           <Property Name="TipoHogar" Type="int" Nullable="false" />
@@ -1526,7 +1525,6 @@
           <Property Name="tieneNiños" Type="String" Nullable="false" MaxLength="15" Unicode="false" FixedLength="false" />
           <Property Name="cantMascotas" Type="Int32" Nullable="false" />
           <Property Name="idVoluntario" Type="Int32" Nullable="false" />
-          <Property Name="idCuidadoEspecial" Type="Int32" Nullable="false" />
           <Property Name="idEstado" Type="Int32" Nullable="false" />
           <Property Name="AceptaEspecie" Type="Int32" Nullable="false" />
           <Property Name="TipoHogar" Type="Int32" Nullable="false" />
@@ -2514,7 +2512,6 @@
                 <ScalarProperty Name="tieneNiños" ColumnName="tieneNiños" />
                 <ScalarProperty Name="cantMascotas" ColumnName="cantMascotas" />
                 <ScalarProperty Name="idVoluntario" ColumnName="idVoluntario" />
-                <ScalarProperty Name="idCuidadoEspecial" ColumnName="idCuidadoEspecial" />
                 <ScalarProperty Name="idEstado" ColumnName="idEstado" />
                 <ScalarProperty Name="AceptaEspecie" ColumnName="AceptaEspecie" />
                 <ScalarProperty Name="TipoHogar" ColumnName="TipoHogar" />
@@ -2762,7 +2759,7 @@
         <EntityTypeShape EntityType="SiGMAModel.Especies" Width="1.5" PointX="8.25" PointY="16.875" Height="1.7879850260416674" IsExpanded="true" />
         <EntityTypeShape EntityType="SiGMAModel.Estados" Width="1.5" PointX="3" PointY="1.25" Height="2.5571907552083317" IsExpanded="true" />
         <EntityTypeShape EntityType="SiGMAModel.Hallazgos" Width="1.5" PointX="3" PointY="15.375" Height="4.2879036458333388" IsExpanded="true" />
-        <EntityTypeShape EntityType="SiGMAModel.HogaresProvisorios" Width="1.5" PointX="10.5" PointY="4.125" Height="2.7494921875000031" IsExpanded="true" />
+        <EntityTypeShape EntityType="SiGMAModel.HogaresProvisorios" Width="1.5" PointX="10.5" PointY="4.25" Height="2.5571907552083388" IsExpanded="true" />
         <EntityTypeShape EntityType="SiGMAModel.Localidades" Width="1.5" PointX="1.5" PointY="4.875" Height="1.7879850260416674" IsExpanded="true" />
         <EntityTypeShape EntityType="SiGMAModel.Mascotas" Width="1.5" PointX="10.5" PointY="8.375" Height="6.2109179687500031" IsExpanded="true" />
         <EntityTypeShape EntityType="SiGMAModel.OcupacionesXHogaresProvisorios" Width="1.5" PointX="12.75" PointY="8.375" Height="2.3648893229166674" IsExpanded="true" />
@@ -2961,8 +2958,8 @@
           <ConnectorPoint PointX="9.9178215128205114" PointY="6.4706835937499987" />
           <ConnectorPoint PointX="10.084488179487179" PointY="6.47068359375" />
           <ConnectorPoint PointX="10.25" PointY="6.47068359375" />
-          <ConnectorPoint PointX="10.25" PointY="7.1244921875000031" />
-          <ConnectorPoint PointX="10.843748" PointY="7.1244921875000031" />
+          <ConnectorPoint PointX="10.25" PointY="7.0571907552083388" />
+          <ConnectorPoint PointX="10.843748" PointY="7.0571907552083388" />
           <ConnectorPoint PointX="10.843748" PointY="8.375" />
         </AssociationConnector>
         <AssociationConnector Association="SiGMAModel.FK_Perdidas_Estados" ManuallyRouted="false">
@@ -3006,10 +3003,10 @@
           <ConnectorPoint PointX="12.75" PointY="15.08372758593749" />
         </AssociationConnector>
         <AssociationConnector Association="SiGMAModel.FK_OcupacionXHogarProvisorio_HogaresProvisorios" ManuallyRouted="false">
-          <ConnectorPoint PointX="12" PointY="5.4997460937500016" />
-          <ConnectorPoint PointX="12.291666666666666" PointY="5.4997460937500007" />
-          <ConnectorPoint PointX="12.458333333333334" PointY="5.4997460937500016" />
-          <ConnectorPoint PointX="13.5" PointY="5.4997460937500016" />
+          <ConnectorPoint PointX="12" PointY="5.5285953776041694" />
+          <ConnectorPoint PointX="12.291666666666666" PointY="5.5285953776041685" />
+          <ConnectorPoint PointX="12.458333333333334" PointY="5.5285953776041694" />
+          <ConnectorPoint PointX="13.5" PointY="5.5285953776041694" />
           <ConnectorPoint PointX="13.5" PointY="8.375" />
         </AssociationConnector>
         <AssociationConnector Association="SiGMAModel.FK_Mascotas_Razas" ManuallyRouted="false">

@@ -30,7 +30,7 @@
 
             <div class="panel panel-default">
             <div class="panel-body">
-                <div class="col-md-4 col-md-offset-3">
+                <div class="col-md-4 col-md-offset-4">
                     <asp:Panel runat="server" id="pnlCorrecto" class="alert alert-dismissable alert-success" Visible=false>
                         <button class="close" type="button" data-dismiss="alert">
                             ×</button>
@@ -70,12 +70,12 @@
             <div class="panel-body">
                     <div>
                         <div class="col-md-3 col-md-offset-4">
+                            <asp:Panel ID="pnlDatoPersona" runat="server" Visible="false">
                             <table>
                                 <tr style="height:30px">
                                     <td align="right" width="200px">Nombre:</td>
-                                    <td align="left"><asp:TextBox ID="txtNombre" runat="server" Width="325px"></asp:TextBox></td>
-                                    <td><asp:RequiredFieldValidator ID="rfvNombreApellido" runat="server" 
-                                            ErrorMessage="*" ForeColor="Red" ControlToValidate="txtNombre"></asp:RequiredFieldValidator></td>
+                                    <td align="left"><asp:TextBox ID="txtNombre" runat="server" Width="325px" ReadOnly="true"></asp:TextBox></td>
+                                    <td></td>
                                 </tr>
                                 <tr style="height:30px">
                                     <td align="right" width="200px">Email:</td>
@@ -89,6 +89,7 @@
                                             </td>
                                 </tr >
                             </table>
+                            </asp:Panel>
                         </div>
                     </div>
                 </div>
@@ -112,8 +113,7 @@
                                     <td align="left"><asp:DropDownList ID="ddlCalle" Enabled="true" runat="server" CssClass="DropDownList"
                                                 Width="325px">
                                             </asp:DropDownList></td>
-                                    <td><asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
-                                            ErrorMessage="*" ForeColor="Red" ControlToValidate="txtCalle"></asp:RequiredFieldValidator></td>
+                                    <td></td>
                                 </tr>
                                 <tr style="height:30px">
                                     <td align="right" width="200px">Nro:</td>
@@ -125,7 +125,9 @@
                                 </tr >
                                 <tr style="height:30px">
                                     <td align="right" width="200px" >Barrio:</td>
-                                    <td align="left"><asp:DropDownList ID="ddlBarrio" runat="server" Width="325px" AppendDataBoundItems="True">
+                                    <td align="left"><asp:DropDownList ID="ddlBarrio" runat="server" Width="325px" 
+                                            AppendDataBoundItems="True" 
+                                            onselectedindexchanged="ddlBarrio_SelectedIndexChanged">
                                         </asp:DropDownList></td>
                                     <td></td>
                                 </tr>
@@ -146,6 +148,15 @@
                                         <asp:listitem value ="2" Text="Solo Gatos">  </asp:listitem>
                                         <asp:listitem value ="3" Text="Perros y Gatos">  </asp:listitem>
                                         </asp:DropDownList></td>
+                                    <td></td>
+                                </tr>
+                                <tr style="height:30px">
+                                    <td align="right" width="200px">Tiene Niños:</td>
+                                    <td align="left"><asp:DropDownList ID="ddlTieneNinios" runat="server" Width="100%">
+                                        <asp:ListItem Selected="True" Value="0" Text="-- Seleccione una opción --"></asp:ListItem>
+                                        <asp:ListItem Text="Si" Value="1"></asp:ListItem>
+                                        <asp:ListItem Value="2" Text="No"></asp:ListItem>
+                                    </asp:DropDownList></td>
                                     <td></td>
                                 </tr>
                             </table>
@@ -182,7 +193,7 @@
             
             <div class="centered">
             <asp:Button ID="btnEnviar" style="margin-left: 39px" runat="server" 
-                                        Text="Enviar" onclick="btnEnviar_Click" />
+                                        Text="Enviar" onclick="btnEnviar_Click" Visible="false"/>
             </div>
         </div>
         <div class="centered">
