@@ -221,12 +221,14 @@ namespace SiGMA
                     
                     pnlInfo.Visible = true;
                     lblInfo.Text = "Nos pondremos en contacto con usted para la devolución de las mascotas provisorias";
+                    SetFocus(pnlCorrecto);
                 }
             }
             else
             {
                 pnlAtento.Visible = true;
                 lblError.Text = "Error al enviar solicitud";
+                SetFocus(pnlAtento);
             }
         }
 
@@ -263,6 +265,7 @@ namespace SiGMA
             LogicaBDVoluntario.registrarSolicitudDevolucion(Convert.ToInt32(ddlMascotasEnHogar.SelectedValue.ToString()));
             pnlInfo.Visible = true;
             lblInfo.Text = "Nos pondremos en contacto con usted para la devolución de la mascota";
+            SetFocus(pnlCorrecto);
         }
 
         protected void btnActualizarBusqueda_Click(object sender, EventArgs e)
@@ -278,7 +281,7 @@ namespace SiGMA
                 pnlAtento.Visible = true;
                 lblError.Text = "Ha ocurrido un error al actualizar la disponibilidad";
             }
-            
+            SetFocus(pnlCorrecto);
         }
 
         protected void ddlBarrioBusqueda_SelectedIndexChanged(object sender, EventArgs e)
@@ -300,12 +303,14 @@ namespace SiGMA
                 {
                     lblInfo.Text = "Debe ingresar un número de calle valido";
                     pnlInfo.Visible = true;
+                    SetFocus(pnlCorrecto);
                 }
             }
             catch (Exception)
             {
                 pnlAtento.Visible = true;
                 lblError.Text = "Ha ocurrido un error al actualizar el hogar";
+                SetFocus(pnlCorrecto);
             }
         }
 

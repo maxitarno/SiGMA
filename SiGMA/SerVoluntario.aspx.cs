@@ -199,6 +199,7 @@ namespace SiGMA
                     g.send();//Envía el correo
                     pnlCorrecto.Visible = true;
                     lblCorrecto.Text = "Solicitud enviada, nos pondremos en contacto con usted. Muchas Gracias";
+                    Session["EstadoVoluntario"] = "Pendiente";
                     limpiarPagina();
                 }
                 catch (Exception ex)
