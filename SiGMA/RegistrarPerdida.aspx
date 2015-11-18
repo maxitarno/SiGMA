@@ -148,6 +148,10 @@
                                 <asp:DropDownList ID="ddlCallePerdida" runat="server"  Width="72%" AppendDataBoundItems="True">
                                 </asp:DropDownList> - <asp:TextBox ID="txtNroCallePerdida"  runat="server" Width="20%" ></asp:TextBox>
                             </td>
+                            <td>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ForeColor="Red" runat="server" ErrorMessage="*" ControlToValidate="ddlCallePerdida"></asp:RequiredFieldValidator>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2"  ForeColor="Red" runat="server" ErrorMessage="*" ControlToValidate="txtNroCallePerdida"></asp:RequiredFieldValidator>
+                            </td>
                         </tr>
                         <tr>
                             <td>
@@ -159,6 +163,7 @@
                                     onselectedindexchanged="ddlLocalidadPerdida_SelectedIndexChanged">
                                 </asp:DropDownList>
                             </td>
+                            <td><asp:RequiredFieldValidator ID="RequiredFieldValidator3" ForeColor="Red" runat="server" ErrorMessage="*" ControlToValidate="ddlLocalidadPerdida"></asp:RequiredFieldValidator></td>
                         </tr>
                         <tr>
                             <td>
@@ -168,6 +173,7 @@
                                 <asp:DropDownList ID="ddlBarrioPerdida" runat="server" Width="100%" AppendDataBoundItems="True">
                                 </asp:DropDownList>
                             </td>
+                                                        <td><asp:RequiredFieldValidator ID="RequiredFieldValidator4" ForeColor="Red" runat="server" ErrorMessage="*" ControlToValidate="ddlBarrioPerdida"></asp:RequiredFieldValidator></td>
                         </tr>
                         
                                     
@@ -182,10 +188,13 @@
                                         runat="server" TargetControlID="txtFecha" 
                                         PopupButtonID="Image1">
                                     </ajaxToolkit:CalendarExtender>
+                                    </td>
+                                <td>
                                     <asp:RangeValidator ID="rnvFechaPerdida" runat="server" ErrorMessage="La fecha no puede ser superior a la actual" 
                                     ForeColor="Red" ControlToValidate="txtFecha" SetFocusOnError="True" 
-                                    MinimumValue="01/01/2013" Type="Date" Font-Size="XX-Small" ></asp:RangeValidator>
-                                </td>
+                                    MinimumValue="01/01/2013" Type="Date" Font-Size="X-Small" ></asp:RangeValidator>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ForeColor="Red" ErrorMessage="*" ControlToValidate="txtFecha"></asp:RequiredFieldValidator>
+                                    </td>
                             </tr>
                             <tr>
                                 <td>

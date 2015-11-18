@@ -62,6 +62,12 @@ namespace SiGMA
             List<EMascota> mascotas = new List<EMascota>();
             mascotas = LogicaBDMascota.buscarMascotasPorNombre(txtMascota.Text);
             limpiarPagina();
+            if (mascotas == null)
+            {
+                pnlInfo.Visible = true;
+                lblInfo.Text = "Ingrese al menos una letra para buscar mascotas";
+                return;
+            }
             if (mascotas.Count != 0)
             {
                 pnlDueño.Visible = true;
@@ -239,8 +245,8 @@ namespace SiGMA
             }
             catch (Exception exc)
             {
-
-                throw exc;
+                pnlAtento.Visible = true;
+                lblError.Text = "Se produjo un error en la aplicación. Contacte al administrador";
             }
         }
 

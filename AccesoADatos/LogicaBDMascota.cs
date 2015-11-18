@@ -46,7 +46,10 @@ namespace AccesoADatos
                     }
                     if (!mascota.fechaNacimiento.Equals(new DateTime()))
                     {
-                        bdMascota.fechaNacimiento = mascota.fechaNacimiento.Value.Date;
+                        if (mascota.fechaNacimiento != null)
+                            bdMascota.fechaNacimiento = mascota.fechaNacimiento.Value.Date;
+                        else
+                            bdMascota.fechaNacimiento = null;
                     }
                     bdMascota.sexo = mascota.sexo;
                     mapaEntidades.AddToMascotas(bdMascota);
