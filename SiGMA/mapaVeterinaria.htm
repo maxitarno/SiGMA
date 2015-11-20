@@ -14,7 +14,6 @@
         var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
         var geocoder = new google.maps.Geocoder();
         geocodeAddress(geocoder, map);
-
         marker.setMap(map);
     }
     function geocodeAddress(geocoder, resultsMap) {
@@ -32,7 +31,8 @@
                     map: resultsMap,
                     position: results[0].geometry.location,
                     title: texto,
-                    animation: google.maps.Animation.DROP
+                    //animation: google.maps.Animation.DROP,
+                    icon: "~\imagenes\veterinarias.png"
                 });
             } else {
                 alert('La dirección especificada no se encontro ');

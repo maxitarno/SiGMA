@@ -96,6 +96,12 @@ namespace SiGMA
                 }
                 rnvFechaPerdida.MaximumValue = DateTime.Now.ToShortDateString();
             }
+            else
+            {
+                pnlInfo.Visible = false;
+                pnlCorrecto.Visible = false;
+                pnlAtento.Visible = false;
+            }
         }
         public void rbPorTipo(object sender, EventArgs e)
         {
