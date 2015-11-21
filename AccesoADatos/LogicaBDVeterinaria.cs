@@ -170,21 +170,31 @@ namespace AccesoADatos
                                join LocalidadBD in mapa.Localidades on G1.idLocalidad equals LocalidadBD.idLocalidad into group2
                                from G2 in group2.DefaultIfEmpty()
                                join CalleBD in mapa.Calles on VeterinariaBD.idCalle equals CalleBD.idCalle into group3
-                               from G3 in group2.DefaultIfEmpty()
+                               from G3 in group3.DefaultIfEmpty()
                                where (G1.idBarrio == veterinaria.domicilio.barrio.idBarrio)
-                               select VeterinariaBD;
+                               select new
+                               {
+                                   id = VeterinariaBD.idVeterinaria,
+                                   nombre = VeterinariaBD.nombre,
+                                   localidad = G2.nombre,
+                                   calle = G3.nombre,
+                                   nro = VeterinariaBD.nroCalle,
+                                   barrio = G1.nombre,
+                                   web = VeterinariaBD.web,
+                                   telefono = VeterinariaBD.telefono
+                               };
                 foreach (var registro in consulta)
                 {
                     veterinaria = new EVeterinaria();
-                    veterinaria.id = registro.idVeterinaria;
+                    veterinaria.id = registro.id;
                     veterinaria.nombre = registro.nombre;
                     veterinaria.domicilio = new EDomicilio();
                     veterinaria.domicilio.calle = new ECalle();
                     veterinaria.domicilio.barrio = new EBarrio();
                     veterinaria.domicilio.barrio.localidad = new ELocalidad();
-                    veterinaria.domicilio.calle.nombre = registro.Calles.nombre;
-                    veterinaria.domicilio.numeroCalle = (registro.nroCalle == null)? 0 : (int)registro.nroCalle;
-                    veterinaria.domicilio.barrio.localidad.nombre = registro.Barrios.Localidades.nombre;
+                    veterinaria.domicilio.calle.nombre = registro.calle;
+                    veterinaria.domicilio.numeroCalle = (registro.nro == null)? 0 : (int)registro.nro;
+                    veterinaria.domicilio.barrio.localidad.nombre = registro.localidad;
                     veterinaria.telefono = registro.telefono;
                     veterinaria.contacto = registro.web;
                     veterinarias.Add(veterinaria);
