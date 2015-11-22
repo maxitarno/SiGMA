@@ -60,6 +60,7 @@ namespace SiGMA
                                     veterinaria.medicina = chkMedicinas.Checked;
                                     veterinaria.castraciones = chkCastraciones.Checked;
                                     veterinaria.contacto = (txtContacto.Text == "") ? "" : txtContacto.Text;
+                                    veterinaria.telefono = (txtTE.Text == "") ? "" : txtTE.Text;
                                     veterinaria.domicilio = new EDomicilio();
                                     veterinaria.domicilio.barrio = new EBarrio();
                                     veterinaria.domicilio.barrio.localidad = new ELocalidad();

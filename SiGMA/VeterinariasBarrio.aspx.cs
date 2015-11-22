@@ -57,7 +57,7 @@ namespace SiGMA
                     telefono += ",";
                 }
             }
-            pagina = "mapaVeterinarias.htm?direccion=" + direccion + "&nombre=" + nombre;// + "&telefono=" + telefono + "&contacto=" + contacto;
+            pagina = "mapaVeterinarias.htm?direccion=" + direccion + "&nombre=" + nombre + "&telefono=" + telefono + "&contacto=" + contacto;
             //pagina = "mapaVeterinarias.htm?direccion=argentina cordoba capital colon 123,argentina cordoba capital colon 146";
             Response.Write("<script>window.open('" + pagina + "','popup','width=800,height=500')</script>");
         }

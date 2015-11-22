@@ -195,8 +195,8 @@ namespace AccesoADatos
                     veterinaria.domicilio.calle.nombre = registro.calle;
                     veterinaria.domicilio.numeroCalle = (registro.nro == null)? 0 : (int)registro.nro;
                     veterinaria.domicilio.barrio.localidad.nombre = registro.localidad;
-                    veterinaria.telefono = registro.telefono;
-                    veterinaria.contacto = registro.web;
+                    veterinaria.telefono = (registro.telefono == null)? "No tiene telefono" : registro.telefono;
+                    veterinaria.contacto = (registro.web == null)? "No tiene contacto" : registro.web;
                     veterinarias.Add(veterinaria);
                 }
                 return veterinarias;
