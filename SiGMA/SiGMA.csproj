@@ -123,6 +123,7 @@
     <Content Include="GenerarCodigoQR.aspx" />
     <Content Include="Grafico.htm" />
     <Content Include="Hallazgos.aspx" />
+    <Content Include="imagenes\veterinarias %2835x35%29.jpg" />
     <Content Include="mapaHallazgos.htm" />
     <Content Include="imagenes\volver.png" />
     <Content Include="Login.aspx" />
