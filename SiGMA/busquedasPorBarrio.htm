@@ -25,6 +25,7 @@
         var nombres = [];
         var cuidados = [];
         var j = 0;
+        var bounds;
         //metodo de inicio
         function initMap() {
             map = new google.maps.Map(document.getElementById("map"), {
@@ -32,6 +33,7 @@
                 zoom: 16,
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             });
+            bounds = new google.maps.LatLngBounds();
             infowindows = new google.maps.InfoWindow();
             geocoder = new google.maps.Geocoder();
             direcciones = getURLParameter("direccion").toString().split(",");
@@ -59,7 +61,7 @@
                         marcador = new google.maps.Marker({
                             position: results[0].geometry.location,
                             map: map,
-                            icon: "./imagenes/veterinarias (35x35).jpg"
+                            icon: "./imagenes/registrarperdida (34x35).jpg"
                         });
                         marcador.addListener('click', function () {
                             infowindows.setContent(datos);
@@ -75,6 +77,8 @@
                             center: results[0].geometry.location,
                             radius: Math.sqrt(cuidado) * 100
                         });
+                        bounds.extend(results[0].geometry.location);
+                        map.fitBounds(bounds);
                     } (marcador, datos));
                     marcadores.push(marcador);
                 }

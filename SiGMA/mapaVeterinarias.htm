@@ -11,6 +11,7 @@
     </style>   
     <script type="text/javascript">
         //variables
+        var bounds = new google.maps.LatLngBounds();
         var map;
         var marcador = new google.maps.Marker();
         var marcadores = [];
@@ -67,6 +68,8 @@
                             infowindows.setContent(datos);
                             infowindows.open(map, marcador);
                         });
+                        bounds.extend(results[0].geometry.location);
+                        map.fitBounds(bounds);
                     } (marcador, datos));
                     marcadores.push(marcador);
                 }
