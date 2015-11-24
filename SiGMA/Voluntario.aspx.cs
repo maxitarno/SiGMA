@@ -335,13 +335,30 @@ namespace SiGMA
 
         protected void btnMapa_Click(object sender, EventArgs e)
         {
+            string cuidado = "0";
             int idMascota = int.Parse(ddlBusquedasMascota.SelectedValue);
             EPerdida perdida = new EPerdida();
             EMascota mascota = new EMascota();
             LogicaBDPerdida.BuscarMascotaAConsultarPerdida(idMascota, mascota, perdida);
             string direccion = "argentina " + perdida.domicilio.barrio.localidad.nombre.ToLower().ToString() + " " + perdida.domicilio.calle.nombre.ToLower().ToString() + " " + perdida.domicilio.numeroCalle;
             string nombre = mascota.nombreMascota;
-            string pagina = "mapaVeterinarias.htm?direccion=" + direccion + "&nombre=" + nombre;
+            if (mascota.raza.cuidadoEspecial.idCuidado == 0)
+            {
+                cuidado = "0";
+            }
+            else if (mascota.raza.cuidadoEspecial.idCuidado == 1 || mascota.raza.cuidadoEspecial.idCuidado == 4)
+            {
+                cuidado = "2";
+            }
+            else if (mascota.raza.cuidadoEspecial.idCuidado == 2)
+            {
+                cuidado = "8";
+            }
+            else if (mascota.raza.cuidadoEspecial.idCuidado == 3)
+            {
+                cuidado = "4";
+            }
+            string pagina = "Busqueda.htm?direccion=" + direccion + "&nombre=" + nombre + "&cuidado=" + cuidado;
             Response.Write("<script>window.open('" + pagina + "','popup','width=800,height=500');</script>");
         }
 

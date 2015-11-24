@@ -24,6 +24,7 @@
         var nombre = "<div><p><h3>nombre: " +getURLParameter("nombre") + "</h3></p></div>";
         var direccion = getURLParameter("direccion");
         var address = direccion;
+        var cuidado = getURLParameter("cuidado");
         geocoder.geocode({ 'address': address }, function (results, status) {
             if (status === google.maps.GeocoderStatus.OK) {
                 resultsMap.setCenter(results[0].geometry.location);
@@ -53,18 +54,6 @@
         });
     }
     google.maps.event.addDomListener(window, 'load', initialize);
-</script>
-<script type="text/javascript">
-    function BtnRegresarClick() {
-        function getURLParameter(name) { return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [, ""])[1].replace(/\+/g, '%20')) || null }
-        var m = getURLParameter("m");
-        if (m == 2) {
-            location.href = "ConsultarPerdida.aspx?m=2";
-        }
-        else {
-            location.href = "ConsultarPerdida.aspx?m=1";
-        }
-    }
 </script>
 </head>
 

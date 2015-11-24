@@ -363,8 +363,8 @@ namespace AccesoADatos
                     {
                         mascota.imagen = null;
                     }
-                    perdida.domicilio.calle.nombre = registro.nombreCalle;//agregado
-                    perdida.domicilio.barrio.localidad.nombre = registro.nombreLocalidadDePerdida;//agregado
+                    perdida.domicilio.calle.nombre = (registro.nombreCalle == null) ? "" : registro.nombreCalle;//agregado
+                    perdida.domicilio.barrio.localidad.nombre = (registro.nombreLocalidadDePerdida == null) ? "": registro.nombreLocalidadDePerdida;//agregado
                 }
                 if (mascota.estado != null)
                     b = true;
