@@ -335,7 +335,14 @@ namespace SiGMA
 
         protected void btnMapa_Click(object sender, EventArgs e)
         {
-            var idMascota = ddlBusquedasMascota.SelectedValue;
+            int idMascota = int.Parse(ddlBusquedasMascota.SelectedValue);
+            EPerdida perdida = new EPerdida();
+            EMascota mascota = new EMascota();
+            LogicaBDPerdida.BuscarMascotaAConsultarPerdida(idMascota, mascota, perdida);
+            string direccion = "argentina " + perdida.domicilio.barrio.localidad.nombre.ToLower().ToString() + " " + perdida.domicilio.calle.nombre.ToLower().ToString() + " " + perdida.domicilio.numeroCalle;
+            string nombre = mascota.nombreMascota;
+            string pagina = "mapaVeterinarias.htm?direccion=" + direccion + "&nombre=" + nombre;
+            Response.Write("<script>window.open('" + pagina + "','popup','width=800,height=500');</script>");
         }
 
         protected void ddlTipoVoluntario_SelectedIndexChanged(object sender, EventArgs e)

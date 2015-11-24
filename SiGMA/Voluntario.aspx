@@ -233,6 +233,11 @@
                                     </asp:DropDownList></td>
                                     <td></td>
                                 </tr>
+                                <tr style="height:30px">
+                                    <td align="right" width="200px">
+                                        <asp:Button ID="btnBusquedaPorBarrio" runat="server" Text="Busquedas por barrio" />
+                                    </td>
+                                </tr>
                             </table>
                             <br />
                             <div class="centered"><h5>¿Desea actualizar sus datos de disponibilidad?</h5></div>

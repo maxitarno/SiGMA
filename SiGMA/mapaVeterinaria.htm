@@ -5,34 +5,42 @@
 <script type="text/javascript" src="Scripts/jquery-2.1.3.js"></script>
 <script type="text/javascript" src="Scripts/jsapi.js"></script>
 <script type="text/javascript">
+    var infowindow;
     function initialize() {
         var mapProp = {
             center: { lat: -31.4080027, lng: -64.18063840000002 },
             zoom: 16,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
+        infowindow = new google.maps.InfoWindow();
         var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
         var geocoder = new google.maps.Geocoder();
         geocodeAddress(geocoder, map);
-        marker.setMap(map);
     }
     function geocodeAddress(geocoder, resultsMap) {
         function getURLParameter(name) { return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [, ""])[1].replace(/\+/g, '%20')) || null }
         var direccion = getURLParameter("direccion");
-        var nombre = getURLParameter("nombre");
+        var nombre =  getURLParameter("nombre");
         var telefono = getURLParameter("telefono");
         var contacto = getURLParameter("contacto");
-        var texto = nombre + "\n" + telefono + "\n" + contacto;
-        var address = direccion
+        if (telefono == null)
+            telefono = "No disponible";
+        if (contacto == null)
+            contacto = "No disponible";
+        var texto = "<div><p><h3>nombre: " + nombre + "</br>telefono: " + telefono + "</br>contacto: " + contacto + "</h3></p></div>";
+        var address = direccion;
         geocoder.geocode({ 'address': address }, function (results, status) {
             if (status === google.maps.GeocoderStatus.OK) {
                 resultsMap.setCenter(results[0].geometry.location);
                 var marker = new google.maps.Marker({
                     map: resultsMap,
                     position: results[0].geometry.location,
-                    title: texto,
-                    //animation: google.maps.Animation.DROP,
-                    icon: "~\imagenes\veterinarias.png"
+                    animation: google.maps.Animation.DROP,
+                    icon: "./imagenes/veterinarias (35x35).jpg"
+                });
+                marker.addListener('click', function () {
+                    infowindow.setContent(texto);
+                    infowindow.open(resultsMap, marker);
                 });
             } else {
                 alert('La dirección especificada no se encontro ');

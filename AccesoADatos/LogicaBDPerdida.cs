@@ -258,6 +258,10 @@ namespace AccesoADatos
                                from G5 in group5.DefaultIfEmpty()
                                join calleBD in mapaEntidades.Calles on G2.idCalle equals calleBD.idCalle into group6
                                from G6 in group6.DefaultIfEmpty()
+                               join calleBD in mapaEntidades.Calles on G0.idCallePerdida equals calleBD.idCalle into group7
+                               from G7 in group7.DefaultIfEmpty()
+                               join LocalidadBD in mapaEntidades.Localidades on G0.idLocalidadPerdida equals LocalidadBD.idLocalidad into group8
+                               from G8 in group8.DefaultIfEmpty()//agregado
                                where ((MascotasBD.idEstado == 3) && MascotasBD.idMascota == idMascota)
                                select new
                                {
@@ -295,7 +299,9 @@ namespace AccesoADatos
                                    idBarrioPerdida = (G0.idBarrioPerdida == null) ? 0 : G0.idBarrioPerdida,
                                    idCallePerdida = (G0.idCallePerdida == null) ? 0 : G0.idCallePerdida,
                                    nroCallePerdida = (G0.nroCallePerdida == null) ? null : G0.nroCallePerdida,
-                                   comentarios = G0.observaciones
+                                   comentarios = G0.observaciones,
+                                   nombreCalle = G7.nombre,//agregado
+                                   nombreLocalidadDePerdida = G8.nombre//agregado
                                };
                 foreach (var registro in consulta)
                 {
@@ -348,6 +354,7 @@ namespace AccesoADatos
                     mascota.duenio.nroCalle = registro.nroCalle;
                     mascota.raza.cuidadoEspecial = new ECuidado();
                     mascota.raza.cuidadoEspecial.idCuidado = registro.idCuidado;//agregado
+
                     if (registro.imagen != null)
                     {
                         mascota.imagen = registro.imagen;
@@ -356,6 +363,8 @@ namespace AccesoADatos
                     {
                         mascota.imagen = null;
                     }
+                    perdida.domicilio.calle.nombre = registro.nombreCalle;//agregado
+                    perdida.domicilio.barrio.localidad.nombre = registro.nombreLocalidadDePerdida;//agregado
                 }
                 if (mascota.estado != null)
                     b = true;

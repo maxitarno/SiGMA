@@ -237,7 +237,10 @@ namespace SiGMA
                 }
                 direccion = "argentina " + ddlLocalidadPerdida.SelectedItem.Text.ToLower() + " " + ddlCallePerdida.SelectedItem.Text.ToLower() + " " + txtNroCallePerdida.Text; //QUE ES ESTO ????? 
                 //agregado
-                hidden1.Value = "mapa1.htm?direccion=" + direccion + "&cuidado=" + cuidado;
+                //hidden1.Value = "mapa1.htm?direccion=" + direccion + "&cuidado=" + cuidado;
+                string pagina = "mapaPerdida.htm?direccion=" + direccion + "&nombre=" + mascota.nombreMascota;
+                Response.Write("<script>window.open('" + pagina + "','popup','width=800,height=500');</script>");
+        
             }
             else
             {
@@ -355,7 +358,7 @@ namespace SiGMA
             {
                 cuidado = "4";
             }
-            direccion = "mapaPerdida.htm?direccion=argentina " + ddlLocalidadPerdida.SelectedItem.Text.ToLower() + " " + ddlCallePerdida.SelectedItem.Text.ToLower() + " " + txtNroCallePerdida.Text + "&cuidado=" + cuidado;
+            direccion = "mapaPerdida.htm?direccion=argentina " + ddlLocalidadPerdida.SelectedItem.Text.ToLower() + " " + ddlCallePerdida.SelectedItem.Text.ToLower() + " " + txtNroCallePerdida.Text + "&nombre=" + mascota.nombreMascota;
             Response.Write("<script> window.open('" + direccion + "','popup','width=800,height=500') </script>");
         }
     }
