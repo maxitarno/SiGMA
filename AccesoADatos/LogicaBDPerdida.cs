@@ -395,6 +395,8 @@ namespace AccesoADatos
                            from G4 in group5.DefaultIfEmpty()
                            join CalleBD in mapa.Calles on PerdidasBD.idCallePerdida equals CalleBD.idCalle into group6
                            from G5 in group6.DefaultIfEmpty()
+                           join RazaBD in mapa.Razas on G2.idRaza equals RazaBD.idRaza into group7
+                           from G7 in group7.DefaultIfEmpty()
                            select new
                            {
                                Barrio = G3,
@@ -404,6 +406,7 @@ namespace AccesoADatos
                                estado = G0,
                                localidad = G4,
                                calle =  G5,
+                               raza = G7,
                            };
             foreach (var registro in consulta)
             {
@@ -427,6 +430,8 @@ namespace AccesoADatos
                 perdida.domicilio.numeroCalle = (registro.perdida.nroCallePerdida == null) ? 0 : int.Parse(registro.perdida.nroCallePerdida);
                 perdida.ubicacion = registro.perdida.ubicacionPerdida;
                 perdida.comentarios = registro.perdida.observaciones;
+                perdida.mascota.cuidadoEspecial = new ECuidado();//agregado
+                perdida.mascota.cuidadoEspecial.idCuidado = (registro.raza.idCuidadoEspecial == null) ? 0 : (int)registro.raza.idCuidadoEspecial;//agregado
                 aux.Add(perdida);
             }
             return aux;

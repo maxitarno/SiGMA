@@ -105,6 +105,9 @@ namespace SiGMA
             {
                 ddlBusquedasMascota.Items.Clear();
                 List<EPerdida> perdidas = LogicaBDVoluntario.cargarPerdidasBarrioVoluntario(ddlBarrioBusqueda.SelectedItem.Text);
+                List<EPerdida> aux = new List<EPerdida>();
+                aux = perdidas;
+                Session["perdidas"] = aux;
                 if (perdidas.Count != 0)
                 {
                     ddlBusquedasMascota.Enabled = true;
@@ -365,6 +368,43 @@ namespace SiGMA
         protected void ddlTipoVoluntario_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        protected void btnBusquedaPorBarrio_Click(object sender, EventArgs e)
+        {
+            string nombre = "";
+            string direccion = "";
+            string cuidado = "";
+            List<EPerdida> aux = (List<EPerdida>)Session["perdidas"];
+            for (int i = 0; i < aux.Count; i++ )
+            {
+                nombre += aux[i].mascota.nombreMascota;
+                direccion += ("argentina " + aux[i].barrio.localidad.nombre.ToLower().ToString() + " " + aux[i].domicilio.calle.nombre.ToLower().ToString() + " " + aux[i].domicilio.numeroCalle.ToString()).ToString();
+                if (aux[i].mascota.cuidadoEspecial.idCuidado == 0)
+                {
+                    cuidado += "0";
+                }
+                else if (aux[i].mascota.cuidadoEspecial.idCuidado == 1 || aux[i].mascota.cuidadoEspecial.idCuidado == 4)
+                {
+                    cuidado += "2";
+                }
+                else if (aux[i].mascota.cuidadoEspecial.idCuidado == 2)
+                {
+                    cuidado += "8";
+                }
+                else if (aux[i].mascota.cuidadoEspecial.idCuidado == 3)
+                {
+                    cuidado += "4";
+                }
+                if (i != (aux.Count - 1))
+                {
+                    direccion += ",";
+                    nombre += ",";
+                    cuidado += ",";
+                }
+            }
+            string pagina = "busquedasPorBarrio.htm?direccion=" + direccion + "&nombre=" + nombre + "&cuidado=" + cuidado;
+            Response.Write("<script>window.open('" + pagina + "','popup','width=800,height=500')</script>");
         }
     }
 }

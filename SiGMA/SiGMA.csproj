@@ -102,6 +102,7 @@
     <Content Include="assets\js\hover.zoom.conf.js" />
     <Content Include="assets\js\hover.zoom.js" />
     <Content Include="Busqueda.htm" />
+    <Content Include="busquedasPorBarrio.htm" />
     <Content Include="CABMRazas.aspx" />
     <Content Include="CABMTipoDeDocumento.aspx" />
     <Content Include="CAMBVeterinarias.aspx" />

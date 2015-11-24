@@ -76,15 +76,6 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.DropDownList ddlBarrio;
         
         /// <summary>
-        /// Control lstVeterinarias.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox lstVeterinarias;
-        
-        /// <summary>
         /// Control ibtnRegresar.
         /// </summary>
         /// <remarks>

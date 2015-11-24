@@ -235,7 +235,8 @@
                                 </tr>
                                 <tr style="height:30px">
                                     <td align="right" width="200px">
-                                        <asp:Button ID="btnBusquedaPorBarrio" runat="server" Text="Busquedas por barrio" />
+                                        <asp:Button ID="btnBusquedaPorBarrio" runat="server" 
+                                            Text="Busquedas por barrio" onclick="btnBusquedaPorBarrio_Click" />
                                     </td>
                                 </tr>
                             </table>

@@ -38,10 +38,6 @@ namespace SiGMA
             string telefono = "";
             string contacto = "";
             string direccion = "";
-            lstVeterinarias.DataSource = veterinarias;
-            lstVeterinarias.DataValueField = "id";
-            lstVeterinarias.DataTextField = "nombre";
-            lstVeterinarias.DataBind();
             string pagina = "";
             for (int i = 0; i < veterinarias.Count; i++)
             {
@@ -58,7 +54,6 @@ namespace SiGMA
                 }
             }
             pagina = "mapaVeterinarias.htm?direccion=" + direccion + "&nombre=" + nombre + "&telefono=" + telefono + "&contacto=" + contacto;
-            //pagina = "mapaVeterinarias.htm?direccion=argentina cordoba capital colon 123,argentina cordoba capital colon 146";
             Response.Write("<script>window.open('" + pagina + "','popup','width=800,height=500')</script>");
         }
     }
