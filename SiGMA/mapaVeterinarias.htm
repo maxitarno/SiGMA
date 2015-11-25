@@ -37,9 +37,9 @@
             infowindows = new google.maps.InfoWindow();
             geocoder = new google.maps.Geocoder();
             direcciones = getURLParameter("direccion").toString().split(",");
-            nombres = getURLParameter("nombre").toString().split(",");
+            nombres = (getURLParameter("nombre") == null) ? "" : getURLParameter("nombre").toString().split(",");
             //contactos = getURLParameter("contacto").toString().split(",");
-            telefonos = getURLParameter("telefono").toString().split(",");
+            telefonos = (getURLParameter("telefono") == null) ? "" : getURLParameter("telefono").toString().split(",");
             len = direcciones.length;
             for (; j < len; j++) {
                 var aux = "<div><p><h3>nombre: " + nombres[j].toString() + "</br>telefono: " + telefonos[j].toString() + "</h3></p></div>";

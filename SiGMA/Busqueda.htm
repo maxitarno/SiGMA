@@ -19,9 +19,9 @@
     }
     function geocodeAddress(geocoder, resultsMap) {
         function getURLParameter(name) { return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [, ""])[1].replace(/\+/g, '%20')) || null }
-        var cuidado = getURLParameter("cuidado");
-        var direccion = getURLParameter("direccion");
-        var nombre = getURLParameter("nombre");
+        var cuidado = (getURLParameter("cuidado") == null) ? "" : getURLParameter("cuidado");
+        var direccion = (getURLParameter("direccion") == null) ? "" : getURLParameter("direccion");
+        var nombre = (getURLParameter("nombre") == null) ? "" : getURLParameter("nombre");
         var texto = "<div><p><h3>nombre: " + nombre + "<br>direccion: " + direccion + "</h3></p></div>";
         var address = direccion;
         geocoder.geocode({ 'address': address }, function (results, status) {

@@ -36,9 +36,9 @@
             bounds = new google.maps.LatLngBounds();
             infowindows = new google.maps.InfoWindow();
             geocoder = new google.maps.Geocoder();
-            direcciones = getURLParameter("direccion").toString().split(",");
-            nombres = getURLParameter("nombre").toString().split(",");
-            cuidados = getURLParameter("cuidado").toString().split(",");
+            direcciones = (getURLParameter("direccion") == null) ? "" : getURLParameter("direccion").toString().split(",");
+            nombres = (getURLParameter("nombre") == null) ? "" : getURLParameter("nombre").toString().split(",");
+            cuidados = (getURLParameter("cuidado") == null) ? "" : getURLParameter("cuidado").toString().split(",");
             len = direcciones.length;
             for (; j < len; j++) {
                 var aux = "<div><p><h3>nombre: " + nombres[j].toString() + "</br>dirección: " + direcciones[j].toString() + "</h3></p></div>";

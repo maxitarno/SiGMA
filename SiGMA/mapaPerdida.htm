@@ -22,9 +22,9 @@
     function geocodeAddress(geocoder, resultsMap) {
         function getURLParameter(name) { return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [, ""])[1].replace(/\+/g, '%20')) || null }
         var nombre = "<div><p><h3>nombre: " +getURLParameter("nombre") + "</h3></p></div>";
-        var direccion = getURLParameter("direccion");
+        var direccion = (getURLParameter("direccion") == null)? "" : getURLParameter("direccion");
         var address = direccion;
-        var cuidado = getURLParameter("cuidado");
+        var cuidado = (getURLParameter("cuidado") == null)? "0" : getURLParameter("cuidado");
         geocoder.geocode({ 'address': address }, function (results, status) {
             if (status === google.maps.GeocoderStatus.OK) {
                 resultsMap.setCenter(results[0].geometry.location);
