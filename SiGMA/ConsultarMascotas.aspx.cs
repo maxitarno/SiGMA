@@ -684,11 +684,7 @@ namespace SiGMA
                     lblResultado1.Text = "Mascota disponible para adopcion";
                     var tweet = new Herramientas.GestorTwitter();
                     byte[] imagen = (byte[])Session["imagen"];
-                    EMascota mascota = new EMascota
-                    {
-                        raza = new ERaza { nombreRaza = ddlRaza.SelectedItem.Text },
-                        edad = new EEdad { descripcion = ddlEdad.SelectedItem.Text }
-                    };
+                    EMascota mascota = LogicaBDMascota.BuscarMascotaPorIdMascota(Int32.Parse(Session["idMascota"].ToString()));
                     if (imagen != null)
                     {
                         tweet.PublicarTweetConFoto(imagen, tweet.generarMensajeAdopcion(mascota));

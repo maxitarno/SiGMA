@@ -334,6 +334,7 @@ namespace AccesoADatos
                                    estado = EstadosBD.nombreEstado,
                                    idEspecie = MascotasBD.idEspecie,
                                    especie = especiesBD.nombreEspecie,
+                                   descripcionEdad = edadesBD.descripcion,
                                    idEdad = MascotasBD.idEdad,
                                    observacion = MascotasBD.observaciones,
                                    edad = edadesBD.nombreEdad,
@@ -384,6 +385,7 @@ namespace AccesoADatos
                     mascota.edad = new EEdad();
                     mascota.edad.idEdad = registro.idEdad;
                     mascota.edad.nombreEdad = registro.edad;
+                    mascota.edad.descripcion = registro.descripcionEdad;
                     mascota.especie = new EEspecie();
                     mascota.especie.idEspecie = registro.idEspecie;
                     mascota.especie.nombreEspecie = registro.especie;

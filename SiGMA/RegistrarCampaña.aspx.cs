@@ -95,8 +95,7 @@ namespace SiGMA
                     pnlAtento.Visible = true;
                     pnlCorrecto.Visible = true;
                     lblError.Text = "Error al registrar la campaña";
-                    SetFocus(pnlAtento);
-                    throw;
+                    SetFocus(pnlAtento);                    
                 }
             }
         }

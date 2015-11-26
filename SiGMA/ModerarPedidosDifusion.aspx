@@ -84,7 +84,9 @@
                             <asp:BoundField DataField="mascota.idMascota" ItemStyle-CssClass="hidden" HeaderStyle-CssClass="hidden" />
                             <asp:ButtonField ButtonType="Button" Text="+"/>
                         </Columns>
-                    </asp:GridView> </div>
+                    </asp:GridView>                     
+                    </div>
+                    <asp:Label ID="lblNoPedidos" runat="server" visible="false" Text = "No hay pedidos para moderar"></asp:Label>
             </asp:Panel>                               
                 <asp:Panel ID="pnlDatos" runat="server" Visible="false">
                 <div style="margin-left: 30%; display: table; width: 60%;">  
@@ -98,7 +100,7 @@
                                     </td>
                                     </tr>
                                 <tr>
-                                    <td colspan="2"><asp:Label ID="lblDatosCampaña" runat="server" Text="Tipo de campaña:"></asp:Label>
+                                    <td colspan="2"><asp:Label ID="lblDatos" runat="server"></asp:Label>
                                     </td>
                                 </tr>
                             </table>

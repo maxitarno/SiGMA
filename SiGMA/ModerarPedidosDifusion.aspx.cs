@@ -22,9 +22,15 @@ namespace SiGMA
 
         private void listarPedidosDifusion()
         {
-            grvPedidos.DataSource = LogicaBDPedidoDifusion.buscarPedidosDifusion(LogicaBDEstado.buscarEstado(
+            List<EPedidoDifusion> listPedidos = LogicaBDPedidoDifusion.buscarPedidosDifusion(LogicaBDEstado.buscarEstado(
                     new EEstado { nombreEstado = "Pendiente de Aceptacion", ambito = "Difusion" }));
+            grvPedidos.DataSource = listPedidos;
             grvPedidos.DataBind();
+            if (listPedidos.Count == 0)
+            {             
+                lblNoPedidos.Visible = true;                
+                SetFocus(lblNoPedidos);
+            }
         }
 
         protected void ddlResolucion_SelectedIndexChanged(object sender, EventArgs e)
@@ -51,11 +57,11 @@ namespace SiGMA
             pedido.idPedidoDifusion = int.Parse(grvPedidos.Rows[Int32.Parse(e.CommandArgument.ToString())].Cells[3].Text);
             pedido.tipo = grvPedidos.Rows[Int32.Parse(e.CommandArgument.ToString())].Cells[0].Text;
             pedido.user = new EUsuario { user = grvPedidos.Rows[Int32.Parse(e.CommandArgument.ToString())].Cells[2].Text };
-            pedido.fecha = DateTime.Parse(grvPedidos.Rows[Int32.Parse(e.CommandArgument.ToString())].Cells[1].Text);            
+            pedido.fecha = DateTime.Parse(grvPedidos.Rows[Int32.Parse(e.CommandArgument.ToString())].Cells[1].Text);
             if (pedido.tipo.Contains("Campa"))
             {
                 ECampaña entCampaña = LogicaBDCampaña.buscarCampaña(Int32.Parse(grvPedidos.Rows[Int32.Parse(e.CommandArgument.ToString())].Cells[4].Text));
-                lblDatosCampaña.Text = "Tipo de campaña: " + entCampaña.tipoCampaña.descripcion + ", fecha: " + entCampaña.fecha.ToShortDateString()
+                lblDatos.Text = "Tipo de campaña: " + entCampaña.tipoCampaña.descripcion + ", fecha: " + entCampaña.fecha.ToShortDateString()
                     + ", lugar: " + entCampaña.lugar + ", hora: " + entCampaña.hora.ToString("HH:mm");
                 if (entCampaña.imagen != null)
                 {
@@ -66,6 +72,22 @@ namespace SiGMA
                     ponerImagen(null);
                 }
                 pedido.campaña = entCampaña;
+            }
+            else if(pedido.tipo.Contains("Adop"))
+            {
+                EMascota entMascota = LogicaBDMascota.BuscarMascotaPorIdMascota(
+                    Int32.Parse(grvPedidos.Rows[Int32.Parse(e.CommandArgument.ToString())].Cells[7].Text));
+                lblDatos.Text = entMascota.especie.nombreEspecie + ", raza: " + entMascota.raza.nombreRaza + ", edad: " + entMascota.edad.nombreEdad + ", sexo: "
+                    + entMascota.sexo;
+                if (entMascota.imagen != null)
+                {
+                    ponerImagen(entMascota.imagen);
+                }
+                else
+                {
+                    ponerImagen(null);
+                }
+                pedido.mascota = entMascota;
             }
             pnlDatos.Visible = true;
             Session["PedidoDifusion"] = pedido;
@@ -110,15 +132,32 @@ namespace SiGMA
                         pedido.estado = LogicaBDEstado.buscarEstado(new EEstado { nombreEstado = "Publicado", ambito = "Difusion" });
                         LogicaBDPedidoDifusion.modificarPedidoDifusion(pedido);
                         var tweet = new Herramientas.GestorTwitter();
-                        var imagen = pedido.campaña.imagen;
-                        if (imagen != null)
+                        byte[] imagen = null;
+                        if (pedido.campaña != null)
                         {
-                            tweet.PublicarTweetConFoto(imagen, tweet.generarMensajeCampaña(pedido.campaña));
+                           imagen = pedido.campaña.imagen;
+                           if (imagen != null)
+                           {
+                               tweet.PublicarTweetConFoto(imagen, tweet.generarMensajeCampaña(pedido.campaña));
+                           }
+                           else
+                           {
+                               tweet.PublicarTweetSoloTexto(tweet.generarMensajeCampaña(pedido.campaña));
+                           }
                         }
-                        else
+                        else if (pedido.mascota != null)
                         {
-                            tweet.PublicarTweetSoloTexto(tweet.generarMensajeCampaña(pedido.campaña));
-                        }
+                            imagen = pedido.mascota.imagen;
+                            if (imagen != null)
+                            {
+                                tweet.PublicarTweetConFoto(imagen, tweet.generarMensajeAdopcion(pedido.mascota));
+                            }
+                            else
+                            {
+                                tweet.PublicarTweetSoloTexto(tweet.generarMensajeAdopcion(pedido.mascota));
+                            }
+                            LogicaBDMascota.ponerEnAdopcion(pedido.mascota.idMascota);
+                        }                       
                         lblCorrecto.Text = "Pedido publicado exitosamente";
                     }
                     pnlCorrecto.Visible = true;
@@ -130,12 +169,16 @@ namespace SiGMA
                     pnlCorrecto.Visible = false;
                     pnlAtento.Visible = true;
                     lblError.Text = "Error al moderar el pedido";
-                    SetFocus(lblError);
-                    throw;
+                    SetFocus(lblError);                    
                 }
                 finally
                 {
                     listarPedidosDifusion();
+                    pnlDatos.Visible = false;
+                    ddlResolucion.SelectedIndex = 0;
+                    txtRechazo.Text = "";
+                    txtRechazo.Visible = false;
+                    lblRechazo.Visible = false;
                 }
             }
         }

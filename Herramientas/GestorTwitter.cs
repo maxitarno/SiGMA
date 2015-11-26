@@ -24,7 +24,8 @@ namespace Herramientas
 
         public string generarMensajeAdopcion(EMascota mascota)
         {
-            return "Mascota disponible para adopcion. Raza: " + mascota.raza.nombreRaza + ", edad: " + mascota.edad.descripcion;
+            return "Mascota disponible para adopcion. Raza: " + mascota.raza.nombreRaza + ", edad: " + mascota.edad.nombreEdad + " - "
+                + mascota.edad.descripcion;
         }
 
         public void PublicarTweetConFoto(byte[] file, string mensaje)
