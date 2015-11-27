@@ -212,7 +212,14 @@ namespace SiGMA
                     mascota.estado.nombreEstado = ddlEstado.SelectedItem.Text;
                     mascota.estado.idEstado = int.Parse(ddlEstado.SelectedValue);
                 }
-                mascota.nombreMascota = txtMascota.Text;
+                //if (txtMascota.Text.Equals(""))
+                //{
+                    //mascota.nombreMascota = null;
+                //}
+                //else
+                //{
+                    mascota.nombreMascota = txtMascota.Text;
+                //}
                 mascotas = LogicaBDMascota.buscarMascotasFiltros(mascota);
                 if (mascotas != null)
                 {
@@ -743,11 +750,11 @@ namespace SiGMA
                     txtObservaciones.Text = mascota.observaciones;
                     if (mascota.tratoAnimal != null)
                     {
-                        ddlTratoAnimales.SelectedValue = mascota.tratoAnimal.ToString() == "false" ? "2" : "1";
+                        ddlTratoAnimales.SelectedValue = mascota.tratoAnimal == false ? "2" : "1";
                     }
                     if (mascota.tratoNiños != null)
                     {
-                        ddlTratoNinios.SelectedValue = mascota.tratoNiños.ToString() == "false" ? "2" : "1";
+                        ddlTratoNinios.SelectedValue = mascota.tratoNiños == false ? "2" : "1";
                     }
                     pnlDatos.Visible = true;
                     ddlColor.SelectedValue = mascota.color.idColor.ToString();

@@ -333,6 +333,8 @@ namespace SiGMA
             {
                 if (Session["pantalla"].ToString() == "Voluntario.aspx")
                     Response.Redirect("Voluntario.aspx");
+                else
+                    Response.Redirect("Perdidas.aspx");
             }
             else
             Response.Redirect("Perdidas.aspx");

@@ -55,6 +55,7 @@ namespace SiGMA
             }
             pagina = "mapaVeterinarias.htm?direccion=" + direccion + "&nombre=" + nombre + "&telefono=" + telefono + "&contacto=" + contacto;
             Response.Write("<script>window.open('" + pagina + "','popup','width=800,height=500')</script>");
+            //Response.Write("<script>BootstrapDialog.show({ message: $('<div></div>').load('www.google.com')});</script>");
         }
     }
 }
