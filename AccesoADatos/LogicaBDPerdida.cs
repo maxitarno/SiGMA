@@ -474,5 +474,46 @@ namespace AccesoADatos
             }
             return perdidas;
         }
+
+
+        public static int obtenerProximoIdPerdida()
+        {
+            SiGMAEntities mapa = Conexion.crearSegunServidor();
+            var consulta = mapa.ExecuteStoreQuery<Decimal>("SELECT IDENT_CURRENT('Perdidas') + IDENT_INCR('Perdidas')");
+            return int.Parse(consulta.FirstOrDefault().ToString());
+        }
+
+        public static EPerdida buscarPerdida(int idPerdida)
+        {
+            SiGMAEntities mapa = Conexion.crearSegunServidor();
+            var consulta = from perdidasBD in mapa.Perdidas
+                            join barriosBD in mapa.Barrios on perdidasBD.idBarrioPerdida equals barriosBD.idBarrio
+                            join callesBD in mapa.Calles on perdidasBD.idCallePerdida equals callesBD.idCalle
+                            join mascotasBD in mapa.Mascotas on perdidasBD.idMascota equals mascotasBD.idMascota
+                            where perdidasBD.idPerdida == idPerdida
+                            select new
+                            {
+                                perdidasBD.nroCallePerdida,
+                                mascotasBD.idMascota,
+                                mascotasBD.imagen,
+                                barrioNombre = barriosBD.nombre,
+                                calleNombre = callesBD.nombre
+                            };
+            foreach (var item in consulta)
+            {
+                EPerdida perdidaRetorno = new EPerdida();
+                perdidaRetorno.domicilio = new EDomicilio();
+                perdidaRetorno.domicilio.numeroCalle = Int32.Parse(item.nroCallePerdida.ToString());
+                perdidaRetorno.domicilio.barrio = new EBarrio();
+                perdidaRetorno.domicilio.barrio.nombre = item.barrioNombre;
+                perdidaRetorno.domicilio.calle = new ECalle();
+                perdidaRetorno.domicilio.calle.nombre = item.calleNombre;
+                perdidaRetorno.mascota = new EMascota();
+                perdidaRetorno.mascota.idMascota = item.idMascota;
+                perdidaRetorno.mascota.imagen = item.imagen;
+                return perdidaRetorno;
+            }
+            return null;
+        }
     }
 }

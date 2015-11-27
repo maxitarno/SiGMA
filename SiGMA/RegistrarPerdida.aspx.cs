@@ -171,7 +171,7 @@ namespace SiGMA
                     imgprvw.Width = 0;
                     imgprvw.Height = 0;
                 }
-
+                pnlInfo.Visible = false;
             }
             else
             {
@@ -207,6 +207,9 @@ namespace SiGMA
                     EPerdida perdida = new EPerdida();
                     perdida.mascota = new EMascota();
                     perdida.mascota.idMascota = Convert.ToInt32(Session["idMascota"].ToString());
+                    perdida.mascota.raza = new ERaza { nombreRaza = ddlRaza.SelectedItem.Text };
+                    perdida.mascota.color = new EColor { nombreColor = ddlColor.SelectedItem.Text };
+                    perdida.mascota.sexo = ddlSexo.SelectedItem.Text;                    
                     perdida.domicilio = new EDomicilio();
                     perdida.domicilio.barrio = new EBarrio();
                     perdida.domicilio.barrio.localidad = new ELocalidad();
@@ -229,24 +232,51 @@ namespace SiGMA
                         lblInfo.Text = "La fecha de pérdida no puede ser superior a la actual";
                         txtFecha.Focus();
                         return;
-                    }
-                    if (LogicaBDPerdida.registrarPerdida(perdida))
+                    }                    
+                    if (LogicaBDRol.puedePublicarDifusion(Session["UsuarioLogueado"].ToString()))
                     {
+                        if (LogicaBDPerdida.registrarPerdida(perdida))
+                        {
+                            limpiarPagina();
+                            pnlCorrecto.Visible = true;
+                            lblCorrecto.Text = "Pérdida Registrada Correctamente";
+                        }
+                        else
+                        {
+                            pnlAtento.Visible = true;
+                            lblError.Text = "No se registro la pérdida. Verifique datos";
+                            return;
+                        }
+                        var tweet = new Herramientas.GestorTwitter();
+                        byte[] imagen = (byte[])Session["imagen"];                        
+                        if (imagen != null)
+                        {
+                            tweet.PublicarTweetConFoto(imagen, tweet.generarMensajePerdida(perdida));
+                        }
+                        else
+                        {
+                            tweet.PublicarTweetSoloTexto(tweet.generarMensajePerdida(perdida));
+                        }                        
+                    }
+                    else
+                    {
+                        EPedidoDifusion pedido = new EPedidoDifusion();
+                        pedido.tipo = "Perdida";
+                        pedido.perdida = perdida;
+                        pedido.fecha = DateTime.Now;
+                        pedido.estado = LogicaBDEstado.buscarEstadoPorNombre("Pendiente de Aceptacion");
+                        pedido.user = new EUsuario { user = Session["UsuarioLogueado"].ToString() };
+                        LogicaBDPedidoDifusion.registrarPedidoDifusion(pedido);
                         limpiarPagina();
                         pnlCorrecto.Visible = true;
                         lblCorrecto.Text = "Pérdida Registrada Correctamente";
                     }
-                    else
-                    {
-                        pnlAtento.Visible = true;
-                        lblError.Text = "No se registro la pérdida. Verifique datos";
-                    }
                 }
             }
-            catch (Exception exc)
+            catch (Exception)
             {
                 pnlAtento.Visible = true;
-                lblError.Text = "Se produjo un error en la aplicación. Contacte al administrador";
+                lblError.Text = "Se produjo un error en la registración.";
             }
         }
 

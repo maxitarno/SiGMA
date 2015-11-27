@@ -89,6 +89,22 @@ namespace SiGMA
                 }
                 pedido.mascota = entMascota;
             }
+            else if (pedido.tipo.Contains("Perd"))
+            {
+                EPerdida entPerdida = LogicaBDPerdida.buscarPerdida(
+                    Int32.Parse(grvPedidos.Rows[Int32.Parse(e.CommandArgument.ToString())].Cells[6].Text));
+                lblDatos.Text = "Mascota perdida en " + entPerdida.domicilio.calle.nombre.ToLower() + " " +
+                    entPerdida.domicilio.numeroCalle + ", " + entPerdida.domicilio.barrio.nombre.ToLower();
+                if (entPerdida.mascota.imagen != null)
+                {
+                    ponerImagen(entPerdida.mascota.imagen);
+                }
+                else
+                {
+                    ponerImagen(null);
+                }
+                pedido.perdida = entPerdida;
+            }
             pnlDatos.Visible = true;
             Session["PedidoDifusion"] = pedido;
         }

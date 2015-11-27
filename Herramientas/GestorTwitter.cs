@@ -24,8 +24,13 @@ namespace Herramientas
 
         public string generarMensajeAdopcion(EMascota mascota)
         {
-            return "Mascota disponible para adopcion. Raza: " + mascota.raza.nombreRaza + ", edad: " + mascota.edad.nombreEdad + " - "
-                + mascota.edad.descripcion;
+            return "Mascota disponible para adopcion. Raza: " + mascota.raza.nombreRaza + ", edad: " + mascota.edad.descripcion;
+        }
+
+        public string generarMensajePerdida(EPerdida perdida)
+        {
+            return "Mascota perdida en " + perdida.domicilio.calle.nombre.ToLower() + " " + perdida.domicilio.numeroCalle + ", "
+                + perdida.domicilio.barrio.nombre.ToLower();
         }
 
         public void PublicarTweetConFoto(byte[] file, string mensaje)

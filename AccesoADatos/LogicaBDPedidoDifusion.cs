@@ -31,6 +31,12 @@ namespace AccesoADatos
                     {
                         bdPedido.idMascota = pedido.mascota.idMascota;
                     }
+                    else if (pedido.tipo.Equals("Perdida"))
+                    {
+                        pedido.perdida.idPerdida = LogicaBDPerdida.obtenerProximoIdPerdida();
+                        bdPedido.idPerdida = pedido.perdida.idPerdida;
+                        LogicaBDPerdida.registrarPerdida(pedido.perdida);
+                    }
                     mapa.AddToPedidosDifusion(bdPedido);
                     mapa.SaveChanges();
                     transaction.Complete();
