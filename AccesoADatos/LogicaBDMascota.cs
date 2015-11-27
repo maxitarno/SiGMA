@@ -52,6 +52,7 @@ namespace AccesoADatos
                             bdMascota.fechaNacimiento = null;
                     }
                     bdMascota.sexo = mascota.sexo;
+                    bdMascota.noMostrar = false;
                     mapaEntidades.AddToMascotas(bdMascota);
                     mapaEntidades.SaveChanges();
                     if (mascota.imagen != null)
@@ -59,9 +60,8 @@ namespace AccesoADatos
                         mascota.idMascota = mapaEntidades.Mascotas.OrderByDescending(m => m.idMascota).First().idMascota;
                         LogicaBDImagen.guardarImagen(mascota.imagen, mascota);
                     }
-                    bdMascota.noMostrar = false;//registra por defecto que se pueda ver
-                    transaction.Complete();
-                }
+                    
+                    transaction.Complete();                }
                 catch (Exception exc)
                 {
                     transaction.Dispose();
