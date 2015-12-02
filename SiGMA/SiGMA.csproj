@@ -101,8 +101,6 @@
     <Content Include="assets\js\bootstrap.min.js" />
     <Content Include="assets\js\hover.zoom.conf.js" />
     <Content Include="assets\js\hover.zoom.js" />
-    <Content Include="Busqueda.htm" />
-    <Content Include="busquedasPorBarrio.htm" />
     <Content Include="CABMRazas.aspx" />
     <Content Include="CABMTipoDeDocumento.aspx" />
     <Content Include="CAMBVeterinarias.aspx" />
@@ -129,16 +127,12 @@
     <Content Include="imagenes\registrarhallazgo %2834x35%29.jpg" />
     <Content Include="imagenes\registrarperdida %2834x35%29.jpg" />
     <Content Include="imagenes\veterinarias %2835x35%29.jpg" />
-    <Content Include="mapaHallazgos.htm" />
     <Content Include="imagenes\volver.png" />
     <Content Include="Login.aspx" />
     <Content Include="Account\ChangePassword.aspx" />
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
-    <Content Include="mapaVeterinaria.htm" />
-    <Content Include="mapaPerdida.htm" />
-    <Content Include="mapaVeterinarias.htm" />
     <Content Include="Mascotas.aspx" />
     <Content Include="MiPerfil.aspx" />
     <Content Include="MisMascotas.aspx" />

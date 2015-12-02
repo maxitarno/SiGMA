@@ -115,6 +115,10 @@ namespace SiGMA
             Session["imagen"] = hallazgoSelec.mascota.imagen;
             Handler1.AddMethod(ImageHandler_ObtenerImagenMascota);
             imgprvw.Src = ResolveUrl("~/Handler1.ashx");
+            //agregado
+            hfDireccion.Value = ddlLocalidades.SelectedItem.Text.ToLower().ToString() + " " + ddlCalles.SelectedItem.Text.ToLower().ToString() + " " + txtNroCalle.Text;
+            hfNombre.Value = txtNombreMascota.Text;
+            //agregado
         }        
 
         protected void ddlLocalidades_SelectedIndexChanged(object sender, EventArgs e)
@@ -279,14 +283,6 @@ namespace SiGMA
         protected void ibtnRegresar_Click(object sender, ImageClickEventArgs e)
         {
             Response.Redirect("Hallazgos.aspx");
-        }
-
-        protected void btnUbicación_Click(object sender, EventArgs e)
-        {
-            string nombre = txtNombreMascota.Text;
-            string direccion = "argentina " + ddlLocalidades.SelectedItem.Text + " " + ddlCalles.SelectedItem.Text + " " + txtNroCalle.Text;
-            string pagina = "mapaHallazgos.htm?direccion=" + direccion + "&nombre=" + nombre + "&m=" + Request.QueryString["m"];
-            Response.Write("<script>window.open('" + pagina + "','popup','width=800,height=500');</script>");
         }
 
         //protected void calendario_SelectionChanged(object sender, EventArgs e)

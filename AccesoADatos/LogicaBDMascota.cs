@@ -60,8 +60,8 @@ namespace AccesoADatos
                         mascota.idMascota = mapaEntidades.Mascotas.OrderByDescending(m => m.idMascota).First().idMascota;
                         LogicaBDImagen.guardarImagen(mascota.imagen, mascota);
                     }
-                    
-                    transaction.Complete();                }
+                    transaction.Complete();
+                }
                 catch (Exception exc)
                 {
                     transaction.Dispose();

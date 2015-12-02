@@ -346,15 +346,6 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.DropDownList ddlBusquedasMascota;
         
         /// <summary>
-        /// Control btnBusquedaPorBarrio.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnBusquedaPorBarrio;
-        
-        /// <summary>
         /// Control btnActualizarBusqueda.
         /// </summary>
         /// <remarks>
@@ -400,15 +391,6 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.DropDownList ddlRazaPerdida;
         
         /// <summary>
-        /// Control btnMapa.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnMapa;
-        
-        /// <summary>
         /// Control btnSolicitarDetallesPerdida.
         /// </summary>
         /// <remarks>
@@ -425,5 +407,59 @@ namespace SiGMA {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton ibtnRegresar;
+        
+        /// <summary>
+        /// Control hfDirecciones.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfDirecciones;
+        
+        /// <summary>
+        /// Control hfNombres.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfNombres;
+        
+        /// <summary>
+        /// Control hfCuidados.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfCuidados;
+        
+        /// <summary>
+        /// Control hfdirecciones1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfdirecciones1;
+        
+        /// <summary>
+        /// Control hfnombres1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfnombres1;
+        
+        /// <summary>
+        /// Control hfcuidados1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfcuidados1;
     }
 }

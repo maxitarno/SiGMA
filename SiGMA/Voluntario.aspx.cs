@@ -101,21 +101,86 @@ namespace SiGMA
 
         private void cargarComboPerdidasBarrio()
         {
+            //agregado
+            string nombre = "";
+            string direccion = "";
+            string cuidado = "";
+            int i = 0;
+            string cuidados = "0";
+            string nombres = "";
+            string direcciones = "";
+            //agregado
             if (ddlBarrioBusqueda.SelectedValue != "0")
             {
                 ddlBusquedasMascota.Items.Clear();
                 List<EPerdida> perdidas = LogicaBDVoluntario.cargarPerdidasBarrioVoluntario(ddlBarrioBusqueda.SelectedItem.Text);
-                List<EPerdida> aux = new List<EPerdida>();
-                aux = perdidas;
-                Session["perdidas"] = aux;
                 if (perdidas.Count != 0)
                 {
                     ddlBusquedasMascota.Enabled = true;
                     foreach (EPerdida item in perdidas)
                     {
                         ddlBusquedasMascota.Items.Add(new ListItem(item.mascota.nombreMascota.ToString(), item.mascota.idMascota.ToString()));
+                        //agregado
+                        i++;
+                        nombres += item.mascota.nombreMascota;
+                        direcciones += (item.barrio.localidad.nombre.ToLower().ToString() + " " + item.domicilio.calle.nombre.ToLower().ToString() + " " + item.domicilio.numeroCalle.ToString()).ToString();
+                        if (item.mascota.cuidadoEspecial.idCuidado == 0)
+                        {
+                            cuidados += "0";
+                        }
+                        else if (item.mascota.cuidadoEspecial.idCuidado == 1 || item.mascota.cuidadoEspecial.idCuidado == 4)
+                        {
+                            cuidados += "2";
+                        }
+                        else if (item.mascota.cuidadoEspecial.idCuidado == 2)
+                        {
+                            cuidados += "8";
+                        }
+                        else if (item.mascota.cuidadoEspecial.idCuidado == 3)
+                        {
+                            cuidados += "4";
+                        }
+                        if (i != (perdidas.Count))
+                        {
+                            direcciones += ",";
+                            nombres += ",";
+                            cuidados += ",";
+                        }
+                        //agregado
                     }
+                    //agregado
+                    hfDirecciones.Value = direcciones;
+                    hfNombres.Value = nombres;
+                    hfCuidados.Value = cuidados;
+                    //agregado
                     ddlBusquedasMascota_SelectedIndexChanged(null, null);
+                    //agregado
+                    int idMascota = int.Parse(ddlBusquedasMascota.SelectedValue);
+                    EPerdida perdida = new EPerdida();
+                    EMascota mascota = new EMascota();
+                    LogicaBDPerdida.BuscarMascotaAConsultarPerdida(idMascota, mascota, perdida);
+                    direccion = perdida.domicilio.barrio.localidad.nombre.ToLower().ToString() + " " + perdida.domicilio.calle.nombre.ToLower().ToString() + " " + perdida.domicilio.numeroCalle;
+                    nombre = mascota.nombreMascota;
+                    if (mascota.raza.cuidadoEspecial.idCuidado == 0)
+                    {
+                        cuidado = "0";
+                    }
+                    else if (mascota.raza.cuidadoEspecial.idCuidado == 1 || mascota.raza.cuidadoEspecial.idCuidado == 4)
+                    {
+                        cuidado = "2";
+                    }
+                    else if (mascota.raza.cuidadoEspecial.idCuidado == 2)
+                    {
+                        cuidado = "8";
+                    }
+                    else if (mascota.raza.cuidadoEspecial.idCuidado == 3)
+                    {
+                        cuidado = "4";
+                    }
+                    hfdirecciones1.Value = direccion;
+                    hfnombres1.Value = nombre;
+                    hfcuidados1.Value = cuidado;
+                    //agregado
                 }
                 else 
                 {
@@ -241,12 +306,34 @@ namespace SiGMA
             foreach (EPerdida item in perdidas)
             {
                 EMascota mascota = LogicaBDMascota.BuscarMascotaPorIdMascota(item.mascota.idMascota);
+                string cuidados = "0";
                 if (ddlBusquedasMascota.SelectedValue == mascota.idMascota.ToString())
                 {
                     txtMascotaPerdida.Text = mascota.nombreMascota;
                     ddlRazaPerdida.SelectedValue = mascota.raza.idRaza.ToString();
                     ddlEspeciePerdida.SelectedValue = mascota.especie.idEspecie.ToString();
                     pnlMisBusquedas.Visible = true;
+                    //agregado
+                    if (item.mascota.cuidadoEspecial.idCuidado == 0)
+                    {
+                        cuidados += "0";
+                    }
+                    else if (item.mascota.cuidadoEspecial.idCuidado == 1 || item.mascota.cuidadoEspecial.idCuidado == 4)
+                    {
+                        cuidados += "2";
+                    }
+                    else if (item.mascota.cuidadoEspecial.idCuidado == 2)
+                    {
+                        cuidados += "8";
+                    }
+                    else if (item.mascota.cuidadoEspecial.idCuidado == 3)
+                    {
+                        cuidados += "4";
+                    }
+                    hfcuidados1.Value = cuidados;
+                    hfnombres1.Value = mascota.nombreMascota.ToString();
+                    hfdirecciones1.Value = item.barrio.localidad.nombre + " " + item.domicilio.calle.nombre + " " + item.domicilio.numeroCalle;
+                    //agregado
                 }
             }
         }
@@ -336,75 +423,9 @@ namespace SiGMA
             Response.Redirect("~/SerVoluntario.aspx");
         }
 
-        protected void btnMapa_Click(object sender, EventArgs e)
-        {
-            string cuidado = "0";
-            int idMascota = int.Parse(ddlBusquedasMascota.SelectedValue);
-            EPerdida perdida = new EPerdida();
-            EMascota mascota = new EMascota();
-            LogicaBDPerdida.BuscarMascotaAConsultarPerdida(idMascota, mascota, perdida);
-            string direccion = "argentina " + perdida.domicilio.barrio.localidad.nombre.ToLower().ToString() + " " + perdida.domicilio.calle.nombre.ToLower().ToString() + " " + perdida.domicilio.numeroCalle;
-            string nombre = mascota.nombreMascota;
-            if (mascota.raza.cuidadoEspecial.idCuidado == 0)
-            {
-                cuidado = "0";
-            }
-            else if (mascota.raza.cuidadoEspecial.idCuidado == 1 || mascota.raza.cuidadoEspecial.idCuidado == 4)
-            {
-                cuidado = "2";
-            }
-            else if (mascota.raza.cuidadoEspecial.idCuidado == 2)
-            {
-                cuidado = "8";
-            }
-            else if (mascota.raza.cuidadoEspecial.idCuidado == 3)
-            {
-                cuidado = "4";
-            }
-            string pagina = "Busqueda.htm?direccion=" + direccion + "&nombre=" + nombre + "&cuidado=" + cuidado;
-            Response.Write("<script>window.open('" + pagina + "','popup','width=800,height=500');</script>");
-        }
-
         protected void ddlTipoVoluntario_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-        }
-
-        protected void btnBusquedaPorBarrio_Click(object sender, EventArgs e)
-        {
-            string nombre = "";
-            string direccion = "";
-            string cuidado = "";
-            List<EPerdida> aux = (List<EPerdida>)Session["perdidas"];
-            for (int i = 0; i < aux.Count; i++ )
-            {
-                nombre += aux[i].mascota.nombreMascota;
-                direccion += ("argentina " + aux[i].barrio.localidad.nombre.ToLower().ToString() + " " + aux[i].domicilio.calle.nombre.ToLower().ToString() + " " + aux[i].domicilio.numeroCalle.ToString()).ToString();
-                if (aux[i].mascota.cuidadoEspecial.idCuidado == 0)
-                {
-                    cuidado += "0";
-                }
-                else if (aux[i].mascota.cuidadoEspecial.idCuidado == 1 || aux[i].mascota.cuidadoEspecial.idCuidado == 4)
-                {
-                    cuidado += "2";
-                }
-                else if (aux[i].mascota.cuidadoEspecial.idCuidado == 2)
-                {
-                    cuidado += "8";
-                }
-                else if (aux[i].mascota.cuidadoEspecial.idCuidado == 3)
-                {
-                    cuidado += "4";
-                }
-                if (i != (aux.Count - 1))
-                {
-                    direccion += ",";
-                    nombre += ",";
-                    cuidado += ",";
-                }
-            }
-            string pagina = "busquedasPorBarrio.htm?direccion=" + direccion + "&nombre=" + nombre + "&cuidado=" + cuidado;
-            Response.Write("<script>window.open('" + pagina + "','popup','width=800,height=500')</script>");
         }
     }
 }

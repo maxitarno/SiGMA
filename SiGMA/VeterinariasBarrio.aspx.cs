@@ -44,7 +44,7 @@ namespace SiGMA
                 nombre = nombre + veterinarias[i].nombre.ToString();
                 telefono = telefono + veterinarias[i].telefono;
                 contacto = contacto + veterinarias[i].contacto;
-                direccion = direccion + ("argentina " + veterinarias[i].domicilio.barrio.localidad.nombre.ToLower().ToString() + " " + veterinarias[i].domicilio.calle.nombre.ToLower().ToString() + " " + veterinarias[i].domicilio.numeroCalle.ToString()).ToString();
+                direccion = direccion + (veterinarias[i].domicilio.barrio.localidad.nombre.ToLower().ToString() + " " + veterinarias[i].domicilio.calle.nombre.ToLower().ToString() + " " + veterinarias[i].domicilio.numeroCalle.ToString()).ToString();
                 if (i != (veterinarias.Count - 1))
                 {
                     direccion += ",";
@@ -53,8 +53,12 @@ namespace SiGMA
                     telefono += ",";
                 }
             }
-            pagina = "mapaVeterinarias.htm?direccion=" + direccion + "&nombre=" + nombre + "&telefono=" + telefono + "&contacto=" + contacto;
-            Response.Write("<script>window.open('" + pagina + "','popup','width=800,height=500')</script>");
+            //pagina = "mapaVeterinarias.htm?direccion=" + direccion + "&nombre=" + nombre + "&telefono=" + telefono + "&contacto=" + contacto;
+            hfdirecciones.Value = direccion;
+            hfnombres.Value = nombre;
+            hftelefonos.Value = telefono;
+            hfcontactos.Value = contacto;
+            //Response.Write("<script>window.open('" + pagina + "','popup','width=800,height=500')</script>");
             //Response.Write("<script>BootstrapDialog.show({ message: $('<div></div>').load('www.google.com')});</script>");
         }
     }

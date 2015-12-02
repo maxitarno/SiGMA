@@ -49,34 +49,6 @@ namespace SiGMA
                 {
                     Response.Redirect("Login.aspx");
                 }
-                //if (Session["r"] != null)
-                //{
-                //    retorno = (bool)Session["r"];
-                //    if (retorno == true)
-                //    {
-                //        EVeterinaria veterinaria = (EVeterinaria)Session["veterinaria"];
-                //        LogicaBDVeterinaria.Buscar(veterinaria);
-                //        txtNombre.Text = veterinaria.nombre;
-                //        ddlLocalidad.SelectedValue = veterinaria.domicilio.barrio.localidad.idLocalidad.ToString();
-                //        ddlBarrio.SelectedValue = veterinaria.domicilio.barrio.idBarrio.ToString();
-                //        ddlCalle.SelectedValue = veterinaria.domicilio.calle.idCalle.ToString();
-                //        chkCastraciones.Checked = veterinaria.castraciones;
-                //        chkMedicinas.Checked = veterinaria.medicina;
-                //        chkPeluqueria.Checked = veterinaria.peluqueria;
-                //        chkPetShop.Checked = veterinaria.petshop;
-                //        txtContacto.Text = veterinaria.contacto;
-                //        txtTE.Text = veterinaria.telefono;
-                //        txtNº.Text = veterinaria.domicilio.numeroCalle.ToString();//agregado
-                //        Session["id"] = veterinaria.id;
-                //        pnlDomicilio.Visible = true;
-                //        pnlModificar.Visible = true;
-                //        pnlNombre.Visible = true;
-                //        pnlResultados.Visible = false;
-                //        pnlDatos.Visible = true;
-                //        pnlMapa.Visible = true;
-                //        Session["r"] = false;
-                //    }
-                //}
             }
         }
         protected void BtnRegresarClick(object sender, ImageClickEventArgs e)
@@ -167,6 +139,12 @@ namespace SiGMA
             pnlAtento.Visible = false;
             pnlCorrecto.Visible = false;
             pnlInfo.Visible = false;
+            //agregado
+            hfContacto.Value = txtContacto.Text;
+            hfDireccion.Value = ddlLocalidad.SelectedItem.Text.ToLower().ToString() + " " + ddlCalle.SelectedItem.Text.ToLower().ToString() + " " + txtNº.Text;
+            hfNombre.Value = txtNombre.Text;
+            hfTelefono.Value = txtTE.Text;
+            //agregado
         }
         public void Modificar(object sender, EventArgs e)
         {
@@ -285,17 +263,6 @@ namespace SiGMA
             ddlLocalidad.SelectedValue = "0";
             txtNombre.Text = "";
             txtNº.Text = "";
-        }
-
-        protected void btnMapa_Click(object sender, EventArgs e)
-        {
-            string nombre = txtNombre.Text;
-            string telefono = txtTE.Text;
-            string contacto = txtContacto.Text;
-            string direccion = "argentina " + ddlLocalidad.SelectedItem.Text.ToLower() + " " + ddlCalle.SelectedItem.Text.ToLower() + " " + txtNº.Text;
-            Session["r"] = true;
-            string pagina = "mapaVeterinaria.htm?direccion=" + direccion + "&nombre=" + nombre + "&telefono=" + telefono + "&contacto=" + contacto + "&m=" + Request.QueryString["m"];
-            Response.Write("<script>window.open('" + pagina + "','popup','width=800,height=500')</script>");
         }
     }
 }

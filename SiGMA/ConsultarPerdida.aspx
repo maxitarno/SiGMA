@@ -21,7 +21,11 @@
     <link href="assets/calendario_dw/calendario_dw-estilos.css" type="text/css" rel="STYLESHEET"/>
    <script type="text/javascript" src="assets/calendario_dw/jquery-1.4.4.min.js"></script>
    <script type="text/javascript" src="assets/calendario_dw/calendario_dw.js"></script>
-
+   <!--agregado-->
+   <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCN_PNx9ZJT_kk219eY1fF0Jt9J8JTrDkw"></script>
+   <script type="text/javascript" src="Scripts/jquery-2.1.3.js"></script>
+   <script type="text/javascript" src="Scripts/jsapi.js"></script>
+   <!--agregado-->
     <script type="text/javascript">
         function checkTextAreaMaxLength(textBox, e, length) {
 
@@ -141,11 +145,10 @@
                                     <tr><!--agregado para el mapa-->
                                         <td style="float:left">
                                             <asp:Panel ID="pnlMapa" runat="server" Visible="false">
+                                                <input id="btnUbicacion" type="button" value="Ubicación" />
                                                 &nbsp;<br />
                                                 <input id="hidden1" type="hidden" runat=server/>
-                                                &nbsp;<asp:Button ID="btnUbicación" runat="server" Text="Ubicación" 
-                                                    onclick="Button1_Click" />
-                                            </asp:Panel>
+                                                &nbsp;</asp:Panel>
                                         </td>
                                     </tr><!--fin-->
                                     <tr>
@@ -313,10 +316,93 @@
                 </asp:Panel>
             </div>
         </div>
+        <asp:HiddenField ID="hfDireccion" runat="server" />
+        <asp:HiddenField ID="hfNombre" runat="server" />
+        <asp:HiddenField ID="hfCuidado" runat="server" />
+        <!-- Modal -->
+        <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">
+                            &times;</button>
+                        <h4 class="modal-title">
+                            Perdidas</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div id="map" style="height:500px; width:500px">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">
+                            Close</button>
+                    </div>
+                </div>
+            </div>
+</div>
         <div class="centered">
             <asp:ImageButton ID="ibtnRegresar" runat="server" ImageUrl="~/imagenes/volver.png"
                 OnClick="BtnRegresarClick" CausesValidation="False" /><br />
             VOLVER
         </div>
     </div>
+    <script type="text/javascript">
+        var infowindow;
+        function initialize() {
+            var mapProp = {
+                center: { lat: -31.4080027, lng: -64.18063840000002 },
+                zoom: 15,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            var map = new google.maps.Map(document.getElementById("map"), mapProp);
+            var geocoder = new google.maps.Geocoder();
+            infowindow = new google.maps.InfoWindow();
+            geocodeAddress(geocoder, map);
+
+            marker.setMap(map);
+        }
+        function geocodeAddress(geocoder, resultsMap) {
+            //function getURLParameter(name) { return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [, ""])[1].replace(/\+/g, '%20')) || null }
+            var nombre = "<div><p><h3>nombre: " + document.getElementById('<%=hfNombre.ClientID%>').value.toString() + "</h3></p></div>";
+            var direccion = document.getElementById('<%=hfDireccion.ClientID%>').value.toString(); //(getURLParameter("direccion") == null) ? "" : getURLParameter("direccion");
+            var address = "argentina" + direccion;
+            var cuidado = document.getElementById('<%=hfCuidado.ClientID%>').value.toString(); //(getURLParameter("cuidado") == null) ? "0" : getURLParameter("cuidado");
+            geocoder.geocode({ 'address': address }, function (results, status) {
+                if (status === google.maps.GeocoderStatus.OK) {
+                    resultsMap.setCenter(results[0].geometry.location);
+                    var marker = new google.maps.Marker({
+                        map: resultsMap,
+                        position: results[0].geometry.location,
+                        animation: google.maps.Animation.DROP,
+                        icon: "./imagenes/registrarperdida (34x35).jpg"
+                    });
+                    marker.addListener('click', function () {
+                        infowindow.setContent(nombre);
+                        infowindow.open(resultsMap, marker);
+                    });
+                    var cityCircle = new google.maps.Circle({
+                        strokeColor: '#FF0000',
+                        strokeOpacity: 0.8,
+                        strokeWeight: 2,
+                        fillColor: '#FF0000',
+                        fillOpacity: 0.35,
+                        map: resultsMap,
+                        center: results[0].geometry.location,
+                        radius: Math.sqrt(cuidado) * 100
+                    });
+                } else {
+                    alert('La dirección especificada no se encontro ');
+                }
+            });
+        }
+        $("#btnUbicacion").click(function () {
+            if (document.getElementById('<%=hfDireccion.ClientID%>').value.toString() != "") {
+                $("#myModal").modal("show");
+                $("#myModal").on('shown.bs.modal', function () {
+                    initialize();
+                });
+            }
+        });
+    </script>
 </asp:Content>

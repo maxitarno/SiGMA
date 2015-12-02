@@ -15,10 +15,20 @@
 
     <!-- Custom styles for this template -->
     <link href="assets/css/main.css" rel="stylesheet">
-
+    <!--agregado-->
+    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCN_PNx9ZJT_kk219eY1fF0Jt9J8JTrDkw"></script>
+    <script type="text/javascript" src="Scripts/jquery-2.1.3.js"></script>
+    <script type="text/javascript" src="Scripts/jsapi.js"></script>
+    <!--agregado-->
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="assets/js/hover.zoom.js"></script>
     <script src="assets/js/hover.zoom.conf.js"></script>
+    <!--Estilo del mapa-->
+    <style type="text/css">
+      html, body { height: 100%; margin: 0; padding: 0; }
+      #map { height: 100%; }
+    </style>
+    <!--Estilo del mapa-->
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="centered">
@@ -235,8 +245,7 @@
                                 </tr>
                                 <tr style="height:30px">
                                     <td align="right" width="200px">
-                                        <asp:Button ID="btnBusquedaPorBarrio" runat="server" 
-                                            Text="Busquedas por barrio" onclick="btnBusquedaPorBarrio_Click" />
+                                        <input id="btnUbicacion1" type="button" value="Busquedas por barrio" />
                                     </td>
                                 </tr>
                             </table>
@@ -269,8 +278,9 @@
                                     </tr >
                                     <tr style="height:30px">
                                         <td align="right" width="200px">Ver lugar pérdida:</td>
-                                        <td align="left"><asp:Button ID="btnMapa" runat="server" Text="Ubicación" 
-                                                onclick="btnMapa_Click" /></td> 
+                                        <td align="left">
+                                            <input id="btnUbicacion" type="button" value="Ubicación" />
+                                        </td> 
                                         <td></td>
                                     </tr >
                                 </table>
@@ -288,8 +298,192 @@
             <asp:ImageButton ID="ibtnRegresar" runat="server" ImageUrl="~/imagenes/volver.png"
                 OnClick="BtnRegresarClick" CausesValidation="False"/><br />VOLVER
         </div>
+        <asp:HiddenField ID="hfDirecciones" runat="server"></asp:HiddenField>
+        <asp:HiddenField ID="hfNombres" runat="server"></asp:HiddenField>
+        <asp:HiddenField ID="hfCuidados" runat="server"></asp:HiddenField>
+        <!-- Modal -->
+        <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">
+                            &times;</button>
+                        <h4 class="modal-title">
+                            Busquedas</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div id="map" style="height:500px; width:500px">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">
+                            Close</button>
+                    </div>
+                </div>
+            </div>
+</div>
+        <asp:HiddenField ID="hfdirecciones1" runat="server" />
+        <asp:HiddenField ID="hfnombres1" runat="server" />
+        <asp:HiddenField ID="hfcuidados1" runat="server" />
     </div>
+    <script type="text/javascript">
+    //para varios barrios
+        //variables
+        var map;
+        var marcador = new google.maps.Marker();
+        var marcadores = [];
+        var geocoder = new google.maps.Geocoder();
+        var latlong;
+        var opciones;
+        var i = 0;
+        var len = 0;
+        var imagen;
+        var infowindows;
+        var direcciones = [];
+        var nombres = [];
+        var cuidados = [];
+        var j = 0;
+        var bounds;
+        var map1;
+        //var geocoder1;
+        //metodo de inicio
+        function initMap() {
+            map = new google.maps.Map(document.getElementById("map"), {
+                center: { lat: -31.4080027, lng: -64.18063840000002 },
+                zoom: 16,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            });
+            bounds = new google.maps.LatLngBounds();
+            infowindows = new google.maps.InfoWindow();
+            direcciones = document.getElementById('<%=hfDirecciones.ClientID%>').value.toString().split(","); //(getURLParameter("direccion") == null) ? "" : getURLParameter("direccion").toString().split(",");
+            nombres = document.getElementById('<%=hfNombres.ClientID%>').value.toString().split(",");// (getURLParameter("nombre") == null) ? "" : getURLParameter("nombre").toString().split(",");
+            cuidados = document.getElementById('<%=hfCuidados.ClientID%>').value.toString().split(",");// (getURLParameter("cuidado") == null) ? "" : getURLParameter("cuidado").toString().split(",");
+            len = direcciones.length;
+            for (; j < len; j++) {
+                var aux = "<div><p><h3>nombre: " + nombres[j].toString() + "</br>dirección: " + direcciones[j].toString() + "</h3></p></div>";
+                geocoderAdress(("argentina "+ direcciones[j].toString()), aux), cuidados[j];
+            }
+            len = marcadores.length;
+            for (; i < len; i++) {
+                marcadores[i].setMap(map);
+            };
+        }
 
+        //funciones
+
+        //funcion de geocodificacion
+        function geocoderAdress(direccion, datos, cuidado) {
+            geocoder.geocode({ 'address': direccion }, function (results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    (function (marcador, datos) {
+                        map.setCenter(results[0].geometry.location);
+                        marcador = new google.maps.Marker({
+                            position: results[0].geometry.location,
+                            map: map,
+                            icon: "./imagenes/registrarperdida (34x35).jpg"
+                        });
+                        marcador.addListener('click', function () {
+                            infowindows.setContent(datos);
+                            infowindows.open(map, marcador);
+                        });
+                        var cityCircle = new google.maps.Circle({
+                            strokeColor: '#FF0000',
+                            strokeOpacity: 0.8,
+                            strokeWeight: 2,
+                            fillColor: '#FF0000',
+                            fillOpacity: 0.35,
+                            map: map,
+                            center: results[0].geometry.location,
+                            radius: Math.sqrt(cuidado) * 100
+                        });
+                        bounds.extend(results[0].geometry.location);
+                        map.fitBounds(bounds);
+                    } (marcador, datos));
+                    marcadores.push(marcador);
+                }
+                else {
+                    alert('no se encontro la direccion');
+                }
+            });
+        }
+
+        //funcion de direccion
+        function getURLParameter(name) { return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [, ""])[1].replace(/\+/g, '%20')) || null }
+
+        //eventos
+        //para varios barrios
+        //para uno
+        var infowindow;
+        function initialize() {
+            var mapProp = {
+                center: { lat: -31.4080027, lng: -64.18063840000002 },
+                zoom: 16,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            infowindow1 = new google.maps.InfoWindow();
+            map1 = new google.maps.Map(document.getElementById("map"), mapProp);
+            geocodeAddress1(geocoder, map1);
+        }
+        function geocodeAddress1(geocoder1, resultsMap) {
+            //function getURLParameter(name) { return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [, ""])[1].replace(/\+/g, '%20')) || null }
+            var cuidado1 = document.getElementById('<%=hfcuidados1.ClientID%>').value.toString();// (getURLParameter("cuidado") == null) ? "" : getURLParameter("cuidado");
+            var direccion1 = document.getElementById('<%=hfdirecciones1.ClientID%>').value.toString();// (getURLParameter("direccion") == null) ? "" : getURLParameter("direccion");
+            var nombre1 = document.getElementById('<%=hfnombres1.ClientID%>').value.toString();//(getURLParameter("nombre") == null) ? "" : getURLParameter("nombre");
+            var texto = "<div><p><h3>nombre: " + nombre1 + "<br>direccion: " + direccion1 + "</h3></p></div>";
+            var address =  "argentina" + direccion1;
+            geocoder.geocode({ 'address': address }, function (results, status) {
+                if (status === google.maps.GeocoderStatus.OK) {
+                    resultsMap.setCenter(results[0].geometry.location);
+                    var marker = new google.maps.Marker({
+                        map: resultsMap,
+                        position: results[0].geometry.location,
+                        animation: google.maps.Animation.DROP,
+                        icon: "./imagenes/registrarperdida (34x35).jpg"
+                    });
+                    marker.addListener('click', function () {
+                        infowindow1.setContent(texto);
+                        infowindow1.open(resultsMap, marker);
+                    });
+                    var cityCircle = new google.maps.Circle({
+                        strokeColor: '#FF0000',
+                        strokeOpacity: 0.8,
+                        strokeWeight: 2,
+                        fillColor: '#FF0000',
+                        fillOpacity: 0.35,
+                        map: resultsMap,
+                        center: results[0].geometry.location,
+                        radius: Math.sqrt(cuidado1) * 100
+                    });
+                } else {
+                    alert('La dirección especificada no se encontro ');
+                }
+            });
+        }
+        //para uno
+        $("#btnUbicacion1").click(function () {
+            if (document.getElementById('<%=hfDirecciones.ClientID%>').value.toString() != "") {
+                $("#myModal").modal("show");
+                $("#myModal").on('shown.bs.modal', function () {
+                    initMap();
+                });
+            }
+            else {
+                alert('No se encontraron veterinarias para ese barrio');
+            }
+        });
+        $("#btnUbicacion").click(function () {
+            if (document.getElementById('<%=hfdirecciones1.ClientID%>').value.toString() != "") {
+                $("#myModal").modal("show");
+                $("#myModal").on('shown.bs.modal', function () {
+                    initialize();
+                });
+            }
+            else {
+                alert('No se encontraron veterinarias para ese barrio');
+            }
+        });
+    </script>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
 </asp:Content>

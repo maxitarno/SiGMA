@@ -11,6 +11,11 @@
     <link href="assets/css/bootstrap.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="assets/css/main.css" rel="stylesheet">
+    <!--agregado-->
+    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCN_PNx9ZJT_kk219eY1fF0Jt9J8JTrDkw"></script>
+    <script type="text/javascript" src="Scripts/jquery-2.1.3.js"></script>
+    <script type="text/javascript" src="Scripts/jsapi.js"></script>
+    <!--agregado-->
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="assets/js/hover.zoom.js"></script>
     <script src="assets/js/hover.zoom.conf.js"></script>
@@ -120,8 +125,7 @@
                     <tr style="float:right">
                        <td>
                             <asp:Panel ID="pnlMapa" runat=server Visible=false>
-                                <asp:Button ID="btnMapa" runat="server" Text="Ubicacion" 
-                                    onclick="btnMapa_Click" />
+                                <input id="btnUbicacion" type="button" value="Ubicación" />
                             </asp:Panel>
                         </td>
                         <td>
@@ -232,9 +236,83 @@
             </div>
         </div>
     </div>
+    <asp:HiddenField ID="hfDireccion" runat="server" />
+    <asp:HiddenField ID="hfNombre" runat="server" />
+    <asp:HiddenField ID="hfTelefono" runat="server" />
+    <asp:HiddenField ID="hfContacto" runat="server" />
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">
+                            &times;</button>
+                        <h4 class="modal-title">
+                            Veterinarias</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div id="map" style="height:500px; width:500px">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">
+                            Close</button>
+                    </div>
+                </div>
+            </div>
+</div>
     <div class="centered">
         <asp:ImageButton ID="ibtnRegresar" runat="server" ImageUrl="~/imagenes/volver.png"
            OnClick="BtnRegresarClick" CausesValidation="false" />
         <br> Volver
     </div>
+    <script type="text/javascript">
+        var infowindow;
+        function initialize() {
+            var mapProp = {
+                center: { lat: -31.4080027, lng: -64.18063840000002 },
+                zoom: 16,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            infowindow = new google.maps.InfoWindow();
+            var map = new google.maps.Map(document.getElementById("map"), mapProp);
+            var geocoder = new google.maps.Geocoder();
+            geocodeAddress(geocoder, map);
+        }
+        function geocodeAddress(geocoder, resultsMap) {
+            function getURLParameter(name) { return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [, ""])[1].replace(/\+/g, '%20')) || null }
+            var direccion = document.getElementById('<%=hfDireccion.ClientID%>').value.toString();// (getURLParameter("direccion") == null) ? "" : getURLParameter("direccion");
+            var nombre = document.getElementById('<%=hfNombre.ClientID%>').value.toString(); //(getURLParameter("nombre") == null) ? "" : getURLParameter("nombre");
+            var telefono = document.getElementById('<%=hfTelefono.ClientID%>').value.toString(); //(getURLParameter("telefono") == null) ? "" : getURLParameter("telefono");
+            var contacto = document.getElementById('<%=hfContacto.ClientID%>').value.toString(); //(getURLParameter("contacto") == null) ? "" : getURLParameter("contacto");
+            var texto = "<div><p><h3>nombre: " + nombre + "</br>telefono: " + telefono + "</br>contacto: " + contacto + "</h3></p></div>";
+            var address = "argentina " + direccion;
+            geocoder.geocode({ 'address': address }, function (results, status) {
+                if (status === google.maps.GeocoderStatus.OK) {
+                    resultsMap.setCenter(results[0].geometry.location);
+                    var marker = new google.maps.Marker({
+                        map: resultsMap,
+                        position: results[0].geometry.location,
+                        animation: google.maps.Animation.DROP,
+                        icon: "./imagenes/veterinarias (35x35).jpg"
+                    });
+                    marker.addListener('click', function () {
+                        infowindow.setContent(texto);
+                        infowindow.open(resultsMap, marker);
+                    });
+                } else {
+                    alert('La dirección especificada no se encontro ');
+                }
+            });
+        }
+        $("#btnUbicacion").click(function () {
+            if (document.getElementById('<%=hfDireccion.ClientID%>').value.toString() != "") {
+                $("#myModal").modal("show");
+                $("#myModal").on('shown.bs.modal', function () {
+                    initialize();
+                });
+            }
+        });
+    </script>
 </asp:Content>
