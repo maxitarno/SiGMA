@@ -178,8 +178,10 @@ namespace AccesoADatos
                     persona.nroCalle = usuario.persona.nroCalle;
                     calle.idCalle = usuario.persona.idCalle;
                     calle.nombre = (usuario.persona.Calles == null) ? "" : usuario.persona.Calles.nombre;
-                    if (usuario.persona.Calles != null)
-                        localidad.nombre = (usuario.persona.Calles.Localidades == null) ? "" : usuario.persona.Calles.Localidades.nombre;
+                    if (usuario.localidad != null)
+                        localidad.nombre = usuario.localidad.nombre;
+                    else
+                        localidad.nombre = "";
                     barrio.nombre = (usuario.barrio == null) ? "" : usuario.barrio.nombre;
                     tipoDoc.nombre = usuario.tipo.nombre;
                 }
