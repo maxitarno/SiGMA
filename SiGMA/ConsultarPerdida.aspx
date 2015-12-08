@@ -145,7 +145,7 @@
                                     <tr><!--agregado para el mapa-->
                                         <td style="float:left">
                                             <asp:Panel ID="pnlMapa" runat="server" Visible="false">
-                                                <input id="btnUbicacion" type="button" value="Ubicación" />
+                                                <input id="btnUbicacion" type="button" value="Ubicación" onclick="return btnUbicacion_onclick()" />
                                                 &nbsp;<br />
                                                 <input id="hidden1" type="hidden" runat=server/>
                                                 &nbsp;</asp:Panel>
@@ -366,7 +366,7 @@
             //function getURLParameter(name) { return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [, ""])[1].replace(/\+/g, '%20')) || null }
             var nombre = "<div><p><h3>nombre: " + document.getElementById('<%=hfNombre.ClientID%>').value.toString() + "</h3></p></div>";
             var direccion = document.getElementById('<%=hfDireccion.ClientID%>').value.toString(); //(getURLParameter("direccion") == null) ? "" : getURLParameter("direccion");
-            var address = "argentina" + direccion;
+            var address = "argentina " + direccion;
             var cuidado = document.getElementById('<%=hfCuidado.ClientID%>').value.toString(); //(getURLParameter("cuidado") == null) ? "0" : getURLParameter("cuidado");
             geocoder.geocode({ 'address': address }, function (results, status) {
                 if (status === google.maps.GeocoderStatus.OK) {
@@ -404,5 +404,9 @@
                 });
             }
         });
+        function btnUbicacion_onclick() {
+
+        }
+
     </script>
 </asp:Content>
