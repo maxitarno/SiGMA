@@ -42,7 +42,7 @@
 			</div>
 			<div class="col-lg-4 col-md-4">
 				<div class="thumbnail">
-                    <a class="zoom green" href="EnConstruccion.aspx"><img class="img-responsive img-circle" src="assets/img/menu/difusion.png" alt="" width="200px" height="300px" /></a>
+                    <a class="zoom green" href="ModerarPedidosDifusion.aspx"><img class="img-responsive img-circle" src="assets/img/menu/difusion.png" alt="" width="200px" height="300px" /></a>
 				    <div class="caption centered"><h4>DIFUSIÓN</h4> </div>
                 </div>
 			</div>

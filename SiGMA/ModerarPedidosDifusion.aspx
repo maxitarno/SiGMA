@@ -146,7 +146,7 @@
     <div class="centered">
         <asp:ImageButton ID="ibtnRegresar" runat="server" 
             ImageUrl="~/imagenes/volver.png"
-            CausesValidation="False"/>
+            CausesValidation="False" onclick="ibtnRegresar_Click"/>
         </br>
         Volver
     </div>  

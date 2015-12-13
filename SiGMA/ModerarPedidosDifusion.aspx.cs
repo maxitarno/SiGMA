@@ -210,5 +210,10 @@ namespace SiGMA
                 args.IsValid = true;
             }
         }
+
+        protected void ibtnRegresar_Click(object sender, ImageClickEventArgs e)
+        {
+            Response.Redirect("Default.aspx");
+        }
     }
 }
