@@ -194,7 +194,7 @@ namespace SiGMA
                         ddlCallePerdida.SelectedValue = (perdida.domicilio.calle == null) ? null : perdida.domicilio.calle.idCalle.ToString();
                         txtNroCallePerdida.Text = perdida.domicilio.numeroCalle.ToString();
                         //agregado
-                        hfDireccion.Value = ddlLocalidadPerdida.SelectedItem.Text.ToLower().ToString() + " " + ddlCalles.SelectedItem.Text.ToLower().ToString() + " " + txtNroCallePerdida.Text;
+                        hfDireccion.Value = ddlLocalidadPerdida.SelectedItem.Text.ToLower().ToString() + " " + ddlCallePerdida.SelectedItem.Text.ToLower().ToString() + " " + txtNroCallePerdida.Text;
                         hfNombre.Value = txtMascotaPerdida.Text;
                         if (mascota.raza.cuidadoEspecial.idCuidado == 0)
                         {

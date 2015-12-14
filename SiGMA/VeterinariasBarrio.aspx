@@ -87,7 +87,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">
-                            Close</button>
+                            Cerrar</button>
                     </div>
                 </div>
             </div>
@@ -118,6 +118,7 @@
         var aux;
         //metodo de inicio
         function initMap() {
+            map = null;
             map = new google.maps.Map(document.getElementById("map"), {
                 center: { lat: -31.4080027, lng: -64.18063840000002 },
                 zoom: 8,
@@ -130,6 +131,7 @@
             contactos = document.getElementById('<%=hfcontactos.ClientID%>').value.toString().split(","); //getURLParameter("contacto").toString().split(",");
             telefonos = document.getElementById('<%=hftelefonos.ClientID%>').value.toString().split(","); //(getURLParameter("telefono") == null) ? "" : getURLParameter("telefono").toString().split(",");
             len = direcciones.length;
+            marcadores = null;
             for (; j < len; j++) {
                 aux = "<div><p><h3>nombre: " + nombres[j].toString() + "</br>telefono: " + telefonos[j].toString() + "</br>contacto: " + contactos + "</h3></p></div>";
                 geocoderAdress(("argentina " + direcciones[j].toString()).toString(), aux);

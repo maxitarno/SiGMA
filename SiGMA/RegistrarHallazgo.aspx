@@ -262,7 +262,7 @@
                                                 ControlToValidate="txtFecha"></asp:RequiredFieldValidator>
                                         </td>
                                     </tr>
-                                    <tr>
+                                    <%--<tr>
                                         <td>
                                             Lugar:
                                         </td>
@@ -271,7 +271,7 @@
                                         </td>
                                         <td>
                                         </td>
-                                    </tr>
+                                    </tr>--%>
                                     <tr>
                                         <td>
                                             Comentarios:

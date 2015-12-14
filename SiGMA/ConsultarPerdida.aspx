@@ -336,7 +336,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">
-                            Close</button>
+                            Cerrar</button>
                     </div>
                 </div>
             </div>
@@ -355,11 +355,12 @@
                 zoom: 15,
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             };
-            var map = new google.maps.Map(document.getElementById("map"), mapProp);
+            var map = null; 
+            map = new google.maps.Map(document.getElementById("map"), mapProp);
             var geocoder = new google.maps.Geocoder();
             infowindow = new google.maps.InfoWindow();
             geocodeAddress(geocoder, map);
-
+            var marker = null;
             marker.setMap(map);
         }
         function geocodeAddress(geocoder, resultsMap) {

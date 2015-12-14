@@ -257,7 +257,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">
-                            Close</button>
+                            Cerrar</button>
                     </div>
                 </div>
             </div>
@@ -276,7 +276,8 @@
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             };
             infowindow = new google.maps.InfoWindow();
-            var map = new google.maps.Map(document.getElementById("map"), mapProp);
+            var map = null;
+            map = new google.maps.Map(document.getElementById("map"), mapProp);
             var geocoder = new google.maps.Geocoder();
             geocodeAddress(geocoder, map);
         }
@@ -291,7 +292,8 @@
             geocoder.geocode({ 'address': address }, function (results, status) {
                 if (status === google.maps.GeocoderStatus.OK) {
                     resultsMap.setCenter(results[0].geometry.location);
-                    var marker = new google.maps.Marker({
+                    var marker = null;
+                    marker = new google.maps.Marker({
                         map: resultsMap,
                         position: results[0].geometry.location,
                         animation: google.maps.Animation.DROP,
