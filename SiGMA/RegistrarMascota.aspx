@@ -49,7 +49,7 @@
 
     <div class="panel panel-default">
         <div class="panel-body">
-                <div class="col-md-2 col-md-offset-5">
+                <div class="col-md-4 col-md-offset-4">
                     <asp:Panel runat="server" id="pnlCorrecto" class="alert alert-dismissable alert-success" Visible=false>
                         <button class="close" type="button" data-dismiss="alert">
                             ×</button>

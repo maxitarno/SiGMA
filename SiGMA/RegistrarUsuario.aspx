@@ -35,7 +35,7 @@
                 <asp:Panel runat="server" id="pnlCorrecto" class="alert alert-dismissable alert-success" Visible=false>
                     <button class="close" type="button" data-dismiss="alert">
                         ×</button>
-                        <asp:Label ID="lblCorrecto" runat="server" Text="Usuario Registrado Exitosamente. Verifique email enviado en su correo para autenticacion"></asp:Label>
+                        <asp:Label ID="lblCorrecto" runat="server" Text="Usuario Registrado Exitosamente. Verifique email enviado a su correo para autenticacion"></asp:Label>
                 </asp:Panel>
                 <asp:Panel runat="server" id="pnlAtento" class="alert alert-dismissable alert-danger" Visible=false>
                     <button class="close" type="button" data-dismiss="alert">

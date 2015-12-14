@@ -38,8 +38,6 @@ public  object adopciones { get; set; }protected void Page_Load(object sender, E
                     {
                         btnRegistrar.Visible = true;
                     }
-                    btnEliminar.Visible = true;
-                    pnlEliminar.Visible = true;
                 }
                 else
                 {
@@ -188,6 +186,11 @@ public  object adopciones { get; set; }protected void Page_Load(object sender, E
                         pnlInfo.Visible = false;
                         pnlCorrecto.Visible = false;
                         btnRegistrar.Visible = false;
+                        if (lblTitulo.Text == "Modificar Adopción")
+                        {
+                            btnEliminar.Visible = true;
+                            pnlEliminar.Visible = true;
+                        }
                     }
                     else
                     {

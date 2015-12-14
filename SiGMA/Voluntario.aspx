@@ -27,7 +27,7 @@
     <style type="text/css">
       html, body { height: 100%; margin: 0; padding: 0; }
       #map { height: 100%; }
-    </style>f
+    </style>
     <!--Estilo del mapa-->
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -346,11 +346,11 @@
         var j = 0;
         var bounds;
         var map1;
-        var marker;
+//        var marker;
         //var geocoder1;
         //metodo de inicio
         function initMap() {
-            map = null;
+//            map = null;
             map = new google.maps.Map(document.getElementById("map"), {
                 center: { lat: -31.4080027, lng: -64.18063840000002 },
                 zoom: 16,
@@ -362,7 +362,7 @@
             nombres = document.getElementById('<%=hfNombres.ClientID%>').value.toString().split(",");// (getURLParameter("nombre") == null) ? "" : getURLParameter("nombre").toString().split(",");
             cuidados = document.getElementById('<%=hfCuidados.ClientID%>').value.toString().split(",");// (getURLParameter("cuidado") == null) ? "" : getURLParameter("cuidado").toString().split(",");
             len = direcciones.length;
-            marcadores = null;
+//            marcadores = null;
             for (; j < len; j++) {
                 var aux = "<div><p><h3>nombre: " + nombres[j].toString() + "</br>dirección: " + direcciones[j].toString() + "</h3></p></div>";
                 geocoderAdress(("argentina "+ direcciones[j].toString()), aux), cuidados[j];
@@ -381,7 +381,7 @@
                 if (status == google.maps.GeocoderStatus.OK) {
                     (function (marcador, datos) {
                         map.setCenter(results[0].geometry.location);
-                        marcador = null;
+//                        marcador = null;
                         marcador = new google.maps.Marker({
                             position: results[0].geometry.location,
                             map: map,
@@ -426,7 +426,7 @@
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             };
             infowindow1 = new google.maps.InfoWindow();
-            map1 = null;
+//            map1 = null;
             map1 = new google.maps.Map(document.getElementById("map"), mapProp);
             geocodeAddress1(geocoder, map1);
         }
@@ -440,7 +440,7 @@
             geocoder.geocode({ 'address': address }, function (results, status) {
                 if (status === google.maps.GeocoderStatus.OK) {
                     resultsMap.setCenter(results[0].geometry.location);
-                    marker = new google.maps.Marker({
+                    var marker = new google.maps.Marker({
                         map: resultsMap,
                         position: results[0].geometry.location,
                         animation: google.maps.Animation.DROP,
@@ -450,16 +450,16 @@
                         infowindow1.setContent(texto);
                         infowindow1.open(resultsMap, marker);
                     });
-//                    var cityCircle = new google.maps.Circle({
-//                        strokeColor: '#FF0000',
-//                        strokeOpacity: 0.8,
-//                        strokeWeight: 2,
-//                        fillColor: '#FF0000',
-//                        fillOpacity: 0.35,
-//                        map: resultsMap,
-//                        center: results[0].geometry.location,
-//                        radius: Math.sqrt(cuidado1) * 100
-//                    });
+                    var cityCircle = new google.maps.Circle({
+                        strokeColor: '#FF0000',
+                        strokeOpacity: 0.8,
+                        strokeWeight: 2,
+                        fillColor: '#FF0000',
+                        fillOpacity: 0.35,
+                        map: resultsMap,
+                        center: results[0].geometry.location,
+                        radius: Math.sqrt(cuidado1) * 100
+                    });
                 } else {
                     alert('La dirección especificada no se encontro ');
                 }
@@ -470,8 +470,8 @@
             if (document.getElementById('<%=hfDirecciones.ClientID%>').value.toString() != "") {
                 $("#myModal").modal("show");
                 $("#myModal").on('shown.bs.modal', function () {
-                    map1 = null;
-                    marker = null;
+//                    map1 = null;
+//                    marker = null;
                     initMap();
                 });
             }
@@ -483,9 +483,9 @@
             if (document.getElementById('<%=hfdirecciones1.ClientID%>').value.toString() != "") {
                 $("#myModal").modal("show");
                 $("#myModal").on('shown.bs.modal', function () {
-                    map = null;
-                    marcadores = null;
-                    marcador = null;
+//                    map = null;
+//                    marcadores = null;
+//                    marcador = null;
                     initialize();
                 });
             }

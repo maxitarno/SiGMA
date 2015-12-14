@@ -55,7 +55,7 @@
                 Moderar Pedidos de Difusion</h3>
         </div>
         <div class="panel-body">
-        <div style="margin-left:30%; width: 30%">        
+        <div class="col-md-4 col-md-offset-4">        
                 <asp:Panel runat="server" id="pnlCorrecto" 
                         class="alert alert-dismissable alert-success"  Visible=false Width="550px">
                     <button class="close" type="button" data-dismiss="alert">
@@ -68,6 +68,7 @@
                         <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
                 </asp:Panel>           
                 </div>  
+                <div class="col-md-4 col-md-offset-4">
                  <asp:Panel ID="pnlPedidos" runat="server">
                 <div style="margin-left:20%">
                     <asp:GridView ID="grvPedidos" runat="server" CssClass="GridView1" 
@@ -140,7 +141,8 @@
                         </div>  
                         </div>                         
                         </asp:Panel>                       
-                        </div>   
+                        </div>  
+                        </div> 
         </div>
     </div> 
     <div class="centered">

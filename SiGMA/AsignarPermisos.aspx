@@ -103,12 +103,12 @@
                             <td align="center"><asp:CheckBox ID="chkConsultarUsuarioG" runat="server" /></td>
                             <td align="center"><asp:CheckBox ID="chkConsultarUsuarioE" runat="server" /></td>
                         </tr>
-                        <tr>
+<%--                        <tr>
                             <td>RegistrarUsuarios</td>
                             <td align="center"><asp:CheckBox ID="chkRegistrarUsuarioL" runat="server" /></td>
                             <td align="center"><asp:CheckBox ID="chkRegistrarUsuarioG" runat="server" /></td>
                             <td align="center"><asp:CheckBox ID="chkRegistrarUsuarioE" runat="server" /></td>
-                        </tr>
+                        </tr>--%>
                         <tr>
                             <td>AsignarPermisos</td>
                             <td align="center"><asp:CheckBox ID="chkAsignarPermisosL" runat="server" /></td>

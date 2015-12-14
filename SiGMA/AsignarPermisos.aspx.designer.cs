@@ -211,33 +211,6 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.CheckBox chkConsultarUsuarioE;
         
         /// <summary>
-        /// chkRegistrarUsuarioL control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkRegistrarUsuarioL;
-        
-        /// <summary>
-        /// chkRegistrarUsuarioG control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkRegistrarUsuarioG;
-        
-        /// <summary>
-        /// chkRegistrarUsuarioE control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkRegistrarUsuarioE;
-        
-        /// <summary>
         /// chkAsignarPermisosL control.
         /// </summary>
         /// <remarks>

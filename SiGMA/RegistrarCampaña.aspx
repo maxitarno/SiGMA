@@ -34,7 +34,7 @@
                 Registrar Campaña</h3>
         </div>
         <div class="panel-body">
-        <div style="margin-left:30%; width: 30%">        
+        <div class="col-md-5 col-md-offset-5">      
                 <asp:Panel runat="server" id="pnlCorrecto" 
                         class="alert alert-dismissable alert-success"  Visible=false Width="550px">
                     <button class="close" type="button" data-dismiss="alert">
@@ -46,9 +46,10 @@
                         ×</button>
                         <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
                 </asp:Panel>                
-                </div>                                 
+         </div>
+                                                 
                 <asp:Panel ID="pnlDatosCampaña" runat="server">
-                <div style="margin-left: 30%; display: table; width: 60%;">  
+                <div class="col-md-4 col-md-offset-4" style="margin-left: 30%; display: table; width: 60%;">  
                     <div style="display: table-row; width: 30%;">     
                         <div style="display: table-cell; width: 30%;"> 
                             <asp:Panel Visible="true" runat="server" ID="pnlPreview">
@@ -149,7 +150,7 @@
             ImageUrl="~/imagenes/volver.png" onclick="ibtnRegresar_Click" 
             CausesValidation="False"/>
         </br>
-        Volver
+        VOLVER
     </div>  
     <script type="text/javascript">
         function showimagepreview(input, image) {

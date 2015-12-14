@@ -50,8 +50,8 @@
 		<div class="row">	
 			<div class="col-lg-4 col-md-4">
                 <div class="thumbnail">
-			        <a class="zoom green" href="RegistrarCampaña.aspx"><img class="img-responsive img-circle" src="assets/img/menu/ultimaspublicaciones.png" alt="" width="200px" height="300px"/></a>
-			        <div class="caption centered"><h4>Difusion</h4> </div>
+			        <a class="zoom green" href="EnConstruccion.aspx"><img class="img-responsive img-circle" src="assets/img/menu/ultimaspublicaciones.png" alt="" width="200px" height="300px"/></a>
+			        <div class="caption centered"><h4>ULTIMAS PUBLICACIONES</h4> </div>
                 </div>
 			</div>
 			<div class="col-lg-4 col-md-4">

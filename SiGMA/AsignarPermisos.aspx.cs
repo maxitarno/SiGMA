@@ -64,23 +64,23 @@ namespace SiGMA
                     if (permisoRol18.idPermiso != 0)
                         ListadoPermisos.Add(permisoRol18);
 
-                    // --------------- RegistrarUsuario --------------- //
-                    permisoRol.idPermiso = chkRegistrarUsuarioL.Checked ? 1 : 0;
-                    permisoRol.pantalla = "RegistrarUsuario.aspx";
-                    if (permisoRol.idPermiso != 0)
-                        ListadoPermisos.Add(permisoRol);
+                    //// --------------- RegistrarUsuario --------------- //
+                    //permisoRol.idPermiso = chkRegistrarUsuarioL.Checked ? 1 : 0;
+                    //permisoRol.pantalla = "RegistrarUsuario.aspx";
+                    //if (permisoRol.idPermiso != 0)
+                    //    ListadoPermisos.Add(permisoRol);
 
-                    EPermiso permisoRol2 = new EPermiso();
-                    permisoRol2.idPermiso = chkRegistrarUsuarioG.Checked ? 2 : 0;
-                    permisoRol2.pantalla = "RegistrarUsuario.aspx";
-                    if (permisoRol2.idPermiso != 0)
-                        ListadoPermisos.Add(permisoRol2);
+                    //EPermiso permisoRol2 = new EPermiso();
+                    //permisoRol2.idPermiso = chkRegistrarUsuarioG.Checked ? 2 : 0;
+                    //permisoRol2.pantalla = "RegistrarUsuario.aspx";
+                    //if (permisoRol2.idPermiso != 0)
+                    //    ListadoPermisos.Add(permisoRol2);
 
-                    EPermiso permisoRol3 = new EPermiso();
-                    permisoRol3.idPermiso = chkRegistrarUsuarioE.Checked ? 3 : 0;
-                    permisoRol3.pantalla = "RegistrarUsuario.aspx";
-                    if (permisoRol3.idPermiso != 0)
-                        ListadoPermisos.Add(permisoRol3);
+                    //EPermiso permisoRol3 = new EPermiso();
+                    //permisoRol3.idPermiso = chkRegistrarUsuarioE.Checked ? 3 : 0;
+                    //permisoRol3.pantalla = "RegistrarUsuario.aspx";
+                    //if (permisoRol3.idPermiso != 0)
+                    //    ListadoPermisos.Add(permisoRol3);
 
                     // --------------- ConsultarUsuario --------------- //
                     EPermiso permisoRol4 = new EPermiso();
@@ -315,9 +315,9 @@ namespace SiGMA
             chkConsultarUsuarioL.Checked = false;
             chkConsultarUsuarioG.Checked = false;
             chkConsultarUsuarioE.Checked = false;
-            chkRegistrarUsuarioL.Checked = false;
-            chkRegistrarUsuarioG.Checked = false;
-            chkRegistrarUsuarioE.Checked = false;
+            //chkRegistrarUsuarioL.Checked = false;
+            //chkRegistrarUsuarioG.Checked = false;
+            //chkRegistrarUsuarioE.Checked = false;
             chkAdministracionL.Checked = false;
             chkAdministracionG.Checked = false;
             chkAdministracionE.Checked = false;
@@ -382,15 +382,15 @@ namespace SiGMA
                         if (permisosRol[i].idPermiso == 3)
                             chkConsultarUsuarioE.Checked = true;
                     }
-                    if (permisosRol[i].pantalla == "RegistrarUsuario.aspx")
-                    {
-                        if (permisosRol[i].idPermiso == 1)
-                            chkRegistrarUsuarioL.Checked = true;
-                        if (permisosRol[i].idPermiso == 2)
-                            chkRegistrarUsuarioG.Checked = true;
-                        if (permisosRol[i].idPermiso == 3)
-                            chkRegistrarUsuarioE.Checked = true;
-                    }
+                    //if (permisosRol[i].pantalla == "RegistrarUsuario.aspx")
+                    //{
+                    //    if (permisosRol[i].idPermiso == 1)
+                    //        chkRegistrarUsuarioL.Checked = true;
+                    //    if (permisosRol[i].idPermiso == 2)
+                    //        chkRegistrarUsuarioG.Checked = true;
+                    //    if (permisosRol[i].idPermiso == 3)
+                    //        chkRegistrarUsuarioE.Checked = true;
+                    //}
                     if (permisosRol[i].pantalla == "AsignarPermisos.aspx")
                     {
                         if (permisosRol[i].idPermiso == 1)

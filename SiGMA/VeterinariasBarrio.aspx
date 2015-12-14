@@ -61,8 +61,8 @@
                             
                         </asp:DropDownList>
                     </div>
-                    <input id="btnUbicacion" type="button" value="Mostrar veterinarias por barrio" />
-
+                    <br />
+                    <input id="btnUbicacion" class="centered" type="button" value="Mostrar veterinarias por barrio" />
                 </div>
             </div>
         </div>
@@ -118,7 +118,7 @@
         var aux;
         //metodo de inicio
         function initMap() {
-            map = null;
+//            map = null;
             map = new google.maps.Map(document.getElementById("map"), {
                 center: { lat: -31.4080027, lng: -64.18063840000002 },
                 zoom: 8,
@@ -131,7 +131,7 @@
             contactos = document.getElementById('<%=hfcontactos.ClientID%>').value.toString().split(","); //getURLParameter("contacto").toString().split(",");
             telefonos = document.getElementById('<%=hftelefonos.ClientID%>').value.toString().split(","); //(getURLParameter("telefono") == null) ? "" : getURLParameter("telefono").toString().split(",");
             len = direcciones.length;
-            marcadores = null;
+//            marcadores = null;
             for (; j < len; j++) {
                 aux = "<div><p><h3>nombre: " + nombres[j].toString() + "</br>telefono: " + telefonos[j].toString() + "</br>contacto: " + contactos + "</h3></p></div>";
                 geocoderAdress(("argentina " + direcciones[j].toString()).toString(), aux);
@@ -183,7 +183,7 @@
                 });
             }
             else {
-                alert('No se encontraron veterinarias para ese barrio');
+                alert('No se encontraron veterinarias en el barrio seleccionado');
             }
         });
     </script>

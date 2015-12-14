@@ -104,7 +104,7 @@
                             <tr style="height:30px">
                                 <td align="right" width="200px">Consulta
                                 <td align="left"><asp:TextBox ID="txtConsulta" runat="server" style="resize: none" TextMode="MultiLine"
-                                                        Rows="3" Columns="20" CssClass="TextBox" Width="100%" onkeyDown="checkTextAreaMaxLength(this,event,'250');"></asp:TextBox></td>
+                                                        Rows="6" Columns="20" CssClass="TextBox" Width="100%" onkeyDown="checkTextAreaMaxLength(this,event,'250');"></asp:TextBox></td>
                                 <td><asp:RequiredFieldValidator ID="rfvConsulta" runat="server" ErrorMessage="*" 
                                         ForeColor="Red" ControlToValidate="txtConsulta"></asp:RequiredFieldValidator></td>
                             </tr>

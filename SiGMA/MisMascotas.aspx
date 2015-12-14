@@ -65,6 +65,10 @@
             </div>
             <div>
                 <asp:Panel ID="pnlResultados" runat="server" Visible="false">
+                    <asp:Button ID="btnRegistrarMascota" runat="server" Text="Nueva Mascota" 
+                        onclick="btnRegistrarMascota_Click" />
+                    <br />
+                    <br />
                     Mis Mascostas<br />
                     <asp:ListBox ID="lstResultados" runat="server" AutoPostBack="True" onselectedindexchanged="lstResultados_SelectedIndexChanged" Width="10%"></asp:ListBox>
                 </asp:Panel> 

@@ -543,5 +543,11 @@ namespace SiGMA
                 Response.Redirect("~/RegistrarPerdida.aspx");
             }
         }
+
+        protected void btnRegistrarMascota_Click(object sender, EventArgs e)
+        {
+                Session["pantalla"] = "MisMascotas.aspx";
+                Response.Redirect("~/RegistrarMascota.aspx");
+        }
     }
 }

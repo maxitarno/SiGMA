@@ -213,7 +213,7 @@ namespace SiGMA
 
         protected void ibtnRegresar_Click(object sender, ImageClickEventArgs e)
         {
-            Response.Redirect("Default.aspx");
+            Response.Redirect("_Difusion.aspx");
         }
     }
 }

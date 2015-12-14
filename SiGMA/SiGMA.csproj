@@ -178,6 +178,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Inicio.aspx" />
+    <Content Include="_Difusion.aspx" />
     <Content Include="_Mascotas.aspx" />
   </ItemGroup>
   <ItemGroup>
@@ -544,6 +545,13 @@
     </Compile>
     <Compile Include="Voluntario.aspx.designer.cs">
       <DependentUpon>Voluntario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="_Difusion.aspx.cs">
+      <DependentUpon>_Difusion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="_Difusion.aspx.designer.cs">
+      <DependentUpon>_Difusion.aspx</DependentUpon>
     </Compile>
     <Compile Include="_Mascotas.aspx.cs">
       <DependentUpon>_Mascotas.aspx</DependentUpon>
