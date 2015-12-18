@@ -18,98 +18,91 @@
     <script src="assets/js/hover.zoom.conf.js"></script>
 </asp:Content>
 <asp:Content ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="centered">
+    <div class="panel panel-default">
         <div class="panel panel-default">
-            <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">
-                    Consultar, modificar tipos de documentos
-                </h3>
+              <div class="centered">
+                  <h3 class="panel-title">
+                      Consultar, modificar tipos de documentos
+                  </h3>
+              </div>
             </div>
             <div class="panel-body">
-                <div style="margin-left: 30%; width: 30%;">
-                    <asp:Panel runat="server" ID="pnlCorrecto" class="alert alert-dismissable alert-success"
+                <div class="col-md-12">
+                    <div class="col-md-4 col-md-offset-4">
+                        <asp:Panel runat="server" ID="pnlCorrecto" class="alert alert-dismissable alert-success"
                         Visible="false">
                         <button class="close" type="button" data-dismiss="alert">
                             ×</button>
                         <asp:Label ID="lblResultado1" runat="server" Text=""></asp:Label>
                     </asp:Panel>
-                    <asp:Panel runat="server" ID="pnlInfo" class="alert alert-dismissable alert-info"
+                        <asp:Panel runat="server" ID="pnlInfo" class="alert alert-dismissable alert-info"
                         Visible="false">
                         <button class="close" type="button" data-dismiss="alert">
                             ×</button>
                         <asp:Label ID="lblResultado2" runat="server" Text=""></asp:Label>
                     </asp:Panel>
-                    <asp:Panel runat="server" ID="pnlAtento" class="alert alert-dismissable alert-danger"
+                        <asp:Panel runat="server" ID="pnlAtento" class="alert alert-dismissable alert-danger"
                         Visible="false">
                         <button class="close" type="button" data-dismiss="alert">
                             ×</button>
                         <asp:Label ID="lblResultado3" runat="server" Text=""></asp:Label>
                     </asp:Panel>
+                    </div>
                 </div>
             </div>
             <div class="panel-body">
-                <div class="col-md-1 col-md-offset-4">
-                    <div style="margin-left: 30%; display: table; width: 40%;">
-                        <div style="display: table-row; width: 30%">
-                            <div style="display: table-cell; width: 20%;">
-                                Nombre:
-                            </div>
-                            <div style="display: table-cell; width: 20%;">
-                                <asp:TextBox ID="txtNombre" runat="server"></asp:TextBox>
-                            </div>
-                            <div style="display: table-cell; width: 20%;">
-                                <asp:Panel ID="pnlBuscar" runat="server">
-                                    <asp:Button ID="btnBuscar" runat="server" Text="Buscar" OnClick="BtnBuscarClick"
-                                        CausesValidation="False" />
-                                </asp:Panel>
-                            </div>
-                            <div style="display: table-cell; width: 20%;">
-                                <asp:RequiredFieldValidator ID="rfvNombre" runat="server" ErrorMessage="Debe ingresar un tipo de documento"
-                                    ControlToValidate="txtNombre" ValidationGroup="1" Display="Dynamic" Font-Underline="False" BorderColor="Red" ForeColor="Red"></asp:RequiredFieldValidator>
-                            </div>
-                        </div>
+                <div class="col-md-12">
+                    <div class="col-md-2 col-md-offset-4">
+                        Nombre:
                     </div>
-                    <div style="margin-left: 30%; display: table; width: 40%;">
-                        <div style="display: table-row; width: 30%;">
-                            <asp:Panel ID="pnlResultado" runat="server" Visible="false">
-                                <div style="display: table-cell; width: 10%;vertical-align:middle">
-                                    Resultados:
-                                </div>
-                                <div style="display: table-cell; width: 70%;">
-                                    <asp:ListBox ID="lstResultados" runat="server" AutoPostBack="True" OnSelectedIndexChanged="BtnSeleccionarClick" Width=260px></asp:ListBox>
-                                </div>
-                            </asp:Panel>
-                        </div>
-                        <div style="display: table-row; width: 30%;margin-left:30%;">
-                            <div style="display: table-cell inline; width: 20%;">
-                               <table>
-                                    <tr>
-                                        <td>
-                                            <asp:Panel ID="pnlRegistrar" runat="server">
-                                                <asp:Button ID="btnRegistrar" runat="server" Text="Registrar" OnClick="BtnRegistrarClick"
-                                                    ValidationGroup="1" />
-                                            </asp:Panel>
-                                        </td>
-                                        <td>
-                                            <asp:Panel ID="pnlCambio" runat="server" Visible="false">
-                                                <asp:Button ID="btnModificar" runat="server" Text="Modificar" OnClick="BtnModificarClick"
-                                                    CausesValidation="true" />
-                                            </asp:Panel>
-                                        </td>
-                                        <td>
-                                            <asp:Panel runat="server" ID="pnl8" Visible="false">
-                                                <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar" OnClick="BtnLimpiarClick"
-                                                    CausesValidation="False" />
-                                            </asp:Panel>
-                                        </td>
-                                    </tr>
-                               </table>
-                            </div>
-                        </div>
+                    <div class="col-md-2">
+                        <asp:TextBox ID="txtNombre" runat="server"></asp:TextBox>
+                    </div>
+                    <div class="col-md-4">
+                        <asp:RequiredFieldValidator ID="rfvNombre" runat="server" ErrorMessage="Debe ingresar un tipo de documento"
+                            ControlToValidate="txtNombre" ValidationGroup="1" Display="Dynamic" Font-Underline="False"
+                            BorderColor="Red" ForeColor="Red"></asp:RequiredFieldValidator>
                     </div>
                 </div>
-            </div>
+                <div class="col-md-12">
+                    <div class="col-md-2 col-md-offset-4">
+                        <asp:Panel ID="pnlBuscar" runat="server">
+                            <asp:Button ID="btnBuscar" runat="server" Text="Buscar" OnClick="BtnBuscarClick"
+                                CausesValidation="False" />
+                        </asp:Panel>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                        <asp:Panel ID="pnlResultado" runat="server" Visible="false">
+                            <div class="col-md-2 col-md-offset-4">
+                                Resultados:&nbsp&nbsp&nbsp
+                            </div>
+                            <div class="col-md-2">
+                                <asp:ListBox ID="lstResultados" runat="server" AutoPostBack="True" OnSelectedIndexChanged="BtnSeleccionarClick" Width="100%"></asp:ListBox>
+                            </div>
+                        </asp:Panel>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-1 col-md-offset-5">
+                        <asp:Panel ID="pnlRegistrar" runat="server">
+                            <asp:Button ID="btnRegistrar" runat="server" Text="Registrar" OnClick="BtnRegistrarClick"
+                                ValidationGroup="1" />
+                        </asp:Panel>
+                    </div>
+                    <div class="col-md-1">
+                        <asp:Panel ID="pnlCambio" runat="server" Visible="false">
+                            <asp:Button ID="btnModificar" runat="server" Text="Modificar" OnClick="BtnModificarClick"
+                                CausesValidation="true" />
+                        </asp:Panel>
+                    </div>
+                    <div class="col-md-1">
+                        <asp:Panel runat="server" ID="pnl8" Visible="false">
+                            <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar" OnClick="BtnLimpiarClick"
+                                CausesValidation="False" />
+                        </asp:Panel>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
