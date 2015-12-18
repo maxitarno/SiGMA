@@ -78,8 +78,8 @@
                             <div class="col-md-2 col-md-offset-4">
                                 Resultados:&nbsp&nbsp&nbsp
                             </div>
-                            <div class="col-md-2">
-                                <asp:ListBox ID="lstResultados" runat="server" AutoPostBack="True" OnSelectedIndexChanged="BtnSeleccionarClick" Width="100%"></asp:ListBox>
+                            <div class="col-md-4">
+                                <asp:ListBox ID="lstResultados" runat="server" AutoPostBack="True" OnSelectedIndexChanged="BtnSeleccionarClick"></asp:ListBox>
                             </div>
                         </asp:Panel>
                 </div>
