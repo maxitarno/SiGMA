@@ -108,6 +108,7 @@ namespace SiGMA
                             pnlInfo.Visible = false;
                             pnlEliminar.Visible = false;
                             pnlAtento.Visible = false;
+                            pnlresult.Visible = true;
                         }
                         else if (usuarios.Count == 0)
                         {
@@ -115,6 +116,7 @@ namespace SiGMA
                             pnlCorrecto.Visible = false;
                             pnlInfo.Visible = true;
                             lblResultado2.Text = "No se encontraron usuarios";
+                            pnlresult.Visible = false;
                         }
                     }
                     else
@@ -153,6 +155,7 @@ namespace SiGMA
                     pnlInfo.Visible = false;
                     pnlEliminar.Visible = false;
                     pnlAtento.Visible = false;
+                    pnlresult.Visible = true;
                 }
                 else if(usuarios.Count == 0)
                 {
@@ -160,6 +163,7 @@ namespace SiGMA
                     pnlCorrecto.Visible = false;
                     pnlInfo.Visible = true;
                     lblResultado2.Text = "No se encontraron usuarios";
+                    pnlresult.Visible = false;
                 }
             }
         }

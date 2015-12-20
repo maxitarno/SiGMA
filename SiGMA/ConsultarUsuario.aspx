@@ -1,5 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ConsultarUsuario.aspx.cs"
-    Inherits="SiGMA.ConsultarUsuario" MasterPageFile="~/PaginaMaestra.Master" Culture="Auto" UICulture="Auto"%>
+    Inherits="SiGMA.ConsultarUsuario" MasterPageFile="~/PaginaMaestra.Master" Culture="Auto"
+    UICulture="Auto" %>
 
 <asp:Content ContentPlaceHolderID="head" runat="server">
     <meta charset="utf-8">
@@ -16,21 +17,21 @@
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="assets/js/hover.zoom.js"></script>
     <script src="assets/js/hover.zoom.conf.js"></script>
-    <link href="assets/calendario_dw/calendario_dw-estilos.css" type="text/css" rel="STYLESHEET"/>
-
+    <link href="assets/calendario_dw/calendario_dw-estilos.css" type="text/css" rel="STYLESHEET" />
 </asp:Content>
 <asp:Content ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True">
-        </asp:ScriptManager>
+    <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True">
+    </asp:ScriptManager>
     <div class="centered">
-        
         <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">
-                <asp:Label ID="lblTitulo"  runat="server" Text="Label"></asp:Label></h3>
+            <div class="centered">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <asp:Label ID="lblTitulo" runat="server" Text="Label"></asp:Label></h3>
+                </div>
             </div>
             <div class="panel-body">
-                <div class="col-md-2 col-md-offset-5">
+                <div class="col-md-4 col-md-offset-4">
                     <asp:Panel runat="server" ID="pnlCorrecto" class="alert alert-dismissable alert-success"
                         Visible="false">
                         <button class="close" type="button" data-dismiss="alert">
@@ -52,272 +53,257 @@
                 </div>
             </div>
             <div class="panel-body">
-                <div class="centered">
-                    <asp:RadioButton ID="rbPorPersona" runat="server" GroupName="1" ValidationGroup="1"
-                        AutoPostBack="True" OnCheckedChanged="RdbPorPersona" Text="Por persona" />
-                    <asp:RadioButton ID="rbPorUsuario" runat="server" GroupName="1" ValidationGroup="1"
-                        AutoPostBack="True" OnCheckedChanged="RdbPorUsuario" Checked="True" Text="Por usuario" />
-                </div>
-                <div class="col-md-3 col-md-offset-1">
-                    <div style="margin-left: 30%; display: table; width: 40%;">
-                        <div style="display: table-row; width: 40%">
-                            <table>
-                                <tr>
-                                    <td>
-                                        <asp:Panel ID="pnlUser" runat="server" Visible="false">
-                                            Usuario:
-                                        </asp:Panel>
-                                    </td>
-                                    <td>
-                                        <asp:Panel ID="pnlUsuario" runat="server" Visible="false">
-                                            <asp:TextBox CssClass="TextBox" ID="txtUsuario" runat="server" Width="350px"></asp:TextBox>
-                                        </asp:Panel>
-                                    </td>
-                                    <td>
-                                        <asp:Panel ID="pnlBuscar" runat="server" Visible="false">
-                                            <asp:Button ID="btnBuscar" runat="server" Text="Buscar" OnClick="btnBuscarClick" />
-                                        </asp:Panel>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <asp:Panel ID="pnlType" runat="server" Visible="false">
-                                            Tipo de documento:
-                                        </asp:Panel>
-                                    </td>
-                                    <td>
-                                        <asp:Panel ID="pnlTipoDeDocumento" runat="server" Visible="false">
-                                            <asp:DropDownList ID="ddlTipoDeDocumento" runat="server" CssClass="TextBox" Width="350px">
-                                            </asp:DropDownList>
-                                        </asp:Panel>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <asp:Panel ID="pnlnumber" runat="server" Visible="false">
-                                            Nº de documento:
-                                        </asp:Panel>
-                                    </td>
-                                    <td>
-                                        <asp:Panel ID="pnlNºDeDocumento" runat="server" Visible="false">
-                                            <asp:TextBox CssClass="TextBox" ID="txtNºDeDocumento" runat="server" Width="350px"></asp:TextBox>
-                                        </asp:Panel>
-                                    </td>
-                                    <td>
-                                        <asp:RequiredFieldValidator ID="rfvNºDeDocumento" runat="server" ErrorMessage="Debe ingresar un numero de documento"
-                                            ControlToValidate="txtNºDeDocumento" CssClass="Validator" Display="Dynamic" ValidationGroup="2"></asp:RequiredFieldValidator>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
+                <div class="col-md-12">
+                    <div class="col-md-2 col-md-offset-4">
+                        <asp:RadioButton ID="rbPorPersona" runat="server" GroupName="1" ValidationGroup="1"
+                            AutoPostBack="True" OnCheckedChanged="RdbPorPersona" Text="Por persona" />
                     </div>
-                    <div style="margin-left: 30%; display: table; width: 40%;">
-                        <div style="display: table-row; width: 30%">
-                            <asp:Panel ID="pnlresult" runat="server" Visible="false">
-                                <div style="display: table-cell; width: 20%;">
-                                    Resultados:
-                                </div>
-                            </asp:Panel>
-                            <asp:Panel ID="pnlResultados" runat="server" Visible="false">
-                                <div style="display: table-cell; width: 20%;">
-                                    <asp:ListBox ID="lstResultados" runat="server" CssClass="TextBox" Width="200px" 
-                                        AutoPostBack="True" onselectedindexchanged="lstResultados_SelectedIndexChanged">
-                                    </asp:ListBox>
-                                </div>
-                            </asp:Panel>
-                        </div>
-                        <div style="display: table-row; width: 30%">
-                            <asp:Panel ID="pnlSeleccionar" runat="server" Visible="false">
-                                <div style="display: table-cell; width: 20%;">
-                                    <asp:Button ID="btnSeleccionar" runat="server" visible="false" Text="Seleccionar" OnClick="btnAceptarClick" />
-                                </div>
-                            </asp:Panel>
-                        </div>
+                    <div class="col-md-2">
+                        <asp:RadioButton ID="rbPorUsuario" runat="server" GroupName="1" ValidationGroup="1"
+                            AutoPostBack="True" OnCheckedChanged="RdbPorUsuario" Checked="True" Text="Por usuario" />
                     </div>
                 </div>
-                <div class="col-md-3 col-md-offset-2">
-                    <div style="margin-left: 30%; display: table; width: 40%;">
-                        <div style="display: table-row; width: 30%">
-                            <table>
-                                <tr>
-                                    <td>
-                                        <asp:Panel ID="pnlsurname" runat="server" Visible="false">
-                                            Apellido:
-                                        </asp:Panel>
-                                    </td>
-                                    <td>
-                                        <asp:Panel ID="pnlApellido" runat="server" Visible="false">
-                                            <asp:TextBox ID="txtApellido" runat="server" CssClass="TextBox" Width="350px"></asp:TextBox>
-                                        </asp:Panel>
-                                    </td>
-                                    <td>
-                                        <asp:RequiredFieldValidator ID="rfvApellido" runat="server" ErrorMessage="Debe ingresar un apellido"
-                                            ControlToValidate="txtApellido" CssClass="Validator" ValidationGroup="2" SetFocusOnError="True"
-                                            Display="Dynamic"></asp:RequiredFieldValidator>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <asp:Panel ID="pnlname" runat="server" Visible="false">
-                                            Nombre:
-                                        </asp:Panel>
-                                    </td>
-                                    <td>
-                                        <asp:Panel ID="pnlNombre" runat="server" Visible="false">
-                                            <asp:TextBox ID="txtNombre" runat="server" CssClass="TextBox" Width="350px"></asp:TextBox>
-                                        </asp:Panel>
-                                    </td>
-                                    <td>
-                                        <asp:RequiredFieldValidator CssClass="Validator" ID="rfvNombre" runat="server" ErrorMessage="Debe ingresar un nombre"
-                                            Display="Dynamic" ControlToValidate="txtNombre" ValidationGroup="1"></asp:RequiredFieldValidator>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <asp:Panel ID="pnlestate" runat="server" Visible="false">
-                                            Localidades:
-                                        </asp:Panel>
-                                    </td>
-                                    <td>
-                                        <asp:Panel ID="pnlLocalidades" runat="server" Visible="false">
-                                            <asp:DropDownList ID="ddlLocalidades" Enabled="true" runat="server" OnSelectedIndexChanged="DdlBarrio_SelectedIndexChanged"
-                                                AutoPostBack="True" CssClass="TextBox" Width="350px">
-                                            </asp:DropDownList>
-                                        </asp:Panel>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <asp:Panel ID="pnlCalle" runat="server" Visible="false">
-                                            Calle:
-                                        </asp:Panel>
-                                    </td>
-                                    <td>
-                                        <asp:Panel runat="server" Visible="false" ID="pnlDdlCalle">
-                                            <asp:DropDownList ID="ddlCalle" Enabled="true" runat="server" CssClass="DropDownList"
-                                                Width="293px">
-                                            </asp:DropDownList>
-                                            <asp:TextBox ID="txtNº" runat="server" CssClass="TextBox" Width="50px"></asp:TextBox>
-                                        </asp:Panel>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <asp:Panel ID="pnlbarrio" runat="server" Visible="false">
-                                            Barrios:
-                                        </asp:Panel>
-                                    </td>
-                                    <td>
-                                        <asp:Panel ID="pnlBarrios" runat="server" Visible="false">
-                                            <asp:DropDownList ID="ddlBarrios" Enabled="true" runat="server" AutoPostBack="False"
-                                                CssClass="TextBox" Width="350px">
-                                            </asp:DropDownList>
-                                        </asp:Panel>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <asp:Panel ID="pnldate" runat="server" Visible="false">
-                                            Fecha de nacimiento:
-                                        </asp:Panel>
-                                    </td>
-                                    <td>
-                                        <asp:Panel ID="pnlFecha" runat="server" Visible="false">
-                                                <asp:TextBox ID="txtFecha" runat="server"  Width="90%" />
-                                                <asp:Image ID="Image1" runat="server" ImageUrl="~/assets/calendario_dw/calendario.png" />
-                                                <ajaxToolkit:CalendarExtender ID="CalendarExtender1" 
-                                                    runat="server" TargetControlID="txtFecha" 
-                                                    PopupButtonID="Image1">
-                                                </ajaxToolkit:CalendarExtender>
-                                        </asp:Panel>
-                                    </td>
-                                    <td>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <asp:Panel ID="pnlphonefixed" runat="server" Visible="false">
-                                            Telefono fijo:
-                                        </asp:Panel>
-                                    </td>
-                                    <td>
-                                        <asp:Panel ID="pnlTelefonFijo" runat="server" Visible="false">
-                                            <asp:TextBox ID="txtTelefonoFijo" runat="server" CssClass="TextBox" Width="350px"></asp:TextBox>
-                                        </asp:Panel>
-                                    </td>
-                                    <td>
-                                        <asp:RequiredFieldValidator ID="rfvTelefonoFijo" runat="server" ErrorMessage="Debe ingresar un telefono fijo"
-                                            ControlToValidate="txtTelefonoFijo" Display="Dynamic" ValidationGroup="2" CssClass="Validator"></asp:RequiredFieldValidator>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <asp:Panel ID="pnlphone" runat="server" Visible="false">
-                                            Telefono celular:
-                                        </asp:Panel>
-                                    </td>
-                                    <td>
-                                        <asp:Panel ID="pnlTelefonoCelular" runat="server" Visible="false">
-                                            <asp:TextBox ID="txtTelefonoCelular" runat="server" CssClass="TextBox" Width="350px"></asp:TextBox>
-                                        </asp:Panel>
-                                    </td>
-                                    <td>
-                                        <asp:RequiredFieldValidator ID="rfvTelefonoCelular" runat="server" ErrorMessage="Debe ingresar un telefono celular"
-                                            ControlToValidate="txtTelefonoCelular" CssClass="Validator" ValidationGroup="2"
-                                            SetFocusOnError="True" Display="Dynamic"></asp:RequiredFieldValidator>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <asp:Panel ID="pnlmails" runat="server" Visible="false">
-                                            Mail:
-                                        </asp:Panel>
-                                    </td>
-                                    <td>
-                                        <asp:Panel ID="pnlMail" runat="server" Visible="false">
-                                            <asp:TextBox ID="txtMail" runat="server" CssClass="TextBox" CausesValidation="True"
-                                                Width="350px"></asp:TextBox>
-                                        </asp:Panel>
-                                    </td>
-                                    <td>
-                                        <asp:RequiredFieldValidator ID="rfvMail" runat="server" ErrorMessage="Debe ingresar un mail"
-                                            ControlToValidate="txtMail" Display="Dynamic" ValidationGroup="2" SetFocusOnError="True"
-                                            CssClass="Validator"></asp:RequiredFieldValidator>
-                                        <asp:RegularExpressionValidator ID="revMail" runat="server" ErrorMessage="Debe ingresar un mail"
-                                            ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ControlToValidate="txtMail"
-                                            ValidationGroup="2" CssClass="Validator" ForeColor="Red" SetFocusOnError="True"
-                                            Display="Dynamic"></asp:RegularExpressionValidator>
-                                    </td>
-                                </tr>
-                            </table>
-                            <div style="margin-left: 30%; display: table; width: 40%;">
-                                <div style="display: table-row; width: 30%">
-                                    <table>
-                                        <tr>
-                                            <td>
-                                                <asp:Panel ID="pnlModificar" runat="server" Visible="false">
-                                                    <asp:Button ID="btnModificar" runat="server" Text="Modificar" OnClick="btnModificarClick"
-                                                        ValidationGroup="2" />
-                                                </asp:Panel>
-                                            </td>
-                                            <td>
-                                                <asp:Panel ID="pnlEliminar" runat="server" Visible="false">
-                                                    <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" OnClick="btnEliminarClick"
-                                                        ValidationGroup="3" />
-                                                </asp:Panel>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
+                <div class="col-md-12">
+                    <div class="col-md-5 col-md-offset-1">
+                        <table>
+                            <tr>
+                                <td>
+                                    <asp:Panel ID="pnlUser" runat="server" Visible="false">
+                                        Usuario:
+                                    </asp:Panel>
+                                </td>
+                                <td>
+                                    <asp:Panel ID="pnlUsuario" runat="server" Visible="false">
+                                        <asp:TextBox ID="txtUsuario" runat="server"></asp:TextBox>
+                                    </asp:Panel>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <asp:Panel ID="pnlType" runat="server" Visible="false">
+                                        Tipo de documento:
+                                    </asp:Panel>
+                                </td>
+                                <td>
+                                    <asp:Panel ID="pnlTipoDeDocumento" runat="server" Visible="false">
+                                        <asp:DropDownList ID="ddlTipoDeDocumento" runat="server" Width="210px">
+                                        </asp:DropDownList>
+                                    </asp:Panel>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <asp:Panel ID="pnlnumber" runat="server" Visible="false">
+                                        Nº de documento:
+                                    </asp:Panel>
+                                </td>
+                                <td>
+                                    <asp:Panel ID="pnlNºDeDocumento" runat="server" Visible="false">
+                                        <asp:TextBox ID="txtNºDeDocumento" runat="server"></asp:TextBox>
+                                    </asp:Panel>
+                                </td>
+                                <td>
+                                    <asp:RequiredFieldValidator ID="rfvNºDeDocumento" runat="server" ErrorMessage="Debe ingresar un numero de documento"
+                                        ControlToValidate="txtNºDeDocumento" Display="Dynamic" ValidationGroup="2"></asp:RequiredFieldValidator>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="left">
+                                    <asp:Panel ID="pnlBuscar" runat="server" Visible="true">
+                                        <asp:Button ID="btnBuscar" runat="server" Text="Buscar" OnClick="btnBuscarClick" />
+                                    </asp:Panel>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <asp:Panel ID="pnlresult" runat="server" Visible="false">
+                                        Resultados:
+                                    </asp:Panel>
+                                </td>
+                                <td>
+                                    <asp:Panel ID="pnlResultados" runat="server" Visible="false">
+                                        <asp:ListBox ID="lstResultados" runat="server" AutoPostBack="True" OnSelectedIndexChanged="lstResultados_SelectedIndexChanged" Width="210px">
+                                        </asp:ListBox>
+                                    </asp:Panel>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">
+                                    <asp:Panel ID="pnlSeleccionar" runat="server" Visible="false">
+                                        <asp:Button ID="btnSeleccionar" runat="server" Visible="false" Text="Seleccionar"
+                                            OnClick="btnAceptarClick" />
+                                    </asp:Panel>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-md-6">
+                        <table>
+                            <tr>
+                                <td>
+                                    <asp:Panel ID="pnlsurname" runat="server" Visible="false">
+                                        Apellido:
+                                    </asp:Panel>
+                                </td>
+                                <td>
+                                    <asp:Panel ID="pnlApellido" runat="server" Visible="false">
+                                        <asp:TextBox ID="txtApellido" runat="server"></asp:TextBox>
+                                    </asp:Panel>
+                                </td>
+                                <td>
+                                    <asp:RequiredFieldValidator ID="rfvApellido" runat="server" ErrorMessage="Debe ingresar un apellido"
+                                        ControlToValidate="txtApellido" ValidationGroup="2" SetFocusOnError="True" Display="Dynamic"></asp:RequiredFieldValidator>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <asp:Panel ID="pnlname" runat="server" Visible="false">
+                                        Nombre:
+                                    </asp:Panel>
+                                </td>
+                                <td>
+                                    <asp:Panel ID="pnlNombre" runat="server" Visible="false">
+                                        <asp:TextBox ID="txtNombre" runat="server"></asp:TextBox>
+                                    </asp:Panel>
+                                </td>
+                                <td>
+                                    <asp:RequiredFieldValidator ID="rfvNombre" runat="server" ErrorMessage="Debe ingresar un nombre"
+                                        Display="Dynamic" ControlToValidate="txtNombre" ValidationGroup="1" BorderColor="Red"></asp:RequiredFieldValidator>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <asp:Panel ID="pnlestate" runat="server" Visible="false">
+                                        Localidades:
+                                    </asp:Panel>
+                                </td>
+                                <td>
+                                    <asp:Panel ID="pnlLocalidades" runat="server" Visible="false">
+                                        <asp:DropDownList ID="ddlLocalidades" Enabled="true" runat="server" OnSelectedIndexChanged="DdlBarrio_SelectedIndexChanged"
+                                            AutoPostBack="True" Width="210px">
+                                        </asp:DropDownList>
+                                    </asp:Panel>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <asp:Panel ID="pnlCalle" runat="server" Visible="false">
+                                        Calle:
+                                    </asp:Panel>
+                                </td>
+                                <td>
+                                    <asp:Panel runat="server" Visible="false" ID="pnlDdlCalle">
+                                        <asp:DropDownList ID="ddlCalle" Enabled="true" runat="server" Width="155px">
+                                        </asp:DropDownList>
+                                        <asp:TextBox ID="txtNº" runat="server" CssClass="TextBox" Width="55px"></asp:TextBox>
+                                    </asp:Panel>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <asp:Panel ID="pnlbarrio" runat="server" Visible="false">
+                                        Barrios:
+                                    </asp:Panel>
+                                </td>
+                                <td>
+                                    <asp:Panel ID="pnlBarrios" runat="server" Visible="false">
+                                        <asp:DropDownList ID="ddlBarrios" Enabled="true" runat="server" AutoPostBack="False"
+                                            Width="210px">
+                                        </asp:DropDownList>
+                                    </asp:Panel>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <asp:Panel ID="pnldate" runat="server" Visible="false">
+                                        Fecha de nacimiento:
+                                    </asp:Panel>
+                                </td>
+                                <td>
+                                    <asp:Panel ID="pnlFecha" runat="server" Visible="false">
+                                        <asp:TextBox ID="txtFecha" runat="server" Width="190px"/>
+                                        <asp:Image ID="Image1" runat="server" ImageUrl="~/assets/calendario_dw/calendario.png" />
+                                        <ajaxToolkit:CalendarExtender ID="CalendarExtender1" runat="server" TargetControlID="txtFecha"
+                                            PopupButtonID="Image1"></ajaxToolkit:CalendarExtender>
+                                    </asp:Panel>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <asp:Panel ID="pnlphonefixed" runat="server" Visible="false">
+                                        Telefono fijo:
+                                    </asp:Panel>
+                                </td>
+                                <td>
+                                    <asp:Panel ID="pnlTelefonFijo" runat="server" Visible="false">
+                                        <asp:TextBox ID="txtTelefonoFijo" runat="server"></asp:TextBox>
+                                    </asp:Panel>
+                                </td>
+                                <td>
+                                    <asp:RequiredFieldValidator ID="rfvTelefonoFijo" runat="server" ErrorMessage="Debe ingresar un telefono fijo"
+                                        ControlToValidate="txtTelefonoFijo" Display="Dynamic" ValidationGroup="2" BorderColor="Red"></asp:RequiredFieldValidator>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <asp:Panel ID="pnlphone" runat="server" Visible="false">
+                                        Telefono celular:
+                                    </asp:Panel>
+                                </td>
+                                <td>
+                                    <asp:Panel ID="pnlTelefonoCelular" runat="server" Visible="false">
+                                        <asp:TextBox ID="txtTelefonoCelular" runat="server"></asp:TextBox>
+                                    </asp:Panel>
+                                </td>
+                                <td>
+                                    <asp:RequiredFieldValidator ID="rfvTelefonoCelular" runat="server" ErrorMessage="Debe ingresar un telefono celular"
+                                        ControlToValidate="txtTelefonoCelular" ValidationGroup="2" SetFocusOnError="True"
+                                        Display="Dynamic" BorderColor="Red"></asp:RequiredFieldValidator>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <asp:Panel ID="pnlmails" runat="server" Visible="false">
+                                        Mail:
+                                    </asp:Panel>
+                                </td>
+                                <td>
+                                    <asp:Panel ID="pnlMail" runat="server" Visible="false">
+                                        <asp:TextBox ID="txtMail" runat="server" CssClass="TextBox" CausesValidation="True"></asp:TextBox>
+                                    </asp:Panel>
+                                </td>
+                                <td>
+                                    <asp:RequiredFieldValidator ID="rfvMail" runat="server" ErrorMessage="Debe ingresar un mail"
+                                        ControlToValidate="txtMail" Display="Dynamic" ValidationGroup="2" SetFocusOnError="True"
+                                        CssClass="Validator" BorderColor="Red"></asp:RequiredFieldValidator>
+                                    <asp:RegularExpressionValidator ID="revMail" runat="server" ErrorMessage="Debe ingresar un mail"
+                                        ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ControlToValidate="txtMail"
+                                        ValidationGroup="2" CssClass="Validator" ForeColor="Red" SetFocusOnError="True" BorderColor="Red"></asp:RegularExpressionValidator>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-1 col-md-offset-8">
+                        <asp:Panel ID="pnlModificar" runat="server" Visible="false">
+                            <asp:Button ID="btnModificar" runat="server" Text="Modificar" OnClick="btnModificarClick"
+                                ValidationGroup="2" />
+                        </asp:Panel>
+                    </div>
+                    <div class="col-md-1">
+                        <asp:Panel ID="pnlEliminar" runat="server" Visible="false">
+                            <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" OnClick="btnEliminarClick"
+                                ValidationGroup="3" />
+                        </asp:Panel>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="centered">
-            <asp:ImageButton ID="ibtnRegresar" runat="server" ImageUrl="~/imagenes/volver.png"
-                OnClick="BtnRegresarClick" CausesValidation="False"/><br />VOLVER
     </div>
+    <div class="centered">
+        <asp:ImageButton ID="ibtnRegresar" runat="server" ImageUrl="~/imagenes/volver.png"
+            OnClick="BtnRegresarClick" CausesValidation="False" /><br />
+        VOLVER
     </div>
 </asp:Content>
