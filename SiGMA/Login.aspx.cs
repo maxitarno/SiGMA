@@ -33,7 +33,7 @@ namespace SiGMA
                 {
                     Session["UsuarioLogueado"] = usuario.user;
                     Session["IdDueño"] = LogicaBDDueño.buscarIdDueñoPorUsuario(usuario.user).ToString();
-                    Session["IdVoluntario"] = LogicaBDVoluntario.buscarIdVoluntarioPorUsuario(usuario.user).ToString();
+                    Session["IdVoluntario"] =  LogicaBDVoluntario.buscarIdVoluntarioPorUsuario(usuario.user).ToString();
                     Session["EsRol"] = LogicaBDRol.verRolesSegunUsuario(usuario.user);
                     Session["TipoVoluntario"] = LogicaBDVoluntario.buscarTipoVoluntario(usuario.user).ToString();
                     Session["EstadoVoluntario"] = LogicaBDVoluntario.buscarEstadoVoluntario(usuario.user).ToString();

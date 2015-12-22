@@ -207,9 +207,6 @@ namespace SiGMA
                 }
             }
         }
-        public void btnSeleccionarDuenioClick(object sender, EventArgs e){
-            
-        }
         public void btnBuscarMascotaClick(object sender, EventArgs e)
         {
             EMascota mascota = new EMascota();
@@ -244,7 +241,7 @@ namespace SiGMA
             mascota.estado.idEstado = 4;
             mascota.nombreMascota = txtNombreMascota.Text;
             List<EMascota> mascotas = LogicaBDMascota.buscarMascotasFiltros(mascota);
-            if(mascotas != null){
+            if(mascotas.Count != 0){
                 lstResultadosMascotas.DataSource = mascotas;
                 lstResultadosMascotas.DataTextField = "nombreMascota";
                 lstResultadosMascotas.DataValueField = "idMascota";
@@ -264,10 +261,6 @@ namespace SiGMA
                 lblResultado2.Text = "No se encontraron mascotas";
             }
         }
-        public void btnSeleccionarMascota(object sender, EventArgs e)
-        {
-            
-        }
         public void btnRegistrarClick(object sender, EventArgs e)
         {
                 if (Session["Si"] != null && Session["Si"].ToString().Equals("Si"))
@@ -275,7 +268,7 @@ namespace SiGMA
                     EAdopcion adopcion = new EAdopcion();
                     adopcion.mascota = new EMascota();
                     adopcion.duenio = new EDuenio();
-                    adopcion.idVoluntario = int.Parse(Session["IdVoluntario"].ToString());
+                    adopcion.idVoluntario = (Session["IdVoluntario"].ToString().Equals("")) ? 0 : int.Parse(Session["IdVoluntario"].ToString());
                     adopcion.mascota.idMascota = int.Parse(Session["IdMascota"].ToString());
                     adopcion.fecha = DateTime.Parse(txtFecha.Text);
                     adopcion.duenio.idDuenio = int.Parse(Session["Duenio"].ToString());
@@ -315,7 +308,7 @@ namespace SiGMA
                     else
                     {
                         pnlInfo.Visible = true;
-                        lblResultado3.Text = "Debe ingresar un nombre valido";
+                        lblResultado2.Text = "Debe ingresar un nombre valido";
                         pnlCorrecto.Visible = false;
                         pnlAtento.Visible = false;
                     }
@@ -335,9 +328,9 @@ namespace SiGMA
         }
         public void BtnRegresarClick(object sender, EventArgs e)
         {
+            Session["Si"] = null;
             Response.Redirect("Adopciones.aspx");
         }
-
         protected void lstResultadosDuenios_SelectedIndexChanged(object sender, EventArgs e)
         {
             EDuenio duenio = new EDuenio();
@@ -386,7 +379,7 @@ namespace SiGMA
                 else
                 {
                     pnlInfo.Visible = true;
-                    lblResultado2.Text = "Debe seleccionar un Dueño con domicilio o registrar u nuevo dueño";
+                    lblResultado2.Text = "Debe seleccionar un dueño con domicilio o registrar un nuevo dueño";
                     pnlCorrecto.Visible = false;
                     pnlAtento.Visible = false;
                 }
@@ -433,7 +426,5 @@ namespace SiGMA
                 pnlAtento.Visible = false;
             }
         }
-
-
     }
 }

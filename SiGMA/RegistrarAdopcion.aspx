@@ -21,13 +21,14 @@
 <asp:Content ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True">
     </asp:ScriptManager>
-    <div class="centered">
         <div class="panel panel-default">
-            <div class="panel panel-default>
-                <div class="panel-heading">
+            <div class="panel panel-default">
+                <div class="centered">
+                    <div class="panel-heading">
                     <h3 class="panel-title">
                         Registrar Adopción
                     </h3>
+                </div>
                 </div>
                 <div class="panel panel-default">
                     <div class="panel-body">
@@ -54,10 +55,8 @@
                     </div>
                 </div>
                 <div class="panel-body">
-                    <div class="centered">
-                        <div style="margin-left: 30%; display: table; width: 40%;">
-                            <div style="display: table-row; width: 30%">
-                                <div style="display: table-cell; width: 20%;">
+                    <div class="col-md-12">
+                        <div class="col-md-4 col-md-offset-4">
                                      <asp:TextBox ID="txtFecha" runat="server"  Width="90%" />
                                                 <asp:Image ID="Image1" runat="server" ImageUrl="~/assets/calendario_dw/calendario.png" />
                                                 <ajaxToolkit:CalendarExtender ID="CalendarExtender1" 
@@ -68,85 +67,79 @@
                                                         ForeColor="Red" ControlToValidate="txtFecha" SetFocusOnError="True" 
                                                         MinimumValue="01/01/2013" Type="Date" Font-Size="XX-Small" 
                                                         ></asp:RangeValidator>
-                                </div>
-                            </div>
+                         </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="col-md-2 col-md-offset-4">
+                            <asp:RadioButton ID="rbPorNombre" runat="server" GroupName="1" ValidationGroup="1"
+                                AutoPostBack="True" OnCheckedChanged="rbPorName" Checked="False" Text=" Por Nombre" />&nbsp&nbsp
+                        </div>
+                        <div class="col-md-2">
+                            <asp:RadioButton ID="rbPorDNI" runat="server" OnCheckedChanged="rbPorTipo" AutoPostBack="True"
+                                ValidationGroup="1" GroupName="1" Checked="True" Text=" Por DNI" />
                         </div>
                     </div>
-                    <div class="centered">
-                        <asp:RadioButton ID="rbPorNombre" runat="server" GroupName="1" ValidationGroup="1"
-                            AutoPostBack="True" OnCheckedChanged="rbPorName" Checked="False" Text=" Por Nombre" />&nbsp&nbsp
-                        <asp:RadioButton ID="rbPorDNI" runat="server" OnCheckedChanged="rbPorTipo" AutoPostBack="True"
-                            ValidationGroup="1" GroupName="1" Checked="True" Text=" Por DNI" />
-                    </div>
-                    <div class="col-md-3 col-md-offset-1">
-                        <div style="margin-left: 30%; display: table; width: 40%;">
-                            <div style="display: table-row; width: 30%">
+                    <div class="col-md-12">
+                        <div class="col-md-4 col-md-offset-2">
+                            <table>
+                            <tr>
                                 <asp:Panel ID="pnlNombre" runat="server" Visible="false">
-                                    <div style="display: table-cell; width: 20%;">
+                                    <td>
                                         Nombre:
-                                    </div>
-                                    <div style="display: table-cell; width: 20%;">
+                                    </td>
+                                    <td>
                                         <asp:TextBox ID="txtNombreDuenio" runat="server" ViewStateMode="Enabled"></asp:TextBox>
-                                    </div>
+                                    </td>
                                 </asp:Panel>
-                            </div>
+                            </tr>
                             <asp:Panel ID="pnlDocumento" runat="server" Visible="false">
-                                <div style="display: table-row; width: 30%">
-                                    <div style="display: table-cell; width: 20%;">
+                                <tr>
+                                    <td>
                                         Tipo de documento:
-                                    </div>
-                                    <div style="vertical-align:middle; display: table-cell; width: 20%;">
-                                        <asp:DropDownList ID="ddlTipo" runat="server" ViewStateMode="Enabled" Width="100%">
+                                    </td>
+                                    <td>
+                                        <asp:DropDownList ID="ddlTipo" runat="server" ViewStateMode="Enabled" Width="210px">
                                         </asp:DropDownList>
-                                    </div>
-                                </div>
-                                <div style="display: table-row; width: 30%">
-                                    <div style=" display: table-cell; width: 20%;">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
                                         Nº de doumento:
-                                    </div>
-                                    <div style="vertical-align:middle; display: table-cell; width: 20%;">
+                                    </td>
+                                    <td>
                                         <asp:TextBox ID="txtDNI" runat="server" ViewStateMode="Enabled"></asp:TextBox>
-                                    </div>
-                                </div>
+                                    </td>
+                                </tr>
                             </asp:Panel>
-                            <div style="display: table-row; width: 30%;">
-                                <div style="display: table-cell; width: 20%; margin-right=50%;">
+                            <tr>
+                                <td align="left">
                                     <asp:Panel ID="pnlBuscar" runat="server" Visible="false">
                                         <asp:Button ID="btnBuscarDuenio" runat="server" Text="Buscar" OnClick="btnBuscarDuenioClick" />
                                     </asp:Panel>
-                                </div>
-                            </div>
+                                </td>
+                            </tr>
                             <asp:Panel ID="pnlResultadosDuenio" runat="server" Visible="false">
-                                <div style="display: table-row; width: 30%">
-                                    <div style="display: table-cell; width: 10%;vertical-align:middle;">
+                                <tr>
+                                    <td>
                                         Resultados:
-                                    </div>
-                                    <div style="display: table-cell; width: 80%;">
+                                    </td>
+                                    <td>
                                         <asp:ListBox ID="lstResultadosDuenios" runat="server" ViewStateMode="Enabled" 
-                                            Width="100%" AutoPostBack="True" 
+                                            Width="210px" AutoPostBack="True" 
                                             onselectedindexchanged="lstResultadosDuenios_SelectedIndexChanged">
                                         </asp:ListBox>
-                                    </div>
-                                </div>
-                                <div style="display: table-row; width: 30%">
-                                    <div style="display: table-cell; width: 20%;">
-                                        <asp:Button ID="btnSeleccionarDuenio" runat="server" visible="false" Text="Seleccionar" OnClick="btnSeleccionarDuenioClick"
-                                            ViewStateMode="Enabled" />
-                                    </div>
-                                </div>
+                                    </td>
+                                </tr>
                             </asp:Panel>
-                        </div>
-                        <table>
-                            <asp:Panel ID="pnlBuscarMascota" runat="server" Visible="false">
+                        </table>
+                            <table>
+                                <asp:Panel ID="pnlBuscarMascota" runat="server" Visible="false">
                                 <tr>
                                     <td>
                                         Nombre de la mascota:
                                     </td>
                                     <td>
                                         <asp:TextBox ID="txtNombreMascota" runat="server" ViewStateMode="Enabled"></asp:TextBox>
-                                    </td>
-                                    <td>
-                                        
                                     </td>
                                 </tr>
                                 <tr>
@@ -155,7 +148,7 @@
                                     </td>
                                     <td>
                                         <asp:DropDownList ID="ddlEspecies" runat="server" OnSelectedIndexChanged="ddlRaza_SelectedIndexChanged"
-                                            AutoPostBack="True" ViewStateMode="Enabled" Width="100%">
+                                            AutoPostBack="True" ViewStateMode="Enabled" Width="210px">
                                         </asp:DropDownList>
                                     </td>
                                 </tr>
@@ -164,7 +157,7 @@
                                         Raza:
                                     </td>
                                     <td>
-                                        <asp:DropDownList ID="ddlRaza" runat="server" Width="100%">
+                                        <asp:DropDownList ID="ddlRaza" runat="server" Width="210px">
                                         </asp:DropDownList>
                                     </td>
                                 </tr>
@@ -174,7 +167,7 @@
                                     </td>
                                     <td>
                                         <asp:DropDownList ID="ddlEdad" runat="server" OnSelectedIndexChanged="ddlRaza_SelectedIndexChanged"
-                                            ViewStateMode="Enabled" Width="100%">
+                                            ViewStateMode="Enabled" Width="210px">
                                         </asp:DropDownList>
                                     </td>
                                 </tr>
@@ -184,175 +177,163 @@
                                     </td>
                                     <td>
                                         <asp:DropDownList ID="ddlSexo" runat="server" OnSelectedIndexChanged="ddlRaza_SelectedIndexChanged"
-                                            ViewStateMode="Enabled" Width="100%">
+                                            ViewStateMode="Enabled" Width="210px">
                                         </asp:DropDownList>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2"><asp:Button ID="btnBuscarMascota" runat="server" Text="Buscar" OnClick="btnBuscarMascotaClick" /></td>
+                                    <td colspan="2" align="left">
+                                        <asp:Button ID="btnBuscarMascota" runat="server" Text="Buscar" OnClick="btnBuscarMascotaClick" />
+                                    </td>
                                 </tr>
                             </asp:Panel>
-                            <asp:Panel Visible="false" runat="server" ID="pnlResultadosMascotas">
+                                <asp:Panel Visible="false" runat="server" ID="pnlResultadosMascotas">
                                 <tr>
                                     <td>
                                         Resultados:
                                     </td>
                                     <td>
-                                        <asp:ListBox ID="lstResultadosMascotas" runat="server" ViewStateMode="Enabled" Width="100%" AutoPostBack="true" OnSelectedIndexChanged="lstResultadosMascotas_SelectedIndexChanged">
+                                        <asp:ListBox ID="lstResultadosMascotas" runat="server" ViewStateMode="Enabled" Width="210px" AutoPostBack="true" OnSelectedIndexChanged="lstResultadosMascotas_SelectedIndexChanged">
                                         </asp:ListBox>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>
-                                        <asp:Button ID="btnSeleccioarMascota" runat="server" Visible="false" Text="Seleccionar" OnClick="btnSeleccionarMascota" />
-                                    </td>
-                                </tr>
                             </asp:Panel>
-                        </table>
-                    </div>
-                    <div class="col-md-3 col-md-offset-2">
-                        <asp:Panel ID="pnlDuenio" runat="server" Visible="false">
-                            <h5>
-                                Datos del dueño
-                            </h5>
-                            <table>
-                                <tr>
-                                    <td>
-                                        Nombre:
-                                    </td>
-                                    <td>
-                                        <asp:TextBox ID="txtNombreD" runat="server" ReadOnly="True" ViewStateMode="Enabled"
-                                            Enabled="False"></asp:TextBox>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Tipo de documento:
-                                    </td>
-                                    <td>
-                                        <asp:TextBox ID="txtTipoDeDocumento" runat="server" ReadOnly="True" ViewStateMode="Enabled"
-                                            Enabled="False"></asp:TextBox>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Nº de documento:
-                                    </td>
-                                    <td>
-                                        <asp:TextBox ID="txtNº" runat="server" ReadOnly="True" ViewStateMode="Enabled" Enabled="False"></asp:TextBox>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Localidad:
-                                    </td>
-                                    <td>
-                                        <asp:TextBox ID="txtLocalidad" runat="server" ReadOnly="True" ViewStateMode="Enabled"
-                                            Enabled="False"></asp:TextBox>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Barrio:
-                                    </td>
-                                    <td>
-                                        <asp:TextBox ID="txtBarrio" runat="server" ReadOnly="True" ViewStateMode="Enabled"
-                                            Enabled="False"></asp:TextBox>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Calle:
-                                    </td>
-                                    <td>
-                                         
-                                        <asp:TextBox ID="txtCalle" runat="server" ReadOnly="True" ViewStateMode="Enabled"
-                                            Enabled="False" Width="150px"></asp:TextBox>-<asp:TextBox ID="txtNro" runat="server" ReadOnly="True" ViewStateMode="Enabled" Enabled="False"
-                                            Width="50px"></asp:TextBox>
-                                    </td>
-                                </tr>
                             </table>
-                        </asp:Panel>
-                        <asp:Panel ID="pnlMascota" runat="server" Visible="false">
-                            <h5>
-                                Datos de la mascota
-                            </h5>
-                            <table>
-                                <tr>
-                                    <td>
-                                        Nombre de la mascota:
-                                    </td>
-                                    <td>
-                                        <asp:TextBox ID="txtNombreM" runat="server" ReadOnly="false" ViewStateMode="Enabled"
-                                            Enabled="False"></asp:TextBox>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Especie:
-                                    </td>
-                                    <td>
-                                        <asp:TextBox ID="txtEspecie" runat="server" ViewStateMode="Enabled" ReadOnly="true"
-                                            Enabled="False"></asp:TextBox>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Raza:
-                                    </td>
-                                    <td>
-                                        <asp:TextBox ID="txtRaza" runat="server" ReadOnly="True" ViewStateMode="Enabled"
-                                            Enabled="False"></asp:TextBox>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Sexo:
-                                    </td>
-                                    <td>
-                                        <asp:TextBox ID="txtSexo" runat="server" ReadOnly="True" ViewStateMode="Enabled"
-                                            Enabled="False"></asp:TextBox>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Edad:
-                                    </td>
-                                    <td>
-                                        <asp:TextBox ID="txtEdad" runat="server" ReadOnly="True" ViewStateMode="Enabled"
-                                            Enabled="False"></asp:TextBox>
-                                    </td>
-                                </tr>
-                            </table>
-                        </asp:Panel>
-                    </div>
-                </div>
-                <div class="centered">
-                    <div class="centered">
-                        <div class="centered">
-                            <div style="margin-left: 30%; display: table; width: 40%;">
-                                <div style="display: table-row; width: 30%">
-                                    <div style="display: table-cell; width: 20%;">
-                                        <asp:Panel ID="pnlRegistrar" runat="server" Visible="false">
-                                            <asp:Button ID="btnRegistrar" runat="server" Text="Generar contrato" OnClick="btnRegistrarClick" />
-                                        </asp:Panel>
-                                    </div>
-                                    <%--<div style="display: table-cell; width: 20%;">
-                                        <asp:Panel ID="pnllimpiar" runat="server" Visible="false">
-                                            <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar" />
-                                        </asp:Panel>
-                                    </div>--%>
-                                </div>
-                            </div>
                         </div>
+                        <div class="col-md-6">
+                            <asp:Panel ID="pnlDuenio" runat="server" Visible="false">
+                                <h5>
+                                    Datos del dueño
+                                </h5>
+                                <table>
+                                    <tr>
+                                        <td>
+                                            Nombre:
+                                        </td>
+                                        <td>
+                                            <asp:TextBox ID="txtNombreD" runat="server" ReadOnly="True" ViewStateMode="Enabled"
+                                                Enabled="False"></asp:TextBox>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Tipo de documento:
+                                        </td>
+                                        <td>
+                                            <asp:TextBox ID="txtTipoDeDocumento" runat="server" ReadOnly="True" ViewStateMode="Enabled"
+                                                Enabled="False"></asp:TextBox>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Nº de documento:
+                                        </td>
+                                        <td>
+                                            <asp:TextBox ID="txtNº" runat="server" ReadOnly="True" ViewStateMode="Enabled" Enabled="False"></asp:TextBox>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Localidad:
+                                        </td>
+                                        <td>
+                                            <asp:TextBox ID="txtLocalidad" runat="server" ReadOnly="True" ViewStateMode="Enabled"
+                                                Enabled="False"></asp:TextBox>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Barrio:
+                                        </td>
+                                        <td>
+                                            <asp:TextBox ID="txtBarrio" runat="server" ReadOnly="True" ViewStateMode="Enabled"
+                                                Enabled="False"></asp:TextBox>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Calle:
+                                        </td>
+                                        <td> 
+                                            <asp:TextBox ID="txtCalle" runat="server" ReadOnly="True" ViewStateMode="Enabled"
+                                                Enabled="False" Width="150px"></asp:TextBox>-<asp:TextBox ID="txtNro" runat="server" ReadOnly="True" ViewStateMode="Enabled" Enabled="False"
+                                                Width="50px"></asp:TextBox>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </asp:Panel>
+                            <asp:Panel ID="pnlMascota" runat="server" Visible="false">
+                                <h5>
+                                    Datos de la mascota
+                                </h5>
+                                <table>
+                                    <tr>
+                                        <td>
+                                            Nombre de la mascota:
+                                        </td>
+                                        <td>
+                                            <asp:TextBox ID="txtNombreM" runat="server" ReadOnly="false" ViewStateMode="Enabled"
+                                                Enabled="False"></asp:TextBox>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Especie:
+                                        </td>
+                                        <td>
+                                            <asp:TextBox ID="txtEspecie" runat="server" ViewStateMode="Enabled" ReadOnly="true"
+                                                Enabled="False"></asp:TextBox>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Raza:
+                                        </td>
+                                        <td>
+                                            <asp:TextBox ID="txtRaza" runat="server" ReadOnly="True" ViewStateMode="Enabled"
+                                                Enabled="False"></asp:TextBox>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Sexo:
+                                        </td>
+                                        <td>
+                                            <asp:TextBox ID="txtSexo" runat="server" ReadOnly="True" ViewStateMode="Enabled"
+                                                Enabled="False"></asp:TextBox>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Edad:
+                                        </td>
+                                        <td>
+                                            <asp:TextBox ID="txtEdad" runat="server" ReadOnly="True" ViewStateMode="Enabled"
+                                                Enabled="False"></asp:TextBox>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </asp:Panel>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="col-md-2 col-md-offset-8">
+                            <asp:Panel ID="pnlRegistrar" runat="server" Visible="false">
+                                <asp:Button ID="btnRegistrar" runat="server" Text="Generar contrato" OnClick="btnRegistrarClick" />
+                            </asp:Panel>
+                        </div>
+                                <%--<div style="display: table-cell; width: 20%;">
+                                    <asp:Panel ID="pnllimpiar" runat="server" Visible="false">
+                                        <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar" />
+                                    </asp:Panel>
+                                </div>--%>
                     </div>
                 </div>
             </div>
             <div class="centered">
                 <asp:ImageButton ID="ibtnRegresar" runat="server" ImageUrl="~/imagenes/volver.png"
                     OnClick="BtnRegresarClick" CausesValidation="False"/>
-                </br> VOLVER
+                <br/> VOLVER
             </div>
         </div>
-    </div>
 </asp:Content>

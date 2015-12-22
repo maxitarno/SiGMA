@@ -103,7 +103,7 @@ namespace AccesoADatos
                                                   from G1 in group1.DefaultIfEmpty()
                                                   join MascotasBD in mapa.Mascotas on AdopcionesBD.idMascota equals MascotasBD.idMascota into group2
                                                   from G2 in group2.DefaultIfEmpty()
-                                                  where (G2.nombreMascota.StartsWith(nombreDeMascota) && G1.ambito == "Adopcion" && (G1.nombreEstado == "Abierta" || G1.nombreEstado == "Modificada"))
+                                                  where (G2.nombreMascota.Contains(nombreDeMascota) && G1.ambito == "Adopcion" && (G1.nombreEstado == "Abierta" || G1.nombreEstado == "Modificada"))
                                                   select new
                                                   {
                                                       adopcion = AdopcionesBD,
@@ -183,6 +183,8 @@ namespace AccesoADatos
                 Personas personas = mapa.Personas.Where(personaBD => personaBD.idPersona == persona.idPersona).First();
                 personas.idBarrio = persona.barrio.idBarrio;
                 personas.Barrios.idLocalidad = persona.localidad.idLocalidad;
+                personas.idCalle = persona.domicilio.idCalle;
+                personas.nroCalle = persona.nroCalle;
                 mapa.SaveChanges();
                 return true;
             }

@@ -52,39 +52,44 @@
                 </div>
             </div>
             <div class="panel-body">
-                <div class="col-md-12">
-                    <div class="col-md-2 col-md-offset-4">
+                <div class="col-md-8 col-md-offset-4">
+                    <table>
+                    <tr>
+                    <td>
                         Nombre:
-                    </div>
-                    <div class="col-md-2">
+                    </td>
+                    <td>
                         <asp:TextBox ID="txtNombre" runat="server"></asp:TextBox>
-                    </div>
-                    <div class="col-md-4">
+                    </td>
+                   <td>
                         <asp:RequiredFieldValidator ID="rfvNombre" runat="server" ErrorMessage="Debe ingresar un tipo de documento"
                             ControlToValidate="txtNombre" ValidationGroup="1" Display="Dynamic" Font-Underline="False"
                             BorderColor="Red" ForeColor="Red"></asp:RequiredFieldValidator>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="col-md-2 col-md-offset-4">
+                    </td>
+                </tr>
+                   <tr>
+                   <td>
                         <asp:Panel ID="pnlBuscar" runat="server">
                             <asp:Button ID="btnBuscar" runat="server" Text="Buscar" OnClick="BtnBuscarClick"
                                 CausesValidation="False" />
                         </asp:Panel>
-                    </div>
-                </div>
-                <div class="col-md-12">
+                   </td>
+                </tr>
+                <tr>
+               
                         <asp:Panel ID="pnlResultado" runat="server" Visible="false">
-                            <div class="col-md-2 col-md-offset-4">
-                                Resultados:&nbsp&nbsp&nbsp
-                            </div>
-                            <div class="col-md-4">
-                                <asp:ListBox ID="lstResultados" runat="server" AutoPostBack="True" OnSelectedIndexChanged="BtnSeleccionarClick"></asp:ListBox>
-                            </div>
+                        <td>
+                                Resultados:
+                        </td>
+                        <td>
+                                                        <asp:ListBox ID="lstResultados" runat="server" AutoPostBack="True" OnSelectedIndexChanged="BtnSeleccionarClick" Width="210px"></asp:ListBox>
+                        </td>
                         </asp:Panel>
+                </tr>
+                </table>
                 </div>
                 <div class="col-md-12">
-                    <div class="col-md-1 col-md-offset-5">
+                    <div class="col-md-1 col-md-offset-4">
                         <asp:Panel ID="pnlRegistrar" runat="server">
                             <asp:Button ID="btnRegistrar" runat="server" Text="Registrar" OnClick="BtnRegistrarClick"
                                 ValidationGroup="1" />
