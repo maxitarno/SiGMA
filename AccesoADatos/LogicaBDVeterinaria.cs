@@ -74,7 +74,7 @@ namespace AccesoADatos
                                from G2 in group2.DefaultIfEmpty()
                                join CalleBD in mapa.Calles on VeterinariaBD.idCalle equals CalleBD.idCalle into group3
                                from G3 in group2.DefaultIfEmpty()
-                               where ((G1.idBarrio == veterinaria.domicilio.barrio.idBarrio) || (G3.idLocalidad == veterinaria.domicilio.barrio.localidad.idLocalidad) || (VeterinariaBD.Calles.idCalle == veterinaria.domicilio.calle.idCalle))
+                               where ((G1.idBarrio == veterinaria.domicilio.barrio.idBarrio) || (G3.idLocalidad == veterinaria.domicilio.barrio.localidad.idLocalidad) || (VeterinariaBD.Calles.idCalle == veterinaria.domicilio.calle.idCalle) || (G3.idLocalidad == 0 && G1.idBarrio == 0 && VeterinariaBD.Calles.idCalle == 0))
                                select VeterinariaBD;
                 foreach (var registro in consulta)
                 {
@@ -204,6 +204,21 @@ namespace AccesoADatos
             catch (Exception exc)
             {
                 throw exc;
+            }
+        }
+        public static Boolean Eliminar(EVeterinaria veterinaria)
+        {
+            try
+            {
+                SiGMAEntities mapa = Conexion.crearSegunServidor();
+                Veterinarias veterinarias = mapa.Veterinarias.Where(n => n.idVeterinaria == veterinaria.id).First();
+                mapa.DeleteObject(veterinarias);
+                mapa.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
             }
         }
     }

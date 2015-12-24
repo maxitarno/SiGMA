@@ -79,6 +79,22 @@ namespace SiGMA
                 lstResultados.DataValueField = "id";
                 lstResultados.DataTextField = "nombre";
                 lstResultados.DataBind();
+                pnlEliminar.Visible = false;
+                if (lstResultados.Items.Count != 0)
+                {
+                    pnlResultados.Visible = true;
+                    pnlAtento.Visible = false;
+                    pnlCorrecto.Visible = false;
+                    pnlInfo.Visible = false;
+                }
+                else
+                {
+                    pnlResultados.Visible = false;
+                    pnlAtento.Visible = false;
+                    pnlCorrecto.Visible = false;
+                    pnlInfo.Visible = true;
+                    lblInfo.Text = "No se encontraron veterinaria";
+                }
             }
             else if(rbPorDomicilio.Checked){
                 pnlDomicilio.Visible = true;
@@ -90,23 +106,48 @@ namespace SiGMA
                 {
                     veterinaria.domicilio.barrio.idBarrio = int.Parse(ddlBarrio.SelectedValue.ToString());
                 }
+                else
+                {
+                    veterinaria.domicilio.barrio.idBarrio = 0;
+                }
                 if (!ddlCalle.SelectedValue.Equals("0"))
                 {
                     veterinaria.domicilio.calle.idCalle = int.Parse(ddlCalle.SelectedValue.ToString());
                 }
+                else
+                {
+                    veterinaria.domicilio.calle.idCalle = 0;
+                }
                 if (!ddlLocalidad.SelectedValue.Equals("0"))
                 {
                     veterinaria.domicilio.barrio.localidad.idLocalidad = int.Parse(ddlLocalidad.SelectedValue.ToString());
+                }
+                else
+                {
+                    veterinaria.domicilio.barrio.localidad.idLocalidad = 0;
                 }
                 lstResultados.Items.Clear();
                 lstResultados.DataSource = LogicaBDVeterinaria.BuscarPorDomicilio(veterinaria);
                 lstResultados.DataValueField = "id";
                 lstResultados.DataTextField = "nombre";
                 lstResultados.DataBind();
+                pnlEliminar.Visible = false;
+                if (lstResultados.Items.Count != 0)
+                {
+                    pnlResultados.Visible = true;
+                    pnlAtento.Visible = false;
+                    pnlCorrecto.Visible = false;
+                    pnlInfo.Visible = false;
+                }
+                else
+                {
+                    pnlResultados.Visible = false;
+                    pnlAtento.Visible = false;
+                    pnlCorrecto.Visible = false;
+                    pnlInfo.Visible = true;
+                    lblInfo.Text = "No se encontraron veterinaria";
+                }
             }
-            pnlAtento.Visible = false;
-            pnlCorrecto.Visible = false;
-            pnlInfo.Visible = false;
         }
         public void selected(object sender, EventArgs e)
         {
@@ -139,12 +180,11 @@ namespace SiGMA
             pnlAtento.Visible = false;
             pnlCorrecto.Visible = false;
             pnlInfo.Visible = false;
-            //agregado
             hfContacto.Value = txtContacto.Text;
             hfDireccion.Value = ddlLocalidad.SelectedItem.Text.ToLower().ToString() + " " + ddlCalle.SelectedItem.Text.ToLower().ToString() + " " + txtNº.Text;
             hfNombre.Value = txtNombre.Text;
             hfTelefono.Value = txtTE.Text;
-            //agregado
+            pnlEliminar.Visible = true;
         }
         public void Modificar(object sender, EventArgs e)
         {
@@ -180,6 +220,8 @@ namespace SiGMA
                                     pnlResultados.Visible = false;
                                     pnlDatos.Visible = false;
                                     pnlMapa.Visible = false;
+                                    txtNombre.Text = "";
+                                    pnlEliminar.Visible = false;
                                 }
                                 else{
                                     lblError.Text = "No se pudo modificar";
@@ -246,6 +288,7 @@ namespace SiGMA
             ddlLocalidad.SelectedValue = "0";
             txtNombre.Text = "";
             txtNº.Text = "";
+            pnlEliminar.Visible = false;
         }
         public void RbPorNombre(object sender, EventArgs e)
         {
@@ -263,6 +306,40 @@ namespace SiGMA
             ddlLocalidad.SelectedValue = "0";
             txtNombre.Text = "";
             txtNº.Text = "";
+            pnlEliminar.Visible = false;
+        }
+        protected void btnEliminar_Click(object sender, EventArgs e)
+        {
+            EVeterinaria veterinaria = new EVeterinaria();
+            veterinaria.id = (int)Session["id"];
+            if (LogicaBDVeterinaria.Eliminar(veterinaria))
+            {
+                pnlCorrecto.Visible = true;
+                lblCorrecto.Text = "Se elimino correctamente";
+                pnlInfo.Visible = false;
+                pnlAtento.Visible = false;
+                pnlDomicilio.Visible = false;
+                pnlModificar.Visible = false;
+                pnlNombre.Visible = true;
+                pnlResultados.Visible = false;
+                pnlDatos.Visible = false;
+                pnlMapa.Visible = false;
+                txtNombre.Text = "";
+                pnlEliminar.Visible = false;
+            }
+            else
+            {
+                pnlCorrecto.Visible = false;
+                pnlInfo.Visible = false;
+                pnlAtento.Visible = true;
+                lblError.Text = "No se pudo eliminar";
+                pnlDomicilio.Visible = false;
+                pnlModificar.Visible = false;
+                pnlNombre.Visible = true;
+                pnlResultados.Visible = false;
+                pnlDatos.Visible = false;
+                pnlMapa.Visible = false;
+            }
         }
     }
 }

@@ -54,7 +54,7 @@
                             <asp:RadioButton ID="rbPorNombreMascota" runat="server" GroupName="1" ValidationGroup="1"
                                 AutoPostBack="True" Checked="False" Text=" Por Nombre" OnCheckedChanged="RbPorN" />&nbsp&nbsp
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-2 col-md-offset-1">
                             <asp:RadioButton ID="rbPorDNI" runat="server" AutoPostBack="True" ValidationGroup="1"
                                 GroupName="1" Checked="True" Text=" Por Documento" OnCheckedChanged="RbPorPersona" />
                         </div>
