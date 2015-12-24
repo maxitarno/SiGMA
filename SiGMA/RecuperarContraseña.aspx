@@ -20,6 +20,12 @@
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="assets/js/hover.zoom.js"></script>
      <script src="assets/js/hover.zoom.conf.js"></script>
+     <style >
+     table {
+      border-collapse: separate;
+      border-spacing:  5px;
+      }
+     </style>
 </asp:Content>
    
 <asp:Content ID="Content2"  runat="server" ContentPlaceHolderID="ContentPlaceHolder1">
@@ -49,29 +55,29 @@
             <br/>
             <div class="panel-body">
                 <div class="col-md-3 col-md-offset-5">
-                <table>
-                    <tr>
-                        <td>
-                            Email:
-                        </td>
-                        <td>
-                            <asp:TextBox  ID="txtEmail" runat="server"></asp:TextBox></td><td>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="*"
-                                ForeColor="Red" ControlToValidate="txtEmail" Display="Dynamic"></asp:RequiredFieldValidator>
-                            <asp:RegularExpressionValidator ID="revMail" runat="server" ErrorMessage="Formato de email incorrecto"
-                                ForeColor="Red" ControlToValidate="txtEmail" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"
-                                Display="Dynamic"></asp:RegularExpressionValidator>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                        </td>
-                        <td>
-                            <asp:Button ID="btnEnviar" runat="server" Text="Enviar" 
-                                onclick="btnEnviar_Click" />
-                        </td>                    
-                    </tr>
-                </table>
+                        <table>
+                            <tr>
+                                <td>
+                                    Email:
+                                </td>
+                                <td>
+                                    <asp:TextBox  ID="txtEmail" runat="server"></asp:TextBox></td><td>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="*"
+                                        ForeColor="Red" ControlToValidate="txtEmail" Display="Dynamic"></asp:RequiredFieldValidator>
+                                    <asp:RegularExpressionValidator ID="revMail" runat="server" ErrorMessage="Formato de email incorrecto"
+                                        ForeColor="Red" ControlToValidate="txtEmail" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"
+                                        Display="Dynamic"></asp:RegularExpressionValidator>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                </td>
+                                <td>
+                                    <asp:Button ID="btnEnviar" runat="server" Text="Enviar" 
+                                        onclick="btnEnviar_Click" />
+                                </td>                    
+                            </tr>
+                        </table>
                 </div>
             </div>
         </div>

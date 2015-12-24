@@ -42,7 +42,7 @@
 			</div>
 			<div class="col-lg-4 col-md-4">
 				<div class="thumbnail">
-                    <a class="zoom green" href="SerVoluntario.aspx"><img class="img-responsive img-circle" src="assets/img/menu/servoluntario.png" alt="" width="200px" height="300px" /></a>
+                    <a class="zoom green" href="SerVoluntario.aspx"><img class="img-responsive img-circle" src="assets/img/menu/voluntarios.png" alt="" width="200px" height="300px" /></a>
 				    <div class="caption centered"><h4><asp:Label ID="lblVoluntario" runat="server" Text="SER VOLUNTARIO"></asp:Label></h4> </div>
                 </div>
 			</div>
@@ -50,7 +50,7 @@
 		<div class="row">	
 			<div class="col-lg-4 col-md-4">
                 <div class="thumbnail">
-			        <a class="zoom green" href="EnConstruccion.aspx"><img class="img-responsive img-circle" src="assets/img/menu/ultimaspublicaciones.png" alt="" width="200px" height="300px"/></a>
+			        <a class="zoom green" href="EnConstruccion.aspx"><img class="img-responsive img-circle" src="assets/img/menu/difusion.png" alt="" width="200px" height="300px"/></a>
 			        <div class="caption centered"><h4>ULTIMAS PUBLICACIONES</h4> </div>
                 </div>
 			</div>

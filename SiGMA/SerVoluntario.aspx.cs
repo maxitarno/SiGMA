@@ -102,7 +102,7 @@ namespace SiGMA
             ECalle calle = new ECalle();
             EBarrio barrio = new EBarrio();
             LogicaBDUsuario.buscarPersonaPorUsuario(Session["UsuarioLogueado"].ToString(), persona, barrio, calle);
-            ddlBarrioBusqueda.SelectedValue = barrio.idBarrio.ToString();
+            ddlBarrioBusqueda.SelectedValue = barrio.idBarrio == null ? "0" : barrio.idBarrio.ToString();
             txtNombre.Text = persona.nombre;
             txtEmail.Text = persona.email;
             pnlDatoPersona.Visible = true;
@@ -117,9 +117,9 @@ namespace SiGMA
             LogicaBDUsuario.buscarPersonaPorUsuario(Session["UsuarioLogueado"].ToString(), persona, barrio, calle);
             txtNombre.Text = persona.nombre;
             txtEmail.Text = persona.email;
-            ddlBarrio.SelectedValue = barrio.idBarrio.ToString();
-            ddlCalle.SelectedValue = calle.idCalle.ToString();
-            txtNro.Text = persona.nroCalle.ToString();
+            ddlBarrio.SelectedValue = barrio.idBarrio == null ? "0" : barrio.idBarrio.ToString();
+            ddlCalle.SelectedValue = calle.idCalle == null ? "0" : calle.idCalle.ToString();
+            txtNro.Text = persona.nroCalle == null ? "0" : persona.nroCalle.ToString();
             pnlDatoPersona.Visible = true;
             btnEnviar.Visible = true;
         }

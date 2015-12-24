@@ -19,6 +19,7 @@
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="assets/js/hover.zoom.js"></script>
     <script src="assets/js/hover.zoom.conf.js"></script>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="centered">
@@ -37,12 +38,21 @@
                             PasswordRequiredErrorMessage="Contraseña Requerida" RememberMeText="Recordarme" 
                             UserNameLabelText="Usuario:" UserNameRequiredErrorMessage="Usuario Requerido" LoginButtonText="Ingresar">
                         </asp:Login>
-                        <hr />
-                        <label style="width:230px">No tiene un usuario?</label> <input value="Crear Usuario" type="button" onclick="RegistrarUsuario()" style="width:220px"/>
-                        <br />
-                        <label style="width:230px">Usuario no validado?</label> <input value="Validar Usuario" type="button" onclick="ValidarUsuario()" style="width:220px"/>
-                        <br />
-                        <label style="width:230px">Contraseña olvidada?</label> <input value="Restrablecer Contraseña" type="button" onclick="RecuperarContra()" style="width:220px"/>
+                    </div>
+                    <br />
+                    <div style="text-align:center;">
+                        <table style="margin: 0 auto;">
+                            <tr>
+                                <td><label style="width:232px">No tiene un usuario?</label></td>
+                                <td><label style="width:232px">Usuario no validado?</label></td>
+                                <td><label style="width:230px">Contraseña olvidada?</label></td>
+                            </tr>
+                            <tr>
+                                <td><input value="Crear Usuario" type="button" onclick="RegistrarUsuario()" style="width:220px"/></td>
+                                <td><input value="Validar Usuario" type="button" onclick="ValidarUsuario()" style="width:220px"/></td>
+                                <td><input value="Restrablecer Contraseña" type="button" onclick="RecuperarContra()" style="width:220px"/></td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
                 <script type="text/javascript" >
