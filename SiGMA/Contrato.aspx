@@ -1,4 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Contrato.aspx.cs" Inherits="SiGMA.Contrato" MasterPageFile="PaginaMaestra.Master" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Contrato.aspx.cs" Inherits="SiGMA.Contrato"
+    MasterPageFile="PaginaMaestra.Master" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <meta charset="utf-8">
@@ -21,8 +22,7 @@
     <script type="text/javascript" src="Scripts/jquery.print.js"></script>
     <script type="text/javascript" src=""></script>
     <script type="text/javascript">
-        function imprimir(id)
-        {
+        function imprimir(id) {
             var a = document.getElementById(id);
             var Popup = window.open('', 'Impresion');
             Popup.document.open();
@@ -41,228 +41,221 @@
     <div class="container pt">
         <div class="centered">
             <div class="panel panel-default">
-                <div class="panel-heading" id=b>
-                    <h3 class="panel-title">
-                        Contrato
-                    </h3>
+                <div class="centered">
+                    <div class="panel-heading" id="b">
+                        <h3 class="panel-title">
+                            Contrato
+                        </h3>
+                    </div>
                 </div>
                 <div class="panel-body">
-                    <div class="printable" style="border:solid" id=contrato>
-                        <table width="1500">
-                            <tr>
-                                <td colspan="7" align="center">
-                                        <h1>
-                                            CONTRATO DE ADOPCIÓN
-                                        </h1>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="left" colspan="3" class=td>
-                                    Nº de adopción:&nbsp
-                                    <asp:Label ID="lblNumeroDeAdopción" runat="server" Text=""></asp:Label>
-                                </td>
-                                <td align="right" colspan="3" class=td>
-                                        Fecha:
-                                        <asp:Label ID="lblFecha" runat="server" Text="" ></asp:Label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="7" align="left">
-                                    <h1>
-                                        Datos personales
-                                    </h1>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="left" style="width:25%" class=td>
-                                    Documento:  
-                                </td>
-                                <td style="width:25%;">
-                                    <asp:Label ID="lblDocumento" runat="server"  ></asp:Label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="left" class=td>
-                                    Apellido y nombre: 
-                                </td>
-                                <td  >
-                                    <asp:Label ID="lblApellidoYNombre" runat="server" Text="" ></asp:Label>
-                                </td>
-                            </tr>                          
-                            <tr>
-                                <td align="left" class=td>
-                                   Telefono fijo: 
-                                </td>
-                                <td>
-                                    <asp:Label ID="lblTelefonoFijo" runat="server" Text="" ></asp:Label> 
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="left" class=td>
-                                    Email: 
-                                </td>
-                                <td>
-                                    <asp:Label ID="lblEmail" runat="server" Text="" ></asp:Label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="left" colspan="4" style="width:50%" class=td>
-                                    <h2>Domicilio</h2>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="left" class=td>
-                                    Localidad:
-                                </td>
-                                <td   colspan="2" style="width:25%">
-                                    <asp:Label ID="lblLocalidad" runat="server" Text="" ></asp:Label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="left" class=td>
-                                    Barrio: 
-                                </td>
-                                <td   colspan="2">
-                                    <asp:Label ID="lblBarrio" runat="server" Text="" ></asp:Label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="left" class=td>
-                                    Dirección: 
-                                </td>
-                                <td colspan="2">
-                                    <asp:Label ID="lblCalleYNumero" runat="server" Text="" ></asp:Label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="justify" colspan="7">
-                                    <h2>Datos de la mascota</h2>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="left" class=td>
-                                    Id de la mascota:
-                                </td>
-                                <td> 
-                                    <asp:Label ID="lblId" runat="server" Text="" ></asp:Label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="left" class=td>
-                                    Nombre: 
-                                </td>
-                                <td>
-                                    <asp:Label ID="lblNombre" runat="server" Text="" ></asp:Label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="left" class=td>
-                                    Especie: 
-                                </td>
-                                <td>
-                                    <asp:Label ID="lblEspecie" runat="server" Text="" ></asp:Label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="left" class=td>
-                                    Raza: 
-                                </td>
-                                <td>
-                                    <asp:Label ID="lblRaza" runat="server" Text="" ></asp:Label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="left" class=td>
-                                    Edad: 
-                                </td>
-                                <td>
-                                    <asp:Label ID="lblEdad" runat="server" Text="" ></asp:Label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="left" class=td>
-                                    Sexo: 
-                                </td>
-                                <td>
-                                    <asp:Label ID="lblSexo" runat="server" Text="" ></asp:Label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="center" colspan="7">
-                                    <h1>Condiciones</h1>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="left" colspan="7" class=td>
-                                    <h2>El adoptante se compromete a:</h2>
-                                </td>
-                            </tr>
-                            <tr></tr>
-                            <tr>
-                                <td align="left" colspan="7" class=td>
-                                    <p>
-                                        * Proporcionarle todos los cuidados higienicos-sanitarios, cuidar su habitat,su necesidad de hacer ejercicio y darle cariño.
-
-                                        <br/>
-                                        * Devolverlo en el caso de que por cualquier circunstancia no pueda atenderlo correctamente (nunca cambiar de dueño sin dar aviso).
-
-                                        <br/>
-                                        * Darle cobijo por la noche y en ausencia de los propietarios.
-
-                                        <br/>
-                                        * Ponerle un collar en el que se identifique el nombre y dirección de los propietarios.
-
-                                        <br />    
-                                    </p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="center" colspan="7" class=td>
-                                    Esta adopción fue registrada por el voluntario Nº: <asp:Label ID="lblNumeroDeVoluntario" runat="server" Text="" ></asp:Label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="7">
-                                    <br />
-                                </td>
-                            </tr>
-                            <tr style="padding: 0 100% 0 150%;display:inline">
-                                <td style="border-top-style:ridge" width="300px" class=td>
-                                    Firma del voluntario
-                                </td>
-                                <td width="300"></td>
-                                <td style="border-top-style:ridge" width="300px" class=td>
-                                    Firma del adoptante
-                                </td>
-                            </tr>
-                        </table>                     
-                    </div>
-                    <div id=a style="height:80px">
-                        <p>
-                            <a id="imprimir" href="javascript:;" onclick="imprimir('contrato')">Imprimir</a>
-                        </p>
-                    </div>
-                    <div id="botones" style="height:100px">
-                        <div style="margin-left: 30%; display: table; width: 40%;">
-                        <div style="display: table-row; width: 30%">
-                            <div style="display: table-cell; width: 20%;">
-                                <asp:Button ID="BtnAceptar" runat="server" Text="Aceptar" OnClick="BtnAceptarClick"/>
+                    <div class="printable" style="border: solid" id="contrato">
+                        <div class="col-md-12">
+                            <div class="col-md-8 col-md-offset-2">
+                                <div class="centered">
+                                <h3>
+                                    CONTRATO DE ADOPCIÓN
+                                </h3>
+                                </div>
                             </div>
-                            <div style="display: table-cell; width: 20%;">
-                                <asp:Button ID="BtnCancelar" runat="server" Text="Rechazar" OnClick="BtnRechazarClick"/>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="col-md-4">
+                                Nº de adopción:&nbsp
+                                <asp:Label ID="lblNumeroDeAdopción" runat="server" Text=""></asp:Label>
+                            </div>
+                            <div class="col-md-4 col-md-offset-4">
+                                 Fecha:
+                                 <asp:Label ID="lblFecha" runat="server" Text=""></asp:Label>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <table>
+                                <tr>
+                                    <td align="left">
+                                        <h3>
+                                            Datos personales
+                                        </h3>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left">
+                                        Documento:&nbsp
+                                        <asp:Label ID="lblDocumento" runat="server"></asp:Label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left">
+                                        Apellido y nombre:&nbsp
+                                        <asp:Label ID="lblApellidoYNombre" runat="server" Text=""></asp:Label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left">
+                                        Telefono fijo:&nbsp
+                                        <asp:Label ID="lblTelefonoFijo" runat="server" Text=""></asp:Label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left">
+                                        Email:&nbsp
+                                        <asp:Label ID="lblEmail" runat="server" Text=""></asp:Label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left">
+                                        <h3>
+                                            Domicilio</h3>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left">
+                                        Localidad:&nbsp
+                                        <asp:Label ID="lblLocalidad" runat="server" Text=""></asp:Label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left">
+                                        Barrio:&nbsp
+                                        <asp:Label ID="lblBarrio" runat="server" Text=""></asp:Label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left">
+                                        Dirección:&nbsp
+                                        <asp:Label ID="lblCalleYNumero" runat="server" Text=""></asp:Label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left">
+                                        <h3>
+                                            Datos de la mascota</h3>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left">
+                                        Id de la mascota:
+                                        <asp:Label ID="lblId" runat="server" Text=""></asp:Label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left">
+                                        Nombre:&nbsp
+                                        <asp:Label ID="lblNombre" runat="server" Text=""></asp:Label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left">
+                                        Especie:&nbsp
+                                        <asp:Label ID="lblEspecie" runat="server" Text=""></asp:Label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left">
+                                        Raza:&nbsp
+                                        <asp:Label ID="lblRaza" runat="server" Text=""></asp:Label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left">
+                                        Edad:&nbsp
+                                        <asp:Label ID="lblEdad" runat="server" Text=""></asp:Label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left">
+                                        Sexo:&nbsp
+                                        <asp:Label ID="lblSexo" runat="server" Text=""></asp:Label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center">
+                                        <h3>
+                                            Condiciones</h3>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center">
+                                        <h2>
+                                            El adoptante se compromete a:</h2>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="justify">
+                                        <p>
+                                            * Proporcionarle todos los cuidados higienicos-sanitarios, cuidar su habitat,su
+                                            necesidad de hacer ejercicio y darle cariño.
+                                            <br />
+                                            * Devolverlo en el caso de que por cualquier circunstancia no pueda atenderlo correctamente
+                                            (nunca cambiar de dueño sin dar aviso).
+                                            <br />
+                                            * Darle cobijo por la noche y en ausencia de los propietarios.
+                                            <br />
+                                            * Ponerle un collar en el que se identifique el nombre y dirección de los propietarios.
+                                            <br />
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center">
+                                        Esta adopción fue registrada por el voluntario Nº:
+                                        <asp:Label ID="lblNumeroDeVoluntario" runat="server" Text=""></asp:Label>
+                                        <br />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left">
+                                        Fecha de la revisión:<asp:Label ID="lblFechaRevición" runat="server" Text=""></asp:Label>
+                                        <br />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left">
+                                        Nombre y legajo del encargado de la revisión: -------------
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left">
+                                        Firma del encargado: -------------
+                                    </td>
+                                </tr>
+                            </table>
+                            <br />
+                        </div>
+                        <div class="col-md-12">
+                            <div  class="col-md-8 col-md-offset-2">
+                                    <table>
+                                    <tr>
+                                        <td style="border-top-style:dotted">
+                                            Firma del voluntario
+                                        </td>
+                                        <td style="width:350px"></td>
+                                        <td style="border-top-style:dotted">
+                                            Firma del adoptante
+                                        </td>
+                                    </tr>
+                                </table>
                             </div>
                         </div>
                     </div>
+                    <div id="a">
+                        <div class="col-md-12">
+                            <div class="col-md-2 col-md-offset-5">
+                                <p>
+                                    <a id="imprimir" href="javascript:;" onclick="imprimir('contrato')">Imprimir</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="botones">
+                        <div class="col-md-12">
+                            <div class="col-md-3 col-md-offset-3">
+                                <asp:Button ID="BtnAceptar" runat="server" Text="Aceptar" OnClick="BtnAceptarClick" />
+                            </div>
+                            <div class="col-md-3">
+                                <asp:Button ID="BtnCancelar" runat="server" Text="Rechazar" OnClick="BtnRechazarClick" />
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -157,6 +157,15 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.Label lblNumeroDeVoluntario;
         
         /// <summary>
+        /// Control lblFechaRevición.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblFechaRevición;
+        
+        /// <summary>
         /// Control BtnAceptar.
         /// </summary>
         /// <remarks>

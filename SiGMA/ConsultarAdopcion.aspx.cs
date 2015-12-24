@@ -123,6 +123,7 @@ namespace SiGMA
         }
         public void ibtnRegresar_Click(object sender, EventArgs e)
         {
+            mascota = null;
             Session["Si"] = null;
             Response.Redirect("Adopciones.aspx");
         }
@@ -146,6 +147,7 @@ namespace SiGMA
             btnRegistrar.Visible = false;
             txtNº.Text = "";
             txtNombre.Text = "";
+            btnBuscar.Visible = true;
         }
         public void RbPorN(object sender, EventArgs e)
         {
@@ -168,6 +170,7 @@ namespace SiGMA
             pnlRegistrar.Visible = false;
             txtNº.Text = "";
             txtNombre.Text = "";
+            btnBuscar.Visible = true;
         }
         public void BtnBuscarClick(object sender, EventArgs e)
         {
@@ -400,7 +403,7 @@ namespace SiGMA
             EAdopcion adopcion = (EAdopcion)Session["Adopcion"];
             if (LogicaBDAdopcion.EliminarAdopcion(adopcion))
             {
-                lblResultado1.Text = "Se elimmino correctamente";
+                lblResultado1.Text = "Se elimino correctamente";
                 pnlAtento.Visible = false;
                 pnlInfo.Visible = false;
                 pnlCorrecto.Visible = true;
@@ -417,6 +420,7 @@ namespace SiGMA
                 pnlEliminar.Visible = false;
                 btnRegistrar.Visible = false;
                 btnBuscar.Visible = true;
+                pnlPorAdopcion.Visible = false;
                 rbPorDNI.Checked = true;
             }
             else

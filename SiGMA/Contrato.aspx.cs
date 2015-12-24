@@ -30,6 +30,7 @@ namespace SiGMA
             lblNumeroDeVoluntario.Text = Session["IdVoluntario"].ToString();
             lblNumeroDeAdopción.Text = Session["na"].ToString();
             lblFecha.Text = DateTime.Now.ToShortDateString();
+            lblFechaRevición.Text = (DateTime.Now.AddDays(7).ToShortDateString().ToString());
         }
         public void BtnAceptarClick(object sender, EventArgs e)
         {
