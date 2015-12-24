@@ -34,7 +34,7 @@ namespace Herramientas
             }
             else
             {
-                return false;
+                return true;
             }
         }
         public static bool verificarSoloLetras(string texto)
@@ -52,7 +52,7 @@ namespace Herramientas
             }
             else
             {
-                return false;
+                return true;
             }
         }
 
