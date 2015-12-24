@@ -61,7 +61,7 @@ namespace AccesoADatos
                 throw exc;
             }
         }
-        public static List<EVeterinaria> BuscarPorDomicilio(EVeterinaria veterinaria)
+        public static List<EVeterinaria> BuscarPorDomicilio(EVeterinaria veterinaria1)
         {
             SiGMAEntities mapa = Conexion.crearSegunServidor();
             try
@@ -74,14 +74,74 @@ namespace AccesoADatos
                                from G2 in group2.DefaultIfEmpty()
                                join CalleBD in mapa.Calles on VeterinariaBD.idCalle equals CalleBD.idCalle into group3
                                from G3 in group2.DefaultIfEmpty()
-                               where ((G1.idBarrio == veterinaria.domicilio.barrio.idBarrio) || (G3.idLocalidad == veterinaria.domicilio.barrio.localidad.idLocalidad) || (VeterinariaBD.Calles.idCalle == veterinaria.domicilio.calle.idCalle) || (G3.idLocalidad == 0 && G1.idBarrio == 0 && VeterinariaBD.Calles.idCalle == 0))
-                               select VeterinariaBD;
+                               select new
+                               {
+                                   id = VeterinariaBD.idVeterinaria,
+                                   localidad = G1.idLocalidad,
+                                   barrio = VeterinariaBD.idBarrio,
+                                   calle = VeterinariaBD.idCalle,
+                                   nombre = VeterinariaBD.nombre
+                               };
                 foreach (var registro in consulta)
                 {
-                    veterinaria = new EVeterinaria();
-                    veterinaria.id = registro.idVeterinaria;
+                    EVeterinaria veterinaria = new EVeterinaria();
+                    veterinaria.domicilio = new EDomicilio();
+                    veterinaria.domicilio.barrio = new EBarrio();
+                    veterinaria.domicilio.barrio.localidad = new ELocalidad();
+                    veterinaria.domicilio.calle = new ECalle();
+                    veterinaria.id = registro.id;
                     veterinaria.nombre = registro.nombre;
+                    veterinaria.domicilio.barrio.localidad.idLocalidad = registro.localidad;
+                    veterinaria.domicilio.barrio.idBarrio = registro.barrio;
+                    veterinaria.domicilio.calle.idCalle = registro.calle;
                     veterinarias.Add(veterinaria);
+                }
+                if (veterinaria1.domicilio.barrio.localidad.idLocalidad != null)
+                {
+                    veterinarias = veterinarias.Where(n => n.domicilio.barrio.localidad.idLocalidad == veterinaria1.domicilio.barrio.localidad.idLocalidad).ToList();
+                    if (veterinaria1.domicilio.barrio.idBarrio != null)
+                    {
+                        veterinarias = veterinarias.Where(n => n.domicilio.barrio.idBarrio == veterinaria1.domicilio.barrio.idBarrio).ToList();
+                        if (veterinaria1.domicilio.calle.idCalle != null)
+                        {
+                            veterinarias = veterinarias.Where(n => n.domicilio.calle.idCalle == veterinaria1.domicilio.calle.idCalle).ToList();
+                            return veterinarias;
+                        }
+                        else
+                        {
+                            return veterinarias;
+                        }
+                    }
+                    else
+                    {
+                        if (veterinaria1.domicilio.calle.idCalle != null)
+                        {
+                            veterinarias = veterinarias.Where(n => n.domicilio.calle.idCalle == veterinaria1.domicilio.calle.idCalle).ToList();
+                            return veterinarias;
+                        }
+                        else
+                        {
+                            return veterinarias;
+                        }
+                    }
+                }
+                if (veterinaria1.domicilio.barrio.idBarrio != null)
+                {
+                    veterinarias = veterinarias.Where(n => n.domicilio.barrio.idBarrio == veterinaria1.domicilio.barrio.idBarrio).ToList();
+                    if (veterinaria1.domicilio.calle.idCalle != null)
+                    {
+                        veterinarias = veterinarias.Where(n => n.domicilio.calle.idCalle == veterinaria1.domicilio.calle.idCalle).ToList();
+                        return veterinarias;
+                    }
+                    else
+                    {
+                        return veterinarias;
+                    }
+                }
+                if (veterinaria1.domicilio.calle.idCalle != null)
+                {
+                    veterinarias = veterinarias.Where(n => n.domicilio.calle.idCalle == veterinaria1.domicilio.calle.idCalle).ToList();
+                    return veterinarias;
                 }
                 return veterinarias;
             }

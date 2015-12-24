@@ -82,7 +82,7 @@
                             Localidad:
                         </td>
                         <td>
-                            <asp:DropDownList ID="ddlLocalidad" runat="server" style="width:210px" AutoPostBack="True" OnSelectedIndexChanged="selectedIndexChange" Width="250px">
+                            <asp:DropDownList ID="ddlLocalidad" runat="server" style="width:210px" AutoPostBack="True" Width="250px">
                             </asp:DropDownList>
                         </td>
                     </tr>

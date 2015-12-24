@@ -55,11 +55,11 @@ namespace SiGMA
         {
             Response.Redirect("Veterinarias.aspx");
         }
-        public void selectedIndexChange(object sender, EventArgs e)
-        {
-            CargarCombos.cargarBarrio(ref ddlBarrio, int.Parse(ddlLocalidad.SelectedValue.ToString()));
-            CargarCombos.cargarCalles(ref ddlCalle, int.Parse(ddlLocalidad.SelectedValue.ToString()));
-        }
+        //public void selectedIndexChange(object sender, EventArgs e)
+        //{
+        //    CargarCombos.cargarBarrio(ref ddlBarrio, int.Parse(ddlLocalidad.SelectedValue.ToString()));
+        //    CargarCombos.cargarCalles(ref ddlCalle, int.Parse(ddlLocalidad.SelectedValue.ToString()));
+        //}
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
             EVeterinaria veterinaria = new EVeterinaria();
@@ -108,15 +108,15 @@ namespace SiGMA
                 }
                 else
                 {
-                    veterinaria.domicilio.barrio.idBarrio = 0;
+                    veterinaria.domicilio.barrio.idBarrio = null;
                 }
-                if (!ddlCalle.SelectedValue.Equals("0"))
+                if (!ddlCalle.SelectedValue.Equals("") && !ddlCalle.SelectedValue.Equals("0"))
                 {
                     veterinaria.domicilio.calle.idCalle = int.Parse(ddlCalle.SelectedValue.ToString());
                 }
                 else
                 {
-                    veterinaria.domicilio.calle.idCalle = 0;
+                    veterinaria.domicilio.calle.idCalle = null;
                 }
                 if (!ddlLocalidad.SelectedValue.Equals("0"))
                 {
@@ -124,7 +124,7 @@ namespace SiGMA
                 }
                 else
                 {
-                    veterinaria.domicilio.barrio.localidad.idLocalidad = 0;
+                    veterinaria.domicilio.barrio.localidad.idLocalidad = null;
                 }
                 lstResultados.Items.Clear();
                 lstResultados.DataSource = LogicaBDVeterinaria.BuscarPorDomicilio(veterinaria);
