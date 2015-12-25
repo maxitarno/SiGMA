@@ -76,6 +76,11 @@ namespace AccesoADatos
             {
                 throw exc;
             }
+            if (usuarios.Count == 0)
+            {
+                EUsuario usuario = new EUsuario();
+                usuarios.Add(usuario);
+            }
             return usuarios;
         }
         //fin del metodo
