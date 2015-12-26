@@ -157,6 +157,15 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.DropDownList ddlTipoDeDocumento;
         
         /// <summary>
+        /// Control cvTipoDocumento.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator cvTipoDocumento;
+        
+        /// <summary>
         /// Control pnlnumber.
         /// </summary>
         /// <remarks>
@@ -238,22 +247,13 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.ListBox lstResultados;
         
         /// <summary>
-        /// Control pnlSeleccionar.
+        /// Control ibtnBuscarOtro.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlSeleccionar;
-        
-        /// <summary>
-        /// Control btnSeleccionar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSeleccionar;
+        protected global::System.Web.UI.WebControls.ImageButton ibtnBuscarOtro;
         
         /// <summary>
         /// Control pnlsurname.
@@ -355,6 +355,15 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.DropDownList ddlLocalidades;
         
         /// <summary>
+        /// Control cvLocalidades.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator cvLocalidades;
+        
+        /// <summary>
         /// Control pnlCalle.
         /// </summary>
         /// <remarks>
@@ -391,6 +400,15 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.TextBox txtNº;
         
         /// <summary>
+        /// Control cvCalles.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator cvCalles;
+        
+        /// <summary>
         /// Control pnlbarrio.
         /// </summary>
         /// <remarks>
@@ -416,6 +434,15 @@ namespace SiGMA {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlBarrios;
+        
+        /// <summary>
+        /// Control cvBarrios.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator cvBarrios;
         
         /// <summary>
         /// Control pnldate.

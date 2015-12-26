@@ -55,16 +55,16 @@
             <div class="panel-body">
                 <div class="col-md-12">
                     <div class="col-md-2 col-md-offset-4">
-                        <asp:RadioButton ID="rbPorPersona" runat="server" GroupName="1" ValidationGroup="1"
+                        <asp:RadioButton ID="rbPorPersona" runat="server" GroupName="1"
                             AutoPostBack="True" OnCheckedChanged="RdbPorPersona" Text="Por persona" />
                     </div>
                     <div class="col-md-2">
-                        <asp:RadioButton ID="rbPorUsuario" runat="server" GroupName="1" ValidationGroup="1"
+                        <asp:RadioButton ID="rbPorUsuario" runat="server" GroupName="1"
                             AutoPostBack="True" OnCheckedChanged="RdbPorUsuario" Checked="True" Text="Por usuario" />
                     </div>
                 </div>
                 <div class="col-md-12">
-                    <div class="col-md-5 col-md-offset-1">
+                    <div class="col-md-3 col-md-offset-3">
                         <table>
                             <tr>
                                 <td>
@@ -90,6 +90,12 @@
                                         </asp:DropDownList>
                                     </asp:Panel>
                                 </td>
+                                <td>
+                                    <asp:CustomValidator ID="cvTipoDocumento" runat="server" ErrorMessage="*" 
+                                        ControlToValidate="ddlTipoDeDocumento" 
+                                        onservervalidate="cvTipoDocumento_ServerValidate" ForeColor="Red" 
+                                        ValidationGroup="1"></asp:CustomValidator>
+                                </td>
                             </tr>
                             <tr>
                                 <td>
@@ -103,14 +109,14 @@
                                     </asp:Panel>
                                 </td>
                                 <td>
-                                    <asp:RequiredFieldValidator ID="rfvNºDeDocumento" runat="server" ErrorMessage="Debe ingresar un numero de documento"
-                                        ControlToValidate="txtNºDeDocumento" Display="Dynamic" ValidationGroup="2"></asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="rfvNºDeDocumento" runat="server" ErrorMessage="*"
+                                        ControlToValidate="txtNºDeDocumento"  ValidationGroup="1" ForeColor="Red"></asp:RequiredFieldValidator>
                                 </td>
                             </tr>
                             <tr>
                                 <td align="left">
                                     <asp:Panel ID="pnlBuscar" runat="server" Visible="true">
-                                        <asp:Button ID="btnBuscar" runat="server" Text="Buscar" OnClick="btnBuscarClick" />
+                                        <asp:Button ID="btnBuscar" runat="server" Text="Buscar" OnClick="btnBuscarClick" CausesValidation="False" />
                                     </asp:Panel>
                                 </td>
                             </tr>
@@ -129,10 +135,8 @@
                             </tr>
                             <tr>
                                 <td colspan="3">
-                                    <asp:Panel ID="pnlSeleccionar" runat="server" Visible="false">
-                                        <asp:Button ID="btnSeleccionar" runat="server" Visible="false" Text="Seleccionar"
-                                            OnClick="btnAceptarClick" />
-                                    </asp:Panel>
+                                    <asp:ImageButton ID="ibtnBuscarOtro" runat="server" 
+                                        ImageUrl="~/imagenes/buscar.jpg" onclick="ibtnBuscarOtro_Click"/>
                                 </td>
                             </tr>
                         </table>
@@ -151,8 +155,8 @@
                                     </asp:Panel>
                                 </td>
                                 <td>
-                                    <asp:RequiredFieldValidator ID="rfvApellido" runat="server" ErrorMessage="Debe ingresar un apellido"
-                                        ControlToValidate="txtApellido" ValidationGroup="2" SetFocusOnError="True" Display="Dynamic"></asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="rfvApellido" runat="server" ErrorMessage="*"
+                                        ControlToValidate="txtApellido" ValidationGroup="1" SetFocusOnError="True" ForeColor="Red"></asp:RequiredFieldValidator>
                                 </td>
                             </tr>
                             <tr>
@@ -167,8 +171,8 @@
                                     </asp:Panel>
                                 </td>
                                 <td>
-                                    <asp:RequiredFieldValidator ID="rfvNombre" runat="server" ErrorMessage="Debe ingresar un nombre"
-                                        Display="Dynamic" ControlToValidate="txtNombre" ValidationGroup="1" BorderColor="Red"></asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="rfvNombre" runat="server" ErrorMessage="*"
+                                         ControlToValidate="txtNombre" ValidationGroup="1" ForeColor="Red"></asp:RequiredFieldValidator>
                                 </td>
                             </tr>
                             <tr>
@@ -184,6 +188,11 @@
                                         </asp:DropDownList>
                                     </asp:Panel>
                                 </td>
+                                <td>
+                                    <asp:CustomValidator ID="cvLocalidades" runat="server" ErrorMessage="*" 
+                                        ControlToValidate="ddlLocalidades" ForeColor="Red" 
+                                        onservervalidate="cvLocalidades_ServerValidate" ValidationGroup="1"></asp:CustomValidator>
+                                </td>
                             </tr>
                             <tr>
                                 <td>
@@ -198,6 +207,11 @@
                                         <asp:TextBox ID="txtNº" runat="server" CssClass="TextBox" Width="55px"></asp:TextBox>
                                     </asp:Panel>
                                 </td>
+                                <td>
+                                    <asp:CustomValidator ID="cvCalles" runat="server" ErrorMessage="*" 
+                                        ForeColor="Red" ControlToValidate="ddlCalle" 
+                                        onservervalidate="cvCalles_ServerValidate" ValidationGroup="1"></asp:CustomValidator>
+                                </td>
                             </tr>
                             <tr>
                                 <td>
@@ -211,6 +225,11 @@
                                             Width="210px">
                                         </asp:DropDownList>
                                     </asp:Panel>
+                                </td>
+                                <td>
+                                    <asp:CustomValidator ID="cvBarrios" runat="server" ErrorMessage="*" 
+                                        ControlToValidate="ddlBarrios" ForeColor="Red" 
+                                        onservervalidate="cvBarrios_ServerValidate" ValidationGroup="1"></asp:CustomValidator>
                                 </td>
                             </tr>
                             <tr>
@@ -240,8 +259,8 @@
                                     </asp:Panel>
                                 </td>
                                 <td>
-                                    <asp:RequiredFieldValidator ID="rfvTelefonoFijo" runat="server" ErrorMessage="Debe ingresar un telefono fijo"
-                                        ControlToValidate="txtTelefonoFijo" Display="Dynamic" ValidationGroup="2" BorderColor="Red"></asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="rfvTelefonoFijo" runat="server" ErrorMessage="*o"
+                                        ControlToValidate="txtTelefonoFijo"  ValidationGroup="1" ForeColor="Red"></asp:RequiredFieldValidator>
                                 </td>
                             </tr>
                             <tr>
@@ -256,9 +275,9 @@
                                     </asp:Panel>
                                 </td>
                                 <td>
-                                    <asp:RequiredFieldValidator ID="rfvTelefonoCelular" runat="server" ErrorMessage="Debe ingresar un telefono celular"
-                                        ControlToValidate="txtTelefonoCelular" ValidationGroup="2" SetFocusOnError="True"
-                                        Display="Dynamic" BorderColor="Red"></asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="rfvTelefonoCelular" runat="server" ErrorMessage="*"
+                                        ControlToValidate="txtTelefonoCelular" ValidationGroup="1" SetFocusOnError="True"
+                                        ForeColor="Red"></asp:RequiredFieldValidator>
                                 </td>
                             </tr>
                             <tr>
@@ -273,12 +292,12 @@
                                     </asp:Panel>
                                 </td>
                                 <td>
-                                    <asp:RequiredFieldValidator ID="rfvMail" runat="server" ErrorMessage="Debe ingresar un mail"
-                                        ControlToValidate="txtMail" Display="Dynamic" ValidationGroup="2" SetFocusOnError="True"
-                                        CssClass="Validator" BorderColor="Red"></asp:RequiredFieldValidator>
-                                    <asp:RegularExpressionValidator ID="revMail" runat="server" ErrorMessage="Debe ingresar un mail"
+                                    <asp:RequiredFieldValidator ID="rfvMail" runat="server" ErrorMessage="*"
+                                        ControlToValidate="txtMail"  ValidationGroup="1" SetFocusOnError="True"
+                                        CssClass="Validator" ForeColor="Red"></asp:RequiredFieldValidator>
+                                    <asp:RegularExpressionValidator ID="revMail" runat="server" ErrorMessage="El formato del mail no es correcto"
                                         ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ControlToValidate="txtMail"
-                                        ValidationGroup="2" CssClass="Validator" ForeColor="Red" SetFocusOnError="True" BorderColor="Red"></asp:RegularExpressionValidator>
+                                        ValidationGroup="1" CssClass="Validator" ForeColor="Red" SetFocusOnError="True" ></asp:RegularExpressionValidator>
                                 </td>
                             </tr>
                         </table>
@@ -288,13 +307,13 @@
                     <div class="col-md-1 col-md-offset-8">
                         <asp:Panel ID="pnlModificar" runat="server" Visible="false">
                             <asp:Button ID="btnModificar" runat="server" Text="Modificar" OnClick="btnModificarClick"
-                                ValidationGroup="2" />
+                                ValidationGroup="1" />
                         </asp:Panel>
                     </div>
                     <div class="col-md-1">
                         <asp:Panel ID="pnlEliminar" runat="server" Visible="false">
                             <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" OnClick="btnEliminarClick"
-                                ValidationGroup="3" />
+                                ValidationGroup="2" />
                         </asp:Panel>
                     </div>
                 </div>

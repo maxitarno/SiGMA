@@ -51,12 +51,12 @@
                 <div class="panel-body">
                     <div class="col-md-12">
                         <div class="col-md-2 col-md-offset-4">
-                            <asp:RadioButton ID="rbPorNombreMascota" runat="server" GroupName="1" ValidationGroup="1"
-                                AutoPostBack="True" Checked="False" Text=" Por Nombre" OnCheckedChanged="RbPorN" />&nbsp&nbsp
+                            Por Nombre <asp:RadioButton ID="rbPorNombreMascota" runat="server" GroupName="1"
+                                AutoPostBack="True" OnCheckedChanged="RbPorN" />&nbsp&nbsp
                         </div>
                         <div class="col-md-2 col-md-offset-1">
-                            <asp:RadioButton ID="rbPorDNI" runat="server" AutoPostBack="True" ValidationGroup="1"
-                                GroupName="1" Checked="True" Text=" Por Documento" OnCheckedChanged="RbPorPersona" />
+                            Por DNI<asp:RadioButton ID="rbPorDNI" runat="server" AutoPostBack="True"
+                                GroupName="1" Checked="True" OnCheckedChanged="RbPorPersona" />
                         </div>
                     </div>
                     <div class="col-md-12">

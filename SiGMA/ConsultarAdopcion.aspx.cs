@@ -141,9 +141,7 @@ namespace SiGMA
             pnlDatos.Visible = false;
             pnlAdopcion.Visible = false;
             btnRegistrar.Text = "Generar Contrato";
-            btnEliminar.Visible = false;
             pnlEliminar.Visible = false;
-            pnlDatos.Visible = false;
             btnRegistrar.Visible = false;
             txtNº.Text = "";
             txtNombre.Text = "";
@@ -165,9 +163,6 @@ namespace SiGMA
             pnlAdopcion.Visible = false;
             btnRegistrar.Text = "Generar Contrato";
             btnEliminar.Visible = false;
-            pnlEliminar.Visible = false;
-            pnlDatos.Visible = false;
-            pnlRegistrar.Visible = false;
             txtNº.Text = "";
             txtNombre.Text = "";
             btnBuscar.Visible = true;
@@ -199,6 +194,7 @@ namespace SiGMA
                         pnlAtento.Visible = false;
                         pnlInfo.Visible = true;
                         pnlCorrecto.Visible = false;
+                        pnlBuscar.Visible = true;
                     }
                 //}
                 //else
@@ -223,6 +219,7 @@ namespace SiGMA
                     pnlAtento.Visible = false;
                     pnlInfo.Visible = false;
                     pnlCorrecto.Visible = false;
+                    pnlBuscar.Visible = false;
                 }
                 else
                 {
@@ -230,6 +227,8 @@ namespace SiGMA
                     pnlAtento.Visible = false;
                     pnlInfo.Visible = true;
                     pnlCorrecto.Visible = false;
+                    btnRegistrar.Visible = false;
+                    btnBuscar.Visible = true;
                 }
             }
         }
@@ -465,18 +464,17 @@ namespace SiGMA
             if(lblTitulo.Text.Equals("Consultar Adopción")){
                 pnlDatos.Visible = false;
                 btnRegistrar.Visible = false;
-                btnEliminar.Visible = false;
                 pnlEliminar.Visible = false;
             }
             if(lblTitulo.Text.Equals("Modificar Adopción")){
                 btnRegistrar.Text = "Generar contrato";
                 btnRegistrar.Visible = true;
-                btnEliminar.Visible = true;
                 pnlEliminar.Visible = true;
             }
             pnlPorDocumento.Visible = false;
             pnlPorAdopcion.Visible = false;
             pnlResultados.Visible = false;
+            pnlBuscar.Visible = false;
         }
         protected void ibtnBuscarOtro_Click(object sender, EventArgs args)
         {
@@ -492,14 +490,12 @@ namespace SiGMA
             pnlDatos.Visible = false;
             pnlAdopcion.Visible = false;
             btnRegistrar.Text = "Generar Contrato";
-            btnEliminar.Visible = false;
             pnlEliminar.Visible = false;
-            pnlDatos.Visible = false;
             btnRegistrar.Visible = false;
             txtNº.Text = "";
             txtNombre.Text = "";
-            btnBuscar.Visible = true;
             rbPorDNI.Checked = true;
+            pnlBuscar.Visible = true;
         }
     }
 }

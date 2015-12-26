@@ -79,7 +79,7 @@
                                 <asp:TextBox ID="txtNombre" runat="server"></asp:TextBox>
                             </td>
                             <td>
-                                <asp:RequiredFieldValidator ID="rfvNombre" runat="server" ErrorMessage="Debe ingresar un nombre"
+                                <asp:RequiredFieldValidator ID="rfvNombre" runat="server" ErrorMessage="*"
                                     ForeColor="Red" Display="Dynamic" ControlToValidate="txtNombre" ValidationGroup="1"></asp:RequiredFieldValidator>
                             </td>
                         </asp:Panel>
