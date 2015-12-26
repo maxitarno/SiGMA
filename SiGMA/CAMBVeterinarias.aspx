@@ -1,4 +1,6 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="CAMBVeterinarias.aspx.cs" Inherits="SiGMA.CAMBVeterinarias" MasterPageFile="~/PaginaMaestra.Master" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="CAMBVeterinarias.aspx.cs"
+    Inherits="SiGMA.CAMBVeterinarias" MasterPageFile="~/PaginaMaestra.Master" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,34 +21,37 @@
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="assets/js/hover.zoom.js"></script>
     <script src="assets/js/hover.zoom.conf.js"></script>
-   </asp:Content>
+</asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
     <div class="panel panel-default">
         <div class="centered">
             <div class="panel panel-heading">
                 <h3 class="panel-title">
                     <asp:Label ID="lblTitulo" runat="server" Text=""></asp:Label>
-                </h3>
+                    </h3>
             </div>
         </div>
         <div class="panel-body">
             <div class="col-md-12">
                 <div class="col-md-4 col-md-offset-4">
-                    <asp:Panel runat="server" id="pnlCorrecto" class="alert alert-dismissable alert-success" Visible=false>
-                    <button class="close" type="button" data-dismiss="alert">
-                        ×</button>
+                    <asp:Panel runat="server" ID="pnlCorrecto" class="alert alert-dismissable alert-success"
+                        Visible="false">
+                        <button class="close" type="button" data-dismiss="alert">
+                            ×</button>
                         <asp:Label ID="lblCorrecto" runat="server" Text=""></asp:Label>
-                </asp:Panel>
-                    <asp:Panel runat="server" id="pnlInfo" class="alert alert-dismissable alert-info" Visible=false>
-                    <button class="close" type="button" data-dismiss="alert">
-                        ×</button>
+                    </asp:Panel>
+                    <asp:Panel runat="server" ID="pnlInfo" class="alert alert-dismissable alert-info"
+                        Visible="false">
+                        <button class="close" type="button" data-dismiss="alert">
+                            ×</button>
                         <asp:Label ID="lblInfo" runat="server" Text=""></asp:Label>
-                </asp:Panel>
-                    <asp:Panel runat="server" id="pnlAtento" class="alert alert-dismissable alert-danger" Visible=false>
-                    <button class="close" type="button" data-dismiss="alert">
-                        ×</button>
+                    </asp:Panel>
+                    <asp:Panel runat="server" ID="pnlAtento" class="alert alert-dismissable alert-danger"
+                        Visible="false">
+                        <button class="close" type="button" data-dismiss="alert">
+                            ×</button>
                         <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
-                </asp:Panel>
+                    </asp:Panel>
                 </div>
             </div>
         </div>
@@ -54,14 +59,16 @@
             <div class="col-md-12">
                 <div class="col-md-2 col-md-offset-4">
                     Por Nombre
-                    <asp:RadioButton ID="rbPorNombre" runat="server" Text="" GroupName="1" Checked="true" OnCheckedChanged="RbPorNombre" AutoPostBack="True" />
+                    <asp:RadioButton ID="rbPorNombre" runat="server" Text="" GroupName="1" Checked="true"
+                        OnCheckedChanged="RbPorNombre" AutoPostBack="True" />
                 </div>
-                <div class="col-md-2 col-md-offset-1">       
+                <div class="col-md-2 col-md-offset-1">
                     Por Domicilio
-                    <asp:RadioButton ID="rbPorDomicilio" runat="server" Text="" GroupName="1" OnCheckedChanged="RbPorDomicilio" AutoPostBack="True" />
+                    <asp:RadioButton ID="rbPorDomicilio" runat="server" Text="" GroupName="1" OnCheckedChanged="RbPorDomicilio"
+                        AutoPostBack="True" />
                 </div>
             </div>
-            <div class="col-md-offset-3 col-md-3">
+            <div class="col-md-offset-2 col-md-4">
                 <table>
                     <tr>
                         <asp:Panel ID="pnlNombre" runat="server" ForeColor="Red">
@@ -72,61 +79,82 @@
                                 <asp:TextBox ID="txtNombre" runat="server"></asp:TextBox>
                             </td>
                             <td>
-                                <asp:RequiredFieldValidator ID="rfvNombre" runat="server" ErrorMessage="Debe ingresar un nombre" ForeColor="Red" Display="Dynamic" ControlToValidate="txtNombre" ValidationGroup="1"></asp:RequiredFieldValidator>
+                                <asp:RequiredFieldValidator ID="rfvNombre" runat="server" ErrorMessage="Debe ingresar un nombre"
+                                    ForeColor="Red" Display="Dynamic" ControlToValidate="txtNombre" ValidationGroup="1"></asp:RequiredFieldValidator>
                             </td>
                         </asp:Panel>
                     </tr>
                     <asp:Panel ID="pnlDomicilio" runat="server">
                         <tr>
-                        <td>
-                            Localidad:
-                        </td>
-                        <td>
-                            <asp:DropDownList ID="ddlLocalidad" runat="server" style="width:210px" AutoPostBack="True" Width="250px">
-                            </asp:DropDownList>
-                        </td>
-                    </tr>
+                            <td>
+                                Localidad:
+                            </td>
+                            <td>
+                                <asp:DropDownList ID="ddlLocalidad" runat="server" Style="width: 210px" AutoPostBack="True"
+                                    Width="250px" CssClass="ddlLocalidad">
+                                </asp:DropDownList>
+                            </td>
+                            <td>
+                                <asp:CustomValidator ID="cvLocalidad" runat="server" ErrorMessage="*" 
+                                onservervalidate="cvLocalidad_ServerValidate1" ControlToValidate="ddlLocalidad" ValidationGroup="1" ForeColor="Red"></asp:CustomValidator>
+                            </td>
+                        </tr>
                         <tr>
-                        <td>
-                            Barrio:
-                        </td>
-                        <td>
-                            <asp:DropDownList ID="ddlBarrio" runat="server"  AutoPostBack="True" Width="210px">
-                            </asp:DropDownList>
-                        </td>
-                    </tr>
+                            <td>
+                                Barrio:
+                            </td>
+                            <td>
+                                <asp:DropDownList ID="ddlBarrio" runat="server" AutoPostBack="True" Width="210px">
+                                </asp:DropDownList>
+                            </td>
+                            <td>
+                                <asp:CustomValidator ID="cvBarrio" runat="server" ErrorMessage="*" 
+                                 onservervalidate="cvBarrio_ServerValidate" ControlToValidate="ddlBarrio" ValidationGroup="1" ForeColor="Red"></asp:CustomValidator>
+                            </td>
+                        </tr>
                         <tr>
-                        <td>
-                            Calle:
-                        </td>
-                        <td>
-                            <asp:DropDownList ID="ddlCalle" runat="server" AutoPostBack="True" Width="150px">
-                            </asp:DropDownList>
-                            - <asp:TextBox ID="txtNº" runat="server" Width="50px"></asp:TextBox>
-                        </td>
-                    </tr>
+                            <td>
+                                Calle:
+                            </td>
+                            <td>
+                                <asp:DropDownList ID="ddlCalle" runat="server" AutoPostBack="True" Width="147px">
+                                </asp:DropDownList>
+                                -
+                                <asp:TextBox ID="txtNº" runat="server" Width="47px"></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:CustomValidator ID="cvCalle" runat="server" ErrorMessage="*" 
+                                onservervalidate="cvCalle_ServerValidate" ControlToValidate="ddlCalle" ValidationGroup="1" ForeColor="Red"></asp:CustomValidator>
+                            </td>
+                        </tr>
                     </asp:Panel>
                     <tr>
-                    <td>
-                        <asp:Panel ID="pnlMapa" runat="server" Visible="false">
-                            <input id="btnUbicacion" type="button" value="Ubicación" />
-                        </asp:Panel>
-                    </td>
-                    <td>
-                        <asp:Button ID="btnBuscar" runat="server" Text="Buscar" 
-                            onclick="btnBuscar_Click" />
-                    </td> 
-                </tr>
-                    <asp:Panel ID="pnlResultados" runat="server">
-                    <tr>
                         <td>
-                            Resultados:
+                            <asp:Panel ID="pnlMapa" runat="server" Visible="false">
+                                <input id="btnUbicacion" type="button" value="Ubicación" />
+                            </asp:Panel>
                         </td>
                         <td>
-                            <asp:ListBox ID="lstResultados" runat="server" AutoPostBack="True" OnSelectedIndexChanged="selected" Width="210px"></asp:ListBox>
+                            <asp:Button ID="btnBuscar" runat="server" Text="Buscar" OnClick="btnBuscar_Click" CausesValidation="false"/>
                         </td>
                     </tr>
-                </asp:Panel>
+                    <tr>
+                        <td>
+                            <asp:ImageButton ID="ibtnBuscarOtro" runat="server" ImageUrl="~/imagenes/buscar.jpg"
+                                OnClick="ibtnBuscarOtro_Click" CausesValidation="false"/>
+                        </td>
+                    </tr>
+                    <asp:Panel ID="pnlResultados" runat="server">
+                        <tr>
+                            <td>
+                                Resultados:
+                            </td>
+                            <td>
+                                <asp:ListBox ID="lstResultados" runat="server" AutoPostBack="True" OnSelectedIndexChanged="selected"
+                                    Width="210px"></asp:ListBox>
+                            </td>
+                        </tr>
+                    </asp:Panel>
                 </table>
             </div>
             <div class="col-md-4">
@@ -142,15 +170,15 @@
                                 Peluqueria
                             </td>
                             <td>
-                                <asp:CheckBox ID="chkPeluqueria" runat="server"/>
+                                <asp:CheckBox ID="chkPeluqueria" runat="server" />
                             </td>
                         </tr>
-                        <tr> 
-                            <td> 
-                                PetShop 
+                        <tr>
+                            <td>
+                                PetShop
                             </td>
                             <td>
-                                <asp:CheckBox ID="chkPetShop" runat="server"/> 
+                                <asp:CheckBox ID="chkPetShop" runat="server" />
                             </td>
                         </tr>
                         <tr>
@@ -158,7 +186,7 @@
                                 Medicinas
                             </td>
                             <td>
-                                <asp:CheckBox ID="chkMedicinas" runat="server"/>
+                                <asp:CheckBox ID="chkMedicinas" runat="server" />
                             </td>
                         </tr>
                         <tr>
@@ -166,7 +194,7 @@
                                 Castraciones
                             </td>
                             <td>
-                                <asp:CheckBox ID="chkCastraciones" runat="server"/>                                    
+                                <asp:CheckBox ID="chkCastraciones" runat="server" />
                             </td>
                         </tr>
                         <tr>
@@ -174,11 +202,14 @@
                                 Contacto:
                             </td>
                             <td>
-                                <asp:TextBox ID="txtContacto" runat="server" Width="210px"></asp:TextBox>  
+                                <asp:TextBox ID="txtContacto" runat="server" Width="210px"></asp:TextBox>
                             </td>
                             <td>
-                                <asp:RegularExpressionValidator ID="revContacto" runat="server" ErrorMessage="Formato de email incorrecto" ControlToValidate="txtContacto" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" Display="Dynamic" ForeColor="Red" ValidationGroup="1"></asp:RegularExpressionValidator>
-                                <asp:RequiredFieldValidator ID="rfvContacto" runat="server" ErrorMessage="Debe ingresar un contacto" ControlToValidate="txtContacto" ForeColor="Red" ValidationGroup="1"></asp:RequiredFieldValidator>
+                                <asp:RegularExpressionValidator ID="revContacto" runat="server" ErrorMessage="Formato de email incorrecto"
+                                    ControlToValidate="txtContacto" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"
+                                    Display="Dynamic" ForeColor="Red" ValidationGroup="1"></asp:RegularExpressionValidator>
+                                <asp:RequiredFieldValidator ID="rfvContacto" runat="server" ErrorMessage="Debe ingresar un contacto"
+                                    ControlToValidate="txtContacto" ForeColor="Red" ValidationGroup="1"></asp:RequiredFieldValidator>
                             </td>
                         </tr>
                         <tr>
@@ -189,20 +220,20 @@
                                 <asp:TextBox ID="txtTE" runat="server" Width="210px"></asp:TextBox>
                             </td>
                             <td>
-                                <asp:RequiredFieldValidator ID="rfvTelefono" runat="server" ErrorMessage="Debe ingresar un telefono" ControlToValidate="txtTE" ValidationGroup="1" ForeColor="Red"></asp:RequiredFieldValidator>
+                                <asp:RequiredFieldValidator ID="rfvTelefono" runat="server" ErrorMessage="Debe ingresar un telefono"
+                                    ControlToValidate="txtTE" ValidationGroup="1" ForeColor="Red"></asp:RequiredFieldValidator>
                             </td>
                         </tr>
                     </asp:Panel>
                     <tr>
                         <td align="right">
                             <asp:Panel ID="pnlEliminar" runat="server" Visible="false">
-                                <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" 
-                                    onclick="btnEliminar_Click" />
+                                <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" OnClick="btnEliminar_Click" />
                             </asp:Panel>
                         </td>
                         <td align="right">
                             <asp:Panel ID="pnlModificar" runat="server" Visible="true">
-                                <asp:Button ID="btnModificar" runat="server" Text="Modificar" OnClick="Modificar" ValidationGroup="1" />
+                                <asp:Button ID="btnModificar" runat="server" Text="Modificar" OnClick="Modificar" ValidationGroup="1" CausesValidation="true"/>
                             </asp:Panel>
                         </td>
                     </tr>
@@ -216,30 +247,31 @@
     <asp:HiddenField ID="hfContacto" runat="server" />
     <!-- Modal -->
     <div id="myModal" class="modal fade" role="dialog">
-            <div class="modal-dialog modal-lg">
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">
-                            &times;</button>
-                        <h4 class="modal-title">
-                            Veterinarias</h4>
-                    </div>
-                    <div class="modal-body">
-                        <div id="map" style="height:500px; width:500px">
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">
-                            Cerrar</button>
+        <div class="modal-dialog modal-lg">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        &times;</button>
+                    <h4 class="modal-title">
+                        Veterinarias</h4>
+                </div>
+                <div class="modal-body">
+                    <div id="map" style="height: 500px; width: 500px">
                     </div>
                 </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                        Cerrar</button>
+                </div>
             </div>
-</div>
+        </div>
+    </div>
     <div class="centered">
         <asp:ImageButton ID="ibtnRegresar" runat="server" ImageUrl="~/imagenes/volver.png"
-           OnClick="BtnRegresarClick" CausesValidation="false" />
-        <br> Volver
+            OnClick="BtnRegresarClick" CausesValidation="false" />
+        <br>
+        Volver
     </div>
     <script type="text/javascript">
         var infowindow;
@@ -250,14 +282,14 @@
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             };
             infowindow = new google.maps.InfoWindow();
-//            var map = null;
+            //            var map = null;
             map = new google.maps.Map(document.getElementById("map"), mapProp);
             var geocoder = new google.maps.Geocoder();
             geocodeAddress(geocoder, map);
         }
         function geocodeAddress(geocoder, resultsMap) {
             function getURLParameter(name) { return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [, ""])[1].replace(/\+/g, '%20')) || null }
-            var direccion = document.getElementById('<%=hfDireccion.ClientID%>').value.toString();// (getURLParameter("direccion") == null) ? "" : getURLParameter("direccion");
+            var direccion = document.getElementById('<%=hfDireccion.ClientID%>').value.toString(); // (getURLParameter("direccion") == null) ? "" : getURLParameter("direccion");
             var nombre = document.getElementById('<%=hfNombre.ClientID%>').value.toString(); //(getURLParameter("nombre") == null) ? "" : getURLParameter("nombre");
             var telefono = document.getElementById('<%=hfTelefono.ClientID%>').value.toString(); //(getURLParameter("telefono") == null) ? "" : getURLParameter("telefono");
             var contacto = document.getElementById('<%=hfContacto.ClientID%>').value.toString(); //(getURLParameter("contacto") == null) ? "" : getURLParameter("contacto");
@@ -266,7 +298,7 @@
             geocoder.geocode({ 'address': address }, function (results, status) {
                 if (status === google.maps.GeocoderStatus.OK) {
                     resultsMap.setCenter(results[0].geometry.location);
-//                    var marker = null;
+                    //                    var marker = null;
                     marker = new google.maps.Marker({
                         map: resultsMap,
                         position: results[0].geometry.location,

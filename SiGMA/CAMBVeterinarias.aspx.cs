@@ -28,13 +28,13 @@ namespace SiGMA
                 {
                     lblTitulo.Text = "Modificar Veterinarias";
                     btnModificar.Visible = true;
-                    //btnEliminar.Visible = true;
+                    btnEliminar.Visible = true;
                 }
                 else
                 {
                     lblTitulo.Text = "Consultar Veterinaria";
                     btnModificar.Visible = false;
-                    //btnEliminar.Visible = false;
+                    btnEliminar.Visible = false;
                 }
                 if (Session["UsuarioLogueado"] != null)
                 {
@@ -171,7 +171,6 @@ namespace SiGMA
             txtNº.Text = veterinaria.domicilio.numeroCalle.ToString();//agregado
             Session["id"] = veterinaria.id;
             pnlDomicilio.Visible = true;
-            pnlModificar.Visible = true;
             pnlNombre.Visible = true;
             pnlResultados.Visible = false;
             pnlDatos.Visible = true;
@@ -184,81 +183,67 @@ namespace SiGMA
             hfDireccion.Value = ddlLocalidad.SelectedItem.Text.ToLower().ToString() + " " + ddlCalle.SelectedItem.Text.ToLower().ToString() + " " + txtNº.Text;
             hfNombre.Value = txtNombre.Text;
             hfTelefono.Value = txtTE.Text;
-            pnlEliminar.Visible = true;
+            if (lblTitulo.Text == "Modificar Veterinarias")
+            {
+                pnlEliminar.Visible = true;
+                btnModificar.Visible = true;
+                pnlModificar.Visible = true;
+            }
         }
         public void Modificar(object sender, EventArgs e)
         {
             if(Validaciones.verificarSoloLetras(txtNombre.Text)){
-                if(Validaciones.verificarSeleccionEnDdl(ref ddlLocalidad)){
-                    if(Validaciones.verificarSeleccionEnDdl(ref ddlCalle)){
-                        if(Validaciones.verificarSeleccionEnDdl(ref ddlBarrio)){
-                            if(Validaciones.verificarSoloNumeros(txtTE.Text) && Validaciones.contarCaracteresMinimos(7, txtTE.Text) && Validaciones.contarCaracteresMaximos(13, txtTE.Text)){
-                                EVeterinaria veterinaria = new EVeterinaria();
-                                veterinaria.domicilio = new EDomicilio();
-                                veterinaria.domicilio.calle = new ECalle();
-                                veterinaria.domicilio.barrio = new EBarrio();
-                                veterinaria.domicilio.barrio.localidad = new ELocalidad();
-                                veterinaria.castraciones = chkCastraciones.Checked;
-                                veterinaria.contacto = txtContacto.Text;
-                                veterinaria.domicilio.barrio.idBarrio = int.Parse(ddlBarrio.SelectedValue.ToString());
-                                veterinaria.domicilio.calle.idCalle = int.Parse(ddlCalle.SelectedValue.ToString());
-                                veterinaria.domicilio.numeroCalle = (txtNº.Text == "") ? 0 : int.Parse(txtNº.Text);
-                                veterinaria.id = (int)Session["id"];
-                                veterinaria.medicina = chkMedicinas.Checked;
-                                veterinaria.nombre = txtNombre.Text;
-                                veterinaria.peluqueria = chkPeluqueria.Checked;
-                                veterinaria.petshop = chkPetShop.Checked;
-                                veterinaria.telefono = txtTE.Text;
-                                if(LogicaBDVeterinaria.Modificar(veterinaria)){
-                                    lblCorrecto.Text = "Se modifico correctamente";
-                                    pnlInfo.Visible = false;
-                                    pnlCorrecto.Visible = true;
-                                    pnlAtento.Visible = false;
-                                    pnlDomicilio.Visible = false;
-                                    pnlModificar.Visible = false;
-                                    pnlNombre.Visible = true;
-                                    pnlResultados.Visible = false;
-                                    pnlDatos.Visible = false;
-                                    pnlMapa.Visible = false;
-                                    txtNombre.Text = "";
-                                    pnlEliminar.Visible = false;
-                                }
-                                else{
-                                    lblError.Text = "No se pudo modificar";
-                                    pnlInfo.Visible = false;
-                                    pnlCorrecto.Visible = false;
-                                    pnlAtento.Visible = true;
-                                    pnlDomicilio.Visible = false;
-                                    pnlModificar.Visible = false;
-                                    pnlNombre.Visible = true;
-                                    pnlResultados.Visible = false;
-                                    pnlDatos.Visible = false;
-                                    pnlMapa.Visible = false;
-                                }
-                            }
-                            else{
-                                lblInfo.Text = "Debe ingresar un telefono valido";
-                                pnlInfo.Visible = true;
-                                pnlCorrecto.Visible = false;
-                                pnlAtento.Visible = false;
-                            }
-                        }
-                        else{
-                            lblInfo.Text = "Debe ingresar un barrio valido";
-                            pnlInfo.Visible = true;
-                            pnlCorrecto.Visible = false;
+                if(Validaciones.verificarSoloNumeros(txtTE.Text) && Validaciones.contarCaracteresMinimos(7, txtTE.Text) && Validaciones.contarCaracteresMaximos(13, txtTE.Text)){
+                    if (Page.IsValid)
+                    {
+                        EVeterinaria veterinaria = new EVeterinaria();
+                        veterinaria.domicilio = new EDomicilio();
+                        veterinaria.domicilio.calle = new ECalle();
+                        veterinaria.domicilio.barrio = new EBarrio();
+                        veterinaria.domicilio.barrio.localidad = new ELocalidad();
+                        veterinaria.castraciones = chkCastraciones.Checked;
+                        veterinaria.contacto = txtContacto.Text;
+                        veterinaria.domicilio.barrio.idBarrio = int.Parse(ddlBarrio.SelectedValue.ToString());
+                        veterinaria.domicilio.calle.idCalle = int.Parse(ddlCalle.SelectedValue.ToString());
+                        veterinaria.domicilio.numeroCalle = (txtNº.Text == "") ? 0 : int.Parse(txtNº.Text);
+                        veterinaria.id = (int)Session["id"];
+                        veterinaria.medicina = chkMedicinas.Checked;
+                        veterinaria.nombre = txtNombre.Text;
+                        veterinaria.peluqueria = chkPeluqueria.Checked;
+                        veterinaria.petshop = chkPetShop.Checked;
+                        veterinaria.telefono = txtTE.Text;
+                        if (LogicaBDVeterinaria.Modificar(veterinaria))
+                        {
+                            lblCorrecto.Text = "Se modifico correctamente";
+                            pnlInfo.Visible = false;
+                            pnlCorrecto.Visible = true;
                             pnlAtento.Visible = false;
+                            pnlDomicilio.Visible = false;
+                            pnlModificar.Visible = false;
+                            pnlNombre.Visible = true;
+                            pnlResultados.Visible = false;
+                            pnlDatos.Visible = false;
+                            pnlMapa.Visible = false;
+                            txtNombre.Text = "";
+                            pnlEliminar.Visible = false;
                         }
-                    }
-                    else{
-                        lblInfo.Text = "Debe ingresar una calle valida";
-                        pnlInfo.Visible = true;
-                        pnlCorrecto.Visible = false;
-                        pnlAtento.Visible = false;
+                        else
+                        {
+                            lblError.Text = "No se pudo modificar";
+                            pnlInfo.Visible = false;
+                            pnlCorrecto.Visible = false;
+                            pnlAtento.Visible = true;
+                            pnlDomicilio.Visible = false;
+                            pnlModificar.Visible = false;
+                            pnlNombre.Visible = true;
+                            pnlResultados.Visible = false;
+                            pnlDatos.Visible = false;
+                            pnlMapa.Visible = false;
+                        }
                     }
                 }
                 else{
-                    lblInfo.Text = "Debe ingresar una localidad valida";
+                    lblInfo.Text = "Debe ingresar un telefono valido";
                     pnlInfo.Visible = true;
                     pnlCorrecto.Visible = false;
                     pnlAtento.Visible = false;
@@ -270,7 +255,6 @@ namespace SiGMA
                 pnlCorrecto.Visible = false;
                 pnlAtento.Visible = false;
             }
-
         }
         public void RbPorDomicilio(object sender, EventArgs e)
         {
@@ -340,6 +324,39 @@ namespace SiGMA
                 pnlDatos.Visible = false;
                 pnlMapa.Visible = false;
             }
+        }
+        protected void ibtnBuscarOtro_Click(object sender, ImageClickEventArgs e)
+        {
+            ddlBarrio.SelectedIndex = -1;
+            ddlCalle.SelectedIndex = -1;
+            ddlLocalidad.SelectedIndex = -1;
+            txtNombre.Text = "";
+            rbPorNombre.Checked = true;
+            txtNº.Text = "";
+            pnlAtento.Visible = false;
+            pnlCorrecto.Visible = false;
+            pnlDatos.Visible = false;
+            pnlDomicilio.Visible = false;
+            pnlEliminar.Visible = false;
+            pnlInfo.Visible = false;
+            pnlMapa.Visible = false;
+            pnlModificar.Visible = false;
+            pnlResultados.Visible = false;
+            lstResultados.Items.Clear();
+        }
+        protected void cvLocalidad_ServerValidate1(object source, ServerValidateEventArgs args)
+        {
+            args.IsValid = Validaciones.verificarSeleccionEnDdl(ref ddlLocalidad);
+        }
+
+        protected void cvCalle_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            args.IsValid = Validaciones.verificarSeleccionEnDdl(ref ddlCalle);
+        }
+
+        protected void cvBarrio_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            args.IsValid = Validaciones.verificarSeleccionEnDdl(ref ddlBarrio);
         }
     }
 }

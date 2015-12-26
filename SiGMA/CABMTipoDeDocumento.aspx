@@ -88,9 +88,10 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <asp:Panel runat="server" ID="pnl8" Visible="false">
-                                        <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar" OnClick="BtnLimpiarClick"
-                                            CausesValidation="False" />
+                                    <asp:Panel runat="server" ID="pnl8" Visible="true">
+                                        <asp:ImageButton ID="ibtnBuscarOtro" runat="server" OnClick="BtnLimpiarClick" ImageUrl="~/imagenes/buscar.jpg"/>
+                                        <%--<asp:Button ID="btnLimpiar" runat="server" Text="Limpiar" OnClick="BtnLimpiarClick"
+                                            CausesValidation="False" />--%>
                                     </asp:Panel>
                                 </td>
                             </tr>

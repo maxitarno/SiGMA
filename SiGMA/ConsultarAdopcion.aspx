@@ -108,6 +108,11 @@
                                                 </td>
                                             </tr>
                                         </asp:Panel>
+                                        <tr>
+                                            <td>
+                                                <asp:ImageButton ID="ibtnBuscarOtro" runat="server" ImageUrl="~/imagenes/buscar.jpg" onclick="ibtnBuscarOtro_Click"/>
+                                            </td>
+                                        </tr>
                                         <asp:Panel ID="pnlDatos" runat="server" Visible="false">
                                             <tr>
                                                 <td>

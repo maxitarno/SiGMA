@@ -478,5 +478,28 @@ namespace SiGMA
             pnlPorAdopcion.Visible = false;
             pnlResultados.Visible = false;
         }
+        protected void ibtnBuscarOtro_Click(object sender, EventArgs args)
+        {
+            pnlBuscar.Visible = true;
+            pnlPorDocumento.Visible = true;
+            pnlPorAdopcion.Visible = false;
+            pnlAtento.Visible = false;
+            pnlInfo.Visible = false;
+            pnlCorrecto.Visible = false;
+            pnlResultados.Visible = false;
+            pnlMascota.Visible = false;
+            pnlDuenio.Visible = false;
+            pnlDatos.Visible = false;
+            pnlAdopcion.Visible = false;
+            btnRegistrar.Text = "Generar Contrato";
+            btnEliminar.Visible = false;
+            pnlEliminar.Visible = false;
+            pnlDatos.Visible = false;
+            btnRegistrar.Visible = false;
+            txtNº.Text = "";
+            txtNombre.Text = "";
+            btnBuscar.Visible = true;
+            rbPorDNI.Checked = true;
+        }
     }
 }

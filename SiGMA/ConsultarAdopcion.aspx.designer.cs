@@ -175,6 +175,15 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.ListBox lstResultados;
         
         /// <summary>
+        /// Control ibtnBuscarOtro.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton ibtnBuscarOtro;
+        
+        /// <summary>
         /// Control pnlDatos.
         /// </summary>
         /// <remarks>

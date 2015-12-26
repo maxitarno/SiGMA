@@ -76,6 +76,13 @@ namespace SiGMA
                                         lblCorrecto.Text = "Se registro correctamente";
                                         pnlAtento.Visible = false;
                                         pnlInfo.Visible = false;
+                                        txtContacto.Text = "";
+                                        txtNº.Text = "";
+                                        txtNombre.Text = "";
+                                        txtTE.Text = "";
+                                        ddlBarrio.SelectedIndex = -1;
+                                        ddlCalle.SelectedIndex = -1;
+                                        ddlLocalidad.SelectedIndex = -1;
                                     }
                                     else
                                     {
