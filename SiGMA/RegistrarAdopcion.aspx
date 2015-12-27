@@ -57,7 +57,7 @@
                 <div class="panel-body">
                     <div class="col-md-12">
                         <div class="col-md-4 col-md-offset-4">
-                                     <asp:TextBox ID="txtFecha" runat="server"  Width="90%" />
+                                     <asp:TextBox ID="txtFecha" runat="server"  Width="90%" ReadOnly="True" />
                                                 <asp:Image ID="Image1" runat="server" ImageUrl="~/assets/calendario_dw/calendario.png" />
                                                 <ajaxToolkit:CalendarExtender ID="CalendarExtender1" 
                                                     runat="server" TargetControlID="txtFecha" 
@@ -67,6 +67,7 @@
                                                         ForeColor="Red" ControlToValidate="txtFecha" SetFocusOnError="True" 
                                                         MinimumValue="01/01/2013" Type="Date" Font-Size="XX-Small" 
                                                         ></asp:RangeValidator>
+                                                <asp:RequiredFieldValidator ID="rfvFechaA" runat="server" ErrorMessage="*" ControlToValidate="txtFecha" ValidationGroup="1" ForeColor="Red"></asp:RequiredFieldValidator>
                          </div>
                     </div>
                     <div class="col-md-12">
@@ -319,7 +320,7 @@
                     <div class="col-md-12">
                         <div class="col-md-2 col-md-offset-8">
                             <asp:Panel ID="pnlRegistrar" runat="server" Visible="false">
-                                <asp:Button ID="btnRegistrar" runat="server" Text="Generar contrato" OnClick="btnRegistrarClick" />
+                                <asp:Button ID="btnRegistrar" runat="server" Text="Generar contrato" OnClick="btnRegistrarClick" ValidationGroup="1" />
                             </asp:Panel>
                         </div>
                                 <%--<div style="display: table-cell; width: 20%;">

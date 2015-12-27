@@ -51,12 +51,16 @@
                 <div class="panel-body">
                     <div class="printable" style="border: solid" id="contrato">
                         <div class="col-md-12">
-                            <div class="col-md-8 col-md-offset-2">
-                                <div class="centered">
-                                <h3>
-                                    CONTRATO DE ADOPCIÓN
-                                </h3>
-                                </div>
+                            <div class="col-md-8 col-md-offset-4">
+                                <table>
+                                    <tr>
+                                        <td align="center">
+                                            <h3>
+                                                CONTRATO DE ADOPCIÓN
+                                            </h3>
+                                        </td>
+                                    </tr>
+                                </table>
                             </div>
                         </div>
                         <div class="col-md-12">

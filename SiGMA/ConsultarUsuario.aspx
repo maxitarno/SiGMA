@@ -90,7 +90,7 @@
                                         </asp:DropDownList>
                                     </asp:Panel>
                                 </td>
-                                <td>
+                                <td align="left">
                                     <asp:CustomValidator ID="cvTipoDocumento" runat="server" ErrorMessage="*" 
                                         ControlToValidate="ddlTipoDeDocumento" 
                                         onservervalidate="cvTipoDocumento_ServerValidate" ForeColor="Red" 
@@ -108,7 +108,7 @@
                                         <asp:TextBox ID="txtNºDeDocumento" runat="server"></asp:TextBox>
                                     </asp:Panel>
                                 </td>
-                                <td>
+                                <td align="left">
                                     <asp:RequiredFieldValidator ID="rfvNºDeDocumento" runat="server" ErrorMessage="*"
                                         ControlToValidate="txtNºDeDocumento"  ValidationGroup="1" ForeColor="Red"></asp:RequiredFieldValidator>
                                 </td>
@@ -154,7 +154,7 @@
                                         <asp:TextBox ID="txtApellido" runat="server"></asp:TextBox>
                                     </asp:Panel>
                                 </td>
-                                <td>
+                                <td align="left">
                                     <asp:RequiredFieldValidator ID="rfvApellido" runat="server" ErrorMessage="*"
                                         ControlToValidate="txtApellido" ValidationGroup="1" SetFocusOnError="True" ForeColor="Red"></asp:RequiredFieldValidator>
                                 </td>
@@ -170,7 +170,7 @@
                                         <asp:TextBox ID="txtNombre" runat="server"></asp:TextBox>
                                     </asp:Panel>
                                 </td>
-                                <td>
+                                <td align="left">
                                     <asp:RequiredFieldValidator ID="rfvNombre" runat="server" ErrorMessage="*"
                                          ControlToValidate="txtNombre" ValidationGroup="1" ForeColor="Red"></asp:RequiredFieldValidator>
                                 </td>
@@ -188,7 +188,7 @@
                                         </asp:DropDownList>
                                     </asp:Panel>
                                 </td>
-                                <td>
+                                <td align="left">
                                     <asp:CustomValidator ID="cvLocalidades" runat="server" ErrorMessage="*" 
                                         ControlToValidate="ddlLocalidades" ForeColor="Red" 
                                         onservervalidate="cvLocalidades_ServerValidate" ValidationGroup="1"></asp:CustomValidator>
@@ -207,7 +207,7 @@
                                         <asp:TextBox ID="txtNº" runat="server" CssClass="TextBox" Width="55px"></asp:TextBox>
                                     </asp:Panel>
                                 </td>
-                                <td>
+                                <td align="left">
                                     <asp:CustomValidator ID="cvCalles" runat="server" ErrorMessage="*" 
                                         ForeColor="Red" ControlToValidate="ddlCalle" 
                                         onservervalidate="cvCalles_ServerValidate" ValidationGroup="1"></asp:CustomValidator>
@@ -226,7 +226,7 @@
                                         </asp:DropDownList>
                                     </asp:Panel>
                                 </td>
-                                <td>
+                                <td align="left">
                                     <asp:CustomValidator ID="cvBarrios" runat="server" ErrorMessage="*" 
                                         ControlToValidate="ddlBarrios" ForeColor="Red" 
                                         onservervalidate="cvBarrios_ServerValidate" ValidationGroup="1"></asp:CustomValidator>
@@ -246,6 +246,9 @@
                                             PopupButtonID="Image1"></ajaxToolkit:CalendarExtender>
                                     </asp:Panel>
                                 </td>
+                                <td align="left">
+                                    <asp:RequiredFieldValidator ID="rfvFecha" runat="server" ErrorMessage="*" ValidationGroup="1" ControlToValidate="txtFecha" ForeColor="Red"></asp:RequiredFieldValidator>
+                                </td>
                             </tr>
                             <tr>
                                 <td>
@@ -258,8 +261,8 @@
                                         <asp:TextBox ID="txtTelefonoFijo" runat="server"></asp:TextBox>
                                     </asp:Panel>
                                 </td>
-                                <td>
-                                    <asp:RequiredFieldValidator ID="rfvTelefonoFijo" runat="server" ErrorMessage="*o"
+                                <td align="left">
+                                    <asp:RequiredFieldValidator ID="rfvTelefonoFijo" runat="server" ErrorMessage="*"
                                         ControlToValidate="txtTelefonoFijo"  ValidationGroup="1" ForeColor="Red"></asp:RequiredFieldValidator>
                                 </td>
                             </tr>
@@ -274,7 +277,7 @@
                                         <asp:TextBox ID="txtTelefonoCelular" runat="server"></asp:TextBox>
                                     </asp:Panel>
                                 </td>
-                                <td>
+                                <td align="left">
                                     <asp:RequiredFieldValidator ID="rfvTelefonoCelular" runat="server" ErrorMessage="*"
                                         ControlToValidate="txtTelefonoCelular" ValidationGroup="1" SetFocusOnError="True"
                                         ForeColor="Red"></asp:RequiredFieldValidator>
@@ -291,7 +294,7 @@
                                         <asp:TextBox ID="txtMail" runat="server" CssClass="TextBox" CausesValidation="True"></asp:TextBox>
                                     </asp:Panel>
                                 </td>
-                                <td>
+                                <td align="left">
                                     <asp:RequiredFieldValidator ID="rfvMail" runat="server" ErrorMessage="*"
                                         ControlToValidate="txtMail"  ValidationGroup="1" SetFocusOnError="True"
                                         CssClass="Validator" ForeColor="Red"></asp:RequiredFieldValidator>

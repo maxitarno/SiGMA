@@ -124,6 +124,8 @@ namespace SiGMA
             txtNº.Enabled = true;
             txtDNI.Enabled = true;
             txtNombreM.Enabled = false;
+            txtNº.Text = "";
+            txtDNI.Text = "";
         }
         public void rbPorName(object sender, EventArgs e)
         {
@@ -146,6 +148,7 @@ namespace SiGMA
             txtNº.Enabled = true;
             txtDNI.Enabled = false;
             txtNombreM.Enabled = false;
+            txtNombreM.Text = "";
         }
         public void btnBuscarDuenioClick(object sender, EventArgs e)
         {

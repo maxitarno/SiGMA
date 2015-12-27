@@ -302,13 +302,16 @@
                                 </td>
                                 <td>
                                     <asp:Panel ID="pnlFecha" runat="server" Visible="true">
-                                                <asp:TextBox ID="txtFecha" runat="server"  Width="210px" />
+                                                <asp:TextBox ID="txtFecha" runat="server"  Width="210px" ReadOnly="True" />
                                                 <asp:Image ID="Image1" runat="server" ImageUrl="~/assets/calendario_dw/calendario.png" />
                                                 <ajaxToolkit:CalendarExtender ID="CalendarExtender1" 
                                                     runat="server" TargetControlID="txtFecha" 
                                                     PopupButtonID="Image1">
                                                 </ajaxToolkit:CalendarExtender>
-                                        </asp:Panel>
+                                    </asp:Panel>
+                                </td>
+                                <td align="left">
+                                    <asp:RequiredFieldValidator ID="rfvFecha" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="txtFecha"></asp:RequiredFieldValidator>
                                 </td>
                             </tr>
                             <tr>

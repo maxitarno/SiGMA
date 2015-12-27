@@ -283,11 +283,8 @@ namespace SiGMA
         {
             EMascota mascota = new EMascota();
             mascota.idMascota = (int)Session["idMascota"];
-            DateTime fecha = new DateTime();
             pnlInfo.Visible = false;
-            if(Page.IsValid){
-                if (Validaciones.Fecha(txtFecha.Text, out fecha))
-                {
+                if(Page.IsValid){
                     if (Validaciones.verificarSoloLetras(txtMascota.Text))
                     {
                         mascota.alimentacionEspecial = txtAlimentacionEspecial.Text;
@@ -448,15 +445,7 @@ namespace SiGMA
                         pnlAtento.Visible = false;
                     }
                 }
-                else
-                {
-                    pnlInfo.Visible = true;
-                    lblResultado2.Text = "Debe ingresar una fecha";
-                    pnlAtento.Visible = false;
-                    pnlCorrecto.Visible = false;
-                }
-            }    
-        }
+            }
         public void BtnEliminarClick(object sender, EventArgs e)
         {
             if (ddlEstado.SelectedValue == "6")
@@ -577,9 +566,6 @@ namespace SiGMA
             Session["idMascota"] = 0;
             txtNombreDueñio.Text = "";
             imgImagen.Visible = false;
-            btnModificar.Visible = false;
-            btnGenerarQR.Visible = false;
-            btnAdopcion.Visible = false;
             ibtnBuscarOtro.Visible = false;
             pnlNo.Visible = false;//modificado
         }
