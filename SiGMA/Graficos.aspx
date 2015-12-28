@@ -64,6 +64,8 @@
                                 <asp:ListItem Text="Tipos de usuarios" Value="1"></asp:ListItem>
                                 <asp:ListItem Text="Mascotas por estado" Value="2"></asp:ListItem>
                                 <asp:ListItem Text="Adopciones por sexo" Value="3"></asp:ListItem>
+                                <asp:ListItem Text="Perdidas por sexo" Value="4"></asp:ListItem>
+                                <asp:ListItem Value="5" Text="Hallazgos por sexo"></asp:ListItem>
                             </asp:DropDownList>
                         </div>
                     </div>

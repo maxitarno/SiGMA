@@ -41,5 +41,41 @@ namespace AccesoADatos
                     cantM++;
             }
         }
+        public static void BuscarPerdidas(ref int cantM, ref int cantH)
+        {
+            SiGMAEntities mapa = Conexion.crearSegunServidor();
+            var consulta = from PerdidasBD in mapa.Perdidas
+                           join MascotasBD in mapa.Mascotas on PerdidasBD.idMascota equals MascotasBD.idMascota into group1
+                           from G1 in group1.DefaultIfEmpty()
+                           select new
+                           {
+                               sexo = G1.sexo
+                           };
+            foreach (var registro in consulta)
+            {
+                if (registro.sexo == "Hembra")
+                    cantH++;
+                if (registro.sexo == "Macho")
+                    cantM++;
+            }
+        }
+        public static void BuscarHallazgos(ref int cantM, ref int cantH)
+        {
+            SiGMAEntities mapa = Conexion.crearSegunServidor();
+            var consulta = from HallazgosBD in mapa.Hallazgos
+                           join MascotasBD in mapa.Mascotas on HallazgosBD.idMascota equals MascotasBD.idMascota into group1
+                           from G1 in group1.DefaultIfEmpty()
+                           select new
+                           {
+                               sexo = G1.sexo
+                           };
+            foreach (var registro in consulta)
+            {
+                if (registro.sexo == "Hembra")
+                    cantH++;
+                if (registro.sexo == "Macho")
+                    cantM++;
+            }
+        }
     }
 }

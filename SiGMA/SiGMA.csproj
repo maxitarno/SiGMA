@@ -126,11 +126,15 @@
     <Content Include="Grafico.htm" />
     <Content Include="Graficos.aspx" />
     <Content Include="Hallazgos.aspx" />
+    <Content Include="HallazgosPorSexo.htm" />
     <Content Include="imagenes\graficos.jpg" />
     <Content Include="imagenes\hogar %2835x35%29.jpg" />
     <Content Include="imagenes\listados.jpg" />
+    <Content Include="imagenes\registraradopcion.jpg" />
     <Content Include="imagenes\registrarhallazgo %2834x35%29.jpg" />
+    <Content Include="imagenes\registrarhallazgo.jpg" />
     <Content Include="imagenes\registrarperdida %2834x35%29.jpg" />
+    <Content Include="imagenes\registrarperdida.jpg" />
     <Content Include="imagenes\veterinarias %2835x35%29.jpg" />
     <Content Include="imagenes\volver.png" />
     <Content Include="Index.aspx" />
@@ -146,6 +150,7 @@
     <Content Include="MisMascotas.aspx" />
     <Content Include="ModerarPedidosDifusion.aspx" />
     <Content Include="Perdidas.aspx" />
+    <Content Include="PerdidasPorSexo.htm" />
     <Content Include="PermisosInsuficientes.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="RecuperarContraseña.aspx" />

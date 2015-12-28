@@ -53,6 +53,30 @@ namespace SiGMA
                 string pagina = "AdopcionesPorSexo.htm?a=" + mascotasAdoptadas + "&p=" + mascotasPerdidas + "&h=" + mascotasHalladas + "&m=" + mascotas + "&cantH=" + cantH + "&cantM=" + cantM;
                 Response.Redirect(pagina);
             }
+            if (ddlListado.SelectedValue.Equals("4"))
+            {
+                int mascotasAdoptadas = LogicaBDMascota.buscarMascotasPorEstado("Adoptada").Count;
+                int mascotasHalladas = LogicaBDMascota.buscarMascotasPorEstado("Hallada").Count;
+                int mascotasPerdidas = LogicaBDMascota.buscarMascotasPorEstado("Perdida").Count;
+                int mascotas = LogicaBDMascota.buscarMascotasPorNombre("").Count;
+                int cantH = 0;
+                int cantM = 0;
+                LogicaBDGraficos.BuscarPerdidas(ref cantH, ref cantM);
+                string pagina = "PerdidasPorSexo.htm?a=" + mascotasAdoptadas + "&p=" + mascotasPerdidas + "&h=" + mascotasHalladas + "&m=" + mascotas + "&cantH=" + cantH + "&cantM=" + cantM;
+                Response.Redirect(pagina);
+            }
+            if (ddlListado.SelectedValue.Equals("5"))
+            {
+                int mascotasAdoptadas = LogicaBDMascota.buscarMascotasPorEstado("Adoptada").Count;
+                int mascotasHalladas = LogicaBDMascota.buscarMascotasPorEstado("Hallada").Count;
+                int mascotasPerdidas = LogicaBDMascota.buscarMascotasPorEstado("Perdida").Count;
+                int mascotas = LogicaBDMascota.buscarMascotasPorNombre("").Count;
+                int cantH = 0;
+                int cantM = 0;
+                LogicaBDGraficos.BuscarHallazgos(ref cantM, ref cantH);
+                string pagina = "HallazgosPorSexo.htm?a=" + mascotasAdoptadas + "&p=" + mascotasPerdidas + "&h=" + mascotasHalladas + "&m=" + mascotas + "&cantH=" + cantH + "&cantM=" + cantM;
+                Response.Redirect(pagina);
+            }
         }
     }
 }
