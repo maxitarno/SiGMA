@@ -35,7 +35,7 @@ namespace AccesoADatos
                     {
                         pedido.perdida.idPerdida = LogicaBDPerdida.obtenerProximoIdPerdida();
                         bdPedido.idPerdida = pedido.perdida.idPerdida;
-                        LogicaBDPerdida.registrarPerdida(pedido.perdida);
+                        //LogicaBDPerdida.registrarPerdida(pedido.perdida); // PORQUE LO AGREGASTE ACA GON ? .. VA AREGISTRAR DOS VECES
                     }
                     mapa.AddToPedidosDifusion(bdPedido);
                     mapa.SaveChanges();
