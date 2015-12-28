@@ -9,7 +9,7 @@
     <script type="text/javascript">
         // Load the Visualization API and the piechart package.
         google.load('visualization', '1.0', { 'packages': ['corechart'] });
-
+        google.load('visualization', '1', {packages: ['corechart', 'bar']});
         // Set a callback to run when the Google Visualization API is loaded.
         google.setOnLoadCallback(drawChart);
 
@@ -23,28 +23,50 @@
             data.addColumn('string', 'Estados');
             data.addColumn('number', 'Cantidad');
             data.addRows([
-          ['Adoptadas', 0],
-          ['Halladaz', 0],
-          ['Perdidas', 0]
-        ]);
-        function getURLParameter(name) { return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [, ""])[1].replace(/\+/g, '%20')) || null }
-        var a = getURLParameter("a");
-        var h = getURLParameter("h");
-        var p = getURLParameter("p");
-        var m = getURLParameter("m");
-        data.setValue(0, 1, data.getValue(0, 1) + ((a*100)/m));
-        data.setValue(1, 1, data.getValue(1, 1) + ((h*100)/m));
-        data.setValue(2, 1, data.getValue(2, 1) + ((p*100)/m));
+              ['Adoptadas', 0],
+              ['Halladaz', 0],
+              ['Perdidas', 0]
+            ]);
+            function getURLParameter(name) { return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [, ""])[1].replace(/\+/g, '%20')) || null }
+            //grafico de mascotas por estado
+            var a = getURLParameter("a");
+            var h = getURLParameter("h");
+            var p = getURLParameter("p");
+            var m = getURLParameter("m");
+            data.setValue(0, 1, data.getValue(0, 1) + ((a*100)/m));
+            data.setValue(1, 1, data.getValue(1, 1) + ((h*100)/m));
+            data.setValue(2, 1, data.getValue(2, 1) + ((p*100)/m));
+            //grafico de adopciones por sexo
+            var cantH = getURLParameter("cantH");
+            var cantM = getURLParameter("cantM");
+            var dataPorSexo = new google.visualization.DataTable();
+            dataPorSexo.addColumn('string', 'Sexo');
+            dataPorSexo.addColumn('number', 'Cantidad');
+            dataPorSexo.addRows([
+              ['Hembras', 0],
+              ['Machos', 0]
+            ]);
+            dataPorSexo.setValue(0, 1, dataPorSexo.getValue(0, 1) + cantH);
+            dataPorSexo.setValue(1, 1, dataPorSexo.getValue(1, 1) + cantM);
             // Set chart options
-            var options = { 'title': 'Estadisticas de las mascotas',
+            var options = { 
+                'title': 'Estadisticas de las mascotas',
                 'width': 800,
                 'height': 700,
                 'is3D': true,
             };
-
+            //opciones de adopciones por sexo
+            var optionsPorSexo = { 
+                'title': 'Estadisticas de las mascotas',
+                'width': 800,
+                'height': 700,
+            };
             // Instantiate and draw our chart, passing in some options.
             var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
             chart.draw(data, options);
+            //grafico adopciones por sexo
+            var chartAdopcionesPorSexo = new  google.visualization.BarChart(document.getElementById('adopciones'));
+            chartAdopcionesPorSexo.draw(dataPorSexo, optionsPorSexo);
         }
     </script>
     <script type="text/javascript">
@@ -121,10 +143,17 @@
             </div>
         </div>
         <div class="col-md-12">
-            <div class="col-md-8 col-md-offset-2">
+            <div class="col-md-4 col-md-offset-2">
                 <center>
                     <div id="chart_div">
 
+                    </div>
+                </center>
+            </div>
+            <div class="col-md-4">
+                <center>
+                    <div id="adopciones">
+                    
                     </div>
                 </center>
             </div>

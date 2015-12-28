@@ -76,42 +76,6 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.DropDownList ddlListado;
         
         /// <summary>
-        /// Control hfHogar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hfHogar;
-        
-        /// <summary>
-        /// Control hfNo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hfNo;
-        
-        /// <summary>
-        /// Control hfAmbos.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hfAmbos;
-        
-        /// <summary>
-        /// Control hfBusqueda.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hfBusqueda;
-        
-        /// <summary>
         /// Control ibtnRegresar.
         /// </summary>
         /// <remarks>

@@ -88,7 +88,6 @@
                                                                 AutoPostBack="True">
                                                                 <asp:ListItem Value="0" Text="SIN ASIGNAR"></asp:ListItem>
                                                                 <asp:ListItem Value="1" Text="Listado de mascotas"></asp:ListItem>
-                                                                <asp:ListItem Value="2" Text="Listado de Metricas"></asp:ListItem>
                                                                 <asp:ListItem Value="3" Text="Listado de Adopciones"></asp:ListItem>
                                                                 <asp:ListItem Value="4" Text="Listado de Hallazgos"></asp:ListItem>
                                                                 <asp:ListItem Value="5" Text="Listado de Perdidas"></asp:ListItem>

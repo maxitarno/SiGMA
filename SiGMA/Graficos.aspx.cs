@@ -10,10 +10,6 @@ namespace SiGMA
 {
     public partial class Graficos : System.Web.UI.Page
     {
-        int hogar = 0;
-        int busqueda = 0;
-        int ambos = 0;
-        int no = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -26,13 +22,36 @@ namespace SiGMA
 
         protected void ddlListado_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ddlListado.SelectedValue.ToString() == "1")
+            if (ddlListado.SelectedValue.Equals("1"))
             {
-                LogicaBDGraficos.BuscarUsuarios(hogar, busqueda, ambos, no);
-                hfHogar.Value = hogar.ToString();
-                hfNo.Value = no.ToString();
-                hfBusqueda.Value = busqueda.ToString();
-                hfAmbos.Value = ambos.ToString();
+                int hogar = 0;
+                int busqueda = 0;
+                int ambos = 0;
+                int no = 0;
+                LogicaBDGraficos.BuscarUsuarios(ref hogar, ref busqueda, ref ambos, ref no);
+                string pagina = "TiposDeUsuarios.htm?h=" + hogar + "&b=" + busqueda + "&a=" + ambos + "&n=" + no + "&t=" + (no + ambos + busqueda + hogar);
+                Response.Redirect(pagina);
+            }
+            if (ddlListado.SelectedValue.Equals("2"))
+            {
+                int mascotasAdoptadas = LogicaBDMascota.buscarMascotasPorEstado("Adoptada").Count;
+                int mascotasHalladas = LogicaBDMascota.buscarMascotasPorEstado("Hallada").Count;
+                int mascotasPerdidas = LogicaBDMascota.buscarMascotasPorEstado("Perdida").Count;
+                int mascotas = LogicaBDMascota.buscarMascotasPorNombre("").Count;
+                string pagina = "Grafico.htm?a=" + mascotasAdoptadas + "&p=" + mascotasPerdidas + "&h=" + mascotasHalladas + "&m=" + mascotas;
+                Response.Redirect(pagina);
+            }
+            if (ddlListado.SelectedValue.Equals("3"))
+            {
+                int mascotasAdoptadas = LogicaBDMascota.buscarMascotasPorEstado("Adoptada").Count;
+                int mascotasHalladas = LogicaBDMascota.buscarMascotasPorEstado("Hallada").Count;
+                int mascotasPerdidas = LogicaBDMascota.buscarMascotasPorEstado("Perdida").Count;
+                int mascotas = LogicaBDMascota.buscarMascotasPorNombre("").Count;
+                int cantH = 0;
+                int cantM = 0;
+                LogicaBDGraficos.BuscarAdopciones(ref cantM, ref cantH);
+                string pagina = "AdopcionesPorSexo.htm?a=" + mascotasAdoptadas + "&p=" + mascotasPerdidas + "&h=" + mascotasHalladas + "&m=" + mascotas + "&cantH=" + cantH + "&cantM=" + cantM;
+                Response.Redirect(pagina);
             }
         }
     }

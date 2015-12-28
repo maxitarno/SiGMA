@@ -68,21 +68,6 @@ namespace SiGMA
                 pnlGenerar.Visible = true;
                 pnlInfo.Visible = false;
             }
-            if (ddlInforme.SelectedValue.Equals("2"))//borrar
-            {
-                pnlFiltros1.Visible = false;
-                pnlFiltros2.Visible = false;
-                pnlFiltros3.Visible = false;
-                pnlFiltros4.Visible = false;
-                pnlGenerar.Visible = true;
-                int mascotasAdoptadas = LogicaBDMascota.buscarMascotasPorEstado("Adoptada").Count;
-                int mascotasHalladas = LogicaBDMascota.buscarMascotasPorEstado("Hallada").Count;
-                int mascotasPerdidas = LogicaBDMascota.buscarMascotasPorEstado("Perdida").Count;
-                int mascotas = LogicaBDMascota.buscarMascotasPorNombre("").Count;
-                string pagina = "Grafico.htm?a=" + mascotasAdoptadas + "&p=" + mascotasPerdidas + "&h=" + mascotasHalladas + "&m=" + mascotas;
-                Response.Redirect(pagina);
-
-            }//borrar
             if (ddlInforme.SelectedValue.Equals("3"))
             {
                 pnlFiltros1.Visible = false;

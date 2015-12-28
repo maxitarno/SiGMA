@@ -65,6 +65,7 @@
   <ItemGroup>
     <Content Include="Administracion.aspx" />
     <Content Include="Adopciones.aspx" />
+    <Content Include="AdopcionesPorSexo.htm" />
     <Content Include="AsignarPermisos.aspx" />
     <Content Include="AsignarRol.aspx" />
     <Content Include="assets\calendario_dw\101.png" />
@@ -132,6 +133,8 @@
     <Content Include="imagenes\registrarperdida %2834x35%29.jpg" />
     <Content Include="imagenes\veterinarias %2835x35%29.jpg" />
     <Content Include="imagenes\volver.png" />
+    <Content Include="Index.aspx" />
+    <Content Include="IndexDueño.aspx" />
     <Content Include="Informes.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Account\ChangePassword.aspx" />
@@ -168,6 +171,7 @@
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
     <Content Include="Sugerencia.aspx" />
+    <Content Include="TiposDeUsuarios.htm" />
     <Content Include="Usuarios.aspx" />
     <Content Include="ValidarUsuario.aspx" />
     <Content Include="Veterinarias.aspx" />
@@ -330,6 +334,20 @@
     <Compile Include="Handler1.ashx.cs">
       <DependentUpon>Handler1.ashx</DependentUpon>
     </Compile>
+    <Compile Include="Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="IndexDueño.aspx.cs">
+      <DependentUpon>IndexDueño.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="IndexDueño.aspx.designer.cs">
+      <DependentUpon>IndexDueño.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Informes.aspx.cs">
       <DependentUpon>Informes.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -399,6 +417,20 @@
     </Compile>
     <Compile Include="ModerarPedidosDifusion.aspx.designer.cs">
       <DependentUpon>ModerarPedidosDifusion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PaginaBase.Master.cs">
+      <DependentUpon>PaginaBase.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PaginaBase.Master.designer.cs">
+      <DependentUpon>PaginaBase.Master</DependentUpon>
+    </Compile>
+    <Compile Include="PaginaLogin.Master.cs">
+      <DependentUpon>PaginaLogin.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PaginaLogin.Master.designer.cs">
+      <DependentUpon>PaginaLogin.Master</DependentUpon>
     </Compile>
     <Compile Include="PaginaMaestra.Master.cs">
       <DependentUpon>PaginaMaestra.Master</DependentUpon>
@@ -628,6 +660,8 @@
     <None Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Handler1.ashx" />
     <Content Include="PaginaMaestra.Master" />
+    <Content Include="PaginaBase.Master" />
+    <Content Include="PaginaLogin.Master" />
     <None Include="Scripts\jquery-2.1.1.min.map" />
   </ItemGroup>
   <ItemGroup>
