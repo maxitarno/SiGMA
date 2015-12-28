@@ -16,21 +16,30 @@ namespace SiGMA
         {
             if (!Page.IsPostBack)
             {
+                if (Session["UsuarioLogueado"] != null)
+                {
+                }
+                else
+                {
+                    Response.Redirect("Login.aspx");
+                }
                 if (Session["TipoVoluntario"].ToString() != "0")
                 {
-                    if (Session["VoluntarioCargado"] != null && Session["VoluntarioCargado"].ToString() == "True")
-                    {
-                        if (Session["idMascota"] != null && Session["pantalla"].ToString() == "Voluntario.aspx")
-                        {
-                            cargarDatosPagina();
-                        }
-                        else if (Session["pantalla"] != null && Session["pantalla"].ToString() == "")
-                            cargarDatosPagina();
-                    }
-                    else
-                    {
-                        cargarDatosPagina();
-                    }
+                    cargarDatosPagina();
+                    //CON LA NUEVA INTERFAZ SE ELIMINAN LOS IDA Y VUELTA CON EL BOTON REGRESAR
+                    //if (Session["VoluntarioCargado"] != null && Session["VoluntarioCargado"].ToString() == "True")
+                    //{
+                    //    if (session["idmascota"] != null && session["pantalla"].tostring() == "voluntario.aspx")
+                    //    {
+                    //        cargardatospagina();
+                    //    }
+                    //    else if (session["pantalla"] != null && session["pantalla"].tostring() == "")
+                    //        cargardatospagina();
+                    //}
+                    //else
+                    //{
+                    //    cargarDatosPagina();
+                    //}
                 }
                 else
                 {
@@ -96,7 +105,6 @@ namespace SiGMA
                 lblInfo.Text = "El voluntario no se encuentra activo, pero puede solicitar voluntariado";
                 return;
             }
-
         }
 
         private void cargarComboPerdidasBarrio()
@@ -224,12 +232,15 @@ namespace SiGMA
                 {
                     ddlMascotasEnHogar.Items.Add(new ListItem(item.nombreMascota.ToString(), item.idMascota.ToString()));
                 }
+                pnlSinProvisorias.Visible = false;
                 ddlMascotasEnHogar_SelectedIndexChanged(null, null);
+
             }
             else 
             {
                 ddlMascotasEnHogar.Items.Insert(0, "Sin Mascotas en el Hogar");
                 ddlMascotasEnHogar.Enabled = false;
+                pnlSinProvisorias.Visible = true;
             }
         }
 
@@ -249,12 +260,6 @@ namespace SiGMA
            ddlNumeroMascotas.SelectedValue = hogar.cantMascotas.ToString();
            ddlTipoMascota.SelectedValue = hogar.AceptaEspecie.ToString();
            ddlTieneNinios.SelectedValue = hogar.tieneNiños.ToString() == "Si" ? "1" : "2"; 
-        }
-
-        protected void BtnRegresarClick(object sender, ImageClickEventArgs e)
-        {
-            Session["pantalla"] = ""; 
-            Response.Redirect("DefaultDueño.aspx");
         }
 
         protected void ddlMascotasEnHogar_SelectedIndexChanged(object sender, EventArgs e)
@@ -360,18 +365,21 @@ namespace SiGMA
 
         protected void btnActualizarBusqueda_Click(object sender, EventArgs e)
         {
-            try
+            if (Page.IsValid)
             {
-                LogicaBDVoluntario.actualizarDisponibilidadVoluntario(Convert.ToInt32(Session["IdVoluntario"].ToString()), ddlDisponibilidadHoraria.SelectedItem.Text);
-                pnlCorrecto.Visible=true;
-                lblCorrecto.Text="Disponibilidad actualizada correctamente";
+                try
+                {
+                    LogicaBDVoluntario.actualizarDisponibilidadVoluntario(Convert.ToInt32(Session["IdVoluntario"].ToString()), ddlDisponibilidadHoraria.SelectedItem.Text);
+                    pnlCorrecto.Visible = true;
+                    lblCorrecto.Text = "Datos de busqueda actualizados correctamente";
+                }
+                catch (Exception)
+                {
+                    pnlAtento.Visible = true;
+                    lblError.Text = "Ha ocurrido un error al actualizar los datos de busqueda";
+                }
+                SetFocus(pnlCorrecto);
             }
-            catch (Exception)
-            {
-                pnlAtento.Visible = true;
-                lblError.Text = "Ha ocurrido un error al actualizar la disponibilidad";
-            }
-            SetFocus(pnlCorrecto);
         }
 
         protected void ddlBarrioBusqueda_SelectedIndexChanged(object sender, EventArgs e)
@@ -381,32 +389,26 @@ namespace SiGMA
 
         protected void btnActualizarHogar_Click(object sender, EventArgs e)
         {
-            try
+            if (Page.IsValid)
             {
-                if (Validaciones.verificarSoloNumeros(txtNro.Text))
+                try
                 {
                     LogicaBDVoluntario.actualizarHogarVoluntario(Convert.ToInt32(Session["IdVoluntario"].ToString()), Session["UsuarioLogueado"].ToString(), ddlTipoHogar.SelectedValue, ddlCalle.SelectedValue, txtNro.Text, ddlBarrio.SelectedValue, ddlNumeroMascotas.SelectedValue, ddlTipoMascota.SelectedValue, ddlTieneNinios.SelectedValue);
                     pnlCorrecto.Visible = true;
                     lblCorrecto.Text = "Hogar actualizado correctamente";
                 }
-                else
+                catch (Exception)
                 {
-                    lblInfo.Text = "Debe ingresar un número de calle valido";
-                    pnlInfo.Visible = true;
+                    pnlAtento.Visible = true;
+                    lblError.Text = "Ha ocurrido un error al actualizar el hogar";
                     SetFocus(pnlCorrecto);
                 }
-            }
-            catch (Exception)
-            {
-                pnlAtento.Visible = true;
-                lblError.Text = "Ha ocurrido un error al actualizar el hogar";
-                SetFocus(pnlCorrecto);
             }
         }
 
         protected void btnCambioVoluntariado_Click(object sender, EventArgs e)
         {
-            if (ddlTipoVoluntario.SelectedValue == "0")
+            if (ddlTipoVoluntario.SelectedValue == "0") //este lo vamos a dejar asi porque es un caso particular
             {
                 pnlInfo.Visible = true;
                 lblInfo.Text = "Seleccione un tipo de voluntariado";
@@ -426,6 +428,21 @@ namespace SiGMA
         protected void ddlTipoVoluntario_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        protected void cvCalle_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            args.IsValid = Validaciones.verificarSeleccionEnDdl(ref ddlCalle);
+        }
+
+        protected void cvBarrio_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            args.IsValid = Validaciones.verificarSeleccionEnDdl(ref ddlBarrio);
+        }
+
+        protected void cvBarrioBusqueda_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            args.IsValid = Validaciones.verificarSeleccionEnDdl(ref ddlBarrioBusqueda);
         }
     }
 }

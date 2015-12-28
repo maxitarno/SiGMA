@@ -23,6 +23,11 @@ namespace SiGMA
                 }
                 CargarCombos.cargarTipoDocumento(ref ddlTipoDocumento);
             }
+            else
+            {
+                pnlCorrecto.Visible = false;
+                pnlAtento.Visible = false;
+            }
         }
 
         protected void btnRegistrar_Click(object sender, EventArgs e)
@@ -143,12 +148,6 @@ namespace SiGMA
         protected void cvContraseña_ServerValidate(object source, ServerValidateEventArgs args)
         {
             args.IsValid = Validaciones.contarCaracteres(txtContra.Text);
-        }
-
-        protected void BtnRegresarClick(object sender, ImageClickEventArgs e)
-        {
-
-            Response.Redirect("Usuarios.aspx");
         }
     }
 }

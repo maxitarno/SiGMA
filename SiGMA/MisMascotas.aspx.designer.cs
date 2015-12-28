@@ -22,15 +22,6 @@ namespace SiGMA {
         protected global::System.Web.UI.ScriptManager ScriptManager1;
         
         /// <summary>
-        /// lblTitulo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTitulo;
-        
-        /// <summary>
         /// pnlCorrecto control.
         /// </summary>
         /// <remarks>
@@ -40,13 +31,13 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.Panel pnlCorrecto;
         
         /// <summary>
-        /// lblResultado1 control.
+        /// lblCorrecto control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblResultado1;
+        protected global::System.Web.UI.WebControls.Label lblCorrecto;
         
         /// <summary>
         /// pnlInfo control.
@@ -58,13 +49,13 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.Panel pnlInfo;
         
         /// <summary>
-        /// lblResultado2 control.
+        /// lblInfo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblResultado2;
+        protected global::System.Web.UI.WebControls.Label lblInfo;
         
         /// <summary>
         /// pnlAtento control.
@@ -76,22 +67,13 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.Panel pnlAtento;
         
         /// <summary>
-        /// lblResultado3 control.
+        /// lblError control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblResultado3;
-        
-        /// <summary>
-        /// pnlResultados control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlResultados;
+        protected global::System.Web.UI.WebControls.Label lblError;
         
         /// <summary>
         /// btnRegistrarMascota control.
@@ -112,13 +94,13 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.ListBox lstResultados;
         
         /// <summary>
-        /// imgImagen control.
+        /// pnlDatos1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel imgImagen;
+        protected global::System.Web.UI.WebControls.Panel pnlDatos1;
         
         /// <summary>
         /// imgprvw control.
@@ -130,40 +112,13 @@ namespace SiGMA {
         protected global::System.Web.UI.HtmlControls.HtmlImage imgprvw;
         
         /// <summary>
-        /// pnlNo control.
+        /// fuImagenMascota control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlNo;
-        
-        /// <summary>
-        /// chNoMostrar control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chNoMostrar;
-        
-        /// <summary>
-        /// pnlmascota control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlmascota;
-        
-        /// <summary>
-        /// pnltxtMascota control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnltxtMascota;
+        protected global::System.Web.UI.HtmlControls.HtmlInputFile fuImagenMascota;
         
         /// <summary>
         /// txtMascota control.
@@ -175,13 +130,13 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.TextBox txtMascota;
         
         /// <summary>
-        /// pnlfiltros control.
+        /// rfvNombreMascota control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlfiltros;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvNombreMascota;
         
         /// <summary>
         /// ddlEspecie control.
@@ -193,6 +148,15 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.DropDownList ddlEspecie;
         
         /// <summary>
+        /// cvEspecie control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator cvEspecie;
+        
+        /// <summary>
         /// ddlRaza control.
         /// </summary>
         /// <remarks>
@@ -202,13 +166,22 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.DropDownList ddlRaza;
         
         /// <summary>
-        /// ddlEdad control.
+        /// cvRaza control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEdad;
+        protected global::System.Web.UI.WebControls.CustomValidator cvRaza;
+        
+        /// <summary>
+        /// txtCategoria control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCategoria;
         
         /// <summary>
         /// ddlSexo control.
@@ -220,6 +193,33 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.DropDownList ddlSexo;
         
         /// <summary>
+        /// cvSexo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator cvSexo;
+        
+        /// <summary>
+        /// ddlEdad control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlEdad;
+        
+        /// <summary>
+        /// cvEdad control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator cvEdad;
+        
+        /// <summary>
         /// ddlEstado control.
         /// </summary>
         /// <remarks>
@@ -227,24 +227,6 @@ namespace SiGMA {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlEstado;
-        
-        /// <summary>
-        /// ddlTratoAnimales control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlTratoAnimales;
-        
-        /// <summary>
-        /// ddlTratoNinios control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlTratoNinios;
         
         /// <summary>
         /// pnlDatos control.
@@ -256,13 +238,40 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.Panel pnlDatos;
         
         /// <summary>
-        /// txtCategoria control.
+        /// ddlTratoAnimales control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCategoria;
+        protected global::System.Web.UI.WebControls.DropDownList ddlTratoAnimales;
+        
+        /// <summary>
+        /// cvTratoAnimales control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator cvTratoAnimales;
+        
+        /// <summary>
+        /// ddlTratoNinios control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlTratoNinios;
+        
+        /// <summary>
+        /// cvTratoNiños control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator cvTratoNiños;
         
         /// <summary>
         /// txtCuidadoEspecial control.
@@ -283,6 +292,15 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.DropDownList ddlColor;
         
         /// <summary>
+        /// cvColor control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator cvColor;
+        
+        /// <summary>
         /// ddlCaracter control.
         /// </summary>
         /// <remarks>
@@ -292,13 +310,13 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.DropDownList ddlCaracter;
         
         /// <summary>
-        /// txtObservaciones control.
+        /// cvTemperamento control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtObservaciones;
+        protected global::System.Web.UI.WebControls.CustomValidator cvTemperamento;
         
         /// <summary>
         /// txtAlimentacionEspecial control.
@@ -310,13 +328,13 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.TextBox txtAlimentacionEspecial;
         
         /// <summary>
-        /// pnlFecha control.
+        /// txtObservaciones control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlFecha;
+        protected global::System.Web.UI.WebControls.TextBox txtObservaciones;
         
         /// <summary>
         /// txtFecha control.
@@ -328,15 +346,6 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.TextBox txtFecha;
         
         /// <summary>
-        /// Image1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image Image1;
-        
-        /// <summary>
         /// CalendarExtender1 control.
         /// </summary>
         /// <remarks>
@@ -346,22 +355,22 @@ namespace SiGMA {
         protected global::AjaxControlToolkit.CalendarExtender CalendarExtender1;
         
         /// <summary>
-        /// rnvFechaPerdida control.
+        /// rnvFecha control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RangeValidator rnvFechaPerdida;
+        protected global::System.Web.UI.WebControls.RangeValidator rnvFecha;
         
         /// <summary>
-        /// fuImagenMascota control.
+        /// chNoMostrar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputFile fuImagenMascota;
+        protected global::System.Web.UI.WebControls.CheckBox chNoMostrar;
         
         /// <summary>
         /// pnlbotones control.
@@ -407,14 +416,5 @@ namespace SiGMA {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnPerdida;
-        
-        /// <summary>
-        /// ibtnRegresar control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ibtnRegresar;
     }
 }

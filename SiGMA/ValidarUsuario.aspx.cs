@@ -16,10 +16,6 @@ namespace SiGMA
 
         }
 
-        protected void BtnRegresarClick(object sender, ImageClickEventArgs e)
-        {
-            Response.Redirect("Login.aspx");
-        }
 
         protected void btnValidar_Click(object sender, EventArgs e)
         {
@@ -29,28 +25,19 @@ namespace SiGMA
                 try
                 {
                     usuario = LogicaBDUsuario.BuscarUsuarios(txtUsuario.Text).First();
-                    
-                    if (usuario != null)
+                    if(txtUsuario.Text == usuario.user && txtToken.Text == usuario.token)
                     {
-                        if(txtUsuario.Text == usuario.user && txtToken.Text == usuario.token)
-                        {
-                            LogicaBDUsuario.ValidarUsuario(txtUsuario.Text);
-                            mostrarResultado("", true);
-                        }
-                        else
-                            mostrarResultado("", false);
+                        LogicaBDUsuario.ValidarUsuario(txtUsuario.Text);
+                        mostrarResultado("", true);
                     }
                     else
-                    {
-                        mostrarResultado("Usuario no encontrado", false);
-                    }
+                        mostrarResultado("", false);
                 }
                 catch (Exception ex)
                 {
                     mostrarResultado(ex.InnerException.Message, false);
                 }
             }                 
-
         }
 
         //Metodo para mostrar un label informando alguna excepcion, el parametro sera el string de la excepcion

@@ -22,11 +22,6 @@ namespace SiGMA
             }
         }
 
-        protected void BtnRegresarClick(object sender, ImageClickEventArgs e)
-        {
-            Response.Redirect("DefaultDueño.aspx");
-        }
-
         protected void ddlBarrio_SelectedIndexChanged(object sender, EventArgs e)
         {
             veterinaria = new EVeterinaria();

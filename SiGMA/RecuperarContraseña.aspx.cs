@@ -79,10 +79,5 @@ namespace SiGMA
             pnlCorrecto.Visible = b;
             pnlAtento.Visible = !b;
         }
-
-        protected void BtnRegresarClick(object sender, ImageClickEventArgs e)
-        {
-            Response.Redirect("Login.aspx");
-        }
     }
 }

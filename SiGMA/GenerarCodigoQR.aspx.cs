@@ -29,11 +29,11 @@ namespace SiGMA
                 Session["Mascota"] = mascota;
                 if (mascota.duenio == null)
                 {
-                    pnlDueño.Visible = false;
+                    habilitarCheckboxes(false);
                 }
                 else
                 {
-                    habilitarCheckboxes();
+                    habilitarCheckboxes(true);
                 }
             }
         }
@@ -131,30 +131,13 @@ namespace SiGMA
             actualizarCampos("TelefonoCel", chkTelefonoCel.Checked);
 
         }
-        private void habilitarCheckboxes()
+        private void habilitarCheckboxes(bool t)
         {
-            EMascota mascota = (EMascota)Session["Mascota"];
-            if (mascota.duenio.nombre == null)
-            {
-                chkNombreDueño.Enabled = false;
-            }            
-            if (mascota.duenio.telefonoCelular == null)
-            {
-                chkTelefonoCel.Enabled = false;
-            }
-            if (mascota.duenio.domicilio == null)
-            {
-                chkDireccion.Enabled = false;                
-            }
-            if (mascota.duenio.email == null)
-            {
-                chkEmail.Enabled = false;
-            }
+                chkNombreDueño.Enabled = t;
+                chkTelefonoCel.Enabled = t;
+                chkDireccion.Enabled = t;                
+                chkEmail.Enabled = t;
         }
 
-        protected void BtnRegresarClick(object sender, ImageClickEventArgs e)
-        {
-            Response.Redirect(Session["pantalla"].ToString());
-        }
     }
 }

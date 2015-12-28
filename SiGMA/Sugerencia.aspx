@@ -1,24 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PaginaMaestra.Master" AutoEventWireup="true" CodeBehind="Sugerencia.aspx.cs" Inherits="SiGMA.Sugerencia" %>
+﻿<%@ Page Title="SIGMA" Language="C#" MasterPageFile="~/PaginaBase.Master" AutoEventWireup="true" CodeBehind="Sugerencia.aspx.cs" Inherits="SiGMA.Sugerencia" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
-
-    <title>SIGMA</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="assets/css/bootstrap.css" rel="stylesheet">
-
-
-    <!-- Custom styles for this template -->
-    <link href="assets/css/main.css" rel="stylesheet">
-
-    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="assets/js/hover.zoom.js"></script>
-    <script src="assets/js/hover.zoom.conf.js"></script>
     <script type="text/javascript">
         function checkTextAreaMaxLength(textBox, e, length) {
 
@@ -43,87 +24,88 @@
                 return true;
         }
 </script>
+<script src="http://maps.google.com/maps/api/js?sensor=true"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="centered">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-            <h3 class="panel-title">
-                Buzón de Sugerencias</h3>
-            </div>
-
-            <div class="panel panel-default">
-            <div class="panel-body">
-                <div class="col-md-4 col-md-offset-4">
-                    <asp:Panel runat="server" id="pnlCorrecto" class="alert alert-dismissable alert-success" Visible=false>
-                        <button class="close" type="button" data-dismiss="alert">
-                            ×</button>
-                            <asp:Label ID="lblCorrecto" runat="server" Text=""></asp:Label>
-                    </asp:Panel>
-                    <asp:Panel runat="server" id="pnlInfo" class="alert alert-dismissable alert-info" Visible=false>
-                        <button class="close" type="button" data-dismiss="alert">
-                            ×</button>
-                            <asp:Label ID="lblInfo" runat="server" Text=""></asp:Label>
-                    </asp:Panel>
-                    <asp:Panel runat="server" id="pnlAtento" class="alert alert-dismissable alert-danger" Visible=false>
-                        <button class="close" type="button" data-dismiss="alert">
-                            ×</button>
-                            <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
-                    </asp:Panel>
+    <div class="page-title-container">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 wow fadeIn">
+                    <img src="assets/img/menu/sugerenciasMini.png" />
+                    <h1>Buzón de Sugerencias /</h1>
+                    <p>Sus sugerencias/opiniones nos ayudan a mejorar</p>
                 </div>
             </div>
-            </div>
-            <div class="centered"><h5>Sus sugerencias/opiniones nos ayudan a mejorar</h5> </div>
-            <br/>
-            <div class="panel-body">
-                <div>
-                    <div class="col-lg-8 col-lg-offset-4 col-sm-10 col-sm-offset-2 col-md-8 col-md-offset-4">
-                        <table>
-                            <tr style="height:30px">
-                                <td align="right" width="200px">Nombre:</td>
-                                <td align="left"><asp:TextBox ID="txtNombre" runat="server" Width="325px"></asp:TextBox></td>
-                                <td><asp:RequiredFieldValidator ID="rfvNombreApellido" runat="server" 
-                                        ErrorMessage="*" ForeColor="Red" ControlToValidate="txtNombre"></asp:RequiredFieldValidator></td>
-                            </tr>
-                            <tr style="height:30px">
-                                <td align="right" width="200px">Email:</td>
-                                <td align="left"><asp:TextBox ID="txtEmail" runat="server" Width="325px"></asp:TextBox></td>
-                                <td>
-                                    <asp:RequiredFieldValidator ID="rfvEmail" runat="server" ErrorMessage="*" 
-                                        ForeColor="Red" ControlToValidate="txtEmail"></asp:RequiredFieldValidator>
-                                    <asp:RegularExpressionValidator ID="revMail" runat="server" ErrorMessage="Formato de email incorrecto"
-                                ForeColor="Red" ControlToValidate="txtEmail" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"
-                                Display="Dynamic"></asp:RegularExpressionValidator>  
-                                        </td>
-                            </tr >
-                            <tr style="height:30px">
-                                <td align="right" width="200px" >Telefono:</td>
-                                <td align="left"><asp:TextBox ID="txtTelefono" runat="server" Width="325px"></asp:TextBox></td>
-                                <td><asp:RequiredFieldValidator ID="rfvTelefono" runat="server" ErrorMessage="*" 
-                                        ForeColor="Red" ControlToValidate="txtTelefono"></asp:RequiredFieldValidator></td>
-                            </tr>
-                            <tr style="height:30px">
-                                <td align="right" width="200px">Sugerencia</td>
-                                <td align="left"><asp:TextBox ID="txtConsulta" runat="server" style="resize: none" TextMode="MultiLine"
-                                                        Rows="4" Columns="25" CssClass="TextBox" Width="100%" onkeyDown="checkTextAreaMaxLength(this,event,'500');"></asp:TextBox></td>
-                                <td><asp:RequiredFieldValidator ID="rfvConsulta" runat="server" ErrorMessage="*" 
-                                        ForeColor="Red" ControlToValidate="txtConsulta"></asp:RequiredFieldValidator></td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-            </div>
-             <div class="centered">
-            <asp:Button ID="btnEnviar" style="margin-left: 39px" runat="server" 
-                                        Text="Enviar" onclick="btnEnviar_Click" /></td>
-            </div>
-        </div>
-        <div class="centered">
-            <asp:ImageButton ID="ibtnRegresar" runat="server" ImageUrl="~/imagenes/volver.png"
-                OnClick="BtnRegresarClick" CausesValidation="False"/><br />VOLVER
         </div>
     </div>
-
-</asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="col-md-4 col-md-offset-4">
+                <asp:Panel runat="server" id="pnlCorrecto" class="alert alert-dismissable alert-success" Visible=false>
+                    <button class="close" type="button" data-dismiss="alert">
+                        ×</button>
+                        <asp:Label ID="lblCorrecto" runat="server" Text=""></asp:Label>
+                </asp:Panel>
+                <asp:Panel runat="server" id="pnlInfo" class="alert alert-dismissable alert-info" Visible=false>
+                    <button class="close" type="button" data-dismiss="alert">
+                        ×</button>
+                        <asp:Label ID="lblInfo" runat="server" Text=""></asp:Label>
+                </asp:Panel>
+                <asp:Panel runat="server" id="pnlAtento" class="alert alert-dismissable alert-danger" Visible=false>
+                    <button class="close" type="button" data-dismiss="alert">
+                        ×</button>
+                        <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
+                </asp:Panel>
+            </div>
+        </div>
+    </div>
+    <div class="contact-us-container">
+        <div class="container">
+	        <div class="row">
+	            <div class="col-sm-7 contact-form wow fadeInLeft">
+	                <p>
+	                    Nuestra política de mejora continua, centrada en la experiencia de los usuarios, ha logrado que   
+	                    día a día Sigma sea más completo, cubriendo las nuevas necesidades que surgen con el paso del tiempo.  
+	                </p>
+                    <div class="form-group">
+	                    	<label for="contact-name">Nombre</label>
+	                        <asp:TextBox ID="txtNombre" runat="server" MaxLength="50"></asp:TextBox>
+                            <asp:CustomValidator ID="cvNombre" runat="server" 
+                                ErrorMessage="Ingrese solo letras" ControlToValidate="txtNombre" 
+                                    ForeColor="Red" onservervalidate="cvNombre_ServerValidate"></asp:CustomValidator>
+	                </div>
+                    <div class="form-group">
+	                    	<label for="contact-name">Email</label>
+	                        <asp:TextBox ID="txtEmail" runat="server" MaxLength="50"></asp:TextBox>
+                            <asp:RegularExpressionValidator ID="revMail" runat="server" ErrorMessage="Formato de email incorrecto"
+                            ForeColor="Red" ControlToValidate="txtEmail" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"
+                            Display="Dynamic"></asp:RegularExpressionValidator>
+	                </div>
+                    <div class="form-group">
+	                    	<label for="contact-name">Teléfono</label>
+	                        <asp:TextBox ID="txtTelefono" runat="server" MaxLength="20"></asp:TextBox>
+                            <asp:CustomValidator ID="cvTelefono" runat="server" 
+                                ErrorMessage="Ingrese solo números" ControlToValidate="txtTelefono" 
+                                onservervalidate="cvTelefono_ServerValidate" ForeColor="Red"></asp:CustomValidator>
+	                </div>
+                    <div class="form-group">
+	                    	<label for="contact-name">Sugerencia</label>
+	                        <asp:TextBox ID="txtSugerencia" runat="server" style="resize: none" TextMode="MultiLine"
+                                                    Rows="3" Columns="25" CssClass="TextBox" Width="100%" onkeyDown="checkTextAreaMaxLength(this,event,'500');"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="rfvConsulta" runat="server" ErrorMessage="No ha ingresado una sugerencia" 
+                                    ForeColor="Red" ControlToValidate="txtSugerencia"></asp:RequiredFieldValidator>
+	                </div>
+                    <asp:Button ID="btnEnviar" runat="server" 
+                                    Text="Enviar" onclick="btnEnviar_Click" Width="180px"/>
+                </div>
+	            <div class="col-sm-5 contact-address wow fadeInUp">
+	                <h3>Estamos aquí</h3>
+	                <div class="map"></div>
+	                <h3>Dirección</h3>
+	                <p>Sargento Cabral 1564 <br> San Vicente, Córdoba, Argentina</p>
+	                <p>Teléfono: 0351 456-5158</p>
+	            </div>
+	        </div>
+	    </div>
+    </div>
 </asp:Content>

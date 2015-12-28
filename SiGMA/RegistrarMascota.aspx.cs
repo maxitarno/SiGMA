@@ -19,17 +19,12 @@ namespace SiGMA
             {
                 if (Session["UsuarioLogueado"] != null)
                 {                    
-                    if (!LogicaBDRol.verificarPermisoVisualizacion(Session["UsuarioLogueado"].ToString(), "RegistrarMascota.aspx"))
-                        Response.Redirect("PermisosInsuficientes.aspx");
-                    if (!LogicaBDRol.verificarPermisosGrabacion(Session["UsuarioLogueado"].ToString(), "RegistrarMascota.aspx"))
-                    {
-                        btnRegistrar.Visible = false;                        
-                    }
                 }
                 else
                 {
                     Response.Redirect("Login.aspx");
                 }
+                rnvFecha.MaximumValue = DateTime.Now.ToShortDateString();
                 CargarCombos.cargarColor(ref ddlColor);
                 CargarCombos.cargarEspecies(ref ddlEspecie);
                 CargarCombos.cargarEdad(ref ddlEdad);
@@ -37,7 +32,12 @@ namespace SiGMA
                 CargarCombos.cargarSexo(ref ddlSexo);
                 CargarCombos.cargarTratos(ref ddlTratoAnimales);
                 CargarCombos.cargarTratos(ref ddlTratoNinios);
-            }     
+            }
+			else
+			{
+				pnlCorrecto.Visible = false;
+				pnlAtento.Visible = false;
+			}
         }
 
         protected void ddlEspecie_SelectedIndexChanged(object sender, EventArgs e)
@@ -110,6 +110,7 @@ namespace SiGMA
             pnlCorrecto.Visible = b;
             pnlAtento.Visible = !b;
             pnlDatos.Visible = !b;
+            pnlDatos1.Visible = !b;
             pnlBtnRegistrar.Visible = !b;
             fuImagen.Visible = !b;
             pnlFoto.Visible = !b;
@@ -137,15 +138,19 @@ namespace SiGMA
             args.IsValid = Validaciones.verificarSeleccionEnDdl(ref ddlColor); 
         }
 
-        protected void BtnRegresarClick(object sender, ImageClickEventArgs e)
+        protected void cvCaracter_ServerValidate(object source, ServerValidateEventArgs args)
         {
-            if (Session["Pantalla"] != null)
-            {
-                if (Session["pantalla"].ToString() == "MisMascotas.aspx")
-                    Response.Redirect("MisMascotas.aspx");
-            }
-            else
-                Response.Redirect("_Mascotas.aspx");
+            args.IsValid = Validaciones.verificarSeleccionEnDdl(ref ddlCaracter); 
+        }
+
+        protected void cvTratoAnim_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            args.IsValid = Validaciones.verificarSeleccionEnDdl(ref ddlTratoAnimales); 
+        }
+
+        protected void dvTratoNinios_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            args.IsValid = Validaciones.verificarSeleccionEnDdl(ref ddlTratoNinios); 
         }
     }
 }

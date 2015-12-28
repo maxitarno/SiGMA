@@ -16,9 +16,9 @@ namespace SiGMA
         {
             if (!Page.IsPostBack)
             {
-                Session["buscarOtro"] = 0;
-                Session["imagenAdopcion"] = null;
-                rnvFechaPerdida.MaximumValue = DateTime.Now.ToShortDateString();
+				Session["buscarOtro"] = 0;
+				Session["imagenAdopcion"] = null;
+                rnvFecha.MaximumValue = DateTime.Now.ToShortDateString();
                 if (Session["UsuarioLogueado"] != null)
                 {
                         btnModificar.Visible = true; // aca ponerlo en false y cuando seleccione del listado ponerlo en true
@@ -39,22 +39,23 @@ namespace SiGMA
                 CargarCombos.cargarComboRazas(ref ddlRaza);
                 CargarCombos.cargarSexo(ref ddlSexo);
                 pnlAtento.Visible = false;
-                pnlbotones.Visible = false;
                 pnlCorrecto.Visible = false;
-                pnlDatos.Visible = false;
                 pnlInfo.Visible = false;
-                pnlmascota.Visible = false;
-                pnltxtMascota.Visible = false;
-                pnlfiltros.Visible = false;
+                pnlDatos.Visible = false;
+                pnlDatos1.Visible = false;
+                pnlbotones.Visible = false;
                 CargarCombos.cargarEstado(ref ddlEstado, "Mascota");
                 CargarCombos.cargarCaracteresMascota(ref ddlCaracter);
-                pnlResultados.Visible = true;
                 cargasMisMascotas();
+                // lo que sigue estaa afuera del postback, no se porque .. daba error cuando un commbo con autopostback se tocaba
+                Handler1.AddMethod(ImageHandler_ObtenerImagenMascota);
+                imgprvw.Src = ResolveUrl("~/Handler1.ashx");
+                imgprvw.Width = 400;
+                imgprvw.Height = 300;
             }
-            Handler1.AddMethod(ImageHandler_ObtenerImagenMascota);
-            imgprvw.Src = ResolveUrl("~/Handler1.ashx");
-            imgprvw.Width = 300;
-            imgprvw.Height = 200;
+            pnlAtento.Visible = false;
+            pnlCorrecto.Visible = false;
+            pnlInfo.Visible = false;
         }
 
         private void cargasMisMascotas()
@@ -64,7 +65,6 @@ namespace SiGMA
             if (mascotas.Count != 0)
             {
                 lstResultados.Items.Clear();
-                pnlResultados.Visible = true;
                 lstResultados.DataSource = mascotas;
                 lstResultados.DataTextField = "nombreMascota";
                 lstResultados.DataValueField = "idMascota";
@@ -77,7 +77,7 @@ namespace SiGMA
             {
                 lstResultados.Items.Clear();
                 pnlInfo.Visible = true;
-                lblResultado2.Text = "No se encontraron mascotas";
+                lblInfo.Text = "No se encontraron mascotas";
                 pnlAtento.Visible = false;
                 pnlCorrecto.Visible = false;
             }
@@ -114,9 +114,11 @@ namespace SiGMA
                     ddlTratoNinios.SelectedValue = mascota.tratoNiños.ToString() == "false" ? "2" : "1";
                 }
                 pnlDatos.Visible = true;
+                pnlDatos1.Visible = true;
                 ddlColor.SelectedValue = mascota.color.idColor.ToString();
                 ddlEdad.SelectedValue = mascota.edad.idEdad.ToString();
                 ddlEspecie.SelectedValue = mascota.especie.idEspecie.ToString();
+                ddlRaza_SelectedIndexChanged(null, null);
                 ddlRaza.SelectedValue = mascota.raza.idRaza.ToString();
                 ddlSexo.SelectedValue = mascota.sexo.ToString();
                 pnlbotones.Visible = true;
@@ -125,28 +127,21 @@ namespace SiGMA
                 pnlAtento.Visible = false;
                 pnlCorrecto.Visible = false;
                 pnlInfo.Visible = false;
-                pnlmascota.Visible = true;
-                pnltxtMascota.Visible = true;
                 if (mascota.imagen != null)
                 {
                     Session["imagen"] = mascota.imagen;
                     Handler1.AddMethod(ImageHandler_ObtenerImagenMascota);
                     imgprvw.Src = ResolveUrl("~/Handler1.ashx");
-                    imgprvw.Width = 300;
-                    imgprvw.Height = 200;
+                    imgprvw.Width = 400;
+                    imgprvw.Height = 300;
                 }
-                imgImagen.Visible = true;
-                pnlfiltros.Visible = true; ;
-                pnlResultados.Visible = true;
-                pnlNo.Visible = true;
             }
             else
             {
                 pnlInfo.Visible = true;
-                lblResultado2.Text = "No se encontraron mascotas";
+                lblInfo.Text = "No se encontraron mascotas";
                 pnlCorrecto.Visible = false;
                 pnlAtento.Visible = false;
-                pnlNo.Visible = true;
             }
             chNoMostrar.Checked = mascota.noMostrar;
         }
@@ -182,7 +177,7 @@ namespace SiGMA
             else
             {
                 pnlInfo.Visible = true;
-                lblResultado2.Text = "Debe seleccionar una mascota";
+                lblInfo.Text = "Debe seleccionar una mascota";
                 pnlCorrecto.Visible = false;
                 pnlAtento.Visible = false;
             }
@@ -224,7 +219,7 @@ namespace SiGMA
                 {
                     LogicaBDMascota.ponerEnAdopcion(Convert.ToInt32(Session["idMascota"].ToString()));
                     ddlEstado.SelectedValue = "4";
-                    lblResultado1.Text = "Mascota disponible para adopcion";
+                    lblCorrecto.Text = "Mascota disponible para adopcion";
                     var tweet = new Herramientas.GestorTwitter();
                     byte[] imagen = (byte[])Session["imagen"];
                     EMascota mascota = new EMascota { 
@@ -249,7 +244,7 @@ namespace SiGMA
                     pedido.fecha = DateTime.Now;
                     pedido.user = new EUsuario { user = Session["UsuarioLogueado"].ToString() };
                     LogicaBDPedidoDifusion.registrarPedidoDifusion(pedido);
-                    lblResultado1.Text = "Pedido para poner en adopcion registrado.";
+                    lblCorrecto.Text = "Pedido para poner en adopcion registrado.";
                 }
                 pnlCorrecto.Visible = true;
                 pnlInfo.Visible = false;
@@ -261,19 +256,13 @@ namespace SiGMA
                 pnlCorrecto.Visible = false;
                 pnlInfo.Visible = false;
                 pnlAtento.Visible = true;
-                lblResultado1.Text = "Error al poner la mascota en adopcion";
+                lblError.Text = "Error al poner la mascota en adopcion";
                 SetFocus(pnlAtento);                
             }
         }
 
         private void limpiarControles()
         {
-            pnltxtMascota.Visible = false;
-            pnlmascota.Visible = false;
-            pnlfiltros.Visible = false;
-            pnltxtMascota.Visible = true;
-            pnlmascota.Visible = true;
-            pnlfiltros.Visible = true;
             ddlEspecie.SelectedValue = "0";
             ddlEstado.SelectedValue = "0";
             ddlRaza.SelectedValue = "0";
@@ -283,254 +272,126 @@ namespace SiGMA
             txtMascota.Text = "";
             ddlEdad.SelectedValue = "0";
             pnlDatos.Visible = false;
-            pnlResultados.Visible = false;
+            pnlDatos1.Visible = false;
             pnlbotones.Visible = false;
             txtMascota.Text = "";
             Session["idMascota"] = 0;
-            imgImagen.Visible = false;
             btnModificar.Visible = false;
             btnGenerarQR.Visible = false;
             btnAdopcion.Visible = false;
-            //ibtnBuscarOtro.Visible = false;
-            pnlNo.Visible = false;//modificado
         }
 
         public void BtnModificarClick(object sender, EventArgs e)
         {
-            EMascota mascota = new EMascota();
-            mascota.idMascota = (int)Session["idMascota"];
-            DateTime fecha = new DateTime();
-            if (ddlCaracter.SelectedValue.Equals("0"))
+            if (Page.IsValid)
             {
-                pnlInfo.Visible = true;
-                lblResultado2.Text = "Debe seleccionar una caracter";
-                pnlCorrecto.Visible = false;
-                pnlAtento.Visible = false;
-            }
-            else
-            {
+                EMascota mascota = new EMascota();
+                mascota.idMascota = (int)Session["idMascota"];
+                DateTime fecha = new DateTime();
                 pnlInfo.Visible = false;
-                if (!ddlColor.SelectedValue.Equals("0"))
+                mascota.alimentacionEspecial = txtAlimentacionEspecial.Text;
+                mascota.fechaNacimiento = DateTime.Parse(txtFecha.Text);
+                if (ddlTratoAnimales.SelectedValue.Equals("Si"))
+                    mascota.tratoAnimal = true;
+                else
+                    mascota.tratoAnimal = false;
+                if (ddlTratoNinios.SelectedValue.Equals("Si"))
+                    mascota.tratoNiños = true;
+                else
+                    mascota.tratoNiños = false;
+                mascota.sexo = ddlSexo.SelectedValue.ToString();
+                mascota.observaciones = txtObservaciones.Text;
+                mascota.nombreMascota = txtMascota.Text;
+                mascota.raza = new ERaza();
+                mascota.raza.idRaza = int.Parse(ddlRaza.SelectedValue);
+                mascota.estado = new EEstado();
+                mascota.estado.idEstado = int.Parse(ddlEstado.SelectedValue);
+                mascota.especie = new EEspecie();
+                mascota.especie.idEspecie = int.Parse(ddlEspecie.SelectedValue);
+                mascota.edad = new EEdad();
+                mascota.edad.idEdad = int.Parse(ddlEdad.SelectedValue);
+                mascota.color = new EColor();
+                mascota.color.idColor = int.Parse(ddlColor.SelectedValue);
+                mascota.caracter = new ECaracterMascota();
+                mascota.caracter.idCaracter = int.Parse(ddlCaracter.SelectedValue);
+                mascota.noMostrar = chNoMostrar.Checked;//modificado
+                if (fuImagenMascota.PostedFile.ContentLength != 0)
                 {
-                    if (!ddlEdad.SelectedValue.Equals("0"))
+                    if (!GestorImagen.verificarTamaño(fuImagenMascota.PostedFile.ContentLength))
                     {
-                        if (!ddlEspecie.SelectedValue.Equals("0"))
-                        {
-                            if (!ddlEstado.SelectedValue.Equals("0"))
-                            {
-                                if (!ddlRaza.SelectedValue.Equals("0"))
-                                {
-                                    if (!ddlSexo.SelectedValue.Equals("0"))
-                                    {
-                                        if (!ddlTratoNinios.SelectedValue.Equals("0") && !ddlTratoAnimales.SelectedValue.Equals("0"))
-                                        {
-                                            if (Validaciones.Fecha(txtFecha.Text, out fecha))
-                                            {
-                                                if (Validaciones.verificarSoloLetras(txtMascota.Text))
-                                                {
-                                                    mascota.alimentacionEspecial = txtAlimentacionEspecial.Text;
-                                                    mascota.fechaNacimiento = DateTime.Parse(txtFecha.Text);
-                                                    if (ddlTratoAnimales.SelectedValue.Equals("Si"))
-                                                    {
-                                                        mascota.tratoAnimal = true;
-                                                    }
-                                                    else
-                                                    {
-                                                        mascota.tratoAnimal = false;
-                                                    }
-                                                    if (ddlTratoNinios.SelectedValue.Equals("Si"))
-                                                    {
-                                                        mascota.tratoNiños = true;
-                                                    }
-                                                    else
-                                                    {
-                                                        mascota.tratoNiños = false;
-                                                    }
-                                                    mascota.sexo = ddlSexo.SelectedValue.ToString();
-                                                    mascota.observaciones = txtObservaciones.Text;
-                                                    mascota.nombreMascota = txtMascota.Text;
-                                                    mascota.raza = new ERaza();
-                                                    mascota.raza.idRaza = int.Parse(ddlRaza.SelectedValue);
-                                                    mascota.estado = new EEstado();
-                                                    mascota.estado.idEstado = int.Parse(ddlEstado.SelectedValue);
-                                                    mascota.especie = new EEspecie();
-                                                    mascota.especie.idEspecie = int.Parse(ddlEspecie.SelectedValue);
-                                                    mascota.edad = new EEdad();
-                                                    mascota.edad.idEdad = int.Parse(ddlEdad.SelectedValue);
-                                                    mascota.color = new EColor();
-                                                    mascota.color.idColor = int.Parse(ddlColor.SelectedValue);
-                                                    mascota.caracter = new ECaracterMascota();
-                                                    mascota.caracter.idCaracter = int.Parse(ddlCaracter.SelectedValue);
-                                                    mascota.noMostrar = chNoMostrar.Checked;//modificado
-                                                    if (fuImagenMascota.PostedFile.ContentLength != 0)
-                                                    {
-                                                        if (!GestorImagen.verificarTamaño(fuImagenMascota.PostedFile.ContentLength))
-                                                        {
-                                                            pnlInfo.Visible = true;
-                                                            lblResultado2.Text = "El tamaño de la imagen no debe superar 1Mb";
-                                                            pnlCorrecto.Visible = false;
-                                                            pnlAtento.Visible = false;
-                                                        }
-                                                        else
-                                                        {
-                                                            byte[] imagen = GestorImagen.obtenerArrayBytes(fuImagenMascota.PostedFile.InputStream, fuImagenMascota.PostedFile.ContentLength);
-                                                            if (LogicaBDMascota.ModificarMascota(mascota, imagen))
-                                                            {
-                                                                Session["imagen"] = imagen;
-                                                                Handler1.AddMethod(ImageHandler_ObtenerImagenMascota);
-                                                                imgprvw.Src = ResolveUrl("~/Handler1.ashx");
-                                                                imgprvw.Width = 300;
-                                                                imgprvw.Height = 200;
-                                                                pnlCorrecto.Visible = true;
-                                                                lblResultado1.Text = "Se modifico corretamente";
-                                                                pnlAtento.Visible = false;
-                                                                pnlInfo.Visible = false;
-                                                                pnltxtMascota.Visible = false;
-                                                                pnlmascota.Visible = false;
-                                                                pnltxtMascota.Visible = true;
-                                                                pnlmascota.Visible = true;
-                                                                pnlfiltros.Visible = true;
-                                                                ddlEspecie.SelectedValue = "0";
-                                                                ddlEstado.SelectedValue = "0";
-                                                                ddlRaza.SelectedValue = "0";
-                                                                ddlSexo.SelectedValue = "0";
-                                                                ddlTratoAnimales.SelectedValue = "0";
-                                                                ddlTratoNinios.SelectedValue = "0";
-                                                                txtMascota.Text = "";
-                                                                ddlEdad.SelectedValue = "0";
-                                                                pnlDatos.Visible = false;
-                                                                pnlbotones.Visible = false;
-                                                                imgImagen.Visible = false;
-                                                                pnlNo.Visible = true;//modificado
-                                                            }
-                                                            else
-                                                            {
-                                                                pnlCorrecto.Visible = false;
-                                                                pnlInfo.Visible = false;
-                                                                pnlAtento.Visible = true;
-                                                                lblResultado3.Text = "No se pudo modificar";
-                                                                pnlCorrecto.Visible = false;
-                                                                pnlNo.Visible = true;//modificado
-                                                            }
-                                                        }
-                                                    }
-                                                    else
-                                                    {
-                                                        if (LogicaBDMascota.ModificarMascota(mascota, null))
-                                                        {
-                                                            pnlCorrecto.Visible = true;
-                                                            lblResultado1.Text = "Se modifico corretamente";
-                                                            pnlAtento.Visible = false;
-                                                            pnlInfo.Visible = false;
-                                                            pnlResultados.Visible = true;
-                                                            pnlbotones.Visible = false;
-                                                            txtMascota.Text = "";
-                                                            Session["idMascota"] = 0;
-                                                            imgImagen.Visible = false;
-                                                            pnltxtMascota.Visible = true;
-                                                            pnlmascota.Visible = true;
-                                                            pnlfiltros.Visible = true;
-                                                            ddlEspecie.SelectedValue = "0";
-                                                            ddlEstado.SelectedValue = "0";
-                                                            ddlRaza.SelectedValue = "0";
-                                                            ddlSexo.SelectedValue = "0";
-                                                            ddlTratoAnimales.SelectedValue = "0";
-                                                            ddlTratoNinios.SelectedValue = "0";
-                                                            txtMascota.Text = "";
-                                                            ddlEdad.SelectedValue = "0";
-                                                            pnlDatos.Visible = false;
-                                                            pnlNo.Visible = false;
-                                                            pnltxtMascota.Visible = false;
-                                                            pnltxtMascota.Visible = false;
-                                                            pnlfiltros.Visible = false;
-                                                        }
-                                                        else
-                                                        {
-                                                            pnlCorrecto.Visible = false;
-                                                            pnlInfo.Visible = false;
-                                                            pnlAtento.Visible = true;
-                                                            lblResultado3.Text = "No se pudo modificar";
-                                                            pnlCorrecto.Visible = false;
-                                                        }
-                                                    }
-                                                }
-                                                else
-                                                {
-                                                    pnlInfo.Visible = true;
-                                                    lblResultado2.Text = "Debe ingresar un nombre valido";
-                                                    pnlCorrecto.Visible = false;
-                                                    pnlAtento.Visible = false;
-                                                }
-                                            }
-                                            else
-                                            {
-                                                pnlInfo.Visible = true;
-                                                lblResultado2.Text = "Debe ingresar una fecha";
-                                                pnlAtento.Visible = false;
-                                                pnlCorrecto.Visible = false;
-                                            }
-                                        }
-                                        else
-                                        {
-                                            pnlInfo.Visible = true;
-                                            lblResultado2.Text = "Debe seleccionar un trato";
-                                            pnlCorrecto.Visible = false;
-                                            pnlAtento.Visible = false;
-                                        }
-                                    }
-                                    else
-                                    {
-                                        pnlInfo.Visible = true;
-                                        lblResultado2.Text = "Debe seleccionar un sexo";
-                                        pnlCorrecto.Visible = false;
-                                        pnlAtento.Visible = false;
-                                    }
-                                }
-                                else
-                                {
-                                    pnlInfo.Visible = true;
-                                    lblResultado2.Text = "Debe seleccionar un raza";
-                                    pnlCorrecto.Visible = false;
-                                    pnlAtento.Visible = false;
-                                }
-                            }
-                            else
-                            {
-                                pnlInfo.Visible = true;
-                                lblResultado2.Text = "Debe seleccionar un estado";
-                                pnlCorrecto.Visible = false;
-                                pnlAtento.Visible = false;
-                            }
-                        }
-                        else
-                        {
-                            pnlInfo.Visible = true;
-                            lblResultado2.Text = "Debe seleccionar un especie";
-                            pnlCorrecto.Visible = false;
-                            pnlAtento.Visible = false;
-                        }
+                        pnlInfo.Visible = true;
+                        lblInfo.Text = "El tamaño de la imagen no debe superar 1Mb";
+                        pnlCorrecto.Visible = false;
+                        pnlAtento.Visible = false;
                     }
                     else
                     {
-                        pnlInfo.Visible = true;
-                        pnlCorrecto.Visible = false;
-                        pnlAtento.Visible = false;
-                        lblResultado2.Text = "Debe seleccionar una edad";
+                        byte[] imagen = GestorImagen.obtenerArrayBytes(fuImagenMascota.PostedFile.InputStream, fuImagenMascota.PostedFile.ContentLength);
+                        if (LogicaBDMascota.ModificarMascota(mascota, imagen))
+                        {
+                            Session["imagen"] = imagen;
+                            Handler1.AddMethod(ImageHandler_ObtenerImagenMascota);
+                            imgprvw.Src = ResolveUrl("~/Handler1.ashx");
+                            imgprvw.Width = 400;
+                            imgprvw.Height = 300;
+                            pnlCorrecto.Visible = true;
+                            lblCorrecto.Text = "Se modifico corretamente";
+                            pnlAtento.Visible = false;
+                            pnlInfo.Visible = false;
+                            ddlEspecie.SelectedValue = "0";
+                            ddlEstado.SelectedValue = "0";
+                            ddlRaza.SelectedValue = "0";
+                            ddlSexo.SelectedValue = "0";
+                            ddlTratoAnimales.SelectedValue = "0";
+                            ddlTratoNinios.SelectedValue = "0";
+                            txtMascota.Text = "";
+                            ddlEdad.SelectedValue = "0";
+                            pnlDatos.Visible = false;
+                            pnlDatos1.Visible = false;
+                            pnlbotones.Visible = false;
+                        }
+                        else
+                        {
+                            pnlCorrecto.Visible = false;
+                            pnlInfo.Visible = false;
+                            pnlAtento.Visible = true;
+                            lblError.Text = "No se pudo modificar";
+                            pnlCorrecto.Visible = false;
+                        }
                     }
                 }
                 else
                 {
-                    pnlInfo.Visible = true;
-                    lblResultado2.Text = "Debe seleccionar un color";
-                    pnlCorrecto.Visible = false;
-                    pnlAtento.Visible = false;
+                    if (LogicaBDMascota.ModificarMascota(mascota, null))
+                    {
+                        pnlCorrecto.Visible = true;
+                        lblCorrecto.Text = "Se modifico corretamente";
+                        pnlAtento.Visible = false;
+                        pnlInfo.Visible = false;
+                        pnlbotones.Visible = false;
+                        txtMascota.Text = "";
+                        Session["idMascota"] = 0;
+                        ddlEspecie.SelectedValue = "0";
+                        ddlEstado.SelectedValue = "0";
+                        ddlRaza.SelectedValue = "0";
+                        ddlSexo.SelectedValue = "0";
+                        ddlTratoAnimales.SelectedValue = "0";
+                        ddlTratoNinios.SelectedValue = "0";
+                        txtMascota.Text = "";
+                        ddlEdad.SelectedValue = "0";
+                        pnlDatos.Visible = false;
+                        pnlDatos1.Visible = false;
+                    }
+                    else
+                    {
+                        pnlCorrecto.Visible = false;
+                        pnlInfo.Visible = false;
+                        pnlAtento.Visible = true;
+                        lblError.Text = "No se pudo modificar";
+                        pnlCorrecto.Visible = false;
+                    }
                 }
-            }
-        }
-
-        public void BtnRegresarClick(object sender, EventArgs e)
-        {
-            Response.Redirect("DefaultDueño.aspx");
+            }   
         }
 
         protected void btnPerdida_Click(object sender, EventArgs e)
@@ -546,8 +407,47 @@ namespace SiGMA
 
         protected void btnRegistrarMascota_Click(object sender, EventArgs e)
         {
-                Session["pantalla"] = "MisMascotas.aspx";
-                Response.Redirect("~/RegistrarMascota.aspx");
+            Response.Redirect("~/RegistrarMascota.aspx");
+        }
+
+        protected void cvEspecie_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            args.IsValid = Validaciones.verificarSeleccionEnDdl(ref ddlEspecie);
+        }
+
+        protected void cvRaza_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            args.IsValid = Validaciones.verificarSeleccionEnDdl(ref ddlRaza);
+        }
+
+        protected void cvEdad_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            args.IsValid = Validaciones.verificarSeleccionEnDdl(ref ddlEdad);
+        }
+
+        protected void cvTratoAnimales_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            args.IsValid = Validaciones.verificarSeleccionEnDdl(ref ddlTratoAnimales);
+        }
+
+        protected void cvTratoNiños_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            args.IsValid = Validaciones.verificarSeleccionEnDdl(ref ddlTratoNinios);
+        }
+
+        protected void cvColor_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            args.IsValid = Validaciones.verificarSeleccionEnDdl(ref ddlColor);
+        }
+
+        protected void cvTemperamento_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            args.IsValid = Validaciones.verificarSeleccionEnDdl(ref ddlCaracter);
+        }
+
+        protected void cvSexo_ServerValidate1(object source, ServerValidateEventArgs args)
+        {
+            args.IsValid = Validaciones.verificarSeleccionEnDdl(ref ddlSexo);
         }
     }
 }

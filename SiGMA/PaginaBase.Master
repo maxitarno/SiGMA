@@ -1,0 +1,168 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="PaginaBase.master.cs" Inherits="SiGMA.PaginaBase" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+   <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Sigma - Sistema Integral de Gestion de Mascotas</title>
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400">
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Droid+Sans">
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lobster">
+        <link rel="stylesheet" href="base/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="base/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="base/css/animate.css">
+        <link rel="stylesheet" href="base/css/magnific-popup.css">
+        <link rel="stylesheet" href="base/flexslider/flexslider.css">
+        <link rel="stylesheet" href="base/css/form-elements.css">
+        <link rel="stylesheet" href="base/css/style.css">
+        <link rel="stylesheet" href="base/css/media-queries.css">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <!-- Favicon and touch icons -->
+        <link rel="shortcut icon" href="base/ico/favicon.ico">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="base/ico/apple-touch-icon-144-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="base/ico/apple-touch-icon-114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="base/ico/apple-touch-icon-72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="base/ico/apple-touch-icon-57-precomposed.png">
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <!-- Top menu -->
+		<nav class="navbar" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-navbar-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="IndexDueño.aspx">Sigma - Sistema Integral de Gestión de Mascotas</a>
+				</div>
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="top-navbar-1">
+					<ul class="nav navbar-nav navbar-right">
+						<%-- <li class="dropdown active">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000">
+								<i class="fa fa-user"></i><br>Mi Perfil <span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu dropdown-menu-left" role="menu">
+								<li class="active"><a href="index.html">Home</a></li>
+								<li><a href="index-2.html">Home 2</a></li>
+							</ul>
+						</li>--%>
+                        <li>
+							<a href="MiPerfil.aspx"><i class="fa fa-user"></i><br>Mi Perfil</a>
+						</li>
+						<li>
+							<a href="MisMascotas.aspx"><i class="fa fa-paw"></i><br>Mis Mascotas</a>
+						</li>
+                        <li>
+							<a href="SerVoluntario.aspx"><i class="fa fa-home"></i><br>Voluntariado</a>
+						</li>
+						<li>
+							<a href="UltimasPublicaciones.aspx"><i class="fa fa-twitter"></i><br>Ultimos Twitters</a>
+						</li>
+						<li>
+							<a href="VeterinariasBarrio.aspx"><i class="fa fa-medkit"></i><br>Veterinarias</a>
+						</li>
+						<li>
+							<a href="Sugerencia.aspx"><i class="fa fa-envelope"></i><br>Sugerencias</a>
+						</li>
+                        <li style="text-align:right; margin-top:40px; margin-left:20px">
+							<asp:LoginView ID="LoginView1" runat="server" EnableViewState="false">
+                                <LoggedInTemplate>
+                                    <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" 
+                                        LogoutPageUrl="Index.aspx" LogoutImageUrl="~/assets/img/menu/cerrarMini1.png" ToolTip="Cerrar Sesión" />
+                                </LoggedInTemplate>
+                            </asp:LoginView>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4 footer-box wow fadeInUp">
+                        <h4>SIGMA</h4>
+                        <div class="footer-box-text">
+	                        <p>
+	                        	Gracias por confiarnos su mascota
+	                        </p>
+	                        <p><a href="Inicio.aspx">Sobre nosotros ...</a></p>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 footer-box wow fadeInDown">
+                        <h4></h4>
+                        <div class="footer-box-text footer-box-text-subscribe">
+                        	<p>Copyright 2016 Sigma</p>
+                            <p></p>
+                            <p>Todos los derechos reservados</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 footer-box wow fadeInDown">
+                        <h4>CONTÁCTANOS</h4> 
+                        <div class="footer-box-text footer-box-text-contact">
+	                        <p><i class="fa fa-map-marker"></i> Dirrecion: Sargento Cabral 1564, San Vicente, Córdoba</p>
+	                        <p><i class="fa fa-phone"></i> Teléfono: 0351 456-5158</p>
+	                        <p><i class="fa fa-twitter"></i>Twitter: <a href="https://twitter.com/infosigmasoft" target="_blank">@infosigmasoft</a></p>
+	                        <p><i class="fa fa-envelope"></i> Email: <a href="Contacto.aspx">infosigmasoftware@gmail.com</a></p>
+                        </div>
+                    </div>
+                </div>
+             <%--   <div class="row">
+                	<div class="col-sm-12 wow fadeIn">
+                		<div class="footer-border"></div>
+                	</div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-7 footer-copyright wow fadeIn">
+                        <p>Copyright 2012 Andia - All rights reserved. Template by <a href="http://azmind.com">Azmind</a>.</p>
+                    </div>
+                    <div class="col-sm-5 footer-social wow fadeIn">
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a href="#"><i class="fa fa-dribbble"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-pinterest"></i></a>
+                    </div>
+                </div>--%>
+            </div>
+        </footer>
+
+        <!-- Javascript -->
+        <script src="base/js/jquery-1.11.1.min.js"></script>
+        <script src="base/bootstrap/js/bootstrap.min.js"></script>
+        <script src="base/js/bootstrap-hover-dropdown.min.js"></script>
+        <script src="base/js/jquery.backstretch.min.js"></script>
+        <script src="base/js/wow.min.js"></script>
+        <script src="base/js/retina-1.1.0.min.js"></script>
+        <script src="base/js/jquery.magnific-popup.min.js"></script>
+        <script src="base/flexslider/jquery.flexslider-min.js"></script>
+        <script src="base/js/jflickrfeed.min.js"></script>
+        <script src="base/js/masonry.pkgd.min.js"></script>
+        <script src="base/js/jquery.ui.map.min.js"></script>
+        <script src="base/js/scripts.js"></script>
+    </div>
+    </form>
+</body>
+</html>
