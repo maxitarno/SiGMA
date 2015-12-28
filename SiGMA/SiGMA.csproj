@@ -146,6 +146,7 @@
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="Mascotas.aspx" />
+    <Content Include="MascotasPorEdadYSexo.htm" />
     <Content Include="MiPerfil.aspx" />
     <Content Include="MisMascotas.aspx" />
     <Content Include="ModerarPedidosDifusion.aspx" />

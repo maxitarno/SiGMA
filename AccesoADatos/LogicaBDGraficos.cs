@@ -77,5 +77,24 @@ namespace AccesoADatos
                     cantM++;
             }
         }
+        public static void BuscarMascotas(ref int cachorro, ref int adulto, ref int senior, ref int cantH, ref int cantM)
+        {
+            SiGMAEntities mapa = Conexion.crearSegunServidor();
+            var consulta = from MascotasBD in mapa.Mascotas
+                           select MascotasBD;
+            foreach (var registro in consulta)
+            {
+                if (registro.idEdad == 1)
+                    cachorro++;
+                if (registro.idEdad == 2)
+                    adulto++;
+                if (registro.sexo == "Macho")
+                    cantM++;
+                if (registro.sexo == "Hembra")
+                    cantH++;
+                if (registro.idEdad == 3)
+                    senior++;
+            }
+        }
     }
 }

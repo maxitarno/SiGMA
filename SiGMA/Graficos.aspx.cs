@@ -77,6 +77,17 @@ namespace SiGMA
                 string pagina = "HallazgosPorSexo.htm?a=" + mascotasAdoptadas + "&p=" + mascotasPerdidas + "&h=" + mascotasHalladas + "&m=" + mascotas + "&cantH=" + cantH + "&cantM=" + cantM;
                 Response.Redirect(pagina);
             }
+            if (ddlListado.SelectedValue.Equals("6"))
+            {
+                int cantH = 0;
+                int cantM = 0;
+                int cachorro = 0;
+                int adulto = 0;
+                int senior = 0;
+                LogicaBDGraficos.BuscarMascotas(ref cachorro, ref adulto, ref senior, ref cantH, ref cantM);
+                string pagina = "MascotasPorEdadYSexo.htm?s=" + senior + "&a=" + adulto + "&c=" + cachorro + "&M=" + cantM + "&H=" + cantH;
+                Response.Redirect(pagina);
+            }
         }
     }
 }
