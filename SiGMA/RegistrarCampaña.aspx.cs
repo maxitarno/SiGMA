@@ -24,7 +24,17 @@ namespace SiGMA
 
         protected void ibtnRegresar_Click(object sender, ImageClickEventArgs e)
         {
-            Response.Redirect("_Difusion.aspx");
+            if (Session["EsRol"] != null)
+            {
+                if (Session["EsRol"].ToString() == "1")
+                {
+                    Response.Redirect("_Difusion.aspx");
+                }
+                else
+                {
+                    Response.Redirect("DifusionDueño.aspx");
+                }
+            }            
         }
 
         protected void cvTipoCampaña_ServerValidate(object source, ServerValidateEventArgs args)

@@ -16,8 +16,8 @@ namespace SiGMA
         {
             if (!Page.IsPostBack)
             {
-            Session["buscarOtro"] = 0;
-            Session["imagenAdopcion"] = null;
+                Session["buscarOtro"] = 0;
+                Session["imagenAdopcion"] = null;
                 rnvFechaPerdida.MaximumValue = DateTime.Now.ToShortDateString();
                 if (Session["UsuarioLogueado"] != null)
                 {
@@ -143,7 +143,7 @@ namespace SiGMA
             else
             {
                 pnlInfo.Visible = true;
-                lblResultado2.Text = "No se encontraron mascota";
+                lblResultado2.Text = "No se encontraron mascotas";
                 pnlCorrecto.Visible = false;
                 pnlAtento.Visible = false;
                 pnlNo.Visible = true;

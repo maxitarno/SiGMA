@@ -173,7 +173,19 @@ namespace SiGMA
                                 tweet.PublicarTweetSoloTexto(tweet.generarMensajeAdopcion(pedido.mascota));
                             }
                             LogicaBDMascota.ponerEnAdopcion(pedido.mascota.idMascota);
-                        }                       
+                        }
+                        else if (pedido.perdida != null)
+                        {
+                            imagen = pedido.perdida.mascota.imagen;
+                            if (imagen != null)
+                            {
+                                tweet.PublicarTweetConFoto(imagen, tweet.generarMensajePerdida(pedido.perdida));
+                            }
+                            else
+                            {
+                                tweet.PublicarTweetSoloTexto(tweet.generarMensajePerdida(pedido.perdida));
+                            }
+                        }
                         lblCorrecto.Text = "Pedido publicado exitosamente";
                     }
                     pnlCorrecto.Visible = true;
@@ -184,7 +196,7 @@ namespace SiGMA
                 {
                     pnlCorrecto.Visible = false;
                     pnlAtento.Visible = true;
-                    lblError.Text = "Error al moderar el pedido";
+                    lblError.Text = "Error al moderar el pedido, intente de nuevo mas tarde.";
                     SetFocus(lblError);                    
                 }
                 finally

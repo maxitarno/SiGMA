@@ -267,6 +267,7 @@ namespace SiGMA
                         pedido.estado = LogicaBDEstado.buscarEstadoPorNombre("Pendiente de Aceptacion");
                         pedido.user = new EUsuario { user = Session["UsuarioLogueado"].ToString() };
                         LogicaBDPedidoDifusion.registrarPedidoDifusion(pedido);
+                        LogicaBDPerdida.registrarPerdida(perdida);
                         limpiarPagina();
                         pnlCorrecto.Visible = true;
                         lblCorrecto.Text = "Pérdida Registrada Correctamente";

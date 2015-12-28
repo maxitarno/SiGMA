@@ -88,6 +88,51 @@ namespace AccesoADatos
             return lstPedidos;
         }
 
+        public static List<EPedidoDifusion> buscarPedidosDifusion(EUsuario usuario)
+        {
+            SiGMAEntities mapa = Conexion.crearSegunServidor();
+            List<EPedidoDifusion> lstPedidos = new List<EPedidoDifusion>();
+            var pedBD = from pedidosBD in mapa.PedidosDifusion
+                        join estadosBD in mapa.Estados on pedidosBD.idEstado equals estadosBD.idEstado
+                        where pedidosBD.user == usuario.user
+                        select new
+                        {
+                            pedidosBD,
+                            estadosBD
+                        };
+            foreach (var item in pedBD)
+            {
+                EPedidoDifusion pedidoEntidad = new EPedidoDifusion();
+                pedidoEntidad.idPedidoDifusion = item.pedidosBD.idPedidoDifusion;
+                pedidoEntidad.tipo = item.pedidosBD.tipo;
+                pedidoEntidad.motivoRechazo = item.pedidosBD.motivoRechazo;
+                pedidoEntidad.estado = new EEstado();
+                pedidoEntidad.estado.idEstado = item.estadosBD.idEstado;
+                pedidoEntidad.estado.nombreEstado = item.estadosBD.nombreEstado;
+                pedidoEntidad.fecha = Convert.ToDateTime(item.pedidosBD.fecha);
+                pedidoEntidad.user = new EUsuario();
+                pedidoEntidad.user.user = item.pedidosBD.user;
+                if (item.pedidosBD.idCampaña != null)
+                {
+                    pedidoEntidad.campaña = new ECampaña { idCampaña = Int32.Parse(item.pedidosBD.idCampaña.ToString()) };
+                }
+                else if (item.pedidosBD.idHallazgo != null)
+                {
+                    pedidoEntidad.hallazgo = new EHallazgo { idHallazgo = Int32.Parse(item.pedidosBD.idHallazgo.ToString()) };
+                }
+                else if (item.pedidosBD.idPerdida != null)
+                {
+                    pedidoEntidad.perdida = new EPerdida { idPerdida = Int32.Parse(item.pedidosBD.idPerdida.ToString()) };
+                }
+                else if (item.pedidosBD.idMascota != null)
+                {
+                    pedidoEntidad.mascota = new EMascota { idMascota = Int32.Parse(item.pedidosBD.idMascota.ToString()) };
+                }
+                lstPedidos.Add(pedidoEntidad);
+            }
+            return lstPedidos;
+        }
+
         public static void modificarPedidoDifusion(EPedidoDifusion pedido)
         {
             using (TransactionScope trans = new TransactionScope())
