@@ -70,6 +70,7 @@
             <asp:ImageButton ID="ibtnRegresar" runat="server" ImageUrl="~/imagenes/volver.png"
                 OnClick="BtnRegresarClick" CausesValidation="False"/><br />VOLVER
     </div>
+    </div>
         <!-- Modal -->
         <div id="myModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-lg">
@@ -96,7 +97,7 @@
         <asp:HiddenField ID="hfnombres" runat="server" />
         <asp:HiddenField ID="hfcontactos" runat="server" />
         <asp:HiddenField ID="hftelefonos" runat="server" />
-    </div>
+    
     <script type="text/javascript">
         //variables
         var bounds = new google.maps.LatLngBounds();
