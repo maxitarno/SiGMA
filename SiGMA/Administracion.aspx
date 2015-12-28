@@ -63,7 +63,7 @@
 			</div>
 			<div class="col-lg-4 col-md-4">
                 <div class="thumbnail">
-                    <a class="zoom green" href="SeleccionarInformes.aspx"><img class="img-responsive img-circle" src="assets/img/administracion/listas.jpg" alt="" width="200px" height="300px" /></a>
+                    <a class="zoom green" href="Informes.aspx"><img class="img-responsive img-circle" src="assets/img/administracion/listas.jpg" alt="" width="200px" height="300px" /></a>
 				    <div class="caption centered"><h4>INFORMES</h4> </div>
                 </div>
             </div>

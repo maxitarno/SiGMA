@@ -42,7 +42,7 @@ namespace SiGMA
         }
         public void BtnRegresarClick(object sender, EventArgs e)
         {
-            Response.Redirect("Administracion.aspx");
+            Response.Redirect("Informes.aspx");
         }
 
         protected void ddlSelectedChanged(object sender, EventArgs e)
@@ -68,7 +68,7 @@ namespace SiGMA
                 pnlGenerar.Visible = true;
                 pnlInfo.Visible = false;
             }
-            if (ddlInforme.SelectedValue.Equals("2"))
+            if (ddlInforme.SelectedValue.Equals("2"))//borrar
             {
                 pnlFiltros1.Visible = false;
                 pnlFiltros2.Visible = false;
@@ -82,7 +82,7 @@ namespace SiGMA
                 string pagina = "Grafico.htm?a=" + mascotasAdoptadas + "&p=" + mascotasPerdidas + "&h=" + mascotasHalladas + "&m=" + mascotas;
                 Response.Redirect(pagina);
 
-            }
+            }//borrar
             if (ddlInforme.SelectedValue.Equals("3"))
             {
                 pnlFiltros1.Visible = false;

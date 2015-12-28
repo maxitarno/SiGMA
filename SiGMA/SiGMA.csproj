@@ -123,12 +123,16 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="GenerarCodigoQR.aspx" />
     <Content Include="Grafico.htm" />
+    <Content Include="Graficos.aspx" />
     <Content Include="Hallazgos.aspx" />
+    <Content Include="imagenes\graficos.jpg" />
     <Content Include="imagenes\hogar %2835x35%29.jpg" />
+    <Content Include="imagenes\listados.jpg" />
     <Content Include="imagenes\registrarhallazgo %2834x35%29.jpg" />
     <Content Include="imagenes\registrarperdida %2834x35%29.jpg" />
     <Content Include="imagenes\veterinarias %2835x35%29.jpg" />
     <Content Include="imagenes\volver.png" />
+    <Content Include="Informes.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Account\ChangePassword.aspx" />
     <Content Include="Account\ChangePasswordSuccess.aspx" />
@@ -309,6 +313,13 @@
     <Compile Include="GenerarCodigoQR.aspx.designer.cs">
       <DependentUpon>GenerarCodigoQR.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Graficos.aspx.cs">
+      <DependentUpon>Graficos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Graficos.aspx.designer.cs">
+      <DependentUpon>Graficos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Hallazgos.aspx.cs">
       <DependentUpon>Hallazgos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -318,6 +329,13 @@
     </Compile>
     <Compile Include="Handler1.ashx.cs">
       <DependentUpon>Handler1.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Informes.aspx.cs">
+      <DependentUpon>Informes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Informes.aspx.designer.cs">
+      <DependentUpon>Informes.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
