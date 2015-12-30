@@ -5,7 +5,19 @@ using System.Text;
 
 namespace AccesoADatos
 {
-    class LogicaBDHogar
+    public class LogicaBDHogar
     {
+        public static void LiberarHogar(int id, DateTime fecha, ref SiGMAEntities mapa)
+        {
+            try
+            {
+                OcupacionesXHogaresProvisorios ocupacion = mapa.OcupacionesXHogaresProvisorios.Where(o => o.idMascota == id).First();
+                ocupacion.fechaSalida = fecha;
+            }
+            catch (Exception)
+            {
+
+            }
+        }
     }
 }
