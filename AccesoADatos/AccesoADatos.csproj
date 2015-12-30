@@ -60,6 +60,7 @@
     <Compile Include="LogicaBDDueño.cs" />
     <Compile Include="LogicaBDEstado.cs" />
     <Compile Include="LogicaBDHallazgo.cs" />
+    <Compile Include="LogicaBDHogar.cs" />
     <Compile Include="LogicaBDImagen.cs" />
     <Compile Include="LogicaBDLogin.cs" />
     <Compile Include="LogicaBDMascota.cs" />
