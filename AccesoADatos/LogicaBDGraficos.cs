@@ -42,13 +42,11 @@ namespace AccesoADatos
         public static void BuscarPerdidas(ref int cantM, ref int cantH)
         {
             SiGMAEntities mapa = Conexion.crearSegunServidor();
-            var consulta = from PerdidasBD in mapa.Perdidas
-                           join MascotasBD in mapa.Mascotas on PerdidasBD.idMascota equals MascotasBD.idMascota into group1
-                           from G1 in group1.DefaultIfEmpty()
-                           where (PerdidasBD.idEstado == 8)
+            var consulta = from MascotasBD in mapa.Mascotas
+                           where (MascotasBD.idEstado == 3)
                            select new
                            {
-                               sexo = G1.sexo
+                               sexo = MascotasBD.sexo
                            };
             foreach (var registro in consulta)
             {

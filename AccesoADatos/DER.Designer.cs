@@ -4759,7 +4759,7 @@ namespace AccesoADatos
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Int32 idHogarProvisorio
         {
@@ -4769,14 +4769,11 @@ namespace AccesoADatos
             }
             set
             {
-                if (_idHogarProvisorio != value)
-                {
-                    OnidHogarProvisorioChanging(value);
-                    ReportPropertyChanging("idHogarProvisorio");
-                    _idHogarProvisorio = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("idHogarProvisorio");
-                    OnidHogarProvisorioChanged();
-                }
+                OnidHogarProvisorioChanging(value);
+                ReportPropertyChanging("idHogarProvisorio");
+                _idHogarProvisorio = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("idHogarProvisorio");
+                OnidHogarProvisorioChanged();
             }
         }
         private global::System.Int32 _idHogarProvisorio;
@@ -4786,7 +4783,7 @@ namespace AccesoADatos
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Int32 idMascota
         {
@@ -4796,14 +4793,11 @@ namespace AccesoADatos
             }
             set
             {
-                if (_idMascota != value)
-                {
-                    OnidMascotaChanging(value);
-                    ReportPropertyChanging("idMascota");
-                    _idMascota = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("idMascota");
-                    OnidMascotaChanged();
-                }
+                OnidMascotaChanging(value);
+                ReportPropertyChanging("idMascota");
+                _idMascota = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("idMascota");
+                OnidMascotaChanged();
             }
         }
         private global::System.Int32 _idMascota;
@@ -4813,7 +4807,7 @@ namespace AccesoADatos
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.DateTime fechaIngreso
         {
@@ -4823,14 +4817,11 @@ namespace AccesoADatos
             }
             set
             {
-                if (_fechaIngreso != value)
-                {
-                    OnfechaIngresoChanging(value);
-                    ReportPropertyChanging("fechaIngreso");
-                    _fechaIngreso = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("fechaIngreso");
-                    OnfechaIngresoChanged();
-                }
+                OnfechaIngresoChanging(value);
+                ReportPropertyChanging("fechaIngreso");
+                _fechaIngreso = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("fechaIngreso");
+                OnfechaIngresoChanged();
             }
         }
         private global::System.DateTime _fechaIngreso;

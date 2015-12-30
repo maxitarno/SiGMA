@@ -22,15 +22,7 @@
           <EntitySet Name="HogaresProvisorios" EntityType="SiGMAModel.Store.HogaresProvisorios" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Localidades" EntityType="SiGMAModel.Store.Localidades" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Mascotas" EntityType="SiGMAModel.Store.Mascotas" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="OcupacionesXHogaresProvisorios" EntityType="SiGMAModel.Store.OcupacionesXHogaresProvisorios" store:Type="Tables" store:Schema="dbo" store:Name="OcupacionesXHogaresProvisorios">
-            <DefiningQuery>SELECT 
-      [OcupacionesXHogaresProvisorios].[idOcupacion] AS [idOcupacion], 
-      [OcupacionesXHogaresProvisorios].[idHogarProvisorio] AS [idHogarProvisorio], 
-      [OcupacionesXHogaresProvisorios].[idMascota] AS [idMascota], 
-      [OcupacionesXHogaresProvisorios].[fechaIngreso] AS [fechaIngreso], 
-      [OcupacionesXHogaresProvisorios].[fechaSalida] AS [fechaSalida]
-      FROM [dbo].[OcupacionesXHogaresProvisorios] AS [OcupacionesXHogaresProvisorios]</DefiningQuery>
-          </EntitySet>
+          <EntitySet Name="OcupacionesXHogaresProvisorios" EntityType="SiGMAModel.Store.OcupacionesXHogaresProvisorios" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="PedidosDifusion" EntityType="SiGMAModel.Store.PedidosDifusion" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Perdidas" EntityType="SiGMAModel.Store.Perdidas" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Permisos" EntityType="SiGMAModel.Store.Permisos" store:Type="Tables" Schema="dbo" />
@@ -384,15 +376,9 @@
           <Property Name="imagen" Type="varbinary(max)" />
           <Property Name="noMostrar" Type="bit" />
         </EntityType>
-        <!--Errors Found During Generation:
-      warning 6002: The table/view 'SiGMA.dbo.OcupacionesXHogaresProvisorios' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
-      -->
         <EntityType Name="OcupacionesXHogaresProvisorios">
           <Key>
             <PropertyRef Name="idOcupacion" />
-            <PropertyRef Name="idHogarProvisorio" />
-            <PropertyRef Name="idMascota" />
-            <PropertyRef Name="fechaIngreso" />
           </Key>
           <Property Name="idOcupacion" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="idHogarProvisorio" Type="int" Nullable="false" />
@@ -1574,9 +1560,6 @@
         <EntityType Name="OcupacionesXHogaresProvisorios">
           <Key>
             <PropertyRef Name="idOcupacion" />
-            <PropertyRef Name="idHogarProvisorio" />
-            <PropertyRef Name="idMascota" />
-            <PropertyRef Name="fechaIngreso" />
           </Key>
           <Property Name="idOcupacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="idHogarProvisorio" Type="Int32" Nullable="false" />
@@ -2745,7 +2728,7 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="DER">
+      <Diagram Name="DER" ZoomLevel="74">
         <EntityTypeShape EntityType="SiGMAModel.Adopciones" Width="1.5" PointX="7.5" PointY="10" Height="3.1340950520833317" IsExpanded="true" />
         <EntityTypeShape EntityType="SiGMAModel.Barrios" Width="1.5" PointX="0.75" PointY="7.5" Height="2.5571907552083308" IsExpanded="true" />
         <EntityTypeShape EntityType="SiGMAModel.Calles" Width="1.5" PointX="0.75" PointY="10.75" Height="2.3648893229166674" IsExpanded="true" />

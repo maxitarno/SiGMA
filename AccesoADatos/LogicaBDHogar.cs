@@ -11,8 +11,12 @@ namespace AccesoADatos
         {
             try
             {
-                OcupacionesXHogaresProvisorios ocupacion = mapa.OcupacionesXHogaresProvisorios.Where(o => o.idMascota == id).First();
-                ocupacion.fechaSalida = fecha;
+                var ocupacion = mapa.OcupacionesXHogaresProvisorios.Where
+                    (o => o.idMascota == id && o.fechaSalida == null);
+                if (ocupacion.Count() != 0)
+                {
+                    ocupacion.First().fechaSalida = fecha;
+                }
             }
             catch (Exception)
             {
