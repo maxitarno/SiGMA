@@ -61,7 +61,7 @@
                             <asp:DropDownList ID="ddlListado" runat="server" AutoPostBack="True" 
                                 onselectedindexchanged="ddlListado_SelectedIndexChanged" Width="210px">
                                 <asp:ListItem Text="SIN ASIGNAR" Value="0"></asp:ListItem>
-                                <asp:ListItem Text="Tipos de usuarios" Value="1"></asp:ListItem>
+                                <asp:ListItem Text="Tipos de voluntarios" Value="1"></asp:ListItem>
                                 <asp:ListItem Text="Mascotas por estado" Value="2"></asp:ListItem>
                                 <asp:ListItem Text="Adopciones por sexo" Value="3"></asp:ListItem>
                                 <asp:ListItem Text="Perdidas por sexo" Value="4"></asp:ListItem>

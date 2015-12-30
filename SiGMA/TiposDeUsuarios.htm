@@ -20,26 +20,23 @@
 
             // Create the data table.
             var data = new google.visualization.DataTable();
-            data.addColumn('string', 'Categoria');
-            data.addColumn('number', 'Cantidad');
+            data.addColumn('string', 'Categoria de voluntario');
+            data.addColumn('number', 'Porcentaje de voluntarios por categoria');
             data.addRows([
-          ['Hogar', 0],
-          ['Busqueda', 0],
-          ['Ambos', 0],
-          ['No asignado', 0]
+          ['Porcentaje  de voluntarios de tipo hogar', 0],
+          ['Porcentaje  de voluntarios de tipo busqueda', 0],
+          ['Porcentaje  de voluntarios de tipo ambos', 0],
         ]);
         function getURLParameter(name) { return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [, ""])[1].replace(/\+/g, '%20')) || null }
         var h = getURLParameter("h");
         var b = getURLParameter("b");
         var a = getURLParameter("a");
-        var n = getURLParameter("n");
         var t = getURLParameter("t");
-        data.setValue(0, 1, data.getValue(0, 1) + ((h*100)/t));
-        data.setValue(1, 1, data.getValue(1, 1) + ((b*100)/t));
-        data.setValue(2, 1, data.getValue(2, 1) + ((a*100)/t));
-        data.setValue(3, 1, data.getValue(3, 1) + ((n*100)/t));
+        data.setValue(0, 1, parseInt(data.getValue(0, 1) + ((h*100)/t)));
+        data.setValue(1, 1, parseInt(data.getValue(1, 1) + ((b*100)/t)));
+        data.setValue(2, 1, parseInt(data.getValue(2, 1) + ((a*100)/t)));
             // Set chart options
-            var options = { 'title': 'Estadisticas de los voluntarios',
+            var options = { 'title': 'Porcentaje de los voluntarios por categoria',
                 'width': 800,
                 'height': 700,
                 'is3D': true,
@@ -116,7 +113,7 @@
                     <h1>
                     Estadisticas de los voluntarios 
                     <br />
-                    Este grafico detalla los tipos de voluntarios y su porcentaje del total
+                    Este grafico detalla los tipos de voluntarios y su porcentaje del total de voluntarios
                     <br />
                     <img alt="" src="assets/img/menu/voluntarios.png" width="100px" height="100px" />
                 </h1>

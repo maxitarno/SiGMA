@@ -20,23 +20,23 @@
 
             // Create the data table.
             var data = new google.visualization.DataTable();
-            data.addColumn('string', 'Estados');
-            data.addColumn('number', 'Cantidad');
+            data.addColumn('string', 'Estado de la mascota');
+            data.addColumn('number', 'Porcentaje de las mascotas clasificadas por estado');
             data.addRows([
-          ['Adoptadas', 0],
-          ['Halladaz', 0],
-          ['Perdidas', 0]
+          ['Porcentaje adoptadas', 0],
+          ['Porcentaje halladaz', 0],
+          ['Porcentaje perdidas', 0]
         ]);
         function getURLParameter(name) { return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [, ""])[1].replace(/\+/g, '%20')) || null }
         var a = getURLParameter("a");
         var h = getURLParameter("h");
         var p = getURLParameter("p");
-        var m = getURLParameter("m");
-        data.setValue(0, 1, data.getValue(0, 1) + ((a*100)/m));
-        data.setValue(1, 1, data.getValue(1, 1) + ((h*100)/m));
-        data.setValue(2, 1, data.getValue(2, 1) + ((p*100)/m));
+        var m = parseInt(a) + parseInt(h) + parseInt(p);
+        data.setValue(0, 1, parseInt(data.getValue(0, 1) + ((a*100)/m)));
+        data.setValue(1, 1, parseInt(data.getValue(1, 1) + ((h*100)/m)));
+        data.setValue(2, 1, parseInt(data.getValue(2, 1) + ((p*100)/m)));
             // Set chart options
-            var options = { 'title': 'Estadisticas de las mascotas',
+            var options = { 'title': 'Porcentajes de las mascotas clasificados por estado',
                 'width': 800,
                 'height': 700,
                 'is3D': true,
@@ -113,7 +113,7 @@
                     <h1>
                         Estadisticas de las mascotas 
                         <br />
-                        Este grafico muestra los porcentajes de las mascotas por Estado.
+                        Este grafico muestra los porcentajes de las mascotas por estado.
                         <br />
                         <img alt="" src="assets/img/menu/mascotas.png" width="100px" height="100px" />
                     </h1>

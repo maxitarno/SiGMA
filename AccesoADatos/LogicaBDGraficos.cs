@@ -19,8 +19,6 @@ namespace AccesoADatos
                     busqueda++;
                 if (registro.tipoVoluntario == "Ambos")
                     ambos++;
-                if (registro.tipoVoluntario == null)
-                    no++;
             }
         }
         public static void BuscarAdopciones(ref int cantM, ref int cantH)
@@ -47,6 +45,7 @@ namespace AccesoADatos
             var consulta = from PerdidasBD in mapa.Perdidas
                            join MascotasBD in mapa.Mascotas on PerdidasBD.idMascota equals MascotasBD.idMascota into group1
                            from G1 in group1.DefaultIfEmpty()
+                           where (PerdidasBD.idEstado == 8)
                            select new
                            {
                                sexo = G1.sexo
@@ -65,6 +64,7 @@ namespace AccesoADatos
             var consulta = from HallazgosBD in mapa.Hallazgos
                            join MascotasBD in mapa.Mascotas on HallazgosBD.idMascota equals MascotasBD.idMascota into group1
                            from G1 in group1.DefaultIfEmpty()
+                           where ( HallazgosBD.idEstado == 14)
                            select new
                            {
                                sexo = G1.sexo

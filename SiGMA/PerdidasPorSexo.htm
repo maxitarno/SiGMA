@@ -21,36 +21,36 @@
             // Create the data table.
             var data = new google.visualization.DataTable();
             data.addColumn('string', 'Estados');
-            data.addColumn('number', 'Cantidad');
+            data.addColumn('number', 'Porcentaje de mascotas por estado');
             data.addRows([
-              ['Adoptadas', 0],
-              ['Halladaz', 0],
-              ['Perdidas', 0]
+              ['Porcentaje de adoptadas', 0],
+              ['Porcentaje de halladaz', 0],
+              ['Porcentaje de perdidas', 0]
             ]);
             function getURLParameter(name) { return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [, ""])[1].replace(/\+/g, '%20')) || null }
             //grafico de mascotas por estado
             var a = getURLParameter("a");
             var h = getURLParameter("h");
             var p = getURLParameter("p");
-            var m = getURLParameter("m");
-            data.setValue(0, 1, data.getValue(0, 1) + ((a*100)/m));
-            data.setValue(1, 1, data.getValue(1, 1) + ((h*100)/m));
-            data.setValue(2, 1, data.getValue(2, 1) + ((p*100)/m));
+            var m = parseInt(a) + parseInt(h) + parseInt(p);
+            data.setValue(0, 1, parseInt(data.getValue(0, 1) + ((a*100)/m)));
+            data.setValue(1, 1, parseInt(data.getValue(1, 1) + ((h*100)/m)));
+            data.setValue(2, 1, parseInt(data.getValue(2, 1) + ((p*100)/m)));
             //grafico de adopciones por sexo
             var cantH = getURLParameter("cantH");
             var cantM = getURLParameter("cantM");
             var dataPorSexo = new google.visualization.DataTable();
             dataPorSexo.addColumn('string', 'Sexo');
-            dataPorSexo.addColumn('number', 'Cantidad');
+            dataPorSexo.addColumn('number', 'Cantidad de mascotas clasificadas por sexo');
             dataPorSexo.addRows([
-              ['Hembras', 0],
-              ['Machos', 0]
+              ['Cantidad de hembras', 0],
+              ['Cantidad de machos', 0]
             ]);
             dataPorSexo.setValue(0, 1, dataPorSexo.getValue(0, 1) + cantH);
             dataPorSexo.setValue(1, 1, dataPorSexo.getValue(1, 1) + cantM);
             // Set chart options
             var options = { 
-                'title': 'Estadisticas de las mascotas',
+                'title': 'Porcentaje de las mascotas por estado',
                 'width': 800,
                 'height': 700,
                 'is3D': true,
@@ -133,9 +133,11 @@
             <div class="col-md-8 col-md-offset-2">
                 <center>
                     <h1>
-                        Estadisticas de las mascotas 
+                        Mascotas perdidas clasificadas por sexo
                         <br />
-                        Este grafico muestra los porcentajes de las mascotas por Estado.
+                        El grafico de la izquierda muestra los porcentajes de las mascotas según su estado.
+                        <br />
+                        El grafico de la derecha muestra la cantidad de mascotas perdidas clasificadas por sexo.
                         <br />
                         <img alt="" src="imagenes/registrarperdida.jpg" width="100px" height="100px" />
                     </h1>
@@ -150,7 +152,7 @@
                     </div>
                 </center>
             </div>
-            <div class="col-md-4">
+             <div class="col-md-4">
                 <center>
                     <div id="adopciones">
                     

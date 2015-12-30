@@ -24,6 +24,7 @@ namespace AccesoADatos
                     adopcionBD.idEstado = mapaEntidades.Estados.Where(es => es.ambito == "Adopcion" && es.nombreEstado == "Abierta").First().idEstado;
                     LogicaBDMascota.modificarEstado("Adoptada", adopcion.mascota.idMascota, ref mapaEntidades);
                     LogicaBDMascota.asignarDueño(adopcion.mascota, adopcion.duenio.idDuenio, ref mapaEntidades);
+                    //actualizar hogar
                     Mascotas bdMascota = mapaEntidades.Mascotas.Where(m => m.idMascota == adopcion.mascota.idMascota).First();
                     bdMascota.nombreMascota = adopcion.mascota.nombreMascota;
                     mapaEntidades.AddToAdopciones(adopcionBD);

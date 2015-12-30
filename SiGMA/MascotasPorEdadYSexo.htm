@@ -1,4 +1,4 @@
-﻿!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
     <title></title>
@@ -21,32 +21,32 @@
             // Create the data table.
             var data = new google.visualization.DataTable();
             data.addColumn('string', 'Edades');
-            data.addColumn('number', 'Cantidad');
+            data.addColumn('number', 'Cantidad de mascotas por edades');
             data.addRows([
-              ['Cachorros', 0],
-              ['Adultos', 0],
-              ['Seniors', 0]
+              ['Cantidad de cachorros', 0],
+              ['Cantidad de adultos', 0],
+              ['Cantidad de seniors', 0]
             ]);
             function getURLParameter(name) { return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [, ""])[1].replace(/\+/g, '%20')) || null }
             //grafico de mascotas por estado
-            var s = getURLParameter("c");
-            var a = getURLParameter("");
-            var c = getURLParameter("p");
-            data.setValue(0, 1, data.getValue(0, 1) + c);
-            data.setValue(1, 1, data.getValue(1, 1) + a);
-            data.setValue(2, 1, data.getValue(2, 1) + s);
+            var s = getURLParameter("s");
+            var a = getURLParameter("a");
+            var c = getURLParameter("c");
+            data.setValue(0, 1, parseInt(data.getValue(0, 1) + c));
+            data.setValue(1, 1, parseInt(data.getValue(1, 1) + a));
+            data.setValue(2, 1, parseInt(data.getValue(2, 1) + s));
             //grafico de adopciones por sexo
             var cantH = getURLParameter("H");
             var cantM = getURLParameter("M");
             var dataPorSexo = new google.visualization.DataTable();
             dataPorSexo.addColumn('string', 'Sexo');
-            dataPorSexo.addColumn('number', 'Cantidad');
+            dataPorSexo.addColumn('number', 'Cantidad de mascotas según sexo');
             dataPorSexo.addRows([
-              ['Hembras', 0],
-              ['Machos', 0]
+              [' Cantidad de hembras', 0],
+              ['Cantidad de machos', 0]
             ]);
-            dataPorSexo.setValue(0, 1, dataPorSexo.getValue(0, 1) + cantH);
-            dataPorSexo.setValue(1, 1, dataPorSexo.getValue(1, 1) + cantM);
+            dataPorSexo.setValue(0, 1, parseInt(dataPorSexo.getValue(0, 1) + cantH));
+            dataPorSexo.setValue(1, 1, parseInt(dataPorSexo.getValue(1, 1) + cantM));
             // Set chart options
             var options = { 
                 'title': 'Mascotas por edad',
@@ -134,22 +134,24 @@
                     <h1>
                         Estadisticas de las mascotas 
                         <br />
-                        Este grafico muestra los porcentajes de las mascotas por Estado.
+                        El grafico de la izquierda muestra la cantidad de las mascotas por edad.
                         <br />
-                        <img alt="" src="imagenes/registraradopcion.jpg" width="100px" height="100px" />
+                        El grafico de la derecha muestar la cantidad de mascotass por sexo.
+                        <br />
+                        <img alt="" src="assets/img/menu/mascotas.png" width="100px" height="100px" />
                     </h1>
                 </center>
             </div>
         </div>
         <div class="col-md-12">
-            <div class="col-md-4 col-md-offset-2">
+            <div class="col-md-6">
                 <center>
                     <div id="chart_div">
 
                     </div>
                 </center>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <center>
                     <div id="adopciones">
                     

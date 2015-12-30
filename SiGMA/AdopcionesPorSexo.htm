@@ -21,43 +21,43 @@
             // Create the data table.
             var data = new google.visualization.DataTable();
             data.addColumn('string', 'Estados');
-            data.addColumn('number', 'Cantidad');
+            data.addColumn('number', 'Porcentaje de las mascotas clasificadas por estado');
             data.addRows([
-              ['Adoptadas', 0],
-              ['Halladaz', 0],
-              ['Perdidas', 0]
+              ['Porcentaje de adoptadas', 0],
+              ['Porcentaje de halladaz', 0],
+              ['Porcentaje de perdidas', 0]
             ]);
             function getURLParameter(name) { return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [, ""])[1].replace(/\+/g, '%20')) || null }
             //grafico de mascotas por estado
             var a = getURLParameter("a");
             var h = getURLParameter("h");
             var p = getURLParameter("p");
-            var m = getURLParameter("m");
-            data.setValue(0, 1, data.getValue(0, 1) + ((a*100)/m));
-            data.setValue(1, 1, data.getValue(1, 1) + ((h*100)/m));
-            data.setValue(2, 1, data.getValue(2, 1) + ((p*100)/m));
+            var m = parseInt(a) + parseInt(h) + parseInt(p);
+            data.setValue(0, 1, parseInt(data.getValue(0, 1) + ((a*100)/m)));
+            data.setValue(1, 1, parseInt(data.getValue(1, 1) + ((h*100)/m)));
+            data.setValue(2, 1, parseInt(data.getValue(2, 1) + ((p*100)/m)));
             //grafico de adopciones por sexo
             var cantH = getURLParameter("cantH");
             var cantM = getURLParameter("cantM");
             var dataPorSexo = new google.visualization.DataTable();
             dataPorSexo.addColumn('string', 'Sexo');
-            dataPorSexo.addColumn('number', 'Cantidad');
+            dataPorSexo.addColumn('number', 'Cantidad de mascotas adoptadas según sexo');
             dataPorSexo.addRows([
-              ['Hembras', 0],
-              ['Machos', 0]
+              ['Cantidad de Hembras', 0],
+              ['Cantidad de Machos', 0]
             ]);
-            dataPorSexo.setValue(0, 1, dataPorSexo.getValue(0, 1) + cantH);
-            dataPorSexo.setValue(1, 1, dataPorSexo.getValue(1, 1) + cantM);
+            dataPorSexo.setValue(0, 1, parseInt(dataPorSexo.getValue(0, 1) + cantH));
+            dataPorSexo.setValue(1, 1, parseInt(dataPorSexo.getValue(1, 1) + cantM));
             // Set chart options
             var options = { 
-                'title': 'Estadisticas de las mascotas',
+                'title': 'Porcentajes de las mascotas clasificados por estado',
                 'width': 800,
                 'height': 700,
                 'is3D': true,
             };
             //opciones de adopciones por sexo
             var optionsPorSexo = { 
-                'title': 'Mascotas adoptadas por sexo',
+                'title': 'Mascotas adoptadas según sexo',
                 'width': 800,
                 'height': 700,
             };
@@ -76,7 +76,7 @@
     </script>
 </head>
     <body>
-    <style type="text/css">
+    <!--<style type="text/css">
   
         h1 {
             font-size: 180% ;
@@ -101,7 +101,7 @@
             color: black ;
             }
   
-    </style>
+    </style>-->
     <script type="text/javascript">
 
         // When the document is ready, initialize the link so
@@ -135,7 +135,9 @@
                     <h1>
                         Estadisticas de las mascotas 
                         <br />
-                        Este grafico muestra los porcentajes de las mascotas por Estado.
+                        El grafico de la izquierda muestra el porcentaje de la s mascotas según el estado.
+                        <br />
+                        El grafico de la derecha muestra la canyidad de mascotas clasificadas por sexo.
                         <br />
                         <img alt="" src="imagenes/registraradopcion.jpg" width="100px" height="100px" />
                     </h1>
@@ -143,14 +145,14 @@
             </div>
         </div>
         <div class="col-md-12">
-            <div class="col-md-4 col-md-offset-2">
+            <div class="col-md-6">
                 <center>
                     <div id="chart_div">
 
                     </div>
                 </center>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <center>
                     <div id="adopciones">
                     

@@ -37,8 +37,7 @@ namespace SiGMA
                 int mascotasAdoptadas = LogicaBDMascota.buscarMascotasPorEstado("Adoptada").Count;
                 int mascotasHalladas = LogicaBDMascota.buscarMascotasPorEstado("Hallada").Count;
                 int mascotasPerdidas = LogicaBDMascota.buscarMascotasPorEstado("Perdida").Count;
-                int mascotas = LogicaBDMascota.buscarMascotasPorNombre("").Count;
-                string pagina = "Grafico.htm?a=" + mascotasAdoptadas + "&p=" + mascotasPerdidas + "&h=" + mascotasHalladas + "&m=" + mascotas;
+                string pagina = "Grafico.htm?a=" + mascotasAdoptadas + "&p=" + mascotasPerdidas + "&h=" + mascotasHalladas;
                 Response.Redirect(pagina);
             }
             if (ddlListado.SelectedValue.Equals("3"))
