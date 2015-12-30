@@ -242,6 +242,7 @@
     <Content Include="imagenes\veterinarias %2835x35%29.jpg" />
     <Content Include="imagenes\volver.png" />
     <Content Include="Index.aspx" />
+    <Content Include="IndexAdmin.aspx" />
     <Content Include="IndexDueño.aspx" />
     <Content Include="Informes.aspx" />
     <Content Include="Login.aspx" />
@@ -451,6 +452,13 @@
     <Compile Include="Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
     </Compile>
+    <Compile Include="IndexAdmin.aspx.cs">
+      <DependentUpon>IndexAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="IndexAdmin.aspx.designer.cs">
+      <DependentUpon>IndexAdmin.aspx</DependentUpon>
+    </Compile>
     <Compile Include="IndexDueño.aspx.cs">
       <DependentUpon>IndexDueño.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -527,6 +535,13 @@
     </Compile>
     <Compile Include="ModerarPedidosDifusion.aspx.designer.cs">
       <DependentUpon>ModerarPedidosDifusion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PaginaAdmin.Master.cs">
+      <DependentUpon>PaginaAdmin.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PaginaAdmin.Master.designer.cs">
+      <DependentUpon>PaginaAdmin.Master</DependentUpon>
     </Compile>
     <Compile Include="PaginaBase.Master.cs">
       <DependentUpon>PaginaBase.Master</DependentUpon>
@@ -815,6 +830,7 @@
     <Content Include="PaginaMaestra.Master" />
     <Content Include="PaginaBase.Master" />
     <Content Include="PaginaLogin.Master" />
+    <Content Include="PaginaAdmin.Master" />
     <None Include="Scripts\jquery-2.1.1.min.map" />
   </ItemGroup>
   <ItemGroup>

@@ -1,9 +1,9 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="PaginaBase.master.cs" Inherits="SiGMA.PaginaBase" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="PaginaAdmin.master.cs" Inherits="SiGMA.PaginaAdmin" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
+<head id="Head1" runat="server">
    <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -35,13 +35,18 @@
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="base/ico/apple-touch-icon-114-precomposed.png">
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="base/ico/apple-touch-icon-72-precomposed.png">
         <link rel="apple-touch-icon-precomposed" href="base/ico/apple-touch-icon-57-precomposed.png">
-        <style>
-        ul.navbar-nav li a {
-            padding: 15px 38px;
-            background: #FFF none repeat scroll 0% 0%;
-            border-top: 5px solid #FFF;
-            color: #5D5D5D;
-        }
+        <style type="text/css">
+        .nav li:hover > ul {
+				display:block;
+			}
+		.nav li ul li {
+			position:relative;
+			
+		}
+		.nav li ul li ul {
+				margin-left:160px;
+				top:0px;
+			}
         </style>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
@@ -64,32 +69,111 @@
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="top-navbar-1">
 					<ul class="nav navbar-nav navbar-right">
-						<%-- <li class="dropdown active">
+						 <li class="dropdown active">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000">
-								<i class="fa fa-user"></i><br>Mi Perfil <span class="caret"></span>
+								<i class="fa fa-user"></i><br>Usuarios<span class="caret"></span>
 							</a>
 							<ul class="dropdown-menu dropdown-menu-left" role="menu">
-								<li class="active"><a href="index.html">Home</a></li>
-								<li><a href="index-2.html">Home 2</a></li>
+								<li><a href="RegistrarUsuario.aspx">Registrar</a></li>
+								<li><a href="ConsultarUsuario.aspx">Consultar</a></li>
+                                <li><a href="ConsultarUsuario.aspx?m=1">Modificar</a></li>
 							</ul>
-						</li>--%>
-                        <li>
-							<a href="MiPerfil.aspx"><i class="fa fa-user"></i><br>Mi Perfil</a>
 						</li>
-						<li>
-							<a href="MisMascotas.aspx"><i class="fa fa-paw"></i><br>Mis Mascotas</a>
+                        <li class="dropdown active">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000">
+								<i class="fa fa-paw"></i><br>Mascotas<span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu dropdown-menu-left" role="menu">
+                                <li class="dropdown">
+							        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000">
+								        Inscriptos<span class="caret"></span>
+							        </a>
+                                    <ul class="dropdown-menu dropdown-menu-left" role="menu">
+								        <li><a href="RegistrarMascotas.aspx">Registrar</a></li>
+								        <li><a href="ConsultarMascotas.aspx">Consultar</a></li>
+                                        <li><a href="ConsultarMascotas.aspx?m=1">Modificar</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+							        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000">
+								        Hallazgos<span class="caret"></span>
+							        </a>
+                                    <ul class="dropdown-menu dropdown-menu-left" role="menu">
+                                        <li><a href="RegistrarHallazgo.aspx">Registrar</a></li>
+							            <li><a href="ConsultarHallazgo.aspx">Consultar</a></li>
+                                        <li><a href="ConsultarHallazgo.aspx?m=1">Modificar</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+							        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000">
+								        Pérdidas<span class="caret"></span>
+							        </a>
+                                    <ul class="dropdown-menu dropdown-menu-left" role="menu" >
+                                        <li><a href="RegistrarPerdida.aspx">Registrar</a></li>
+							            <li><a href="ConsultarPerdida.aspx">Consultar</a></li>
+                                        <li><a href="ConsultarPerdida.aspx?m=1">Modificar</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+							        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000">
+								        Adopciones<span class="caret"></span>
+							        </a>
+                                    <ul class="dropdown-menu dropdown-menu-left" role="menu" >
+                                        <li><a href="RegistrarAdopcion.aspx">Registrar</a></li>
+							            <li><a href="ConsultarAdopcion.aspx">Consultar</a></li>
+                                        <li><a href="ConsultarAdopcion.aspx?m=1">Modificar</a></li>
+                                    </ul>
+                                </li>
+							</ul>
 						</li>
-                        <li>
-							<a href="SerVoluntario.aspx"><i class="fa fa-home"></i><br>Voluntariado</a>
+                        <li class="dropdown active">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000">
+								<i class="fa fa-home"></i><br>Voluntarios<span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu dropdown-menu-left" role="menu">
+								<li><a href="ModerarPedidosVoluntario.aspx">Pedidos Voluntarios</a></li>
+								<li><a href="AsignarMascotaHogar.aspx">Asignar Mascota</a></li>
+							</ul>
 						</li>
-						<li>
-							<a href="difusiondueño.aspx"><i class="fa fa-twitter"></i><br>Difusión</a>
+						<li class="dropdown active">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000">
+								<i class="fa fa-twitter"></i><br>Difusión<span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu dropdown-menu-left" role="menu">
+								<li><a href="RegistrarCampaña.aspx">Campañas</a></li>
+								<li><a href="ModerarPedidosDifusion.aspx">Pedidos</a></li>
+							</ul>
 						</li>
-						<li>
-							<a href="VeterinariasBarrio.aspx"><i class="fa fa-medkit"></i><br>Veterinarias</a>
+						<li class="dropdown active">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000">
+								<i class="fa fa-user"></i><br>Veterinarias<span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu dropdown-menu-left" role="menu">
+								<li><a href="RegistrarVeterinaria.aspx">Registrar</a></li>
+								<li><a href="CAMBVeterinarias.aspx">Consultar</a></li>
+                                <li><a href="CAMBVeterinarias.aspx?m=1">Modificar</a></li>
+							</ul>
 						</li>
-						<li>
-							<a href="Sugerencia.aspx"><i class="fa fa-envelope"></i><br>Sugerencias</a>
+						<li class="dropdown active">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000">
+								<i class="fa fa-user"></i><br>Administración<span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu dropdown-menu-left" role="menu">
+								<li><a href="AsignarPermisos.aspx">Permisos</a></li>
+								<li><a href="RegistrarRoles.aspx">Roles</a></li>
+                                <li><a href="AsignarRol.aspx">Asignar Rol</a></li>
+                                <li><a href="CABMRazas.aspx">Razas</a></li>
+                                <li><a href="CABMTipoDeDocumento.aspx">Tipos Doc.</a></li>
+                                <li class="dropdown">
+							        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000">
+								        Informes<span class="caret"></span>
+							        </a>
+                                    <ul class="dropdown-menu dropdown-menu-left" role="menu" >
+                                        <li><a href="SeleccionarInformes.aspx">Listados</a></li>
+							            <li><a href="Graficos.aspx">Gráficos</a></li>
+                                    </ul>
+                                </li>
+							</ul>
 						</li>
                         <li style="text-align:right; margin-top:40px; margin-left:20px">
 							<asp:LoginView ID="LoginView1" runat="server" EnableViewState="false">

@@ -22,7 +22,7 @@ namespace SiGMA
                     if (Session["EsRol"].ToString() == "3")
                         Response.Redirect("SeleccionIndex.aspx");
                     if (Session["EsRol"].ToString() == "1")
-                        Response.Redirect("Default.aspx");
+                        Response.Redirect("IndexAdmin.aspx");
                 }
             }
         }

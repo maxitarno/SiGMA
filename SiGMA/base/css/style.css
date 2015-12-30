@@ -128,7 +128,7 @@ ul.navbar-nav {
 	text-transform: uppercase;
 }
 
-ul.navbar-nav li a { padding: 23px 20px; background: #fff; border-top: 5px solid #fff; color: #5d5d5d; }
+ul.navbar-nav li a { padding: 15px 34px; background: #fff; border-top: 5px solid #fff; color: #5d5d5d; }
 ul.navbar-nav li.active a { background: #f8f8f8; border-color: #9d426b; color: #5d5d5d; }
 
 ul.navbar-nav li a:hover, ul.navbar-nav li a:focus { background: #9d426b; border-color: #9d426b; color: #fff; outline: 0; }
@@ -157,7 +157,7 @@ ul.navbar-nav li.active .dropdown-menu > .active > a { background: #f8f8f8; colo
 ul.navbar-nav li.active .dropdown-menu > .active > a:hover, 
 ul.navbar-nav li.active .dropdown-menu > .active > a:focus { background: #9d426b; color: #fff; border: 0; }
 
-.navbar>.container .navbar-brand { margin-left: 0; }
+.navbar>.container .navbar-brand { margin-left: -100px; }
 
 .navbar-brand {
 	width: 167px;
