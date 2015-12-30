@@ -29,19 +29,19 @@ namespace SiGMA
                     if (Session["pantalla"] != null && Session["pantalla"].ToString() == "Voluntario.aspx")
                     {
                         cargarCombos();
-                        if (Session["cambioVoluntariado"].ToString() == "1")
+                        if (Session["cambioVoluntariado"] != null && Session["cambioVoluntariado"].ToString() == "1")
                         {
                             ddlTipoVoluntario.SelectedValue = "1";
                             ddlTipoVoluntario_SelectedIndexChanged(null, null);
                             return;
                         }
-                        if (Session["cambioVoluntariado"].ToString() == "2")
+                        if (Session["cambioVoluntariado"] != null && Session["cambioVoluntariado"].ToString() == "2")
                         {
                             ddlTipoVoluntario.SelectedValue = "2";
                             ddlTipoVoluntario_SelectedIndexChanged(null, null);
                             return;
                         }
-                        if (Session["cambioVoluntariado"].ToString() == "3")
+                        if (Session["cambioVoluntariado"] != null && Session["cambioVoluntariado"].ToString() == "3")
                         {
                             ddlTipoVoluntario.SelectedValue = "3";
                             ddlTipoVoluntario_SelectedIndexChanged(null, null);
