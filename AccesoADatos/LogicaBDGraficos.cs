@@ -24,12 +24,11 @@ namespace AccesoADatos
         public static void BuscarAdopciones(ref int cantM, ref int cantH)
         {
             SiGMAEntities mapa = Conexion.crearSegunServidor();
-            var consulta = from AdopcionesBD in mapa.Adopciones
-                           join MascotasBD in mapa.Mascotas on AdopcionesBD.idMascota equals MascotasBD.idMascota into group1
-                           from G1 in group1.DefaultIfEmpty()
+            var consulta = from MascotasBD in mapa.Mascotas
+                           where (MascotasBD.idEstado == 5)
                            select new
                            {
-                               sexo = G1.sexo
+                               sexo = MascotasBD.sexo
                            };
             foreach (var registro in consulta)
             {
@@ -59,13 +58,11 @@ namespace AccesoADatos
         public static void BuscarHallazgos(ref int cantM, ref int cantH)
         {
             SiGMAEntities mapa = Conexion.crearSegunServidor();
-            var consulta = from HallazgosBD in mapa.Hallazgos
-                           join MascotasBD in mapa.Mascotas on HallazgosBD.idMascota equals MascotasBD.idMascota into group1
-                           from G1 in group1.DefaultIfEmpty()
-                           where ( HallazgosBD.idEstado == 14)
+            var consulta = from  MascotasBD in mapa.Mascotas
+                           where ( MascotasBD.idEstado == 2)
                            select new
                            {
-                               sexo = G1.sexo
+                               sexo = MascotasBD.sexo
                            };
             foreach (var registro in consulta)
             {
