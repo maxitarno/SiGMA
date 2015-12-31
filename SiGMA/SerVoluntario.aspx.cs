@@ -59,6 +59,25 @@ namespace SiGMA
                             lblInfo.Text = "Su pedido de voluntariado se encuentra pendiente, pronto nos comunicaremos con usted";
                             return;
                         }
+                        if (Session["EstadoVoluntario"].ToString() == "Solicitud Baja")
+                        {
+                            ddlTipoVoluntario.Enabled = false;
+                            pnlInfo.Visible = true;
+                            lblInfo.Text = "Su solicitud de baja esta en tramite, pronto nos comunicaremos con usted";
+                            return;
+                        }
+                        if (Session["EstadoVoluntario"].ToString() == "Rechazado")
+                        {
+                            ddlTipoVoluntario.Enabled = true;
+                            pnlInfo.Visible = true;
+                            lblInfo.Text = "Su solicitud de voluntariado fue rechazada";
+                        }
+                        if (Session["EstadoVoluntario"].ToString() == "Inactivo")
+                        {
+                            ddlTipoVoluntario.Enabled = true;
+                            pnlInfo.Visible = true;
+                            lblInfo.Text = "El voluntario no se encuentra activo, pero puede solicitar voluntariado";
+                        }
                     }
                 }
                 cargarCombos();

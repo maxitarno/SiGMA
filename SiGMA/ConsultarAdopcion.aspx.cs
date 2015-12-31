@@ -106,10 +106,8 @@ namespace SiGMA
                     }
                 }
                 CargarCombos.cargarLocalidades(ref ddlLocalidad);
-                ddlCalle.Items.Clear();
-                ddlCalle.Items.Add(new ListItem("SIN ASIGNAR", "0"));
-                ddlBarrio.Items.Clear();
-                ddlBarrio.Items.Add(new ListItem("SIN ASIGNAR", "0"));
+                CargarCombos.cargarBarrio(ref ddlBarrio);
+                CargarCombos.cargarCalles( ref ddlCalle);
                 pnlInfo.Visible = false;
                 pnlCorrecto.Visible = false;
                 pnlAtento.Visible = false;
@@ -377,26 +375,26 @@ namespace SiGMA
                 pnlCorrecto.Visible = false;
             }
         }
-        public void DdlBarrio_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            pnlAtento.Visible = false;
-            pnlCorrecto.Visible = false;
-            if (!ddlLocalidad.SelectedValue.Equals("0"))
-            {
-                ddlBarrio.Items.Clear();
-                CargarCombos.cargarBarrio(ref ddlBarrio, int.Parse(ddlLocalidad.SelectedValue.ToString()));
-                pnlInfo.Visible = false;
-                ddlCalle.Items.Clear();
-                CargarCombos.cargarCalles(ref ddlCalle, int.Parse(ddlLocalidad.SelectedValue.ToString()));
-            }
-            else
-            {
-                ddlCalle.Items.Clear();
-                ddlCalle.Items.Add(new ListItem("SIN ASIGNAR", "0"));
-                ddlBarrio.Items.Clear();
-                ddlBarrio.Items.Add(new ListItem("SIN ASIGNAR", "0"));
-            }
-        }
+        //public void DdlBarrio_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    pnlAtento.Visible = false;
+        //    pnlCorrecto.Visible = false;
+        //    if (!ddlLocalidad.SelectedValue.Equals("0"))
+        //    {
+        //        ddlBarrio.Items.Clear();
+        //        CargarCombos.cargarBarrio(ref ddlBarrio, int.Parse(ddlLocalidad.SelectedValue.ToString()));
+        //        pnlInfo.Visible = false;
+        //        ddlCalle.Items.Clear();
+        //        CargarCombos.cargarCalles(ref ddlCalle, int.Parse(ddlLocalidad.SelectedValue.ToString()));
+        //    }
+        //    else
+        //    {
+        //        ddlCalle.Items.Clear();
+        //        ddlCalle.Items.Add(new ListItem("SIN ASIGNAR", "0"));
+        //        ddlBarrio.Items.Clear();
+        //        ddlBarrio.Items.Add(new ListItem("SIN ASIGNAR", "0"));
+        //    }
+        //}
         public void BtnEliminarClick(object sender, EventArgs e)
         {
             EAdopcion adopcion = (EAdopcion)Session["Adopcion"];
