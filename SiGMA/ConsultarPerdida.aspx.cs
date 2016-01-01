@@ -24,7 +24,7 @@ namespace SiGMA
                         pnlVoluntario.Visible = true;
                     else
                     {
-                        if (Session["idMascota"] != null && Session["pantalla"].ToString() == "Voluntario.aspx")
+                        if (Session["idMascota"] != null && Session["pantalla"] != null && Session["pantalla"].ToString() == "ConsultaPerdidaUsuario")
                         {
                             cargarDatosPagina();
                             cargarDatosMascotaPerdida(Convert.ToInt32(Session["idMascota"].ToString()));
@@ -57,9 +57,8 @@ namespace SiGMA
             CargarCombos.cargarLocalidades(ref ddlLocalidades);
             CargarCombos.cargarCalles(ref ddlCalles);
             CargarCombos.cargarBarrio(ref ddlBarrioPerdida);
-            CargarCombos.cargarLocalidades(ref ddlLocalidadPerdida);
             CargarCombos.cargarCalles(ref ddlCallePerdida);
-            txtFecha.Text = DateTime.Now.ToShortDateString();
+            rnvFecha.MaximumValue = DateTime.Now.ToShortDateString();
             String modif = Request.QueryString["m"];
             if (modif == "1")
             {
@@ -67,9 +66,8 @@ namespace SiGMA
                 txtNroCallePerdida.Enabled = true;
                 ddlBarrioPerdida.Enabled = true;
                 ddlCallePerdida.Enabled = true;
-                ddlLocalidadPerdida.Enabled = true;
                 btnModificar.Visible = true;
-                lblTitulo.Text = "Modificar Pérdida";
+                lblTitulo.Text = "Modificar Pérdida /";
             }
             else
             {
@@ -77,11 +75,9 @@ namespace SiGMA
                 txtNroCallePerdida.Enabled = false;
                 ddlBarrioPerdida.Enabled = false;
                 ddlCallePerdida.Enabled = false;
-                ddlLocalidadPerdida.Enabled = false;
                 btnModificar.Visible = false;
-                lblTitulo.Text = "Consultar Pérdida";
+                lblTitulo.Text = "Consultar Pérdida /";
                 txtFecha.Enabled = false;
-                Image1.Visible = false;
             }
         }
 
@@ -147,7 +143,6 @@ namespace SiGMA
             pnlRegistrarPerdida.Visible = false;
             txtFecha.Text = "";
             txtComentarios.Text = "";
-            //txtMapa.Text = "";
             pnlMapa.Visible = false;
             Session["r"] = false;
         }
@@ -189,12 +184,11 @@ namespace SiGMA
                 {
                     if(perdida.domicilio.barrio != null)
                     {
-                        ddlLocalidadPerdida.SelectedValue = (perdida.domicilio.barrio.localidad == null) ? null : perdida.domicilio.barrio.localidad.idLocalidad.ToString();
                         ddlBarrioPerdida.SelectedValue = perdida.domicilio.barrio.idBarrio.ToString();
                         ddlCallePerdida.SelectedValue = (perdida.domicilio.calle == null) ? null : perdida.domicilio.calle.idCalle.ToString();
                         txtNroCallePerdida.Text = perdida.domicilio.numeroCalle.ToString();
                         //agregado
-                        hfDireccion.Value = ddlLocalidadPerdida.SelectedItem.Text.ToLower().ToString() + " " + ddlCallePerdida.SelectedItem.Text.ToLower().ToString() + " " + txtNroCallePerdida.Text;
+                        hfDireccion.Value = "cordoba capital" + " " + ddlCallePerdida.SelectedItem.Text.ToLower().ToString() + " " + txtNroCallePerdida.Text;
                         hfNombre.Value = txtMascotaPerdida.Text;
                         if (mascota.raza.cuidadoEspecial.idCuidado == 0)
                         {
@@ -267,12 +261,6 @@ namespace SiGMA
                 return null;
         }
 
-        protected void btnCancelar_Click(object sender, EventArgs e)
-        {
-            limpiarPagina();
-            lstMascotas.SelectedValue = null;
-        }
-
         protected void btnModificar_Click(object sender, EventArgs e)
         {
             try
@@ -289,23 +277,15 @@ namespace SiGMA
                     perdida.domicilio.calle = new ECalle();
                     perdida.domicilio.barrio.idBarrio = int.Parse(ddlBarrioPerdida.SelectedValue);
                     perdida.domicilio.barrio.nombre = ddlBarrioPerdida.SelectedItem.Text;
-                    perdida.domicilio.barrio.localidad.idLocalidad = int.Parse(ddlLocalidadPerdida.SelectedValue);
+                    perdida.domicilio.barrio.localidad.idLocalidad = 1;
                     perdida.domicilio.calle.idCalle = int.Parse(ddlCallePerdida.SelectedValue);
-                    perdida.domicilio.barrio.localidad.nombre = ddlLocalidadPerdida.SelectedItem.Text;
+                    perdida.domicilio.barrio.localidad.nombre = "CORDOBA CAPITAL";
                     perdida.domicilio.calle.nombre = ddlCallePerdida.SelectedItem.Text;
                     perdida.domicilio.numeroCalle = int.Parse(txtNroCallePerdida.Text);
                     perdida.usuario = new EUsuario();
                     perdida.usuario.user = Session["UsuarioLogueado"].ToString();
                     perdida.fecha = Convert.ToDateTime(txtFecha.Text);
                     perdida.comentarios = txtComentarios.Text;
-                    //perdida.mapaPerdida = txtMapa.Text;
-                    if (perdida.fecha > DateTime.Now)
-                    {
-                        pnlInfo.Visible = true;
-                        lblInfo.Text = "La fecha de pérdida no puede ser superior a la actual";
-                        txtFecha.Focus();
-                        return;
-                    }
                     if (LogicaBDPerdida.modificarPerdida(perdida))
                     {
                         limpiarPagina();
@@ -326,17 +306,14 @@ namespace SiGMA
             }
         }
 
-        protected void BtnRegresarClick(object sender, ImageClickEventArgs e)
+        protected void cvBarrioPerdida_ServerValidate(object source, ServerValidateEventArgs args)
         {
-            if (Session["Pantalla"] != null)
-            {
-                if (Session["pantalla"].ToString() == "Voluntario.aspx")
-                    Response.Redirect("Voluntario.aspx");
-                else
-                    Response.Redirect("Perdidas.aspx");
-            }
-            else
-            Response.Redirect("Perdidas.aspx");
+            args.IsValid = Validaciones.verificarSeleccionEnDdl(ref ddlBarrioPerdida);
+        }
+
+        protected void cvCallePerdida_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            args.IsValid = Validaciones.verificarSeleccionEnDdl(ref ddlCallePerdida);
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -344,7 +321,7 @@ namespace SiGMA
             cuidado = "";
             EMascota mascota = (EMascota)Session["mascota"];
             
-            direccion = "mapaPerdida.htm?direccion=argentina " + ddlLocalidadPerdida.SelectedItem.Text.ToLower() + " " + ddlCallePerdida.SelectedItem.Text.ToLower() + " " + txtNroCallePerdida.Text + "&cuidado=" + cuidado + "&nombre=" + mascota.nombreMascota;
+            direccion = "mapaPerdida.htm?direccion=argentina " + "cordoba capital" + " " + ddlCallePerdida.SelectedItem.Text.ToLower() + " " + txtNroCallePerdida.Text + "&cuidado=" + cuidado + "&nombre=" + mascota.nombreMascota;
             Response.Write("<script> window.open('" + direccion + "','popup','width=800,height=500') </script>");
         }
     }

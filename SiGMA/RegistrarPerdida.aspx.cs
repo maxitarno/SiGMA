@@ -133,7 +133,7 @@ namespace SiGMA
             {
                 pnlRegistrarPerdida.Visible = true;
                 txtMascotaPerdida.Text = mascota.nombreMascota;
-                txtNroCallePerdida.Text = duenio.nroCalle.ToString();
+                txtNroCalle.Text = duenio.nroCalle.ToString();
                 txtDatosDueño.Text = (duenio.nombre == null) ? null : duenio.nombre.ToString();
                 txtDatosDueño.Text += " ";
                 txtDatosDueño.Text += (duenio.apellido == null) ? null : duenio.apellido.ToString();

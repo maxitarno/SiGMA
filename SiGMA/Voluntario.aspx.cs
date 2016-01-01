@@ -350,7 +350,7 @@ namespace SiGMA
             mascota.idMascota = Convert.ToInt32(Session["idMascota"].ToString());
             if (Session["idMascota"] != null)
             {
-                Session["pantalla"] = "Voluntario.aspx";
+                Session["pantalla"] = "ConsultaPerdidaUsuario";
                 Response.Redirect("~/ConsultarPerdida.aspx");
             }
         }

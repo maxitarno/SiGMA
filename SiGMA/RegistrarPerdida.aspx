@@ -111,6 +111,10 @@
                                       <asp:DropDownList ID="ddlCalles" Enabled="false" runat="server" Width="100%" AppendDataBoundItems="True"></asp:DropDownList>
                                 </div>
                                 <div class="form-group">
+                                    <label for="contact-name">Numeración calle/dpto</label>
+                                      <asp:TextBox ID="txtNroCalle" Enabled="false" runat="server" ></asp:TextBox>
+                                </div>
+                                <div class="form-group">
                                     <label for="contact-name">Mascota perdida</label>
                                      <asp:TextBox ID="txtMascotaPerdida" ReadOnly="True" Enabled="false" runat="server"></asp:TextBox>
                                 </div>
