@@ -19,34 +19,26 @@
         function drawChart() {
 
             // Create the data table.
-            var data = new google.visualization.DataTable();
-            data.addColumn('string', 'Edades');
-            data.addColumn('number', 'Cantidad de mascotas por edades');
-            data.addRows([
-              ['Cantidad de cachorros', 0],
-              ['Cantidad de adultos', 0],
-              ['Cantidad de seniors', 0]
-            ]);
+           
             function getURLParameter(name) { return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [, ""])[1].replace(/\+/g, '%20')) || null }
             //grafico de mascotas por estado
             var s = getURLParameter("s");
             var a = getURLParameter("a");
             var c = getURLParameter("c");
-            data.setValue(0, 1, parseInt(data.getValue(0, 1) + c));
-            data.setValue(1, 1, parseInt(data.getValue(1, 1) + a));
-            data.setValue(2, 1, parseInt(data.getValue(2, 1) + s));
+            var data = new google.visualization.arrayToDataTable([
+              ['Edad', 'Cantidad', { role: 'style' } ],
+              ['Cantidad de cachorros', parseInt(c), 'gold'],
+              ['Cantidad de adultos', parseInt(a), 'platinum'],
+              ['Cantidad de seniors', parseInt(s), 'silver']
+            ]);
             //grafico de adopciones por sexo
             var cantH = getURLParameter("H");
             var cantM = getURLParameter("M");
-            var dataPorSexo = new google.visualization.DataTable();
-            dataPorSexo.addColumn('string', 'Sexo');
-            dataPorSexo.addColumn('number', 'Cantidad de mascotas según sexo');
-            dataPorSexo.addRows([
-              [' Cantidad de hembras', 0],
-              ['Cantidad de machos', 0]
+            var dataPorSexo = google.visualization.arrayToDataTable([
+                 ['Sexo', 'Cantidad', { role: 'style' } ],
+                 ['Hembra', parseInt(cantH), 'silver' ],
+                 ['Macho', parseInt(cantM), 'gold'],
             ]);
-            dataPorSexo.setValue(0, 1, parseInt(dataPorSexo.getValue(0, 1) + cantH));
-            dataPorSexo.setValue(1, 1, parseInt(dataPorSexo.getValue(1, 1) + cantM));
             // Set chart options
             var options = { 
                 'title': 'Mascotas por edad',

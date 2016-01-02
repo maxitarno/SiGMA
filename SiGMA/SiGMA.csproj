@@ -65,6 +65,7 @@
   <ItemGroup>
     <Content Include="Administracion.aspx" />
     <Content Include="Adopciones.aspx" />
+    <Content Include="AdopcionesPorBarrio.htm" />
     <Content Include="AdopcionesPorSexo.htm" />
     <Content Include="AsignarPermisos.aspx" />
     <Content Include="AsignarRol.aspx" />
@@ -230,6 +231,7 @@
     <Content Include="Grafico.htm" />
     <Content Include="Graficos.aspx" />
     <Content Include="Hallazgos.aspx" />
+    <Content Include="HallazgosPorBarrio.htm" />
     <Content Include="HallazgosPorSexo.htm" />
     <Content Include="imagenes\graficos.jpg" />
     <Content Include="imagenes\hogar %2835x35%29.jpg" />
@@ -844,7 +846,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>54111</DevelopmentServerPort>
+          <DevelopmentServerPort>58633</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

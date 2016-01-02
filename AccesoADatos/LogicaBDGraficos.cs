@@ -7,7 +7,7 @@ namespace AccesoADatos
 {
     public class LogicaBDGraficos
     {
-        public static void BuscarUsuarios(ref int hogar, ref int busqueda, ref int ambos, ref int no){
+        public static void BuscarUsuarios(ref int hogar, ref int busqueda, ref int ambos){
             SiGMAEntities mapa = Conexion.crearSegunServidor();
             var consulta = from voluntariosBD in mapa.Voluntarios
                            select voluntariosBD;
@@ -89,6 +89,25 @@ namespace AccesoADatos
                     cantH++;
                 if (registro.idEdad == 3)
                     senior++;
+            }
+        }
+        public static void HallazgosPorBarrio(ref List<EDatos> datos)
+        {
+            SiGMAEntities mapa = Conexion.crearSegunServidor();
+            var consulta = from HallazgosBD in mapa.Hallazgos
+                           join BarriosBD in mapa.Barrios on HallazgosBD.idBarrioHallazgo equals BarriosBD.idBarrio
+                           group BarriosBD by new { BarriosBD.nombre } into a
+                           select new
+                           {
+                               nombre = a.Key.nombre,
+                               cant = a.Count()
+                           };
+            foreach (var registro in consulta)
+            {
+                EDatos dato = new EDatos();
+                dato.cantidad = registro.cant;
+                dato.nombre = registro.nombre;
+                datos.Add(dato);
             }
         }
     }

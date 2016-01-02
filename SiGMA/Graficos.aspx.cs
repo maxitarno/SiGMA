@@ -27,9 +27,8 @@ namespace SiGMA
                 int hogar = 0;
                 int busqueda = 0;
                 int ambos = 0;
-                int no = 0;
-                LogicaBDGraficos.BuscarUsuarios(ref hogar, ref busqueda, ref ambos, ref no);
-                string pagina = "TiposDeUsuarios.htm?h=" + hogar + "&b=" + busqueda + "&a=" + ambos + "&n=" + no + "&t=" + (no + ambos + busqueda + hogar);
+                LogicaBDGraficos.BuscarUsuarios(ref hogar, ref busqueda, ref ambos);
+                string pagina = "TiposDeUsuarios.htm?h=" + hogar + "&b=" + busqueda + "&a=" + ambos;
                 Response.Redirect(pagina);
             }
             if (ddlListado.SelectedValue.Equals("2"))
@@ -42,14 +41,10 @@ namespace SiGMA
             }
             if (ddlListado.SelectedValue.Equals("3"))
             {
-                int mascotasAdoptadas = LogicaBDMascota.buscarMascotasPorEstado("Adoptada").Count;
-                int mascotasHalladas = LogicaBDMascota.buscarMascotasPorEstado("Hallada").Count;
-                int mascotasPerdidas = LogicaBDMascota.buscarMascotasPorEstado("Perdida").Count;
-                int mascotas = LogicaBDMascota.buscarMascotasPorNombre("").Count;
                 int cantH = 0;
                 int cantM = 0;
                 LogicaBDGraficos.BuscarAdopciones(ref cantM, ref cantH);
-                string pagina = "AdopcionesPorSexo.htm?a=" + mascotasAdoptadas + "&p=" + mascotasPerdidas + "&h=" + mascotasHalladas + "&m=" + mascotas + "&cantH=" + cantH + "&cantM=" + cantM;
+                string pagina = "AdopcionesPorSexo.htm?cantH=" + cantH + "&cantM=" + cantM;
                 Response.Redirect(pagina);
             }
             if (ddlListado.SelectedValue.Equals("4"))
@@ -66,14 +61,10 @@ namespace SiGMA
             }
             if (ddlListado.SelectedValue.Equals("5"))
             {
-                int mascotasAdoptadas = LogicaBDMascota.buscarMascotasPorEstado("Adoptada").Count;
-                int mascotasHalladas = LogicaBDMascota.buscarMascotasPorEstado("Hallada").Count;
-                int mascotasPerdidas = LogicaBDMascota.buscarMascotasPorEstado("Perdida").Count;
-                int mascotas = LogicaBDMascota.buscarMascotasPorNombre("").Count;
                 int cantH = 0;
                 int cantM = 0;
                 LogicaBDGraficos.BuscarHallazgos(ref cantM, ref cantH);
-                string pagina = "HallazgosPorSexo.htm?a=" + mascotasAdoptadas + "&p=" + mascotasPerdidas + "&h=" + mascotasHalladas + "&m=" + mascotas + "&cantH=" + cantH + "&cantM=" + cantM;
+                string pagina = "HallazgosPorSexo.htm?cantH=" + cantH + "&cantM=" + cantM;
                 Response.Redirect(pagina);
             }
             if (ddlListado.SelectedValue.Equals("6"))
@@ -85,6 +76,30 @@ namespace SiGMA
                 int senior = 0;
                 LogicaBDGraficos.BuscarMascotas(ref cachorro, ref adulto, ref senior, ref cantH, ref cantM);
                 string pagina = "MascotasPorEdadYSexo.htm?s=" + senior + "&a=" + adulto + "&c=" + cachorro + "&M=" + cantM + "&H=" + cantH;
+                Response.Redirect(pagina);
+            }
+            if (ddlListado.SelectedValue.Equals("7"))
+            {
+                int i = 0;
+                string nombre = "";
+                string cantidad = "";
+                string año = "";
+                List<EDatos> datos = new List<EDatos>();
+                LogicaBDGraficos.HallazgosPorBarrio(ref datos);
+                foreach(var dato in datos){
+                    if(i != (datos.Count - 1)){
+                        nombre += dato.nombre + ",";
+                        cantidad += dato.cantidad + ",";
+                        año += dato.año + ",";
+                    }
+                    else{
+                        nombre += dato.nombre;
+                        cantidad += dato.cantidad;
+                        año += dato.año;
+                    }
+                    i++;
+                }
+                string pagina = "HallazgosPorBarrio.htm?nombre=" + nombre + "&cant=" + cantidad + "&anio=" + año;
                 Response.Redirect(pagina);
             }
         }

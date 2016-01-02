@@ -8,33 +8,38 @@
     <script type="text/javascript" src="Scripts/jQuery.print.js"></script>
     <script type="text/javascript">
         // Load the Visualization API and the piechart package.
-        google.load('visualization', '1.0', { 'packages': ['corechart'] });
-        google.load('visualization', '1', {packages: ['corechart', 'bar']});
+        google.load('visualization', '1', { 'packages': ['corechart'] });
         // Set a callback to run when the Google Visualization API is loaded.
         google.setOnLoadCallback(drawChart);
 
         // Callback that creates and populates a data table,
         // instantiates the pie chart, passes in the data and
         // draws it.
+        var a = [];
+        var b = [];
+        var datos;
+        var año = [];
         function drawChart() {
             function getURLParameter(name) { return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [, ""])[1].replace(/\+/g, '%20')) || null }
-            //grafico de adopciones por sexo
-            var cantH = getURLParameter("cantH");
-            var cantM = getURLParameter("cantM");
-            var data = google.visualization.arrayToDataTable([
-                 ['Sexo', 'Cantidad', { role: 'style' } ],
-                 ['Hembra', parseInt(cantH), 'silver' ],
-                 ['Macho', parseInt(cantM), 'gold'],
-              ]);
-            //opciones de adopciones por sexo
-            var optionsPorSexo = { 
-                'title': 'Mascotas adoptadas según sexo',
+            a = getURLParameter("nombre").split(",");
+            b = getURLParameter("cant").split(",");
+            datos = new Array(a.length);
+            for(i = 0; i< a.length; i++){
+                datos[i] = [a[i], parseInt(b[i])];
+            }
+           var data = new google.visualization.DataTable();
+           data.addColumn('string', 'Barrio');
+           data.addColumn('number', 'Cantidad');
+           data.addRows(datos);
+            // Set chart options
+        var options = { 
+                'title': 'Porcentajes de las mascotas clasificados por estado',
                 'width': 800,
-                'height': 700,
+                'height': 700
             };
-            //grafico adopciones por sexo
-            var chartAdopcionesPorSexo = new  google.visualization.BarChart(document.getElementById('adopciones'));
-            chartAdopcionesPorSexo.draw(data, optionsPorSexo);
+            // Instantiate and draw our chart, passing in some options.
+            var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+            chart.draw(data, options);
         }
     </script>
     <script type="text/javascript">
@@ -44,7 +49,7 @@
     </script>
 </head>
     <body>
-    <!--<style type="text/css">
+    <style type="text/css">
   
         h1 {
             font-size: 180% ;
@@ -69,7 +74,7 @@
             color: black ;
             }
   
-    </style>-->
+    </style>
     <script type="text/javascript">
 
         // When the document is ready, initialize the link so
@@ -103,9 +108,9 @@
                     <h1>
                         Estadisticas de las mascotas 
                         <br />
-                        El grafico  muestra la cantidad de mascotas adoptadas clasificadas por sexo.
+                        Este grafico muestra los porcentajes de las mascotas por estado.
                         <br />
-                        <img alt="" src="imagenes/registraradopcion.jpg" width="100px" height="100px" />
+                        <img alt="" src="assets/img/menu/mascotas.png" width="100px" height="100px" />
                     </h1>
                 </center>
             </div>
@@ -113,8 +118,8 @@
         <div class="col-md-12">
             <div class="col-md-8 col-md-offset-2">
                 <center>
-                    <div id="adopciones">
-                    
+                    <div id="chart_div">
+
                     </div>
                 </center>
             </div>
@@ -138,3 +143,4 @@
         </div>
 </body>
 </html>
+
