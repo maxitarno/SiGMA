@@ -63,13 +63,13 @@
                                 <asp:ListItem Text="SIN ASIGNAR" Value="0"></asp:ListItem>
                                 <asp:ListItem Text="Tipos de voluntarios" Value="1"></asp:ListItem>
                                 <asp:ListItem Text="Mascotas por estado" Value="2"></asp:ListItem>
-                                <asp:ListItem Text="Adopciones por sexo" Value="3"></asp:ListItem>
-                                <asp:ListItem Text="Perdidas por sexo" Value="4"></asp:ListItem>
-                                <asp:ListItem Value="5" Text="Hallazgos por sexo"></asp:ListItem>
-                                <asp:ListItem Value="6" Text="Mascotas por sexo y edad"></asp:ListItem>
-                                <asp:ListItem value="7" Text="Hallazgos por barrio"></asp:ListItem>
                                 <asp:ListItem Text="Adopciones por barrio" Value="8"></asp:ListItem>
+                                <asp:ListItem Text="Adopciones por sexo" Value="3"></asp:ListItem>
+                                <asp:ListItem Value="5" Text="Hallazgos por sexo"></asp:ListItem>
+                                <asp:ListItem value="7" Text="Hallazgos por barrio"></asp:ListItem>
                                 <asp:ListItem Value="9" Text="Perdidas por barrio"></asp:ListItem>
+                                <asp:ListItem Text="Perdidas por sexo" Value="4"></asp:ListItem>
+                                <asp:ListItem Value="6" Text="Mascotas por sexo y edad"></asp:ListItem>
                             </asp:DropDownList>
                         </div>
                     </div>
