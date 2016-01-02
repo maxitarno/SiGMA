@@ -86,7 +86,7 @@
                                  <asp:RequiredFieldValidator ID="rfvNºDeDocumento" runat="server" ErrorMessage="Debe ingresar un número de documento" ForeColor="Red"
                                                 ControlToValidate="txtNºDeDocumento" CssClass="Validator" Display="Dynamic" ValidationGroup="2"></asp:RequiredFieldValidator>
                                  <asp:CustomValidator ID="cvNroDocumento" runat="server" 
-                                    ErrorMessage="Nro de documento inválido" ForeColor="Red"
+                                    ErrorMessage="Ingrese un nro. de documento válido" ForeColor="Red"
                                     ControlToValidate="txtNºDeDocumento" 
                                     onservervalidate="cvNroDocumento_ServerValidate"></asp:CustomValidator>   
 	                        </div>
@@ -195,4 +195,4 @@
 	            </div>
 	        </div>
         </div>
-</div></asp:Content>
+</asp:Content>
