@@ -33,9 +33,11 @@
            data.addRows(datos);
             // Set chart options
         var options = { 
-                'title': 'Porcentajes de las mascotas clasificados por estado',
-                'width': 800,
-                'height': 700
+                'title': 'Cantidad de mascotas halladas por barrio',
+                'width': 500,
+                'height': 500,
+                'bar': {groupWidth: "95%"},
+                'legend': { position: "none" },
             };
             // Instantiate and draw our chart, passing in some options.
             var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
@@ -49,32 +51,6 @@
     </script>
 </head>
     <body>
-    <style type="text/css">
-  
-        h1 {
-            font-size: 180% ;
-            }
-  
-        h2 {
-            border-bottom: 1px solid #999999 ;
-            }
-  
-        .printable {
-            border: 1px dotted #CCCCCC ;
-            padding: 10px 10px 10px 10px ;
-            }
-  
-        img {
-            background-color: #E0E0E0 ;
-            border: 1px solid #666666 ;
-            padding: 5px 5px 5px 5px ;
-            }
-  
-        a {
-            color: black ;
-            }
-  
-    </style>
     <script type="text/javascript">
 
         // When the document is ready, initialize the link so
@@ -108,7 +84,7 @@
                     <h1>
                         Estadisticas de las mascotas 
                         <br />
-                        Este grafico muestra los porcentajes de las mascotas por estado.
+                        Este grafico muestra la  cantidad de mascotas halladas por barrio
                         <br />
                         <img alt="" src="assets/img/menu/mascotas.png" width="100px" height="100px" />
                     </h1>
@@ -126,7 +102,7 @@
         </div>
     </div>
     <div class="col-md-12">
-            <div class="col-md-8 col-md-offset-2">
+            <div class="col-md-4 col-md-offset-4">
                 <center>
                     <p>
                         <a>Imprimir</a>

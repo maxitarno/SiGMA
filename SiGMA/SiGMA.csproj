@@ -258,6 +258,7 @@
     <Content Include="MisMascotas.aspx" />
     <Content Include="ModerarPedidosDifusion.aspx" />
     <Content Include="Perdidas.aspx" />
+    <Content Include="PerdidasPorBarrio.htm" />
     <Content Include="PerdidasPorSexo.htm" />
     <Content Include="PermisosInsuficientes.aspx" />
     <Content Include="Default.aspx" />

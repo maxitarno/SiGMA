@@ -110,5 +110,48 @@ namespace AccesoADatos
                 datos.Add(dato);
             }
         }
+        public static void AdopcionesPorBarrio(ref List<EDatos> datos)
+        {
+            SiGMAEntities mapa = Conexion.crearSegunServidor();
+            var consulta = from AdopcionesBD in mapa.Adopciones
+                           join DuenioBD in mapa.Duenios on AdopcionesBD.idDuenio equals DuenioBD.idDuenio into group1
+                           from G1 in group1.DefaultIfEmpty()
+                           join PersonaBD in mapa.Personas on G1.idPersona equals PersonaBD.idPersona into group2
+                           from G2 in group2.DefaultIfEmpty()
+                           join BarriosBD in mapa.Barrios on G2.idBarrio equals BarriosBD.idBarrio into group3
+                           from G3 in group3.DefaultIfEmpty()
+                           group G3 by new { G3.nombre } into a
+                           select new
+                           {
+                               nombre = a.Key.nombre,
+                               cant = a.Count()
+                           };
+            foreach (var registro in consulta)
+            {
+                EDatos dato = new EDatos();
+                dato.cantidad = registro.cant;
+                dato.nombre = registro.nombre;
+                datos.Add(dato);
+            }
+        }
+        public static void PerdidasPorBarrio(ref List<EDatos> datos)
+        {
+            SiGMAEntities mapa = Conexion.crearSegunServidor();
+            var consulta = from PerdidasBD in mapa.Perdidas
+                           join BarriosBD in mapa.Barrios on PerdidasBD.idBarrioPerdida equals BarriosBD.idBarrio
+                           group BarriosBD by new { BarriosBD.nombre } into a
+                           select new
+                           {
+                               nombre = a.Key.nombre,
+                               cant = a.Count()
+                           };
+            foreach (var registro in consulta)
+            {
+                EDatos dato = new EDatos();
+                dato.cantidad = registro.cant;
+                dato.nombre = registro.nombre;
+                datos.Add(dato);
+            }
+        }
     }
 }

@@ -83,23 +83,68 @@ namespace SiGMA
                 int i = 0;
                 string nombre = "";
                 string cantidad = "";
-                string año = "";
                 List<EDatos> datos = new List<EDatos>();
                 LogicaBDGraficos.HallazgosPorBarrio(ref datos);
                 foreach(var dato in datos){
                     if(i != (datos.Count - 1)){
                         nombre += dato.nombre + ",";
                         cantidad += dato.cantidad + ",";
-                        año += dato.año + ",";
                     }
                     else{
                         nombre += dato.nombre;
                         cantidad += dato.cantidad;
-                        año += dato.año;
                     }
                     i++;
                 }
-                string pagina = "HallazgosPorBarrio.htm?nombre=" + nombre + "&cant=" + cantidad + "&anio=" + año;
+                string pagina = "HallazgosPorBarrio.htm?nombre=" + nombre + "&cant=" + cantidad;
+                Response.Redirect(pagina);
+            }
+            if (ddlListado.SelectedValue.Equals("8"))
+            {
+                int i = 0;
+                string nombre = "";
+                string cantidad = "";
+                List<EDatos> datos = new List<EDatos>();
+                LogicaBDGraficos.AdopcionesPorBarrio(ref datos);
+                foreach (var dato in datos)
+                {
+                    if (i != (datos.Count - 1))
+                    {
+                        nombre += dato.nombre + ",";
+                        cantidad += dato.cantidad + ",";
+                    }
+                    else
+                    {
+                        nombre += dato.nombre;
+                        cantidad += dato.cantidad;
+                    }
+                    i++;
+                }
+                string pagina = "ADopcionesPorBarrio.htm?nombre=" + nombre + "&cant=" + cantidad;
+                Response.Redirect(pagina);
+            }
+            if (ddlListado.SelectedValue.Equals("9"))
+            {
+                int i = 0;
+                string nombre = "";
+                string cantidad = "";
+                List<EDatos> datos = new List<EDatos>();
+                LogicaBDGraficos.PerdidasPorBarrio(ref datos);
+                foreach (var dato in datos)
+                {
+                    if (i != (datos.Count - 1))
+                    {
+                        nombre += dato.nombre + ",";
+                        cantidad += dato.cantidad + ",";
+                    }
+                    else
+                    {
+                        nombre += dato.nombre;
+                        cantidad += dato.cantidad;
+                    }
+                    i++;
+                }
+                string pagina = "PerdidasPorBarrio.htm?nombre=" + nombre + "&cant=" + cantidad;
                 Response.Redirect(pagina);
             }
         }

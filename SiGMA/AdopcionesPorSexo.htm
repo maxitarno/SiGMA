@@ -29,8 +29,10 @@
             //opciones de adopciones por sexo
             var optionsPorSexo = { 
                 'title': 'Mascotas adoptadas según sexo',
-                'width': 800,
-                'height': 700,
+                'width': 500,
+                'height': 500,
+                'bar': {groupWidth: "95%"},
+                'legend': { position: "none" },
             };
             //grafico adopciones por sexo
             var chartAdopcionesPorSexo = new  google.visualization.BarChart(document.getElementById('adopciones'));
@@ -111,7 +113,7 @@
             </div>
         </div>
         <div class="col-md-12">
-            <div class="col-md-8 col-md-offset-2">
+            <div class="col-md-4 col-md-offset-4">
                 <center>
                     <div id="adopciones">
                     
