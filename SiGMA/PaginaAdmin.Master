@@ -74,7 +74,7 @@
 								<i class="fa fa-user"></i><br>Usuarios<span class="caret"></span>
 							</a>
 							<ul class="dropdown-menu dropdown-menu-left" role="menu">
-								<li><a href="RegistrarUsuario.aspx">Registrar</a></li>
+								<li><a href="RegistrarUsuarios.aspx">Registrar</a></li>
 								<li><a href="ConsultarUsuario.aspx">Consultar</a></li>
                                 <li><a href="ConsultarUsuario.aspx?m=1">Modificar</a></li>
 							</ul>
@@ -217,7 +217,7 @@
 	                        <p><i class="fa fa-map-marker"></i> Dirrecion: Sargento Cabral 1564, San Vicente, Córdoba</p>
 	                        <p><i class="fa fa-phone"></i> Teléfono: 0351 456-5158</p>
 	                        <p><i class="fa fa-twitter"></i>Twitter: <a href="https://twitter.com/infosigmasoft" target="_blank">@infosigmasoft</a></p>
-	                        <p><i class="fa fa-envelope"></i> Email: <a href="Contacto.aspx">infosigmasoftware@gmail.com</a></p>
+	                        <p><i class="fa fa-envelope"></i> Email: <a href="#">infosigmasoftware@gmail.com</a></p>
                         </div>
                     </div>
                 </div>

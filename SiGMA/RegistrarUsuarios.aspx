@@ -1,9 +1,9 @@
-﻿<%@ Page Title="SIGMA" Language="C#" MasterPageFile="~/PaginaLogin.Master" AutoEventWireup="true"
+﻿<%@ Page Title="SIGMA" Language="C#" MasterPageFile="~/PaginaAdmin.Master" AutoEventWireup="true"
     CodeBehind="RegistrarUsuario.aspx.cs" Inherits="SiGMA._Default" %>
 
-<asp:Content  runat="server" ContentPlaceHolderID="head">
+<asp:Content ID="Content1"  runat="server" ContentPlaceHolderID="head">
 </asp:Content>
-<asp:Content  runat="server" ContentPlaceHolderID="ContentPlaceHolder1">
+<asp:Content ID="Content2"  runat="server" ContentPlaceHolderID="ContentPlaceHolder1">
 <div class="page-title-container">
         <div class="container">
             <div class="row">
