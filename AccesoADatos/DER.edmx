@@ -2728,7 +2728,7 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="DER" ZoomLevel="74">
+      <Diagram Name="DER" ZoomLevel="86">
         <EntityTypeShape EntityType="SiGMAModel.Adopciones" Width="1.5" PointX="7.5" PointY="10" Height="3.1340950520833317" IsExpanded="true" />
         <EntityTypeShape EntityType="SiGMAModel.Barrios" Width="1.5" PointX="0.75" PointY="7.5" Height="2.5571907552083308" IsExpanded="true" />
         <EntityTypeShape EntityType="SiGMAModel.Calles" Width="1.5" PointX="0.75" PointY="10.75" Height="2.3648893229166674" IsExpanded="true" />

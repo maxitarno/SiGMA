@@ -27,14 +27,7 @@ namespace SiGMA
                 EMascota mascota = LogicaBDMascota.BuscarMascotaPorIdMascota(int.Parse(Session["idMascota"].ToString()));
                 mascota.duenio = LogicaBDDueño.buscarDueño(mascota.idMascota);
                 Session["Mascota"] = mascota;
-                if (mascota.duenio == null)
-                {
-                    habilitarCheckboxes(false);
-                }
-                else
-                {
-                    habilitarCheckboxes(true);
-                }
+                habilitarCheckboxes(mascota.duenio);                
             }
         }
 
@@ -131,13 +124,43 @@ namespace SiGMA
             actualizarCampos("TelefonoCel", chkTelefonoCel.Checked);
 
         }
-        private void habilitarCheckboxes(bool t)
+        private void habilitarCheckboxes(EDuenio dueño)
         {
-                chkNombreDueño.Enabled = t;
-                chkTelefonoCel.Enabled = t;
-                chkDireccion.Enabled = t;                
-                chkEmail.Enabled = t;
+            if (dueño != null)
+            {
+                chkNombreDueño.Enabled = true;
+                if (dueño.telefonoCelular != null)
+                {
+                    chkTelefonoCel.Enabled = true;
+                }
+                else
+                {
+                    chkTelefonoCel.Enabled = false;
+                }
+                if (dueño.barrio != null && dueño.domicilio != null)
+                {
+                    chkDireccion.Enabled = true;
+                }
+                else
+                {
+                    chkDireccion.Enabled = false;
+                }
+                if (dueño.email != null)
+                {
+                    chkEmail.Enabled = true;
+                }
+                else
+                {
+                    chkEmail.Enabled = false;
+                }
+            }
+            else
+            {
+                chkNombreDueño.Enabled = false;
+                chkTelefonoCel.Enabled = false;
+                chkDireccion.Enabled = false;
+                chkEmail.Enabled = false;
+            }            
         }
-
     }
 }

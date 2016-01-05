@@ -67,6 +67,7 @@
     <Content Include="Adopciones.aspx" />
     <Content Include="AdopcionesPorBarrio.htm" />
     <Content Include="AdopcionesPorSexo.htm" />
+    <Content Include="AsignarMascotaHogar.aspx" />
     <Content Include="AsignarPermisos.aspx" />
     <Content Include="AsignarRol.aspx" />
     <Content Include="assets\calendario_dw\101.png" />
@@ -319,6 +320,13 @@
     </Compile>
     <Compile Include="Adopciones.aspx.designer.cs">
       <DependentUpon>Adopciones.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AsignarMascotaHogar.aspx.cs">
+      <DependentUpon>AsignarMascotaHogar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AsignarMascotaHogar.aspx.designer.cs">
+      <DependentUpon>AsignarMascotaHogar.aspx</DependentUpon>
     </Compile>
     <Compile Include="AsignarPermisos.aspx.cs">
       <DependentUpon>AsignarPermisos.aspx</DependentUpon>
