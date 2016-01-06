@@ -47,7 +47,7 @@ namespace SiGMA
                 CargarCombos.cargarEstado(ref ddlEstado, "Mascota");
                 CargarCombos.cargarCaracteresMascota(ref ddlCaracter);
                 cargasMisMascotas();
-                // lo que sigue estaa afuera del postback, no se porque .. daba error cuando un commbo con autopostback se tocaba
+                // lo que sigue estaba afuera del postback, no se porque .. daba error cuando un commbo con autopostback se tocaba
                 Handler1.AddMethod(ImageHandler_ObtenerImagenMascota);
                 imgprvw.Src = ResolveUrl("~/Handler1.ashx");
                 imgprvw.Width = 400;
@@ -448,6 +448,11 @@ namespace SiGMA
         protected void cvSexo_ServerValidate1(object source, ServerValidateEventArgs args)
         {
             args.IsValid = Validaciones.verificarSeleccionEnDdl(ref ddlSexo);
+        }
+
+        protected void cvMascota_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            args.IsValid = Validaciones.verificarSoloLetras(txtMascota.Text);
         }
     }
 }

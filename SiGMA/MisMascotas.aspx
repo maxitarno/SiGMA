@@ -83,6 +83,9 @@
 	                    	        <asp:TextBox ID="txtMascota" runat="server"></asp:TextBox>
                                     <asp:RequiredFieldValidator CssClass="Validator" ID="rfvNombreMascota" runat="server" ErrorMessage="Debe ingresar un nombre" ForeColor="Red"
                                             ControlToValidate="txtMascota" ValidationGroup="1"></asp:RequiredFieldValidator>
+                                    <asp:CustomValidator ID="cvMascota" runat="server" 
+                                    ErrorMessage="Ingrese solo letras" ControlToValidate="txtMascota" 
+                                        ForeColor="Red" onservervalidate="cvMascota_ServerValidate"></asp:CustomValidator>
 	                            </div>
                                 <div class="form-group">
                                     <label for="contact-name">Especie</label>
@@ -141,7 +144,7 @@
                                         <asp:ListItem Text="No" Value="2"></asp:ListItem>
                                     </asp:DropDownList>
                                     <asp:CustomValidator ID="cvTratoAnimales" runat="server" 
-                                    ErrorMessage="Seleccione una opcion" ControlToValidate="ddlTratoAnimales" 
+                                    ErrorMessage="Seleccione una opción" ControlToValidate="ddlTratoAnimales" 
                                         ForeColor="Red" onservervalidate="cvTratoAnimales_ServerValidate" ></asp:CustomValidator>
                                 </div>
                                 <div class="form-group">
@@ -152,7 +155,7 @@
                                                         <asp:ListItem Text="No" Value="2"></asp:ListItem>
                                                     </asp:DropDownList>
                                     <asp:CustomValidator ID="cvTratoNiños" runat="server" 
-                                    ErrorMessage="Seleccione una opcion" ControlToValidate="ddlTratoNinios" 
+                                    ErrorMessage="Seleccione una opción" ControlToValidate="ddlTratoNinios" 
                                         ForeColor="Red" onservervalidate="cvTratoNiños_ServerValidate" ></asp:CustomValidator>
                                 </div>
                                 <div class="form-group">

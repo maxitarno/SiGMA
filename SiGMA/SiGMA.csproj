@@ -229,6 +229,7 @@
     <Content Include="EnConstruccion.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="GenerarCodigoQR.aspx" />
+    <Content Include="GenerarCodigosQR.aspx" />
     <Content Include="Grafico.htm" />
     <Content Include="Graficos.aspx" />
     <Content Include="Hallazgos.aspx" />
@@ -269,6 +270,7 @@
     <Content Include="RegistrarHallazgo.aspx" />
     <Content Include="RegistrarHogarProvisorio.aspx" />
     <Content Include="RegistrarMascota.aspx" />
+    <Content Include="RegistrarMascotas.aspx" />
     <Content Include="RegistrarPerdida.aspx" />
     <Content Include="RegistrarRoles.aspx" />
     <Content Include="RegistrarUsuarios.aspx" />
@@ -439,6 +441,13 @@
     </Compile>
     <Compile Include="GenerarCodigoQR.aspx.designer.cs">
       <DependentUpon>GenerarCodigoQR.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GenerarCodigosQR.aspx.cs">
+      <DependentUpon>GenerarCodigosQR.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GenerarCodigosQR.aspx.designer.cs">
+      <DependentUpon>GenerarCodigosQR.aspx</DependentUpon>
     </Compile>
     <Compile Include="Graficos.aspx.cs">
       <DependentUpon>Graficos.aspx</DependentUpon>
@@ -638,6 +647,13 @@
     </Compile>
     <Compile Include="RegistrarMascota.aspx.designer.cs">
       <DependentUpon>RegistrarMascota.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrarMascotas.aspx.cs">
+      <DependentUpon>RegistrarMascotas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegistrarMascotas.aspx.designer.cs">
+      <DependentUpon>RegistrarMascotas.aspx</DependentUpon>
     </Compile>
     <Compile Include="RegistrarPerdida.aspx.cs">
       <DependentUpon>RegistrarPerdida.aspx</DependentUpon>
