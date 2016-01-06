@@ -2,9 +2,9 @@ Estudio Inicial - 24pág - LISTO
 Propuesta Inicial - 8pág - LISTO
 CVs - 5/6 pág - LISTO
 Calendarizacion - 4pág - LISTO - (solo el word va)
-Gestion de configuración - 10pág - FALTA ACTUALIZAR/MODIFICAR
+Gestion de configuración - 11pág - LISTO
 Plan de Riesgos con matriz incluida - 7pág - LISTO
 Analisis de Impacto Ambiental - 10pág - LISTO
-Plan de testing - 6pág - FALTA ACTUALIZAR/MODIFICAR
+Plan de testing - 7pág - LISTO
 
-Total aprox = 75 páginas
+Total aprox = 77 páginas
