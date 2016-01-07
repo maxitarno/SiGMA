@@ -44,6 +44,9 @@ namespace SiGMA
                 }
                 cargarDatosPagina();
             }
+            pnlAtento.Visible = false;
+            pnlInfo.Visible = false;
+            pnlCorrecto.Visible = false;
         }
 
         private void cargarDatosPagina()
@@ -67,7 +70,7 @@ namespace SiGMA
                 ddlBarrioPerdida.Enabled = true;
                 ddlCallePerdida.Enabled = true;
                 btnModificar.Visible = true;
-                lblTitulo.Text = "Modificar Pérdida /";
+                lblTitulo.Text = "Modificar Pérdidas /";
             }
             else
             {
@@ -76,7 +79,7 @@ namespace SiGMA
                 ddlBarrioPerdida.Enabled = false;
                 ddlCallePerdida.Enabled = false;
                 btnModificar.Visible = false;
-                lblTitulo.Text = "Consultar Pérdida /";
+                lblTitulo.Text = "Consultar Pérdidas /";
                 txtFecha.Enabled = false;
             }
         }

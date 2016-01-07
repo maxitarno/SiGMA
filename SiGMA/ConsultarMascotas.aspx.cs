@@ -27,12 +27,12 @@ namespace SiGMA
                     String mod = Request.QueryString["m"];
                     if (mod == "1")
                     {
-                        lblTitulo.Text = "Modificar Mascota";
+                        lblTitulo.Text = "Modificar Mascotas /";
                         btnModificar.Visible = true;
                     }
                     else
                     {
-                        lblTitulo.Text = "Consultar Mascota";
+                        lblTitulo.Text = "Consultar Mascotas /";
                         btnModificar.Visible = false;
                     }
                     if (!LogicaBDRol.verificarPermisoVisualizacion(Session["UsuarioLogueado"].ToString(), "ConsultarMascotas.aspx"))

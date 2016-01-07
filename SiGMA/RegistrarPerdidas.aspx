@@ -1,35 +1,31 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PaginaBase.Master" AutoEventWireup="true" CodeBehind="RegistrarPerdida.aspx.cs" Inherits="SiGMA.RegistrarPerdida" MaintainScrollPositionOnPostback="true" Culture="Auto" UICulture="Auto"%>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PaginaAdmin.Master" AutoEventWireup="true" CodeBehind="RegistrarPerdida.aspx.cs" Inherits="SiGMA.RegistrarPerdida" MaintainScrollPositionOnPostback="true" Culture="Auto" UICulture="Auto"%>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script type="text/javascript">
-    function checkTextAreaMaxLength(textBox, e, length) {
+        function checkTextAreaMaxLength(textBox, e, length) {
 
-        var mLen = textBox["MaxLength"];
-        if (null == mLen)
-            mLen = length;
+            var mLen = textBox["MaxLength"];
+            if (null == mLen)
+                mLen = length;
 
-        var maxLength = parseInt(mLen);
-        if (!checkSpecialKeys(e)) {
-            if (textBox.value.length > maxLength - 1) {
-                if (window.event)//IE
-                    e.returnValue = false;
-                else//Firefox
-                    e.preventDefault();
+            var maxLength = parseInt(mLen);
+            if (!checkSpecialKeys(e)) {
+                if (textBox.value.length > maxLength - 1) {
+                    if (window.event)//IE
+                        e.returnValue = false;
+                    else//Firefox
+                        e.preventDefault();
+                }
             }
         }
-    }
-    function checkSpecialKeys(e) {
-        if (e.keyCode != 8 && e.keyCode != 46 && e.keyCode != 37 && e.keyCode != 38 && e.keyCode != 39 && e.keyCode != 40)
-            return false;
-        else
-            return true;
-    }
-    function showDate() {
-        $find("Date").show();
-    }
-//    function cargarFecha() {
-//        var fec = document.getElementById('<%=txtFecha.ClientID%>').value.toString()
-//        $('#fecha').val('');
-//     }
+        function checkSpecialKeys(e) {
+            if (e.keyCode != 8 && e.keyCode != 46 && e.keyCode != 37 && e.keyCode != 38 && e.keyCode != 39 && e.keyCode != 40)
+                return false;
+            else
+                return true;
+        }
+        function showDate() {
+            $find("Date").show();
+        }
 </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -40,7 +36,7 @@
             <div class="row">
                 <div class="col-sm-12 wow fadeIn">
 	                <img src="assets/img/menu/registrarperdidaMini.png" />
-                    <h1>Registrar Pérdida /</h1>
+                    <h1>Registrar Pérdidas /</h1>
                     <p>La precisión de los datos es vital para una busqueda más eficiente</p>
                 </div>
             </div>
@@ -68,7 +64,7 @@
             </div>
         </div>
     </div>
-        <asp:Panel ID="pnlBuscarPor" runat="server" >
+    <asp:Panel ID="pnlBuscarPor" runat="server" >
         <div class="services-half-width-container">
         	<div class="container">
 	            <div class="row">
@@ -76,7 +72,7 @@
                         <div class="contact-form">
                             <asp:Panel ID="pnlVoluntario" runat="server" Visible="false">
                                 <div class="form-group">                        
-                                        <label for="contact-name">Nombre mascota</label><br />
+                                        <label for="contact-name">Nombre de la mascota</label><br />
                                     <asp:TextBox ID="txtMascota" runat="server"></asp:TextBox><br /><br />
                                     <asp:Button ID="btnBuscar" runat="server" Text="Buscar"  onclick="btnBuscar_Click" Width="180px"/>
                                 </div>
@@ -201,3 +197,4 @@
             </div>
         </asp:Panel>
 </asp:Content>
+

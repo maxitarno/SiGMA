@@ -109,9 +109,9 @@
 								        Pérdidas<span class="caret"></span>
 							        </a>
                                     <ul class="dropdown-menu dropdown-menu-left" role="menu" >
-                                        <li><a href="RegistrarPerdida.aspx">Registrar</a></li>
-							            <li><a href="ConsultarPerdida.aspx">Consultar</a></li>
-                                        <li><a href="ConsultarPerdida.aspx?m=1">Modificar</a></li>
+                                        <li><a href="RegistrarPerdidas.aspx">Registrar</a></li>
+							            <li><a href="ConsultarPerdidas.aspx">Consultar</a></li>
+                                        <li><a href="ConsultarPerdidas.aspx?m=1">Modificar</a></li>
                                     </ul>
                                 </li>
                                 <li class="dropdown">

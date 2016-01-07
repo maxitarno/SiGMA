@@ -215,6 +215,7 @@
     <Content Include="ConsultarHallazgo.aspx" />
     <Content Include="ConsultarMascotas.aspx" />
     <Content Include="ConsultarPerdida.aspx" />
+    <Content Include="ConsultarPerdidas.aspx" />
     <Content Include="ConsultarUsuario.aspx" />
     <Content Include="Contacto.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -272,6 +273,7 @@
     <Content Include="RegistrarMascota.aspx" />
     <Content Include="RegistrarMascotas.aspx" />
     <Content Include="RegistrarPerdida.aspx" />
+    <Content Include="RegistrarPerdidas.aspx" />
     <Content Include="RegistrarRoles.aspx" />
     <Content Include="RegistrarUsuarios.aspx" />
     <Content Include="RegistrarVeterinaria.aspx" />
@@ -392,6 +394,13 @@
     </Compile>
     <Compile Include="ConsultarPerdida.aspx.designer.cs">
       <DependentUpon>ConsultarPerdida.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ConsultarPerdidas.aspx.cs">
+      <DependentUpon>ConsultarPerdidas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ConsultarPerdidas.aspx.designer.cs">
+      <DependentUpon>ConsultarPerdidas.aspx</DependentUpon>
     </Compile>
     <Compile Include="ConsultarUsuario.aspx.cs">
       <DependentUpon>ConsultarUsuario.aspx</DependentUpon>
@@ -661,6 +670,13 @@
     </Compile>
     <Compile Include="RegistrarPerdida.aspx.designer.cs">
       <DependentUpon>RegistrarPerdida.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrarPerdidas.aspx.cs">
+      <DependentUpon>RegistrarPerdidas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegistrarPerdidas.aspx.designer.cs">
+      <DependentUpon>RegistrarPerdidas.aspx</DependentUpon>
     </Compile>
     <Compile Include="RegistrarRoles.aspx.cs">
       <DependentUpon>RegistrarRoles.aspx</DependentUpon>

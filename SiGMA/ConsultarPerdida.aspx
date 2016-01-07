@@ -67,23 +67,62 @@
             </div>
         </div>
     </div>
-        <asp:Panel ID="pnlBuscarPor" runat="server" >
-        <div class="container">
-            <div class="contact-form">
-                <asp:Panel ID="pnlVoluntario" runat="server" Visible="false">
-                    <div class="form-group">                        
-                         <label for="contact-name">Nombre mascota</label>
-                        <asp:TextBox ID="txtMascota" runat="server"></asp:TextBox>
-                        <asp:Button ID="btnBuscar" runat="server" Text="Buscar"  onclick="btnBuscar_Click" Width="180px"/>
+    <asp:Panel ID="pnlBuscarPor" runat="server" >
+        <div class="services-half-width-container">
+        	<div class="container">
+	            <div class="row">
+	                <div class="col-sm-6 services-half-width-text wow fadeInLeft">
+                        <div class="contact-form">
+                            <asp:Panel ID="pnlVoluntario" runat="server" Visible="false">
+                                <div class="form-group">                        
+                                        <label for="contact-name">Nombre mascota</label><br />
+                                    <asp:TextBox ID="txtMascota" runat="server"></asp:TextBox><br /><br />
+                                    <asp:Button ID="btnBuscar" runat="server" Text="Buscar"  onclick="btnBuscar_Click" Width="180px"/>
+                                </div>
+                            </asp:Panel>
+                        </div>
                     </div>
-                </asp:Panel>
-                <asp:Panel ID="pnlDueño" runat="server" Visible="false">
-                    <div class="form-group">
-                        <label for="contact-name">Eligir una mascosta</label>
-                        <br />
-                        <asp:ListBox ID="lstMascotas" runat="server" Width="20%" onselectedindexchanged="lstMascotas_SelectedIndexChanged" AutoPostBack="True"></asp:ListBox>
+                    <div class="col-sm-6 services-half-width-text wow fadeInUp">
+                        <div class="contact-form">
+                            <asp:Panel ID="pnlDueño" runat="server" Visible="false">
+                                <div class="form-group">
+                                    <label for="contact-name">Eligir una mascosta</label>
+                                    <br />
+                                    <asp:ListBox ID="lstMascotas" runat="server" Width="100%" onselectedindexchanged="lstMascotas_SelectedIndexChanged" AutoPostBack="True"></asp:ListBox>
+	                            </div>
+                            </asp:Panel>
+                        </div>
 	                </div>
-                </asp:Panel>
+	            </div>
+            </div>
+        </div>
+    </asp:Panel><asp:Panel ID="Panel1" runat="server" >
+        <div class="services-half-width-container">
+        	<div class="container">
+	            <div class="row">
+	                <div class="col-sm-6 services-half-width-text wow fadeInLeft">
+                        <div class="contact-form">
+                            <asp:Panel ID="Panel2" runat="server" Visible="false">
+                                <div class="form-group">                        
+                                        <label for="contact-name">Nombre de la mascota</label><br />
+                                    <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox><br /><br />
+                                    <asp:Button ID="Button1" runat="server" Text="Buscar"  onclick="btnBuscar_Click" Width="180px"/>
+                                </div>
+                            </asp:Panel>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 services-half-width-text wow fadeInUp">
+                        <div class="contact-form">
+                            <asp:Panel ID="Panel3" runat="server" Visible="false">
+                                <div class="form-group">
+                                    <label for="contact-name">Eligir una mascosta</label>
+                                    <br />
+                                    <asp:ListBox ID="ListBox1" runat="server" Width="100%" onselectedindexchanged="lstMascotas_SelectedIndexChanged" AutoPostBack="True"></asp:ListBox>
+	                            </div>
+                            </asp:Panel>
+                        </div>
+	                </div>
+	            </div>
             </div>
         </div>
     </asp:Panel>
@@ -158,7 +197,7 @@
                                     <asp:CustomValidator ID="cvBarrioPerdida" runat="server" 
                                         ErrorMessage="Seleccione un barrio" ForeColor="Red"
                                     ControlToValidate="ddlBarrioPerdida" 
-                                        onservervalidate="cvBarrioPerdida_ServerValidate"></asp:CustomValidator>
+                                        onservervalidate="cvBarrioPerdida_ServerValidate" SetFocusOnError="True"></asp:CustomValidator>
                                 </div>
                                 <div class="form-group">
                                     <label for="contact-name">Calle donde se perdió</label>
@@ -166,7 +205,7 @@
                                     <asp:CustomValidator ID="cvCallePerdida" runat="server" 
                                         ErrorMessage="Seleccione una calle" ForeColor="Red"
                                     ControlToValidate="ddlCallePerdida" 
-                                        onservervalidate="cvCallePerdida_ServerValidate" ></asp:CustomValidator>
+                                        onservervalidate="cvCallePerdida_ServerValidate" SetFocusOnError="True" ></asp:CustomValidator>
                                 </div>
                                 <div class="form-group">
                                     <label for="contact-name">Numeración de calle donde se perdió</label>

@@ -35,7 +35,14 @@ namespace SiGMA
                 CargarCombos.cargarEspecies(ref ddlFiltroEspecie);
                 CargarCombos.cargarColor(ref ddlFiltroColor);
                 CargarCombos.cargarSexo(ref ddlFiltroSexo);
+                rnvFecha.MaximumValue = DateTime.Now.ToShortDateString();
+                rbYaPerdida.Checked = true;
+                mostrarPaneles("Perdida");
             }
+            pnlAtento.Visible = false;
+            pnlInfo.Visible = false;
+            pnlCorrecto.Visible = false;
+
         }
 
         protected void rbYaPerdida_CheckedChanged(object sender, EventArgs e)
@@ -70,6 +77,7 @@ namespace SiGMA
                 pnlImagen.Visible = false;
                 pnlHallazgoPerdidaMascota.Visible = false;                
                 lstPerdidas.Visible = false;
+                pnlResultados.Visible = false;
                 txtNombreMascota.Enabled = false;
                 ddlEspecie.Enabled = false;
                 ddlRaza.Enabled = false;
@@ -120,6 +128,7 @@ namespace SiGMA
                 }                
             }
             lstPerdidas.Visible = true;
+            pnlResultados.Visible = true;
         }
 
         protected void lstPerdidas_SelectedIndexChanged(object sender, EventArgs e)
@@ -148,6 +157,7 @@ namespace SiGMA
             Session["imagen"] = mascota.imagen;
             Handler1.AddMethod(ImageHandler_ObtenerImagenMascota);
             imgprvw.Src = ResolveUrl("~/Handler1.ashx");
+            chkTwitter.Focus();
         }        
 
         protected void ddlLocalidades_SelectedIndexChanged(object sender, EventArgs e)
@@ -217,6 +227,7 @@ namespace SiGMA
                     lblError.Text = "No se encontraron mascotas con dichas caracteristicas";
                     pnlAtento.Visible = true;
                     lstPerdidas.Visible = false;
+                    pnlResultados.Visible = false;
                     pnlMascotaSeleccionada.Visible = false;
                 }
             }
@@ -225,6 +236,7 @@ namespace SiGMA
                 lblError.Text = "No se encontraron mascotas con dichas caracteristicas";
                 pnlAtento.Visible = true;                
                 lstPerdidas.Visible = false;
+                pnlResultados.Visible = false;
                 pnlMascotaSeleccionada.Visible = false;
                 SetFocus(pnlAtento);
             }
@@ -294,7 +306,14 @@ namespace SiGMA
                 hallazgo.perdida = perdida;
                 hallazgo.mascota = mascota;
                 hallazgo.observaciones = txtComentarios.Text;
-                hallazgo.fechaHallazgo = DateTime.Parse(txtFecha.Text);
+                var fecha = DateTime.Today;
+                if (DateTime.TryParse(txtFecha.Text, out fecha))
+                    hallazgo.fechaHallazgo = DateTime.Parse(txtFecha.Text);
+                else
+                {
+                    lblInfo.Text = "Ingrese una fecha válida";
+                    pnlInfo.Visible = true;
+                }
                 hallazgo.domicilio = new EDomicilio();
                 hallazgo.domicilio.barrio = new EBarrio();
                 hallazgo.domicilio.barrio.localidad = new ELocalidad();
@@ -382,11 +401,6 @@ namespace SiGMA
         protected void cvEdad_ServerValidate(object source, ServerValidateEventArgs args)
         {
             args.IsValid = Validaciones.verificarSeleccionEnDdl(ref ddlEdad);
-        }
-
-        protected void ibtnRegresar_Click(object sender, ImageClickEventArgs e)
-        {
-            Response.Redirect("Hallazgos.aspx");
         }
     }
 }
