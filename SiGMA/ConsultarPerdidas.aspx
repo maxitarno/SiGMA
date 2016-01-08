@@ -182,7 +182,7 @@
                             <div class="contact-form">
                                 <asp:Panel Visible="false" runat="server" ID="pnlImagen">
                                     <div class="form-group" style="text-align:center;">
-                                        <img id="imgprvw" style="border: 2px solid #000000;" runat="server" src="~/App_Themes/TemaSigma/imagenes/sin_imagen_disponible.jpg" />
+                                        <img id="imgprvw" style="border: 1px solid #000000;" runat="server" src="~/App_Themes/TemaSigma/imagenes/sin_imagen_disponible.jpg" />
                                     </div>
                                 </asp:Panel>
                                 <asp:Panel ID="pnlMapa" runat="server" Visible="false">
@@ -227,7 +227,7 @@
                                     <asp:TextBox ID="txtComentarios" runat="server" style="resize: none" TextMode="MultiLine"
                                      onkeyDown="checkTextAreaMaxLength(this,event,'250');"></asp:TextBox>
                                 </div>
-                               <asp:Button ID="btnModificar" runat="server" Text="Modificar" OnClick="btnModificar_Click" />
+                               <asp:Button ID="btnModificar" runat="server" Text="Modificar" OnClick="btnModificar_Click" Width="180px"/>
                             </div>
 	                    </div>
 	                </div>

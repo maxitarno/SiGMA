@@ -154,7 +154,7 @@
                             <div class="contact-form">
                                 <asp:Panel Visible="false" runat="server" ID="pnlImagen">
                                     <div class="form-group" style="text-align:center;">
-                                        <img id="imgprvw" style="border: 2px solid #000000;" runat="server" src="~/App_Themes/TemaSigma/imagenes/sin_imagen_disponible.jpg" />
+                                        <img id="imgprvw" style="border: 1px solid #000000;" runat="server" src="~/App_Themes/TemaSigma/imagenes/sin_imagen_disponible.jpg" />
                                     </div>
                                 </asp:Panel>
                                 <div class="form-group">

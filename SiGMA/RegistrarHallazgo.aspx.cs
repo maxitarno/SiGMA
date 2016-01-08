@@ -38,6 +38,9 @@ namespace SiGMA
                 rnvFecha.MaximumValue = DateTime.Now.ToShortDateString();
                 rbYaPerdida.Checked = true;
                 mostrarPaneles("Perdida");
+                ddlLocalidades.SelectedValue = "1";
+                CargarCombos.cargarBarrio(ref ddlBarrios, 1);
+                CargarCombos.cargarCalles(ref ddlCalles, 1);
             }
             pnlAtento.Visible = false;
             pnlInfo.Visible = false;
@@ -392,7 +395,6 @@ namespace SiGMA
             ddlSexo.SelectedIndex = -1;
             ddlBarrios.SelectedIndex = -1;
             ddlCalles.SelectedIndex = -1;
-            ddlLocalidades.SelectedIndex = -1;
             txtFecha.Text = "";
             txtNroCalle.Text = "";
             txtComentarios.Text = "";

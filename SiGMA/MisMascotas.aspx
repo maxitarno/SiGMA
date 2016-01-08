@@ -72,7 +72,7 @@
                         <div class="contact-form">
                             <asp:Panel ID="pnlDatos1" runat="server" visible="false">
                                 <div class="form-group" style="text-align:center;">
-                                    <img id="imgprvw" style="border: 2px solid #000000;" runat="server" src="~/App_Themes/TemaSigma/imagenes/sin_imagen_disponible.jpg" />
+                                    <img id="imgprvw" style="border: 1px solid #000000;" runat="server" src="~/App_Themes/TemaSigma/imagenes/sin_imagen_disponible.jpg" />
                                 </div>
                                  <div class="form-group" style="margin-left:100px; text-align:justify;">
                                     <label for="contact-name">Actualizar imagen</label>

@@ -122,7 +122,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="contact-name">Localidad</label>
-                                    <asp:DropDownList ID="ddlLocalidades" Enabled="true" runat="server" OnSelectedIndexChanged="DdlBarrio_SelectedIndexChanged"
+                                    <asp:DropDownList ID="ddlLocalidades" Enabled="false" runat="server" OnSelectedIndexChanged="DdlBarrio_SelectedIndexChanged"
                                                             AutoPostBack="True" Width="100%"> </asp:DropDownList>
                                     <asp:CustomValidator ID="cvLocalidades" runat="server" ErrorMessage="Seleccione una localidad" 
                                         ControlToValidate="ddlLocalidades" ForeColor="Red" 

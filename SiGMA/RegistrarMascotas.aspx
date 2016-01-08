@@ -46,7 +46,7 @@
             <div class="row">
                 <div class="col-sm-12 wow fadeIn">
 	                <img src="assets/img/menu/registrarmascotasMini.png" />
-                    <h1>Registrar Mascotas /</h1>
+                    <h1>Registrar Mascota /</h1>
                     <p>Mantenga sus datos actualizados</p>
                 </div>
             </div>

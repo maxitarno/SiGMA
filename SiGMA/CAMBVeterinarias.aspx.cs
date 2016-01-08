@@ -274,7 +274,6 @@ namespace SiGMA
             pnlBotones.Visible = false;
             ddlBarrio.SelectedValue = "0";
             ddlCalle.SelectedValue = "0";
-            ddlLocalidad.SelectedValue = "1";
             txtNombre.Text = "";
             txtNombreBusqueda.Text = "";
             txtNº.Text = "";
@@ -294,7 +293,6 @@ namespace SiGMA
             pnlBotones.Visible = false;
             ddlBarrio.SelectedValue = "0";
             ddlCalle.SelectedValue = "0";
-            ddlLocalidad.SelectedValue = "0";
             txtNombre.Text = "";
             txtNombreBusqueda.Text = "";
             txtNº.Text = "";

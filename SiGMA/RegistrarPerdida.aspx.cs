@@ -49,11 +49,12 @@ namespace SiGMA
             CargarCombos.cargarEspecies(ref ddlEspecie);
             CargarCombos.cargarComboRazas(ref ddlRaza);
             CargarCombos.cargarSexo(ref ddlSexo);
-            CargarCombos.cargarBarrio(ref ddlBarrios);
-            CargarCombos.cargarBarrio(ref ddlBarrioPerdida);
             CargarCombos.cargarLocalidades(ref ddlLocalidades);
-            CargarCombos.cargarCalles(ref ddlCalles);
-            CargarCombos.cargarCalles(ref ddlCallePerdida);
+            ddlLocalidades.SelectedValue = "1";
+            CargarCombos.cargarBarrio(ref ddlBarrios, 1);
+            CargarCombos.cargarBarrio(ref ddlBarrioPerdida, 1);
+            CargarCombos.cargarCalles(ref ddlCalles, 1);
+            CargarCombos.cargarCalles(ref ddlCallePerdida, 1);
             rnvFecha.MaximumValue = DateTime.Now.ToShortDateString();
         }
 

@@ -106,8 +106,9 @@ namespace SiGMA
                     }
                 }
                 CargarCombos.cargarLocalidades(ref ddlLocalidad);
-                CargarCombos.cargarBarrio(ref ddlBarrio);
-                CargarCombos.cargarCalles( ref ddlCalle);
+                ddlLocalidad.SelectedValue = "1";
+                CargarCombos.cargarBarrio(ref ddlBarrio, 1);
+                CargarCombos.cargarCalles( ref ddlCalle, 1);
                 pnlInfo.Visible = false;
                 pnlCorrecto.Visible = false;
                 pnlAtento.Visible = false;

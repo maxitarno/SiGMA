@@ -28,7 +28,11 @@ namespace SiGMA
                     if (!LogicaBDRol.verificarPermisosGrabacion(Session["UsuarioLogueado"].ToString(), "ConsultarHallazgo.aspx"))
                         btnModificarHallazgo.Visible = false;
                 }
+                rnvFecha.MaximumValue = DateTime.Now.ToShortDateString();
                 CargarCombos.cargarLocalidades(ref ddlLocalidades);
+                ddlLocalidades.SelectedValue = "1";
+                CargarCombos.cargarBarrio(ref ddlBarrios, 1);
+                CargarCombos.cargarCalles(ref ddlCalles, 1); 
                 CargarCombos.cargarEspecies(ref ddlEspecie);                
                 CargarCombos.cargarEdad(ref ddlEdad);
                 CargarCombos.cargarSexo(ref ddlSexo);
@@ -41,26 +45,26 @@ namespace SiGMA
                 if (mod == "1")
                 {
                     paraModificar(true);
-                    lblTitulo.Text = "Modificar Hallazgo";
+                    lblTitulo.Text = "Modificar Hallazgo /";
                 }
                 else
                 {
-                    lblTitulo.Text = "Consultar Hallazgo";
+                    lblTitulo.Text = "Consultar Hallazgo /";
                     paraModificar(false);
-                    Image1.Visible = false;
                 }
             }
+            pnlAtento.Visible = false;
+            pnlInfo.Visible = false;
+            pnlCorrecto.Visible = false;
         }
 
         private void paraModificar(bool b)
         {
-            ddlLocalidades.Enabled = b;
             ddlCalles.Enabled = b;
             ddlBarrios.Enabled = b;
             txtNroCalle.Enabled = b;
             txtFecha.Enabled = b;
             txtComentarios.Enabled = b;
-            //imgFechaHallazgo.Enabled = b;
             btnModificarHallazgo.Visible = b;
         }
        
@@ -78,7 +82,7 @@ namespace SiGMA
                     lstPerdidas.Items.Add(li);                    
                 }                
             }
-            lstPerdidas.Visible = true;
+            pnlResultados.Visible = true;
         }
 
         protected void lstPerdidas_SelectedIndexChanged(object sender, EventArgs e)
@@ -115,6 +119,9 @@ namespace SiGMA
             Session["imagen"] = hallazgoSelec.mascota.imagen;
             Handler1.AddMethod(ImageHandler_ObtenerImagenMascota);
             imgprvw.Src = ResolveUrl("~/Handler1.ashx");
+            imgprvw.Width = 272;
+            imgprvw.Height = 185;
+            txtComentarios.Focus();
             //agregado
             hfDireccion.Value = ddlLocalidades.SelectedItem.Text.ToLower().ToString() + " " + ddlCalles.SelectedItem.Text.ToLower().ToString() + " " + txtNroCalle.Text;
             hfNombre.Value = txtNombreMascota.Text;
@@ -140,6 +147,7 @@ namespace SiGMA
 
         protected void btnFiltros_Click(object sender, EventArgs e)
         {
+            pnlMascotaSeleccionada.Visible = false;
             EMascota mascot = new EMascota();
             mascot.estado = new EEstado();
             mascot.estado.nombreEstado = "Hallada";
@@ -199,24 +207,27 @@ namespace SiGMA
                     Session["Hallazgos"] = listaHallazgos;
                     cargarTablaHalladas();
                     pnlAtento.Visible = false;
+                    if (lstPerdidas.Items.Count == 1)
+                    {
+                        lstPerdidas.SelectedIndex = 0;
+                        lstPerdidas_SelectedIndexChanged(null, null);
+                    }
                 }
                 else
                 {
-                    lblError.Text = "No se encontraron mascotas con dichas caracteristicas";
-                    pnlAtento.Visible = true;
-                    lstPerdidas.Visible = false;
+                    lblInfo.Text = "No se encontraron mascotas con dichas caracteristicas";
+                    pnlInfo.Visible = true;
+                    pnlResultados.Visible = false;
                     pnlMascotaSeleccionada.Visible = false;
                 }
             }
             else
             {
-                lblError.Text = "No se encontraron mascotas con dichas caracteristicas";
-                pnlAtento.Visible = true;                
-                lstPerdidas.Visible = false;
+                lblInfo.Text = "No se encontraron mascotas con dichas caracteristicas";
+                pnlInfo.Visible = true;
+                pnlResultados.Visible = false;
                 pnlMascotaSeleccionada.Visible = false;
             }
-            pnlCorrecto.Visible = false;
-            pnlMascotaSeleccionada.Visible = false;
         }
 
         public byte[] ImageHandler_ObtenerImagenMascota(HttpContext context)
@@ -254,6 +265,7 @@ namespace SiGMA
                     LogicaBDHallazgo.modificarHallazgo(hallazgo);
                     pnlCorrecto.Visible = true;
                     lblCorrecto.Text = "Hallazgo modificado exisotamente";
+                    pnlMascotaSeleccionada.Visible = false;
                     SetFocus(lblTitulo);
                 }
                 catch (Exception)
@@ -274,26 +286,9 @@ namespace SiGMA
             ddlSexo.SelectedIndex = -1;
             ddlBarrios.SelectedIndex = -1;
             ddlCalles.SelectedIndex = -1;
-            ddlLocalidades.SelectedIndex = -1;
             txtFecha.Text = "";
             txtNroCalle.Text = "";
             txtComentarios.Text = "";
-        }
-
-        protected void ibtnRegresar_Click(object sender, ImageClickEventArgs e)
-        {
-            Response.Redirect("Hallazgos.aspx");
-        }
-
-        //protected void calendario_SelectionChanged(object sender, EventArgs e)
-        //{
-        //    txtFecha.Text = calendario.SelectedDate.ToString("d");
-        //    calendario.Visible = false;
-        //}
-
-        //protected void imgFechaPerdida_Click(object sender, ImageClickEventArgs e)
-        //{
-        //    calendario.Visible = true;
-        //}    
+        } 
     }
 }

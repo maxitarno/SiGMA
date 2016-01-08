@@ -22,7 +22,6 @@ namespace SiGMA
                     btnModificar.Visible = true;
                     btnEliminar.Visible = true;
                     ddlTipoDocumento.Enabled = true;
-                    ddlLocalidades.Enabled = true;
                     ddlCalle.Enabled = true;
                     ddlBarrios.Enabled = true;
                     ddlTipoDocumento.Enabled = true;
@@ -39,7 +38,6 @@ namespace SiGMA
                 {
                     lblTitulo.Text = "Consultar Usuario /";
                     ddlTipoDocumento.Enabled = false;
-                    ddlLocalidades.Enabled = false;
                     ddlCalle.Enabled = false;
                     ddlBarrios.Enabled = false;
                     ddlTipoDocumento.Enabled = false;
@@ -67,9 +65,11 @@ namespace SiGMA
                 {
                     Response.Redirect("Login.aspx");
                 }
-                CargarCombos.cargarBarrio(ref ddlBarrios);
+                
                 CargarCombos.cargarLocalidades(ref ddlLocalidades);
-                CargarCombos.cargarCalles(ref ddlCalle);
+                ddlLocalidades.SelectedValue = "1";
+                CargarCombos.cargarBarrio(ref ddlBarrios, 1);
+                CargarCombos.cargarCalles(ref ddlCalle, 1);
                 CargarCombos.cargarTipoDocumento(ref ddlTipoDeDocumentoPersona);
                 CargarCombos.cargarTipoDocumento(ref ddlTipoDocumento);
                 pnlUser.Visible = true;

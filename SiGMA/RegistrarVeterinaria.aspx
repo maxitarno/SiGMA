@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-sm-12 wow fadeIn">
 	                <img src="assets/img/menu/veterinariasMini.png" />
-                    <h1>Registrar veterinarias /</h1>
+                    <h1>Registrar Veterinaria /</h1>
                     <p>Mantenga sus datos actualizados</p>
                 </div>
             </div>

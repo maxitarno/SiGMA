@@ -224,7 +224,7 @@
                                     ></asp:RangeValidator>
                                 </div>
                                 <div class="form-group" style="text-align:center;">
-                                    <img id="imgprvw" style="border: 2px solid #000000;" runat="server" />
+                                    <img id="imgprvw" style="border: 1px solid #000000;" runat="server" />
                                 </div>
                                  <div class="form-group" style="margin-left:100px; text-align:justify;">
                                     <label for="contact-name">Actualizar imagen</label>

@@ -11,7 +11,7 @@
             <div class="row">
                 <div class="col-sm-12 wow fadeIn">
 	                <img src="assets/img/menu/registrarhallazgoMini.png" />
-                    <h1>Registrar Hallazgos /</h1>
+                    <h1>Registrar Hallazgo /</h1>
                     <p>Cuide a su mascota</p>
                 </div>
             </div>
@@ -102,7 +102,7 @@
 	                            <div class="form-group">
                                     <label for="contact-name">Datos de la mascota</label>    
                                     <asp:Panel Visible="true" runat="server" ID="pnlImagen">
-                                        <img id="imgprvw" style="border: 2px solid #000000; height: 135px; width: 215px;"
+                                        <img id="imgprvw" style="border: 1px solid #000000; height: 135px; width: 215px;"
                                             runat="server" src="~/App_Themes/TemaSigma/imagenes/sin_imagen_disponible.jpg"/>
                                     </asp:Panel>
                                     <asp:Panel Visible="true" runat="server" ID="pnlPreview">
@@ -145,6 +145,7 @@
                                             ForeColor="Red" onservervalidate="cvSexo_ServerValidate" SetFocusOnError="True"></asp:CustomValidator>
 	                                </div>
                                     <div class="form-group">
+                                        <label for="contact-name">Color</label> 
                                         <asp:DropDownList ID="ddlColor" Enabled="False" runat="server" Width="100%" AppendDataBoundItems="True">
                                         </asp:DropDownList>
                                         <asp:CustomValidator ID="cvColor" runat="server" ErrorMessage="Seleccione un color" 
@@ -164,7 +165,7 @@
                                 <div class="form-group">
                                     <label for="contact-name" style="text-align:center;">Datos del hallazgo</label><br /><br />
                                     <label for="contact-name">Localidad</label>
-                                     <asp:DropDownList ID="ddlLocalidades" Enabled="true" runat="server" Width="100%" AppendDataBoundItems="False"
+                                     <asp:DropDownList ID="ddlLocalidades" Enabled="false" runat="server" Width="100%" AppendDataBoundItems="False"
                                     OnSelectedIndexChanged="ddlLocalidades_SelectedIndexChanged" AutoPostBack="True"/>
 	                            </div>
                                 <div class="form-group">

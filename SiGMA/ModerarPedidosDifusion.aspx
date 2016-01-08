@@ -96,7 +96,7 @@
                             <table>
                             <tr><td></td>
                             <td >
-                            <img id="imgprvw" style="border: 2px solid #000000; height: 135px; width: 215px;"
+                            <img id="imgprvw" style="border: 1px solid #000000; height: 135px; width: 215px;"
                                     runat="server" src="~/App_Themes/TemaSigma/imagenes/sin_imagen_disponible.jpg"/>
                                     </td>
                                     </tr>
