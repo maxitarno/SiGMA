@@ -108,6 +108,7 @@ namespace SiGMA
                 pnlInputFoto.Visible = true;
                 pnlImagen.Visible = false;
                 pnlPreview.Visible = true;
+                pnlResultados.Visible = false;
                 ddlRaza.Items.Clear();
                 limpiarCampos();
                 imgprvw.Src = "~/App_Themes/TemaSigma/imagenes/sin_imagen_disponible.jpg";
@@ -329,7 +330,8 @@ namespace SiGMA
                 hallazgo.usuario = new EUsuario() { user = Session["UsuarioLogueado"].ToString() };
                 try
                 {
-                    LogicaBDHallazgo.registrarHallazgo(hallazgo);
+                    int id = LogicaBDHallazgo.registrarHallazgo(hallazgo);
+                    Session["idMascotaHallada"] = id;
                     pnlCorrecto.Visible = true;
                     lblCorrecto.Text = "Hallazgo registrado exisotamente";
                     SetFocus(lblCorrecto);
@@ -351,7 +353,8 @@ namespace SiGMA
                             tweet.PublicarTweetSoloTexto(mensaje);
                         }
                     }
-                }
+                    pnlHogar.Visible = true;
+                }                
                 catch (Exception)
                 {
                     pnlAtento.Visible = true;
@@ -403,6 +406,16 @@ namespace SiGMA
         protected void cvEdad_ServerValidate(object source, ServerValidateEventArgs args)
         {
             args.IsValid = Validaciones.verificarSeleccionEnDdl(ref ddlEdad);
+        }
+
+        protected void btnHogarSi_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("AsignarMascotaHogar.aspx");
+        }
+
+        protected void btnHogarNo_Click(object sender, EventArgs e)
+        {
+            pnlHogar.Visible = false;
         }
     }
 }

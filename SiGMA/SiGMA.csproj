@@ -218,10 +218,6 @@
     <Content Include="ConsultarPerdidas.aspx" />
     <Content Include="ConsultarUsuario.aspx" />
     <Content Include="Contacto.aspx" />
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\main.css" />
     <Content Include="Contrato.aspx" />
@@ -872,8 +868,6 @@
     <None Include="base\font-awesome\scss\_variables.scss" />
     <None Include="base\sendmail.php" />
     <None Include="base\subscribe.php" />
-    <None Include="Content\bootstrap-theme.css.map" />
-    <None Include="Content\bootstrap.css.map" />
     <None Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.woff" />

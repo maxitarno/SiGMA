@@ -14,5 +14,6 @@ namespace Entidades
         public EVoluntario voluntario { get; set; }
         public int AceptaEspecie { get; set; }
         public int tipoHogar { get; set; }
+        public int disponibilidad { get; set; }
     }
 }

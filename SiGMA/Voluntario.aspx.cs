@@ -250,7 +250,7 @@ namespace SiGMA
            EHogarProvisorio hogar = new EHogarProvisorio();
            ECalle calle = new ECalle();
            EBarrio barrio = new EBarrio();
-           LogicaBDVoluntario.cargarDatosHogarProvisorio(Session["UsuarioLogueado"].ToString(), persona, hogar, calle, barrio);
+           LogicaBDHogar.cargarDatosHogarProvisorio(Session["UsuarioLogueado"].ToString(), persona, hogar, calle, barrio);
            txtNombre.Text = persona.nombre;
            txtEmail.Text = persona.email;
            ddlTipoHogar.SelectedValue = hogar.tipoHogar.ToString();
@@ -393,7 +393,7 @@ namespace SiGMA
             {
                 try
                 {
-                    LogicaBDVoluntario.actualizarHogarVoluntario(Convert.ToInt32(Session["IdVoluntario"].ToString()), Session["UsuarioLogueado"].ToString(), ddlTipoHogar.SelectedValue, ddlCalle.SelectedValue, txtNro.Text, ddlBarrio.SelectedValue, ddlNumeroMascotas.SelectedValue, ddlTipoMascota.SelectedValue, ddlTieneNinios.SelectedValue);
+                    LogicaBDHogar.actualizarHogarVoluntario(Convert.ToInt32(Session["IdVoluntario"].ToString()), Session["UsuarioLogueado"].ToString(), ddlTipoHogar.SelectedValue, ddlCalle.SelectedValue, txtNro.Text, ddlBarrio.SelectedValue, ddlNumeroMascotas.SelectedValue, ddlTipoMascota.SelectedValue, ddlTieneNinios.SelectedValue);
                     pnlCorrecto.Visible = true;
                     lblCorrecto.Text = "Hogar actualizado correctamente";
                 }

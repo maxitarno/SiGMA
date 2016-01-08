@@ -9,12 +9,13 @@ namespace AccesoADatos
 {
     public class LogicaBDHallazgo
     {
-        public static void registrarHallazgo(EHallazgo hallazgo)
+        public static int registrarHallazgo(EHallazgo hallazgo)
         {
             using (TransactionScope transaction = new TransactionScope())
             {
                 try
                 {
+                    int retornoIdMascota;
                     SiGMAEntities mapa = Conexion.crearSegunServidor();
                     Hallazgos bdHallazgo = new Hallazgos();
                     bdHallazgo.idBarrioHallazgo = hallazgo.domicilio.barrio.idBarrio;  
@@ -26,6 +27,7 @@ namespace AccesoADatos
                         bdHallazgo.idPerdida = hallazgo.perdida.idPerdida;
                         LogicaBDMascota.modificarEstado("Hallada", hallazgo.mascota.idMascota, ref mapa);
                         bdHallazgo.idMascota = hallazgo.mascota.idMascota;
+                        retornoIdMascota = hallazgo.mascota.idMascota;
                     }
                     else
                     {
@@ -33,6 +35,7 @@ namespace AccesoADatos
                         bdHallazgo.idMascota = proxIdMascota;
                         hallazgo.mascota.idMascota = proxIdMascota;
                         LogicaBDMascota.registrarMascota(hallazgo.mascota, ref mapa);
+                        retornoIdMascota = proxIdMascota;
                     }
                     bdHallazgo.observaciones = hallazgo.observaciones;
                     bdHallazgo.idEstado = mapa.Estados.Where(es => es.ambito == "Hallazgo" && es.nombreEstado == "Abierta").First().idEstado;
@@ -46,6 +49,7 @@ namespace AccesoADatos
                     {
                         LogicaBDImagen.guardarImagen(hallazgo.mascota.imagen, hallazgo.mascota);
                     }
+                    return retornoIdMascota;
                 }
                 catch (Exception ex)
                 {
@@ -55,6 +59,7 @@ namespace AccesoADatos
 
             }
         }
+        
 
         //Metodo para buscar los hallazgos, en estado Abierta, Publicada o Modificada, desde una lista de ids de mascota
         public static List<EHallazgo> buscarHallazgos(List<int> listaIdMascotas)

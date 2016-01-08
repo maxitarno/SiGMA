@@ -3748,6 +3748,30 @@ namespace AccesoADatos
         private global::System.Int32 _TipoHogar;
         partial void OnTipoHogarChanging(global::System.Int32 value);
         partial void OnTipoHogarChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> disponibilidad
+        {
+            get
+            {
+                return _disponibilidad;
+            }
+            set
+            {
+                OndisponibilidadChanging(value);
+                ReportPropertyChanging("disponibilidad");
+                _disponibilidad = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("disponibilidad");
+                OndisponibilidadChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _disponibilidad;
+        partial void OndisponibilidadChanging(Nullable<global::System.Int32> value);
+        partial void OndisponibilidadChanged();
 
         #endregion
 

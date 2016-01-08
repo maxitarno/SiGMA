@@ -285,9 +285,9 @@ namespace AccesoADatos
         {
             List<EBarrio> barrios = new List<EBarrio>();
             SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
-            IQueryable<Barrios> consulta = from BarriosDB in mapaEntidades.Barrios
+            IQueryable<Barrios> consulta = (from BarriosDB in mapaEntidades.Barrios
                                            where (BarriosDB.idLocalidad == idLocalidad)
-                                           select BarriosDB;
+                                           select BarriosDB).OrderBy(x => x.nombre);
             try
             {
                 foreach (var registro in consulta)
@@ -496,8 +496,8 @@ namespace AccesoADatos
         {
             List<ECalle> calles = new List<ECalle>();
             SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
-            IQueryable<Calles> consulta = from callesDB in mapaEntidades.Calles
-                                         select callesDB;
+            IQueryable<Calles> consulta = (from callesDB in mapaEntidades.Calles
+                                         select callesDB).OrderBy(x => x.nombre);
             try
             {
                 foreach (var registro in consulta)
@@ -520,9 +520,9 @@ namespace AccesoADatos
         {
             List<ECalle> calles = new List<ECalle>();
             SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
-            IQueryable<Calles> consulta = from callesDB in mapaEntidades.Calles
+            IQueryable<Calles> consulta = (from callesDB in mapaEntidades.Calles
                                           where(callesDB.idLocalidad == localidad)
-                                          select callesDB;
+                                          select callesDB).OrderBy(x => x.nombre);
             try
             {
                 foreach (var registro in consulta)

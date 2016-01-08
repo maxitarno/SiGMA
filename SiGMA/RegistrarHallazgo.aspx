@@ -25,7 +25,16 @@
                         ×</button>
                         <asp:Label ID="lblCorrecto" runat="server" Text=""></asp:Label>
                 </asp:Panel>
-                <asp:Panel runat="server" id="pnlInfo" class="alert alert-dismissable alert-danger" Visible=false>
+                <asp:Panel runat="server" id="pnlHogar" Visible="false">
+                <div>                
+                    <asp:Label ID="lblAsignarHogar" runat="server" Text="¿Desea asignarle hogar a la mascota?"></asp:Label>                    
+                </div>                
+                    <asp:Button ID="btnHogarSi" runat="server" Text="Si" CausesValidation="False" 
+                        onclick="btnHogarSi_Click" />
+                    <asp:Button ID="btnHogarNo" runat="server" Text="No" CausesValidation="False" 
+                        onclick="btnHogarNo_Click" />                     
+                </asp:Panel>
+                <asp:Panel runat="server" id="pnlInfo" class="alert alert-dismissable alert-danger" Visible="false">
                     <button class="close" type="button" data-dismiss="alert">
                         ×</button>
                         <asp:Label ID="lblInfo" runat="server" Text=""></asp:Label>
