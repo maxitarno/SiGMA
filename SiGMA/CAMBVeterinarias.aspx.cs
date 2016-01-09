@@ -28,13 +28,13 @@ namespace SiGMA
                 String mod = Request.QueryString["m"];
                 if (mod == "1")
                 {
-                    lblTitulo.Text = "Modificar Veterinarias /";
+                    lblTitulo.Text = "Modificar Veterinaria /";
                     btnModificar.Visible = true;
                     btnEliminar.Visible = true;
                 }
                 else
                 {
-                    lblTitulo.Text = "Consultar Veterinarias /";
+                    lblTitulo.Text = "Consultar Veterinaria /";
                     btnModificar.Visible = false;
                     btnEliminar.Visible = false;
                 }

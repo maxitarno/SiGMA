@@ -8,7 +8,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12 wow fadeIn">
-	                <i class="fa fa-user-plus"></i>
+	                 <img src="assets/img/menu/usuariosMini.png" />
                     <h1>Registrar Usuario /</h1>
                     <p>Cuide a su mascota</p>
                 </div>

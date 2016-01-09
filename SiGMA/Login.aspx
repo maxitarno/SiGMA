@@ -19,12 +19,13 @@
                     <asp:Login ID="login" runat="server" TitleText="" 
                         onauthenticate="login_Authenticate" style="margin-left:auto;margin-right:auto" 
                         FailureText="Usuario y/o Contraseña Incorrecto o No Validado" 
-                        PasswordLabelText="Contraseña: " 
+                        PasswordLabelText="Contraseña:&nbsp;&nbsp;" 
                         PasswordRequiredErrorMessage="Contraseña Requerida" RememberMeText="" 
-                        UserNameLabelText="Usuario: " 
+                        UserNameLabelText="Usuario:&nbsp;&nbsp;" 
                         UserNameRequiredErrorMessage="Usuario Requerido" LoginButtonText="Ingresar" 
-                        Height="35px" Width="90%" DisplayRememberMe="False">
+                        Height="35px" Width="100%" DisplayRememberMe="False">
                     </asp:Login>
+                
                 </div>
             </div>
             <div class="contact-form">

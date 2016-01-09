@@ -16,7 +16,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12 wow fadeIn">
-	                <i class="fa fa-users"></i>
+	                <img src="assets/img/menu/usuariosMini.png" />
                     <h1><asp:Label ID="lblTitulo" runat="server"></asp:Label></h1>
                     <p>Mantenga los datos actualizados</p>
                 </div>

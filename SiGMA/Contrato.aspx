@@ -1,21 +1,8 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Contrato.aspx.cs" Inherits="SiGMA.Contrato"
-    MasterPageFile="PaginaMaestra.Master" %>
+    MasterPageFile="PaginaAdmin.Master" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
-    <title>SIGMA</title>
-    <!-- Bootstrap core CSS -->
-    <link href="assets/css/bootstrap.css" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <link href="assets/css/main.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-1.10.2.min.js" type="text/javascript"></script>
-    <script src="assets/js/hover.zoom.js"></script>
-    <script src="assets/js/hover.zoom.conf.js"></script>
+    
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <script type="text/javascript" src="Scripts/jquery-2.1.3.js"></script>
@@ -173,15 +160,16 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td align="center">
-                                        <h3>
-                                            Condiciones</h3>
+                                    <td align="left">
+                                    <br />
+                                        <h2>
+                                            Condiciones</h2>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td align="center">
-                                        <h2>
-                                            El adoptante se compromete a:</h2>
+                                    <td align="left">
+                                        <h3>
+                                            El adoptante se compromete a:</h3>
                                     </td>
                                 </tr>
                                 <tr>
@@ -201,9 +189,10 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td align="center">
+                                    <td align="left">
                                         Esta adopción fue registrada por el voluntario Nº:
                                         <asp:Label ID="lblNumeroDeVoluntario" runat="server" Text=""></asp:Label>
+                                        <br />
                                         <br />
                                     </td>
                                 </tr>
@@ -215,12 +204,12 @@
                                 </tr>
                                 <tr>
                                     <td align="left">
-                                        Nombre y legajo del encargado de la revisión: -------------
+                                        Nombre y legajo del encargado de la revisión: _ _ _ _ _ _ _ _ _ _ _ _  
                                     </td>
                                 </tr>
                                 <tr>
                                     <td align="left">
-                                        Firma del encargado: -------------
+                                        Firma del encargado: _ _ _ _ _ _ _ _ _ _ 
                                     </td>
                                 </tr>
                             </table>

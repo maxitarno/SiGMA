@@ -33,36 +33,25 @@ namespace SiGMA
                 String mod = Request.QueryString["m"];
                 if (mod == "1")
                 {
-                    lblTitulo.Text = "Modificar Adopción";
+                    lblTitulo.Text = "Modificar Adopción /";
                     pnlRegistrar.Visible = true;
                     if (Session["Si"] != null && Session["Si"].ToString().Equals("Si"))
                     {
-                        btnRegistrar.Visible = true;
+                        pnlRegistrar.Visible = true;
                     }
                 }
                 else
                 {
-                    lblTitulo.Text = "Consultar Adopción";
+                    lblTitulo.Text = "Consultar Adopción /";
                     pnlDatos.Visible = false;
                     pnlRegistrar.Visible = false;
-                    btnRegistrar.Visible = false;
                     pnlEliminar.Visible = false;
-                    pnlDatos.Visible = false;
-                    btnEliminar.Visible = false;
                     txtNº.Text = "";
                     pnlBuscar.Visible = true;
                     pnlPorDocumento.Visible = true;
-                    pnlInfo.Visible = false;
-                    lblResultado1.Text = "Se registro correctamente";
-                    pnlCorrecto.Visible = true;
-                    pnlAtento.Visible = false;
-                    //Session["Si"] = null;
                     pnlBuscar.Visible = true;
                     pnlDuenio.Visible = false;
                     pnlMascota.Visible = false;
-                    pnlRegistrar.Visible = false;
-                    pnlAdopcion.Visible = false;
-                    pnlDatos.Visible = false;
                 }
                 if (rbPorDNI.Checked)
                 {
@@ -82,7 +71,7 @@ namespace SiGMA
                         txtNro.Text = (persona.nroCalle == null) ? "0" : persona.nroCalle.ToString();
                         txtNombreM.Text = adopcion.mascota.nombreMascota;
                         txtNombreD.Text = persona.nombre;
-                        txtNºAdopcion.Text = adopcion.idAdopcion.ToString();
+                        txtApellidoD.Text = persona.apellido;
                         txtNumeroDocumento.Text = persona.nroDocumento;
                         txtNro.Text = persona.nroCalle.ToString();
                         txtNº.Text = persona.nroDocumento;
@@ -97,21 +86,18 @@ namespace SiGMA
                         pnlMascota.Visible = true;
                         pnlDuenio.Visible = true;
                         pnlBuscar.Visible = false;
-                        pnlAdopcion.Visible = false;
                         pnlRegistrar.Visible = true;
-                        btnRegistrar.Text = "Modificar adopcion";
+                        btnRegistrar.Text = "Guardar Cambios";
                         pnlRegistrar.Visible = true;
                         pnlDatos.Visible = false;
-                        btnEliminar.Visible = false;
+                        pnlbotones.Visible = true;
+                        pnlEliminar.Visible = false;
+                        btnRegistrar.Focus();
                     }
                 }
-                CargarCombos.cargarLocalidades(ref ddlLocalidad);
-                ddlLocalidad.SelectedValue = "1";
                 CargarCombos.cargarBarrio(ref ddlBarrio, 1);
                 CargarCombos.cargarCalles( ref ddlCalle, 1);
-                pnlInfo.Visible = false;
-                pnlCorrecto.Visible = false;
-                pnlAtento.Visible = false;
+
             }
             else
             {
@@ -120,28 +106,20 @@ namespace SiGMA
                 pnlAtento.Visible = false;
             }
         }
-        public void ibtnRegresar_Click(object sender, EventArgs e)
-        {
-            mascota = null;
-            Session["Si"] = null;
-            Response.Redirect("Adopciones.aspx");
-        }
+
         public void RbPorPersona(object sender, EventArgs e)
         {
             pnlBuscar.Visible = true;
             pnlPorDocumento.Visible = true;
             pnlPorAdopcion.Visible = false;
-            pnlAtento.Visible = false;
-            pnlInfo.Visible = false;
-            pnlCorrecto.Visible = false;
             pnlResultados.Visible = false;
             pnlMascota.Visible = false;
             pnlDuenio.Visible = false;
             pnlDatos.Visible = false;
-            pnlAdopcion.Visible = false;
+            pnlbotones.Visible = false;
             btnRegistrar.Text = "Generar Contrato";
             pnlEliminar.Visible = false;
-            btnRegistrar.Visible = false;
+            pnlRegistrar.Visible = false;
             txtNº.Text = "";
             txtNombre.Text = "";
             btnBuscar.Visible = true;
@@ -151,17 +129,14 @@ namespace SiGMA
             pnlPorAdopcion.Visible = true;
             pnlPorDocumento.Visible = false;
             pnlBuscar.Visible = true;
-            pnlAtento.Visible = false;
-            pnlInfo.Visible = false;
-            pnlCorrecto.Visible = false;
             pnlResultados.Visible = false;
             pnlRegistrar.Visible = false;
             pnlMascota.Visible = false;
             pnlDuenio.Visible = false;
             pnlDatos.Visible = false;
-            pnlAdopcion.Visible = false;
+            pnlbotones.Visible = false;
             btnRegistrar.Text = "Generar Contrato";
-            btnEliminar.Visible = false;
+            pnlEliminar.Visible = false;
             txtNº.Text = "";
             txtNombre.Text = "";
             btnBuscar.Visible = true;
@@ -170,8 +145,6 @@ namespace SiGMA
         {
             if (rbPorNombreMascota.Checked)
             {
-                //if (Validaciones.verificarSoloLetras(txtNombre.Text))
-                //{
                     List<EAdopcion> adopciones = LogicaBDAdopcion.BuscarAdopcion(txtNombre.Text);
                     if (adopciones.Count != 0)
                     {
@@ -181,28 +154,19 @@ namespace SiGMA
                         lstResultados.DataTextField = "nombre";
                         lstResultados.DataBind();
                         pnlResultados.Visible = true;
-                        pnlAtento.Visible = false;
-                        pnlInfo.Visible = false;
-                        pnlCorrecto.Visible = false;
-                        btnRegistrar.Visible = false;
-                        btnBuscar.Visible = false;
+                        pnlRegistrar.Visible = false;
+                        if (adopciones.Count == 1)
+                        {
+                            lstResultados.SelectedIndex = 0;
+                            lstResultados_SelectedIndexChanged(null, null);
+                        }
                     }
                     else
                     {
-                        lblResultado2.Text = "No se encontraron adopciones";
-                        pnlAtento.Visible = false;
+                        lblInfo.Text = "No se encontraron adopciones";
                         pnlInfo.Visible = true;
-                        pnlCorrecto.Visible = false;
-                        pnlBuscar.Visible = true;
+
                     }
-                //}
-                //else
-                //{
-                //    lblResultado2.Text = "Debe ingresar un nombre de mascota";
-                //    pnlAtento.Visible = false;
-                //    pnlInfo.Visible = true;
-                //    pnlCorrecto.Visible = false;
-                //}
             }
             if (rbPorDNI.Checked)
             {
@@ -215,115 +179,104 @@ namespace SiGMA
                     lstResultados.DataValueField = "idAdopcion";
                     lstResultados.DataBind();
                     pnlResultados.Visible = true;
-                    pnlAtento.Visible = false;
-                    pnlInfo.Visible = false;
-                    pnlCorrecto.Visible = false;
-                    pnlBuscar.Visible = false;
+                    if (adopciones.Count == 1)
+                    {
+                        lstResultados.SelectedIndex = 0;
+                        lstResultados_SelectedIndexChanged(null, null);
+                    }
                 }
                 else
                 {
-                    lblResultado2.Text = "No se encontraron adopciones";
-                    pnlAtento.Visible = false;
+                    lblInfo.Text = "No se encontraron adopciones";
                     pnlInfo.Visible = true;
-                    pnlCorrecto.Visible = false;
-                    btnRegistrar.Visible = false;
-                    btnBuscar.Visible = true;
+                    pnlRegistrar.Visible = false;
                 }
             }
         }
         public void BtnModificarClick(object sender, EventArgs e)
         {
-            btnEliminar.Visible = false;
-            if(Session["Mascota"] != null)
-                mascota = (EMascota)Session["Mascota"];
-            if (mascota != null && Validaciones.verificarSoloLetras(mascota.nombreMascota))
+            if(Page.IsValid)
             {
-                if (Session["Si"] != null && Session["Si"].ToString().Equals("Si"))
+                if(Session["Mascota"] != null)
+                    mascota = (EMascota)Session["Mascota"];
+                if (mascota != null && Validaciones.verificarSoloLetras(mascota.nombreMascota))
                 {
-                    EAdopcion adopcion = new EAdopcion();
-                    adopcion = (EAdopcion)Session["Adopcion"];
-                    adopcion.idVoluntario = int.Parse(Session["IdVoluntario"].ToString());
-                    adopcion.fecha = DateTime.Parse(DateTime.Now.ToShortDateString());
-                    EPersona persona = new EPersona();
-                    persona = (EPersona)Session["Dueño"];
-                    if (LogicaBDAdopcion.ModificarAdopcion(adopcion, persona))
+                    if (Session["Si"] != null && Session["Si"].ToString().Equals("Si"))
                     {
-                        txtNº.Text = "";
-                        pnlBuscar.Visible = true;
-                        pnlPorDocumento.Visible = true;
-                        pnlInfo.Visible = false;
-                        lblResultado1.Text = "Se registro correctamente";
-                        pnlCorrecto.Visible = true;
-                        pnlAtento.Visible = false;
-                        Session["Si"] = null;
-                        pnlBuscar.Visible = true;
-                        pnlDuenio.Visible = false;
-                        pnlMascota.Visible = false;
-                        pnlRegistrar.Visible = false;
-                        pnlAdopcion.Visible = false;
-                        pnlDatos.Visible = false;
-                        mascota = null;
-                        Session["na"] = -1;
+                        EAdopcion adopcion = new EAdopcion();
+                        adopcion = (EAdopcion)Session["Adopcion"];
+                        adopcion.idVoluntario = int.Parse(Session["IdVoluntario"].ToString());
+                        adopcion.fecha = DateTime.Parse(DateTime.Now.ToShortDateString());
+                        EPersona persona = new EPersona();
+                        persona = (EPersona)Session["Dueño"];
+                        if (LogicaBDAdopcion.ModificarAdopcion(adopcion, persona))
+                        {
+                            txtNº.Text = "";
+                            pnlBuscar.Visible = true;
+                            pnlPorDocumento.Visible = true;
+                            lblCorrecto.Text = "Cambios guardados correctamente";
+                            pnlCorrecto.Visible = true;
+                            Session["Si"] = null;
+                            pnlBuscar.Visible = true;
+                            pnlDuenio.Visible = false;
+                            pnlMascota.Visible = false;
+                            pnlRegistrar.Visible = false;
+                            pnlDatos.Visible = false;
+                            pnlbotones.Visible = false;
+                            mascota = null;
+                            Session["na"] = -1;
+                        }
+                        else
+                        {
+                            lblError.Text = "No se pudo registrar";
+                            pnlAtento.Visible = true;
+                            //txtNº.Text = "";
+                            //pnlBuscar.Visible = true;
+                            //pnlPorDocumento.Visible = true;
+                            //Session["Si"] = null;
+                            //pnlBuscar.Visible = true;
+                            //pnlDuenio.Visible = false;
+                            //pnlMascota.Visible = false;
+                            //pnlRegistrar.Visible = false;
+                            //pnlDatos.Visible = false;
+                            //mascota = null;
+                            //Session["na"] = -1;
+                        }
                     }
                     else
                     {
-                        pnlInfo.Visible = false;
-                        lblResultado3.Text = "No se pudo registrar";
-                        pnlCorrecto.Visible = false;
-                        pnlAtento.Visible = true;
-                        txtNº.Text = "";
-                        pnlBuscar.Visible = true;
-                        pnlPorDocumento.Visible = true;
-                        pnlInfo.Visible = false;
-                        pnlCorrecto.Visible = true;
-                        pnlAtento.Visible = false;
-                        Session["Si"] = null;
-                        pnlBuscar.Visible = true;
-                        pnlDuenio.Visible = false;
-                        pnlMascota.Visible = false;
-                        pnlRegistrar.Visible = false;
-                        pnlAdopcion.Visible = false;
-                        pnlDatos.Visible = false;
-                        mascota = null;
-                        Session["na"] = -1;
-                    }
-                }
-                else
-                {
-                    EAdopcion adopcion = new EAdopcion();
-                    EPersona persona = new EPersona();
-                    adopcion = (EAdopcion)Session["Adopcion"];
-                    persona = (EPersona)Session["Dueño"];
-                    if (ddlLocalidad.SelectedValue.Equals("0") && txtNombreMascota.Text == "")
-                    {
-                        Session["Dueño"] = persona;
-                        Session["Adopcion"] = adopcion;
-                        Session["Mascota"] = adopcion.mascota;
-                        Session["Modificar"] = "Si";
-                        pnlEliminar.Visible = false;
-                        Response.Redirect("Contrato.aspx");
-                    }
-                    else if (txtNombreMascota.Text != "" && ddlLocalidad.SelectedValue.Equals("0"))
-                    {
-                        adopcion.mascota.nombreMascota = txtNombreMascota.Text;
-                        Session["Dueño"] = persona;
-                        Session["Adopcion"] = adopcion;
-                        Session["Mascota"] = adopcion.mascota;
-                        Session["Modificar"] = "Si";
-                        pnlEliminar.Visible = false;
-                        Response.Redirect("Contrato.aspx");
-                    }
-                    else if (!ddlLocalidad.SelectedValue.Equals("0") && txtNombreMascota.Text == "")
-                    {
-                        if (!ddlBarrio.SelectedValue.Equals("0"))
+                        EAdopcion adopcion = new EAdopcion();
+                        EPersona persona = new EPersona();
+                        adopcion = (EAdopcion)Session["Adopcion"];
+                        persona = (EPersona)Session["Dueño"];
+                        if (ddlBarrio.SelectedValue.Equals("0") && txtNombreMascota.Text == "" && txtNºCalle.Text == "" && ddlCalle.SelectedValue.Equals("0"))
                         {
-                            if (!ddlCalle.SelectedValue.Equals("0"))
+                            Session["Dueño"] = persona;
+                            Session["Adopcion"] = adopcion;
+                            Session["Mascota"] = adopcion.mascota;
+                            Session["Modificar"] = "Si";
+                            pnlEliminar.Visible = false;
+                            Response.Redirect("Contrato.aspx");
+                        }
+                        else if (txtNombreMascota.Text != "" && ddlBarrio.SelectedValue.Equals("0") && txtNºCalle.Text == "" && ddlCalle.SelectedValue.Equals("0"))
+                        {
+                            adopcion.mascota.nombreMascota = txtNombreMascota.Text;
+                            Session["Dueño"] = persona;
+                            Session["Adopcion"] = adopcion;
+                            Session["Mascota"] = adopcion.mascota;
+                            Session["Modificar"] = "Si";
+                            pnlEliminar.Visible = false;
+                            Response.Redirect("Contrato.aspx");
+                        }
+                        else if (!ddlBarrio.SelectedValue.Equals("0") && txtNombreMascota.Text == "" || !ddlCalle.SelectedValue.Equals("0") && txtNombreMascota.Text == "" || txtNºCalle.Text != "" && txtNombreMascota.Text == "")
+                        {
+                            if (!ddlBarrio.SelectedValue.Equals("0") || !ddlCalle.SelectedValue.Equals("0") || txtNºCalle.Text == "")
                             {
                                 persona.nroCalle = (txtNºCalle.Text == "") ? 0 : (int)int.Parse(txtNºCalle.Text);
-                                persona.localidad.nombre = ddlLocalidad.SelectedItem.Text;
+                                persona.localidad.nombre = "CORDOBA CAPITAL";
                                 persona.barrio.nombre = ddlBarrio.SelectedItem.Text;
                                 persona.domicilio.nombre = ddlCalle.SelectedItem.Text;
-                                persona.localidad.idLocalidad = int.Parse(ddlLocalidad.SelectedValue);
+                                persona.localidad.idLocalidad = 1;
                                 persona.domicilio.idCalle = int.Parse(ddlCalle.SelectedValue);
                                 persona.barrio.idBarrio = int.Parse(ddlBarrio.SelectedValue);
                                 Session["Dueño"] = persona;
@@ -336,72 +289,42 @@ namespace SiGMA
                             else
                             {
                                 pnlInfo.Visible = true;
-                                lblResultado2.Text = "Debe seleccionar una calle";
-                                pnlAtento.Visible = false;
-                                pnlCorrecto.Visible = false;
+                                lblInfo.Text = "Complete los datos del domicilio";
                             }
                         }
-                        else
+                        else 
                         {
-                            pnlInfo.Visible = true;
-                            lblResultado2.Text = "Debe seleccionar un barrio";
-                            pnlAtento.Visible = false;
-                            pnlCorrecto.Visible = false;
+                            adopcion.mascota.nombreMascota = txtNombreMascota.Text;
+                            persona.localidad.idLocalidad = 1;
+                            persona.domicilio.idCalle = int.Parse(ddlCalle.SelectedValue);
+                            persona.barrio.idBarrio = int.Parse(ddlBarrio.SelectedValue);
+                            persona.localidad.nombre = "CORDOBA CAPITAL";
+                            persona.barrio.nombre = ddlBarrio.SelectedItem.Text;
+                            persona.domicilio.nombre = ddlCalle.SelectedItem.Text;
+                            persona.nroCalle = (txtNºCalle.Text == "") ? 0 : (int)int.Parse(txtNºCalle.Text);
+                            Session["Dueño"] = persona;
+                            Session["Adopcion"] = adopcion;
+                            Session["Mascota"] = adopcion.mascota;
+                            Session["Modificar"] = "Si";
+                            pnlEliminar.Visible = false;
+                            Response.Redirect("Contrato.aspx");
                         }
                     }
-                    else
-                    {
-                        adopcion.mascota.nombreMascota = txtNombreMascota.Text;
-                        persona.localidad.idLocalidad = int.Parse(ddlLocalidad.SelectedValue);
-                        persona.domicilio.idCalle = int.Parse(ddlCalle.SelectedValue);
-                        persona.barrio.idBarrio = int.Parse(ddlBarrio.SelectedValue);
-                        persona.localidad.nombre = ddlLocalidad.SelectedItem.Text;
-                        persona.barrio.nombre = ddlBarrio.SelectedItem.Text;
-                        persona.domicilio.nombre = ddlCalle.SelectedItem.Text;
-                        persona.nroCalle = (txtNºCalle.Text == "") ? 0 : (int)int.Parse(txtNºCalle.Text);
-                        Session["Dueño"] = persona;
-                        Session["Adopcion"] = adopcion;
-                        Session["Mascota"] = adopcion.mascota;
-                        Session["Modificar"] = "Si";
-                        pnlEliminar.Visible = false;
-                        Response.Redirect("Contrato.aspx");
-                    }
+                }
+                else
+                {
+                    lblInfo.Text = "Debe ingresar un nombre valido";
+                    pnlInfo.Visible = true;
                 }
             }
-            else
-            {
-                lblResultado2.Text = "Debe ingresar un nombre valido";
-                pnlAtento.Visible = false;
-                pnlInfo.Visible = true;
-                pnlCorrecto.Visible = false;
-            }
         }
-        //public void DdlBarrio_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    pnlAtento.Visible = false;
-        //    pnlCorrecto.Visible = false;
-        //    if (!ddlLocalidad.SelectedValue.Equals("0"))
-        //    {
-        //        ddlBarrio.Items.Clear();
-        //        CargarCombos.cargarBarrio(ref ddlBarrio, int.Parse(ddlLocalidad.SelectedValue.ToString()));
-        //        pnlInfo.Visible = false;
-        //        ddlCalle.Items.Clear();
-        //        CargarCombos.cargarCalles(ref ddlCalle, int.Parse(ddlLocalidad.SelectedValue.ToString()));
-        //    }
-        //    else
-        //    {
-        //        ddlCalle.Items.Clear();
-        //        ddlCalle.Items.Add(new ListItem("SIN ASIGNAR", "0"));
-        //        ddlBarrio.Items.Clear();
-        //        ddlBarrio.Items.Add(new ListItem("SIN ASIGNAR", "0"));
-        //    }
-        //}
+
         public void BtnEliminarClick(object sender, EventArgs e)
         {
             EAdopcion adopcion = (EAdopcion)Session["Adopcion"];
             if (LogicaBDAdopcion.EliminarAdopcion(adopcion))
             {
-                lblResultado1.Text = "Se elimino correctamente";
+                lblCorrecto.Text = "Se elimino correctamente";
                 pnlAtento.Visible = false;
                 pnlInfo.Visible = false;
                 pnlCorrecto.Visible = true;
@@ -412,24 +335,18 @@ namespace SiGMA
                 pnlDuenio.Visible = false;
                 pnlMascota.Visible = false;
                 pnlRegistrar.Visible = false;
-                pnlAdopcion.Visible = false;
                 pnlDatos.Visible = false;
-                btnEliminar.Visible = false;
                 pnlEliminar.Visible = false;
-                btnRegistrar.Visible = false;
                 btnBuscar.Visible = true;
                 pnlPorAdopcion.Visible = false;
                 rbPorDNI.Checked = true;
             }
             else
             {
-                lblResultado3.Text = "No se pudo eliminar";
+                lblError.Text = "No se pudo eliminar";
                 pnlAtento.Visible = true;
-                pnlInfo.Visible = false;
                 pnlCorrecto.Visible = false;
-                btnEliminar.Visible = false;
                 pnlEliminar.Visible = false;
-                btnRegistrar.Visible = false;
             }
         }
         protected void lstResultados_SelectedIndexChanged(object sender, EventArgs e)
@@ -444,7 +361,7 @@ namespace SiGMA
             txtNro.Text = (persona.nroCalle == null) ? "0" : persona.nroCalle.ToString();
             txtNombreM.Text = adopcion.mascota.nombreMascota;
             txtNombreD.Text = persona.nombre;
-            txtNºAdopcion.Text = adopcion.idAdopcion.ToString();
+            txtApellidoD.Text = persona.apellido;
             txtNumeroDocumento.Text = persona.nroDocumento;
             txtNº.Text = persona.nroDocumento;
             txtLocalidad.Text = persona.localidad.nombre;
@@ -460,41 +377,39 @@ namespace SiGMA
             Session["Mascota"] = adopcion.mascota;
             Session["na"] = int.Parse(lstResultados.SelectedValue);
             pnlDatos.Visible = true;
-            if(lblTitulo.Text.Equals("Consultar Adopción")){
+            pnlbotones.Visible = true;
+            if(lblTitulo.Text.Equals("Consultar Adopción /")){
                 pnlDatos.Visible = false;
-                btnRegistrar.Visible = false;
+                pnlRegistrar.Visible = false;
                 pnlEliminar.Visible = false;
             }
-            if(lblTitulo.Text.Equals("Modificar Adopción")){
-                btnRegistrar.Text = "Generar contrato";
-                btnRegistrar.Visible = true;
+            if(lblTitulo.Text.Equals("Modificar Adopción /")){
+                btnRegistrar.Text = "Generar Contrato";
+                pnlRegistrar.Visible = true;
                 pnlEliminar.Visible = true;
             }
             pnlPorDocumento.Visible = false;
             pnlPorAdopcion.Visible = false;
             pnlResultados.Visible = false;
             pnlBuscar.Visible = false;
+            btnBuscarOtro.Focus();
         }
         protected void ibtnBuscarOtro_Click(object sender, EventArgs args)
         {
             pnlBuscar.Visible = true;
             pnlPorDocumento.Visible = true;
             pnlPorAdopcion.Visible = false;
-            pnlAtento.Visible = false;
-            pnlInfo.Visible = false;
-            pnlCorrecto.Visible = false;
             pnlResultados.Visible = false;
             pnlMascota.Visible = false;
             pnlDuenio.Visible = false;
             pnlDatos.Visible = false;
-            pnlAdopcion.Visible = false;
+            pnlbotones.Visible = false;
             btnRegistrar.Text = "Generar Contrato";
             pnlEliminar.Visible = false;
-            btnRegistrar.Visible = false;
+            pnlRegistrar.Visible = false;
             txtNº.Text = "";
             txtNombre.Text = "";
             rbPorDNI.Checked = true;
-            pnlBuscar.Visible = true;
         }
     }
 }
