@@ -17,6 +17,9 @@ namespace SiGMA
             {
                 listarPedidosDifusion();
             }
+            pnlAtento.Visible = false;
+            pnlCorrecto.Visible = false;
+            pnlInfo.Visible = false;
             ponerImagen((byte[])Session["imagen"]);
         }
 
@@ -27,9 +30,10 @@ namespace SiGMA
             grvPedidos.DataSource = listPedidos;
             grvPedidos.DataBind();
             if (listPedidos.Count == 0)
-            {             
-                lblNoPedidos.Visible = true;                
-                SetFocus(lblNoPedidos);
+            {
+                lblInfo.Visible = true;
+                lblInfo.Text = "No hay pedidos para moderar";
+                SetFocus(lblInfo);
             }
         }
 
@@ -106,6 +110,7 @@ namespace SiGMA
                 pedido.perdida = entPerdida;
             }
             pnlDatos.Visible = true;
+            pnlResolucion.Visible = true;
             Session["PedidoDifusion"] = pedido;
         }
 
@@ -203,6 +208,7 @@ namespace SiGMA
                 {
                     listarPedidosDifusion();
                     pnlDatos.Visible = false;
+                    pnlResolucion.Visible = false;
                     ddlResolucion.SelectedIndex = 0;
                     txtRechazo.Text = "";
                     txtRechazo.Visible = false;
@@ -221,11 +227,6 @@ namespace SiGMA
             {
                 args.IsValid = true;
             }
-        }
-
-        protected void ibtnRegresar_Click(object sender, ImageClickEventArgs e)
-        {
-            Response.Redirect("_Difusion.aspx");
         }
     }
 }

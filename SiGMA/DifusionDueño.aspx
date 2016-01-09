@@ -44,7 +44,7 @@
                     <asp:GridView ID="grvPedidos" runat="server"
                         AutoGenerateColumns="False" AllowSorting="True" 
                         onsorting="grvPedidos_Sorting" Width="600px" HorizontalAlign="Center" Font-Size="Medium"
-                        CellPadding="2" CellSpacing="3" > 
+                        CellPadding="2" CellSpacing="3"> 
                         <RowStyle HorizontalAlign="Center" />
                         <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                         <Columns>

@@ -140,7 +140,7 @@
 								<i class="fa fa-twitter"></i><br>Difusión<span class="caret"></span>
 							</a>
 							<ul class="dropdown-menu dropdown-menu-left" role="menu">
-								<li><a href="RegistrarCampaña.aspx">Campañas</a></li>
+								<li><a href="RegistrarCampañas.aspx">Campañas</a></li>
 								<li><a href="ModerarPedidosDifusion.aspx">Pedidos</a></li>
 							</ul>
 						</li>

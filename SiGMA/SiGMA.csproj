@@ -266,6 +266,7 @@
     <Content Include="RecuperarContraseña.aspx" />
     <Content Include="RegistrarAdopcion.aspx" />
     <Content Include="RegistrarCampaña.aspx" />
+    <Content Include="RegistrarCampañas.aspx" />
     <Content Include="RegistrarHallazgo.aspx" />
     <Content Include="RegistrarHogarProvisorio.aspx" />
     <Content Include="RegistrarMascota.aspx" />
@@ -633,6 +634,13 @@
     </Compile>
     <Compile Include="RegistrarCampaña.aspx.designer.cs">
       <DependentUpon>RegistrarCampaña.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrarCampañas.aspx.cs">
+      <DependentUpon>RegistrarCampañas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegistrarCampañas.aspx.designer.cs">
+      <DependentUpon>RegistrarCampañas.aspx</DependentUpon>
     </Compile>
     <Compile Include="RegistrarHallazgo.aspx.cs">
       <DependentUpon>RegistrarHallazgo.aspx</DependentUpon>

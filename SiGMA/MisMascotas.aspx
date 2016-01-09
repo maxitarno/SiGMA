@@ -13,6 +13,28 @@
         function showDate() {
             $find("Date").show();
         }
+        function checkTextAreaMaxLength(textBox, e, length) {
+
+            var mLen = textBox["MaxLength"];
+            if (null == mLen)
+                mLen = length;
+
+            var maxLength = parseInt(mLen);
+            if (!checkSpecialKeys(e)) {
+                if (textBox.value.length > maxLength - 1) {
+                    if (window.event)//IE
+                        e.returnValue = false;
+                    else//Firefox
+                        e.preventDefault();
+                }
+            }
+        }
+        function checkSpecialKeys(e) {
+            if (e.keyCode != 8 && e.keyCode != 46 && e.keyCode != 37 && e.keyCode != 38 && e.keyCode != 39 && e.keyCode != 40)
+                return false;
+            else
+                return true;
+        }
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -183,12 +205,12 @@
                                 <div class="form-group">
                                     <label for="contact-name">Alimentación</label>
                                     <asp:TextBox ID="txtAlimentacionEspecial" runat="server"
-                                            Style="resize: none" TextMode="MultiLine" Enabled="True"></asp:TextBox>
+                                            Style="resize: none" TextMode="MultiLine" Enabled="True" onkeyDown="checkTextAreaMaxLength(this,event,'200');"></asp:TextBox>
                                 </div>
                                 <div class="form-group">
                                     <label for="contact-name">Observaciones</label>
                                      <asp:TextBox ID="txtObservaciones" runat="server"
-                                            Style="resize: none" TextMode="MultiLine" Enabled="True"></asp:TextBox>
+                                            Style="resize: none" TextMode="MultiLine" Enabled="True" onkeyDown="checkTextAreaMaxLength(this,event,'500');"></asp:TextBox>
                                 </div>
                                 <div class="form-group">
                                     <label for="contact-name">Fecha de nacimiento</label>

@@ -83,7 +83,7 @@
 							<a href="SerVoluntario.aspx"><i class="fa fa-home"></i><br>Voluntariado</a>
 						</li>
 						<li>
-							<a href="difusiondueño.aspx"><i class="fa fa-twitter"></i><br>Difusión</a>
+							<a href="DifusionDueño.aspx"><i class="fa fa-twitter"></i><br>Difusión</a>
 						</li>
 						<li>
 							<a href="VeterinariasBarrio.aspx"><i class="fa fa-medkit"></i><br>Veterinarias</a>
