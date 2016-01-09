@@ -162,8 +162,8 @@ namespace SiGMA
                     Session["imagen"] = mascota.imagen;
                     Handler1.AddMethod(ImageHandler_ObtenerImagenMascota);
                     imgprvw.Src = ResolveUrl("~/Handler1.ashx");
-                    imgprvw.Width = 250;
-                    imgprvw.Height = 206;
+                    imgprvw.Width = 255;
+                    imgprvw.Height = 210;
                 }
                 else
                 {

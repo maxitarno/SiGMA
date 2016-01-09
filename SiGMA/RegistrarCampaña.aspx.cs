@@ -20,6 +20,8 @@ namespace SiGMA
                 rnvFechaCampaña.MinimumValue = DateTime.Now.ToShortDateString();
                 rnvFechaCampaña.MaximumValue = DateTime.Now.AddMonths(6).ToShortDateString();
             }
+            pnlAtento.Visible = false;
+            pnlCorrecto.Visible = false;
         }
 
         protected void ibtnRegresar_Click(object sender, ImageClickEventArgs e)
@@ -50,7 +52,14 @@ namespace SiGMA
                 campaña.tipoCampaña = new ETipoCampaña();
                 campaña.tipoCampaña.idTipoCampaña = int.Parse(ddlTipoCampaña.SelectedValue);
                 campaña.tipoCampaña.descripcion = ddlTipoCampaña.SelectedItem.Text;
-                campaña.fecha = DateTime.Parse(txtFecha.Text);
+                var fecha = DateTime.Today;
+                if (DateTime.TryParse(txtFecha.Text, out fecha))
+                    campaña.fecha = Convert.ToDateTime(txtFecha.Text);
+                else
+                {
+                    lblInfo.Text = "Ingrese una fecha válida";
+                    pnlInfo.Visible = true;
+                }
                 campaña.lugar = txtLugar.Text;
                 campaña.hora = DateTime.Parse(txtHora.Text);
                 if (fuImagen.PostedFile.ContentLength != 0)
@@ -103,7 +112,7 @@ namespace SiGMA
                 catch (Exception)
                 {
                     pnlAtento.Visible = true;
-                    pnlCorrecto.Visible = true;
+                    pnlCorrecto.Visible = false;
                     lblError.Text = "Error al registrar la campaña";
                     SetFocus(pnlAtento);                    
                 }

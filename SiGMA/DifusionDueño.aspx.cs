@@ -21,6 +21,10 @@ namespace SiGMA
             {
                 listarPedidosDifusion();
             }
+            else 
+            {
+                pnlInfo.Visible = false;
+            }
         }
 
         private void listarPedidosDifusion()
@@ -30,14 +34,14 @@ namespace SiGMA
             grvPedidos.DataBind();
             if (listPedidos.Count == 0)
             {
-                lblNoPedidos.Visible = true;
-                SetFocus(lblNoPedidos);
+                pnlInfo.Visible = true;
+                SetFocus(lblInfo);
+                pnlPedidos.Visible = false;
             }
-        }
-
-        protected void ibtnRegresar_Click(object sender, ImageClickEventArgs e)
-        {
-            Response.Redirect("DefaultDueño.aspx");
+            else 
+            {
+                pnlPedidos.Visible = true;
+            }
         }
 
         protected void grvPedidos_Sorting(object sender, GridViewSortEventArgs e)

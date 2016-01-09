@@ -34,17 +34,17 @@
     <div class="panel panel-default">
         <div class="panel-body">
             <div class="col-md-4 col-md-offset-4">
-                <asp:Panel runat="server" id="pnlCorrecto" class="alert alert-dismissable alert-success" Visible=false>
+                <asp:Panel runat="server" id="pnlCorrecto" class="alert alert-dismissable alert-success" Visible="false">
                     <button class="close" type="button" data-dismiss="alert">
                         ×</button>
                         <asp:Label ID="lblCorrecto" runat="server" Text=""></asp:Label>
                 </asp:Panel>
-                <asp:Panel runat="server" id="pnlInfo" class="alert alert-dismissable alert-info" Visible=false>
+                <asp:Panel runat="server" id="pnlInfo" class="alert alert-dismissable alert-info" Visible="false">
                     <button class="close" type="button" data-dismiss="alert">
                         ×</button>
                         <asp:Label ID="lblInfo" runat="server" Text=""></asp:Label>
                 </asp:Panel>
-                <asp:Panel runat="server" id="pnlAtento" class="alert alert-dismissable alert-danger" Visible=false>
+                <asp:Panel runat="server" id="pnlAtento" class="alert alert-dismissable alert-danger" Visible="false">
                     <button class="close" type="button" data-dismiss="alert">
                         ×</button>
                         <asp:Label ID="lblError" runat="server" Text=""></asp:Label>

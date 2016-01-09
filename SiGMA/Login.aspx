@@ -1,4 +1,4 @@
-﻿<%@ Page Title="SIGMA" Language="C#" MasterPageFile="~/PaginaLogin.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="SiGMA.About" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/PaginaLogin.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="SiGMA.About" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
