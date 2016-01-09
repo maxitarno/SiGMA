@@ -153,5 +153,41 @@ namespace AccesoADatos
                 datos.Add(dato);
             }
         }
+        public static void HallazgosPorFecha(ref List<EDatos> datos)
+        {
+            SiGMAEntities mapa = Conexion.crearSegunServidor();
+            var consulta = from HallazgosBD in mapa.Hallazgos
+                           group HallazgosBD by new { HallazgosBD.fechaHoraHallazgo.Year } into a
+                           select new
+                           {
+                               fecha = a.Key.Year,
+                               cant = a.Count()
+                           };
+            foreach (var registro in consulta)
+            {
+                EDatos dato = new EDatos();
+                dato.cantidad = registro.cant;
+                dato.año = registro.fecha;
+                datos.Add(dato);
+            }
+        }
+        public static void AdopcionesPorFecha(ref List<EDatos> datos)
+        {
+            SiGMAEntities mapa = Conexion.crearSegunServidor();
+            var consulta = from AdopcionesBD in mapa.Adopciones
+                           group AdopcionesBD by new { AdopcionesBD.fechaAdopcion.Year } into a
+                           select new
+                           {
+                               fecha = a.Key.Year,
+                               cant = a.Count()
+                           };
+            foreach (var registro in consulta)
+            {
+                EDatos dato = new EDatos();
+                dato.cantidad = registro.cant;
+                dato.año = registro.fecha;
+                datos.Add(dato);
+            }
+        }
     }
 }

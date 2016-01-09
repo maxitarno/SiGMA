@@ -70,6 +70,8 @@
                                 <asp:ListItem Value="9" Text="Perdidas por barrio"></asp:ListItem>
                                 <asp:ListItem Text="Perdidas por sexo" Value="4"></asp:ListItem>
                                 <asp:ListItem Value="6" Text="Mascotas por sexo y edad"></asp:ListItem>
+                                <asp:ListItem Value="10" Text="Hallazgos por fecha"></asp:ListItem>
+                                <asp:ListItem Value="11" Text="Adopciones por fecha"></asp:ListItem>
                             </asp:DropDownList>
                         </div>
                     </div>

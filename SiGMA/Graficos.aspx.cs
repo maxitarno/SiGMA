@@ -147,6 +147,52 @@ namespace SiGMA
                 string pagina = "PerdidasPorBarrio.htm?nombre=" + nombre + "&cant=" + cantidad;
                 Response.Redirect(pagina);
             }
+            if (!ddlListado.SelectedValue.Equals("11"))
+            {
+                int i = 0;
+                string cant = "";
+                string fecha = "";
+                List<EDatos> datos = new List<EDatos>();
+                LogicaBDGraficos.AdopcionesPorFecha(ref datos);
+                foreach (var dato in datos)
+                {
+                    if (i != (datos.Count))
+                    {
+                        cant += dato.cantidad + ",";
+                        fecha += dato.año + ",";
+                    }
+                    else
+                    {
+                        cant += dato.cantidad;
+                        fecha += dato.año;
+                    }
+                }
+                string pagina = "AdopcionesPorFecha.htm?nombre=" + fecha + "&cant=" + cant;
+                Response.Redirect(pagina);
+            }
+            if (!ddlListado.SelectedValue.Equals("10"))
+            {
+                int i = 0;
+                string cant = "";
+                string fecha = "";
+                List<EDatos> datos = new List<EDatos>();
+                LogicaBDGraficos.AdopcionesPorFecha(ref datos);
+                foreach (var dato in datos)
+                {
+                    if (i != (datos.Count))
+                    {
+                        cant += dato.cantidad + ",";
+                        fecha += dato.año + ",";
+                    }
+                    else
+                    {
+                        cant += dato.cantidad;
+                        fecha += dato.año;
+                    }
+                }
+                string pagina = "HallazgosPorFecha.htm?nombre=" + fecha + "&cant=" + cant;
+                Response.Redirect(pagina);
+            }
         }
     }
 }

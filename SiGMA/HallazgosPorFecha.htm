@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+    <title></title>
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <script type="text/javascript" src="Scripts/jquery-2.1.3.js"></script>
+    <script type="text/javascript" src="Scripts/jsapi.js"></script>
+    <script type="text/javascript" src="Scripts/jQuery.print.js"></script>
+    <script type="text/javascript">
+        // Load the Visualization API and the piechart package.
+        google.load('visualization', '1', { 'packages': ['corechart'] });
+        // Set a callback to run when the Google Visualization API is loaded.
+        google.setOnLoadCallback(drawChart);
+
+        // Callback that creates and populates a data table,
+        // instantiates the pie chart, passes in the data and
+        // draws it.
+        var a = [];
+        var b = [];
+        var datos;
+        function drawChart() {
+            function getURLParameter(name) { return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [, ""])[1].replace(/\+/g, '%20')) || null }
+            a = getURLParameter("nombre").split(",");
+            b = getURLParameter("cant").split(",");
+            datos = new Array(a.length);
+            for (i = 0; i < a.length; i++) {
+                datos[i] = [a[i], parseInt(b[i])];
+            }
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Año');
+            data.addColumn('number', 'Cantidad');
+            data.addRows(datos);
+            // Set chart options
+            var options = {
+                'title': 'Cantidad de mascotas halladass por año',
+                'width': 500,
+                'height': 500,
+                'bar': {groupWidth: "95%"},
+                'legend': { position: "none" },
+            };
+            // Instantiate and draw our chart, passing in some options.
+            var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+            chart.draw(data, options);
+        }
+    </script>
+    <script type="text/javascript">
+        function atras() {
+            location.href = "Graficos.aspx";
+        }
+    </script>
+</head>
+    <body>
+    <script type="text/javascript">
+
+        // When the document is ready, initialize the link so
+        // that when it is clicked, the printable area of the
+        // page will print.
+        $(
+            function () {
+
+                // Hook up the print link.
+                $("a")
+                    .attr("href", "javascript:void( 0 )")
+                    .click(
+                        function () {
+                            // Print the DIV.
+                            $(".printable").print();
+
+                            // Cancel click event.
+                            return (false);
+                        }
+                        )
+                ;
+
+            }
+            );
+  
+    </script>
+    <div class="printable">
+        <div class="col-md-12">
+            <div class="col-md-8 col-md-offset-2">
+                <center>
+                    <h1>
+                        Estadisticas de las mascotas 
+                        <br />
+                        Este grafico la cantidad de mascotas adoptadas por año.
+                        <br />
+                        <img alt="" src="imagenes/registraradopcion.jpg" width="100px" height="100px" />
+                    </h1>
+                </center>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-4 col-md-offset-4">
+                <center>
+                    <div id="chart_div">
+
+                    </div>
+                </center>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+            <div class="col-md-8 col-md-offset-2">
+                <center>
+                    <p>
+                        <a>Imprimir</a>
+                    </p>
+                </center>
+            </div>
+        </div>
+    <div class="col-md-12">
+            <center>
+                <div class="col-md-8 col-md-offset-2">
+                    <img alt="volver" src="imagenes/volver.png" onclick="atras()" />
+                </div>
+            </center>
+        </div>
+</body>
+</html>

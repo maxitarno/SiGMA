@@ -66,6 +66,7 @@
     <Content Include="Administracion.aspx" />
     <Content Include="Adopciones.aspx" />
     <Content Include="AdopcionesPorBarrio.htm" />
+    <Content Include="AdopcionesPorFecha.htm" />
     <Content Include="AdopcionesPorSexo.htm" />
     <Content Include="AsignarMascotaHogar.aspx" />
     <Content Include="AsignarPermisos.aspx" />
@@ -231,6 +232,7 @@
     <Content Include="Graficos.aspx" />
     <Content Include="Hallazgos.aspx" />
     <Content Include="HallazgosPorBarrio.htm" />
+    <Content Include="HallazgosPorFecha.htm" />
     <Content Include="HallazgosPorSexo.htm" />
     <Content Include="imagenes\graficos.jpg" />
     <Content Include="imagenes\hogar %2835x35%29.jpg" />
