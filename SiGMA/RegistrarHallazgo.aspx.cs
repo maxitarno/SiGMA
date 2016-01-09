@@ -289,7 +289,7 @@ namespace SiGMA
                     mascota.edad.idEdad = int.Parse(ddlEdad.SelectedValue);
                     mascota.estado = new EEstado();
                     //Hardcode!!!!
-                    mascota.estado.idEstado = 2;
+                    mascota.estado.idEstado = 2; //Hallada
                     if (fuImagen.PostedFile.ContentLength != 0)
                     {
                         if (!GestorImagen.verificarTamaño(fuImagen.PostedFile.ContentLength))
