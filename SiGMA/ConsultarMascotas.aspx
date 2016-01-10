@@ -166,7 +166,7 @@
                                 <div class="form-group">
                                         <label for="contact-name">Estado</label>
                                         <asp:DropDownList ID="ddlEstado" runat="server" Width="100%"
-                                            AppendDataBoundItems="true" Enabled="false">
+                                            AppendDataBoundItems="true" Enabled="true">
                                         </asp:DropDownList>
                                         <asp:CustomValidator ID="cvEstado" runat="server" ErrorMessage="Seleccione un estado" 
                                         ControlToValidate="ddlEstado" ValidationGroup="1" 
@@ -246,7 +246,7 @@
                     <div style="text-align:center;">
                         <table style="margin: 0 auto;">
                             <tr>
-                                <td><asp:Button ID="btnBuscarOtro" runat="server" Text="Buscar Otra Mascota" OnClick="BtnBuscarOtroClick" Width="180px"/> 
+                                <td><asp:Button ID="btnBuscarOtro" runat="server" Text="Buscar Otra Mascota" OnClick="BtnBuscarOtroClick" CausesValidation="false" Width="180px"/> 
                                     &nbsp;&nbsp;&nbsp; </td>
                                 <td><asp:Button ID="btnModificar" runat="server" Text="Guardar Datos" OnClick="BtnModificarClick" Width="180px"/> 
                                     &nbsp;&nbsp;&nbsp; </td>
@@ -254,6 +254,9 @@
                                     &nbsp;&nbsp;&nbsp; </td>
                                 <td><asp:Button ID="btnAdopcion" runat="server" Text="Poner en Adopcion" Width="180px" OnClick="btnAdopcion_Click" CausesValidation="false" 
                                 OnClientClick="if (!confirm('¿Está seguro que desea poner la mascota en adopcion?')){ return false; } else { return true; }" />
+                                    &nbsp;&nbsp;&nbsp; </td>
+                                <td><asp:Button ID="btnAsignarHogar" runat="server" Text="Asignar Hogar" 
+                                        visible="false" Width="180px" onclick="btnAsignarHogar_Click"/> 
                                     &nbsp;&nbsp;&nbsp; </td>
                                 <td><asp:Button ID="btnEliminar" runat="server" Text="Eliminar" Width="180px" OnClick="BtnEliminarClick" CausesValidation="false" 
                                 OnClientClick="if (!confirm('¿Está seguro que desea eliminar del sistema a la mascota?')){ return false; } else { return true; }" /></td>

@@ -60,6 +60,7 @@
     <Compile Include="EHogarProvisorio.cs" />
     <Compile Include="ELocalidad.cs" />
     <Compile Include="EMascota.cs" />
+    <Compile Include="EOcupacionHogar.cs" />
     <Compile Include="EPedidoDifusion.cs" />
     <Compile Include="EPerdida.cs" />
     <Compile Include="EPersona.cs" />

@@ -222,17 +222,46 @@ namespace AccesoADatos
         {
             EVoluntario voluntario = new EVoluntario();
             SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
-            IQueryable<Voluntarios> consulta = from voluntariosBD in mapaEntidades.Voluntarios
-                                   where (voluntariosBD.idVoluntario == idVoluntario)
-                                   select voluntariosBD;
+            var consulta = from voluntariosBD in mapaEntidades.Voluntarios
+                           join personasBD in mapaEntidades.Personas on voluntariosBD.idPersona equals personasBD.idPersona
+                           join barriosBD in mapaEntidades.Barrios on personasBD.idBarrio equals barriosBD.idBarrio into group1
+                           from G1 in group1.DefaultIfEmpty(null)
+                           join callesBD in mapaEntidades.Calles on personasBD.idCalle equals callesBD.idCalle into group2
+                           from G2 in group2.DefaultIfEmpty(null)
+                           where (voluntariosBD.idVoluntario == idVoluntario)
+                           select new
+                           {
+                               voluntariosBD,
+                               personasBD.nombre,
+                               personasBD.apellido,
+                               personasBD.nroCalle,
+                               personasBD.telefonoCelular,
+                               personasBD.telefonoFijo,
+                               idBarrio = (G1 == null) ? 0 : G1.idBarrio,
+                               nombreBarrio = (G1 == null) ? null : G1.nombre,
+                               idCalle = (G2 == null) ? 0 : G2.idCalle,
+                               nombreCalle = (G2 == null) ? null : G2.nombre
+                           };
             try
             {
                 foreach (var registro in consulta)
                 {
-                    voluntario.idEstado = registro.idEstado;
-                    voluntario.idVoluntario = registro.idVoluntario;
-                    voluntario.disponibilidadHoraria = registro.disponibilidadHoraria;
-                    voluntario.tipoVoluntario = registro.tipoVoluntario;
+                    voluntario.idEstado = registro.voluntariosBD.idEstado;
+                    voluntario.idVoluntario = registro.voluntariosBD.idVoluntario;
+                    voluntario.disponibilidadHoraria = registro.voluntariosBD.disponibilidadHoraria;
+                    voluntario.tipoVoluntario = registro.voluntariosBD.tipoVoluntario;
+                    voluntario.persona = new EPersona();
+                    voluntario.persona.apellido = registro.apellido;
+                    voluntario.persona.nombre = registro.nombre;
+                    voluntario.persona.nroCalle = registro.nroCalle;
+                    voluntario.persona.telefonoCelular = registro.telefonoCelular;
+                    voluntario.persona.telefonoFijo = registro.telefonoFijo;
+                    voluntario.persona.barrio = new EBarrio();
+                    voluntario.persona.barrio.idBarrio = registro.idBarrio;
+                    voluntario.persona.barrio.nombre = registro.nombreBarrio;
+                    voluntario.persona.domicilio = new ECalle();
+                    voluntario.persona.domicilio.idCalle = registro.idCalle;
+                    voluntario.persona.domicilio.nombre = registro.nombreCalle;
                 }
             }
             catch (System.Data.EntityCommandCompilationException exc)

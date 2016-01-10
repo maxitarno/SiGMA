@@ -1127,5 +1127,21 @@ namespace AccesoADatos
             }
         }
 
+        //Metodo para verificar si una mascota esta en hogar
+        public static bool verificarMascotaEnHogar(EMascota mascota)
+        {
+            SiGMAEntities mapa = Conexion.crearSegunServidor();
+            var ocupacion = mapa.OcupacionesXHogaresProvisorios.Where
+                   (o => o.idMascota == mascota.idMascota && o.fechaSalida == null);
+            if (ocupacion.Count() != 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
     }
 }

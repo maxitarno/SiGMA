@@ -98,14 +98,7 @@
                                     <label for="contact-name">Temperamento</label>
                                     <asp:Label ID="lblTemperamento"
                                         runat="server" Text="lblTemperamento" Width="100%"></asp:Label>
-                                </div>
-                                <div>
-                                    <label for="contact-name">Fecha de ingreso</label>
-                                    <asp:TextBox ID="txtFecha" runat="server" onclick="showDate();" />
-                                    <ajaxToolkit:CalendarExtender ID="CalendarExtender1" BehaviorID="Date"
-                                    runat="server" TargetControlID="txtFecha" PopupPosition="BottomLeft" Animated="true" >
-                                    </ajaxToolkit:CalendarExtender>                                    
-                                </div>
+                                </div>                               
                                 <div class="panel panel-default" style="margin-top:10px">
                                     <div class="panel-heading">
                                         Hogares
@@ -144,7 +137,7 @@
                                                 </td>                                                
                                                 <td class="btn pull-right">
                                                     <asp:Button ID="btnBuscarHogares" runat="server" Text="Buscar" 
-                                                        onclick="btnBuscarHogares_Click" />
+                                                        onclick="btnBuscarHogares_Click" CausesValidation="False" />
                                                 </td>
                                             </tr>
                                         </table>
@@ -152,7 +145,7 @@
                                             <tr>
                                                 <td>
                                                     <asp:GridView ID="grvHogares" runat="server" AutoGenerateColumns="False" 
-                                                        Visible="False" Width="383px">
+                                                        Visible="False" Width="383px" onrowcommand="grvHogares_RowCommand">
                                                         <Columns>
                                                             <asp:BoundField DataField="voluntario.persona.nombre" HeaderText="Nombre" 
                                                                 Visible="False" />
@@ -175,39 +168,72 @@
                                                             <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                                             </asp:BoundField>
+                                                            <asp:ButtonField ButtonType="Button" Text="+" />
+                                                            <asp:BoundField DataField="voluntario.idVoluntario">
+                                                            <HeaderStyle CssClass="hidden" />
+                                                            <ItemStyle CssClass="hidden" />
+                                                            </asp:BoundField>
+                                                            <asp:BoundField DataField="idHogar">
+                                                            <HeaderStyle CssClass="hidden" />
+                                                            <ItemStyle CssClass="hidden" />
+                                                            </asp:BoundField>
                                                         </Columns>
                                                     </asp:GridView>
                                                 </td>
                                             </tr>
                                         </table>
                                         <asp:Label ID="lblNoHogares" runat="server" visible="false" Text = "No hay hogares disponibles que cumplan con los criterios"></asp:Label>
+                                        <asp:Panel ID="pnlDatosVoluntario" runat="server" visible="false">
+                                        <table>
+                                            <tr>
+                                            <td>
+                                                <asp:Label ID="lblNombreVoluntario" runat="server" Text="Nombre: "></asp:Label>
+                                            </td>
+                                            </tr>
+                                            <tr>
+                                            <td>
+                                                <asp:Label ID="lblDireccion" runat="server" Text="Direccion: "></asp:Label>
+                                            </td>
+                                            </tr>
+                                            <tr>
+                                            <td>
+                                                <asp:Label ID="lblBarrio" runat="server" Text="Barrio: "></asp:Label>
+                                            </td>
+                                            </tr>
+                                            <tr>
+                                            <td>
+                                                <asp:Label ID="lblTelefonoFijo" runat="server" Text="Telefono fijo: "></asp:Label>
+                                            </td>
+                                            </tr>
+                                            <tr>
+                                            <td>
+                                                <asp:Label ID="lblTelefonoCel" runat="server" Text="Celular: "></asp:Label>
+                                            </td>
+                                            </tr>                                            
+                                        </table>
+                                        </asp:Panel>                                         
                                     </div>
-                                </div>                               
+                                </div>
+                                <asp:Panel ID="pnlAsignar" runat="server" visible="false"> 
+                                <div>
+                                            <label for="contact-name">Fecha de ingreso</label>
+                                            <asp:TextBox ID="txtFecha" runat="server" onclick="showDate();" />
+                                            <ajaxToolkit:CalendarExtender ID="CalendarExtender1" BehaviorID="Date"
+                                            runat="server" TargetControlID="txtFecha" PopupPosition="BottomLeft" Animated="true" >
+                                            </ajaxToolkit:CalendarExtender>
+                                            <asp:RequiredFieldValidator ID="rfvFecha" runat="server" ForeColor="Red" 
+                                            ErrorMessage="RequiredFieldValidator" SetFocusOnError="True"   ControlToValidate="txtFecha" 
+                                            Text="Ingrese una fecha"></asp:RequiredFieldValidator>
+                                            </div>
+                                            <asp:Button ID="btnAsignar" runat="server" Text="Asignar" 
+                                                onclick="btnAsignar_Click" /> 
+                                     </asp:Panel>                             
                             </asp:Panel>
                         </div>
 	                </div>
 	            </div>
 	        </div>
         </div>
-        
-        <div class="container">
-            <%--<asp:Panel ID="pnlbotones" runat="server" Visible="false" >
-                <div class="contact-form">
-                    <div style="text-align:center;">
-                        <table style="margin: 0 auto;">
-                            <tr>
-                                <td><asp:Button ID="btnModificar" runat="server" Text="Guardar Datos" OnClick="BtnModificarClick" Width="180px"/> 
-                                    &nbsp;&nbsp;&nbsp; </td>
-                                <td><asp:Button ID="btnGenerarQR" runat="server" Text="Generar Código QR" OnClick="btnGenerarQR_Click" Width="180px"/> 
-                                    &nbsp;&nbsp;&nbsp; </td>
-                                <td><asp:Button ID="btnAdopcion" runat="server" Text="Poner en Adopcion" Width="180px" OnClick="btnAdopcion_Click" CausesValidation="false" 
-                                OnClientClick="if (!confirm('¿Está seguro que desea poner la mascota en adopcion?')){ return false; } else { return true; }" /> 
-                                    &nbsp;&nbsp;&nbsp; </td>
-                                <td><asp:Button ID="btnPerdida" runat="server" Text="Registrar Pérdida" CausesValidation="false" Width="180px" onclick="btnPerdida_Click"/></td>
-                            </tr>
-                        </table>
-                    </div>   
-                </div> 
-            </asp:Panel>  --%> 
-        </div>
+    <asp:Label
+        ID="lblIdMascota" Visible="false" runat="server" Text=""></asp:Label>  
 </asp:Content>

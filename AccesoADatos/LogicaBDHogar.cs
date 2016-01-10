@@ -3,11 +3,78 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Entidades;
+using System.Transactions;
 
 namespace AccesoADatos
 {
     public class LogicaBDHogar
     {
+        public static void registrarOcupacion(EOcupacionHogar ocupacion)
+        {
+            using (TransactionScope transaccion = new TransactionScope())
+            {
+                try
+                {
+                    actualizarDisponibilidad(ocupacion.hogar, "Asignacion");
+                    SiGMAEntities mapa = Conexion.crearSegunServidor();
+                    OcupacionesXHogaresProvisorios nuevaOcupacion = new OcupacionesXHogaresProvisorios();
+                    nuevaOcupacion.fechaIngreso = ocupacion.fechaIngreso;
+                    nuevaOcupacion.idHogarProvisorio = ocupacion.hogar.idHogar;
+                    nuevaOcupacion.idMascota = ocupacion.mascota.idMascota;
+                    mapa.AddToOcupacionesXHogaresProvisorios(nuevaOcupacion);
+                    var hogarBD = mapa.HogaresProvisorios.Where(o => o.idHogarProvisorio == ocupacion.hogar.idHogar);
+                    if (hogarBD.Count() != 0)
+                    {
+                        hogarBD.First().disponibilidad = ocupacion.hogar.disponibilidad;
+                        hogarBD.First().idEstado = ocupacion.hogar.estado.idEstado;
+                    }
+                    mapa.SaveChanges();
+                    transaccion.Complete();
+                }
+                catch (Exception)
+                {
+                    transaccion.Dispose();
+                    throw;
+                }
+            }
+        }
+
+        /* Metodo para actualizar la disponibilidad de un hogar, dependiendo del string tipoTransaccion("Asignacion" o "Liberacion")
+        si tipoTransaccion == "Asignacion", se restara 1 a la disponibilidad del hogar y cambiara de estado
+        si tipoTransaccion == "Liberacion", se sumara 1 a la disponibilidad del hogar y cambiara de estado */
+        private static void actualizarDisponibilidad(EHogarProvisorio hogar, string tipoTransaccion)
+        {
+            int nuevaDisponibilidad = 0;
+            if (tipoTransaccion == "Asignacion")
+            {
+                nuevaDisponibilidad = hogar.disponibilidad - 1;
+                if (nuevaDisponibilidad == 0)
+                {
+                    hogar.estado = LogicaBDEstado.buscarEstado(new EEstado { ambito = "Hogar", nombreEstado = "Ocupado" });
+                }
+                else
+                {
+                    hogar.estado = LogicaBDEstado.buscarEstado(new EEstado { ambito = "Hogar", nombreEstado = "Disponible Parcialmente" });
+                }
+            }
+            else
+            {
+                if (tipoTransaccion == "Liberacion")
+                {
+                    nuevaDisponibilidad = hogar.disponibilidad + 1;
+                    if (nuevaDisponibilidad == hogar.cantMascotas)
+                    {
+                        hogar.estado = LogicaBDEstado.buscarEstado(new EEstado { ambito = "Hogar", nombreEstado = "Disponible" });
+                    }
+                    else
+                    {
+                        hogar.estado = LogicaBDEstado.buscarEstado(new EEstado { ambito = "Hogar", nombreEstado = "Disponible Parcialmente" });
+                    }
+                }
+            }
+            hogar.disponibilidad = nuevaDisponibilidad;           
+        }
+
         public static void LiberarHogar(int id, DateTime fecha, ref SiGMAEntities mapa)
         {
             try
@@ -86,6 +153,7 @@ namespace AccesoADatos
             }
             catch (Exception)
             {
+                throw;
             }
         }
 

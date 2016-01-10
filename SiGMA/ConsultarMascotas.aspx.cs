@@ -623,6 +623,17 @@ namespace SiGMA
                 if (mascota != null)
                 {
                     ddlEstado.SelectedValue = mascota.estado.idEstado.ToString();
+                    if (ddlEstado.SelectedValue == "2" || ddlEstado.SelectedValue == "4")
+                    {
+                        if (LogicaBDMascota.verificarMascotaEnHogar(mascota))
+                        {
+                            btnAsignarHogar.Visible = false;
+                        }
+                        else
+                        {
+                            btnAsignarHogar.Visible = true;
+                        }
+                    }
                     txtAlimentacionEspecial.Text = mascota.alimentacionEspecial;
                     ddlCaracter.SelectedValue = mascota.caracter.idCaracter.ToString();
                     txtCategoria.Text = mascota.raza.CategoriaRaza.nombreCategoriaRaza;
@@ -735,6 +746,14 @@ namespace SiGMA
         protected void cvMascota_ServerValidate(object source, ServerValidateEventArgs args)
         {
             args.IsValid = Validaciones.verificarSoloLetras(txtMascota.Text);
+        }
+
+        protected void btnAsignarHogar_Click(object sender, EventArgs e)
+        {
+            if (Session["idMascota"] != null || Session["idMascota"].ToString() != "0")
+            {
+                Response.Redirect("~/AsignarMascotaHogar.aspx");
+            }
         }
     }
 }

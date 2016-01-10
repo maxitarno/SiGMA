@@ -36,8 +36,8 @@ namespace AccesoADatos
         {
             List<EBarrio> barrios = new List<EBarrio>();
             SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
-            IQueryable<Barrios> consulta = from BarriosDB in mapaEntidades.Barrios
-                                           select BarriosDB;
+            IQueryable<Barrios> consulta = (from BarriosDB in mapaEntidades.Barrios
+                                           select BarriosDB).OrderBy(x => x.nombre);
             try
             {
                 foreach (var registro in consulta)

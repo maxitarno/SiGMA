@@ -144,8 +144,8 @@
                              <div class="form-group">
                                  <label for="contact-name">¿Tiene niños en el hogar?</label>
                                  <asp:DropDownList ID="ddlTieneNinios" runat="server" Width="100%">
-                                    <asp:ListItem Text="Si" Value="1"></asp:ListItem>
-                                    <asp:ListItem Text="No" Value="2"></asp:ListItem>
+                                    <asp:ListItem Text="Si" Value="Si"></asp:ListItem>
+                                    <asp:ListItem Text="No" Value="No"></asp:ListItem>
                                  </asp:DropDownList>
                              </div>
                              <asp:Button ID="btnActualizarHogar" Width="180px" runat="server" Text="Actualizar Hogar" onclick="btnActualizarHogar_Click"/>
