@@ -13,10 +13,13 @@ namespace SiGMA
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["UsuarioLogueado"] == null)
+            if (Session["UsuarioLogueado"] != null)
             {
-                Response.Redirect("Login.aspx");
+                if (!LogicaBDRol.verificarPermisoVisualizacion(Session["UsuarioLogueado"].ToString(), "PedidosDifusion"))
+                    Response.Redirect("PermisoInsuficiente.aspx");
             }
+            else
+                Response.Redirect("Login.aspx");
             if (!Page.IsPostBack)
             {
                 listarPedidosDifusion();

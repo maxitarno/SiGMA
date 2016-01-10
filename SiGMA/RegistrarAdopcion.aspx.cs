@@ -17,12 +17,10 @@ namespace SiGMA
             {
                 if (Session["UsuarioLogueado"] != null)
                 {
-                    if (!LogicaBDRol.verificarPermisoVisualizacion(Session["UsuarioLogueado"].ToString(), "RegistrarMascota.aspx"))
+                    if (!LogicaBDRol.verificarPermisoVisualizacion(Session["UsuarioLogueado"].ToString(), "RegistrarAdopcion.aspx"))
                         Response.Redirect("PermisosInsuficientes.aspx");
-                    if (!LogicaBDRol.verificarPermisosGrabacion(Session["UsuarioLogueado"].ToString(), "RegistrarMascota.aspx"))
-                    {
-                        btnRegistrar.Visible = true;
-                    }
+                    if (!LogicaBDRol.verificarPermisosGrabacion(Session["UsuarioLogueado"].ToString(), "RegistrarAdopcion.aspx"))
+                        btnRegistrar.Visible = false;
                 }
                 else
                 {

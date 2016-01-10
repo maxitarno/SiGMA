@@ -4,7 +4,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True">
     </asp:ScriptManager>
-<div class="page-title-container">
+    <div class="page-title-container">
         <div class="container">
             <div class="row">
                 <div class="col-sm-12 wow fadeIn">

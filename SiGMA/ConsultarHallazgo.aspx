@@ -176,8 +176,10 @@
                                 Rows="7" Columns="30" CssClass="TextBox" Width="100%" onkeyDown="checkTextAreaMaxLength(this,event,'250');"></asp:TextBox>
 	                        </div>
                             <div class="form-group">
-                                <asp:Button ID="btnModificarHallazgo" runat="server" Text="Modificar"
-                                    OnClick="btnModificarHallazgo_Click" Width="180px"/>
+                                <asp:Panel ID="pnlBtnModificar" runat="server" Visible="false">
+                                    <asp:Button ID="btnModificarHallazgo" runat="server" Text="Modificar"
+                                        OnClick="btnModificarHallazgo_Click" Width="180px"/>
+                                </asp:Panel>
                             </div>
 	                    </div>
 	                </div>

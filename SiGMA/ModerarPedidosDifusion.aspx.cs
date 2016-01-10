@@ -15,6 +15,17 @@ namespace SiGMA
         {
             if (!Page.IsPostBack)
             {
+                if (Session["UsuarioLogueado"] != null)
+                {
+                    if (!LogicaBDRol.verificarPermisoVisualizacion(Session["UsuarioLogueado"].ToString(), "PedidosDifusion"))
+                        Response.Redirect("PermisosInsuficientes.aspx");
+                    if (!LogicaBDRol.verificarPermisosGrabacion(Session["UsuarioLogueado"].ToString(), "PedidosDifusion"))
+                        btnAceptar.Visible = false;
+                }
+                else
+                {
+                    Response.Redirect("Login.aspx");
+                }
                 listarPedidosDifusion();
             }
             pnlAtento.Visible = false;

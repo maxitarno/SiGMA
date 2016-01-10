@@ -18,11 +18,11 @@ namespace SiGMA
             {
                 if (Session["UsuarioLogueado"] != null)
                 {
-                    if (!LogicaBDRol.verificarPermisoVisualizacion(Session["UsuarioLogueado"].ToString(), "Administracion"))
+                    if (!LogicaBDRol.verificarPermisoVisualizacion(Session["UsuarioLogueado"].ToString(), "RolesPermisos"))
                         Response.Redirect("PermisosInsuficientes.aspx");
-                    if (LogicaBDRol.verificarPermisosGrabacion(Session["UsuarioLogueado"].ToString(), "Administracion"))
+                    if (LogicaBDRol.verificarPermisosGrabacion(Session["UsuarioLogueado"].ToString(), "RolesPermisos"))
                         btnAsignarRol.Visible = true;
-                    if (LogicaBDRol.verificarPermisosEliminacion(Session["UsuarioLogueado"].ToString(), "Administracion"))
+                    if (LogicaBDRol.verificarPermisosEliminacion(Session["UsuarioLogueado"].ToString(), "RolesPermisos"))
                         btnEliminarRol.Visible = true;
                 }
                 else
@@ -30,6 +30,9 @@ namespace SiGMA
                     Response.Redirect("Login.aspx"); 
                 }
             }
+            pnlAtento.Visible = false;
+            pnlCorrecto.Visible = false;
+            pnlInfo.Visible = false;
         }
 
         protected void btnBuscar_Click(object sender, EventArgs e)
@@ -46,8 +49,6 @@ namespace SiGMA
             }
             else if (usuarios.Count == 0)
             {
-                pnlAtento.Visible = false;
-                pnlCorrecto.Visible = false;
                 pnlInfo.Visible = true;
                 lblInfo.Text = "No se encontraron usuarios";
             }
@@ -80,17 +81,13 @@ namespace SiGMA
             {
                 ddlRolUsuario.Items.RemoveAt(ddlRolUsuario.SelectedIndex);
                 quitarRolesParaAsignar(lstUsuarios.SelectedValue);
-                pnlInfo.Visible = false;
                 lblCorrecto.Text = "Rol eliminado del usuario correctamente";
-                pnlAtento.Visible = false;
                 pnlCorrecto.Visible = true;
             }
             else
             {
-                pnlInfo.Visible = false;
-                lblError.Text = "Error al iliminar rol. Verifique datos";
+                lblError.Text = "Error al eliminar rol. Verifique datos";
                 pnlAtento.Visible = true;
-                pnlCorrecto.Visible = true;
             }
         }
 
@@ -101,17 +98,13 @@ namespace SiGMA
                 ddlRolUsuario.Items.Clear();
                 cargarRolUsuario(lstUsuarios.SelectedValue);
                 ddlRol.Items.RemoveAt(Convert.ToInt32(ddlRol.SelectedIndex));
-                pnlInfo.Visible = false;
                 lblCorrecto.Text = "Rol asignado al usuario correctamente";
-                pnlAtento.Visible = false;
                 pnlCorrecto.Visible = true;
             }
             else
             {
-                pnlInfo.Visible = false;
-                lblError.Text = "Error al iliminar rol. Verifique datos";
+                lblError.Text = "Error al eliminar rol. Verifique datos";
                 pnlAtento.Visible = true;
-                pnlCorrecto.Visible = true;
             }
         }
 
@@ -123,9 +116,5 @@ namespace SiGMA
             ddlRolUsuario.DataBind();
         }
 
-        protected void ibtnRegresar_Click(object sender, ImageClickEventArgs e)
-        {
-            Response.Redirect("Administracion.aspx");
-        }
     }
 }

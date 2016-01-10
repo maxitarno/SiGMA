@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<!-- Slider 2 -->
+        <!-- Slider 2 -->
         <div class="slider-2-container">
             <div class="container">
                 <div class="row">

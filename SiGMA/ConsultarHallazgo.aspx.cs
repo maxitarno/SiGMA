@@ -65,7 +65,7 @@ namespace SiGMA
             txtNroCalle.Enabled = b;
             txtFecha.Enabled = b;
             txtComentarios.Enabled = b;
-            btnModificarHallazgo.Visible = b;
+            pnlBtnModificar.Visible = b;
         }
        
         private void cargarTablaHalladas()

@@ -32,13 +32,24 @@ namespace SiGMA
                 CargarCombos.cargarSexo(ref ddlSexo);
                 CargarCombos.cargarTratos(ref ddlTratoAnimales);
                 CargarCombos.cargarTratos(ref ddlTratoNinios);
+                if (!LogicaBDRol.verificarPermisoVisualizacion(Session["UsuarioLogueado"].ToString(), "RegistrarMascota.aspx"))
+                {
+                    if (Session["EsRol"].ToString() == "1" || Session["EsRol"].ToString() == "4" || Session["EsRol"].ToString() == "5")
+                        Response.Redirect("PermisosInsuficientes.aspx");
+                    if (Session["EsRol"].ToString() == "2")
+                        Response.Redirect("PermisoInsuficiente.aspx");
+                }
+                if (!LogicaBDRol.verificarPermisosGrabacion(Session["UsuarioLogueado"].ToString(), "RegistrarMascota.aspx"))
+                    btnRegistrar.Visible = false;
             }
 			else
 			{
 				pnlCorrecto.Visible = false;
 				pnlAtento.Visible = false;
+                pnlInfo.Visible = false;
 			}
         }
+        
 
         protected void ddlEspecie_SelectedIndexChanged(object sender, EventArgs e)
         {      
@@ -120,7 +131,7 @@ namespace SiGMA
             }
             else
             {
-                Response.AddHeader("REFRESH", "5;URL=RegistrarMascota.aspx");
+                Response.AddHeader("REFRESH", "4;URL=RegistrarMascota.aspx");
             }
         }
         protected void cvDdlSexo_ServerValidate(object source, ServerValidateEventArgs args)

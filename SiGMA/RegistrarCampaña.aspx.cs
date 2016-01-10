@@ -16,6 +16,22 @@ namespace SiGMA
         {
             if (!Page.IsPostBack)
             {
+                if (Session["UsuarioLogueado"] != null)
+                {
+                    if (!LogicaBDRol.verificarPermisoVisualizacion(Session["UsuarioLogueado"].ToString(), "Campañas"))
+                    {
+                        if (Session["EsRol"].ToString() == "1" || Session["EsRol"].ToString() == "4" || Session["EsRol"].ToString() == "5")
+                            Response.Redirect("PermisosInsuficientes.aspx");
+                        if (Session["EsRol"].ToString() == "2")
+                            Response.Redirect("PermisoInsuficiente.aspx");
+                    }
+                    if (!LogicaBDRol.verificarPermisosGrabacion(Session["UsuarioLogueado"].ToString(), "Campañas"))
+                        btnRegistrarCampaña.Visible = false;
+                }
+                else
+                {
+                    Response.Redirect("Login.aspx");
+                }
                 CargarCombos.cargarTipoCampaña(ref ddlTipoCampaña);
                 rnvFechaCampaña.MinimumValue = DateTime.Now.ToShortDateString();
                 rnvFechaCampaña.MaximumValue = DateTime.Now.AddMonths(6).ToShortDateString();

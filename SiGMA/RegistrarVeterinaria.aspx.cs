@@ -21,9 +21,9 @@ namespace SiGMA
                 CargarCombos.cargarCalles(ref ddlCalle, 1);
                 if (Session["UsuarioLogueado"] != null)
                 {
-                    if (!LogicaBDRol.verificarPermisoVisualizacion(Session["UsuarioLogueado"].ToString(), "RegistrarVeterinaria.aspx"))
+                    if (!LogicaBDRol.verificarPermisoVisualizacion(Session["UsuarioLogueado"].ToString(), "Veterinarias"))
                         Response.Redirect("PermisosInsuficientes.aspx");
-                    if (!LogicaBDRol.verificarPermisosGrabacion(Session["UsuarioLogueado"].ToString(), "RegistrarVeterinaria.aspx"))
+                    if (!LogicaBDRol.verificarPermisosGrabacion(Session["UsuarioLogueado"].ToString(), "Veterinarias"))
                         btnRegistrar.Visible = false;
                 }
                 else

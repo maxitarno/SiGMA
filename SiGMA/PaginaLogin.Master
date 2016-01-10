@@ -89,7 +89,7 @@
 	                        <p>
 	                        	Gracias por confiarnos su mascota
 	                        </p>
-	                        <p><a href="Inicio.aspx">Sobre nosotros ...</a></p>
+	                        <p><a href="Index.aspx">Sobre nosotros ...</a></p>
                         </div>
                     </div>
                     <div class="col-sm-4 footer-box wow fadeInDown">

@@ -18,6 +18,13 @@ namespace SiGMA
             {
                 if (Session["UsuarioLogueado"] != null)
                 {
+                    if (!LogicaBDRol.verificarPermisoVisualizacion(Session["UsuarioLogueado"].ToString(), "Voluntariado"))
+                        Response.Redirect("PermisoInsuficiente.aspx");
+                    if (!LogicaBDRol.verificarPermisosGrabacion(Session["UsuarioLogueado"].ToString(), "Voluntariado"))
+                    {
+                        btnActualizarBusqueda.Visible = false;
+                        btnActualizarHogar.Visible = false;
+                    }
                 }
                 else
                 {

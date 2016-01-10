@@ -18,14 +18,14 @@ namespace SiGMA
             {
                 if (Session["UsuarioLogueado"] != null)
                 {
-                    if (!LogicaBDRol.verificarPermisoVisualizacion(Session["UsuarioLogueado"].ToString(), "Administracion"))
+                    if (!LogicaBDRol.verificarPermisoVisualizacion(Session["UsuarioLogueado"].ToString(), "RolesPermisos"))
                         Response.Redirect("PermisosInsuficientes.aspx");
-                    if (!LogicaBDRol.verificarPermisosGrabacion(Session["UsuarioLogueado"].ToString(), "Administracion"))
+                    if (!LogicaBDRol.verificarPermisosGrabacion(Session["UsuarioLogueado"].ToString(), "RolesPermisos"))
                     {
                         btnNuevoRol.Visible = false;
                         btnGuardarRol.Visible = false;
                     }
-                    if (!LogicaBDRol.verificarPermisosEliminacion(Session["UsuarioLogueado"].ToString(), "Administracion"))
+                    if (!LogicaBDRol.verificarPermisosEliminacion(Session["UsuarioLogueado"].ToString(), "RolesPermisos"))
                         btnEliminarRol.Visible = false;
                 }
                 else
@@ -34,7 +34,9 @@ namespace SiGMA
                 }
                 CargarCombos.cargarRoles(ref ddlRol);
             }
-
+            pnlAtento.Visible = false;
+            pnlCorrecto.Visible = false;
+            pnlInfo.Visible = false;
         }
 
         protected void ddlRol_SelectedIndexChanged(object sender, EventArgs e)
@@ -81,8 +83,8 @@ namespace SiGMA
             }
             catch (Exception exc)
             {
-                
-                throw exc;
+                pnlAtento.Visible = true;
+                lblError.Text = "Ocurrio un error inesperado. Intente mas tarde";
             }
         }
 
@@ -132,14 +134,9 @@ namespace SiGMA
             }
             catch (Exception exc)
             {
-
-                throw exc;
+                pnlAtento.Visible = true;
+                lblError.Text = "Ocurrio un error inesperado. Intente mas tarde";
             }
-        }
-
-        protected void BtnRegresarClick(object sender, ImageClickEventArgs e)
-        {
-            Response.Redirect("Administracion.aspx");
         }
     }
 }

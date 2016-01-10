@@ -28,9 +28,14 @@ namespace SiGMA
                             return;
                         }
                     }
-                        
+
                     if (!LogicaBDRol.verificarPermisoVisualizacion(Session["UsuarioLogueado"].ToString(), "RegistrarPerdida.aspx"))
-                        Response.Redirect("PermisosInsuficientes.aspx");
+                    {
+                        if (Session["EsRol"].ToString() == "1" || Session["EsRol"].ToString() == "4" || Session["EsRol"].ToString() == "5")
+                            Response.Redirect("PermisosInsuficientes.aspx");
+                        if (Session["EsRol"].ToString() == "2")
+                            Response.Redirect("PermisoInsuficiente.aspx");
+                    }
                     if (!LogicaBDRol.verificarPermisosGrabacion(Session["UsuarioLogueado"].ToString(), "RegistrarPerdida.aspx"))
                         btnRegistrarPerdida.Visible = false; 
                 }

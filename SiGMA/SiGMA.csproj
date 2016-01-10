@@ -261,6 +261,7 @@
     <Content Include="Perdidas.aspx" />
     <Content Include="PerdidasPorBarrio.htm" />
     <Content Include="PerdidasPorSexo.htm" />
+    <Content Include="PermisoInsuficiente.aspx" />
     <Content Include="PermisosInsuficientes.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="RecuperarContraseña.aspx" />
@@ -599,6 +600,13 @@
     </Compile>
     <Compile Include="Perdidas.aspx.designer.cs">
       <DependentUpon>Perdidas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PermisoInsuficiente.aspx.cs">
+      <DependentUpon>PermisoInsuficiente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PermisoInsuficiente.aspx.designer.cs">
+      <DependentUpon>PermisoInsuficiente.aspx</DependentUpon>
     </Compile>
     <Compile Include="PermisosInsuficientes.aspx.cs">
       <DependentUpon>PermisosInsuficientes.aspx</DependentUpon>

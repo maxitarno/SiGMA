@@ -65,7 +65,6 @@ namespace SiGMA
                 {
                     Response.Redirect("Login.aspx");
                 }
-                
                 CargarCombos.cargarLocalidades(ref ddlLocalidades);
                 ddlLocalidades.SelectedValue = "1";
                 CargarCombos.cargarBarrio(ref ddlBarrios, 1);

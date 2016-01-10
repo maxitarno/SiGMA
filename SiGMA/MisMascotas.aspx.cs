@@ -21,13 +21,10 @@ namespace SiGMA
                 rnvFecha.MaximumValue = DateTime.Now.ToShortDateString();
                 if (Session["UsuarioLogueado"] != null)
                 {
-                        btnModificar.Visible = true; // aca ponerlo en false y cuando seleccione del listado ponerlo en true
-
-                    if (!LogicaBDRol.verificarPermisoVisualizacion(Session["UsuarioLogueado"].ToString(), "MisMascotas.aspx"))
-                        //Response.Redirect("PermisosInsuficientes.aspx");
-                    if (!LogicaBDRol.verificarPermisosGrabacion(Session["UsuarioLogueado"].ToString(), "MisMascotas.aspx"))
-                    { } //btnModificar.Visible = false;
-
+                    if (!LogicaBDRol.verificarPermisoVisualizacion(Session["UsuarioLogueado"].ToString(), "ConsultarMascotas.aspx"))
+                        Response.Redirect("PermisoInsuficiente.aspx");
+                    if (!LogicaBDRol.verificarPermisosGrabacion(Session["UsuarioLogueado"].ToString(), "RegistrarMascota.aspx"))
+                         btnModificar.Visible = false;
                 }
                 else
                 {

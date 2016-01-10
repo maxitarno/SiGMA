@@ -18,9 +18,9 @@ namespace SiGMA
             {
                 if (Session["UsuarioLogueado"] != null)
                 {
-                    if (!LogicaBDRol.verificarPermisoVisualizacion(Session["UsuarioLogueado"].ToString(), "Administracion"))
+                    if (!LogicaBDRol.verificarPermisoVisualizacion(Session["UsuarioLogueado"].ToString(), "RolesPermisos"))
                         Response.Redirect("PermisosInsuficientes.aspx");
-                    if (!LogicaBDRol.verificarPermisosGrabacion(Session["UsuarioLogueado"].ToString(), "Administracion"))
+                    if (!LogicaBDRol.verificarPermisosGrabacion(Session["UsuarioLogueado"].ToString(), "RolesPermisos"))
                         btnGuardar.Visible = false;
                 }
                 else
@@ -28,7 +28,12 @@ namespace SiGMA
                     Response.Redirect("Login.aspx");
                 }
                 CargarCombos.cargarRoles(ref ddlRol);
-            } 
+                ddlRol.SelectedIndex = 1;
+                ddlRol_SelectedIndexChanged(null, null);
+            }
+            pnlAtento.Visible = false;
+            pnlCorrecto.Visible = false;
+            pnlInfo.Visible = false;
         }
 
         //metodo para asignacion de permisos por rol, se elige el rol y luego se especifica con el chk 
@@ -36,7 +41,6 @@ namespace SiGMA
         // es un bajon para mi que sea de esta forma pero funcionaria tecnicamente
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
-
             try
             {
                 if (Page.IsValid)
@@ -64,24 +68,25 @@ namespace SiGMA
                     if (permisoRol18.idPermiso != 0)
                         ListadoPermisos.Add(permisoRol18);
 
-                    //// --------------- RegistrarUsuario --------------- //
-                    //permisoRol.idPermiso = chkRegistrarUsuarioL.Checked ? 1 : 0;
-                    //permisoRol.pantalla = "RegistrarUsuario.aspx";
-                    //if (permisoRol.idPermiso != 0)
-                    //    ListadoPermisos.Add(permisoRol);
+                    // --------------- RolesPermisos --------------- //
+                    EPermiso permisoRol1 = new EPermiso();
+                    permisoRol1.idPermiso = chkAsignarPermisosL.Checked ? 1 : 0;
+                    permisoRol1.pantalla = "RolesPermisos";
+                    if (permisoRol1.idPermiso != 0)
+                        ListadoPermisos.Add(permisoRol1);
 
-                    //EPermiso permisoRol2 = new EPermiso();
-                    //permisoRol2.idPermiso = chkRegistrarUsuarioG.Checked ? 2 : 0;
-                    //permisoRol2.pantalla = "RegistrarUsuario.aspx";
-                    //if (permisoRol2.idPermiso != 0)
-                    //    ListadoPermisos.Add(permisoRol2);
+                    EPermiso permisoRol2 = new EPermiso();
+                    permisoRol2.idPermiso = chkAsignarPermisosG.Checked ? 2 : 0;
+                    permisoRol2.pantalla = "RolesPermisos";
+                    if (permisoRol2.idPermiso != 0)
+                        ListadoPermisos.Add(permisoRol2);
 
-                    //EPermiso permisoRol3 = new EPermiso();
-                    //permisoRol3.idPermiso = chkRegistrarUsuarioE.Checked ? 3 : 0;
-                    //permisoRol3.pantalla = "RegistrarUsuario.aspx";
-                    //if (permisoRol3.idPermiso != 0)
-                    //    ListadoPermisos.Add(permisoRol3);
-
+                    EPermiso permisoRol3 = new EPermiso();
+                    permisoRol3.idPermiso = chkAsignarPermisosE.Checked ? 3 : 0;
+                    permisoRol3.pantalla = "RolesPermisos";
+                    if (permisoRol3.idPermiso != 0)
+                        ListadoPermisos.Add(permisoRol3);
+                    
                     // --------------- ConsultarUsuario --------------- //
                     EPermiso permisoRol4 = new EPermiso();
                     permisoRol4.idPermiso = chkConsultarUsuarioL.Checked ? 1 : 0;
@@ -221,7 +226,6 @@ namespace SiGMA
                     if (permisoRol30.idPermiso != 0)
                         ListadoPermisos.Add(permisoRol30);
 
-
                     // --------------- ConsultarAdopciones --------------- //
 
                     EPermiso permisoRol31 = new EPermiso();
@@ -262,25 +266,85 @@ namespace SiGMA
                     if (permisoRol36.idPermiso != 0)
                         ListadoPermisos.Add(permisoRol36);
 
-                    // --------------- RegistrarVeterinarias --------------- //
+                    // --------------- Veterinarias --------------- //
 
                     EPermiso permisoRol37 = new EPermiso();
                     permisoRol37.idPermiso = chkRegistrarVeterinariaL.Checked ? 1 : 0;
-                    permisoRol37.pantalla = "RegistrarVeterinaria.aspx";
+                    permisoRol37.pantalla = "Veterinarias";
                     if (permisoRol37.idPermiso != 0)
                         ListadoPermisos.Add(permisoRol37);
 
                     EPermiso permisoRol38 = new EPermiso();
                     permisoRol38.idPermiso = chkRegistrarVeterinariaG.Checked ? 2 : 0;
-                    permisoRol38.pantalla = "RegistrarVeterinaria.aspx";
+                    permisoRol38.pantalla = "Veterinarias";
                     if (permisoRol38.idPermiso != 0)
                         ListadoPermisos.Add(permisoRol38);
 
                     EPermiso permisoRol39 = new EPermiso();
                     permisoRol39.idPermiso = chkRegistrarVeterinariaE.Checked ? 3 : 0;
-                    permisoRol39.pantalla = "RegistrarVeterinaria.aspx";
+                    permisoRol39.pantalla = "Veterinarias";
                     if (permisoRol39.idPermiso != 0)
                         ListadoPermisos.Add(permisoRol39);
+
+                    // --------------- Voluntariado --------------- //
+
+                    EPermiso permisoRol7 = new EPermiso();
+                    permisoRol7.idPermiso = chkVoluntariadoL.Checked ? 1 : 0;
+                    permisoRol7.pantalla = "Voluntariado";
+                    if (permisoRol7.idPermiso != 0)
+                        ListadoPermisos.Add(permisoRol7);
+
+                    EPermiso permisoRol8 = new EPermiso();
+                    permisoRol8.idPermiso = chkVoluntariadoG.Checked ? 2 : 0;
+                    permisoRol8.pantalla = "Voluntariado";
+                    if (permisoRol8.idPermiso != 0)
+                        ListadoPermisos.Add(permisoRol8);
+
+                    EPermiso permisoRol9 = new EPermiso();
+                    permisoRol9.idPermiso = chkVoluntariadoE.Checked ? 3 : 0;
+                    permisoRol9.pantalla = "Voluntariado";
+                    if (permisoRol9.idPermiso != 0)
+                        ListadoPermisos.Add(permisoRol9);
+
+                    // --------------- Campañas --------------- //
+
+                    EPermiso permisoRo40 = new EPermiso();
+                    permisoRo40.idPermiso = chkCampañasL.Checked ? 1 : 0;
+                    permisoRo40.pantalla = "Campañas";
+                    if (permisoRo40.idPermiso != 0)
+                        ListadoPermisos.Add(permisoRo40);
+
+                    EPermiso permisoRo41 = new EPermiso();
+                    permisoRo41.idPermiso = chkCampañasG.Checked ? 2 : 0;
+                    permisoRo41.pantalla = "Campañas";
+                    if (permisoRo41.idPermiso != 0)
+                        ListadoPermisos.Add(permisoRo41);
+
+                    EPermiso permisoRo42 = new EPermiso();
+                    permisoRo42.idPermiso = chkCampañasE.Checked ? 3 : 0;
+                    permisoRo42.pantalla = "Campañas";
+                    if (permisoRo42.idPermiso != 0)
+                        ListadoPermisos.Add(permisoRo42);
+
+                    // --------------- PedidosDifusion --------------- //
+
+                    EPermiso permisoRo43 = new EPermiso();
+                    permisoRo43.idPermiso = chkDifusionL.Checked ? 1 : 0;
+                    permisoRo43.pantalla = "PedidosDifusion";
+                    if (permisoRo43.idPermiso != 0)
+                        ListadoPermisos.Add(permisoRo43);
+
+                    EPermiso permisoRo44 = new EPermiso();
+                    permisoRo44.idPermiso = chkDifusionG.Checked ? 2 : 0;
+                    permisoRo44.pantalla = "PedidosDifusion";
+                    if (permisoRo44.idPermiso != 0)
+                        ListadoPermisos.Add(permisoRo44);
+
+                    EPermiso permisoRo45 = new EPermiso();
+                    permisoRo45.idPermiso = chkDifusionE.Checked ? 3 : 0;
+                    permisoRo45.pantalla = "PedidosDifusion";
+                    if (permisoRo45.idPermiso != 0)
+                        ListadoPermisos.Add(permisoRo45);
 
                     ERol RolEnviar = new ERol();
                     RolEnviar.listaPermisos = ListadoPermisos;
@@ -315,9 +379,6 @@ namespace SiGMA
             chkConsultarUsuarioL.Checked = false;
             chkConsultarUsuarioG.Checked = false;
             chkConsultarUsuarioE.Checked = false;
-            //chkRegistrarUsuarioL.Checked = false;
-            //chkRegistrarUsuarioG.Checked = false;
-            //chkRegistrarUsuarioE.Checked = false;
             chkAdministracionL.Checked = false;
             chkAdministracionG.Checked = false;
             chkAdministracionE.Checked = false;
@@ -348,6 +409,15 @@ namespace SiGMA
             chkRegistrarVeterinariaL.Checked = false;
             chkRegistrarVeterinariaG.Checked = false;
             chkRegistrarVeterinariaE.Checked = false;
+            chkVoluntariadoL.Checked = false;
+            chkVoluntariadoG.Checked = false;
+            chkVoluntariadoE.Checked = false;
+            chkCampañasL.Checked = false;
+            chkCampañasG.Checked = false;
+            chkCampañasE.Checked = false;
+            chkDifusionL.Checked = false;
+            chkDifusionG.Checked = false;
+            chkDifusionE.Checked = false;
             pnlAtento.Visible = false;
             pnlCorrecto.Visible = false;
             pnlInfo.Visible = false;
@@ -373,6 +443,24 @@ namespace SiGMA
                 permisosRol = LogicaBDRol.cargarPermisosRol(idRol);
                 for (int i = 0; i < permisosRol.Count; i++)
                 {
+                    if (permisosRol[i].pantalla == "Administracion")
+                    {
+                        if (permisosRol[i].idPermiso == 1)
+                            chkAdministracionL.Checked = true;
+                        if (permisosRol[i].idPermiso == 2)
+                            chkAdministracionG.Checked = true;
+                        if (permisosRol[i].idPermiso == 3)
+                            chkAdministracionE.Checked = true;
+                    }
+                    if (permisosRol[i].pantalla == "RolesPermisos")
+                    {
+                        if (permisosRol[i].idPermiso == 1)
+                            chkAsignarPermisosL.Checked = true;
+                        if (permisosRol[i].idPermiso == 2)
+                            chkAsignarPermisosG.Checked = true;
+                        if (permisosRol[i].idPermiso == 3)
+                            chkAsignarPermisosE.Checked = true;
+                    }
                     if (permisosRol[i].pantalla == "ConsultarUsuario.aspx")
                     {
                         if (permisosRol[i].idPermiso == 1)
@@ -381,24 +469,6 @@ namespace SiGMA
                             chkConsultarUsuarioG.Checked = true;
                         if (permisosRol[i].idPermiso == 3)
                             chkConsultarUsuarioE.Checked = true;
-                    }
-                    //if (permisosRol[i].pantalla == "RegistrarUsuario.aspx")
-                    //{
-                    //    if (permisosRol[i].idPermiso == 1)
-                    //        chkRegistrarUsuarioL.Checked = true;
-                    //    if (permisosRol[i].idPermiso == 2)
-                    //        chkRegistrarUsuarioG.Checked = true;
-                    //    if (permisosRol[i].idPermiso == 3)
-                    //        chkRegistrarUsuarioE.Checked = true;
-                    //}
-                    if (permisosRol[i].pantalla == "AsignarPermisos.aspx")
-                    {
-                        if (permisosRol[i].idPermiso == 1)
-                            chkAsignarPermisosL.Checked = true;
-                        if (permisosRol[i].idPermiso == 2)
-                            chkAsignarPermisosG.Checked = true;
-                        if (permisosRol[i].idPermiso == 3)
-                            chkAsignarPermisosE.Checked = true;
                     }
                     if (permisosRol[i].pantalla == "RegistrarMascota.aspx")
                     {
@@ -418,15 +488,6 @@ namespace SiGMA
                         if (permisosRol[i].idPermiso == 3)
                             chkConsultarMascotasE.Checked = true;
                     }
-                    if (permisosRol[i].pantalla == "ConsultarPerdida.aspx")
-                    {
-                        if (permisosRol[i].idPermiso == 1)
-                            chkConsultarPerdidasL.Checked = true;
-                        if (permisosRol[i].idPermiso == 2)
-                            chkConsultarPerdidasG.Checked = true;
-                        if (permisosRol[i].idPermiso == 3)
-                            chkConsultarPerdidasE.Checked = true;
-                    }
                     if (permisosRol[i].pantalla == "RegistrarPerdida.aspx")
                     {
                         if (permisosRol[i].idPermiso == 1)
@@ -436,14 +497,14 @@ namespace SiGMA
                         if (permisosRol[i].idPermiso == 3)
                             chkRegistrarPerdidasE.Checked = true;
                     }
-                    if (permisosRol[i].pantalla == "ConsultarHallazgo.aspx")
+                    if (permisosRol[i].pantalla == "ConsultarPerdida.aspx")
                     {
                         if (permisosRol[i].idPermiso == 1)
-                            chkConsultarHallazgosL.Checked = true;
+                            chkConsultarPerdidasL.Checked = true;
                         if (permisosRol[i].idPermiso == 2)
-                            chkConsultarHallazgosG.Checked = true;
+                            chkConsultarPerdidasG.Checked = true;
                         if (permisosRol[i].idPermiso == 3)
-                            chkConsultarHallazgosE.Checked = true;
+                            chkConsultarPerdidasE.Checked = true;
                     }
                     if (permisosRol[i].pantalla == "RegistrarHallazgo.aspx")
                     {
@@ -454,14 +515,14 @@ namespace SiGMA
                         if (permisosRol[i].idPermiso == 3)
                             chkRegistrarHallazgosE.Checked = true;
                     }
-                    if (permisosRol[i].pantalla == "ConsultarAdopcion.aspx")
+                    if (permisosRol[i].pantalla == "ConsultarHallazgo.aspx")
                     {
                         if (permisosRol[i].idPermiso == 1)
-                            chkConsultarAdopcionesL.Checked = true;
+                            chkConsultarHallazgosL.Checked = true;
                         if (permisosRol[i].idPermiso == 2)
-                            chkConsultarAdopcionesG.Checked = true;
+                            chkConsultarHallazgosG.Checked = true;
                         if (permisosRol[i].idPermiso == 3)
-                            chkConsultarAdopcionesE.Checked = true;
+                            chkConsultarHallazgosE.Checked = true;
                     }
                     if (permisosRol[i].pantalla == "RegistrarAdopcion.aspx")
                     {
@@ -472,7 +533,16 @@ namespace SiGMA
                         if (permisosRol[i].idPermiso == 3)
                             chkRegistrarAdopcionesE.Checked = true;
                     }
-                    if (permisosRol[i].pantalla == "RegistrarVeterinaria.aspx")
+                    if (permisosRol[i].pantalla == "ConsultarAdopcion.aspx")
+                    {
+                        if (permisosRol[i].idPermiso == 1)
+                            chkConsultarAdopcionesL.Checked = true;
+                        if (permisosRol[i].idPermiso == 2)
+                            chkConsultarAdopcionesG.Checked = true;
+                        if (permisosRol[i].idPermiso == 3)
+                            chkConsultarAdopcionesE.Checked = true;
+                    }
+                    if (permisosRol[i].pantalla == "Veterinarias")
                     {
                         if (permisosRol[i].idPermiso == 1)
                             chkRegistrarVeterinariaL.Checked = true;
@@ -481,22 +551,36 @@ namespace SiGMA
                         if (permisosRol[i].idPermiso == 3)
                             chkRegistrarVeterinariaE.Checked = true;
                     }
-                    if (permisosRol[i].pantalla == "Administracion")
+                    if (permisosRol[i].pantalla == "Voluntariado")
                     {
                         if (permisosRol[i].idPermiso == 1)
-                            chkAdministracionL.Checked = true;
+                            chkVoluntariadoL.Checked = true;
                         if (permisosRol[i].idPermiso == 2)
-                            chkAdministracionG.Checked = true;
+                            chkVoluntariadoG.Checked = true;
                         if (permisosRol[i].idPermiso == 3)
-                            chkAdministracionE.Checked = true;
+                            chkVoluntariadoE.Checked = true;
+                    }
+                    if (permisosRol[i].pantalla == "Campañas")
+                    {
+                        if (permisosRol[i].idPermiso == 1)
+                            chkCampañasL.Checked = true;
+                        if (permisosRol[i].idPermiso == 2)
+                            chkCampañasG.Checked = true;
+                        if (permisosRol[i].idPermiso == 3)
+                            chkCampañasE.Checked = true;
+                    }
+                    if (permisosRol[i].pantalla == "PedidosDifusion")
+                    {
+                        if (permisosRol[i].idPermiso == 1)
+                            chkDifusionL.Checked = true;
+                        if (permisosRol[i].idPermiso == 2)
+                            chkDifusionG.Checked = true;
+                        if (permisosRol[i].idPermiso == 3)
+                            chkDifusionE.Checked = true;
                     }
                 }
+                btnGuardar.Focus();
             }
-        }
-
-        protected void BtnRegresarClick(object sender, ImageClickEventArgs e)
-        {
-            Response.Redirect("Administracion.aspx");
         }
     }
 }
