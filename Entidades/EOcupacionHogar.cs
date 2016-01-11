@@ -12,5 +12,6 @@ namespace Entidades
         public EMascota mascota { get; set; }
         public DateTime fechaIngreso { get; set; }
         public DateTime fechaEgreso { get; set; }
+        public Boolean solicitudDevolucion { get; set; }
     }
 }

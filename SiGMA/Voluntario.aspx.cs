@@ -64,9 +64,9 @@ namespace SiGMA
             CargarCombos.cargarEspecies(ref ddlEspeciePerdida);
             CargarCombos.cargarComboRazas(ref ddlRazaHogar);
             CargarCombos.cargarComboRazas(ref ddlRazaPerdida);
-            CargarCombos.cargarBarrio(ref ddlBarrio);
-            CargarCombos.cargarBarrio(ref ddlBarrioBusqueda);
-            CargarCombos.cargarCalles(ref ddlCalle);
+            CargarCombos.cargarBarrio(ref ddlBarrio, 1);
+            CargarCombos.cargarBarrio(ref ddlBarrioBusqueda, 1);
+            CargarCombos.cargarCalles(ref ddlCalle, 1);
 
             if (Session["TipoVoluntario"].ToString() == "1")
             {

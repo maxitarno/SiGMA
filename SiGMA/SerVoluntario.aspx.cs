@@ -96,9 +96,9 @@ namespace SiGMA
 
         public void cargarCombos() 
         {
-            CargarCombos.cargarBarrio(ref ddlBarrio);
-            CargarCombos.cargarBarrio(ref ddlBarrioBusqueda);
-            CargarCombos.cargarCalles(ref ddlCalle);
+            CargarCombos.cargarBarrio(ref ddlBarrio, 1);
+            CargarCombos.cargarBarrio(ref ddlBarrioBusqueda, 1);
+            CargarCombos.cargarCalles(ref ddlCalle, 1);
         }
         protected void ddlTipoVoluntario_SelectedIndexChanged(object sender, EventArgs e)
         {

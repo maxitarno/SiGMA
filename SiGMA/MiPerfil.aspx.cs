@@ -27,9 +27,10 @@ namespace SiGMA
                 {
                     Response.Redirect("Login.aspx");
                 }
-                CargarCombos.cargarBarrio(ref ddlBarrios);
+                CargarCombos.cargarBarrio(ref ddlBarrios, 1);
                 CargarCombos.cargarLocalidades(ref ddlLocalidades);
-                CargarCombos.cargarCalles(ref ddlCalle);
+                ddlLocalidades.SelectedValue = "1";
+                CargarCombos.cargarCalles(ref ddlCalle, 1);
                 CargarCombos.cargarTipoDocumento(ref ddlTipoDeDocumento);
                 rnvFechaPerdida.MaximumValue = DateTime.Now.ToShortDateString();
                 cargarMiPerfil();

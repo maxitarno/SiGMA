@@ -4875,6 +4875,30 @@ namespace AccesoADatos
         private Nullable<global::System.DateTime> _fechaSalida;
         partial void OnfechaSalidaChanging(Nullable<global::System.DateTime> value);
         partial void OnfechaSalidaChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> solicitudDevolucion
+        {
+            get
+            {
+                return _solicitudDevolucion;
+            }
+            set
+            {
+                OnsolicitudDevolucionChanging(value);
+                ReportPropertyChanging("solicitudDevolucion");
+                _solicitudDevolucion = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("solicitudDevolucion");
+                OnsolicitudDevolucionChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _solicitudDevolucion;
+        partial void OnsolicitudDevolucionChanging(Nullable<global::System.Boolean> value);
+        partial void OnsolicitudDevolucionChanged();
 
         #endregion
 

@@ -276,8 +276,8 @@ namespace AccesoADatos
             try
             {
                 SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
-                Mascotas mascotaBD = mapaEntidades.Mascotas.Where(m => m.idMascota == idMascota).First();
-                mascotaBD.idEstado = LogicaBDEstado.buscarEstado(new EEstado { nombreEstado = "Solicitud Devolucion", ambito = "Mascota" }).idEstado;
+                OcupacionesXHogaresProvisorios ocupacionBD = mapaEntidades.OcupacionesXHogaresProvisorios.Where(m => m.idMascota == idMascota && m.fechaSalida == null).First();
+                ocupacionBD.solicitudDevolucion = true;
                 mapaEntidades.SaveChanges();
             }
             catch (Exception)

@@ -386,6 +386,7 @@
           <Property Name="idMascota" Type="int" Nullable="false" />
           <Property Name="fechaIngreso" Type="datetime" Nullable="false" />
           <Property Name="fechaSalida" Type="datetime" />
+          <Property Name="solicitudDevolucion" Type="bit" />
         </EntityType>
         <EntityType Name="PedidosDifusion">
           <Key>
@@ -1568,6 +1569,7 @@
           <Property Name="idMascota" Type="Int32" Nullable="false" />
           <Property Name="fechaIngreso" Type="DateTime" Nullable="false" />
           <Property Name="fechaSalida" Type="DateTime" />
+          <Property Name="solicitudDevolucion" Type="Boolean" />
           <NavigationProperty Name="HogaresProvisorios" Relationship="SiGMAModel.FK_OcupacionXHogarProvisorio_HogaresProvisorios" FromRole="OcupacionesXHogaresProvisorios" ToRole="HogaresProvisorios" />
           <NavigationProperty Name="Mascotas" Relationship="SiGMAModel.FK_OcupacionXHogarProvisorio_Mascotas" FromRole="OcupacionesXHogaresProvisorios" ToRole="Mascotas" />
         </EntityType>
@@ -2543,6 +2545,7 @@
                 <ScalarProperty Name="idMascota" ColumnName="idMascota" />
                 <ScalarProperty Name="fechaIngreso" ColumnName="fechaIngreso" />
                 <ScalarProperty Name="fechaSalida" ColumnName="fechaSalida" />
+                <ScalarProperty Name="solicitudDevolucion" ColumnName="solicitudDevolucion" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2748,7 +2751,7 @@
         <EntityTypeShape EntityType="SiGMAModel.HogaresProvisorios" Width="1.5" PointX="10.5" PointY="4.125" Height="2.7494921875000031" IsExpanded="true" />
         <EntityTypeShape EntityType="SiGMAModel.Localidades" Width="1.5" PointX="1.5" PointY="4.875" Height="1.7879850260416674" IsExpanded="true" />
         <EntityTypeShape EntityType="SiGMAModel.Mascotas" Width="1.5" PointX="10.5" PointY="8.375" Height="6.2109179687500031" IsExpanded="true" />
-        <EntityTypeShape EntityType="SiGMAModel.OcupacionesXHogaresProvisorios" Width="1.5" PointX="12.75" PointY="8.375" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="SiGMAModel.OcupacionesXHogaresProvisorios" Width="1.5" PointX="12.75" PointY="8.25" Height="2.5571907552083388" IsExpanded="true" />
         <EntityTypeShape EntityType="SiGMAModel.PedidosDifusion" Width="1.5" PointX="12.75" PointY="12.125" Height="3.903300781249996" IsExpanded="true" />
         <EntityTypeShape EntityType="SiGMAModel.Perdidas" Width="1.5" PointX="6" PointY="15.375" Height="4.2879036458333388" IsExpanded="true" />
         <EntityTypeShape EntityType="SiGMAModel.Permisos" Width="1.5" PointX="0.75" PointY="25.75" Height="1.5956835937500031" IsExpanded="true" />
@@ -2993,7 +2996,7 @@
           <ConnectorPoint PointX="12.291666666666666" PointY="5.4997460937500007" />
           <ConnectorPoint PointX="12.458333333333334" PointY="5.4997460937500016" />
           <ConnectorPoint PointX="13.5" PointY="5.4997460937500016" />
-          <ConnectorPoint PointX="13.5" PointY="8.375" />
+          <ConnectorPoint PointX="13.5" PointY="8.25" />
         </AssociationConnector>
         <AssociationConnector Association="SiGMAModel.FK_Mascotas_Razas" ManuallyRouted="false">
           <ConnectorPoint PointX="9.75" PointY="22.345896809895834" />
@@ -3001,10 +3004,10 @@
           <ConnectorPoint PointX="11.6562525" PointY="14.585917968750003" />
         </AssociationConnector>
         <AssociationConnector Association="SiGMAModel.FK_OcupacionXHogarProvisorio_Mascotas" ManuallyRouted="false">
-          <ConnectorPoint PointX="12" PointY="9.5574446614583337" />
-          <ConnectorPoint PointX="12.291666666666666" PointY="9.5574446614583337" />
-          <ConnectorPoint PointX="12.458333333333334" PointY="9.5574446614583337" />
-          <ConnectorPoint PointX="12.75" PointY="9.5574446614583337" />
+          <ConnectorPoint PointX="12" PointY="9.59109537760417" />
+          <ConnectorPoint PointX="12.291666666666666" PointY="9.59109537760417" />
+          <ConnectorPoint PointX="12.458333333333334" PointY="9.59109537760417" />
+          <ConnectorPoint PointX="12.75" PointY="9.59109537760417" />
         </AssociationConnector>
         <AssociationConnector Association="SiGMAModel.FK_PedidosDifusion_Mascotas" ManuallyRouted="false">
           <ConnectorPoint PointX="12" PointY="13.038325195312499" />

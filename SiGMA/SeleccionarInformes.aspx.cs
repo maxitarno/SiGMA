@@ -21,8 +21,8 @@ namespace SiGMA
                 if (!LogicaBDRol.verificarPermisoVisualizacion(Session["UsuarioLogueado"].ToString(), "Administracion"))
                     Response.Redirect("PermisosInsuficientes.aspx");
                 CargarCombos.cargarComboRazas(ref ddlRaza);
-                CargarCombos.cargarBarrio(ref ddlBarrioHallazgo);
-                CargarCombos.cargarBarrio(ref ddlBarrioPerdida);
+                CargarCombos.cargarBarrio(ref ddlBarrioHallazgo, 1);
+                CargarCombos.cargarBarrio(ref ddlBarrioPerdida, 1);
                 CargarCombos.cargarEdad(ref ddlEdad);
                 CargarCombos.cargarEspecies(ref ddlEspecies);
                 CargarCombos.cargarEstado(ref ddlEstado, "Mascota");
