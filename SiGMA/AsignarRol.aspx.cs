@@ -38,7 +38,7 @@ namespace SiGMA
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
             List<EUsuario> usuarios = new List<EUsuario>();
-            usuarios = LogicaBDUsuario.BuscarUsuarios(txtUsuario.Text);
+            usuarios = LogicaBDUsuario.BuscarUsuarios(txtSelecionUsuario.Text);
             if (usuarios.Count != 0)
             {
                 lstUsuarios.DataSource = usuarios;
@@ -56,11 +56,13 @@ namespace SiGMA
 
         protected void lstUsuarios_SelectedIndexChanged(object sender, EventArgs e)
         {
+            ddlRolUsuario.Items.Clear();
             var usuario = lstUsuarios.SelectedValue;
             pnlAsignalRol.Visible = true;
-            txtUsuario.Text = usuario;
+            lblUsuario.Text = usuario;
             cargarRolUsuario(usuario);
             quitarRolesParaAsignar(usuario);
+            ddlRol.Focus();
         }
 
         private void quitarRolesParaAsignar(string usuario)
@@ -77,22 +79,38 @@ namespace SiGMA
 
         protected void btnEliminarRol_Click(object sender, EventArgs e)
         {
+            if (ddlRol.SelectedValue == "")
+            {
+                lblInfo.Text = "El usuario no tiene rol asignado que pueda eliminar";
+                pnlInfo.Visible = true;
+                pnlInfo.Focus();
+                return;
+            }
             if (LogicaBDRol.eliminarRolAsignadoUsuario(Convert.ToInt32(ddlRolUsuario.SelectedValue), lstUsuarios.SelectedValue))
             {
                 ddlRolUsuario.Items.RemoveAt(ddlRolUsuario.SelectedIndex);
                 quitarRolesParaAsignar(lstUsuarios.SelectedValue);
                 lblCorrecto.Text = "Rol eliminado del usuario correctamente";
                 pnlCorrecto.Visible = true;
+                pnlCorrecto.Focus();
             }
             else
             {
                 lblError.Text = "Error al eliminar rol. Verifique datos";
                 pnlAtento.Visible = true;
+                pnlAtento.Focus();
             }
         }
 
         protected void btnAsignarRol_Click(object sender, EventArgs e)
         {
+            if (ddlRol.SelectedValue == "SIN ASIGNAR") 
+            {
+                lblInfo.Text = "Seleccione un rol a asignar";
+                pnlInfo.Visible = true;
+                pnlInfo.Focus();
+                return;
+            }
             if (LogicaBDRol.guardarRolAsignadoUsuario(Convert.ToInt32(ddlRol.SelectedValue), lstUsuarios.SelectedValue))
             {
                 ddlRolUsuario.Items.Clear();
@@ -100,11 +118,13 @@ namespace SiGMA
                 ddlRol.Items.RemoveAt(Convert.ToInt32(ddlRol.SelectedIndex));
                 lblCorrecto.Text = "Rol asignado al usuario correctamente";
                 pnlCorrecto.Visible = true;
+                pnlCorrecto.Focus();
             }
             else
             {
                 lblError.Text = "Error al eliminar rol. Verifique datos";
                 pnlAtento.Visible = true;
+                pnlAtento.Focus();
             }
         }
 

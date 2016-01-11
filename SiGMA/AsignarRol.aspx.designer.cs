@@ -67,15 +67,6 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.Label lblError;
         
         /// <summary>
-        /// pnlSeleccionUsuario control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlSeleccionUsuario;
-        
-        /// <summary>
         /// txtSelecionUsuario control.
         /// </summary>
         /// <remarks>
@@ -121,13 +112,13 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.Panel pnlAsignalRol;
         
         /// <summary>
-        /// txtUsuario control.
+        /// lblUsuario control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUsuario;
+        protected global::System.Web.UI.WebControls.Label lblUsuario;
         
         /// <summary>
         /// ddlRolUsuario control.
@@ -173,14 +164,5 @@ namespace SiGMA {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlRolesTraspaso;
-        
-        /// <summary>
-        /// ibtnRegresar control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ibtnRegresar;
     }
 }

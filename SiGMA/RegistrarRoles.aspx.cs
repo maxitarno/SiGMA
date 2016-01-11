@@ -41,6 +41,8 @@ namespace SiGMA
 
         protected void ddlRol_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (LogicaBDRol.verificarPermisosEliminacion(Session["UsuarioLogueado"].ToString(), "RolesPermisos"))
+                btnEliminarRol.Visible = true;
             pnlAtento.Visible = false;
             pnlCorrecto.Visible = false;
             pnlInfo.Visible = false;
@@ -104,9 +106,7 @@ namespace SiGMA
         {
             limpiarPagina();
             pnlModificacionRol.Visible = true;
-            pnlAtento.Visible = false;
-            pnlCorrecto.Visible = false;
-            pnlInfo.Visible = false;
+            btnEliminarRol.Visible = false;
         }
 
         protected void btnEliminarRol_Click(object sender, EventArgs e)

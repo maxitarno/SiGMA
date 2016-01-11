@@ -18,6 +18,7 @@ namespace SiGMA
             {
 				Session["buscarOtro"] = 0;
 				Session["imagenAdopcion"] = null;
+
                 rnvFecha.MaximumValue = DateTime.Now.ToShortDateString();
                 if (Session["UsuarioLogueado"] != null)
                 {
@@ -78,8 +79,9 @@ namespace SiGMA
                 pnlAtento.Visible = false;
                 pnlCorrecto.Visible = false;
             }
-            if (Session["idMascota"] != null)
-                mostrarMascota(Convert.ToInt32(Session["idMascota"].ToString()));
+            // Comentado lo de session mascota, porque cuando venias de consultar las perdidas y entrabas acá, se te cargaba esa que no es tu mascota
+            //if (Session["idMascota"] != null)
+            //    mostrarMascota(Convert.ToInt32(Session["idMascota"].ToString()));
         }
 
         private void mostrarMascota(int idMascota)
