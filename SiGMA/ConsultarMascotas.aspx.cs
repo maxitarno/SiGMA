@@ -596,9 +596,9 @@ namespace SiGMA
                     lblCorrecto.Text = "Pedido para poner en adopcion registrado.";
                 }
                 pnlCorrecto.Visible = true;
-                pnlInfo.Visible = false;
-                pnlAtento.Visible = false;
                 SetFocus(pnlCorrecto);
+                btnAdopcion.Visible = false;
+                btnQuitarAdopcion.Visible = true;
             }
             catch (Exception)
             {
@@ -623,7 +623,7 @@ namespace SiGMA
                 if (mascota != null)
                 {
                     ddlEstado.SelectedValue = mascota.estado.idEstado.ToString();
-                    if (ddlEstado.SelectedValue == "2" || ddlEstado.SelectedValue == "4")
+                    if (ddlEstado.SelectedValue == "2" || ddlEstado.SelectedValue == "4") //Hallada o En adopcion
                     {
                         if (LogicaBDMascota.verificarMascotaEnHogar(mascota))
                         {
@@ -633,6 +633,16 @@ namespace SiGMA
                         {
                             btnAsignarHogar.Visible = true;
                         }
+                    }
+                    if (mascota.estado.idEstado.ToString() == "4") //En adopcion
+                    {
+                        btnAdopcion.Visible = false;
+                        btnQuitarAdopcion.Visible = true;
+                    }
+                    else
+                    {
+                        btnAdopcion.Visible = true;
+                        btnQuitarAdopcion.Visible = false;
                     }
                     txtAlimentacionEspecial.Text = mascota.alimentacionEspecial;
                     ddlCaracter.SelectedValue = mascota.caracter.idCaracter.ToString();
@@ -753,6 +763,35 @@ namespace SiGMA
             if (Session["idMascota"] != null || Session["idMascota"].ToString() != "0")
             {
                 Response.Redirect("~/AsignarMascotaHogar.aspx");
+            }
+        }
+
+        protected void btnQuitarAdopcion_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (LogicaBDMascota.QuitarDeEnAdopcion(Convert.ToInt32(Session["idMascota"].ToString())))
+                {
+                    ddlEstado.SelectedValue = "1";
+                    lblCorrecto.Text = "La mascota ya no esta en adopción";
+                    pnlCorrecto.Visible = true;
+                    SetFocus(pnlCorrecto);
+                    btnAdopcion.Visible = true;
+                    btnQuitarAdopcion.Visible = false;
+
+                }
+                else
+                {
+                    lblInfo.Text = "No se pudo quitar de adopcion. Contacte al administrador";
+                    pnlInfo.Visible = true;
+                    SetFocus(pnlInfo);
+                }
+            }
+            catch (Exception)
+            {
+                pnlAtento.Visible = true;
+                lblError.Text = "Error al quitar la mascota de adopcion. Contacte al administrador";
+                SetFocus(pnlAtento);
             }
         }
     }

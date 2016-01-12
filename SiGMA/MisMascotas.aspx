@@ -246,6 +246,9 @@
                                     &nbsp;&nbsp;&nbsp; </td>
                                 <td><asp:Button ID="btnAdopcion" runat="server" Text="Poner en Adopcion" Width="180px" OnClick="btnAdopcion_Click" CausesValidation="false" 
                                 OnClientClick="if (!confirm('¿Está seguro que desea poner la mascota en adopcion?')){ return false; } else { return true; }" /> 
+                                </td>
+                                    <td><asp:Button ID="btnQuitarAdopcion" runat="server" Text="Quitar de 'En Adopcion'" Width="180px" OnClick="btnQuitarAdopcion_Click" CausesValidation="false" 
+                                OnClientClick="if (!confirm('¿Está seguro que desea quitar la mascota de adopcion?')){ return false; } else { return true; }" /> 
                                     &nbsp;&nbsp;&nbsp; </td>
                                 <td><asp:Button ID="btnPerdida" runat="server" Text="Registrar Pérdida" CausesValidation="false" Width="180px" onclick="btnPerdida_Click"/></td>
                             </tr>

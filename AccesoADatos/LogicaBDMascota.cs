@@ -1073,21 +1073,18 @@ namespace AccesoADatos
             }
         }
 
-        public static bool ponerEnAdopcion(int idMascota) 
+        public static void ponerEnAdopcion(int idMascota) 
         {
-            bool b = false;
             try
             {
                  SiGMAEntities mapa = Conexion.crearSegunServidor();
                  modificarEstado("En adopcion", idMascota, ref mapa);
                  mapa.SaveChanges();
-                 b = true;
             }
             catch (Exception)
             {
                 throw;
             }
-            return b;
         }
 
         public static void asignarDueño(EMascota mascot, int idDueño, ref SiGMAEntities mapa)
@@ -1143,5 +1140,23 @@ namespace AccesoADatos
             }
         }
 
+
+        public static bool QuitarDeEnAdopcion(int idMascota)
+        {
+            bool b = false;
+            try
+            {
+                SiGMAEntities mapa = Conexion.crearSegunServidor();
+                modificarEstado("Con dueño", idMascota, ref mapa);
+                mapa.SaveChanges();
+                b = true;
+                //LogicaBDPedidoDifusion.CancerlarPedidosDifusionDeAdopcion(idMascota);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return b;
+        }
     }
 }

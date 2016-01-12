@@ -57,14 +57,14 @@
                             </div>
                             <div class="form-group"> 
                                 <label for="contact-name">Roles que tiene el usuario</label>
-                                 <asp:DropDownList ID="ddlRolUsuario" runat="server" AutoPostBack="true" 
+                                 <asp:DropDownList ID="ddlRolUsuario" runat="server" 
                                     AppendDataBoundItems="true" Width="80%"/><asp:Button ID="btnEliminarRol" runat="server" Text="Eliminar" 
                                     onclick="btnEliminarRol_Click" visible="false" Width="20%"/> 
                             </div>
                             <div class="form-group"> 
                                 <label for="contact-name">Agregar rol</label><br />
-                                <asp:DropDownList ID="ddlRol" runat="server" AutoPostBack="true" 
-                                    AppendDataBoundItems="true" Width="80%"/><asp:Button ID="btnAsignarRol" runat="server" Text="Guardar" 
+                                <asp:DropDownList ID="ddlRol" runat="server" 
+                                    AppendDataBoundItems="true" Width="80%" /><asp:Button ID="btnAsignarRol" runat="server" Text="Guardar" 
                                     onclick="btnAsignarRol_Click" visible="false" Width="20%"/>
                             </div>
                                  <asp:DropDownList ID="ddlRolesTraspaso" visible="false" runat="server" AutoPostBack="true" 

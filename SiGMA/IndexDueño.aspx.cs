@@ -19,8 +19,8 @@ namespace SiGMA
             {
                 if (Session["EsRol"] != null)
                 {
-                    if (Session["EsRol"].ToString() == "3")
-                        Response.Redirect("SeleccionIndex.aspx");
+                    //if (Session["EsRol"].ToString() == "3")
+                    //    Response.Redirect("SeleccionIndex.aspx");
                     if (Session["EsRol"].ToString() == "1")
                         Response.Redirect("IndexAdmin.aspx");
                 }

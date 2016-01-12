@@ -93,10 +93,26 @@ namespace SiGMA
             if (mascota != null)
             {
                 ddlEstado.SelectedValue = mascota.estado.idEstado.ToString();
-                if (mascota.estado.idEstado.ToString() == "3")
+                if (mascota.estado.idEstado.ToString() == "3" || mascota.estado.idEstado.ToString() == "6") //Perdida o Fallecida
+                {
                     btnPerdida.Visible = false;
+                    btnAdopcion.Visible = false;
+                }
                 else
+                {
                     btnPerdida.Visible = true;
+                    btnAdopcion.Visible = true;
+                }
+                if (mascota.estado.idEstado.ToString() == "4" ) //En adopcion
+                {
+                    btnAdopcion.Visible = false;
+                    btnQuitarAdopcion.Visible = true;
+                }
+                else
+                {
+                    btnAdopcion.Visible = true;
+                    btnQuitarAdopcion.Visible = false;
+                }
                 txtAlimentacionEspecial.Text = mascota.alimentacionEspecial;
                 ddlCaracter.SelectedValue = mascota.caracter.idCaracter.ToString();
                 txtCategoria.Text = mascota.raza.CategoriaRaza.nombreCategoriaRaza;
@@ -123,9 +139,6 @@ namespace SiGMA
                 pnlbotones.Visible = true;
                 pnlInfo.Visible = false;
                 Session["idMascota"] = idMascota;
-                pnlAtento.Visible = false;
-                pnlCorrecto.Visible = false;
-                pnlInfo.Visible = false;
                 if (mascota.imagen != null)
                 {
                     Session["imagen"] = mascota.imagen;
@@ -210,6 +223,33 @@ namespace SiGMA
                 return null;
         }
 
+        protected void btnQuitarAdopcion_Click(object sender, EventArgs e)
+        {
+            try   
+            {
+                if (LogicaBDMascota.QuitarDeEnAdopcion(Convert.ToInt32(Session["idMascota"].ToString())))
+                {
+                    ddlEstado.SelectedValue = "1";
+                    mostrarMascota(Convert.ToInt32(Session["idMascota"].ToString()));
+                    lblCorrecto.Text = "La mascota ya no esta en adopción";
+                    pnlCorrecto.Visible = true;
+                    SetFocus(pnlCorrecto);
+                }
+                else
+                {
+                    lblInfo.Text = "No se pudo quitar de adopcion. Contacte al administrador";
+                    pnlInfo.Visible = true;
+                    SetFocus(pnlInfo);
+                }
+            }
+            catch (Exception)
+            {
+                pnlAtento.Visible = true;
+                lblError.Text = "Error al quitar la mascota de adopcion. Contacte al administrador";
+                SetFocus(pnlAtento);
+            }
+        }
+
         protected void btnAdopcion_Click(object sender, EventArgs e)
         {
             try
@@ -217,8 +257,7 @@ namespace SiGMA
                 if (LogicaBDRol.puedePublicarDifusion(Session["UsuarioLogueado"].ToString()))
                 {
                     LogicaBDMascota.ponerEnAdopcion(Convert.ToInt32(Session["idMascota"].ToString()));
-                    ddlEstado.SelectedValue = "4";
-                    lblCorrecto.Text = "Mascota disponible para adopcion";
+                    //ddlEstado.SelectedValue = "4";
                     var tweet = new Herramientas.GestorTwitter();
                     byte[] imagen = (byte[])Session["imagen"];
                     EMascota mascota = new EMascota { 
@@ -233,6 +272,8 @@ namespace SiGMA
                     {
                         tweet.PublicarTweetSoloTexto(tweet.generarMensajeAdopcion(mascota));
                     }
+                    mostrarMascota(Convert.ToInt32(Session["idMascota"].ToString()));
+                    lblCorrecto.Text = "Mascota disponible para adopcion";
                 }
                 else
                 {
@@ -243,6 +284,7 @@ namespace SiGMA
                     pedido.fecha = DateTime.Now;
                     pedido.user = new EUsuario { user = Session["UsuarioLogueado"].ToString() };
                     LogicaBDPedidoDifusion.registrarPedidoDifusion(pedido);
+                    mostrarMascota(Convert.ToInt32(Session["idMascota"].ToString()));
                     lblCorrecto.Text = "Pedido para poner en adopcion registrado.";
                 }
                 pnlCorrecto.Visible = true;

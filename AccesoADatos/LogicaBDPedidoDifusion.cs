@@ -152,5 +152,34 @@ namespace AccesoADatos
                 }
             }
         }
+        //AL VICIO HICE EL METODO, PORQUE NO PASA A ESTADO "EN ADOPCION" HASTA QUE NO SE PUBLICA EL PEDIDO
+        public static void CancerlarPedidosDifusionDeAdopcion(int idMascota)
+        {
+            SiGMAEntities mapa = Conexion.crearSegunServidor();
+            List<EPedidoDifusion> lstPedidos = new List<EPedidoDifusion>();
+            var consulta = from pedidosBD in mapa.PedidosDifusion
+                      join estadosBD in mapa.Estados on pedidosBD.idEstado equals estadosBD.idEstado
+                      where (estadosBD.nombreEstado == "Pendiente de Aceptacion" && estadosBD.ambito == "Difusion" && pedidosBD.Mascotas.idMascota == idMascota)
+                    select new
+                    {
+                        pedidosBD,
+                        estadosBD
+                    };
+            foreach (var item in consulta)
+            {
+                if (item.pedidosBD.idMascota != null)
+                {
+                    PedidosDifusion pedBD = new PedidosDifusion();
+                    {
+                        pedBD = (from pedidosBD in mapa.PedidosDifusion
+                                 join estadosBD in mapa.Estados on pedidosBD.idEstado equals estadosBD.idEstado
+                                 where (estadosBD.nombreEstado == "Pendiente de Aceptacion" && estadosBD.ambito == "Difusion" && pedidosBD.Mascotas.idMascota == idMascota)
+                                 select pedidosBD).First();
+                        mapa.DeleteObject(pedBD);
+                        mapa.SaveChanges(System.Data.Objects.SaveOptions.DetectChangesBeforeSave);
+                    }
+                }
+            }
+        }
     }
 }

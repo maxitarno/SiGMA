@@ -79,11 +79,17 @@ namespace SiGMA
 
         protected void btnEliminarRol_Click(object sender, EventArgs e)
         {
-            if (ddlRol.SelectedValue == "")
+            if (ddlRol.SelectedValue == "SIN ASIGNAR")
             {
                 lblInfo.Text = "El usuario no tiene rol asignado que pueda eliminar";
                 pnlInfo.Visible = true;
                 pnlInfo.Focus();
+                return;
+            }
+            if (Session["UsuarioLogueado"].ToString() == "admin" && ddlRolUsuario.SelectedValue == "1")
+            {
+                pnlInfo.Visible = true;
+                lblInfo.Text = "Acción no permitida. \n No puede eliminar el rol de Administrador en este usuario";
                 return;
             }
             if (LogicaBDRol.eliminarRolAsignadoUsuario(Convert.ToInt32(ddlRolUsuario.SelectedValue), lstUsuarios.SelectedValue))
@@ -135,6 +141,5 @@ namespace SiGMA
             ddlRolUsuario.DataValueField = "idRol";
             ddlRolUsuario.DataBind();
         }
-
     }
 }
