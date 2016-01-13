@@ -13,60 +13,62 @@ namespace SiGMA
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["UsuarioLogueado"] != null)
+            if (!Page.IsPostBack)
             {
-                if (!LogicaBDRol.verificarPermisoVisualizacion(Session["UsuarioLogueado"].ToString(), "Administracion"))
-                    Response.Redirect("PermisosInsuficientes.aspx");
-                if (!LogicaBDRol.verificarPermisosGrabacion(Session["UsuarioLogueado"].ToString(), "Administracion"))
+                if (Session["UsuarioLogueado"] != null)
                 {
-                    btnRegistrar.Visible = false;
-                    btnModificar.Visible = false;
+                    if (!LogicaBDRol.verificarPermisoVisualizacion(Session["UsuarioLogueado"].ToString(), "Administracion"))
+                        Response.Redirect("PermisosInsuficientes.aspx");
+                    if (!LogicaBDRol.verificarPermisosGrabacion(Session["UsuarioLogueado"].ToString(), "Administracion"))
+                    {
+                        btnRegistrar.Visible = false;
+                        btnModificar.Visible = false;
+                    }
+                }
+                else
+                {
+                    Response.Redirect("Login.aspx");
                 }
             }
-            else
+            else 
             {
-                Response.Redirect("Login.aspx");
+                pnlAtento.Visible = false;
+                pnlCorrecto.Visible = false;
+                pnlInfo.Visible = false;
             }
         }
         public void BtnBuscarClick(object sender, EventArgs e)
         {
+            btnNuevoDoc.Visible = true;
             lstResultados.Items.Clear();
             CargarCombos.cargarTipoDocumentoLista(ref lstResultados, txtNombre.Text);
             if (lstResultados.Items.Count != 0)
             {
                 pnlResultado.Visible = true;
-                pnlAtento.Visible = false;
-                pnlCorrecto.Visible = false;
-                pnlInfo.Visible = false;
-                pnlRegistrar.Visible = false;
-                pnl8.Visible = true;
+                btnRegistrar.Visible = false;
             }
             else
             {
                 pnlInfo.Visible = true;
-                lblResultado2.Text = "No se encontraron tipos de documento";
-                pnlAtento.Visible = false;
-                pnlCorrecto.Visible = false;
+                lblInfo.Text = "No se encontraron tipos de documento";
             }
         }
         public void BtnSeleccionarClick(object sender, EventArgs e)
         {
             if (lstResultados.SelectedValue != "")
             {
+                btnNuevoDoc.Visible = false;
+                btnBuscar.Visible = false;
                 pnlResultado.Visible = false;
                 txtNombre.Text = lstResultados.SelectedItem.Text;
                 Session["id"] = int.Parse(lstResultados.SelectedValue);
                 lstResultados.Items.Clear();
-                pnlCambio.Visible = true;
-                pnlAtento.Visible = false;
-                pnlCorrecto.Visible = false;
-                pnlInfo.Visible = false;
+                btnModificar.Visible = true;
+                btnCancelar.Visible = true;
             }
             else
             {
-                pnlAtento.Visible = false;
-                pnlCorrecto.Visible = false;
-                lblResultado2.Text = "Debe seleccionar un tipo de documento";
+                lblInfo.Text = "Debe seleccionar un tipo de documento";
                 pnlInfo.Visible = true;
             }
         }
@@ -79,30 +81,25 @@ namespace SiGMA
                 tipoDocumento.nombre = txtNombre.Text;
                 if (Datos.ModificarTipoDeDocumento(tipoDocumento))
                 {
-                    pnlAtento.Visible = false;
                     pnlCorrecto.Visible = true;
-                    pnlInfo.Visible = false;
-                    lblResultado1.Text = "Se modifico correctamente";
+                    lblCorrecto.Text = "Se modifico correctamente";
                     txtNombre.Text = "";
-                    pnlRegistrar.Visible = true;
-                    pnlBuscar.Visible = true;
-                    pnlCambio.Visible = false;
-                    pnl8.Visible = false;
+                    btnRegistrar.Visible = false;
+                    btnBuscar.Visible = true;
+                    btnNuevoDoc.Visible = true;
+                    btnModificar.Visible = false;
+                    btnCancelar.Visible = false;
                 }
                 else
                 {
                     pnlAtento.Visible = true;
-                    pnlCorrecto.Visible = false;
-                    pnlInfo.Visible = false;
-                    lblResultado3.Text = "No se pudo modificar";
+                    lblError.Text = "No se pudo modificar";
                 }
             }
             else
             {
-                pnlAtento.Visible = false;
-                pnlCorrecto.Visible = false;
                 pnlInfo.Visible = true;
-                lblResultado2.Text = "Debe ingresar un nombre valido";
+                lblInfo.Text = "Debe ingresar un nombre valido";
             }
         }
         public void BtnRegistrarClick(object sender, EventArgs e)
@@ -113,27 +110,25 @@ namespace SiGMA
                 tipoDocumento.nombre = txtNombre.Text;
                 if (Datos.guardarTipoDocumento(tipoDocumento))
                 {
-                    pnlAtento.Visible = false;
                     pnlCorrecto.Visible = true;
-                    pnlInfo.Visible = false;
-                    lblResultado1.Text = "Se registro correctamente";
+                    lblCorrecto.Text = "Se registro correctamente";
                     txtNombre.Text = "";
-                    pnlRegistrar.Visible = true;
+                    btnRegistrar.Visible = false;
+                    btnBuscar.Visible = true;
+                    btnNuevoDoc.Visible = true;
+                    btnModificar.Visible = false;
+                    btnCancelar.Visible = false;
                 }
                 else
                 {
                     pnlAtento.Visible = true;
-                    pnlCorrecto.Visible = false;
-                    pnlInfo.Visible = false;
-                    lblResultado3.Text = "No se pudo registrar";
+                    lblError.Text = "No se pudo registrar";
                 }
             }
             else
             {
-                pnlAtento.Visible = false;
-                pnlCorrecto.Visible = false;
                 pnlInfo.Visible = true;
-                lblResultado2.Text = "Debe ingresar un nombre valido";
+                lblInfo.Text = "Debe ingresar un nombre valido";
             }
         }
         /*public void BtnEliminarClick(object sender, EventArgs e)
@@ -160,21 +155,28 @@ namespace SiGMA
                 }
             }
         }*/
-        public void BtnLimpiarClick(object sender, EventArgs e)
+        public void BtnNuevoDocClick(object sender, EventArgs e)
         {
-            pnlAtento.Visible = false;
-            pnlCorrecto.Visible = false;
-            pnlInfo.Visible = false;
-            txtNombre.Text = "";
-            pnlRegistrar.Visible = true;
-            pnlBuscar.Visible = true;
-            pnlCambio.Visible = false;
-            pnl8.Visible = false;
+            btnModificar.Visible = false;
+            btnRegistrar.Visible = true;
+            btnNuevoDoc.Visible = false;
             pnlResultado.Visible = false;
+            btnBuscar.Visible = false;
+            txtNombre.Text = "";
+            btnRegistrar.Focus();
+            btnCancelar.Visible = true;
         }
-        public void BtnRegresarClick(object sender, EventArgs e)
+
+        public void BtnCancelarClick(object sender, EventArgs e)
         {
-            Response.Redirect("Administracion.aspx");
+            btnModificar.Visible = false;
+            btnRegistrar.Visible = false;
+            btnNuevoDoc.Visible = true;
+            pnlResultado.Visible = false;
+            btnBuscar.Visible = true;
+            txtNombre.Text = "";
+            btnCancelar.Visible = false;
         }
+        
     }
 }

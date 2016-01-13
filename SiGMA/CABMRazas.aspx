@@ -1,171 +1,128 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="CABMRazas.aspx.cs" Inherits="SiGMA.CABMRazas"
-    MasterPageFile="PaginaMaestra.Master" %>
-
+    MasterPageFile="PaginaAdmin.Master" %>
 <asp:Content runat="server" ContentPlaceHolderID="head">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
-    <title>SIGMA</title>
-    <!-- Bootstrap core CSS -->
-    <link href="assets/css/bootstrap.css" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <link href="assets/css/main.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="assets/js/hover.zoom.js"></script>
-    <script src="assets/js/hover.zoom.conf.js"></script>
 </asp:Content>
 <asp:Content runat="server" ContentPlaceHolderID="ContentPlaceHolder1">
-    <div class="centered">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">
-                    Consultar, modificar razas
-                </h3>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-body">
-                <div class="col-md-3 col-md-offset-4">
-                    <div style="margin-left:30%; width=30%;">
-                        <asp:Panel runat="server" ID="pnlCorrecto" class="alert alert-dismissable alert-success"
-                            Visible="false">
-                            <button class="close" type="button" data-dismiss="alert">
-                                ×</button>
-                            <asp:Label ID="lblResultado1" runat="server" Text=""></asp:Label>
-                        </asp:Panel>
-                        <asp:Panel runat="server" ID="pnlInfo" class="alert alert-dismissable alert-info"
-                            Visible="false">
-                            <button class="close" type="button" data-dismiss="alert">
-                                ×</button>
-                            <asp:Label ID="lblResultado2" runat="server" Text=""></asp:Label>
-                        </asp:Panel>
-                        <asp:Panel runat="server" ID="pnlAtento" class="alert alert-dismissable alert-danger"
-                            Visible="false">
-                            <button class="close" type="button" data-dismiss="alert">
-                                ×</button>
-                            <asp:Label ID="lblResultado3" runat="server" Text=""></asp:Label>
-                        </asp:Panel>
-                    </div>
+    <div class="page-title-container">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 wow fadeIn">
+	                <img src="assets/img/menu/mascotasMini.png" />
+                    <h1>Razas</h1>
+                    <p>Aquí podrá registrar, consultar y/o modificar razas</p>
                 </div>
-            </div>
-            <div class="panel-body">
-                <div class="col-md-1 col-md-offset-4">
-                    <div style="margin-left: 30%; display: table; width: 40%;">
-                        <div style="display: table-row; width: 30%">
-                            <div style="display: table-cell; width: 20%;">
-                                <asp:Panel runat="server" ID="pnlEspecie">
-                                    Especie:
-                                </asp:Panel>
-                            </div>
-                            <div style="display: table-cell; width: 20%;">
-                                <asp:Panel runat="server" ID="pnlDdlEspecie" Width="100%">
-                                    <asp:DropDownList ID="ddlEspecies" runat="server" Width="211px">
-                                    </asp:DropDownList>
-                                </asp:Panel>
-                            </div>
-                        </div>
-                        <div style="display: table-row; width: 30%">
-                            <div style="display: table-cell; width: 20%;">
-                                <asp:Panel runat="server" ID="pnlNombre">
-                                    Nombre:
-                                </asp:Panel>
-                            </div>
-                            <div style="display: table-cell; width: 20%;">
-                                <asp:Panel ID="pnltxtNombre" runat="server">
-                                    <asp:TextBox ID="txtNombre" runat="server" Visible="true" Width="211px" EnableTheming="False"></asp:TextBox>
-                                </asp:Panel>
-                            </div>
-                            <div style="display: table-cell; width: 20%;">
-                                <asp:Panel ID="pnlBuscar" runat="server">
-                                    <asp:Button ID="btnBuscar" runat="server" Text="Buscar" CausesValidation="False"
-                                        OnClick="BtnBuscarClick" />
-                                </asp:Panel>
-                            </div>
-                            <div style="display: table-cell; width: 20%;">
-                                <asp:RequiredFieldValidator ID="rfvNombre" runat="server" ErrorMessage="Debe ingresar un nombre de raza"
-                                    ControlToValidate="txtNombre" ValidationGroup="1" CssClass="Validator" ForeColor="Red"></asp:RequiredFieldValidator>
-                            </div>
-                        </div>
-                    </div>
-                    <div style="margin-left: 30%; display: table; width: 40%;">
-                        <div style="display: table-row; width: 30%;">
-                            <asp:Panel ID="pnlResultado" runat="server" Visible="false">
-                                <div style="display: table-cell; width: 20%;vertical-align:middle">
-                                    Resultados:
-                                </div>
-                                <div style="display: table-cell; width: 20%;">
-                                    <asp:ListBox ID="lstResultados" runat="server" AutoPostBack="true" OnSelectedIndexChanged="BtnSeleccionarClick" Width="260px"></asp:ListBox>
-                                </div>
-                            </asp:Panel>
-                        </div>
-                    </div>
-                    <div style="margin-left: 30%; display: table; width: 40%;">
-                        <asp:Panel runat="server" Visible="true" ID="pnlDatos">
-                            <div style="display: table-row; width: 30%">
-                                <div style="display: table-cell; width: 20%;">
-                                    Categoria:
-                                </div>
-                                <div style="display: table-cell; width: 20%;vertical-align:middle">
-                                    <asp:DropDownList ID="ddlCategoria" runat="server" Width="211px">
-                                    </asp:DropDownList>
-                                </div>
-                            </div>
-                            <div style="display: table-row; width: 30%">
-                                <div style="display: table-cell; width: 20%;">
-                                    Cuidado especial:
-                                </div>
-                                <div style="display: table-cell; width: 20%;vertical-align:middle">
-                                    <asp:DropDownList ID="ddlCuidadoEspecial" runat="server" Width="211px">
-                                        <asp:ListItem Value="0" Text="-- Seleccione un cuidado especial --"></asp:ListItem>
-                                        <asp:ListItem Value="1" Text="Pequeño"></asp:ListItem>
-                                        <asp:ListItem Value="2" Text="Grande"></asp:ListItem>
-                                        <asp:ListItem Value="3" Text="Mediano"></asp:ListItem>
-                                        <asp:ListItem Value="4" Text="Gato"></asp:ListItem>
-                                    </asp:DropDownList>
-                                </div>
-                            </div>
-                            <div style="display: table-row; width: 30%">
-                                <div style="display: table-cell; width: 20%;">
-                                    Peso Raza:
-                                </div>
-                                <div style="display: table-cell; width: 20%;">
-                                    <asp:TextBox ID="txtPeso" runat="server" Width="211px"></asp:TextBox>
-                                </div>
-                            </div>
-                        </asp:Panel>
-                    </div>
-                    <div style="margin-left: 30%; display: table; width: 40%;">
-                        <div style="display: table-row; width: 30%">
-                            <div style="display: table-cell; width: 20%;">
-                                <asp:Panel ID="pnlRegistrar" runat="server">
-                                    <asp:Button ID="btnRegistrar" runat="server" Text="Registrar" ValidationGroup="1"
-                                        OnClick="BtnRegistrarClick" />
-                                </asp:Panel>
-                            </div>
-                            <div style="display: table-cell; width: 20%;">
-                                <asp:Panel ID="pnlCambio" runat="server" Visible="false">
-                                    <asp:Button ID="btnModificar" runat="server" Text="Modificar" CausesValidation="False"
-                                        OnClick="BtnModificarClick" />
-                                </asp:Panel>
-                            </div>
-                            <div style="display: table-cell; width: 20%;">
-                                <asp:Panel runat="server" ID="pnl8" Visible="false">
-                                    <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar" 
-                                        CausesValidation="False" OnClick="BtnLimpiarClick" />
-                                </asp:Panel>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
             </div>
         </div>
     </div>
-    <div class="centered">
-        <asp:ImageButton ID="ibtnRegresar" runat="server" ImageUrl="~/imagenes/volver.png"
-            OnClick="BtnRegresarClick" CausesValidation="False"/></br>
-        VOLVER
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="col-md-4 col-md-offset-4">
+                <asp:Panel runat="server" id="pnlCorrecto" class="alert alert-dismissable alert-success" Visible=false>
+                    <button class="close" type="button" data-dismiss="alert">
+                        ×</button>
+                        <asp:Label ID="lblCorrecto" runat="server" Text=""></asp:Label>
+                </asp:Panel>
+                <asp:Panel runat="server" id="pnlInfo" class="alert alert-dismissable alert-danger" Visible=false>
+                    <button class="close" type="button" data-dismiss="alert">
+                        ×</button>
+                        <asp:Label ID="lblInfo" runat="server" Text=""></asp:Label>
+                </asp:Panel>
+                <asp:Panel runat="server" id="pnlAtento" class="alert alert-dismissable alert-danger" Visible=false>
+                    <button class="close" type="button" data-dismiss="alert">
+                        ×</button>
+                        <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
+                </asp:Panel>
+            </div>
+        </div>
+    </div>
+    <div class="services-half-width-container">
+        <div class="container">
+	        <div class="row">
+	            <div class="col-sm-6 services-half-width-text wow fadeInLeft">
+                    <div class="contact-form">
+	                    <div class="form-group">
+                            <label for="contact-name">Seleccione un especie</label>
+                            <asp:DropDownList ID="ddlEspecies" runat="server" Width="100%" 
+                                AutoPostBack="True" onselectedindexchanged="ddlEspecies_SelectedIndexChanged">
+                            </asp:DropDownList>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-name">Nombre Raza</label>
+                            <asp:TextBox ID="txtNombre" runat="server" ></asp:TextBox>
+                        </div>
+                        <div class="form-group">
+                            <asp:Button ID="btnBuscar" runat="server" Text="Buscar" CausesValidation="False" Width="180px" OnClick="BtnBuscarClick" Visible="false"/>
+                            &nbsp;&nbsp;&nbsp;
+                            <asp:Button ID="btnNuevaRaza" runat="server" Text="Nueva Raza" CausesValidation="False" Width="180px" OnClick="BtnNuevaRazaClick" Visible="false"/>
+                        </div>                               
+	                </div>
+                </div>
+	            <div class="col-sm-6 services-half-width-text wow fadeInUp">
+                    <div class="contact-form">
+                        <div class="form-group">
+                        <br />
+                            <asp:Panel ID="pnlResultado" runat="server" Visible="false">
+                                <label for="contact-name">Elegir una raza</label>
+                                <br />
+                                <asp:ListBox ID="lstResultados" runat="server" AutoPostBack="true" OnSelectedIndexChanged="BtnSeleccionarClick" Width="100%"></asp:ListBox>
+                            </asp:Panel>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+        </div>
+    </div>
+    <div class="services-half-width-container">
+        <div class="container">
+	        <div class="row">
+                <asp:Panel ID="pnlDatos" runat="server" Visible="false">
+	                <div class="col-sm-6 services-half-width-text wow fadeInLeft">
+                        <div class="contact-form">
+	                        <div class="form-group">
+                                <label for="contact-name">Categoria</label>
+                                <asp:DropDownList ID="ddlCategoria" runat="server" Width="100%"/>
+                                    <asp:CustomValidator ID="cvCategoria" runat="server" 
+                                    ErrorMessage="Seleccione una categoria" ControlToValidate="ddlCategoria" 
+                                        ForeColor="Red" onservervalidate="cvCategoria_ServerValidate"  ValidationGroup="1"></asp:CustomValidator>
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-name">Tipo Mascota</label>
+                                <asp:DropDownList ID="ddlCuidadoEspecial" runat="server" Width="100%">
+                                    <asp:ListItem Value="0" Text="-- Seleccione un tipo de mascota --"></asp:ListItem>
+                                    <asp:ListItem Value="1" Text="Perro Pequeño"></asp:ListItem>
+                                    <asp:ListItem Value="3" Text="Perro Mediano"></asp:ListItem>
+                                    <asp:ListItem Value="2" Text="Perro Grande"></asp:ListItem>
+                                    <asp:ListItem Value="4" Text="Gato"></asp:ListItem>
+                                </asp:DropDownList>
+                                <asp:CustomValidator ID="cvTipoMascota" runat="server" 
+                                    ErrorMessage="Seleccione una tipo de mascota" ControlToValidate="ddlCuidadoEspecial" 
+                                        ForeColor="Red" onservervalidate="cvTipoMascota_ServerValidate"  ValidationGroup="1"></asp:CustomValidator>
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-name">Peso Raza</label>
+                                <asp:TextBox ID="txtPeso" runat="server"/>
+                                <asp:RequiredFieldValidator  ForeColor="Red" ID="rfvPeso" runat="server"  ValidationGroup="1" ErrorMessage="Ingrese un peso estandar en Kg de la raza en edad adulta" ControlToValidate="txtPeso"></asp:RequiredFieldValidator>
+                            </div>      
+                            <div class="form-group">
+                                <asp:Panel ID="pnlRegistrar" runat="server" Visible="false">
+                                <asp:Button ID="btnRegistrar" runat="server" Text="Registrar" ValidationGroup="1" OnClick="BtnRegistrarClick" Width="180px"  />
+                                </asp:Panel>
+                                <asp:Panel ID="pnlCambio" runat="server" Visible="false">
+                                    <asp:Button ID="btnModificar" runat="server" Text="Modificar" ValidationGroup="1"
+                                        OnClick="BtnModificarClick" Width="180px"/>
+                                </asp:Panel>
+                            </div>                
+	                    </div>
+                    </div>
+	                <div class="col-sm-6 services-half-width-text wow fadeInUp">
+                        <div class="contact-form">
+                            <div class="form-group">
+                                <img id="imgRazas" src="base/img/portfolio/razas.jpg" />
+	                        </div>
+	                    </div>
+	                </div>
+                </asp:Panel>  
+	        </div>
+        </div>
     </div>
 </asp:Content>

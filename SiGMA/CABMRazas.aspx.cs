@@ -32,17 +32,17 @@ namespace SiGMA
                 CargarCombos.cargarEspecies(ref ddlEspecies);
                 CargarCombos.cargarCategorias(ref ddlCategoria);
             }
+            pnlCorrecto.Visible = false;
+            pnlAtento.Visible = false;
+            pnlInfo.Visible = false;
         }
         public void BtnBuscarClick(object sender, EventArgs e)
         {
             lstResultados.Items.Clear();
             if (ddlEspecies.SelectedValue.Equals("0"))
             {
-                pnlRegistrar.Visible = false;
-                pnlCorrecto.Visible = false;
-                pnlAtento.Visible = false;
                 pnlInfo.Visible = true;
-                lblResultado2.Text = "Debe seleccionar una especie";
+                lblInfo.Text = "Debe seleccionar una especie";
             }
             else
             {
@@ -50,18 +50,12 @@ namespace SiGMA
                 if (lstResultados.Items.Count != 0)
                 {
                     pnlRegistrar.Visible = false;
-                    pnlCorrecto.Visible = false;
-                    pnlAtento.Visible = false;
-                    pnlInfo.Visible = false;
                     pnlResultado.Visible = true;
-                    pnl8.Visible = true;
                 }
                 else
                 {
-                    pnlCorrecto.Visible = false;
-                    pnlAtento.Visible = false;
                     pnlInfo.Visible = true;
-                    lblResultado2.Text = "No se encontraron razas";
+                    lblInfo.Text = "No se encontraron razas";
                 }
             }
         }
@@ -70,12 +64,8 @@ namespace SiGMA
             if (lstResultados.SelectedValue != "")
             {
                 pnlRegistrar.Visible = false;
-                pnlCorrecto.Visible = false;
-                pnlAtento.Visible = false;
-                pnlInfo.Visible = false;
                 pnlResultado.Visible = true;
                 pnlCambio.Visible = true;
-                pnl8.Visible = true;
                 ERaza raza = new ERaza();
                 raza = Datos.BuscarRaza(int.Parse(lstResultados.SelectedValue));
                 ddlEspecies.SelectedValue = raza.especie.idEspecie.ToString();
@@ -86,164 +76,77 @@ namespace SiGMA
                 Session["idraza"] = int.Parse(lstResultados.SelectedValue.ToString());
                 ddlEspecies.SelectedValue = raza.especie.idEspecie.ToString();
                 pnlDatos.Visible = true;
+                btnModificar.Focus();
             }
             else
             {
-                pnlCorrecto.Visible = false;
-                pnlAtento.Visible = false;
                 pnlInfo.Visible = true;
-                lblResultado2.Text = "Debe seleccionar una raza";
+                lblInfo.Text = "Debe seleccionar una raza";
             }
         }
         public void BtnModificarClick(object sender, EventArgs e)
         {
-            if (ddlEspecies.SelectedValue.Equals("0"))
+            if (Page.IsValid)
             {
-                pnlRegistrar.Visible = false;
-                pnlCorrecto.Visible = false;
-                pnlAtento.Visible = false;
-                pnlInfo.Visible = true;
-                lblResultado2.Text = "Debe seleccionar una especie";
-            }
-            else
-            {
-                if (!ddlCuidadoEspecial.SelectedValue.Equals("0"))
+                if (ddlEspecies.SelectedValue.Equals("0"))
                 {
-                    if (!ddlCategoria.SelectedValue.Equals("0"))
-                    {
-                        if (txtNombre.Text != "" && Validaciones.verificarSoloLetras(txtNombre.Text))
-                        {
-                            ERaza raza = new ERaza();
-                            if (txtPeso.Text != "")
-                            {
-                                raza.pesoRaza = txtPeso.Text;
-                                raza.nombreRaza = txtNombre.Text;
-                                raza.CategoriaRaza = new ECategoriaRaza();
-                                raza.cuidadoEspecial = new ECuidado();
-                                raza.especie = new EEspecie();
-                                raza.CategoriaRaza.idCategoriaRaza = int.Parse(ddlCategoria.SelectedValue.ToString());
-                                raza.cuidadoEspecial.idCuidado = int.Parse(ddlCuidadoEspecial.SelectedValue.ToString());
-                                raza.especie.idEspecie = int.Parse(ddlEspecies.SelectedValue.ToString());
-                                raza.idRaza = (int)Session["idraza"];
-                                if (Datos.ModificarRaza(raza))
-                                {
-                                    pnlInfo.Visible = false;
-                                    lblResultado1.Text = "Se modifico correctamente";
-                                    pnlCorrecto.Visible = true;
-                                    pnlAtento.Visible = false;
-                                }
-                                else
-                                {
-                                    pnlInfo.Visible = false;
-                                    lblResultado2.Text = "No se pudo modificar";
-                                    pnlCorrecto.Visible = false;
-                                    pnlAtento.Visible = true;
-                                }
-                            }
-                            else
-                            {
-                                pnlInfo.Visible = true;
-                                lblResultado2.Text = "Debe ingresar un peso valido";
-                                pnlCorrecto.Visible = false;
-                                pnlAtento.Visible = false;
-                            }
-                        }
-                        else
-                        {
-                            pnlInfo.Visible = true;
-                            lblResultado2.Text = "Debe ingresar un nombre valido";
-                            pnlCorrecto.Visible = false;
-                            pnlAtento.Visible = false;
-                        }
-                    }
-                    else
-                    {
-                        pnlInfo.Visible = true;
-                        lblResultado2.Text = "Debe seleccionar una categoria";
-                        pnlCorrecto.Visible = false;
-                        pnlAtento.Visible = false;
-                    }
+                    pnlRegistrar.Visible = false;
+                    pnlInfo.Visible = true;
+                    lblInfo.Text = "Debe seleccionar una especie";
                 }
                 else
                 {
-                    pnlCorrecto.Visible = false;
-                    pnlAtento.Visible = false;
-                    pnlInfo.Visible = true;
-                    lblResultado2.Text = "Debe seleccionar un cuidado";
+                    ERaza raza = new ERaza();
+                    raza.pesoRaza = txtPeso.Text;
+                    raza.nombreRaza = txtNombre.Text;
+                    raza.CategoriaRaza = new ECategoriaRaza();
+                    raza.cuidadoEspecial = new ECuidado();
+                    raza.especie = new EEspecie();
+                    raza.CategoriaRaza.idCategoriaRaza = int.Parse(ddlCategoria.SelectedValue.ToString());
+                    raza.cuidadoEspecial.idCuidado = int.Parse(ddlCuidadoEspecial.SelectedValue.ToString());
+                    raza.especie.idEspecie = int.Parse(ddlEspecies.SelectedValue.ToString());
+                    raza.idRaza = (int)Session["idraza"];
+                    if (Datos.ModificarRaza(raza))
+                    {
+                        lblCorrecto.Text = "Se modifico correctamente";
+                        pnlCorrecto.Visible = true;
+                    }
+                    else
+                    {
+                        lblError.Text = "No se pudo modificar";
+                        pnlAtento.Visible = true;
+                    }
                 }
             }
         }
         public void BtnRegistrarClick(object sender, EventArgs e)
         {
-            ERaza raza = new ERaza();
-            raza.especie = new EEspecie();
-            raza.CategoriaRaza = new ECategoriaRaza();
-            raza.cuidadoEspecial = new ECuidado();
-            raza.CategoriaRaza.idCategoriaRaza = int.Parse(ddlCategoria.SelectedValue.ToString());
-            raza.cuidadoEspecial.idCuidado = int.Parse(ddlCuidadoEspecial.SelectedValue.ToString());
-            raza.especie.idEspecie = int.Parse(ddlEspecies.SelectedValue.ToString());
-            raza.nombreRaza = txtNombre.Text;
-            raza.pesoRaza = txtPeso.Text;
-            if (!ddlCuidadoEspecial.SelectedValue.Equals("0"))
+            if (Page.IsValid)
             {
-                if (!ddlCategoria.SelectedValue.Equals("0"))
+                ERaza raza = new ERaza();
+                raza.especie = new EEspecie();
+                raza.CategoriaRaza = new ECategoriaRaza();
+                raza.cuidadoEspecial = new ECuidado();
+                raza.CategoriaRaza.idCategoriaRaza = int.Parse(ddlCategoria.SelectedValue.ToString());
+                raza.cuidadoEspecial.idCuidado = int.Parse(ddlCuidadoEspecial.SelectedValue.ToString());
+                raza.especie.idEspecie = int.Parse(ddlEspecies.SelectedValue.ToString());
+                raza.nombreRaza = txtNombre.Text;
+                raza.pesoRaza = txtPeso.Text;
+                if (Datos.guardarRaza(raza))
                 {
-                    if (!ddlEspecies.SelectedValue.Equals("0"))
-                    {
-                        if (Validaciones.verificarDecimal(txtPeso.Text) && float.Parse(txtPeso.Text) > 0)
-                        {
-                            if (Datos.guardarRaza(raza))
-                            {
-                                lblResultado1.Text = "Se registro correctamente";
-                                pnlCorrecto.Visible = true;
-                                pnlAtento.Visible = false;
-                                pnlInfo.Visible = false;
-                                pnl8.Visible = true;
-                            }
-                            else
-                            {
-                                pnlCorrecto.Visible = false;
-                                pnlAtento.Visible = true;
-                                pnlInfo.Visible = false;
-                                lblResultado3.Text = "No se pudo registrar";
-                            }
-                        }
-                        else
-                        {
-                            pnlCorrecto.Visible = false;
-                            pnlAtento.Visible = false;
-                            pnlInfo.Visible = true;
-                            lblResultado2.Text = "Debe ingresar un peso valido";
-                        }
-                    }
-                    else
-                    {
-                        pnlCorrecto.Visible = false;
-                        pnlAtento.Visible = false;
-                        pnlInfo.Visible = true;
-                        lblResultado2.Text = "Debe seleccionar una especie";
-                    }
+                    lblCorrecto.Text = "Se registro correctamente";
+                    pnlCorrecto.Visible = true;
                 }
                 else
                 {
-                    pnlCorrecto.Visible = false;
-                    pnlAtento.Visible = false;
-                    pnlInfo.Visible = true;
-                    lblResultado2.Text = "Debe seleccionar una categoria";
+                    pnlAtento.Visible = true;
+                    lblError.Text = "No se pudo registrar. Verifique datos";
                 }
-            }
-            else
-            {
-                pnlCorrecto.Visible = false;
-                pnlAtento.Visible = false;
-                pnlInfo.Visible = true;
-                lblResultado2.Text = "Debe seleccionar un cuidado";
             }
         }
         public void BtnLimpiarClick(object sender, EventArgs e)
         {
             pnlCambio.Visible = false;
-            pnl8.Visible = false;
             pnlAtento.Visible = false;
             pnlCorrecto.Visible = false;
             pnlDatos.Visible = true;
@@ -256,9 +159,50 @@ namespace SiGMA
             ddlCuidadoEspecial.SelectedValue = "0";
             txtPeso.Text = "";
         }
-        public void BtnRegresarClick(object sender, EventArgs e)
+
+        protected void ddlEspecies_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Response.Redirect("Administracion.aspx");
+            if (ddlEspecies.SelectedValue == "SIN ASIGNAR")
+            {
+                pnlInfo.Visible = true;
+                lblInfo.Text = "Debe seleccionar una especie";
+            }
+            else
+            {
+                btnNuevaRaza.Visible = true;
+                btnBuscar.Visible = true;
+            }
+        }
+
+        public void BtnNuevaRazaClick(object sender, EventArgs e)
+        {
+            pnlCambio.Visible = false;
+            pnlDatos.Visible = true;
+            pnlRegistrar.Visible = true;
+            pnlResultado.Visible = false;
+            txtNombre.Text = "";
+            ddlCategoria.SelectedValue = "0";
+            ddlCuidadoEspecial.SelectedValue = "0";
+            txtPeso.Text = "";
+            btnRegistrar.Focus();
+        }
+
+        protected void cvTipoMascota_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            args.IsValid = Validaciones.verificarSeleccionEnDdl(ref ddlCuidadoEspecial);
+            if (args.IsValid == false && btnRegistrar.Visible == false)
+                btnModificar.Focus();
+            if (args.IsValid == false && btnRegistrar.Visible == true)
+                btnRegistrar.Focus();
+        }
+
+        protected void cvCategoria_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            args.IsValid = Validaciones.verificarSeleccionEnDdl(ref ddlCategoria);
+            if (args.IsValid == false && btnRegistrar.Visible == false)
+                btnModificar.Focus();
+            if (args.IsValid == false && btnRegistrar.Visible == true)
+                btnRegistrar.Focus();
         }
     }
 }
