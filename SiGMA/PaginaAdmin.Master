@@ -102,6 +102,7 @@
                                         <li><a href="RegistrarHallazgo.aspx">Registrar</a></li>
 							            <li><a href="ConsultarHallazgo.aspx">Consultar</a></li>
                                         <li><a href="ConsultarHallazgo.aspx?m=1">Modificar</a></li>
+                                        <li><a href="DevolverADueño.aspx">Devolucion</a></li>
                                     </ul>
                                 </li>
                                 <li class="dropdown">

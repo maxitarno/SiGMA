@@ -37,6 +37,7 @@ namespace SiGMA
                 }
                 pnlDatos.Visible = false;
                 pnlDatos1.Visible = false;
+                pnlImagenDevolver.Visible = true;
             }
             catch (Exception)
             {

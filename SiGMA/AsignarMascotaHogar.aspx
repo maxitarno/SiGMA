@@ -236,7 +236,7 @@
 	            </div>
 	        </div>
         </div>
-    <asp:Panel runat="server" id="pnlImagenAsignar" Visible=false>
+    <asp:Panel runat="server" id="pnlImagenAsignar" Visible="false">
         <div class="container">
             <div class="contact-form">
                 <div class="form-group">

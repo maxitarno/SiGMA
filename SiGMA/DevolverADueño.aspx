@@ -117,4 +117,13 @@
     </asp:Panel>                       
         </div>
     </div>
+    <asp:Panel runat="server" id="pnlImagenDevolver" Visible="false">
+        <div class="container">
+            <div class="contact-form">
+                <div class="form-group">
+                    <img src="base/img/portfolio/devolucion.jpg" />
+                </div>
+            </div>
+        </div>
+    </asp:Panel>
 </asp:Content>
