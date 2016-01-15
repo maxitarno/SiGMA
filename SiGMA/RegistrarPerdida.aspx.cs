@@ -71,7 +71,7 @@ namespace SiGMA
             if (mascotas == null)
             {
                 pnlInfo.Visible = true;
-                lblInfo.Text = "Ingrese al menos una letra para buscar mascotas";
+                lblInfo.Text = "No se encontro la mascota";
                 return;
             }
             if (mascotas.Count != 0)
