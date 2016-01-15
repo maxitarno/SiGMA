@@ -178,6 +178,7 @@ namespace SiGMA
             }
             pnlDatosVoluntario.Visible = true;
             pnlAsignar.Visible = true;
+            btnAsignar.Focus();
         }
 
         private void defaultLabels()
@@ -201,6 +202,7 @@ namespace SiGMA
                 LogicaBDHogar.registrarOcupacion(entOcupacion);
                 pnlDatos.Visible = false;
                 pnlDatos1.Visible = false;
+                pnlImagenAsignar.Visible = true;
                 pnlCorrecto.Visible = true;
                 lblCorrecto.Text = "Asignacion registrada correctamente";
                 pnlAtento.Visible = false;

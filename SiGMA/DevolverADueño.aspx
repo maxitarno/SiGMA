@@ -10,7 +10,8 @@
  <div class="page-title-container">
         <div class="container">
             <div class="row">
-                <div class="col-sm-12 wow fadeIn">	                
+                <div class="col-sm-12 wow fadeIn">	 
+                <img src="assets/img/menu/registrarhallazgoMini.png" />               
                     <h1>Devolución a dueño /</h1>
                     <p>Reunir una mascota hallada con su dueño</p>                    
                 </div>

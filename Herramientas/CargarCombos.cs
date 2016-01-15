@@ -55,10 +55,10 @@ namespace Herramientas
         public static void cargarBarrio(ref DropDownList ddl, int idLocalidad)
         {
             ddl.Items.Clear();
-            if (idLocalidad != 1)
-            {
+            //if (idLocalidad != 1)
+            //{
                 ddl.Items.Add(new ListItem("SIN ASIGNAR", "0"));
-            }
+            //}
             List<EBarrio> barrios = Datos.BuscarBarrios(idLocalidad);
             foreach (EBarrio item in barrios)
             {

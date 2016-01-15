@@ -209,23 +209,23 @@ namespace AccesoADatos
                                from G1 in group1.DefaultIfEmpty()
                                join BarrioBD in mapa.Barrios on HallazgoBD.idBarrioHallazgo equals BarrioBD.idBarrio into group2
                                from G2 in group2.DefaultIfEmpty()
-                               join LocalidadBD in mapa.Localidades on G2.idLocalidad equals LocalidadBD.idLocalidad into group3
-                               from G3 in group3.DefaultIfEmpty()
                                join CalleBD in mapa.Calles on HallazgoBD.idCalle equals CalleBD.idCalle into group4
                                from G4 in group4.DefaultIfEmpty()
                                join MascotasBD in mapa.Mascotas on HallazgoBD.idMascota equals MascotasBD.idMascota into group5
                                from G5 in group5.DefaultIfEmpty()
                                join UsuarioBD in mapa.Usuarios on HallazgoBD.idUsuario equals UsuarioBD.user into group6
                                from G6 in group6.DefaultIfEmpty()
+                               join EstadoBD in mapa.Estados on HallazgoBD.idEstado equals EstadoBD.idEstado into group7
+                               from G7 in group7.DefaultIfEmpty()
                                select new
                                {
                                    Hallazgo = HallazgoBD,
                                    mascota = G5,
-                                   localidad = G3,
                                    barrio = G2,
                                    calle = G4,
                                    perdida = G1,
                                    usuario = G6,
+                                   estado = G7,
                                };
                 foreach (var registro in consulta)
                 {
@@ -237,16 +237,22 @@ namespace AccesoADatos
                     hallazgo.domicilio = new EDomicilio();
                     hallazgo.domicilio.barrio = new EBarrio();
                     hallazgo.domicilio.barrio.localidad = new ELocalidad();
-                    hallazgo.domicilio.barrio.localidad.nombre = registro.localidad.nombre;
+                    hallazgo.domicilio.barrio.localidad.nombre = "CBA";
                     hallazgo.domicilio.barrio.nombre = registro.barrio.nombre;
+                    hallazgo.domicilio.barrio.idBarrio = registro.barrio.idBarrio;
                     hallazgo.domicilio.calle = new ECalle();
                     hallazgo.domicilio.calle.nombre = registro.calle.nombre;
+                    hallazgo.domicilio.calle.idCalle = registro.calle.idCalle;
                     hallazgo.domicilio.numeroCalle = (registro.Hallazgo.nroCalle == null) ? 0 : registro.Hallazgo.nroCalle.Value;
                     hallazgo.observaciones = registro.Hallazgo.observaciones;
                     hallazgo.perdida = new EPerdida();
                     hallazgo.perdida.idPerdida = (registro.Hallazgo.idPerdida == null) ? 0 : registro.Hallazgo.idPerdida.Value;
                     hallazgo.usuario = new EUsuario();
                     hallazgo.usuario.user = registro.usuario.user;
+                    hallazgo.fechaHallazgo = registro.Hallazgo.fechaHoraHallazgo;
+                    hallazgo.estado = new EEstado();
+                    hallazgo.estado.idEstado = registro.Hallazgo.idEstado;
+                    hallazgo.estado.nombreEstado = registro.estado.nombreEstado;
                     listaHallazgos.Add(hallazgo);
                 }
                 return listaHallazgos; 
@@ -260,17 +266,17 @@ namespace AccesoADatos
                 {
                     if (hallazgo.domicilio.barrio != null)
                     {
-                        hallazgos = hallazgos.Where(h => (h.fechaHallazgo >= hallazgo.fechaHallazgo) && h.estado.nombreEstado.Equals(hallazgo.estado.nombreEstado) && h.domicilio.barrio.nombre.Equals(hallazgo.domicilio.barrio.nombre)).ToList();
+                        hallazgos = hallazgos.Where(h => (h.fechaHallazgo >= hallazgo.fechaHallazgo) && h.estado.idEstado.Equals(hallazgo.estado.idEstado) && h.domicilio.barrio.idBarrio.Equals(hallazgo.domicilio.barrio.idBarrio)).ToList();
                     }
                     else
                     {
-                        hallazgos = hallazgos.Where(h => (h.fechaHallazgo >= hallazgo.fechaHallazgo) && h.estado.nombreEstado.Equals(hallazgo.estado.nombreEstado)).ToList();
+                        hallazgos = hallazgos.Where(h => (h.fechaHallazgo >= hallazgo.fechaHallazgo) && h.estado.idEstado.Equals(hallazgo.estado.idEstado)).ToList();
                     }
                 }
                 else
                 {
                     if(hallazgo.domicilio.barrio != null){
-                        hallazgos = hallazgos.Where(h => (h.fechaHallazgo >= hallazgo.fechaHallazgo) && h.domicilio.barrio.nombre.Equals(hallazgo.domicilio.barrio.nombre)).ToList();
+                        hallazgos = hallazgos.Where(h => (h.fechaHallazgo >= hallazgo.fechaHallazgo) && h.domicilio.barrio.idBarrio.Equals(hallazgo.domicilio.barrio.idBarrio)).ToList();
                     }
                     else{
                         hallazgos = hallazgos.Where(h => (h.fechaHallazgo >= hallazgo.fechaHallazgo)).ToList();
@@ -283,16 +289,16 @@ namespace AccesoADatos
                 {
                     if (hallazgo.domicilio.barrio != null)
                     {
-                        hallazgos = hallazgos.Where(h => h.estado.nombreEstado.Equals(hallazgo.estado.nombreEstado) && h.domicilio.barrio.nombre.Equals(hallazgo.domicilio.barrio.nombre)).ToList();
+                        hallazgos = hallazgos.Where(h => h.estado.idEstado.Equals(hallazgo.estado.idEstado) && h.domicilio.barrio.idBarrio.Equals(hallazgo.domicilio.barrio.idBarrio)).ToList();
                     }
                     else
                         {
-                        hallazgos = hallazgos.Where(h => h.estado.nombreEstado.Equals(hallazgo.estado.nombreEstado)).ToList();
+                            hallazgos = hallazgos.Where(h => h.estado.idEstado.Equals(hallazgo.estado.idEstado)).ToList();
                     }
                 }
                 else
                 {
-                    hallazgos = hallazgos.Where(h => h.domicilio.barrio.nombre.Equals(hallazgo.domicilio.barrio.nombre)).ToList();
+                    hallazgos = hallazgos.Where(h => h.domicilio.barrio.idBarrio.Equals(hallazgo.domicilio.barrio.idBarrio)).ToList();
                 }
             }
             return hallazgos;

@@ -22,7 +22,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12 wow fadeIn">
-	                <img  />
+	                <img src="assets/img/menu/registrarhallazgoMini.png" />
                     <h1>Asignar Mascota a Hogar</h1>                    
                 </div>
             </div>
@@ -137,7 +137,7 @@
                                                 </td>                                                
                                                 <td class="btn pull-right">
                                                     <asp:Button ID="btnBuscarHogares" runat="server" Text="Buscar" 
-                                                        onclick="btnBuscarHogares_Click" CausesValidation="False" />
+                                                        onclick="btnBuscarHogares_Click" CausesValidation="False" Width="180px"/>
                                                 </td>
                                             </tr>
                                         </table>
@@ -228,7 +228,7 @@
                                             Text="Ingrese una fecha"></asp:RequiredFieldValidator>
                                             </div>
                                             <asp:Button ID="btnAsignar" runat="server" Text="Asignar" 
-                                                onclick="btnAsignar_Click" /> 
+                                                onclick="btnAsignar_Click" Width="180px"/> 
                                      </asp:Panel>                             
                             </asp:Panel>
                         </div>
@@ -236,6 +236,15 @@
 	            </div>
 	        </div>
         </div>
+    <asp:Panel runat="server" id="pnlImagenAsignar" Visible=false>
+        <div class="container">
+            <div class="contact-form">
+                <div class="form-group">
+                    <img src="base/img/portfolio/asignarMascota.png" />
+                </div>
+            </div>
+        </div>
+    </asp:Panel>
     <asp:Label
         ID="lblIdMascota" Visible="false" runat="server" Text=""></asp:Label>  
 </asp:Content>

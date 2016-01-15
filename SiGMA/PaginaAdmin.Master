@@ -132,7 +132,6 @@
 							</a>
 							<ul class="dropdown-menu dropdown-menu-left" role="menu">
 								<li><a href="ModerarPedidosVoluntario.aspx">Pedidos Voluntarios</a></li>
-								<li><a href="AsignarMascotaHogar.aspx">Asignar Mascota</a></li>
 							</ul>
 						</li>
 						<li class="dropdown active">

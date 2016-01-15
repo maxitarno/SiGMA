@@ -15,11 +15,6 @@ namespace SiGMA
 
         }
 
-        protected void BtnRegresarClick(object sender, ImageClickEventArgs e)
-        {
-            Response.Redirect("Informes.aspx");
-        }
-
         protected void ddlListado_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ddlListado.SelectedValue.Equals("1"))
@@ -29,7 +24,10 @@ namespace SiGMA
                 int ambos = 0;
                 LogicaBDGraficos.BuscarUsuarios(ref hogar, ref busqueda, ref ambos);
                 string pagina = "TiposDeUsuarios.htm?h=" + hogar + "&b=" + busqueda + "&a=" + ambos;
-                Response.Redirect(pagina);
+                //Response.Redirect(pagina);
+                Response.Write("<script>");
+                Response.Write("window.open('" + pagina + "','_blank')");
+                Response.Write("</script>");
             }
             if (ddlListado.SelectedValue.Equals("2"))
             {
@@ -37,7 +35,10 @@ namespace SiGMA
                 int mascotasHalladas = LogicaBDMascota.buscarMascotasPorEstado("Hallada").Count;
                 int mascotasPerdidas = LogicaBDMascota.buscarMascotasPorEstado("Perdida").Count;
                 string pagina = "Grafico.htm?a=" + mascotasAdoptadas + "&p=" + mascotasPerdidas + "&h=" + mascotasHalladas;
-                Response.Redirect(pagina);
+                //Response.Redirect(pagina);
+                Response.Write("<script>");
+                Response.Write("window.open('" + pagina + "','_blank')");
+                Response.Write("</script>");
             }
             if (ddlListado.SelectedValue.Equals("3"))
             {
@@ -45,7 +46,10 @@ namespace SiGMA
                 int cantM = 0;
                 LogicaBDGraficos.BuscarAdopciones(ref cantM, ref cantH);
                 string pagina = "AdopcionesPorSexo.htm?cantH=" + cantH + "&cantM=" + cantM;
-                Response.Redirect(pagina);
+                //Response.Redirect(pagina);
+                Response.Write("<script>");
+                Response.Write("window.open('" + pagina + "','_blank')");
+                Response.Write("</script>");
             }
             if (ddlListado.SelectedValue.Equals("4"))
             {
@@ -57,7 +61,10 @@ namespace SiGMA
                 int cantM = 0;
                 LogicaBDGraficos.BuscarPerdidas(ref cantH, ref cantM);
                 string pagina = "PerdidasPorSexo.htm?a=" + mascotasAdoptadas + "&p=" + mascotasPerdidas + "&h=" + mascotasHalladas + "&m=" + mascotas + "&cantH=" + cantH + "&cantM=" + cantM;
-                Response.Redirect(pagina);
+                //Response.Redirect(pagina);
+                Response.Write("<script>");
+                Response.Write("window.open('" + pagina + "','_blank')");
+                Response.Write("</script>");
             }
             if (ddlListado.SelectedValue.Equals("5"))
             {
@@ -65,7 +72,10 @@ namespace SiGMA
                 int cantM = 0;
                 LogicaBDGraficos.BuscarHallazgos(ref cantM, ref cantH);
                 string pagina = "HallazgosPorSexo.htm?cantH=" + cantH + "&cantM=" + cantM;
-                Response.Redirect(pagina);
+                //Response.Redirect(pagina);
+                Response.Write("<script>");
+                Response.Write("window.open('" + pagina + "','_blank')");
+                Response.Write("</script>");
             }
             if (ddlListado.SelectedValue.Equals("6"))
             {
@@ -76,7 +86,10 @@ namespace SiGMA
                 int senior = 0;
                 LogicaBDGraficos.BuscarMascotas(ref cachorro, ref adulto, ref senior, ref cantH, ref cantM);
                 string pagina = "MascotasPorEdadYSexo.htm?s=" + senior + "&a=" + adulto + "&c=" + cachorro + "&M=" + cantM + "&H=" + cantH;
-                Response.Redirect(pagina);
+                //Response.Redirect(pagina);
+                Response.Write("<script>");
+                Response.Write("window.open('" + pagina + "','_blank')");
+                Response.Write("</script>");
             }
             if (ddlListado.SelectedValue.Equals("7"))
             {
@@ -97,7 +110,10 @@ namespace SiGMA
                     i++;
                 }
                 string pagina = "HallazgosPorBarrio.htm?nombre=" + nombre + "&cant=" + cantidad;
-                Response.Redirect(pagina);
+                //Response.Redirect(pagina);
+                Response.Write("<script>");
+                Response.Write("window.open('" + pagina + "','_blank')");
+                Response.Write("</script>");
             }
             if (ddlListado.SelectedValue.Equals("8"))
             {
@@ -121,7 +137,10 @@ namespace SiGMA
                     i++;
                 }
                 string pagina = "ADopcionesPorBarrio.htm?nombre=" + nombre + "&cant=" + cantidad;
-                Response.Redirect(pagina);
+                //Response.Redirect(pagina);
+                Response.Write("<script>");
+                Response.Write("window.open('" + pagina + "','_blank')");
+                Response.Write("</script>");
             }
             if (ddlListado.SelectedValue.Equals("9"))
             {
@@ -145,9 +164,12 @@ namespace SiGMA
                     i++;
                 }
                 string pagina = "PerdidasPorBarrio.htm?nombre=" + nombre + "&cant=" + cantidad;
-                Response.Redirect(pagina);
+                //Response.Redirect(pagina);
+                Response.Write("<script>");
+                Response.Write("window.open('" + pagina + "','_blank')");
+                Response.Write("</script>");
             }
-            if (!ddlListado.SelectedValue.Equals("11"))
+            if (ddlListado.SelectedValue.Equals("11"))
             {
                 int i = 0;
                 string cant = "";
@@ -168,9 +190,12 @@ namespace SiGMA
                     }
                 }
                 string pagina = "AdopcionesPorFecha.htm?nombre=" + fecha + "&cant=" + cant;
-                Response.Redirect(pagina);
+                //Response.Redirect(pagina);
+                Response.Write("<script>");
+                Response.Write("window.open('" + pagina + "','_blank')");
+                Response.Write("</script>");
             }
-            if (!ddlListado.SelectedValue.Equals("10"))
+            if (ddlListado.SelectedValue.Equals("10"))
             {
                 int i = 0;
                 string cant = "";
@@ -191,7 +216,10 @@ namespace SiGMA
                     }
                 }
                 string pagina = "HallazgosPorFecha.htm?nombre=" + fecha + "&cant=" + cant;
-                Response.Redirect(pagina);
+                //Response.Redirect(pagina);
+                Response.Write("<script>");
+                Response.Write("window.open('" + pagina + "','_blank')");
+                Response.Write("</script>");
             }
         }
     }
