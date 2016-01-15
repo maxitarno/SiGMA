@@ -107,6 +107,7 @@ namespace AccesoADatos
                             HogarBD.idEstado = LogicaBDEstado.buscarEstado(new EEstado { nombreEstado = "Pendiente", ambito = "Hogar" }).idEstado;
                             HogarBD.AceptaEspecie = Convert.ToInt32(tipoMasc);
                             HogarBD.cantMascotas = Convert.ToInt32(cantMascMax);
+                            HogarBD.disponibilidad = Convert.ToInt32(cantMascMax);
                             Personas personaBD = mapaEntidades.Personas.Where(personaBuscada => personaBuscada.user == usuario).First();
                             personaBD.idBarrio = Convert.ToInt32(barrioHogar);
                             personaBD.idCalle = Convert.ToInt32(calle);

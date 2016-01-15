@@ -19,15 +19,10 @@ namespace SiGMA
                     Response.Redirect("PermisoInsuficiente.aspx");
             }
             else
+            {
                 Response.Redirect("Login.aspx");
-            if (!Page.IsPostBack)
-            {
-                listarPedidosDifusion();
             }
-            else 
-            {
-                pnlInfo.Visible = false;
-            }
+            listarPedidosDifusion();       
         }
 
         private void listarPedidosDifusion()
@@ -44,6 +39,17 @@ namespace SiGMA
             else 
             {
                 pnlPedidos.Visible = true;
+                for (int i = 0; i < grvPedidos.Rows.Count; i++)
+                {
+                    if (grvPedidos.Rows[i].Cells[2].Text == "Pendiente de Aceptacion")
+                    {
+                        grvPedidos.Rows[i].Cells[4].Enabled = true;
+                    }
+                    else
+                    {
+                        grvPedidos.Rows[i].Cells[4].Enabled = false;
+                    }
+                }
             }
         }
 
@@ -107,6 +113,26 @@ namespace SiGMA
         protected void btnRegCampaña_Click(object sender, EventArgs e)
         {
             Response.Redirect("RegistrarCampaña.aspx");
+        }
+
+        protected void grvPedidos_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            try
+            {
+                EPedidoDifusion entPedido = new EPedidoDifusion();
+                entPedido.idPedidoDifusion = int.Parse(grvPedidos.Rows[int.Parse(e.CommandArgument.ToString())].Cells[5].Text);
+                LogicaBDPedidoDifusion.eliminarPedido(entPedido);
+                pnlAtento.Visible = false;
+                pnlCorrecto.Visible = true;
+                lblCorrecto.Text = "Pedido eliminado exitosamente";
+                listarPedidosDifusion();
+            }
+            catch (Exception)
+            {
+                pnlAtento.Visible = true;
+                pnlCorrecto.Visible = true;
+                lblError.Text = "Error al eliminar el pedido";
+            }
         }
     }
 }

@@ -181,5 +181,25 @@ namespace AccesoADatos
                 }
             }
         }
+
+        public static void eliminarPedido(EPedidoDifusion pedido)
+        {
+            using (TransactionScope transaction = new TransactionScope())
+            {
+                try
+                {
+                    SiGMAEntities mapa = Conexion.crearSegunServidor();
+                    var pedidoBD = mapa.PedidosDifusion.Where(p => p.idPedidoDifusion == pedido.idPedidoDifusion).First();
+                    mapa.DeleteObject(pedidoBD);
+                    mapa.SaveChanges();
+                    transaction.Complete();
+                }
+                catch (Exception)
+                {
+                    transaction.Dispose();
+                    throw;
+                }
+            }
+        }
     }
 }

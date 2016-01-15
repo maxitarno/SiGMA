@@ -3561,7 +3561,8 @@ namespace AccesoADatos
         /// <param name="idEstado">Initial value of the idEstado property.</param>
         /// <param name="aceptaEspecie">Initial value of the AceptaEspecie property.</param>
         /// <param name="tipoHogar">Initial value of the TipoHogar property.</param>
-        public static HogaresProvisorios CreateHogaresProvisorios(global::System.Int32 idHogarProvisorio, global::System.String tieneNiños, global::System.Int32 cantMascotas, global::System.Int32 idVoluntario, global::System.Int32 idEstado, global::System.Int32 aceptaEspecie, global::System.Int32 tipoHogar)
+        /// <param name="disponibilidad">Initial value of the disponibilidad property.</param>
+        public static HogaresProvisorios CreateHogaresProvisorios(global::System.Int32 idHogarProvisorio, global::System.String tieneNiños, global::System.Int32 cantMascotas, global::System.Int32 idVoluntario, global::System.Int32 idEstado, global::System.Int32 aceptaEspecie, global::System.Int32 tipoHogar, global::System.Int32 disponibilidad)
         {
             HogaresProvisorios hogaresProvisorios = new HogaresProvisorios();
             hogaresProvisorios.idHogarProvisorio = idHogarProvisorio;
@@ -3571,6 +3572,7 @@ namespace AccesoADatos
             hogaresProvisorios.idEstado = idEstado;
             hogaresProvisorios.AceptaEspecie = aceptaEspecie;
             hogaresProvisorios.TipoHogar = tipoHogar;
+            hogaresProvisorios.disponibilidad = disponibilidad;
             return hogaresProvisorios;
         }
 
@@ -3752,9 +3754,9 @@ namespace AccesoADatos
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int32> disponibilidad
+        public global::System.Int32 disponibilidad
         {
             get
             {
@@ -3769,8 +3771,8 @@ namespace AccesoADatos
                 OndisponibilidadChanged();
             }
         }
-        private Nullable<global::System.Int32> _disponibilidad;
-        partial void OndisponibilidadChanging(Nullable<global::System.Int32> value);
+        private global::System.Int32 _disponibilidad;
+        partial void OndisponibilidadChanging(global::System.Int32 value);
         partial void OndisponibilidadChanged();
 
         #endregion

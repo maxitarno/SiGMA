@@ -346,7 +346,7 @@
           <Property Name="idEstado" Type="int" Nullable="false" />
           <Property Name="AceptaEspecie" Type="int" Nullable="false" />
           <Property Name="TipoHogar" Type="int" Nullable="false" />
-          <Property Name="disponibilidad" Type="int" />
+          <Property Name="disponibilidad" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Localidades">
           <Key>
@@ -1516,7 +1516,7 @@
           <Property Name="idEstado" Type="Int32" Nullable="false" />
           <Property Name="AceptaEspecie" Type="Int32" Nullable="false" />
           <Property Name="TipoHogar" Type="Int32" Nullable="false" />
-          <Property Name="disponibilidad" Type="Int32" />
+          <Property Name="disponibilidad" Type="Int32" Nullable="false" />
           <NavigationProperty Name="OcupacionesXHogaresProvisorios" Relationship="SiGMAModel.FK_OcupacionXHogarProvisorio_HogaresProvisorios" FromRole="HogaresProvisorios" ToRole="OcupacionesXHogaresProvisorios" />
         </EntityType>
         <EntityType Name="Localidades">

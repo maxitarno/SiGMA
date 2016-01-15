@@ -41,6 +41,7 @@ namespace AccesoADatos
                            select new
                            {    
                                personasBD,
+                               dueñosBD.idDuenio,
                                idBarrio = subBarriosBD != null ? subBarriosBD.idBarrio : -1,
                                nombreBarrio = subBarriosBD != null ? subBarriosBD.nombre : string.Empty,
                                idCalle = subCallesBD != null ? subCallesBD.idCalle : -1,
@@ -50,7 +51,8 @@ namespace AccesoADatos
 
             if (consulta.Count() != 0)
             {
-                dueño = new EDuenio();                
+                dueño = new EDuenio();
+                dueño.idDuenio = consulta.Select(a => a.idDuenio).First();
                 dueño.apellido = consulta.Select(a => a.personasBD.apellido).First();
                 dueño.nombre = consulta.Select(a => a.personasBD.nombre).First();
                 dueño.nroCalle = consulta.Select(a => a.personasBD.nroCalle).First();
@@ -71,6 +73,7 @@ namespace AccesoADatos
                 {
                     dueño.telefonoCelular = consulta.Select(a => a.personasBD.telefonoCelular).First(); 
                 }
+                dueño.idPersona = consulta.Select(a => a.personasBD.idPersona).First();
                 //Agregar los demas campos!
             }
             return dueño;

@@ -223,6 +223,7 @@
     <Content Include="Content\css\main.css" />
     <Content Include="Contrato.aspx" />
     <Content Include="DefaultDueño.aspx" />
+    <Content Include="DevolverADueño.aspx" />
     <Content Include="DifusionDueño.aspx" />
     <Content Include="EnConstruccion.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -429,6 +430,13 @@
     </Compile>
     <Compile Include="DefaultDueño.aspx.designer.cs">
       <DependentUpon>DefaultDueño.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DevolverADueño.aspx.cs">
+      <DependentUpon>DevolverADueño.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DevolverADueño.aspx.designer.cs">
+      <DependentUpon>DevolverADueño.aspx</DependentUpon>
     </Compile>
     <Compile Include="DifusionDueño.aspx.cs">
       <DependentUpon>DifusionDueño.aspx</DependentUpon>

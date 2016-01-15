@@ -61,7 +61,7 @@ namespace AccesoADatos
         }
         
 
-        //Metodo para buscar los hallazgos, en estado Abierta, Publicada o Modificada, desde una lista de ids de mascota
+        //Metodo para buscar los hallazgos, en estado Abierta, Publicada, Modificada o Cerrada, desde una lista de ids de mascota
         public static List<EHallazgo> buscarHallazgos(List<int> listaIdMascotas)
         {
             List<EHallazgo> listaHallazgos = new List<EHallazgo>();
@@ -69,7 +69,8 @@ namespace AccesoADatos
             var hallazgos = from hallazgosBD in mapa.Hallazgos
                             join estadosBD in mapa.Estados on hallazgosBD.idEstado equals estadosBD.idEstado
                             join barriosBD in mapa.Barrios on hallazgosBD.idBarrioHallazgo equals barriosBD.idBarrio
-                            where (estadosBD.nombreEstado == "Abierta" || estadosBD.nombreEstado == "Publicada" || estadosBD.nombreEstado == "Modificada")
+                            where (estadosBD.nombreEstado == "Abierta" || estadosBD.nombreEstado == "Publicada" || estadosBD.nombreEstado == "Modificada"
+                            || estadosBD.nombreEstado == "Cerrada")
                             && listaIdMascotas.Contains(hallazgosBD.idMascota)
                             select new
                             {
@@ -124,7 +125,7 @@ namespace AccesoADatos
                     bdHallazgo.idCalle = hallazgo.domicilio.calle.idCalle;
                     bdHallazgo.nroCalle = hallazgo.domicilio.numeroCalle;
                     bdHallazgo.idUsuario = hallazgo.usuario.user;
-                    modificarEstado("Modificada", hallazgo, ref mapa);
+                    bdHallazgo.idEstado = mapa.Estados.Where(e => e.ambito == "Hallazgo" && e.nombreEstado == "Modificada").First().idEstado;                    
                     mapa.SaveChanges();
                     trans.Complete();
                 }
@@ -136,16 +137,22 @@ namespace AccesoADatos
             }
         }
 
-        public static void modificarEstado(string estado, EHallazgo hallazgo,ref SiGMAEntities mapa)
+        public static void modificarEstado(string estado, EHallazgo hallazgo)
         {
-            try
+            using (TransactionScope trans = new TransactionScope())
             {
-                Hallazgos bdHallazgo = mapa.Hallazgos.Where(h => h.idHallazgo == hallazgo.idHallazgo).First();
-                bdHallazgo.idEstado = mapa.Estados.Where(e => e.ambito == "Hallazgo" && e.nombreEstado == estado).First().idEstado;
-            }
-            catch (Exception)
-            {
-                throw;
+                try
+                {
+                    SiGMAEntities mapa = Conexion.crearSegunServidor();
+                    Hallazgos bdHallazgo = mapa.Hallazgos.Where(h => h.idHallazgo == hallazgo.idHallazgo).First();
+                    bdHallazgo.idEstado = mapa.Estados.Where(e => e.ambito == "Hallazgo" && e.nombreEstado == estado).First().idEstado;
+                    trans.Complete();
+                }
+                catch (Exception)
+                {
+                    trans.Dispose();
+                    throw;
+                }
             }
         }
         public static List<EHallazgo> buscarHallazgos()
@@ -289,6 +296,65 @@ namespace AccesoADatos
                 }
             }
             return hallazgos;
+        }
+
+        //Metodo que devuelve el hallazgo "Abierto" de cada una de las mascotas pasadas por parametro
+        public static List<EHallazgo> buscarHallazgosPorIdMascotas(List<EMascota> mascotas)
+        {
+            try
+            {
+                List<EHallazgo> lstHallazgos = new List<EHallazgo>();
+                SiGMAEntities mapa = Conexion.crearSegunServidor();
+                var hallazgos = from hallazgosBD in mapa.Hallazgos
+                                join estadosBD in mapa.Estados on hallazgosBD.idEstado equals estadosBD.idEstado
+                                join barriosBD in mapa.Barrios on hallazgosBD.idBarrioHallazgo equals barriosBD.idBarrio
+                                join callesBD in mapa.Calles on hallazgosBD.idCalle equals callesBD.idCalle
+                                join localidadesBD in mapa.Localidades on barriosBD.idLocalidad equals localidadesBD.idLocalidad
+                                where estadosBD.nombreEstado == "Abierta" 
+                                select new
+                                {
+                                    barrio = hallazgosBD.idBarrioHallazgo,
+                                    nomBarrio = barriosBD.nombre,
+                                    localidad = barriosBD.idLocalidad,
+                                    nomLocalidad = localidadesBD.nombre,
+                                    obser = hallazgosBD.observaciones,
+                                    idHallazgo = hallazgosBD.idHallazgo,
+                                    fecha = hallazgosBD.fechaHoraHallazgo,
+                                    idCalle = hallazgosBD.idCalle,
+                                    nomCalle = callesBD.nombre,
+                                    nroCalle = hallazgosBD.nroCalle,
+                                    idMascota = hallazgosBD.idMascota,
+                                };
+                foreach (var item in hallazgos)
+                {
+                    EHallazgo eHallaz = new EHallazgo();
+                    eHallaz.mascota = mascotas.FirstOrDefault(m => m.idMascota == item.idMascota);
+                    if (eHallaz.mascota != null)
+                    {
+                        eHallaz.domicilio = new EDomicilio();
+                        eHallaz.domicilio.calle = new ECalle();
+                        eHallaz.domicilio.barrio = new EBarrio();
+                        eHallaz.domicilio.numeroCalle = (int)item.nroCalle;
+                        eHallaz.domicilio.calle.idCalle = item.idCalle;
+                        eHallaz.domicilio.calle.nombre = item.nomCalle;
+                        eHallaz.domicilio.barrio.idBarrio = item.barrio;
+                        eHallaz.domicilio.barrio.nombre = item.nomBarrio;
+                        eHallaz.domicilio.barrio.localidad = new ELocalidad();
+                        eHallaz.domicilio.barrio.localidad.idLocalidad = item.localidad;
+                        eHallaz.domicilio.barrio.localidad.nombre = item.nomLocalidad;
+                        eHallaz.observaciones = item.obser;
+                        eHallaz.idHallazgo = item.idHallazgo;
+                        eHallaz.fechaHallazgo = item.fecha;
+                        lstHallazgos.Add(eHallaz);
+                    }
+                }
+                return lstHallazgos;
+            }
+            catch (Exception)
+            {                
+                throw;
+            }
+
         }
     }
 }

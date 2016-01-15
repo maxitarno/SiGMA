@@ -354,7 +354,8 @@ namespace AccesoADatos
                                    descripcionCuidados = (G2 == null) ? null : G2.descripcion,
                                    id = MascotasBD.idMascota,
                                    imagen = MascotasBD.imagen,
-                                   noMostrar = MascotasBD.noMostrar,//modificado
+                                   noMostrar = MascotasBD.noMostrar,
+                                   idDueño = MascotasBD.idDuenio
                                };
                 foreach (var registro in consulta)
                 {
@@ -393,6 +394,11 @@ namespace AccesoADatos
                     mascota.fechaNacimiento = registro.fechaNacimiento;
                     mascota.observaciones = registro.observacion;
                     mascota.alimentacionEspecial = registro.alimentacion;
+                    if (registro.idDueño != null)
+                    {
+                        mascota.duenio = new EDuenio();
+                        mascota.duenio.idDuenio = int.Parse(registro.idDueño.ToString());
+                    }                 
                     if (registro.imagen != null)
                     {
                         mascota.imagen = registro.imagen;
@@ -780,6 +786,7 @@ namespace AccesoADatos
                                     especie = especiesBD.nombreEspecie,
                                     idEdad = MascotasBD.idEdad,
                                     edad = edadesBD.nombreEdad,
+                                    descEdad = edadesBD.descripcion,
                                     raza = RazaBD.nombreRaza,
                                     idRaza = MascotasBD.idRaza,
                                     idColor = MascotasBD.idColor,
@@ -795,6 +802,7 @@ namespace AccesoADatos
                                     imagen = MascotasBD.imagen,
                                     fecha =  MascotasBD.fechaNacimiento,
                                     noMostrar = MascotasBD.noMostrar,//modificado
+                                    idDueño = MascotasBD.idDuenio
                                 };
                     foreach (var registro in consulta)
                     {
@@ -822,12 +830,18 @@ namespace AccesoADatos
                         mascota.edad = new EEdad();
                         mascota.edad.idEdad = registro.idEdad;
                         mascota.edad.nombreEdad = registro.edad;
+                        mascota.edad.descripcion = registro.descEdad;
                         mascota.especie = new EEspecie();
                         mascota.especie.idEspecie = registro.idEspecie;
                         mascota.especie.nombreEspecie = registro.especie;
                         mascota.fechaNacimiento = registro.fecha;
                         //mascota.fechaNacimiento = (registro.fecha == null) ? DateTime.Parse("24/12/2010") : DateTime.Parse(registro.fecha.ToString());
                         mascota.noMostrar = (bool)registro.noMostrar;//modificado
+                        if (registro.idDueño != null)
+                        {
+                            mascota.duenio = new EDuenio();
+                            mascota.duenio.idDuenio = int.Parse(registro.idDueño.ToString());
+                        } 
                         if (registro.imagen != null)
                         {
                             mascota.imagen = registro.imagen;
@@ -1157,6 +1171,55 @@ namespace AccesoADatos
                 throw;
             }
             return b;
+        }
+
+        //Metodo que devuelve las mascotas con el estado "Hallada" y que tengan dueño.
+        public static List<EMascota> buscarHalladasConDueño()
+        {
+            try
+            {
+                //Busco mascotas halladas
+                List<EMascota> lstMascotasHalladas = buscarMascotasPorEstado("Hallada");
+                List<EMascota> lstMascotasHalladasConDueño = new List<EMascota>();                
+                foreach (EMascota item in lstMascotasHalladas)
+                {                    
+                    //Agrego a la lista solo las que tienen dueño
+                    if (item.duenio != null)
+                    {
+                        //Busco los datos del dueño
+                        item.duenio = LogicaBDDueño.buscarDueño(item.idMascota);                        
+                        lstMascotasHalladasConDueño.Add(item);
+                    }
+                }
+                return lstMascotasHalladasConDueño;
+            }
+            catch (Exception)
+            {                
+                throw;
+            }
+        }
+
+        public static void devolverADueño(EMascota paramMascota)
+        {
+            using (TransactionScope transaction = new TransactionScope())
+            {
+                try
+                {
+                    SiGMAEntities mapa = Conexion.crearSegunServidor();
+                    modificarEstado("Con dueño", paramMascota.idMascota, ref mapa);
+                    if (verificarMascotaEnHogar(paramMascota))
+                    {
+                        LogicaBDHogar.LiberarHogar(paramMascota.idMascota, DateTime.Now, ref mapa);
+                    }
+                    mapa.SaveChanges();
+                    transaction.Complete();
+                }
+                catch (Exception)
+                {
+                    transaction.Dispose();
+                    throw;
+                }
+            }
         }
     }
 }

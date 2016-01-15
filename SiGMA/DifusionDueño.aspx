@@ -21,10 +21,18 @@
     <div class="panel panel-default">
         <div class="panel-body">
             <div class="col-md-4 col-md-offset-4">
-                <asp:Panel runat="server" id="pnlInfo" class="alert alert-dismissable alert-info" Visible="false">
+                <asp:Panel runat="server" id="pnlInfo" class="alert alert-dismissable alert-info" Visible="false">                    
+                        <asp:Label ID="lblInfo" runat="server" Text = "Usted no ha generado pedidos todavia."></asp:Label>
+                </asp:Panel>
+                <asp:Panel runat="server" id="pnlCorrecto" class="alert alert-dismissable alert-success" Visible="false">
                     <button class="close" type="button" data-dismiss="alert">
                         ×</button>
-                        <asp:Label ID="lblInfo" runat="server" Text = "Usted no ha generado pedidos todavia."></asp:Label>
+                        <asp:Label ID="lblCorrecto" runat="server" Text=""></asp:Label>
+                </asp:Panel>                
+                <asp:Panel runat="server" id="pnlAtento" class="alert alert-dismissable alert-danger" Visible="false">
+                    <button class="close" type="button" data-dismiss="alert">
+                        ×</button>
+                        <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
                 </asp:Panel>
             </div>
         </div>
@@ -44,7 +52,7 @@
                     <asp:GridView ID="grvPedidos" runat="server"
                         AutoGenerateColumns="False" AllowSorting="True" 
                         onsorting="grvPedidos_Sorting" Width="600px" HorizontalAlign="Center" Font-Size="Medium"
-                        CellPadding="2" CellSpacing="3"> 
+                        CellPadding="2" CellSpacing="3" onrowcommand="grvPedidos_RowCommand"> 
                         <RowStyle HorizontalAlign="Center" />
                         <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                         <Columns>
@@ -56,6 +64,11 @@
                             <asp:BoundField DataField="motivoRechazo" HeaderText="Motivo Rechazo" 
                                 SortExpression="motivoRechazo" NullDisplayText="-" >
                             <ItemStyle HorizontalAlign="Center" />
+                            </asp:BoundField>
+                            <asp:ButtonField ButtonType="Button" Text="Eliminar"  />
+                            <asp:BoundField DataField="idPedidoDifusion">
+                            <HeaderStyle CssClass="hidden" />
+                            <ItemStyle CssClass="hidden" />
                             </asp:BoundField>
                         </Columns>
                     </asp:GridView>   

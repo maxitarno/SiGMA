@@ -145,7 +145,9 @@
                                             <tr>
                                                 <td>
                                                     <asp:GridView ID="grvHogares" runat="server" AutoGenerateColumns="False" 
-                                                        Visible="False" Width="383px" onrowcommand="grvHogares_RowCommand">
+                                                        Visible="False" onrowcommand="grvHogares_RowCommand" Width="161%">
+                                                        <RowStyle HorizontalAlign="Center" />
+                                                        <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" ForeColor="#9D426B"/>  
                                                         <Columns>
                                                             <asp:BoundField DataField="voluntario.persona.nombre" HeaderText="Nombre" 
                                                                 Visible="False" />

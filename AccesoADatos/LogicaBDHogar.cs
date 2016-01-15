@@ -75,20 +75,44 @@ namespace AccesoADatos
             hogar.disponibilidad = nuevaDisponibilidad;           
         }
 
-        public static void LiberarHogar(int id, DateTime fecha, ref SiGMAEntities mapa)
+        public static void LiberarHogar(int idMascota, DateTime fecha, ref SiGMAEntities mapa)
         {
             try
             {
                 var ocupacion = mapa.OcupacionesXHogaresProvisorios.Where
-                    (o => o.idMascota == id && o.fechaSalida == null);
+                    (o => o.idMascota == idMascota && o.fechaSalida == null);
                 if (ocupacion.Count() != 0)
                 {
                     ocupacion.First().fechaSalida = fecha;
+                    EHogarProvisorio entHogar = new EHogarProvisorio();
+                    entHogar.idHogar = ocupacion.First().idHogarProvisorio;
+                    entHogar = obtenerDatos(entHogar.idHogar);
+                    actualizarDisponibilidad(entHogar, "Liberacion");
+                    var hogarBD = mapa.HogaresProvisorios.First(h => h.idHogarProvisorio == entHogar.idHogar);
+                    hogarBD.disponibilidad = entHogar.disponibilidad;
+                    hogarBD.idEstado = entHogar.estado.idEstado;
                 }
             }
             catch (Exception)
             {
+                throw;
+            }
+        }
 
+        public static EHogarProvisorio obtenerDatos(int paramIdHogar)
+        {
+            try
+            {
+                EHogarProvisorio entHogar = new EHogarProvisorio();
+                SiGMAEntities mapa = Conexion.crearSegunServidor();
+                entHogar.disponibilidad = mapa.HogaresProvisorios.First(h => h.idHogarProvisorio == paramIdHogar).disponibilidad;
+                entHogar.cantMascotas = mapa.HogaresProvisorios.First(h => h.idHogarProvisorio == paramIdHogar).cantMascotas;
+                entHogar.idHogar = paramIdHogar;
+                return entHogar;
+            }
+            catch (Exception)
+            {                
+                throw;
             }
         }
 
