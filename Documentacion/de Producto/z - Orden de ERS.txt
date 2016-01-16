@@ -1,8 +1,9 @@
 Breve Reseña Estudio Inical asociada al producto
 Alcances
 Descripcion General (Listado CU esenciales)
-Diagrama de CU escenciales por módulo
-Plantillas TF CU Esenciales - ver si agregamos alguno más
+Diagramas de CU escenciales por módulo
+Diagramas de dominio por paquete
+Plantillas TF CU Esenciales 
 Diagrama de Secuencias
 DTEs
 Mod Arquitectura-Despliege 
