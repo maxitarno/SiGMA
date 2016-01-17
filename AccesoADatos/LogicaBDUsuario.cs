@@ -504,5 +504,54 @@ namespace AccesoADatos
                 }
                 return persona;
         }
+
+        //metodo para buscar usuarios por nombre de persona
+        public static EPersona BuscarUsuariosPorNombrePersona(string nombre)
+        {
+            SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+            EPersona persona = new EPersona();
+            try{
+                var consulta = from personasBD in mapaEntidades.Personas
+                                            from usuariosBD in mapaEntidades.Usuarios
+                                            where (personasBD.user == usuariosBD.user && personasBD.nombre == nombre && usuariosBD.estado == true)
+                                            select new
+                                            {
+                                                apellido = personasBD.apellido,
+                                                nombre = personasBD.nombre,
+                                                email = personasBD.email,
+                                                fechaNacimiento = personasBD.fechaNacimiento,
+                                                idPersona = personasBD.idPersona,
+                                                telefonoCelular = personasBD.telefonoCelular,
+                                                telefonoFijo = personasBD.telefonoFijo,
+                                                nroDocumento = personasBD.nroDocumento,
+                                                calle = personasBD.idCalle,
+                                                nroCalle = personasBD.nroCalle,
+                                                barrio = personasBD.idBarrio,
+                                            };
+                    foreach (var registro in consulta)
+                        {
+                            persona.barrio = new EBarrio();
+                            persona.domicilio = new ECalle();
+                            persona.email = registro.email;
+                            persona.fechaNacimiento = registro.fechaNacimiento;
+                            persona.idPersona = registro.idPersona;
+                            persona.nroCalle = registro.nroCalle;
+                            persona.nroDocumento = registro.nroDocumento;
+                            persona.telefonoCelular = registro.telefonoCelular;
+                            persona.telefonoFijo = registro.telefonoFijo;
+                            persona.nombre = registro.nombre + ' ' + registro.apellido;
+                            persona.email = registro.email;
+                            persona.nroCalle = registro.nroCalle;
+                            persona.domicilio.idCalle = registro.calle;
+                            persona.barrio.idBarrio = registro.barrio;
+                        }
+                }
+                catch (System.Data.EntityCommandCompilationException exc)
+                {
+                    throw exc;
+                }
+                return persona;
+        }
+        //fin metodo
     }
 }

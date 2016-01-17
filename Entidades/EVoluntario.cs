@@ -12,5 +12,6 @@ namespace Entidades
         public int? idEstado { get; set; }
         public string tipoVoluntario { get; set; }
         public string disponibilidadHoraria { get; set; }
+        public EEstado estado { get; set; }
     }
 }

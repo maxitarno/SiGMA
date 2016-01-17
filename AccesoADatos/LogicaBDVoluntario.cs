@@ -335,6 +335,49 @@ namespace AccesoADatos
             }
         }
 
-        
+        //Busca los voluntarios segun el estado
+        public static List<EVoluntario> BuscarPedidosVoluntariado(EEstado estado)
+        {
+            SiGMAEntities mapa = Conexion.crearSegunServidor();
+            List<EVoluntario> voluntarios = new List<EVoluntario>();
+            var pedidosVoluntariado = from VoluntariosBD in mapa.Voluntarios
+                                      join PersonasBD in mapa.Personas on VoluntariosBD.idPersona equals PersonasBD.idPersona
+                                      where (VoluntariosBD.idEstado == estado.idEstado)
+                                      select new
+                                      {
+                                          nombre = PersonasBD.nombre,
+                                          idVoluntario = VoluntariosBD.idVoluntario,
+                                          tipoVoluntario = VoluntariosBD.tipoVoluntario,
+                                          disponibilidad = VoluntariosBD.disponibilidadHoraria
+                                      };
+            foreach (var registro in pedidosVoluntariado)
+            {
+                EVoluntario voluntario = new EVoluntario();
+                voluntario.persona = new EPersona();
+                voluntario.idVoluntario = registro.idVoluntario;
+                voluntario.tipoVoluntario = (registro.tipoVoluntario == null) ? "Sin asignar" : registro.tipoVoluntario;
+                voluntario.disponibilidadHoraria = (registro.disponibilidad == null) ? "Sin asignar" : registro.disponibilidad;
+                voluntario.persona.nombre = registro.nombre;
+                voluntarios.Add(voluntario);
+            }
+            return voluntarios;
+        }
+        //fin
+
+        //Actualiza los estados de los voluntarios
+        public static void ActualizarEstadoVoluntario(int idVoluntario, int idEstado)
+        {
+            try
+            {
+                SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
+                Voluntarios voluntarioBD = mapaEntidades.Voluntarios.Where(m => m.idVoluntario == idVoluntario).First();
+                voluntarioBD.idEstado = idEstado;
+                mapaEntidades.SaveChanges();
+            }
+            catch (Exception)
+            {
+            }
+        }
+        //fin
     }
 }

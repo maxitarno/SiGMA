@@ -259,6 +259,7 @@
     <Content Include="MiPerfil.aspx" />
     <Content Include="MisMascotas.aspx" />
     <Content Include="ModerarPedidosDifusion.aspx" />
+    <Content Include="ModerarPedidosVoluntariado.aspx" />
     <Content Include="Perdidas.aspx" />
     <Content Include="PerdidasPorBarrio.htm" />
     <Content Include="PerdidasPorSexo.htm" />
@@ -573,6 +574,13 @@
     </Compile>
     <Compile Include="ModerarPedidosDifusion.aspx.designer.cs">
       <DependentUpon>ModerarPedidosDifusion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ModerarPedidosVoluntariado.aspx.cs">
+      <DependentUpon>ModerarPedidosVoluntariado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ModerarPedidosVoluntariado.aspx.designer.cs">
+      <DependentUpon>ModerarPedidosVoluntariado.aspx</DependentUpon>
     </Compile>
     <Compile Include="PaginaAdmin.Master.cs">
       <DependentUpon>PaginaAdmin.Master</DependentUpon>

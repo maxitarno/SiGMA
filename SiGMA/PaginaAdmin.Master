@@ -132,7 +132,7 @@
 								<i class="fa fa-home"></i><br>Voluntarios<span class="caret"></span>
 							</a>
 							<ul class="dropdown-menu dropdown-menu-left" role="menu">
-								<li><a href="ModerarPedidosVoluntario.aspx">Pedidos Voluntarios</a></li>
+								<li><a href="ModerarPedidosVoluntariado.aspx">Pedidos Voluntarios</a></li>
 							</ul>
 						</li>
 						<li class="dropdown active">
