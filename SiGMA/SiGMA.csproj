@@ -222,6 +222,7 @@
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\main.css" />
     <Content Include="Contrato.aspx" />
+    <Content Include="RegistrarBajaAVoluntario.aspx" />
     <Content Include="DefaultDueño.aspx" />
     <Content Include="DevolverADueño.aspx" />
     <Content Include="DifusionDueño.aspx" />
@@ -424,6 +425,13 @@
     </Compile>
     <Compile Include="Contrato.aspx.designer.cs">
       <DependentUpon>Contrato.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrarBajaAVoluntario.aspx.cs">
+      <DependentUpon>RegistrarBajaAVoluntario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegistrarBajaAVoluntario.aspx.designer.cs">
+      <DependentUpon>RegistrarBajaAVoluntario.aspx</DependentUpon>
     </Compile>
     <Compile Include="DefaultDueño.aspx.cs">
       <DependentUpon>DefaultDueño.aspx</DependentUpon>

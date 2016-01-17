@@ -133,6 +133,7 @@
 							</a>
 							<ul class="dropdown-menu dropdown-menu-left" role="menu">
 								<li><a href="ModerarPedidosVoluntariado.aspx">Pedidos Voluntarios</a></li>
+                                <li><a href="RegistrarBajaAVoluntario.aspx">Registrar baja de Voluntarios</a></li>
 							</ul>
 						</li>
 						<li class="dropdown active">
