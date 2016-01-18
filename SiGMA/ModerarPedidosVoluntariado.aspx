@@ -31,7 +31,7 @@
                 <div class="col-sm-12 wow fadeIn">
 	                <img src="assets/img/menu/voluntariosMini.png" />
                     <h1>Moderar Pedidos de Voluntariado /</h1>
-                    <p>El voluntariado es una herramienta clave para ayudar en la tarea de lograr la adopcion o rencuentro de una mascota con su dueño</p>
+                    <p>Ser voluntario, implica compromiso y responsabilidad</p>
                 </div>
             </div>
         </div>

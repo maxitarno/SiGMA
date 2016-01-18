@@ -515,5 +515,43 @@ namespace AccesoADatos
             }
             return null;
         }
+
+        public static void caducarPerdidas()
+        {
+            var fecha = DateTime.Today.AddMonths(-6);
+            try
+            {
+                List<EPerdida> aux = new List<EPerdida>();
+                SiGMAEntities mapa = Conexion.crearSegunServidor();
+                var consulta = from PerdidasBD in mapa.Perdidas
+                               join EstadosBD in mapa.Estados on PerdidasBD.idEstado equals EstadosBD.idEstado into group1
+                               from G0 in group1.DefaultIfEmpty()
+                               where PerdidasBD.FechaHoraPerdida < fecha
+                               select new
+                               {
+                                   perdida = PerdidasBD,
+                                   estado = G0,
+                               };
+                foreach (var registro in consulta)
+                {
+                    EPerdida perdida = new EPerdida();
+                    perdida.estado = new EEstado();
+                    perdida.estado.nombreEstado = registro.estado.nombreEstado;
+                    perdida.estado.idEstado = registro.estado.idEstado;
+                    perdida.idPerdida = registro.perdida.idPerdida;
+                    aux.Add(perdida);
+                }
+                foreach (var caducar in aux)
+                {
+                    modificarEstado("Caducada", caducar.idPerdida, ref mapa);
+                    mapa.SaveChanges();      
+                }
+               
+            }
+            catch (Exception)
+            {                    
+                throw;
+            }            
+        }
     }
 }

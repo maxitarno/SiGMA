@@ -293,7 +293,14 @@ namespace SiGMA
                     perdida.domicilio.numeroCalle = int.Parse(txtNroCallePerdida.Text);
                     perdida.usuario = new EUsuario();
                     perdida.usuario.user = Session["UsuarioLogueado"].ToString();
-                    perdida.fecha = Convert.ToDateTime(txtFecha.Text);
+                    var fecha = DateTime.Today;
+                    if (DateTime.TryParse(txtFecha.Text, out fecha))
+                        perdida.fecha = Convert.ToDateTime(txtFecha.Text);
+                    else
+                    {
+                        pnlInfo.Visible = true;
+                        lblInfo.Text = "Ingrese una fecha válida";
+                    }
                     perdida.comentarios = txtComentarios.Text;
                     if (LogicaBDPerdida.modificarPerdida(perdida))
                     {

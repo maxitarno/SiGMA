@@ -30,8 +30,8 @@
             <div class="row">
                 <div class="col-sm-12 wow fadeIn">
 	                <img src="assets/img/menu/voluntariosMini.png" />
-                    <h1>Registrar Baja de Voluntarios /</h1>
-                    <p>El voluntariado es una herramienta clave para ayudar en la tarea de lograr la adopcion o rencuentro de una mascota con su dueño</p>
+                    <h1>Inhabilitar Voluntario /</h1>
+                    <p>Ser voluntario, implica compromiso y responsabilidad</p>
                 </div>
             </div>
         </div>
@@ -75,15 +75,22 @@
                                         <asp:BoundField DataField="persona.nombre" HeaderText="Nombre del voluntario" />
                                         <asp:BoundField DataField="idVoluntario" HeaderText="ID" ItemStyle-CssClass="hidden" HeaderStyle-CssClass="hidden" />
                                         <asp:BoundField DataField="disponibilidadHoraria" HeaderText="Disponibilidad horaria" />
-                                        <asp:ButtonField ButtonType="Button" Text="+"/>
+                                        <asp:ButtonField ButtonType="Button" Text="Inhabilitar"/>
                                     </Columns>
                                 </asp:GridView> 
-                                  <asp:Button ID="btnAceptar" runat="server" Width="180px" 
-                                                        Text="Aceptar" onclick="btnAceptar_Click"  />
 	                            </div>
                             </asp:Panel>
                         </div>
 	                </div>
+                    <div class="col-sm-6 services-half-width-text wow fadeInUp">
+                        <div class="contact-form">
+                                <div class="form-group">
+                                    <img src="base/img/portfolio/bajavoluntario.jpg" />
+                                </div>
+                        </div>
+	                </div>
+
+                    
 	            </div>
 	        </div>
         </div>                

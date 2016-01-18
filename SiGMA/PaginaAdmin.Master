@@ -102,7 +102,7 @@
                                         <li><a href="RegistrarHallazgo.aspx">Registrar</a></li>
 							            <li><a href="ConsultarHallazgo.aspx">Consultar</a></li>
                                         <li><a href="ConsultarHallazgo.aspx?m=1">Modificar</a></li>
-                                        <li><a href="DevolverADueño.aspx">Devolucion</a></li>
+                                        <li><a href="DevolverADueño.aspx">Devolución</a></li>
                                     </ul>
                                 </li>
                                 <li class="dropdown">
@@ -132,8 +132,8 @@
 								<i class="fa fa-home"></i><br>Voluntarios<span class="caret"></span>
 							</a>
 							<ul class="dropdown-menu dropdown-menu-left" role="menu">
-								<li><a href="ModerarPedidosVoluntariado.aspx">Pedidos Voluntarios</a></li>
-                                <li><a href="RegistrarBajaAVoluntario.aspx">Registrar baja de Voluntarios</a></li>
+								<li><a href="ModerarPedidosVoluntariado.aspx">Pedidos</a></li>
+                                <li><a href="RegistrarBajaAVoluntario.aspx">Inhabilitar</a></li>
 							</ul>
 						</li>
 						<li class="dropdown active">

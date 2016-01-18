@@ -101,12 +101,18 @@ namespace SiGMA
             if (Page.IsValid)
             {
                 EPersona persona = new EPersona();
-                DateTime fecha = new DateTime();
                 pnlInfo.Visible = false;
                 persona.nombre = txtNombre.Text;
                 persona.nroDocumento = txtNºDeDocumento.Text;
                 persona.telefonoCelular = txtTelefonoCelular.Text;
                 persona.telefonoFijo = txtTelefonoFijo.Text;
+                var fecha = DateTime.Today;
+                if (DateTime.TryParse(txtFecha.Text, out fecha))
+                    persona.fechaNacimiento = Convert.ToDateTime(txtFecha.Text);
+                else
+                {
+                    persona.fechaNacimiento = null;
+                }
                 persona.fechaNacimiento = Convert.ToDateTime(txtFecha.Text);
                 persona.apellido = txtApellido.Text;
                 persona.email = txtMail.Text;

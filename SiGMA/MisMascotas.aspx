@@ -224,6 +224,10 @@
                                     ></asp:RangeValidator>
                                 </div>
                                 <div class="form-group">
+                                    <label for="contact-name">¿Mascota fallecida?</label><br />
+                                    <asp:CheckBox ID="chkFallecida" Visible = "true" runat = "server" Text=" Fallecida"/>
+	                            </div>
+                                <div class="form-group">
                                     <label for="contact-name">¿Quiere ocultar esta mascota?</label><br />
                                     <asp:CheckBox ID="chNoMostrar" Visible = "true" runat = "server" Text=" No mostrar mascota"/>
 	                            </div>

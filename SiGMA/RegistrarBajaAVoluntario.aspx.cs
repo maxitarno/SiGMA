@@ -17,7 +17,9 @@ namespace SiGMA
             {
                 if (Session["UsuarioLogueado"] != null)
                 {
-                    if (!LogicaBDRol.verificarPermisoVisualizacion(Session["UsuarioLogueado"].ToString(), "RegistrarBajaAVoluntario.aspx"))
+                    if (!LogicaBDRol.verificarPermisoVisualizacion(Session["UsuarioLogueado"].ToString(), "Voluntariado"))
+                        Response.Redirect("PermisosInsuficientes.aspx");
+                    if (!LogicaBDRol.verificarPermisosGrabacion(Session["UsuarioLogueado"].ToString(), "Voluntariado"))
                         Response.Redirect("PermisosInsuficientes.aspx");
                 }
                 else
@@ -47,20 +49,19 @@ namespace SiGMA
             }
         }
 
-        private void enviarMail()
+        private void enviarMail(EVoluntario voluntario)
         {
             string mensaje = "";
-            EVoluntario voluntario = (EVoluntario)Session["voluntario"];
             EPersona persona = new EPersona();
             voluntario = LogicaBDVoluntario.buscarVoluntarioPorId(voluntario.idVoluntario);
             persona = LogicaBDUsuario.BuscarUsuariosPorNombrePersona(voluntario.persona.nombre);
-            mensaje += "El motivo es: Usted ha sido da de baja por no cumplir con los requerimientos minimos para continuar como voluntario\n \n GRACIAS \n Usuario: " + voluntario.persona.nombre;
+            mensaje += voluntario.persona.nombre + ", usted ha sido dado de baja por no cumplir con los requerimientos minimos para continuar como voluntario\n \n Disculpe las molestias \n SIGMA ";
             gmail g = new gmail();
             g.fromAlias = "SIGMA"; //  
             g.auth("infosigmasoftware@gmail.com", "Palangana321");
             g.To = persona.email; //DESTINATARIO/s
-            g.Cc = "nicolasing8@gmail.com";
-            g.Subject = "Motivo de su aceptación o rechazo"; //Asunto del email
+            g.Cc = "maxitarno@gmail.com";
+            g.Subject = "Voluntariado"; //Asunto del email
             //g.attach(@"D:\DATOS USUARIO\Documents\Visual Studio 2010\Projects\AldeaCampestre\AldeaCampestre\paginaBase\images\Logo-01.png");
             g.Message = "\n" + mensaje.ToString() + "\n";// Creo que deberia ser con el reporte que hagamos en Crystal Reports
             g.Priority = 1;//Le seteas la prioridad del envío
@@ -82,20 +83,11 @@ namespace SiGMA
             voluntario.idVoluntario = int.Parse(grvVoluntarios.Rows[Int32.Parse(e.CommandArgument.ToString())].Cells[2].Text);
             voluntario.persona.nombre = grvVoluntarios.Rows[Int32.Parse(e.CommandArgument.ToString())].Cells[1].Text;
             voluntario.tipoVoluntario = grvVoluntarios.Rows[Int32.Parse(e.CommandArgument.ToString())].Cells[0].Text;
-            Session["voluntario"] = voluntario;
-            btnAceptar.Visible = true;
-            pnlCorrecto.Visible = false;
-        }
-
-        protected void btnAceptar_Click(object sender, EventArgs e)
-        {
-            EVoluntario voluntario = (EVoluntario)Session["voluntario"];
-            LogicaBDVoluntario.ActualizarEstadoVoluntario(voluntario.idVoluntario, 33);
-            lblCorrecto.Text = "Voluntario aceptado";
-            enviarMail();
-            btnAceptar.Visible = false;
+            enviarMail(voluntario);
+            LogicaBDVoluntario.ActualizarEstadoVoluntario(voluntario.idVoluntario, 33); //Inactivo
             pnlCorrecto.Visible = true;
             lblCorrecto.Text = "Se registro la baja correctamente";
-        }        
+            listarVoluntarios();
+        }      
     }
 }

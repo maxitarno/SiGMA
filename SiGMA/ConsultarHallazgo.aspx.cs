@@ -249,7 +249,14 @@ namespace SiGMA
             {
                 EHallazgo hallazgo = (EHallazgo)Session["Hallazgo"];                
                 hallazgo.observaciones = txtComentarios.Text;
-                hallazgo.fechaHallazgo = DateTime.Parse(txtFecha.Text);
+                var fecha = DateTime.Today;
+                if (DateTime.TryParse(txtFecha.Text, out fecha))
+                    hallazgo.fechaHallazgo = DateTime.Parse(txtFecha.Text);
+                else
+                {
+                    pnlInfo.Visible = true;
+                    lblInfo.Text = "Ingrese una fecha válida";
+                }
                 hallazgo.domicilio = new EDomicilio();
                 hallazgo.domicilio.barrio = new EBarrio();
                 hallazgo.domicilio.barrio.localidad = new ELocalidad();

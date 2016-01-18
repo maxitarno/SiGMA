@@ -328,10 +328,15 @@ namespace SiGMA
             {
                 EMascota mascota = new EMascota();
                 mascota.idMascota = (int)Session["idMascota"];
-                DateTime fecha = new DateTime();
                 pnlInfo.Visible = false;
                 mascota.alimentacionEspecial = txtAlimentacionEspecial.Text;
-                mascota.fechaNacimiento = DateTime.Parse(txtFecha.Text);
+                var fecha = DateTime.Today;
+                if (DateTime.TryParse(txtFecha.Text, out fecha))
+                    mascota.fechaNacimiento = DateTime.Parse(txtFecha.Text);
+                else
+                {
+                    mascota.fechaNacimiento = null;
+                }
                 if (ddlTratoAnimales.SelectedValue.Equals("Si"))
                     mascota.tratoAnimal = true;
                 else
@@ -355,7 +360,9 @@ namespace SiGMA
                 mascota.color.idColor = int.Parse(ddlColor.SelectedValue);
                 mascota.caracter = new ECaracterMascota();
                 mascota.caracter.idCaracter = int.Parse(ddlCaracter.SelectedValue);
-                mascota.noMostrar = chNoMostrar.Checked;//modificado
+                mascota.noMostrar = chNoMostrar.Checked;
+                if(chkFallecida.Checked == true)
+                    mascota.estado.idEstado = 6; //Fallecida
                 if (fuImagenMascota.PostedFile.ContentLength != 0)
                 {
                     if (!GestorImagen.verificarTamaño(fuImagenMascota.PostedFile.ContentLength))

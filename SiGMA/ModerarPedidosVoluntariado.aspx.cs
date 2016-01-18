@@ -17,9 +17,9 @@ namespace SiGMA
             {
                 if (Session["UsuarioLogueado"] != null)
                 {
-                    if (!LogicaBDRol.verificarPermisoVisualizacion(Session["UsuarioLogueado"].ToString(), "ModerarPedidosVoluntariado.aspx"))
+                    if (!LogicaBDRol.verificarPermisoVisualizacion(Session["UsuarioLogueado"].ToString(), "Voluntariado"))
                         Response.Redirect("PermisosInsuficientes.aspx");
-                    if (!LogicaBDRol.verificarPermisosGrabacion(Session["UsuarioLogueado"].ToString(), "ModerarPedidosVoluntariado.aspx"))
+                    if (!LogicaBDRol.verificarPermisosGrabacion(Session["UsuarioLogueado"].ToString(), "Voluntariado"))
                         btnAceptar.Visible = false;
                 }
                 else
@@ -128,13 +128,13 @@ namespace SiGMA
             EPersona persona = new EPersona();
             voluntario = LogicaBDVoluntario.buscarVoluntarioPorId(voluntario.idVoluntario);
             persona = LogicaBDUsuario.BuscarUsuariosPorNombrePersona(voluntario.persona.nombre);
-            mensaje += "El motivo es: " + txtMensaje.Text + "\n \n GRACIAS \n Usuario: " + voluntario.persona.nombre;
+            mensaje += txtMensaje.Text + "\n \n GRACIAS \n Usuario: " + voluntario.persona.nombre;
             gmail g = new gmail();
             g.fromAlias = "SIGMA"; //  
             g.auth("infosigmasoftware@gmail.com", "Palangana321");
             g.To = persona.email; //DESTINATARIO/s
             g.Cc = "nicolasing8@gmail.com";
-            g.Subject = "Motivo de su aceptación o rechazo"; //Asunto del email
+            g.Subject = "Voluntariado"; //Asunto del email
             //g.attach(@"D:\DATOS USUARIO\Documents\Visual Studio 2010\Projects\AldeaCampestre\AldeaCampestre\paginaBase\images\Logo-01.png");
             g.Message = "\n" + mensaje.ToString() + "\n";// Creo que deberia ser con el reporte que hagamos en Crystal Reports
             g.Priority = 1;//Le seteas la prioridad del envío

@@ -152,14 +152,19 @@ namespace SiGMA
         public void btnModificarClick(object sender, EventArgs e)
         {
             EPersona persona = new EPersona();
-            DateTime fecha = new DateTime();
             if (Page.IsValid)
             {
                 persona.nombre = txtNombre.Text;
                 persona.nroDocumento = txtDocumento.Text;
                 persona.telefonoCelular = txtTelefonoCelular.Text;
                 persona.telefonoFijo = txtTelefonoFijo.Text;
-                persona.fechaNacimiento = Convert.ToDateTime(txtFecha.Text);
+                var fecha = DateTime.Today;
+                if (DateTime.TryParse(txtFecha.Text, out fecha))
+                    persona.fechaNacimiento = Convert.ToDateTime(txtFecha.Text);
+                else
+                {
+                    persona.fechaNacimiento = null;
+                }
                 persona.apellido = txtApellido.Text;
                 persona.email = txtMail.Text;
                 persona.barrio = new EBarrio();

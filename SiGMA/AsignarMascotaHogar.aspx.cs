@@ -196,7 +196,14 @@ namespace SiGMA
             entOcupacion.hogar = (EHogarProvisorio)Session["hogarSelec"];
             entOcupacion.mascota = new EMascota();
             entOcupacion.mascota.idMascota = int.Parse(lblIdMascota.Text);
-            entOcupacion.fechaIngreso = Convert.ToDateTime(txtFecha.Text);
+            var fecha = DateTime.Today;
+            if (DateTime.TryParse(txtFecha.Text, out fecha))
+                entOcupacion.fechaIngreso = Convert.ToDateTime(txtFecha.Text);
+            else
+            {
+                pnlInfo.Visible = true;
+                lblInfo.Text = "Ingrese una fecha válida";
+            }
             try
             {
                 LogicaBDHogar.registrarOcupacion(entOcupacion);
