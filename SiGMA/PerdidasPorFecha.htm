@@ -18,7 +18,6 @@
         var a = [];
         var b = [];
         var datos;
-        var año = [];
         function drawChart() {
             function getURLParameter(name) { return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [, ""])[1].replace(/\+/g, '%20')) || null }
             a = getURLParameter("nombre").split(",");
@@ -33,7 +32,7 @@
             data.addRows(datos);
             // Set chart options
             var options = {
-                'title': 'Cantidad de adopciones por año',
+                'title': 'Cantidad de perdidas por año',
                 'width': 500,
                 'height': 500,
                 'bar': {groupWidth: "95%"},
@@ -77,13 +76,13 @@
             <div class="col-md-8 col-md-offset-2">
                 <center>
                     <h1>
-                        Estadisticas de SiGMA 
+                        Estadisticas de SiGMA
                         <br />
                         <br />
-                        Este grafico muestra la cantidad de adopciones por fecha.
+                        Este grafico muestra las perdidas por año.
                         <br />
                         <br />
-                        <img alt="" src="imagenes/registraradopcion.jpg" width="100px" height="100px" />
+                        <img alt="" src="imagenes/registrarperdida.jpg" width="100px" height="100px" />
                     </h1>
                 </center>
             </div>
@@ -109,3 +108,4 @@
     </div>
 </body>
 </html>
+

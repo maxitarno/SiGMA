@@ -189,5 +189,90 @@ namespace AccesoADatos
                 datos.Add(dato);
             }
         }
+        public static void PerdidasPorFecha(ref List<EDatos> datos)
+        {
+            SiGMAEntities mapa = Conexion.crearSegunServidor();
+            var consulta = from PerdidasBD in mapa.Perdidas
+                           group PerdidasBD by new { PerdidasBD.FechaHoraPerdida.Value.Year } into a
+                           select new
+                           {
+                               fecha = a.Key.Year,
+                               cant = a.Count()
+                           };
+            foreach (var registro in consulta)
+            {
+                EDatos dato = new EDatos();
+                dato.cantidad = registro.cant;
+                dato.año = int.Parse(registro.fecha.ToString());
+                datos.Add(dato);
+            }
+        }
+        public static void BuscarMascotasPorEspecie(ref int cantidadPerros, ref int cantidadGatos)
+        {
+            SiGMAEntities mapa = Conexion.crearSegunServidor();
+            var consulta = from MascotasBD in mapa.Mascotas
+                           select MascotasBD;
+            foreach (var registro in consulta)
+            {
+                if (registro.idEspecie == 1)
+                    cantidadPerros++;
+                if (registro.idEspecie == 2)
+                    cantidadGatos++;
+            }
+        }
+        public static void PerdidasPorEspecie(ref int cantidadGatos, ref int cantidadPerros)
+        {
+            SiGMAEntities mapa = Conexion.crearSegunServidor();
+            var consulta = from PerdidasBD in mapa.Perdidas
+                           join MascotasBD in mapa.Mascotas on PerdidasBD.idMascota equals MascotasBD.idMascota
+                           select MascotasBD;
+            foreach (var registro in consulta)
+            {
+                if (registro.idEspecie == 1)
+                {
+                    cantidadPerros++;
+                }
+                else
+                {
+                    cantidadGatos++;
+                }
+            }
+        }
+        public static void AdopcionesPorEspecie(ref int cantidadGatos, ref int cantidadPerros)
+        {
+            SiGMAEntities mapa = Conexion.crearSegunServidor();
+            var consulta = from AdopcionesBD in mapa.Adopciones
+                           join MascotasBD in mapa.Mascotas on AdopcionesBD.idMascota equals MascotasBD.idMascota
+                           select MascotasBD;
+            foreach (var registro in consulta)
+            {
+                if (registro.idEspecie == 1)
+                {
+                    cantidadPerros++;
+                }
+                else
+                {
+                    cantidadGatos++;
+                }
+            }
+        }
+        public static void HallazgosPorEspecie(ref int cantidadGatos, ref int cantidadPerros)
+        {
+            SiGMAEntities mapa = Conexion.crearSegunServidor();
+            var consulta = from HallazgosBD in mapa.Hallazgos
+                           join MascotasBD in mapa.Mascotas on HallazgosBD.idMascota equals MascotasBD.idMascota
+                           select MascotasBD;
+            foreach (var registro in consulta)
+            {
+                if (registro.idEspecie == 1)
+                {
+                    cantidadPerros++;
+                }
+                else
+                {
+                    cantidadGatos++;
+                }
+            }
+        }
     }
 }

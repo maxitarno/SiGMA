@@ -8,44 +8,71 @@
     <script type="text/javascript" src="Scripts/jQuery.print.js"></script>
     <script type="text/javascript">
         // Load the Visualization API and the piechart package.
-        google.load('visualization', '1', { 'packages': ['corechart'] });
+        google.load('visualization', '1.0', { 'packages': ['corechart'] });
         // Set a callback to run when the Google Visualization API is loaded.
         google.setOnLoadCallback(drawChart);
 
         // Callback that creates and populates a data table,
         // instantiates the pie chart, passes in the data and
         // draws it.
-        var a = [];
-        var b = [];
-        var datos;
-        var año = [];
         function drawChart() {
+
+            // Create the data table.
+           
             function getURLParameter(name) { return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [, ""])[1].replace(/\+/g, '%20')) || null }
-            a = getURLParameter("nombre").split(",");
-            b = getURLParameter("cant").split(",");
-            datos = new Array(a.length);
-            for (i = 0; i < a.length; i++) {
-                datos[i] = [a[i], parseInt(b[i])];
-            }
+            //grafico de mascotas por estado
+            var gatos = getURLParameter("cantGatos");
+            var perros = getURLParameter("cantPerros");
             var data = new google.visualization.DataTable();
-            data.addColumn('string', 'Año');
-            data.addColumn('number', 'Cantidad');
-            data.addRows(datos);
-            // Set chart options
-            var options = {
-                'title': 'Cantidad de adopciones por año',
-                'width': 500,
-                'height': 500,
-                'bar': {groupWidth: "95%"},
-                'legend': { position: "none" },
-            };
-            // Instantiate and draw our chart, passing in some options.
-            var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
-            chart.draw(data, options);
+                data.addColumn('string', 'Especie');
+                data.addColumn('number', 'Porcentaje');
+                data.addRows([
+                  ['Gatos', parseInt(gatos)],
+                  ['Perros', parseInt(perros)]
+                ]);
+
+            //opciones de adopciones por especie
+                // Set chart options
+                var options = { 'title': 'Porcentaje de mascotas por especie',
+                    'width': 500,
+                    'height': 500,
+                    'is3D':true
+                };
+
+
+            //grafico adopciones por especie
+            var chartAdopcionesPorSexo = new  google.visualization.PieChart(document.getElementById('adopciones'));
+            chartAdopcionesPorSexo.draw(data, options);
         }
     </script>
 </head>
     <body>
+    <style type="text/css">
+  
+        h1 {
+            font-size: 180% ;
+            }
+  
+        h2 {
+            border-bottom: 1px solid #999999 ;
+            }
+  
+        .printable {
+            border: 1px dotted #CCCCCC ;
+            padding: 10px 10px 10px 10px ;
+            }
+  
+        img {
+            background-color: #E0E0E0 ;
+            border: 1px solid #666666 ;
+            padding: 5px 5px 5px 5px ;
+            }
+  
+        a {
+            color: black ;
+            }
+  
+    </style>
     <script type="text/javascript">
 
         // When the document is ready, initialize the link so
@@ -80,10 +107,10 @@
                         Estadisticas de SiGMA 
                         <br />
                         <br />
-                        Este grafico muestra la cantidad de adopciones por fecha.
+                        El grafico muestra la cantidad de las mascotas por especie.
                         <br />
                         <br />
-                        <img alt="" src="imagenes/registraradopcion.jpg" width="100px" height="100px" />
+                        <img alt="" src="assets/img/menu/mascotas.png" width="100px" height="100px" />
                     </h1>
                 </center>
             </div>
@@ -91,8 +118,8 @@
         <div class="col-md-12">
             <div class="col-md-4 col-md-offset-4">
                 <center>
-                    <div id="chart_div">
-
+                    <div id="adopciones"  style="width:400; height:300">
+                    
                     </div>
                 </center>
             </div>

@@ -12,5 +12,6 @@ namespace Entidades
         public int mes{get;set;}
         public DateTime fecha{get;set;}
         public string nombre{get;set;}
+        public int especie { get; set; }
     }
 }

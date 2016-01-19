@@ -59,7 +59,7 @@ namespace SiGMA
                 int mascotas = LogicaBDMascota.buscarMascotasPorNombre("").Count;
                 int cantH = 0;
                 int cantM = 0;
-                LogicaBDGraficos.BuscarPerdidas(ref cantH, ref cantM);
+                LogicaBDGraficos.BuscarPerdidas(ref cantM, ref cantH);
                 string pagina = "PerdidasPorSexo.htm?a=" + mascotasAdoptadas + "&p=" + mascotasPerdidas + "&h=" + mascotasHalladas + "&m=" + mascotas + "&cantH=" + cantH + "&cantM=" + cantM;
                 //Response.Redirect(pagina);
                 Response.Write("<script>");
@@ -201,7 +201,7 @@ namespace SiGMA
                 string cant = "";
                 string fecha = "";
                 List<EDatos> datos = new List<EDatos>();
-                LogicaBDGraficos.AdopcionesPorFecha(ref datos);
+                LogicaBDGraficos.HallazgosPorFecha(ref datos);
                 foreach (var dato in datos)
                 {
                     if (i != (datos.Count))
@@ -216,6 +216,75 @@ namespace SiGMA
                     }
                 }
                 string pagina = "HallazgosPorFecha.htm?nombre=" + fecha + "&cant=" + cant;
+                //Response.Redirect(pagina);
+                Response.Write("<script>");
+                Response.Write("window.open('" + pagina + "','_blank')");
+                Response.Write("</script>");
+            }
+            if (ddlListado.SelectedValue.Equals("12"))
+            {
+                int i = 0;
+                string cant = "";
+                string fecha = "";
+                List<EDatos> datos = new List<EDatos>();
+                LogicaBDGraficos.PerdidasPorFecha(ref datos);
+                foreach (var dato in datos)
+                {
+                    if (i != datos.Count)
+                    {
+                        cant += dato.cantidad + ",";
+                        fecha += dato.año + ",";
+                    }
+                    else
+                    {
+                        cant += dato.cantidad;
+                        fecha += dato.año;
+                    }
+                }
+                string pagina = "PerdidasPorFecha.htm?nombre=" + fecha + "&cant=" + cant;
+                Response.Write("<script>");
+                Response.Write("window.open('" + pagina + "','_blank')");
+                Response.Write("</script>");
+            }
+            if (ddlListado.SelectedValue.Equals("13"))
+            {
+                int cantidadPerros = 0;
+                int cantidadGatos = 0;
+                LogicaBDGraficos.BuscarMascotasPorEspecie(ref cantidadPerros, ref cantidadGatos);
+                string pagina = "MascotasPorEspecie.htm?cantPerros=" + cantidadPerros + "&cantGatos=" + cantidadGatos;
+                //Response.Redirect(pagina);
+                Response.Write("<script>");
+                Response.Write("window.open('" + pagina + "','_blank')");
+                Response.Write("</script>");
+            }
+            if (ddlListado.SelectedValue.Equals("14"))
+            {
+                int cantidadPerros = 0;
+                int cantidadGatos = 0;
+                LogicaBDGraficos.PerdidasPorEspecie(ref cantidadGatos, ref cantidadPerros);
+                string pagina = "PerdidasPorEspecie.htm?cantPerros=" + cantidadPerros + "&cantGatos=" + cantidadGatos;
+                //Response.Redirect(pagina);
+                Response.Write("<script>");
+                Response.Write("window.open('" + pagina + "','_blank')");
+                Response.Write("</script>");
+            }
+            if (ddlListado.SelectedValue.Equals("15"))
+            {
+                int cantidadPerros = 0;
+                int cantidadGatos = 0;
+                LogicaBDGraficos.AdopcionesPorEspecie(ref cantidadGatos, ref cantidadPerros);
+                string pagina = "AdopcionesPorEspecie.htm?cantPerros=" + cantidadPerros + "&cantGatos=" + cantidadGatos;
+                //Response.Redirect(pagina);
+                Response.Write("<script>");
+                Response.Write("window.open('" + pagina + "','_blank')");
+                Response.Write("</script>");
+            }
+            if (ddlListado.SelectedValue.Equals("16"))
+            {
+                int cantidadPerros = 0;
+                int cantidadGatos = 0;
+                LogicaBDGraficos.HallazgosPorEspecie(ref cantidadGatos, ref cantidadPerros);
+                string pagina = "HallazgosPorEspecies.htm?cantPerros=" + cantidadPerros + "&cantGatos=" + cantidadGatos;
                 //Response.Redirect(pagina);
                 Response.Write("<script>");
                 Response.Write("window.open('" + pagina + "','_blank')");

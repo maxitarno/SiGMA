@@ -27,9 +27,9 @@
             var c = getURLParameter("c");
             var data = new google.visualization.arrayToDataTable([
               ['Edad', 'Cantidad', { role: 'style' } ],
-              ['Cantidad de cachorros', parseInt(c), 'gold'],
-              ['Cantidad de adultos', parseInt(a), 'platinum'],
-              ['Cantidad de seniors', parseInt(s), 'silver']
+              ['Cachorros', parseInt(c), 'gold'],
+              ['Adultos', parseInt(a), 'platinum'],
+              ['Seniors', parseInt(s), 'silver']
             ]);
             //grafico de adopciones por sexo
             var cantH = getURLParameter("H");
@@ -61,11 +61,6 @@
             //grafico adopciones por sexo
             var chartAdopcionesPorSexo = new  google.visualization.BarChart(document.getElementById('adopciones'));
             chartAdopcionesPorSexo.draw(dataPorSexo, optionsPorSexo);
-        }
-    </script>
-    <script type="text/javascript">
-        function atras() {
-            location.href = "Graficos.aspx";
         }
     </script>
 </head>
@@ -127,11 +122,14 @@
             <div class="col-md-8 col-md-offset-2">
                 <center>
                     <h1>
-                        Estadisticas de las mascotas 
+                        Estadisticas de SiGMA 
+                        <br />
                         <br />
                         El grafico de la izquierda muestra la cantidad de las mascotas por edad.
                         <br />
-                        El grafico de la derecha muestar la cantidad de mascotass por sexo.
+                        <br />
+                        El grafico de la derecha muestra la cantidad de mascotas por sexo.
+                        <br />
                         <br />
                         <img alt="" src="assets/img/menu/mascotas.png" width="100px" height="100px" />
                     </h1>
@@ -156,20 +154,13 @@
         </div>
     </div>
     <div class="col-md-12">
-            <div class="col-md-8 col-md-offset-2">
-                <center>
-                    <p>
-                        <a>Imprimir</a>
-                    </p>
-                </center>
-            </div>
-        </div>
-    <div class="col-md-12">
+        <div class="col-md-8 col-md-offset-2">
             <center>
-                <div class="col-md-8 col-md-offset-2">
-                    <img alt="volver" src="imagenes/volver.png" onclick="atras()" />
-                </div>
+                <p>
+                    <a>Imprimir</a>
+                </p>
             </center>
         </div>
+    </div>
 </body>
 </html>

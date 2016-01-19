@@ -26,8 +26,8 @@
             var data = new google.visualization.arrayToDataTable([
             ["Estado", "Cantidad", { role: "style" } ],
             ["Perdidas", parseInt(a), "silver"],
-            ["Hallazgos", parseInt(h), "gold"],
-            ["Adopciones", parseInt(p), "color: #e5e4e2"]
+            ["Halladas", parseInt(h), "gold"],
+            ["Adoptadas", parseInt(p), "color: #e5e4e2"]
         ]);
             // Set chart options
             var options = { 
@@ -41,11 +41,6 @@
             // Instantiate and draw our chart, passing in some options.
             var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
             chart.draw(data, options);
-        }
-    </script>
-    <script type="text/javascript">
-        function atras() {
-            location.href = "Graficos.aspx";
         }
     </script>
 </head>
@@ -81,9 +76,11 @@
             <div class="col-md-8 col-md-offset-2">
                 <center>
                     <h1>
-                        Estadisticas de las mascotas 
+                        Estadisticas de SiGMA 
+                        <br />
                         <br />
                         Este grafico muestra los totales de las mascotas por estado.
+                        <br />
                         <br />
                         <img alt="" src="assets/img/menu/mascotas.png" width="100px" height="100px" />
                     </h1>
@@ -101,20 +98,13 @@
         </div>
     </div>
     <div class="col-md-12">
-            <div class="col-md-4 col-md-offset-4">
-                <center>
-                    <p>
-                        <a>Imprimir</a>
-                    </p>
-                </center>
-            </div>
-        </div>
-    <div class="col-md-12">
+        <div class="col-md-4 col-md-offset-4">
             <center>
-                <div class="col-md-8 col-md-offset-2">
-                    <img alt="volver" src="imagenes/volver.png" onclick="atras()" />
-                </div>
+                <p>
+                    <a>Imprimir</a>
+                </p>
             </center>
         </div>
+    </div>
 </body>
 </html>

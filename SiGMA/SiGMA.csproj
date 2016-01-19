@@ -66,6 +66,7 @@
     <Content Include="Administracion.aspx" />
     <Content Include="Adopciones.aspx" />
     <Content Include="AdopcionesPorBarrio.htm" />
+    <Content Include="AdopcionesPorEspecie.htm" />
     <Content Include="AdopcionesPorFecha.htm" />
     <Content Include="AdopcionesPorSexo.htm" />
     <Content Include="AsignarMascotaHogar.aspx" />
@@ -222,6 +223,10 @@
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\main.css" />
     <Content Include="Contrato.aspx" />
+    <Content Include="HallazgosPorEspecies.htm" />
+    <Content Include="MascotasPorEspecie.htm" />
+    <Content Include="PerdidasPorEspecie.htm" />
+    <Content Include="PerdidasPorFecha.htm" />
     <Content Include="RegistrarBajaAVoluntario.aspx" />
     <Content Include="DefaultDueño.aspx" />
     <Content Include="DevolverADueño.aspx" />

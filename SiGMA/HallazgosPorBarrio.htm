@@ -33,7 +33,7 @@
            data.addRows(datos);
             // Set chart options
         var options = { 
-                'title': 'Cantidad de mascotas halladas por barrio',
+                'title': 'Cantidad de hallazgos por barrio',
                 'width': 500,
                 'height': 500,
                 'bar': {groupWidth: "95%"},
@@ -42,11 +42,6 @@
             // Instantiate and draw our chart, passing in some options.
             var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
             chart.draw(data, options);
-        }
-    </script>
-    <script type="text/javascript">
-        function atras() {
-            location.href = "Graficos.aspx";
         }
     </script>
 </head>
@@ -84,7 +79,9 @@
                     <h1>
                         Estadisticas de las mascotas 
                         <br />
-                        Este grafico muestra la  cantidad de mascotas halladas por barrio
+                        <br />
+                        Este grafico muestra la  cantidad de hallazgos por barrio
+                        <br />
                         <br />
                         <img alt="" src="imagenes/registrarhallazgo.jpg" width="100px" height="100px" />
                     </h1>
@@ -102,21 +99,14 @@
         </div>
     </div>
     <div class="col-md-12">
-            <div class="col-md-4 col-md-offset-4">
-                <center>
-                    <p>
-                        <a>Imprimir</a>
-                    </p>
-                </center>
-            </div>
-        </div>
-    <div class="col-md-12">
+        <div class="col-md-4 col-md-offset-4">
             <center>
-                <div class="col-md-8 col-md-offset-2">
-                    <img alt="volver" src="imagenes/volver.png" onclick="atras()" />
-                </div>
+                <p>
+                    <a>Imprimir</a>
+                </p>
             </center>
         </div>
+    </div>
 </body>
 </html>
 

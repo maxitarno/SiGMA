@@ -23,10 +23,10 @@
             var cantM = getURLParameter("cantM");
             var dataPorSexo = new google.visualization.DataTable();
             dataPorSexo.addColumn('string', 'Sexo');
-            dataPorSexo.addColumn('number', 'Cantidad de mascotas clasificadas por sexo');
+            dataPorSexo.addColumn('number', 'Cantidad de mascotas');
             dataPorSexo.addRows([
-              ['Cantidad de hembras', 0],
-              ['Cantidad de machos', 0]
+              ['Hembras', 0],
+              ['Machos', 0]
             ]);
             dataPorSexo.setValue(0, 1, dataPorSexo.getValue(0, 1) + cantH);
             dataPorSexo.setValue(1, 1, dataPorSexo.getValue(1, 1) + cantM);
@@ -41,11 +41,6 @@
             //grafico adopciones por sexo
             var chartAdopcionesPorSexo = new  google.visualization.BarChart(document.getElementById('adopciones'));
             chartAdopcionesPorSexo.draw(dataPorSexo, optionsPorSexo);
-        }
-    </script>
-    <script type="text/javascript">
-        function atras() {
-            location.href = "Graficos.aspx";
         }
     </script>
 </head>
@@ -81,9 +76,11 @@
             <div class="col-md-4 col-md-offset-4">
                 <center>
                     <h1>
-                        Mascotas perdidas clasificadas por sexo
+                        Estadisticas de SiGMA
+                        <br />
                         <br />
                         El grafico muestra la cantidad de mascotas perdidas clasificadas por sexo.
+                        <br />
                         <br />
                         <img alt="" src="imagenes/registrarperdida.jpg" width="100px" height="100px" />
                     </h1>
@@ -101,20 +98,13 @@
         </div>
     </div>
     <div class="col-md-12">
-            <div class="col-md-8 col-md-offset-2">
-                <center>
-                    <p>
-                        <a>Imprimir</a>
-                    </p>
-                </center>
-            </div>
-        </div>
-    <div class="col-md-12">
+        <div class="col-md-8 col-md-offset-2">
             <center>
-                <div class="col-md-8 col-md-offset-2">
-                    <img alt="volver" src="imagenes/volver.png" onclick="atras()" />
-                </div>
+                <p>
+                    <a>Imprimir</a>
+                </p>
             </center>
         </div>
+    </div>
 </body>
 </html>
