@@ -174,6 +174,7 @@
     <asp:HiddenField ID="hfNombre" runat="server" />
     <asp:HiddenField ID="hfTelefono" runat="server" />
     <asp:HiddenField ID="hfContacto" runat="server" />
+    <asp:HiddenField ID="hfServicios" runat="server" />
     <!-- Modal -->
     <div id="myModal" class="modal fade" role="dialog">
         <div class="modal-dialog modal-md">
@@ -199,6 +200,8 @@
 
     <script type="text/javascript">
         var infowindow;
+        var i = 0;
+        var acomodar = "";
         function initialize() {
             var mapProp = {
                 center: { lat: -31.4080027, lng: -64.18063840000002 },
@@ -213,11 +216,15 @@
         }
         function geocodeAddress(geocoder, resultsMap) {
             function getURLParameter(name) { return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [, ""])[1].replace(/\+/g, '%20')) || null }
+            var servicios = document.getElementById('<%=hfServicios.ClientID%>').value.toString().split(",");
+            for (; i < servicios.length; i++) {
+                acomodar += "<BR>" + servicios[i].toString();
+            }
             var direccion = document.getElementById('<%=hfDireccion.ClientID%>').value.toString(); // (getURLParameter("direccion") == null) ? "" : getURLParameter("direccion");
             var nombre = document.getElementById('<%=hfNombre.ClientID%>').value.toString(); //(getURLParameter("nombre") == null) ? "" : getURLParameter("nombre");
             var telefono = document.getElementById('<%=hfTelefono.ClientID%>').value.toString(); //(getURLParameter("telefono") == null) ? "" : getURLParameter("telefono");
             var contacto = document.getElementById('<%=hfContacto.ClientID%>').value.toString(); //(getURLParameter("contacto") == null) ? "" : getURLParameter("contacto");
-            var texto = "<div><p><h3>nombre: " + nombre + "</br>telefono: " + telefono + "</br>contacto: " + contacto + "</h3></p></div>";
+            var texto = "<div><p><h3>nombre: " + nombre + "</br>telefono: " + telefono + "</br>contacto: " + contacto + "<BR>Servicios: " + acomodar + "</h3></p></div>";
             var address = "argentina " + direccion;
             geocoder.geocode({ 'address': address }, function (results, status) {
                 if (status === google.maps.GeocoderStatus.OK) {

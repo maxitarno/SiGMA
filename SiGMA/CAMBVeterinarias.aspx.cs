@@ -201,6 +201,16 @@ namespace SiGMA
             hfNombre.Value = txtNombre.Text;
             hfTelefono.Value = txtTE.Text;
             pnlBotones.Visible = true;
+            if (chkCastraciones.Checked)
+                hfServicios.Value += chkCastraciones.Text + ",";
+            if (chkMedicinas.Checked)
+                hfServicios.Value += chkMedicinas.Text + ",";
+            if (chkPeluqueria.Checked)
+                hfServicios.Value += chkPeluqueria.Text + ",";
+            if (chkPetShop.Checked)
+                hfServicios.Value += chkPetShop.Text;
+            if (chkCastraciones.Checked == false && chkMedicinas.Checked == false && chkPeluqueria.Checked == false && chkPetShop.Checked == false)
+                hfServicios.Value += "Sin asignar";
         }
         public void Modificar(object sender, EventArgs e)
         {

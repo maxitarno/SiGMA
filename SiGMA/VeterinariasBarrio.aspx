@@ -84,7 +84,7 @@
     <asp:HiddenField ID="hfnombres" runat="server" />
     <asp:HiddenField ID="hfcontactos" runat="server" />
     <asp:HiddenField ID="hftelefonos" runat="server" />
-
+    <asp:HiddenField ID="hfTipos" runat="server" />
     <script type="text/javascript">
         //variables
         var bounds = new google.maps.LatLngBounds();
@@ -104,6 +104,10 @@
         var telefonos = [];
         var j = 0;
         var aux;
+        var tipos;
+        var acomodar = [];
+        var anexar = "";
+        var w = 0;
         //metodo de inicio
         function initMap() {
             //            map = null;
@@ -118,10 +122,17 @@
             nombres = document.getElementById('<%=hfnombres.ClientID%>').value.toString().split(","); //(getURLParameter("nombre") == null) ? "" : getURLParameter("nombre").toString().split(",");
             contactos = document.getElementById('<%=hfcontactos.ClientID%>').value.toString().split(","); //getURLParameter("contacto").toString().split(",");
             telefonos = document.getElementById('<%=hftelefonos.ClientID%>').value.toString().split(","); //(getURLParameter("telefono") == null) ? "" : getURLParameter("telefono").toString().split(",");
+            tipos = document.getElementById('<%=hfTipos.ClientID%>').value.toString().split(",");
             len = direcciones.length;
             //            marcadores = null;
             for (; j < len; j++) {
-                aux = "<div><p><h3>nombre: " + nombres[j].toString() + "</br>telefono: " + telefonos[j].toString() + "</br>contacto: " + contactos + "</h3></p></div>";
+                acomodar = tipos[j].toString().split("-");
+                for (; w < acomodar.length; w++) {
+                    anexar += "<BR>" + acomodar[w].toString();
+                }
+                aux = "<div><p><h3>nombre: " + nombres[j].toString() + "</br>telefono: " + telefonos[j].toString() + "</br>contacto: " + contactos[j] + "<BR>Servicios: " + anexar + "</h3></p></div>";
+                anexar = "";
+                w = 0;
                 geocoderAdress(("argentina " + direcciones[j].toString()).toString(), aux);
             }
             len = marcadores.length;

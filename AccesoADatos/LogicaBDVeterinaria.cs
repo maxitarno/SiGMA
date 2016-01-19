@@ -241,7 +241,11 @@ namespace AccesoADatos
                                    nro = VeterinariaBD.nroCalle,
                                    barrio = G1.nombre,
                                    web = VeterinariaBD.web,
-                                   telefono = VeterinariaBD.telefono
+                                   telefono = VeterinariaBD.telefono,
+                                   peluqueria = VeterinariaBD.peluqueria,
+                                   petshop = VeterinariaBD.petShop,
+                                   castraciones = VeterinariaBD.castraciones,
+                                   medicinas = VeterinariaBD.medicina
                                };
                 foreach (var registro in consulta)
                 {
@@ -257,6 +261,10 @@ namespace AccesoADatos
                     veterinaria.domicilio.barrio.localidad.nombre = registro.localidad;
                     veterinaria.telefono = (registro.telefono == null)? "" : registro.telefono;
                     veterinaria.contacto = (registro.web == null)? "" : registro.web;
+                    veterinaria.castraciones = (registro.castraciones == null) ? false : (bool)registro.castraciones;
+                    veterinaria.medicina = (registro.medicinas == null)? false : (bool)registro.medicinas;
+                    veterinaria.petshop = (registro.petshop == null) ? false : (bool)registro.petshop;
+                    veterinaria.peluqueria = (registro.peluqueria == null) ? false : (bool)registro.peluqueria;
                     veterinarias.Add(veterinaria);
                 }
                 return veterinarias;

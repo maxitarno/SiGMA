@@ -278,10 +278,11 @@
         }
         function geocodeAddress(geocoder, resultsMap) {
             //function getURLParameter(name) { return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [, ""])[1].replace(/\+/g, '%20')) || null }
-            var nombre = "<div><p><h3>nombre: " + document.getElementById('<%=hfNombre.ClientID%>').value.toString() + "</h3></p></div>";
+            var nombre = "<div><p><h3>nombre: " + document.getElementById('<%=hfNombre.ClientID%>').value.toString() + "<BR>Direccón: ";
             var direccion = document.getElementById('<%=hfDireccion.ClientID%>').value.toString(); //(getURLParameter("direccion") == null) ? "" : getURLParameter("direccion");
             var address = "argentina " + direccion;
             var cuidado = document.getElementById('<%=hfCuidado.ClientID%>').value.toString(); //(getURLParameter("cuidado") == null) ? "0" : getURLParameter("cuidado");
+            var mensaje = nombre + direccion + "</h3></p></div>";
             geocoder.geocode({ 'address': address }, function (results, status) {
                 if (status === google.maps.GeocoderStatus.OK) {
                     resultsMap.setCenter(results[0].geometry.location);
@@ -292,7 +293,7 @@
                         icon: "./imagenes/registrarperdida (34x35).jpg"
                     });
                     marker.addListener('click', function () {
-                        infowindow.setContent(nombre);
+                        infowindow.setContent(mensaje);
                         infowindow.open(resultsMap, marker);
                     });
                     var cityCircle = new google.maps.Circle({

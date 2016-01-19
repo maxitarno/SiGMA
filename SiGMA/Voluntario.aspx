@@ -450,7 +450,7 @@
                 });
             }
             else {
-                alert('No se encontraron veterinarias para ese barrio');
+                alert('No se encontraron perdidas para ese barrio');
             }
         });
     </script>
