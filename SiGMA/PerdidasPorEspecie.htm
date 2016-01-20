@@ -36,7 +36,18 @@
             var options = { 'title': 'Porcentaje de perdidas por especie',
                 'width': 500,
                 'height': 500,
-                'is3D': true
+                'is3D': true,
+                 //'colors': ['#000099', '#FFD700'],
+                //'pieHole': 0.4,
+                'pieSliceTextStyle': {
+                    color: 'white',
+                },
+                //'pieSliceText': 'label',
+                'pieStartAngle': 80,
+                slices: {  0: {offset: 0.1},
+                    1: {offset: 0},
+                },
+                'tooltip':{textStyle: {color: 'blue'}, showColorCode: true}
             };
 
 
