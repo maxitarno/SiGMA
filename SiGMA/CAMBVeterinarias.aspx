@@ -224,7 +224,7 @@
             var nombre = document.getElementById('<%=hfNombre.ClientID%>').value.toString(); //(getURLParameter("nombre") == null) ? "" : getURLParameter("nombre");
             var telefono = document.getElementById('<%=hfTelefono.ClientID%>').value.toString(); //(getURLParameter("telefono") == null) ? "" : getURLParameter("telefono");
             var contacto = document.getElementById('<%=hfContacto.ClientID%>').value.toString(); //(getURLParameter("contacto") == null) ? "" : getURLParameter("contacto");
-            var texto = "<div><p><h3>nombre: " + nombre + "</br>telefono: " + telefono + "</br>contacto: " + contacto + "<BR>Servicios: " + acomodar + "</h3></p></div>";
+            var texto = "<div><p><h5>nombre: " + nombre + "</br>telefono: " + telefono + "</br>contacto: " + contacto + "<BR>Servicios: " + acomodar + "</h5></p></div>";
             var address = "argentina " + direccion;
             geocoder.geocode({ 'address': address }, function (results, status) {
                 if (status === google.maps.GeocoderStatus.OK) {

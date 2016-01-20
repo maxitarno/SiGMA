@@ -43,7 +43,7 @@
         <div class="contact-form">            
             <asp:Panel ID="pnlMascotas" runat="server">
                 <div class="form-group" style="text-align:center">
-                    <label for="contact-name">Mascotas para devolucion</label>
+                    <label for="contact-name">Mascotas para devolución</label>
                     <asp:GridView ID="grvMascotas" runat="server"
                         AutoGenerateColumns="False" Width="600px" 
                         HorizontalAlign="Center" Font-Size="Medium"

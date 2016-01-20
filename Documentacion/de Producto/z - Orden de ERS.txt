@@ -1,14 +1,14 @@
 Breve Reseña Estudio Inical asociada al producto
-Alcances
-Descripcion General (Listado CU esenciales)
-Diagramas de CU escenciales por módulo
-Diagramas de dominio por paquete
-Plantillas TF CU Esenciales 
-Diagrama de Secuencias
-DTEs
+Alcances <LISTO>
+Descripcion General (Listado CU esenciales) <LISTO>
+Diagramas de CU escenciales por módulo <LISTO>
+Diagramas de dominio por paquete <LISTO>
+Plantillas TF CU Esenciales <LISTO>
+Diagrama de Secuencias 
+DTEs <LISTO>
 Mod Arquitectura-Despliege 
-Mod Componentes
-Informe de ejecuciones de casos de prueba
+Mod Componentes 
+Informe de ejecuciones de casos de prueba <LISTO>
 
 
-Total aprox = XX páginas
+Total aprox = 57 páginas al 20/01/2016
