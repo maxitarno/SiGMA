@@ -176,7 +176,7 @@ namespace AccesoADatos
                                             join voluntariosBD in mapaEntidades.Voluntarios on HogaresBD.idVoluntario equals voluntariosBD.idVoluntario
                                             join personasBD in mapaEntidades.Personas on voluntariosBD.idPersona equals personasBD.idPersona
                                             join usuariosBD in mapaEntidades.Usuarios on personasBD.user equals usuariosBD.user
-                                            where (usuariosBD.user == usuario)
+                                            where usuariosBD.user == usuario && OcupacionesBD.fechaSalida == null
                                             select new
                                            {
                                                nombre = MascotasBD.nombreMascota,

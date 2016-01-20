@@ -84,6 +84,7 @@ namespace AccesoADatos
                 if (ocupacion.Count() != 0)
                 {
                     ocupacion.First().fechaSalida = fecha;
+                    ocupacion.First().solicitudDevolucion = false;
                     EHogarProvisorio entHogar = new EHogarProvisorio();
                     entHogar.idHogar = ocupacion.First().idHogarProvisorio;
                     entHogar = obtenerDatos(entHogar.idHogar);
@@ -99,6 +100,51 @@ namespace AccesoADatos
             }
         }
 
+        public static List<EOcupacionHogar> buscarSolicitudesDevolucion()
+        {
+            try
+            {
+                SiGMAEntities mapa = Conexion.crearSegunServidor();
+                List<EOcupacionHogar> lstOcupaciones = new List<EOcupacionHogar>();
+                var ocupaciones = from ocupacionesBD in mapa.OcupacionesXHogaresProvisorios
+                                  where ocupacionesBD.solicitudDevolucion == true
+                                  select ocupacionesBD;
+                foreach (var item in ocupaciones)
+                {
+                    EOcupacionHogar entOcu = new EOcupacionHogar();
+                    entOcu.idOcupacion = item.idOcupacion;
+                    entOcu.hogar = obtenerDatos(item.idHogarProvisorio);
+                    entOcu.mascota = LogicaBDMascota.BuscarMascotaPorIdMascota(item.idMascota);
+                    entOcu.fechaIngreso = item.fechaIngreso;
+                    lstOcupaciones.Add(entOcu);
+                }
+                return lstOcupaciones;
+            }
+            catch (Exception)
+            {                
+                throw;
+            }
+        }
+
+        public static void aceptarDevolucion(int paramIdMascota, DateTime fechaSalida)
+        {
+            using (TransactionScope transaction = new TransactionScope())
+            {
+                try
+                {
+                    SiGMAEntities mapa = Conexion.crearSegunServidor();                    
+                    LogicaBDHogar.LiberarHogar(paramIdMascota, DateTime.Now, ref mapa);                    
+                    mapa.SaveChanges();
+                    transaction.Complete();
+                }
+                catch (Exception)
+                {
+                    transaction.Dispose();
+                    throw;
+                }
+            }
+        }
+
         public static EHogarProvisorio obtenerDatos(int paramIdHogar)
         {
             try
@@ -108,6 +154,8 @@ namespace AccesoADatos
                 entHogar.disponibilidad = mapa.HogaresProvisorios.First(h => h.idHogarProvisorio == paramIdHogar).disponibilidad;
                 entHogar.cantMascotas = mapa.HogaresProvisorios.First(h => h.idHogarProvisorio == paramIdHogar).cantMascotas;
                 entHogar.idHogar = paramIdHogar;
+                entHogar.voluntario = LogicaBDVoluntario.buscarVoluntarioPorId(
+                    mapa.HogaresProvisorios.First(h => h.idHogarProvisorio == paramIdHogar).idVoluntario);
                 return entHogar;
             }
             catch (Exception)

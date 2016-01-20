@@ -223,6 +223,7 @@
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\main.css" />
     <Content Include="Contrato.aspx" />
+    <Content Include="DevolverASigma.aspx" />
     <Content Include="HallazgosPorEspecies.htm" />
     <Content Include="MascotasPorEspecie.htm" />
     <Content Include="PerdidasPorEspecie.htm" />
@@ -430,6 +431,13 @@
     </Compile>
     <Compile Include="Contrato.aspx.designer.cs">
       <DependentUpon>Contrato.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DevolverASigma.aspx.cs">
+      <DependentUpon>DevolverASigma.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DevolverASigma.aspx.designer.cs">
+      <DependentUpon>DevolverASigma.aspx</DependentUpon>
     </Compile>
     <Compile Include="RegistrarBajaAVoluntario.aspx.cs">
       <DependentUpon>RegistrarBajaAVoluntario.aspx</DependentUpon>

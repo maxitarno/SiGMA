@@ -9,26 +9,25 @@ using AccesoADatos;
 
 namespace SiGMA
 {
-    public partial class DevolverADueño : System.Web.UI.Page
+    public partial class DevolverASigma : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            listarMascotas();
+            listarSolicitudes();
         }
 
-        private void listarMascotas()
+        private void listarSolicitudes()
         {
-            try 
+            try
             {
-	            List<EMascota> lstMascotas = LogicaBDMascota.buscarHalladasConDueño();
-                List<EHallazgo> lstHallazgos = LogicaBDHallazgo.buscarHallazgosPorIdMascotas(lstMascotas);
-                if (lstHallazgos.Count() != 0)
+                List<EOcupacionHogar> lstOcupaciones = LogicaBDHogar.buscarSolicitudesDevolucion();
+                if (lstOcupaciones.Count() != 0)
                 {
-                    grvMascotas.DataSource = lstHallazgos;
+                    grvMascotas.DataSource = lstOcupaciones;
                     grvMascotas.DataBind();
                     pnlMascotas.Visible = true;
                     pnlInfo.Visible = false;
-                    Session["listaHallazgos"] = lstHallazgos;
+                    Session["listaOcupaciones"] = lstOcupaciones;
                 }
                 else
                 {
@@ -44,8 +43,19 @@ namespace SiGMA
                 pnlInfo.Visible = false;
                 pnlMascotas.Visible = false;
                 pnlAtento.Visible = true;
-                lblError.Text = "Error al cargar las mascotas halladas.";
-            }            
+                lblError.Text = "Error al cargar las solicitudes de devolucion.";
+            }        
+        }
+
+        protected void grvMascotas_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            List<EOcupacionHogar> lstOcupaciones = (List<EOcupacionHogar>)Session["listaOcupaciones"];                        
+            int idOcupacionSelec = int.Parse(grvMascotas.Rows[int.Parse(e.CommandArgument.ToString())].Cells[5].Text);
+            Session["idOcupacion"] = idOcupacionSelec;
+            EMascota entMascota = lstOcupaciones.First(h => h.idOcupacion == idOcupacionSelec).mascota;
+            cargarDatosMascota(entMascota);
+            txtVoluntario.Text = lstOcupaciones.First(h => h.idOcupacion == idOcupacionSelec).hogar.voluntario.persona.nombre + " " +
+                lstOcupaciones.First(h => h.idOcupacion == idOcupacionSelec).hogar.voluntario.persona.apellido;
         }
 
         private void cargarDatosMascota(EMascota mascota)
@@ -67,15 +77,25 @@ namespace SiGMA
             pnlDatos1.Visible = true;
             pnlImagenDevolver.Visible = false;
             Session["mascotaDevolver"] = mascota;
-        }        
+        }
 
-        protected void grvMascotas_RowCommand(object sender, GridViewCommandEventArgs e)
+        protected void btnDevolver_Click(object sender, EventArgs e)
         {
-            List<EHallazgo> lstHallazgos = (List<EHallazgo>)Session["listaHallazgos"];                      
-            int idHallazgoSelec = int.Parse(grvMascotas.Rows[int.Parse(e.CommandArgument.ToString())].Cells[6].Text);
-            Session["idHallazgo"] = idHallazgoSelec;
-            EMascota entMascota = lstHallazgos.First(h => h.idHallazgo == idHallazgoSelec).mascota;
-            cargarDatosMascota(entMascota);
+            try
+            {                
+                EMascota entMascota = (EMascota)Session["mascotaDevolver"];
+                LogicaBDHogar.aceptarDevolucion(entMascota.idMascota, Convert.ToDateTime(txtFecha.Text));                
+                pnlCorrecto.Visible = true;
+                pnlAtento.Visible = false;
+                lblCorrecto.Text = "Devolucion registrada exitosamente.";
+                listarSolicitudes();
+            }
+            catch (Exception)
+            {
+                pnlAtento.Visible = true;
+                pnlCorrecto.Visible = false;
+                lblError.Text = "Error al registrar la devolucion.";
+            }
         }
 
         private void ponerImagen(byte[] imagen)
@@ -96,28 +116,6 @@ namespace SiGMA
             }
             else
                 return null;
-        }
-
-        protected void btnDevolver_Click(object sender, EventArgs e)
-        {            
-            try
-            {
-                EMascota entMascota = (EMascota)Session["mascotaDevolver"];
-                LogicaBDMascota.devolverADueño(entMascota);
-                EHallazgo entHallazgo = new EHallazgo();
-                entHallazgo.idHallazgo = int.Parse(Session["idHallazgo"].ToString());
-                LogicaBDHallazgo.modificarEstado("Cerrada", entHallazgo);
-                pnlCorrecto.Visible = true;
-                pnlAtento.Visible = false;
-                lblCorrecto.Text = "Devolucion registrada exitosamente.";
-                listarMascotas();
-            }
-            catch (Exception)
-            {
-                pnlAtento.Visible = true;
-                pnlCorrecto.Visible = false;
-                lblError.Text = "Error al registrar la devolucion.";
-            }            
         }
     }
 }
