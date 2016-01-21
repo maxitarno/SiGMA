@@ -23,9 +23,9 @@
             data.addColumn('string', 'Categoria de voluntario');
             data.addColumn('number', 'Cantidad de voluntarios por categoria');
             data.addRows([
-          ['Cantidad  de voluntarios de tipo hogar', 0],
-          ['Cantidad de voluntarios de tipo busqueda', 0],
-          ['Cantidad  de voluntarios de tipo ambos', 0],
+          ['Hogar', 0],
+          ['Busqueda', 0],
+          ['Ambos', 0],
         ]);
         function getURLParameter(name) { return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [, ""])[1].replace(/\+/g, '%20')) || null }
         var h = getURLParameter("h");
