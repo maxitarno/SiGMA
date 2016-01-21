@@ -281,7 +281,7 @@
             var direccion = document.getElementById('<%=hfDireccion.ClientID%>').value.toString(); //(getURLParameter("direccion") == null) ? "" : getURLParameter("direccion");
             var address = "argentina " + direccion;
             var cuidado = document.getElementById('<%=hfCuidado.ClientID%>').value.toString(); //(getURLParameter("cuidado") == null) ? "0" : getURLParameter("cuidado");
-            var nombre = "<div><p><h3>Nombre: " + document.getElementById('<%=hfNombre.ClientID%>').value.toString() + "<BR> Dirección: " + direccion + "</h3></p></div>";
+            var nombre = "<div><p><h5>Nombre: " + document.getElementById('<%=hfNombre.ClientID%>').value.toString() + "<BR> Dirección: " + direccion + "</h5></p></div>";
             geocoder.geocode({ 'address': address }, function (results, status) {
                 if (status === google.maps.GeocoderStatus.OK) {
                     resultsMap.setCenter(results[0].geometry.location);

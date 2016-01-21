@@ -231,7 +231,7 @@
             //function getURLParameter(name) { return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [, ""])[1].replace(/\+/g, '%20')) || null }
             var direccion = document.getElementById('<%=hfDireccion.ClientID%>').value.toString(); //(getURLParameter("direccion") == null) ? "" : getURLParameter("direccion");
             var nombre = document.getElementById('<%=hfNombre.ClientID%>').value.toString(); //(getURLParameter("nombre") == null) ? "" : getURLParameter("nombre");
-            var texto = "<div><p><h3>Nombre: " + nombre + "<BR>Dirección: " + direccion + "</h3></p></div>";
+            var texto = "<div><p><h5>Nombre: " + nombre + "<BR>Dirección: " + direccion + "</h5></p></div>";
             var address = "argentina" + direccion
             geocoder.geocode({ 'address': address }, function (results, status) {
                 if (status === google.maps.GeocoderStatus.OK) {

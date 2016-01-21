@@ -324,7 +324,7 @@
             len = direcciones.length;
 //            marcadores = null;
             for (; j < len; j++) {
-                var aux = "<div><p><h3>nombre: " + nombres[j].toString() + "</br>dirección: " + direcciones[j].toString() + "</h3></p></div>";
+                var aux = "<div><p><h5>nombre: " + nombres[j].toString() + "</br>dirección: " + direcciones[j].toString() + "</h5></p></div>";
                 geocoderAdress(("argentina "+ direcciones[j].toString()), aux), cuidados[j];
             }
             len = marcadores.length;
@@ -395,7 +395,7 @@
             var cuidado1 = document.getElementById('<%=hfcuidados1.ClientID%>').value.toString();// (getURLParameter("cuidado") == null) ? "" : getURLParameter("cuidado");
             var direccion1 = document.getElementById('<%=hfdirecciones1.ClientID%>').value.toString();// (getURLParameter("direccion") == null) ? "" : getURLParameter("direccion");
             var nombre1 = document.getElementById('<%=hfnombres1.ClientID%>').value.toString();//(getURLParameter("nombre") == null) ? "" : getURLParameter("nombre");
-            var texto = "<div><p><h3>nombre: " + nombre1 + "<br>direccion: " + direccion1 + "</h3></p></div>";
+            var texto = "<div><p><h5>nombre: " + nombre1 + "<br>direccion: " + direccion1 + "</h5></p></div>";
             var address =  "argentina" + direccion1;
             geocoder.geocode({ 'address': address }, function (results, status) {
                 if (status === google.maps.GeocoderStatus.OK) {
@@ -436,7 +436,7 @@
                 });
             }
             else {
-                alert('No se encontraron veterinarias para ese barrio');
+                alert('No se encontraron perdidas para ese barrio');
             }
         });
         $("#btnUbicacion").click(function () {
