@@ -50,7 +50,7 @@
                             onselectedindexchanged="ddlBarrio_SelectedIndexChanged" 
                             AutoPostBack="True" Width="100%"> </asp:DropDownList>
 	                </div>
-	                <input id="btnUbicacion" type="button" value="Mostrar veterinarias" style="width:180px"/>
+	                <input id="btnUbicacion" type="button" value="Mostrar Veterinarias" style="width:180px"/>
                 </div>
 	            <div class="col-sm-5 contact-address wow fadeInUp">
 	                <img src="base/img/portfolio/veterinariasBarrio.png" />
