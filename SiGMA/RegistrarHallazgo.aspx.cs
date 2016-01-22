@@ -264,72 +264,72 @@ namespace SiGMA
         {
             if (Page.IsValid)
             {
-                EPerdida perdida = null;
-                EMascota mascota = null;
-                if (rbYaPerdida.Checked)
+                try
                 {
-                    mascota = (EMascota)Session["MascotaPerdida"];
-                    perdida = LogicaBDPerdida.buscarPerdidaPorIdMascota(mascota);
-                }
-                else
-                {
-                    mascota = new EMascota();
-                    mascota.nombreMascota = txtNombreMascota.Text;
-                    mascota.especie = new EEspecie();
-                    mascota.especie.idEspecie = int.Parse(ddlEspecie.SelectedValue);
-                    mascota.especie.nombreEspecie = ddlEspecie.SelectedItem.Text;
-                    mascota.raza = new ERaza();
-                    mascota.raza.idRaza = int.Parse(ddlRaza.SelectedValue);
-                    mascota.raza.nombreRaza = ddlRaza.SelectedItem.Text;
-                    mascota.sexo = ddlSexo.SelectedValue;
-                    mascota.color = new EColor();
-                    mascota.color.idColor = int.Parse(ddlColor.SelectedValue);
-                    mascota.color.nombreColor = ddlColor.SelectedItem.Text;
-                    mascota.edad = new EEdad();
-                    mascota.edad.idEdad = int.Parse(ddlEdad.SelectedValue);
-                    mascota.estado = new EEstado();
-                    //Hardcode!!!!
-                    mascota.estado.idEstado = 2; //Hallada
-                    if (fuImagen.PostedFile.ContentLength != 0)
+                    EPerdida perdida = null;
+                    EMascota mascota = null;
+                    if (rbYaPerdida.Checked)
                     {
-                        if (!GestorImagen.verificarTamaño(fuImagen.PostedFile.ContentLength))
-                        {
-                            pnlAtento.Visible = true;
-                            lblError.Text = "El tamaño de la imagen no debe superar 1Mb";
-                            return;
-                        }
-                        byte[] imagen = GestorImagen.obtenerArrayBytes(fuImagen.PostedFile.InputStream, fuImagen.PostedFile.ContentLength);
-                        mascota.imagen = imagen;
+                        mascota = (EMascota)Session["MascotaPerdida"];
+                        perdida = LogicaBDPerdida.buscarPerdidaPorIdMascota(mascota);
                     }
                     else
                     {
-                        mascota.imagen = null;
+                        mascota = new EMascota();
+                        mascota.nombreMascota = txtNombreMascota.Text;
+                        mascota.especie = new EEspecie();
+                        mascota.especie.idEspecie = int.Parse(ddlEspecie.SelectedValue);
+                        mascota.especie.nombreEspecie = ddlEspecie.SelectedItem.Text;
+                        mascota.raza = new ERaza();
+                        mascota.raza.idRaza = int.Parse(ddlRaza.SelectedValue);
+                        mascota.raza.nombreRaza = ddlRaza.SelectedItem.Text;
+                        mascota.sexo = ddlSexo.SelectedValue;
+                        mascota.color = new EColor();
+                        mascota.color.idColor = int.Parse(ddlColor.SelectedValue);
+                        mascota.color.nombreColor = ddlColor.SelectedItem.Text;
+                        mascota.edad = new EEdad();
+                        mascota.edad.idEdad = int.Parse(ddlEdad.SelectedValue);
+                        mascota.estado = new EEstado();
+                        //Hardcode!!!!
+                        mascota.estado.idEstado = 2; //Hallada
+                        if (fuImagen.PostedFile.ContentLength != 0)
+                        {
+                            if (!GestorImagen.verificarTamaño(fuImagen.PostedFile.ContentLength))
+                            {
+                                pnlAtento.Visible = true;
+                                lblError.Text = "El tamaño de la imagen no debe superar 1Mb";
+                                return;
+                            }
+                            byte[] imagen = GestorImagen.obtenerArrayBytes(fuImagen.PostedFile.InputStream, fuImagen.PostedFile.ContentLength);
+                            mascota.imagen = imagen;
+                        }
+                        else
+                        {
+                            mascota.imagen = null;
+                        }
                     }
-                }
-                EHallazgo hallazgo = new EHallazgo();
-                hallazgo.perdida = perdida;
-                hallazgo.mascota = mascota;
-                hallazgo.observaciones = txtComentarios.Text;
-                var fecha = DateTime.Today;
-                if (DateTime.TryParse(txtFecha.Text, out fecha))
-                    hallazgo.fechaHallazgo = DateTime.Parse(txtFecha.Text);
-                else
-                {
-                    lblInfo.Text = "Ingrese una fecha válida";
-                    pnlInfo.Visible = true;
-                }
-                hallazgo.domicilio = new EDomicilio();
-                hallazgo.domicilio.barrio = new EBarrio();
-                hallazgo.domicilio.barrio.localidad = new ELocalidad();
-                hallazgo.domicilio.barrio.idBarrio = int.Parse(ddlBarrios.SelectedValue);
-                hallazgo.domicilio.barrio.localidad.idLocalidad = int.Parse(ddlLocalidades.SelectedValue);
-                hallazgo.domicilio.calle = new ECalle();
-                hallazgo.domicilio.calle.idCalle = int.Parse(ddlCalles.SelectedValue);
-                hallazgo.domicilio.calle.nombre = ddlCalles.SelectedItem.Text;
-                hallazgo.domicilio.numeroCalle = int.Parse(txtNroCalle.Text);
-                hallazgo.usuario = new EUsuario() { user = Session["UsuarioLogueado"].ToString() };
-                try
-                {
+                    EHallazgo hallazgo = new EHallazgo();
+                    hallazgo.perdida = perdida;
+                    hallazgo.mascota = mascota;
+                    hallazgo.observaciones = txtComentarios.Text;
+                    var fecha = DateTime.Today;
+                    if (DateTime.TryParse(txtFecha.Text, out fecha))
+                        hallazgo.fechaHallazgo = DateTime.Parse(txtFecha.Text);
+                    else
+                    {
+                        lblInfo.Text = "Ingrese una fecha válida";
+                        pnlInfo.Visible = true;
+                    }
+                    hallazgo.domicilio = new EDomicilio();
+                    hallazgo.domicilio.barrio = new EBarrio();
+                    hallazgo.domicilio.barrio.localidad = new ELocalidad();
+                    hallazgo.domicilio.barrio.idBarrio = int.Parse(ddlBarrios.SelectedValue);
+                    hallazgo.domicilio.barrio.localidad.idLocalidad = int.Parse(ddlLocalidades.SelectedValue);
+                    hallazgo.domicilio.calle = new ECalle();
+                    hallazgo.domicilio.calle.idCalle = int.Parse(ddlCalles.SelectedValue);
+                    hallazgo.domicilio.calle.nombre = ddlCalles.SelectedItem.Text;
+                    hallazgo.domicilio.numeroCalle = int.Parse(txtNroCalle.Text);
+                    hallazgo.usuario = new EUsuario() { user = Session["UsuarioLogueado"].ToString() };                
                     int id = LogicaBDHallazgo.registrarHallazgo(hallazgo);
                     Session["idMascotaHallada"] = id;
                     pnlCorrecto.Visible = true;
@@ -338,6 +338,7 @@ namespace SiGMA
                     limpiarCampos();
                     pnlMascotaSeleccionada.Visible = false;
                     pnlFiltros.Visible = false;
+                    pnlResultados.Visible = false;
                     if (chkTwitter.Checked)
                     {
                         var tweet = new Herramientas.GestorTwitter();

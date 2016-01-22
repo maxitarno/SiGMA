@@ -179,7 +179,9 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="contact-name">¿No puede seguir cuidando a su mascota provisoria?</label>
-                                    <asp:Button ID="btnSolicitarDevolucion" Width="180px" runat="server" Text="Solicitar Devolución" onclick="btnSolicitarDevolucion_Click"/>
+                                    <asp:Button ID="btnSolicitarDevolucion" Width="180px" runat="server" 
+                                        Text="Solicitar Devolución" onclick="btnSolicitarDevolucion_Click" 
+                                        CausesValidation="False"/>
                                 </div>
                             </asp:Panel>
                             <asp:Panel ID="pnlSinProvisorias" runat="server" Visible="false">

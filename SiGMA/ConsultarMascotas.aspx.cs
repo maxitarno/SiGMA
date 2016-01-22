@@ -196,11 +196,11 @@ namespace SiGMA
                 {
                     mascota.sexo = null;
                 }
-                if (!ddlTratoAnimales.SelectedValue.Equals("0"))
+                if (!ddlTratoAnimales.SelectedValue.Equals("Si"))
                 {
                     mascota.tratoAnimal = true;
                 }
-                if (!ddlTratoNinios.SelectedValue.Equals("0"))
+                if (!ddlTratoNinios.SelectedValue.Equals("Si"))
                 {
                     mascota.tratoNiños = true;
                 }
@@ -272,7 +272,7 @@ namespace SiGMA
             {
                 var imagen = (byte[])Session["imagen"];
                 Session["imagenAdopcion"] = (byte[])Session["imagen"]; // BORRAR GRONCHADA
-                Session["imagen"] = null; //Verificar para que estaba esta linea q fue comentada
+                Session["imagen"] = null; //Verificar para que estaba esta linea q fue comentada                
                 return imagen;
             }
             else
@@ -653,11 +653,11 @@ namespace SiGMA
                     txtObservaciones.Text = mascota.observaciones;
                     if (mascota.tratoAnimal != null)
                     {
-                        ddlTratoAnimales.SelectedValue = mascota.tratoAnimal == false ? "2" : "1";
+                        ddlTratoAnimales.SelectedValue = mascota.tratoAnimal == false ? "No" : "Si";
                     }
                     if (mascota.tratoNiños != null)
                     {
-                        ddlTratoNinios.SelectedValue = mascota.tratoNiños == false ? "2" : "1";
+                        ddlTratoNinios.SelectedValue = mascota.tratoNiños == false ? "No" : "Si";
                     }
                     pnlBuscar.Visible = false;
                     pnlBuscarOtro.Visible = false;
