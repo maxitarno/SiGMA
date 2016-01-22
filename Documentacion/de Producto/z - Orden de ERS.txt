@@ -4,11 +4,11 @@ Descripcion General (Listado CU esenciales) <LISTO>
 Diagramas de CU escenciales por módulo <LISTO>
 Diagramas de dominio por paquete <LISTO>
 Plantillas TF CU Esenciales <LISTO>
-Diagrama de Secuencias 
+Diagrama de Secuencias <LISTO>
 DTEs <LISTO>
-Mod Arquitectura-Despliege 
-Mod Componentes 
+Mod Arquitectura-Despliege <LISTO> 
+Mod Componentes <LISTO>
 Informe de ejecuciones de casos de prueba <LISTO>
 
 
-Total aprox = 57 páginas al 20/01/2016
+Total aprox = 66 páginas al 21/01/2016
