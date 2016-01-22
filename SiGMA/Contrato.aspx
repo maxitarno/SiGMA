@@ -161,7 +161,6 @@
                                 </tr>
                                 <tr>
                                     <td align="left">
-                                    <br />
                                         <h2>
                                             Condiciones</h2>
                                     </td>
@@ -213,6 +212,7 @@
                                     </td>
                                 </tr>
                             </table>
+                            <br />
                             <br />
                         </div>
                         <div class="col-md-12">
