@@ -30,7 +30,7 @@
             <div class="row">
                 <div class="col-sm-12 wow fadeIn">
 	                <img src="assets/img/menu/voluntariosMini.png" />
-                    <h1>Moderar Pedidos de Voluntariado /</h1>
+                    <h1>Pedidos de Voluntariado /</h1>
                     <p>Ser voluntario, implica compromiso y responsabilidad</p>
                 </div>
             </div>

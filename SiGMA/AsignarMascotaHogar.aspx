@@ -23,7 +23,8 @@
             <div class="row">
                 <div class="col-sm-12 wow fadeIn">
 	                <img src="assets/img/menu/registrarhallazgoMini.png" />
-                    <h1>Asignar Mascota a Hogar</h1>                    
+                    <h1>Asignar Mascota a Hogar /</h1>
+                    <p>Dar una mascota a un hogar para su cuidado temporal</p>                    
                 </div>
             </div>
         </div>

@@ -14,8 +14,8 @@
             <div class="row">
                 <div class="col-sm-12 wow fadeIn">	 
                 <img src="assets/img/menu/registrarhallazgoMini.png" />               
-                    <h1>Devolución a SiGMA </h1>
-                    <p></p>                    
+                    <h1>Devolución a SiGMA /</h1>
+                    <p>Retirar una mascota de un hogar provisorio</p>                    
                 </div>
             </div>
         </div>
