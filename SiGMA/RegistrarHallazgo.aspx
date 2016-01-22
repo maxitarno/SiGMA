@@ -30,9 +30,9 @@
                     <asp:Label ID="lblAsignarHogar" runat="server" Text="¿Desea asignarle hogar a la mascota?"></asp:Label>                    
                 </div>                
                     <asp:Button ID="btnHogarSi" runat="server" Text="Si" CausesValidation="False" 
-                        onclick="btnHogarSi_Click" />
+                        onclick="btnHogarSi_Click" Width="180px"/>
                     <asp:Button ID="btnHogarNo" runat="server" Text="No" CausesValidation="False" 
-                        onclick="btnHogarNo_Click" />                     
+                        onclick="btnHogarNo_Click"  Width="180px" />                     
                 </asp:Panel>
                 <asp:Panel runat="server" id="pnlInfo" class="alert alert-dismissable alert-danger" Visible="false">
                     <button class="close" type="button" data-dismiss="alert">

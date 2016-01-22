@@ -196,11 +196,11 @@ namespace SiGMA
                 {
                     mascota.sexo = null;
                 }
-                if (!ddlTratoAnimales.SelectedValue.Equals("Si"))
+                if (!ddlTratoAnimales.SelectedValue.Equals("No"))
                 {
                     mascota.tratoAnimal = true;
                 }
-                if (!ddlTratoNinios.SelectedValue.Equals("Si"))
+                if (!ddlTratoNinios.SelectedValue.Equals("No"))
                 {
                     mascota.tratoNiños = true;
                 }

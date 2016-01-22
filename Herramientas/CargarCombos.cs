@@ -182,6 +182,7 @@ namespace Herramientas
         public static void cargarCalles(ref DropDownList ddl)
         {
             ddl.Items.Clear();
+            ddl.Items.Add(new ListItem("SIN ASIGNAR", "0"));
             List<ECalle> calles = Datos.BuscarCalle();
             foreach (ECalle item in calles)
             {
@@ -191,6 +192,7 @@ namespace Herramientas
         public static void cargarCalles(ref DropDownList ddl, int localidad)
         {
             ddl.Items.Clear();
+            ddl.Items.Add(new ListItem("SIN ASIGNAR", "0"));
             List<ECalle> calles = Datos.BuscarCalle(localidad);
             foreach (ECalle item in calles)
             {
