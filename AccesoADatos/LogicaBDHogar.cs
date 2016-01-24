@@ -263,5 +263,43 @@ namespace AccesoADatos
                 barrio.idBarrio = registro.barrio;
             }
         }
+
+        public static bool chequearHogarSinMascotas(EVoluntario paramVoluntario)
+        {
+            try
+            {
+                SiGMAEntities mapa = Conexion.crearSegunServidor();
+                var hogar = from hogaresBD in mapa.HogaresProvisorios
+                            where hogaresBD.idVoluntario == paramVoluntario.idVoluntario && hogaresBD.idEstado == 27
+                            select hogaresBD;
+                if (hogar.Count() != 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception)
+            {                
+                throw;
+            }
+        }
+
+        public static void darDeBajaHogar(EVoluntario paramVoluntario)
+        {
+            try
+            {
+                SiGMAEntities mapa = Conexion.crearSegunServidor();
+                var hogar = mapa.HogaresProvisorios.First(h => h.idVoluntario == paramVoluntario.idVoluntario);
+                hogar.idEstado = LogicaBDEstado.buscarEstado(new EEstado { ambito = "Hogar", nombreEstado = "Inactivo"}).idEstado;
+                mapa.SaveChanges();
+            }
+            catch (Exception)
+            {                
+                throw;
+            }
+        }
     }
 }

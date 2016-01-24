@@ -88,6 +88,7 @@ namespace SiGMA
                 pnlCorrecto.Visible = true;
                 pnlAtento.Visible = false;
                 lblCorrecto.Text = "Devolucion registrada exitosamente.";
+                txtFecha.Text = "";
                 listarSolicitudes();
             }
             catch (Exception)

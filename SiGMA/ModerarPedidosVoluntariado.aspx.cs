@@ -27,11 +27,13 @@ namespace SiGMA
                     Response.Redirect("Login.aspx");
                 }
                 listarPedidosVoluntariado();
+                listarPedidosBaja();
             }
             pnlAtento.Visible = false;
             pnlCorrecto.Visible = false;
             pnlInfo.Visible = false;
         }
+
         public void listarPedidosVoluntariado(){
             List<EVoluntario> voluntarios = LogicaBDVoluntario.BuscarPedidosVoluntariado(LogicaBDEstado.buscarEstado(new EEstado { nombreEstado = "Pendiente", ambito = "Voluntario" }));
             grvPedidosVoluntariado.DataSource = voluntarios;
@@ -41,6 +43,21 @@ namespace SiGMA
                 lblInfo.Visible = true;
                 lblInfo.Text = "No hay pedidos para moderar";
                 SetFocus(lblInfo);
+            }
+        }
+
+        public void listarPedidosBaja()
+        {
+            List<EVoluntario> voluntarios = LogicaBDVoluntario.BuscarPedidosVoluntariado(LogicaBDEstado.buscarEstado(new EEstado { nombreEstado = "Solicitud Baja", ambito = "Voluntario" }));
+            grvPedidosBaja.DataSource = voluntarios;
+            grvPedidosBaja.DataBind();
+            if (voluntarios.Count == 0)
+            {
+                pnlBaja.Visible = false;
+            }
+            else
+            {
+                pnlBaja.Visible = true;
             }
         }
 
@@ -146,6 +163,51 @@ namespace SiGMA
             {
                 lblError.Text = "Problemas al enviar el email. Disculpe las molestias";
                 pnlAtento.Visible = true;
+            }
+        }
+
+        protected void grvPedidosBaja_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            try
+            {
+                EVoluntario entVoluntario = new EVoluntario();
+                entVoluntario.tipoVoluntario = grvPedidosBaja.Rows[Int32.Parse(e.CommandArgument.ToString())].Cells[0].Text;
+                entVoluntario.idVoluntario = int.Parse(grvPedidosBaja.Rows[Int32.Parse(e.CommandArgument.ToString())].Cells[4].Text);
+                if (entVoluntario.tipoVoluntario.Equals("Hogar"))
+                {
+                    if (LogicaBDHogar.chequearHogarSinMascotas(entVoluntario))
+                    {
+                        LogicaBDVoluntario.darDeBajaVoluntario(entVoluntario);                        
+                    }
+                    else
+                    {
+                        lblInfo.Text = "El voluntario tiene mascotas en su hogar, debe registrar la devolucion de las mismas para poder darlo de baja";
+                        SetFocus(lblInfo);
+                        pnlInfo.Visible = true;
+                        pnlCorrecto.Visible = false;
+                        pnlAtento.Visible = false;
+                        return;
+                    }
+                }
+                else
+                {
+                    LogicaBDVoluntario.darDeBajaVoluntario(entVoluntario);
+                }
+                lblCorrecto.Text = "Baja de voluntario registrada exitosamente";
+                SetFocus(lblCorrecto);
+                pnlInfo.Visible = false;
+                pnlCorrecto.Visible = true;
+                pnlAtento.Visible = false;
+                listarPedidosBaja();
+            }
+            catch (Exception)
+            {
+                lblError.Text = "Error al dar de baja al voluntario";
+                pnlAtento.Visible = true;
+                SetFocus(pnlAtento);
+                pnlCorrecto.Visible = false;
+                pnlInfo.Visible = false;
+
             }
         }        
 

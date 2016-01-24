@@ -346,6 +346,7 @@ namespace AccesoADatos
                                       select new
                                       {
                                           nombre = PersonasBD.nombre,
+                                          apellido = PersonasBD.apellido,
                                           idVoluntario = VoluntariosBD.idVoluntario,
                                           tipoVoluntario = VoluntariosBD.tipoVoluntario,
                                           disponibilidad = VoluntariosBD.disponibilidadHoraria
@@ -358,6 +359,7 @@ namespace AccesoADatos
                 voluntario.tipoVoluntario = (registro.tipoVoluntario == null) ? "Sin asignar" : registro.tipoVoluntario;
                 voluntario.disponibilidadHoraria = (registro.disponibilidad == null) ? "Sin asignar" : registro.disponibilidad;
                 voluntario.persona.nombre = registro.nombre;
+                voluntario.persona.apellido = registro.apellido;
                 voluntarios.Add(voluntario);
             }
             return voluntarios;
@@ -379,5 +381,31 @@ namespace AccesoADatos
             }
         }
         //fin
+
+        public static void darDeBajaVoluntario(EVoluntario paramVoluntario)
+        {
+            using (TransactionScope transaccion = new TransactionScope())
+            {
+                try
+                {
+                    SiGMAEntities mapa = Conexion.crearSegunServidor();
+                    var voluntario = mapa.Voluntarios.Where(m => m.idVoluntario == paramVoluntario.idVoluntario).First();
+                    voluntario.idEstado = LogicaBDEstado.buscarEstado(new EEstado { ambito = "Voluntario", nombreEstado = "Inactivo"}).idEstado;
+                    if (paramVoluntario.tipoVoluntario.Equals("Hogar"))
+                    {
+                        LogicaBDHogar.darDeBajaHogar(paramVoluntario);
+                    }
+                    mapa.SaveChanges();
+                    transaccion.Complete();
+                }
+                catch (Exception)
+                {
+                    transaccion.Dispose();
+                    throw;
+                }
+            }
+        }
+
+
     }
 }

@@ -73,7 +73,7 @@
                                     <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" ForeColor="#9D426B"/>  
                                     <Columns>
                                         <asp:BoundField DataField="tipoVoluntario" HeaderText="Tipo de voluntario" />
-                                        <asp:BoundField DataField="persona.nombre" HeaderText="Nombre del voluntario" />
+                                        <asp:BoundField DataField="persona.nombre" HeaderText="Voluntario" />
                                         <asp:BoundField DataField="idVoluntario" HeaderText="ID" ItemStyle-CssClass="hidden" HeaderStyle-CssClass="hidden" />
                                         <asp:BoundField DataField="disponibilidadHoraria" HeaderText="Disponibilidad horaria" />
                                         <asp:ButtonField ButtonType="Button" Text="+"/>
@@ -84,6 +84,45 @@
                             <asp:Panel ID="pnlDatos" runat="server" Visible="false">
                                 <div class="form-group" style="text-align:center;">
                                     <br /><label for="contact-name"><asp:Label ID="lblDatos" runat="server"/></label>
+	                            </div>
+                             </asp:Panel>
+                        </div>
+                        <div class="contact-form">
+                            <asp:Panel ID="pnlBaja" runat="server">
+                                <div class="form-group">
+	                    	        <label for="contact-name">Pedidos de Baja</label>
+                                    <asp:GridView ID="grvPedidosBaja" runat="server" CssClass="GridView1" AutoGenerateColumns="False" 
+                                    HorizontalAlign="Center" Font-Size="Medium" 
+                                    CellPadding="2" CellSpacing="3" Width="100%" 
+                                        onrowcommand="grvPedidosBaja_RowCommand"> 
+                                    <RowStyle HorizontalAlign="Center" />
+                                    <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" ForeColor="#9D426B"/>  
+                                    <Columns>
+                                        <asp:BoundField DataField="tipoVoluntario" HeaderText="Tipo de voluntario" />
+                                        <asp:BoundField DataField="persona.nombre" HeaderText="persona.nombre" Visible="False" />
+                                        <asp:BoundField DataField="persona.apellido" HeaderText="persona.apellido" Visible="False" />   
+                                        <asp:TemplateField HeaderText="Voluntario">
+                                            <ItemTemplate>
+                                                <asp:Label ID="lblVoluntario" runat="server" 
+                                                Text='<%#Eval("persona.nombre")+ " " + Eval("persona.apellido")%>' >
+                                                </asp:Label>
+                                            </ItemTemplate>
+                                            <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                        </asp:TemplateField>                                     
+                                        <asp:BoundField DataField="idVoluntario" HeaderStyle-CssClass="hidden" 
+                                            HeaderText="ID" ItemStyle-CssClass="hidden">
+                                        <HeaderStyle CssClass="hidden" />
+                                        <ItemStyle CssClass="hidden" />
+                                        </asp:BoundField>
+                                        <asp:ButtonField ButtonType="Button" Text="Dar de Baja"/>
+                                    </Columns>
+                                </asp:GridView>   
+	                            </div>
+                            </asp:Panel>
+                            <asp:Panel ID="Panel2" runat="server" Visible="false">
+                                <div class="form-group" style="text-align:center;">
+                                    <br /><label for="contact-name"><asp:Label ID="Label1" runat="server"/></label>
 	                            </div>
                              </asp:Panel>
                         </div>
