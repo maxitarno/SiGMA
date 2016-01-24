@@ -64,7 +64,7 @@
                             <div class="form-group"> 
                                 <label for="contact-name">Agregar rol</label><br />
                                 <asp:DropDownList ID="ddlRol" runat="server" 
-                                    AppendDataBoundItems="true" Width="80%" /><asp:Button ID="btnAsignarRol" runat="server" Text="Guardar" 
+                                    AppendDataBoundItems="true" Width="80%" /><asp:Button ID="btnAsignarRol" runat="server" Text="Asignar" 
                                     onclick="btnAsignarRol_Click" visible="false" Width="20%"/>
                             </div>
                                  <asp:DropDownList ID="ddlRolesTraspaso" visible="false" runat="server" AutoPostBack="true" 

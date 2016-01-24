@@ -187,7 +187,7 @@
                                 </asp:Panel>
                                 <asp:Panel ID="pnlMapa" runat="server" Visible="false">
                                 <div class="form-group" style="text-align:center;"">
-                                        <input id="btnUbicacion" type="button" value="Ubicación" onclick="return btnUbicacion_onclick()" /><br />
+                                        <input id="btnUbicacion" type="button" value="Ubicación" onclick="return btnUbicacion_onclick()" Width="180px"/><br />
                                         <input id="hidden1" type="hidden" runat="server"/>
                                 </div>
                                 </asp:Panel>

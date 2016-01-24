@@ -79,7 +79,7 @@ namespace SiGMA
 
         protected void btnEliminarRol_Click(object sender, EventArgs e)
         {
-            if (ddlRol.SelectedValue == "SIN ASIGNAR")
+            if (ddlRolUsuario.SelectedValue == "")
             {
                 lblInfo.Text = "El usuario no tiene rol asignado que pueda eliminar";
                 pnlInfo.Visible = true;
