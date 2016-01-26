@@ -70,7 +70,7 @@ namespace SiGMA
             string mensaje = "";
             EUsuario usuario = new EUsuario();
             usuario = LogicaBDUsuario.BuscarUsuarios(txtUsuario.Text).First();
-            mensaje += "Bienvenido a SiGMA " + txtNombre.Text + "\n \n DATOS PARA AUTENTICAR USUARIO \n Usuario: " + txtUsuario.Text + "\n Clave validación: " + usuario.token.ToString() + "\n  Ingrese la clave de validación en SiGMA para autenticar su usuario \n\n Gracias por elegirnos \n SiGMA";
+            mensaje += "Bienvenido a SiGMA " + txtNombre.Text + "\n \n DATOS PARA AUTENTICAR USUARIO \n Usuario: " + txtUsuario.Text + "\n Clave validación: " + usuario.token.ToString() + "\n Ingrese la clave de validación en SiGMA para autenticar su usuario \n\n Gracias por elegirnos \n SiGMA";
             gmail g = new gmail();
             g.fromAlias = "SIGMA"; //  
             g.auth("infosigmasoftware@gmail.com", "Palangana321");

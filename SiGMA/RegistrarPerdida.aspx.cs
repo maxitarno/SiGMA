@@ -276,11 +276,13 @@ namespace SiGMA
                         pedido.fecha = DateTime.Now;
                         pedido.estado = LogicaBDEstado.buscarEstadoPorNombre("Pendiente de Aceptacion");
                         pedido.user = new EUsuario { user = Session["UsuarioLogueado"].ToString() };
+                        LogicaBDPerdida.registrarPerdida(perdida); 
                         LogicaBDPedidoDifusion.registrarPedidoDifusion(pedido);
-						LogicaBDPerdida.registrarPerdida(perdida); 
                         limpiarPagina();
                         pnlCorrecto.Visible = true;
                         lblCorrecto.Text = "Pérdida Registrada Correctamente";
+                        pnlInfo.Visible = true;
+                        lblInfo.Text = "El pedido de difusión será revisado por el encargado";
                     }
                 }
             }
@@ -299,6 +301,11 @@ namespace SiGMA
         protected void cvCallePerdida_ServerValidate(object source, ServerValidateEventArgs args)
         {
             args.IsValid = Validaciones.verificarSeleccionEnDdl(ref ddlCallePerdida);
+        }
+
+        protected void cvNroCallePerdida_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            args.IsValid = Validaciones.verificarSoloNumeros(txtNroCallePerdida.Text);
         }
     }
 }

@@ -479,7 +479,7 @@ namespace AccesoADatos
         public static int obtenerProximoIdPerdida()
         {
             SiGMAEntities mapa = Conexion.crearSegunServidor();
-            var consulta = mapa.ExecuteStoreQuery<Decimal>("SELECT IDENT_CURRENT('Perdidas') + IDENT_INCR('Perdidas')");
+            var consulta = mapa.ExecuteStoreQuery<Decimal>("SELECT IDENT_CURRENT('Perdidas')");
             return int.Parse(consulta.FirstOrDefault().ToString());
         }
 

@@ -16,8 +16,8 @@ namespace SiGMA
         {
             if (!Page.IsPostBack)
             {
-				Session["buscarOtro"] = 0;
-				Session["imagenAdopcion"] = null;
+                Session["buscarOtro"] = 0;
+                Session["imagenAdopcion"] = null;
 
                 rnvFecha.MaximumValue = DateTime.Now.ToShortDateString();
                 if (Session["UsuarioLogueado"] != null)
@@ -25,7 +25,7 @@ namespace SiGMA
                     if (!LogicaBDRol.verificarPermisoVisualizacion(Session["UsuarioLogueado"].ToString(), "ConsultarMascotas.aspx"))
                         Response.Redirect("PermisoInsuficiente.aspx");
                     if (!LogicaBDRol.verificarPermisosGrabacion(Session["UsuarioLogueado"].ToString(), "RegistrarMascota.aspx"))
-                         btnModificar.Visible = false;
+                        btnModificar.Visible = false;
                 }
                 else
                 {
@@ -51,9 +51,12 @@ namespace SiGMA
                 imgprvw.Width = 400;
                 imgprvw.Height = 300;
             }
-            pnlAtento.Visible = false;
-            pnlCorrecto.Visible = false;
-            pnlInfo.Visible = false;
+            else
+            {
+                pnlAtento.Visible = false;
+                pnlCorrecto.Visible = false;
+                pnlInfo.Visible = false;
+            }
         }
 
         private void cargasMisMascotas()
@@ -75,7 +78,7 @@ namespace SiGMA
             {
                 lstResultados.Items.Clear();
                 pnlInfo.Visible = true;
-                lblInfo.Text = "No se encontraron mascotas";
+                lblInfo.Text = "No ha registrado mascotas en SIGMA";
                 pnlAtento.Visible = false;
                 pnlCorrecto.Visible = false;
             }
@@ -97,22 +100,24 @@ namespace SiGMA
                 {
                     btnPerdida.Visible = false;
                     btnAdopcion.Visible = false;
+                    btnQuitarAdopcion.Visible = false;
                 }
                 else
                 {
                     btnPerdida.Visible = true;
                     btnAdopcion.Visible = true;
+                    if (mascota.estado.idEstado.ToString() == "4") //En adopcion
+                    {
+                        btnAdopcion.Visible = false;
+                        btnQuitarAdopcion.Visible = true;
+                    }
+                    else
+                    {
+                        btnAdopcion.Visible = true;
+                        btnQuitarAdopcion.Visible = false;
+                    }
                 }
-                if (mascota.estado.idEstado.ToString() == "4" ) //En adopcion
-                {
-                    btnAdopcion.Visible = false;
-                    btnQuitarAdopcion.Visible = true;
-                }
-                else
-                {
-                    btnAdopcion.Visible = true;
-                    btnQuitarAdopcion.Visible = false;
-                }
+                
                 txtAlimentacionEspecial.Text = mascota.alimentacionEspecial;
                 ddlCaracter.SelectedValue = mascota.caracter.idCaracter.ToString();
                 txtCategoria.Text = mascota.raza.CategoriaRaza.nombreCategoriaRaza;

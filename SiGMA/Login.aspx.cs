@@ -40,11 +40,10 @@ namespace SiGMA
                     Session["idMascota"] = null;
                     Session["imagen"] = null;
                     Session["imagenAdopcion"] = null;
-                    //aca hay que verificar el rol, HACER!!!!
-                    //HttpCookie cook = new HttpCookie("idDueño");
-                    //cook.Value = Session["IdDueño"].ToString();
-                    //cook.Expires = DateTime.Now.AddDays(1);
-                    //Response.Cookies.Add(cook);
+                    HttpCookie cook = new HttpCookie("idDueño");
+                    cook.Value = Session["IdDueño"].ToString();
+                    cook.Expires = DateTime.Now.AddDays(1);
+                    Response.Cookies.Add(cook);
 
                     e.Authenticated = true;
                 }

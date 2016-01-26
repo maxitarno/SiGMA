@@ -175,8 +175,11 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="contact-name">Numeración de calle donde se perdió</label>
-                                    <asp:TextBox ID="txtNroCallePerdida"  runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="txtNroCallePerdida"  runat="server" ></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="rfvNroCallePerdida"  ForeColor="Red" runat="server" ErrorMessage="Ingrese la numeración de la calle" ControlToValidate="txtNroCallePerdida"></asp:RequiredFieldValidator>
+                                    <asp:CustomValidator ID="cvNroCallePerdida" runat="server" 
+                                        ErrorMessage="Ingrese solo números" ControlToValidate="txtNroCallePerdida" 
+                                        onservervalidate="cvNroCallePerdida_ServerValidate" ></asp:CustomValidator>
                                 </div>
                                 <div class="form-group">
                                     <label for="contact-name">Fecha de pérdida</label>

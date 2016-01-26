@@ -64,7 +64,8 @@
                         <asp:Panel ID="pnlDejarDeSer" runat="server" Visible="false">
 	                        <div class="form-group">
                                 <label for="contact-name">¿Desear dejar de ser voluntario?</label><br />
-                                <asp:Button ID="btnDejarVoluntariado" runat="server" Text="Dejar de serlo" 
+                                <asp:Button ID="btnDejarVoluntariado" runat="server" Text="Dejar de serlo"
+                                OnClientClick="if (!confirm('¿Está seguro que desea dejar de ser voluntario?')){ return false; } else { return true; }" 
                                 onclick="btnDejarVoluntariado_Click" CausesValidation="false" Width="180px"/>
                             </div>
                         </asp:Panel>

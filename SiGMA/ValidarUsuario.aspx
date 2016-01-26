@@ -52,7 +52,7 @@
                             <asp:RequiredFieldValidator ID="rfvToken" runat="server" ErrorMessage="Ingrese su clave de validación" ForeColor="Red"
                                 ControlToValidate="txtToken" Display="Dynamic"></asp:RequiredFieldValidator>
 	                </div>
-	                <asp:Button ID="btnValidar" runat="server" Text="Validar" 
+	                <asp:Button ID="btnValidar" runat="server" Text="Validar" Width="180px" 
                         onclick="btnValidar_Click"/>
                 </div>
 	            <div class="col-sm-5 contact-address wow fadeInUp" style="margin-top:25px">

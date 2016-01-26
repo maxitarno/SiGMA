@@ -28,7 +28,7 @@ namespace SiGMA
                     if(txtUsuario.Text == usuario.user && txtToken.Text == usuario.token)
                     {
                         LogicaBDUsuario.ValidarUsuario(txtUsuario.Text);
-                        mostrarResultado("", true);
+                        mostrarResultado("Usuario Validado Exitosamente", true);
                     }
                     else
                         mostrarResultado("", false);

@@ -165,9 +165,9 @@ namespace AccesoADatos
         {
             List<ERaza> razas = new List<ERaza>();
             SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
-            IQueryable<Razas> consulta = from razaDB in mapaEntidades.Razas
+            IQueryable<Razas> consulta = (from razaDB in mapaEntidades.Razas
                                          where (razaDB.idEspecie == idEspecie)
-                                         select razaDB;
+                                         select razaDB).OrderBy(x => x.nombreRaza);
             try
             {
                 foreach (var registro in consulta)
@@ -238,8 +238,8 @@ namespace AccesoADatos
         {
             List<ERaza> razas = new List<ERaza>();
             SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
-            IQueryable<Razas> consulta = from razaDB in mapaEntidades.Razas
-                                         select razaDB;
+            IQueryable<Razas> consulta = (from razaDB in mapaEntidades.Razas
+                                          select razaDB).OrderBy(x => x.nombreRaza);
             try
             {
                 foreach (var registro in consulta)
@@ -411,9 +411,9 @@ namespace AccesoADatos
         {
             List<ERaza> razas = new List<ERaza>();
             SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
-            IQueryable<Razas> consulta = from razaDB in mapaEntidades.Razas
-                                         where (razaDB.idEspecie == idEspecie && razaDB.nombreRaza.Contains(nombre))
-                                         select razaDB;
+            IQueryable<Razas> consulta = (from razaDB in mapaEntidades.Razas
+                                          where (razaDB.idEspecie == idEspecie && razaDB.nombreRaza.Contains(nombre))
+                                          select razaDB).OrderBy(x => x.nombreRaza);
             try
             {
                 foreach (var registro in consulta)
@@ -434,7 +434,7 @@ namespace AccesoADatos
         {
             ERaza raza = new ERaza();
             SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
-            var consulta = from razaDB in mapaEntidades.Razas
+            var consulta = (from razaDB in mapaEntidades.Razas
                            join CategoriaRazaBD in mapaEntidades.CategoriaRazas on razaDB.idCategoriaRaza equals CategoriaRazaBD.idCategoriaRazas into group1
                            from G1 in group1.DefaultIfEmpty()
                            join CuidadoEspecialBD in mapaEntidades.CuidadosEspeciales on razaDB.idCuidadoEspecial equals CuidadoEspecialBD.idCuidadoEspecial into group2
@@ -448,7 +448,7 @@ namespace AccesoADatos
                                raza = razaDB,
                                cuidado = G2,
                                categoria = G1,
-                           };
+                           }).OrderBy(x => x.raza.nombreRaza);
             try
             {
                 foreach (var registro in consulta)

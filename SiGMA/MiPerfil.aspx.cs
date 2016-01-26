@@ -60,7 +60,7 @@ namespace SiGMA
             txtNºDeDocumento.Text = persona.nroDocumento;
             txtApellido.Text = persona.apellido;
             txtNombre.Text = persona.nombre; 
-            ddlLocalidades.SelectedValue = localidad.idLocalidad.ToString();
+            //ddlLocalidades.SelectedValue = localidad.idLocalidad.ToString();
             ddlBarrios.SelectedValue = barrio.idBarrio.ToString();
             txtTelefonoFijo.Text = persona.telefonoFijo;
             txtTelefonoCelular.Text = persona.telefonoCelular;
@@ -125,6 +125,7 @@ namespace SiGMA
                 usuario.password = txtContraNueva.Text;
                 persona.domicilio = new ECalle();
                 persona.domicilio.idCalle = int.Parse(ddlCalle.SelectedValue.ToString());
+                persona.nroCalle = Convert.ToInt32(txtNº.Text);
                 if (usuario.user != "")
                 {
                     if (LogicaBDUsuario.ModificarUsuario(persona, usuario))
