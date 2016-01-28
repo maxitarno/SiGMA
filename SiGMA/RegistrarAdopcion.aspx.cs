@@ -39,6 +39,7 @@ namespace SiGMA
                 {
                     if (Session["Si"].ToString().Equals("Si"))
                     {
+                        btnRegistrar.Focus();
                         btnRegistrar.Text = "Registrar adopción";
                         EPersona persona = (EPersona)Session["Dueño"];
                         EMascota mascota = (EMascota)Session["Mascota"];

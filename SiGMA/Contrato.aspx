@@ -243,10 +243,10 @@
                     <div id="botones">
                         <div class="col-md-12">
                             <div class="col-md-3 col-md-offset-3">
-                                <asp:Button ID="BtnAceptar" runat="server" Text="Aceptar" OnClick="BtnAceptarClick" />
+                                <asp:Button ID="BtnAceptar" runat="server" Text="Aceptar" OnClick="BtnAceptarClick" Width="180px"/>
                             </div>
                             <div class="col-md-3">
-                                <asp:Button ID="BtnCancelar" runat="server" Text="Rechazar" OnClick="BtnRechazarClick" />
+                                <asp:Button ID="BtnCancelar" runat="server" Text="Rechazar" OnClick="BtnRechazarClick" Width="180px"/>
                             </div>
                         </div>
                     </div>

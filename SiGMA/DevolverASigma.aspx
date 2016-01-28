@@ -83,7 +83,11 @@
                                 <div class="form-group">
                                     <label for="contact-name">Nombre del Voluntario</label>
 	                    	        <asp:TextBox ID="txtVoluntario" runat="server" enabled="false"></asp:TextBox>                                    
-	                            </div>                                   
+	                            </div>    
+                                <div class="form-group">
+                                    <label for="contact-name">Teléfono</label>
+	                    	        <asp:TextBox ID="txtTelefono" runat="server" enabled="false"></asp:TextBox>                                    
+	                            </div>                                  
                                 <div class="form-group">
                                     <label for="contact-name">Nombre de la mascota</label>
 	                    	        <asp:TextBox ID="txtNombre" runat="server" enabled="false"></asp:TextBox>                                    

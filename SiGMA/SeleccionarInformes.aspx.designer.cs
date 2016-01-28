@@ -175,15 +175,6 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.RangeValidator rnvAdopcion;
         
         /// <summary>
-        /// ddlEstadoDeAdopcion control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEstadoDeAdopcion;
-        
-        /// <summary>
         /// pnlFiltros3 control.
         /// </summary>
         /// <remarks>
@@ -227,15 +218,6 @@ namespace SiGMA {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RangeValidator rnvHallazgo;
-        
-        /// <summary>
-        /// ddlEstadoDelHallazgo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEstadoDelHallazgo;
         
         /// <summary>
         /// ddlBarrioHallazgo control.
@@ -290,15 +272,6 @@ namespace SiGMA {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RangeValidator rnvPerdida;
-        
-        /// <summary>
-        /// ddlEstadoPerdida control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEstadoPerdida;
         
         /// <summary>
         /// ddlBarrioPerdida control.

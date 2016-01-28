@@ -89,10 +89,6 @@
                                 ForeColor="Red" ControlToValidate="txtFechaAdopcion" SetFocusOnError="True" 
                                 MinimumValue="01/01/2015" Type="Date" Font-Size="Small" ></asp:RangeValidator>
                             </div>
-                             <div class="form-group">
-                                <label for="contact-name">Estado</label>
-                                 <asp:DropDownList ID="ddlEstadoDeAdopcion" runat="server" Width="100%"/>
-                            </div>
                         </asp:Panel>
                         <asp:Panel runat="server" Visible="false" ID="pnlFiltros3">
                             <div class="form-group">
@@ -105,10 +101,6 @@
                                 <asp:RangeValidator ID="rnvHallazgo" runat="server" ErrorMessage="La fecha es inválida" 
                                 ForeColor="Red" ControlToValidate="txtFechaDelHallazgo" SetFocusOnError="True" 
                                 MinimumValue="01/01/2015" Type="Date" Font-Size="Small" ></asp:RangeValidator>
-                            </div>
-                            <div class="form-group">
-                                <label for="contact-name">Estado</label>
-                                 <asp:DropDownList ID="ddlEstadoDelHallazgo" runat="server" Width="100%"/>
                             </div>
                             <div class="form-group">
                                 <label for="contact-name">Barrio</label>
@@ -126,10 +118,6 @@
                                 <asp:RangeValidator ID="rnvPerdida" runat="server" ErrorMessage="La fecha es inválida" 
                                 ForeColor="Red" ControlToValidate="txtFechaDeLaPerdida" SetFocusOnError="True" 
                                 MinimumValue="01/01/2015" Type="Date" Font-Size="Small" ></asp:RangeValidator>
-                            </div>
-                            <div class="form-group">
-                                <label for="contact-name">Estado</label>
-                                 <asp:DropDownList ID="ddlEstadoPerdida" runat="server" Width="100%"/>
                             </div>
                             <div class="form-group">
                                 <label for="contact-name">Barrio</label>
@@ -187,7 +175,6 @@
                             <asp:BoundField DataField="idAdopcion" HeaderText="Nro Adopción" />
                             <asp:BoundField DataField="fecha" HeaderText="Fecha Adopcion" 
                                 DataFormatString="{0:d}" />
-                            <asp:BoundField DataField="estado.nombreEstado" HeaderText="Estado" />
                             <asp:BoundField DataField="idVoluntario" HeaderText="Nro Voluntario" />
                             <asp:BoundField DataField="mascota.nombreMascota" HeaderText="Nombre Mascota" />
                             <asp:BoundField DataField="mascota.idMascota" HeaderText="Nro Mascota" />
@@ -207,7 +194,6 @@
                         <Columns>
                             <asp:BoundField DataField="mascota.idMascota" HeaderText="Nro" />
                             <asp:BoundField DataField="mascota.nombreMascota" HeaderText="Mascota" />
-                            <asp:BoundField DataField="estado.nombreEstado" HeaderText="Estado" />
                             <asp:BoundField DataField="fecha" HeaderText="Fecha Nac" 
                                 DataFormatString="{0:d}" />
                             <asp:BoundField DataField="usuario.user" HeaderText="Usuario" />
@@ -230,12 +216,11 @@
                             <asp:BoundField DataField="idHallazgo" HeaderText="Nro Hallazgo" />
                             <asp:BoundField DataField="fechaHallazgo" HeaderText="Fecha Hallazgo" 
                                 DataFormatString="{0:d}" />
-                            <asp:BoundField DataField="estado.nombreEstado" HeaderText="Estado" />
                             <asp:BoundField DataField="domicilio.barrio.nombre" HeaderText="Barrio" />
                             <asp:BoundField DataField="domicilio.calle.nombre" HeaderText="Calle" />
                             <asp:BoundField DataField="domicilio.numeroCalle" HeaderText="Nro" />
                             <asp:BoundField DataField="observaciones" HeaderText="Observaciones" />
-                            <asp:BoundField DataField="perdida.idPerdida" HeaderText="Nro Pérdida" />
+                            <asp:BoundField DataField="perdida.idPerdida" HeaderText="Nro Pérdida" Visible="false"/>
                             <asp:BoundField DataField="mascota.IdMascota" HeaderText="Nro Mascota" />
                             <asp:BoundField DataField="mascota.nombreMascota" HeaderText="Nombre Mascota" />
                             <asp:BoundField DataField="usuario.user" HeaderText="Usuario" />

@@ -56,6 +56,8 @@ namespace SiGMA
             cargarDatosMascota(entMascota);
             txtVoluntario.Text = lstOcupaciones.First(h => h.idOcupacion == idOcupacionSelec).hogar.voluntario.persona.nombre + " " +
                 lstOcupaciones.First(h => h.idOcupacion == idOcupacionSelec).hogar.voluntario.persona.apellido;
+            txtTelefono.Text = lstOcupaciones.First(h => h.idOcupacion == idOcupacionSelec).hogar.voluntario.persona.telefonoCelular + " " +
+                lstOcupaciones.First(h => h.idOcupacion == idOcupacionSelec).hogar.voluntario.persona.telefonoFijo;
         }
 
         private void cargarDatosMascota(EMascota mascota)

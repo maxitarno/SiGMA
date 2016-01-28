@@ -91,6 +91,7 @@ namespace SiGMA
                 pnlImagen.Visible = true;
                 pnlPreview.Visible = false;
                 CargarCombos.cargarComboRazas(ref ddlRaza);
+                pnlDatosDueño.Visible = true;
                 limpiarCampos();
             }
             else
@@ -110,6 +111,7 @@ namespace SiGMA
                 pnlPreview.Visible = true;
                 pnlResultados.Visible = false;
                 ddlRaza.Items.Clear();
+                pnlDatosDueño.Visible = false;
                 limpiarCampos();
                 imgprvw.Src = "~/App_Themes/TemaSigma/imagenes/sin_imagen_disponible.jpg";
             }
@@ -162,6 +164,12 @@ namespace SiGMA
             Handler1.AddMethod(ImageHandler_ObtenerImagenMascota);
             imgprvw.Src = ResolveUrl("~/Handler1.ashx");
             chkTwitter.Focus();
+            EDuenio dueño = LogicaBDDueño.buscarDueño(mascota.idMascota);
+            txtDueño.Text = dueño.apellido;
+            txtDueño.Text += ' ' + dueño.nombre;
+            txtEmail.Text = dueño.email;
+            txtTelofono.Text = dueño.telefonoFijo;
+            txtTelofono.Text = ' ' + dueño.telefonoCelular;
         }        
 
         protected void ddlLocalidades_SelectedIndexChanged(object sender, EventArgs e)

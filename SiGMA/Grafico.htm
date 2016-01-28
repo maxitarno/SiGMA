@@ -21,13 +21,19 @@
         var a = getURLParameter("a");
         var h = getURLParameter("h");
         var p = getURLParameter("p");
-        var m = parseInt(a) + parseInt(h) + parseInt(p);
+        var d = getURLParameter("d");
+        var e = getURLParameter("e");
+        var f = getURLParameter("f");
+        var m = parseInt(a) + parseInt(h) + parseInt(p) + parseInt(d) + parseInt(e) + parseInt(f);
         // Create the data table.
             var data = new google.visualization.arrayToDataTable([
             ["Estado", "Cantidad", { role: "style" } ],
             ["Perdidas", parseInt(a), "silver"],
             ["Halladas", parseInt(h), "gold"],
-            ["Adoptadas", parseInt(p), "color: #e5e4e2"]
+            ["Adoptadas", parseInt(p), "color: #e5e4e2"],
+            ["Con Dueño", parseInt(d), "brown"],
+            ["En Adopcion", parseInt(e), "green"],
+            ["Fallecidas", parseInt(f), "red"]
         ]);
             // Set chart options
             var options = { 
@@ -79,7 +85,7 @@
         <div class="col-md-12">
             <div class="col-md-8 col-md-offset-2">
                 <center>
-                    <h1>
+                    <h3>
                         Estadisticas de SiGMA 
                         <br />
                         <br />
@@ -87,7 +93,7 @@
                         <br />
                         <br />
                         <img alt="" src="assets/img/menu/mascotas.png" width="100px" height="100px" />
-                    </h1>
+                    </h3>
                 </center>
             </div>
         </div>

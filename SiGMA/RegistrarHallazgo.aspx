@@ -210,6 +210,20 @@
                                 <div class="form-group" style="text-align:center;">
                                     <asp:CheckBox ID="chkTwitter" runat="server" Text="Publicar en Twitter"/>
 	                            </div>
+                                <asp:Panel ID="pnlDatosDueño" runat="server" Visible="false">
+                                    <div class="form-group">
+                                        <label for="contact-name">Dueño</label>
+                                        <asp:TextBox ID="txtDueño" runat="server" Enabled="false" Width="100%"></asp:TextBox>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="contact-name">Email</label>
+                                        <asp:TextBox ID="txtEmail" runat="server" Enabled="false" Width="100%"></asp:TextBox>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="contact-name">Telefono</label>
+                                        <asp:TextBox ID="txtTelofono" runat="server" Enabled="false" Width="100%"></asp:TextBox>
+                                    </div>
+                                </asp:Panel>
                                 <div class="form-group">
                                     <asp:Button ID="btnRegistrarHallazgo" runat="server" Text="Registrar"
                                         OnClick="btnRegistrarHallazgo_Click" Width="180px"/>

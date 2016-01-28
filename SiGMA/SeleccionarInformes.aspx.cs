@@ -26,9 +26,9 @@ namespace SiGMA
                 CargarCombos.cargarEdad(ref ddlEdad);
                 CargarCombos.cargarEspecies(ref ddlEspecies);
                 CargarCombos.cargarEstado(ref ddlEstado, "Mascota");
-                CargarCombos.cargarEstado(ref ddlEstadoDelHallazgo, "Hallazgo");
-                CargarCombos.cargarEstado(ref ddlEstadoPerdida, "Perdida");
-                CargarCombos.cargarEstado(ref ddlEstadoDeAdopcion, "Adopcion");
+                //CargarCombos.cargarEstado(ref ddlEstadoDelHallazgo, "Hallazgo");
+                //CargarCombos.cargarEstado(ref ddlEstadoPerdida, "Perdida");
+                //CargarCombos.cargarEstado(ref ddlEstadoDeAdopcion, "Adopcion");
                 pnlGenerar.Visible = false;
                 pnlInfo.Visible = false;
                 rnvPerdida.MaximumValue = DateTime.Now.ToShortDateString();
@@ -156,14 +156,15 @@ namespace SiGMA
                 pnlHallazgos.Visible = false;
                 pnlPerdidas.Visible = false;
                 fecha = new DateTime();
-                if (!ddlEstadoDeAdopcion.SelectedValue.Equals("0"))
-                {
-                    adopcion.estado = new EEstado();
-                    adopcion.estado.nombreEstado = ddlEstadoDeAdopcion.SelectedValue.ToString();
-                }
+                //if (!ddlEstadoDeAdopcion.SelectedValue.Equals("0"))
+                //{
+                //    adopcion.estado = new EEstado();
+                //    adopcion.estado.nombreEstado = ddlEstadoDeAdopcion.SelectedValue.ToString();
+                //}
                 if (DateTime.TryParse(txtFechaAdopcion.Text, out fecha))
                 {
                     fecha = DateTime.Parse(txtFechaAdopcion.Text);
+                    adopcion.fecha = fecha;
                 }
                 List<EAdopcion> adopciones = LogicaBDAdopcion.BuscarAdopcionesPorFiltros(adopcion);
                 lblTitulo.Text = "LISTADO DE ADOPCIONES";
@@ -191,12 +192,6 @@ namespace SiGMA
                 if (DateTime.TryParse(txtFechaDelHallazgo.Text, out fecha))
                 {
                     hallazgo.fechaHallazgo = DateTime.Parse(txtFechaDelHallazgo.Text);
-                }
-                if (!ddlEstado.SelectedValue.Equals("0"))
-                {
-                    hallazgo.estado = new EEstado();
-                    hallazgo.estado.nombreEstado = ddlEstadoDelHallazgo.SelectedItem.Text;
-                    hallazgo.estado.idEstado = int.Parse(ddlBarrioHallazgo.SelectedValue.ToString());
                 }
                 if (!ddlBarrioHallazgo.SelectedValue.Equals("0"))
                 {
@@ -230,12 +225,6 @@ namespace SiGMA
                 if (DateTime.TryParse(txtFechaDeLaPerdida.Text, out fecha))
                 {
                     perdida.fecha = DateTime.Parse(txtFechaDeLaPerdida.Text);
-                }
-                if (!ddlEstadoPerdida.SelectedValue.Equals("0"))
-                {
-                    perdida.estado = new EEstado();
-                    perdida.estado.nombreEstado = ddlEstadoPerdida.SelectedItem.Text;
-                    perdida.estado.idEstado = int.Parse(ddlEstadoPerdida.SelectedValue.ToString());
                 }
                 if (!ddlBarrioPerdida.SelectedValue.Equals("0"))
                 {

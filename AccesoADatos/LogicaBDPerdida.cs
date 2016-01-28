@@ -441,19 +441,19 @@ namespace AccesoADatos
             if(!perdida.fecha.Equals("01/01/2013")){
                 if(perdida.estado != null){
                     if(perdida.barrio != null){
-                        perdidas = perdidas.Where(p => p.barrio.nombre == perdida.barrio.nombre && (p.fecha >= perdida.fecha) && p.estado.nombreEstado == perdida.estado.nombreEstado).ToList();
+                        perdidas = perdidas.Where(p => p.barrio.nombre == perdida.barrio.nombre && (p.fecha >= perdida.fecha) && p.estado.nombreEstado == "Abierta").ToList();
                     }
                     else{
-                        perdidas = perdidas.Where(p => (p.fecha >= perdida.fecha) && p.estado.nombreEstado == perdida.estado.nombreEstado).ToList();
+                        perdidas = perdidas.Where(p => (p.fecha >= perdida.fecha) && p.estado.nombreEstado == "Abierta").ToList();
                     }
                 }
                 else{
                     if (perdida.barrio != null)
                     {
-                        perdidas = perdidas.Where(p => p.barrio.nombre == perdida.barrio.nombre && (p.fecha >= perdida.fecha)).ToList();
+                        perdidas = perdidas.Where(p => p.barrio.nombre == perdida.barrio.nombre && (p.fecha >= perdida.fecha) && p.estado.nombreEstado == "Abierta").ToList();
                     }
                     else{
-                            perdidas = perdidas.Where(p => (p.fecha >= perdida.fecha)).ToList();
+                        perdidas = perdidas.Where(p => (p.fecha >= perdida.fecha) && p.estado.nombreEstado == "Abierta").ToList();
                     }
                 }
             }
@@ -461,16 +461,16 @@ namespace AccesoADatos
             {
                 if (perdida.estado != null)
                 {
-                    perdidas = perdidas.Where(p => p.barrio.nombre == perdida.barrio.nombre && p.estado.nombreEstado == perdida.estado.nombreEstado).ToList();
+                    perdidas = perdidas.Where(p => p.barrio.nombre == perdida.barrio.nombre && p.estado.nombreEstado == "Abierta").ToList();
                 }
                 else
                 {
-                    perdidas = perdidas.Where(p => p.barrio.nombre == perdida.barrio.nombre).ToList();
+                    perdidas = perdidas.Where(p => p.barrio.nombre == perdida.barrio.nombre && p.estado.nombreEstado == "Abierta").ToList();
                 }
             }
             else
             {
-                perdidas = perdidas.Where(p => p.estado.nombreEstado == perdida.estado.nombreEstado).ToList();
+                perdidas = perdidas.Where(p => p.estado.nombreEstado == "Abierta").ToList();
             }
             return perdidas;
         }

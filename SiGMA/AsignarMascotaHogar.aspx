@@ -222,7 +222,7 @@
                                             <label for="contact-name">Fecha de ingreso</label>
                                             <asp:TextBox ID="txtFecha" runat="server" onclick="showDate();" />
                                             <ajaxToolkit:CalendarExtender ID="CalendarExtender1" BehaviorID="Date"
-                                            runat="server" TargetControlID="txtFecha" PopupPosition="BottomLeft" Animated="true" >
+                                            runat="server" TargetControlID="txtFecha" PopupPosition="TopLeft" Animated="true" >
                                             </ajaxToolkit:CalendarExtender>
                                             <asp:RequiredFieldValidator ID="rfvFecha" runat="server" ForeColor="Red" 
                                             ErrorMessage="RequiredFieldValidator" SetFocusOnError="True"   ControlToValidate="txtFecha" 

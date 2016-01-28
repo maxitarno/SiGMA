@@ -59,8 +59,6 @@
                         <div class="form-group">
                             <asp:Panel runat="server" id="pnlUser" Visible="false">
                                  <label for="contact-name">Usuario</label><br /><asp:TextBox ID="txtUsuario" runat="server" ></asp:TextBox>
-                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Ingre un usuario"
-                                                    ControlToValidate="txtUsuario"  ValidationGroup="1" ForeColor="Red"></asp:RequiredFieldValidator>
                             </asp:Panel>
                             <asp:Panel runat="server" id="pnlPersona" Visible="false">
                                 <label for="contact-name">Tipo de documento</label><asp:DropDownList ID="ddlTipoDeDocumentoPersona" runat="server" Width="100%"/>
