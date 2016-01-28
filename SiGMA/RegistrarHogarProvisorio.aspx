@@ -112,8 +112,7 @@ CodeBehind="RegistrarHogarProvisorio.aspx.cs" Inherits="SiGMA.RegistrarHogarProv
                     </div>
                         </div>
                         <div class="centered"> 
-                           <asp:Button ID="btnRegistrarHogar" runat="server" Text="Registrar" onclick="btnRegistrarHogar_Click"
-                                                 />      
+                           <asp:Button ID="btnRegistrarHogar" runat="server" Text="Registrar" onclick="btnRegistrarHogar_Click" Width="180px"/>      
     </div>                           
                         </asp:Panel>                       
                         </div>   

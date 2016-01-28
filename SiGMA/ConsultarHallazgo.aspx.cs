@@ -121,11 +121,13 @@ namespace SiGMA
             imgprvw.Src = ResolveUrl("~/Handler1.ashx");
             imgprvw.Width = 272;
             imgprvw.Height = 185;
-            txtComentarios.Focus();
+            
             //agregado
             hfDireccion.Value = ddlLocalidades.SelectedItem.Text.ToLower().ToString() + " " + ddlCalles.SelectedItem.Text.ToLower().ToString() + " " + txtNroCalle.Text;
             hfNombre.Value = txtNombreMascota.Text;
             //agregado
+            //trampita para el focus (porque no se puede hacer focus cuando son enabled=false)
+            lblFocus.Focus();
         }        
 
         protected void ddlLocalidades_SelectedIndexChanged(object sender, EventArgs e)

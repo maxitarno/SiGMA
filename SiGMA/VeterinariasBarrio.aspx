@@ -128,7 +128,7 @@
             for (; j < len; j++) {
                 acomodar = tipos[j].toString().split("-");
                 for (; w < acomodar.length; w++) {
-                    anexar += "<BR>" + acomodar[w].toString();
+                    anexar += "&nbsp;" + acomodar[w].toString();
                 }
                 aux = "<div><p><h5>nombre: " + nombres[j].toString() + "</br>telefono: " + telefonos[j].toString() + "</br>contacto: " + contactos[j] + "<BR>Servicios: " + anexar + "</h5></p></div>";
                 anexar = "";

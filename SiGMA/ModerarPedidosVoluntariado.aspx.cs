@@ -145,7 +145,7 @@ namespace SiGMA
             EPersona persona = new EPersona();
             voluntario = LogicaBDVoluntario.buscarVoluntarioPorId(voluntario.idVoluntario);
             persona = LogicaBDUsuario.BuscarUsuariosPorNombrePersona(voluntario.persona.nombre);
-            mensaje += txtMensaje.Text + "\n \n GRACIAS \n Usuario: " + voluntario.persona.nombre;
+            mensaje += txtMensaje.Text + "\n \n GRACIAS ";
             gmail g = new gmail();
             g.fromAlias = "SIGMA"; //  
             g.auth("infosigmasoftware@gmail.com", "Palangana321");

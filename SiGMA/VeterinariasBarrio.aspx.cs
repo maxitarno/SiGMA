@@ -43,19 +43,19 @@ namespace SiGMA
                 contacto = contacto + veterinarias[i].contacto;
                 direccion = direccion + (veterinarias[i].domicilio.barrio.localidad.nombre.ToLower().ToString() + " " + veterinarias[i].domicilio.calle.nombre.ToLower().ToString() + " " + veterinarias[i].domicilio.numeroCalle.ToString()).ToString();
                 if (veterinarias[i].castraciones)
-                    tipos += "Castraciones";
-                if (veterinarias[i].medicina && veterinarias[i].castraciones)
+                    tipos += "-Castraciones";
+                if (veterinarias[i].medicina)
                     tipos += "-Medicinas";
-                if (veterinarias[i].medicina && !veterinarias[i].castraciones)
-                    tipos += "Medicinas";
-                if (veterinarias[i].petshop && veterinarias[i].medicina)
+                //if (veterinarias[i].medicina && !veterinarias[i].castraciones)
+                //    tipos += "Medicinas";
+                if (veterinarias[i].petshop)
                     tipos += "-Petshop";
-                if (veterinarias[i].petshop && !veterinarias[i].medicina)
-                    tipos += "Petshop";
-                if (veterinarias[i].peluqueria && veterinarias[i].petshop)
+                //if (veterinarias[i].petshop && !veterinarias[i].medicina)
+                //    tipos += "Petshop";
+                if (veterinarias[i].peluqueria)
                     tipos += "-Peluqueria";
-                if (veterinarias[i].peluqueria && !veterinarias[i].petshop)
-                    tipos += "Peluqueria";
+                //if (veterinarias[i].peluqueria && !veterinarias[i].petshop)
+                //    tipos += "Peluqueria";
                 if (veterinarias[i].castraciones == false && veterinarias[i].medicina == false && veterinarias[i].peluqueria == false && veterinarias[i].petshop == false)
                     tipos += "Sin asignar";
                 if (i != (veterinarias.Count - 1))

@@ -27,7 +27,7 @@
                         ×</button>
                         <asp:Label ID="lblCorrecto" runat="server" Text=""></asp:Label>
                 </asp:Panel>
-                <asp:Panel runat="server" id="pnlInfo" class="alert alert-dismissable alert-danger" Visible="false">
+                <asp:Panel runat="server" id="pnlInfo" class="alert alert-dismissable alert-info" Visible="false">
                     <button class="close" type="button" data-dismiss="alert">
                         ×</button>
                         <asp:Label ID="lblInfo" runat="server" Text=""></asp:Label>
@@ -66,7 +66,7 @@
                             </div>
                             <div class="form-group">
                                 <asp:Button ID="btnFiltros" runat="server" Text="Buscar" 
-                            onclick="btnFiltros_Click" CausesValidation="False" />
+                            onclick="btnFiltros_Click" CausesValidation="False" Width="180px"/>
                             </div>
                         </asp:Panel>
 	                </div>
@@ -171,7 +171,8 @@
                                 MinimumValue="01/12/2015" Type="Date" Font-Size="Small" ></asp:RangeValidator>
 	                        </div>
                             <div class="form-group">
-                                <label for="contact-name">Comentarios</label>
+                                <label for="contact-name">Comentarios</label><asp:Label ID="lblFocus" runat="server"
+                                    Text=""></asp:Label>
                                 <asp:TextBox ID="txtComentarios" runat="server" Style="resize: none" TextMode="MultiLine"
                                 Rows="7" Columns="30" CssClass="TextBox" Width="100%" onkeyDown="checkTextAreaMaxLength(this,event,'250');"></asp:TextBox>
 	                        </div>

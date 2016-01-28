@@ -69,6 +69,7 @@ namespace SiGMA
                 imgprvw.Src = ResolveUrl("~/Handler1.ashx");
                 imgprvw.Width = 300;
                 imgprvw.Height = 200;
+                btnBuscar.Focus();
             }
             pnlInfo.Visible = false;
             pnlCorrecto.Visible = false;
@@ -198,12 +199,24 @@ namespace SiGMA
                 }
                 if (!ddlTratoAnimales.SelectedValue.Equals("No"))
                 {
-                    mascota.tratoAnimal = true;
+                    if (ddlTratoAnimales.SelectedValue.Equals("Si"))
+                        mascota.tratoAnimal = true;
+                    else
+                        mascota.tratoAnimal = null;
                 }
+                else
+                    mascota.tratoAnimal = false;
+
                 if (!ddlTratoNinios.SelectedValue.Equals("No"))
                 {
-                    mascota.tratoNiños = true;
+                    if (ddlTratoNinios.SelectedValue.Equals("Si"))
+                        mascota.tratoNiños = true;
+                    else
+                        mascota.tratoNiños = null;
                 }
+                else
+                    mascota.tratoNiños = false;
+
                 if (!ddlEstado.SelectedValue.Equals("0"))
                 {
                     mascota.estado = new EEstado();
@@ -212,7 +225,7 @@ namespace SiGMA
                 }
                 mascota.nombreMascota = txtMascota.Text;
                 mascotas = LogicaBDMascota.buscarMascotasFiltros(mascota);
-                if (mascotas != null)
+                if (mascotas.Count != 0)
                 {
                         lstResultados.Items.Clear();
                         pnltxtNombreDueñio.Visible = false;

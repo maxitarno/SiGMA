@@ -37,7 +37,7 @@
                         ×</button>
                         <asp:Label ID="lblCorrecto" runat="server" Text=""></asp:Label>
                 </asp:Panel>
-                <asp:Panel runat="server" id="pnlInfo" class="alert alert-dismissable alert-danger" Visible=false>
+                <asp:Panel runat="server" id="pnlInfo" class="alert alert-dismissable alert-info" Visible=false>
                     <button class="close" type="button" data-dismiss="alert">
                         ×</button>
                         <asp:Label ID="lblInfo" runat="server" Text=""></asp:Label>

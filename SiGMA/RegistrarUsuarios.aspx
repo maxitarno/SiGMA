@@ -106,7 +106,7 @@
                                 ControlToCompare="txtContra" ControlToValidate="txtRepetirContra" ForeColor="Red"
                                 Display="Dynamic"></asp:CompareValidator>
                             </div>
-                            <asp:Button ID="btnRegistrar" runat="server" Text="Registrar" OnClick="btnRegistrar_Click"/>
+                            <asp:Button ID="btnRegistrar" runat="server" Text="Registrar" OnClick="btnRegistrar_Click" Width="180px"/>
                         </div>
 	                </div>
 	            </div>

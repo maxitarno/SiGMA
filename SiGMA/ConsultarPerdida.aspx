@@ -227,7 +227,7 @@
                                     <asp:TextBox ID="txtComentarios" runat="server" style="resize: none" TextMode="MultiLine"
                                      onkeyDown="checkTextAreaMaxLength(this,event,'250');"></asp:TextBox>
                                 </div>
-                               <asp:Button ID="btnModificar" runat="server" Text="Modificar" OnClick="btnModificar_Click" />
+                               <asp:Button ID="btnModificar" runat="server" Text="Modificar" OnClick="btnModificar_Click" Width="180px" />
                             </div>
 	                    </div>
 	                </div>

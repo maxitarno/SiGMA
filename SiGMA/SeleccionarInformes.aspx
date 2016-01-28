@@ -244,7 +244,7 @@
 	            </div>
             </asp:Panel><div class="form-group">
                         <asp:Button ID="btnImprimirExcel" runat="server" Text="Imprimir Excel" Visible="false"
-                        onclick="btnImprimirExcel_Click" />
+                        onclick="btnImprimirExcel_Click" Width="180px"/>
                 </div>
         </div>
     </div>

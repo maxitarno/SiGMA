@@ -219,7 +219,7 @@
                                         onservervalidate="cvBarrioBusqueda_ServerValidate"></asp:CustomValidator>
                             </div>
                             <asp:Button ID="btnActualizarBusqueda" runat="server" 
-                                    Text="Actualizar Datos" onclick="btnActualizarBusqueda_Click"/>
+                                    Text="Actualizar Datos" onclick="btnActualizarBusqueda_Click" Width="180px"/>
                             <br />
                             <div class="form-group">
                                 <label for="contact-name">Mascotas perdidas en el barrio</label>

@@ -49,7 +49,7 @@
                             Display="Dynamic"></asp:RegularExpressionValidator>
 	                </div>
 	                <asp:Button ID="btnEnviar" runat="server" Text="Enviar" 
-                                        onclick="btnEnviar_Click" />
+                                        onclick="btnEnviar_Click" Width="180px" />
                 </div>
 	            <div class="col-sm-5 contact-address wow fadeInUp">
 	                <img src="base/img/portfolio/recuperarContra.png" />

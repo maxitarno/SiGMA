@@ -174,7 +174,7 @@ namespace SiGMA
                     EPerdida perdida = new EPerdida();
                     EMascota mascota = new EMascota();
                     LogicaBDPerdida.BuscarMascotaAConsultarPerdida(idMascota, mascota, perdida);
-                    direccion = perdida.domicilio.barrio.localidad.nombre.ToLower().ToString() + " " + perdida.domicilio.calle.nombre.ToLower().ToString() + " " + perdida.domicilio.numeroCalle;
+                    direccion = "cordoba capital" + " " + perdida.domicilio.calle.nombre.ToLower().ToString() + " " + perdida.domicilio.numeroCalle;
                     nombre = mascota.nombreMascota;
                     if (mascota.raza.cuidadoEspecial.idCuidado == 0)
                     {

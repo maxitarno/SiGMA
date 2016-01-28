@@ -257,7 +257,6 @@ namespace AccesoADatos
             return razas;
         }
         //fin metodo
-
         public static List<ECaracterMascota> BuscarCaracteresMascota()
         {
             List<ECaracterMascota> caracterMascotas = new List<ECaracterMascota>();

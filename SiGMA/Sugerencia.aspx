@@ -89,7 +89,7 @@
                                 onservervalidate="cvTelefono_ServerValidate" ForeColor="Red"></asp:CustomValidator>
 	                </div>
                     <div class="form-group">
-	                    	<label for="contact-name">Sugerencia</label>
+	                    	<label for="contact-name">Sugerencia / Consulta</label>
 	                        <asp:TextBox ID="txtSugerencia" runat="server" style="resize: none" TextMode="MultiLine"
                                                     Rows="3" Columns="25" CssClass="TextBox" Width="100%" onkeyDown="checkTextAreaMaxLength(this,event,'500');"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="rfvConsulta" runat="server" ErrorMessage="No ha ingresado una sugerencia" 

@@ -165,7 +165,7 @@
 								<li><a href="RegistrarRoles.aspx">Roles</a></li>
                                 <li><a href="AsignarRol.aspx">Asignar Rol</a></li>
                                 <li><a href="CABMRazas.aspx">Razas</a></li>
-                                <li><a href="CABMTipoDeDocumento.aspx">Tipos Doc.</a></li>
+                                <%--<li><a href="CABMTipoDeDocumento.aspx">Tipos Doc.</a></li>--%>
                                 <li class="dropdown">
 							        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000">
 								        Informes<span class="caret"></span>

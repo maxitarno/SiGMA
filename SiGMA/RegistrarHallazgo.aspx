@@ -34,7 +34,7 @@
                     <asp:Button ID="btnHogarNo" runat="server" Text="No" CausesValidation="False" 
                         onclick="btnHogarNo_Click"  Width="180px" />                     
                 </asp:Panel>
-                <asp:Panel runat="server" id="pnlInfo" class="alert alert-dismissable alert-danger" Visible="false">
+                <asp:Panel runat="server" id="pnlInfo" class="alert alert-dismissable alert-info" Visible="false">
                     <button class="close" type="button" data-dismiss="alert">
                         ×</button>
                         <asp:Label ID="lblInfo" runat="server" Text=""></asp:Label>
@@ -80,7 +80,7 @@
                                 </div>
                                 <div class="form-group">
                                     <asp:Button ID="btnFiltros" runat="server" Text="Buscar" 
-                                onclick="btnFiltros_Click" CausesValidation="False" />
+                                onclick="btnFiltros_Click" CausesValidation="False" Width="180px" />
                                 </div>
                             </asp:Panel>
 	                    </div>
@@ -212,7 +212,7 @@
 	                            </div>
                                 <div class="form-group">
                                     <asp:Button ID="btnRegistrarHallazgo" runat="server" Text="Registrar"
-                                        OnClick="btnRegistrarHallazgo_Click" />
+                                        OnClick="btnRegistrarHallazgo_Click" Width="180px"/>
                                 </div>
 	                        </div>
 	                    </div>

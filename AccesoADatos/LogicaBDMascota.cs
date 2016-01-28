@@ -69,7 +69,6 @@ namespace AccesoADatos
                 }
             }
         }
-
         public static void registrarMascota(EMascota mascota, ref SiGMAEntities mapaEntidades)
         {
             try
@@ -90,14 +89,13 @@ namespace AccesoADatos
                 throw exc;
             }
         }        
-        
         public static bool BuscarMascota(EMascota mascota, ECategoriaRaza categoria, ECaracterMascota caracter, ECuidado cuidado, int idMascota)
         {
             bool b = false;
             try
             {
                 SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
-                var consulta = from MascotasBD in mapaEntidades.Mascotas
+                var consulta = (from MascotasBD in mapaEntidades.Mascotas
                                from RazaBD in mapaEntidades.Razas
                                from CategoriaRazaBD in mapaEntidades.CategoriaRazas
                                from CaracterBD in mapaEntidades.CaracteresMascota
@@ -130,7 +128,7 @@ namespace AccesoADatos
                                    edadN = EdadesBD.nombreEdad,
                                    nombreEspecie =EspeciesBD.nombreEspecie,
                                    noMostrar = MascotasBD.noMostrar//modifique
-                               };
+                               }).OrderBy(x => x.nombre); 
                 foreach (var registro in consulta)
                 {
                     mascota.especie = new EEspecie();
@@ -182,11 +180,11 @@ namespace AccesoADatos
         {
             List<EMascota> mascotas = new List<EMascota>();
             SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
-            IQueryable<Mascotas> consulta = from MascotasBD in mapaEntidades.Mascotas
+            IQueryable<Mascotas> consulta = (from MascotasBD in mapaEntidades.Mascotas
                                             from DueniosBD in mapaEntidades.Duenios
                                             from PersonasBD in mapaEntidades.Personas
                                             where (DueniosBD.idPersona == PersonasBD.idPersona && MascotasBD.idDuenio == DueniosBD.idDuenio && (PersonasBD.nombre.ToLower().Contains(duenio.ToLower()) || PersonasBD.apellido.ToLower().Contains(duenio.ToLower())) && MascotasBD.idEstado != 6)
-                                            select MascotasBD;
+                                            select MascotasBD).OrderBy(x => x.nombreMascota); 
             try
             {
                 foreach (var registro in consulta)
@@ -209,11 +207,11 @@ namespace AccesoADatos
         {
             List<EMascota> mascotas = new List<EMascota>();
             SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
-            IQueryable<Mascotas> consulta = from MascotasBD in mapaEntidades.Mascotas
+            IQueryable<Mascotas> consulta = (from MascotasBD in mapaEntidades.Mascotas
                                             from DueniosBD in mapaEntidades.Duenios
                                             from PersonasBD in mapaEntidades.Personas
                                             where (DueniosBD.idPersona == PersonasBD.idPersona && MascotasBD.idDuenio == DueniosBD.idDuenio && DueniosBD.idDuenio == idDueño && MascotasBD.idEstado != 6)
-                                            select MascotasBD;
+                                             select MascotasBD).OrderBy(x => x.nombreMascota); 
             try
             {
                 foreach (var registro in consulta)
@@ -748,7 +746,7 @@ namespace AccesoADatos
         {
             List<int> listaIdMascotas = new List<int>();
             SiGMAEntities mapa = Conexion.crearSegunServidor();
-            var consulta = mapa.Mascotas.Where(m => m.nombreMascota.StartsWith(nombre));
+            var consulta = mapa.Mascotas.Where(m => m.nombreMascota.StartsWith(nombre)).OrderBy(x => x.nombreMascota); 
             foreach (var item in consulta)
             {
                 listaIdMascotas.Add(item.idMascota);
@@ -767,7 +765,7 @@ namespace AccesoADatos
             try
             {
                 SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
-                var consulta = from MascotasBD in mapaEntidades.Mascotas
+                var consulta = (from MascotasBD in mapaEntidades.Mascotas
                                join EstadosBD in mapaEntidades.Estados on MascotasBD.idEstado equals EstadosBD.idEstado
                                 join ColoresBD in mapaEntidades.Colores on MascotasBD.idColor equals ColoresBD.idColor
                                 join edadesBD in mapaEntidades.Edades on MascotasBD.idEdad equals edadesBD.idEdad
@@ -803,7 +801,7 @@ namespace AccesoADatos
                                     fecha =  MascotasBD.fechaNacimiento,
                                     noMostrar = MascotasBD.noMostrar,//modificado
                                     idDueño = MascotasBD.idDuenio
-                                };
+                                }).OrderBy(x => x.nombre);
                     foreach (var registro in consulta)
                     {
                         EMascota mascota = new EMascota();
