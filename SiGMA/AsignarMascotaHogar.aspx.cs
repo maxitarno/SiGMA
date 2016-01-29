@@ -30,6 +30,12 @@ namespace SiGMA
                 }
                 cargarDatosMascota();
             }
+            else
+            {
+                pnlAtento.Visible = false;
+                pnlCorrecto.Visible = false;
+                pnlInfo.Visible = false;
+            }
         }
 
         private void cargarDatosMascota()

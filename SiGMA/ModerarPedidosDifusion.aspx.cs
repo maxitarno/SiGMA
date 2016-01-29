@@ -28,9 +28,12 @@ namespace SiGMA
                 }
                 listarPedidosDifusion();
             }
-            pnlAtento.Visible = false;
-            pnlCorrecto.Visible = false;
-            pnlInfo.Visible = false;
+            else
+            {
+                pnlAtento.Visible = false;
+                pnlCorrecto.Visible = false;
+                pnlInfo.Visible = false;
+            }
             ponerImagen((byte[])Session["imagen"]);
         }
 

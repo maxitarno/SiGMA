@@ -71,9 +71,12 @@ namespace SiGMA
                 imgprvw.Height = 200;
                 btnBuscar.Focus();
             }
-            pnlInfo.Visible = false;
-            pnlCorrecto.Visible = false;
-            pnlAtento.Visible = false;
+            else
+            {
+                pnlInfo.Visible = false;
+                pnlCorrecto.Visible = false;
+                pnlAtento.Visible = false;
+            }
 
         }
         public void ddlRaza_SelectedIndexChanged(object sender, EventArgs e)

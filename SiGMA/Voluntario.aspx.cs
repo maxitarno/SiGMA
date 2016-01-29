@@ -53,9 +53,12 @@ namespace SiGMA
                     Response.Redirect("SerVoluntario.aspx");
                 }
             }
-            pnlAtento.Visible = false;
-            pnlCorrecto.Visible = false;
-            pnlInfo.Visible = false;
+            else
+            {
+                pnlAtento.Visible = false;
+                pnlCorrecto.Visible = false;
+                pnlInfo.Visible = false;
+            }
         }
 
         private void cargarDatosPagina()

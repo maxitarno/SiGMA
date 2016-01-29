@@ -31,9 +31,12 @@ namespace SiGMA
                 ddlRol.SelectedIndex = 1;
                 ddlRol_SelectedIndexChanged(null, null);
             }
-            pnlAtento.Visible = false;
-            pnlCorrecto.Visible = false;
-            pnlInfo.Visible = false;
+            else
+            {
+                pnlAtento.Visible = false;
+                pnlCorrecto.Visible = false;
+                pnlInfo.Visible = false;
+            }
         }
 
         //metodo para asignacion de permisos por rol, se elige el rol y luego se especifica con el chk 

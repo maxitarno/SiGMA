@@ -28,7 +28,7 @@ namespace SiGMA
                         {
                             cargarDatosPagina();
                             cargarDatosMascotaPerdida(Convert.ToInt32(Session["idMascota"].ToString()));
-                            btnModificar.Visible = false; 
+                            btnModificar.Visible = false;
                             return;
                         }
                         MascotasPorDueño();
@@ -42,16 +42,19 @@ namespace SiGMA
                             Response.Redirect("PermisoInsuficiente.aspx");
                     }
                     if (!LogicaBDRol.verificarPermisosGrabacion(Session["UsuarioLogueado"].ToString(), "ConsultarPerdida.aspx"))
-                        btnModificar.Visible = false; 
+                        btnModificar.Visible = false;
                 }
                 else
                 {
                     Response.Redirect("Login.aspx");
                 }
             }
-            pnlAtento.Visible = false;
-            pnlInfo.Visible = false;
-            pnlCorrecto.Visible = false;
+            else
+            {
+                pnlAtento.Visible = false;
+                pnlInfo.Visible = false;
+                pnlCorrecto.Visible = false;
+            }
         }
 
         private void cargarDatosPagina()

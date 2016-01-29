@@ -32,8 +32,8 @@ namespace SiGMA
                 CargarCombos.cargarLocalidades(ref ddlLocalidades);
                 ddlLocalidades.SelectedValue = "1";
                 CargarCombos.cargarBarrio(ref ddlBarrios, 1);
-                CargarCombos.cargarCalles(ref ddlCalles, 1); 
-                CargarCombos.cargarEspecies(ref ddlEspecie);                
+                CargarCombos.cargarCalles(ref ddlCalles, 1);
+                CargarCombos.cargarEspecies(ref ddlEspecie);
                 CargarCombos.cargarEdad(ref ddlEdad);
                 CargarCombos.cargarSexo(ref ddlSexo);
                 CargarCombos.cargarColor(ref ddlColor);
@@ -53,9 +53,12 @@ namespace SiGMA
                     paraModificar(false);
                 }
             }
-            pnlAtento.Visible = false;
-            pnlInfo.Visible = false;
-            pnlCorrecto.Visible = false;
+            else
+            {
+                pnlAtento.Visible = false;
+                pnlInfo.Visible = false;
+                pnlCorrecto.Visible = false;
+            }
         }
 
         private void paraModificar(bool b)

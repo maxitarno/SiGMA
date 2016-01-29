@@ -20,8 +20,11 @@ namespace SiGMA
             {
                 CargarCombos.cargarBarrio(ref ddlBarrio, 1);
             }
-            pnlAtento.Visible = false;
-            pnlCorrecto.Visible = false;
+            else
+            {
+                pnlAtento.Visible = false;
+                pnlCorrecto.Visible = false;
+            }
         }
 
         protected void ddlBarrio_SelectedIndexChanged(object sender, EventArgs e)

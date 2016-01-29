@@ -20,7 +20,7 @@ namespace SiGMA
                 {
                     if (!LogicaBDRol.verificarSoloDueño(Session["UsuarioLogueado"].ToString()))
                         pnlVoluntario.Visible = true;
-                    else 
+                    else
                     {
                         if (Session["idMascota"] != null && Session["pantalla"].ToString() == "MisMascotas.aspx")
                         {
@@ -37,13 +37,19 @@ namespace SiGMA
                             Response.Redirect("PermisoInsuficiente.aspx");
                     }
                     if (!LogicaBDRol.verificarPermisosGrabacion(Session["UsuarioLogueado"].ToString(), "RegistrarPerdida.aspx"))
-                        btnRegistrarPerdida.Visible = false; 
+                        btnRegistrarPerdida.Visible = false;
                 }
                 else
                 {
                     Response.Redirect("Login.aspx");
                 }
                 cargarCombos();
+            }
+            else
+            {
+                pnlAtento.Visible = false;
+                pnlInfo.Visible = false;
+                pnlCorrecto.Visible = false;
             }
         }
 

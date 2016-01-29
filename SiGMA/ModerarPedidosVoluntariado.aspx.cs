@@ -29,9 +29,12 @@ namespace SiGMA
                 listarPedidosVoluntariado();
                 listarPedidosBaja();
             }
-            pnlAtento.Visible = false;
-            pnlCorrecto.Visible = false;
-            pnlInfo.Visible = false;
+            else
+            {
+                pnlAtento.Visible = false;
+                pnlCorrecto.Visible = false;
+                pnlInfo.Visible = false;
+            }
         }
 
         public void listarPedidosVoluntariado(){
@@ -40,10 +43,13 @@ namespace SiGMA
             grvPedidosVoluntariado.DataBind();
             if (voluntarios.Count == 0)
             {
-                lblInfo.Visible = true;
-                lblInfo.Text = "No hay pedidos para moderar";
+                pnlPedidos.Visible = false;
+                pnlInfo.Visible = true;
+                lblInfo.Text = "No hay pedidos de voluntariado para moderar";
                 SetFocus(lblInfo);
             }
+            else
+                pnlPedidos.Visible = true;
         }
 
         public void listarPedidosBaja()
@@ -56,9 +62,7 @@ namespace SiGMA
                 pnlBaja.Visible = false;
             }
             else
-            {
                 pnlBaja.Visible = true;
-            }
         }
 
         protected void grvPedidos_RowCommand(object sender, GridViewCommandEventArgs e)

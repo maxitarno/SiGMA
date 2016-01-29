@@ -17,7 +17,7 @@
     <div class="panel panel-default">
         <div class="panel-body">
             <div class="col-md-4 col-md-offset-4">
-                <asp:Panel runat="server" id="pnlCorrecto" class="alert alert-dismissable alert-success" Visible=false>
+                <asp:Panel runat="server" id="pnlCorrecto" class="alert alert-dismissable alert-success" Visible="false">
                     <button class="close" type="button" data-dismiss="alert">
                         ×</button>
                         <asp:Label ID="lblCorrecto" runat="server" Text=""></asp:Label>
@@ -28,7 +28,7 @@
                         ×</button>
                     <asp:Label ID="lblInfo" runat="server" Text=""></asp:Label>
                     </asp:Panel>
-                <asp:Panel runat="server" id="pnlAtento" class="alert alert-dismissable alert-danger" Visible=false>
+                <asp:Panel runat="server" id="pnlAtento" class="alert alert-dismissable alert-danger" Visible="false">
                     <button class="close" type="button" data-dismiss="alert">
                         ×</button>
                         <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
@@ -57,23 +57,21 @@
                                 onselectedindexchanged="ddlListado_SelectedIndexChanged" Width="100%" >
                                 <asp:ListItem Text="SIN ASIGNAR" Value="0"></asp:ListItem>
                                 <asp:ListItem Text="Tipos de voluntarios" Value="1"></asp:ListItem>
-                                <asp:ListItem Text="Mascotas por especie" Value="13"></asp:ListItem>
                                 <asp:ListItem Text="Mascotas por estado" Value="2"></asp:ListItem>
+                                <asp:ListItem Text="Mascotas por especie" Value="13"></asp:ListItem>
                                 <asp:ListItem Text="Mascotas según sexo y edad" Value="6" ></asp:ListItem>
                                 <asp:ListItem Text="Adopciones por barrio" Value="8"></asp:ListItem>
                                 <asp:ListItem Text="Adopciones según sexo" Value="3"></asp:ListItem>
+                                <asp:ListItem Text="Adopciones por año" Value="11" ></asp:ListItem>
                                 <asp:ListItem Text="Adopciones por especie" Value="15"></asp:ListItem>
-                                <asp:ListItem Text="Adopciones por fecha" Value="11" ></asp:ListItem>
-                                <asp:ListItem Text="Hallazgos según sexo" Value="5" ></asp:ListItem>
                                 <asp:ListItem Text="Hallazgos por barrio" value="7" ></asp:ListItem>
-                                <asp:ListItem Text="Hallazgos por fecha" Value="10" ></asp:ListItem>
+                                <asp:ListItem Text="Hallazgos según sexo" Value="5" ></asp:ListItem>
+                                <asp:ListItem Text="Hallazgos por año" Value="10" ></asp:ListItem>
                                 <asp:ListItem Text="Hallazgos por especie" Value="16"></asp:ListItem>
                                 <asp:ListItem Text="Perdidas por barrio" Value="9" ></asp:ListItem>
                                 <asp:ListItem Text="Perdidas según sexo" Value="4"></asp:ListItem>
-                                <asp:ListItem Text="Perdidas por fecha"  Value="12"></asp:ListItem>
+                                <asp:ListItem Text="Perdidas por año"  Value="12"></asp:ListItem>
                                 <asp:ListItem Text="Perdidas por especie" Value="14"></asp:ListItem>
-                                <%--AGREGAR ADEMAS  MASCOTAS POR ESPECIE ... 
-                                PERDIDAS, HALLAZGOS y ADOPCIONES POR ESPECIES--%>
                             </asp:DropDownList>
                         </div>        
 	                </div>

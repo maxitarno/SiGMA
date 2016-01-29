@@ -80,6 +80,12 @@ namespace SiGMA
                 pnlCorrecto.Visible = false;
                 rnvFechaPerdida.MaximumValue = DateTime.Now.ToShortDateString();
             }
+            else
+            {
+                pnlAtento.Visible = false;
+                pnlInfo.Visible = false;
+                pnlCorrecto.Visible = false;
+            }
         }
         public void btnBuscarClick(object sender, EventArgs e){
             pnlMostrarUsuario.Visible = false;

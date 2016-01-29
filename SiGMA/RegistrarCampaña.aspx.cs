@@ -36,8 +36,11 @@ namespace SiGMA
                 rnvFechaCampaña.MinimumValue = DateTime.Now.ToShortDateString();
                 rnvFechaCampaña.MaximumValue = DateTime.Now.AddMonths(6).ToShortDateString();
             }
-            pnlAtento.Visible = false;
-            pnlCorrecto.Visible = false;
+            else
+            {
+                pnlAtento.Visible = false;
+                pnlCorrecto.Visible = false;
+            }
         }
 
         protected void ibtnRegresar_Click(object sender, ImageClickEventArgs e)
@@ -121,6 +124,7 @@ namespace SiGMA
                         LogicaBDPedidoDifusion.registrarPedidoDifusion(pedido);                        
                         lblCorrecto.Text = "Campaña registrada exitosamente. \nPendiente de aceptacion";
                     }
+                    limpiarDatos();
                     pnlCorrecto.Visible = true;
                     pnlAtento.Visible = false;
                     SetFocus(lblCorrecto);                    
@@ -133,6 +137,14 @@ namespace SiGMA
                     SetFocus(pnlAtento);                    
                 }
             }
+        }
+
+        private void limpiarDatos()
+        {
+            txtFecha.Text = "";
+            txtHora.Text = "";
+            txtLugar.Text = "";
+            ddlTipoCampaña.SelectedIndex = 0;
         }
     }
 }

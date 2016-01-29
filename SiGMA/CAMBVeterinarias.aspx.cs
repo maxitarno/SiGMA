@@ -52,6 +52,12 @@ namespace SiGMA
                     Response.Redirect("Login.aspx");
                 }
             }
+            else 
+            {
+                pnlAtento.Visible = false;
+                pnlCorrecto.Visible = false;
+                pnlInfo.Visible = false;
+            }
         }
 
         public void SeleccionarLocalidad(object sender, EventArgs e)

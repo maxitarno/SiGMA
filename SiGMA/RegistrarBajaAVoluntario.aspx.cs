@@ -28,8 +28,11 @@ namespace SiGMA
                 }
                 listarVoluntarios();
             }
-            pnlAtento.Visible = false;
-            pnlCorrecto.Visible = false;
+            else
+            {
+                pnlAtento.Visible = false;
+                pnlCorrecto.Visible = false;
+            }
         }
 
         public void listarVoluntarios()

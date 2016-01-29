@@ -23,8 +23,8 @@
             var cantM = getURLParameter("cantM");
             var data = google.visualization.arrayToDataTable([
                  ['Sexo', 'Cantidad', { role: 'style' } ],
-                 ['Hembra', parseInt(cantH), 'silver' ],
-                 ['Macho', parseInt(cantM), 'gold'],
+                 ['Hembra', parseInt(cantH), 'brown' ],
+                 ['Macho', parseInt(cantM), 'green'],
               ]);
             //opciones de adopciones por sexo
             var optionsPorSexo = { 
@@ -101,15 +101,12 @@
         <div class="col-md-12">
             <div class="col-md-8 col-md-offset-2">
                 <center>
-                    <h3>
-                        Estadisticas de SiGMA
+                    <h4>
+                        Estadísticas de SiGMA
                         <br />
                         <br />
-                        El grafico  muestra la cantidad de mascotas adoptadas clasificadas por sexo.
-                        <br />
-                        <br />
-                        <img alt="" src="imagenes/registraradopcion.jpg" width="100px" height="100px" />
-                    </h3>
+                        <img alt="" src="imagenes/registraradopcion.jpg" width="70px" height="70px" />
+                    </h4>
                 </center>
             </div>
         </div>

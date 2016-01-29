@@ -28,7 +28,7 @@ namespace SiGMA
                         btnRegistrarHallazgo.Visible = false;
                 }
                 CargarCombos.cargarLocalidades(ref ddlLocalidades);
-                CargarCombos.cargarEspecies(ref ddlEspecie);                
+                CargarCombos.cargarEspecies(ref ddlEspecie);
                 CargarCombos.cargarEdad(ref ddlEdad);
                 CargarCombos.cargarSexo(ref ddlSexo);
                 CargarCombos.cargarColor(ref ddlColor);
@@ -42,10 +42,12 @@ namespace SiGMA
                 CargarCombos.cargarBarrio(ref ddlBarrios, 1);
                 CargarCombos.cargarCalles(ref ddlCalles, 1);
             }
-            pnlAtento.Visible = false;
-            pnlInfo.Visible = false;
-            pnlCorrecto.Visible = false;
-
+            else
+            {
+                pnlAtento.Visible = false;
+                pnlInfo.Visible = false;
+                pnlCorrecto.Visible = false;
+            }
         }
 
         protected void rbYaPerdida_CheckedChanged(object sender, EventArgs e)

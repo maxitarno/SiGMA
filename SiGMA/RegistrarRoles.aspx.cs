@@ -34,9 +34,12 @@ namespace SiGMA
                 }
                 CargarCombos.cargarRoles(ref ddlRol);
             }
-            pnlAtento.Visible = false;
-            pnlCorrecto.Visible = false;
-            pnlInfo.Visible = false;
+            else
+            {
+                pnlAtento.Visible = false;
+                pnlCorrecto.Visible = false;
+                pnlInfo.Visible = false;
+            }
         }
 
         protected void ddlRol_SelectedIndexChanged(object sender, EventArgs e)

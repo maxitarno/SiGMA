@@ -32,9 +32,12 @@ namespace SiGMA
                 CargarCombos.cargarEspecies(ref ddlEspecies);
                 CargarCombos.cargarCategorias(ref ddlCategoria);
             }
-            pnlCorrecto.Visible = false;
-            pnlAtento.Visible = false;
-            pnlInfo.Visible = false;
+            else
+            {
+                pnlCorrecto.Visible = false;
+                pnlAtento.Visible = false;
+                pnlInfo.Visible = false;
+            }
         }
         public void BtnBuscarClick(object sender, EventArgs e)
         {

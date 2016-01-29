@@ -27,12 +27,15 @@ namespace SiGMA
                 }
                 else
                 {
-                    Response.Redirect("Login.aspx"); 
+                    Response.Redirect("Login.aspx");
                 }
             }
-            pnlAtento.Visible = false;
-            pnlCorrecto.Visible = false;
-            pnlInfo.Visible = false;
+            else
+            {
+                pnlAtento.Visible = false;
+                pnlCorrecto.Visible = false;
+                pnlInfo.Visible = false;
+            }
         }
 
         protected void btnBuscar_Click(object sender, EventArgs e)

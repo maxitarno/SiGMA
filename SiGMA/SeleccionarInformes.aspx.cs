@@ -35,9 +35,12 @@ namespace SiGMA
                 rnvAdopcion.MaximumValue = DateTime.Now.ToShortDateString();
                 rnvHallazgo.MaximumValue = DateTime.Now.ToShortDateString();
             }
-            pnlInfo.Visible = false;
-            pnlCorrecto.Visible = false;
-            pnlAtento.Visible = false;
+            else
+            {
+                pnlInfo.Visible = false;
+                pnlCorrecto.Visible = false;
+                pnlAtento.Visible = false;
+            }
         }
         public void BtnRegresarClick(object sender, EventArgs e)
         {
