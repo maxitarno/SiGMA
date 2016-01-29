@@ -28,6 +28,10 @@ namespace SiGMA
                 }
                 listarPedidosVoluntariado();
                 listarPedidosBaja();
+                if (pnlPedidos.Visible == false && pnlBaja.Visible == false)
+                    pnlImagenPedidosVoluntariado.Visible = true;
+                else
+                    pnlImagenPedidosVoluntariado.Visible = false;
             }
             else
             {

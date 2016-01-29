@@ -130,6 +130,15 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.ListBox lstMascotas;
         
         /// <summary>
+        /// pnlImagenRegistrarPerdida control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlImagenRegistrarPerdida;
+        
+        /// <summary>
         /// pnlRegistrarPerdida control.
         /// </summary>
         /// <remarks>

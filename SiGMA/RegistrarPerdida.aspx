@@ -98,6 +98,15 @@
             </div>
         </div>
     </asp:Panel>
+    <asp:Panel runat="server" id="pnlImagenRegistrarPerdida" Visible="false">
+        <div class="container">
+            <div class="contact-form">
+                <div class="form-group">
+                    <img src="base/img/portfolio/registrarPerdida.jpg" />
+                </div>
+            </div>
+        </div>
+    </asp:Panel>
     <asp:Panel ID="pnlRegistrarPerdida" runat="server" Visible="false">
         <div class="services-half-width-container">
         	    <div class="container">

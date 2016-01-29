@@ -288,7 +288,9 @@ namespace SiGMA
                         pnlCorrecto.Visible = true;
                         lblCorrecto.Text = "Pérdida Registrada Correctamente";
                         pnlInfo.Visible = true;
+                        pnlInfo.Focus();
                         lblInfo.Text = "El pedido de difusión será revisado por el encargado";
+                        pnlImagenRegistrarPerdida.Visible = true;
                     }
                 }
             }

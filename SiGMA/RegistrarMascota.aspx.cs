@@ -131,7 +131,8 @@ namespace SiGMA
             }
             else
             {
-                Response.AddHeader("REFRESH", "4;URL=RegistrarMascota.aspx");
+                pnlImagenRegistrarMascota.Visible = true;
+                Response.AddHeader("REFRESH", "5;URL=RegistrarMascota.aspx");
             }
         }
         protected void cvDdlSexo_ServerValidate(object source, ServerValidateEventArgs args)
