@@ -47,6 +47,7 @@ namespace SiGMA
             {
                 txtUsuario.Text = "";
                 txtToken.Text = "";
+                lblCorrecto.Text = "Usuario Validado Exitosamente";
             }
             else
             {
