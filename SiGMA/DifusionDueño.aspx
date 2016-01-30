@@ -50,7 +50,7 @@
                 <div class="form-group" style="text-align:center">
                     <label for="contact-name">Mis pedidos de difusión</label>
                     <asp:GridView ID="grvPedidos" runat="server"
-                        AutoGenerateColumns="False" AllowSorting="True" 
+                        AutoGenerateColumns="False" 
                         onsorting="grvPedidos_Sorting" Width="600px" HorizontalAlign="Center" Font-Size="Medium"
                         CellPadding="2" CellSpacing="3" onrowcommand="grvPedidos_RowCommand"> 
                         <RowStyle HorizontalAlign="Center" />
