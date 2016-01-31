@@ -308,7 +308,8 @@ namespace SiGMA
                     lblInfo.Text = "Nos pondremos en contacto con usted para la devolución de las mascotas provisorias";
                     SetFocus(pnlCorrecto);
                 }
-                Response.AddHeader("REFRESH", "3;URL=Voluntario.aspx");
+                pnlHogar.Visible = false;
+                pnlBusqueda.Visible = false;
             }
             else
             {
