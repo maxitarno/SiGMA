@@ -71,8 +71,14 @@
                         </Columns>
                     </asp:GridView>   
                 </div>
+                <asp:Panel ID="pnlHogar" runat="server" visible="false">
+                    <div class="form-group" style="text-align:center; font-size:medium" >
+                        <label for="contact-name">Datos Hogar Provisorio: </label> 
+                        <asp:Label ID="lblHogarProvisorio" runat="server" Text="Sin Hogar" ></asp:Label>
+                    </div>
+                </asp:Panel>
                 <div class="services-half-width-container">
-        	<div class="container">
+        	    <div class="container">
 	            <div class="row">
 	                <div class="col-sm-6 services-half-width-text wow fadeInLeft">
                         <div class="contact-form">

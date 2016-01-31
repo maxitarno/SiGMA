@@ -57,6 +57,15 @@
             </div>
         </div>
     </div>
+    <asp:Panel runat="server" id="pnlImagenPedidoDifusion" Visible="false">
+        <div class="container">
+            <div class="contact-form">
+                <div class="form-group">
+                    <img src="base/img/portfolio/pedidosDifusion.jpg" />
+                </div>
+            </div>
+        </div>
+    </asp:Panel>
     <div class="services-half-width-container">
         	<div class="container">
 	            <div class="row">

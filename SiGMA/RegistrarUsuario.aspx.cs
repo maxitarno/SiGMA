@@ -127,7 +127,7 @@ namespace SiGMA
 
         protected void cuvDocumento_ServerValidate(object source, ServerValidateEventArgs args)
         {
-            args.IsValid = Validaciones.verificarSoloNumeros(txtDocumento.Text);
+            args.IsValid = (Validaciones.verificarSoloNumeros(txtDocumento.Text) && Validaciones.contarCaracteresMaximos(8, txtDocumento.Text) && Validaciones.contarCaracteresMinimos(8, txtDocumento.Text));
         }
 
         protected void cvLetrasNombre_ServerValidate(object source, ServerValidateEventArgs args)

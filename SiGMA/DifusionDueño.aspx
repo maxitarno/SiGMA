@@ -22,7 +22,7 @@
         <div class="panel-body">
             <div class="col-md-4 col-md-offset-4">
                 <asp:Panel runat="server" id="pnlInfo" class="alert alert-dismissable alert-info" Visible="false">                    
-                        <asp:Label ID="lblInfo" runat="server" Text = "Usted no ha generado pedidos todavia."></asp:Label>
+                        <asp:Label ID="lblInfo" runat="server" Text = "Usted no ha generado pedidos de difusión"></asp:Label>
                 </asp:Panel>
                 <asp:Panel runat="server" id="pnlCorrecto" class="alert alert-dismissable alert-success" Visible="false">
                     <button class="close" type="button" data-dismiss="alert">
@@ -54,7 +54,7 @@
                         onsorting="grvPedidos_Sorting" Width="600px" HorizontalAlign="Center" Font-Size="Medium"
                         CellPadding="2" CellSpacing="3" onrowcommand="grvPedidos_RowCommand"> 
                         <RowStyle HorizontalAlign="Center" />
-                        <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                        <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" ForeColor="#9D426B"/>
                         <Columns>
                             <asp:BoundField DataField="fecha" DataFormatString="{0:dd/MM/yyyy}" 
                                 HeaderText="Fecha" SortExpression="fecha" />  

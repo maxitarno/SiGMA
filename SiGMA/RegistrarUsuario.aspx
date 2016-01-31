@@ -63,7 +63,7 @@
                                 <asp:TextBox ID="txtDocumento" runat="server"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="rfvDocumento" runat="server" ErrorMessage="Ingrese su número de documento" ForeColor="Red"
                                 ControlToValidate="txtDocumento" Display="Dynamic"></asp:RequiredFieldValidator>
-                            <asp:CustomValidator ID="cuvDocumento" runat="server" ErrorMessage="Ingrese solo números"
+                            <asp:CustomValidator ID="cuvDocumento" runat="server" ErrorMessage="Ingrese un nro. de documento válido"
                                 ControlToValidate="txtDocumento" ForeColor="Red" Display="Dynamic" 
                                 onservervalidate="cuvDocumento_ServerValidate"></asp:CustomValidator>
                             </div>

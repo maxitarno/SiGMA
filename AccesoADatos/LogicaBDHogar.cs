@@ -301,5 +301,43 @@ namespace AccesoADatos
                 throw;
             }
         }
+
+        public static string buscarHogarDeMascota(int idMasc)
+        {
+            SiGMAEntities mapa = Conexion.crearSegunServidor();
+            string datosHogar = "";
+            var datos = from personasBD in mapa.Personas
+                          join usuariosBD in mapa.Usuarios on personasBD.user equals usuariosBD.user
+                          join voluntariosBD in mapa.Voluntarios on personasBD.idPersona equals voluntariosBD.idPersona
+                          join hogaresBD in mapa.HogaresProvisorios on voluntariosBD.idVoluntario equals hogaresBD.idVoluntario
+                          join ocupacionesBD in mapa.OcupacionesXHogaresProvisorios on hogaresBD.idHogarProvisorio equals ocupacionesBD.idHogarProvisorio
+                          join mascotaBD in mapa.Mascotas on ocupacionesBD.idMascota equals mascotaBD.idMascota
+                          join BarrioBD in mapa.Barrios on personasBD.idBarrio equals BarrioBD.idBarrio
+                          join calleBD in mapa.Calles on personasBD.idCalle equals calleBD.idCalle
+                          where (mascotaBD.idMascota == idMasc)
+                          select new
+                          {
+                              apellido = personasBD.apellido,
+                              nombre = personasBD.nombre,
+                              celu = personasBD.telefonoCelular,
+                              telf = personasBD.telefonoFijo,
+                              email = personasBD.email,
+                              calle = calleBD.nombre,
+                              nroCalle = personasBD.nroCalle,
+                              barrio = BarrioBD.nombre
+                          };
+            foreach (var registro in datos)
+            {
+                datosHogar += registro.apellido + " ";
+                datosHogar += registro.nombre + ", ";
+                datosHogar += registro.celu + ", ";
+                datosHogar += registro.telf + ", ";
+                datosHogar += registro.email + ", ";
+                datosHogar += registro.barrio + ", ";
+                datosHogar += registro.calle + " ";
+                datosHogar += registro.nroCalle + ".";
+            }
+            return datosHogar;
+        }
     }
 }

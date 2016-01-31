@@ -113,8 +113,8 @@ namespace AccesoADatos
         {
             List<EColor> colores = new List<EColor>();
             SiGMAEntities mapaEntidades = Conexion.crearSegunServidor();
-            IQueryable<Colores> consulta = from coloresDB in mapaEntidades.Colores
-                                           select coloresDB;
+            IQueryable<Colores> consulta = (from coloresDB in mapaEntidades.Colores
+                                            select coloresDB).OrderBy(x => x.nombreColor); 
             try
             {
                 foreach (var registro in consulta)

@@ -59,47 +59,48 @@
                                 <div class="form-group" style="text-align:center;">
                                     <img id="imgprvw" style="border: 2px solid #000000;" runat="server" src="~/App_Themes/TemaSigma/imagenes/sin_imagen_disponible.jpg" />
                                 </div>                                
-                                <div>
-                                    <label for="contact-name">Nombre</label>	                    	        
+                                <div style="text-align:center;">
+                                    <label for="contact-name">Nombre: </label>	                    	        
                                     <asp:Label ID="lblNombre"
-                                        runat="server" Text="lblNombre" Width="100%"></asp:Label>                                    
+                                        runat="server" Text="lblNombre"></asp:Label>                                    
 	                            </div>                                
-                                <div>
-                                    <label for="contact-name">Raza</label>
+                                <div style="text-align:center;">
+                                    <label for="contact-name">Raza: </label>
                                     <asp:Label ID="lblRaza"
-                                        runat="server" Text="lblRaza" Width="100%"></asp:Label>                                    
+                                        runat="server" Text="lblRaza"></asp:Label>                                    
                                 </div>                                
-                                <div>
-                                    <label for="contact-name">Sexo</label>
+                                <div style="text-align:center;">
+                                    <label for="contact-name">Sexo: </label>
                                     <asp:Label ID="lblSexo"
-                                        runat="server" Text="lblSexo" Width="100%"></asp:Label>                                   
+                                        runat="server" Text="lblSexo"></asp:Label>                                   
                                 </div>
-                                <div>
-                                    <label for="contact-name">Edad</label>
+                                <div style="text-align:center;">
+                                    <label for="contact-name">Edad: </label>
                                     <asp:Label ID="lblEdad"
-                                        runat="server" Text="lblEdad" Width="100%"></asp:Label>                                     
-                                </div>                                
+                                        runat="server" Text="lblEdad"></asp:Label>                                     
+                                </div>
+                                <div style="text-align:center;">
+                                    <label for="contact-name">Trato con animales: </label>
+                                    <asp:Label ID="lblTratoAnimales"
+                                        runat="server" Text="lblTratoAnimales"></asp:Label> 
+                                </div>
+                                <div style="text-align:center;">
+                                        <label for="contact-name">Trato con niños: </label>
+                                        <asp:Label ID="lblTratoNiños"
+                                        runat="server" Text="lblTratoNiños"></asp:Label>                      
+                                </div>
+                                <div style="text-align:center;">
+                                    <label for="contact-name">Temperamento: </label>
+                                    <asp:Label ID="lblTemperamento"
+                                        runat="server" Text="lblTemperamento"></asp:Label>
+                                </div>                                      
                             </asp:Panel>
                         </div>
 	                </div>
 	                <div class="col-sm-6 services-half-width-text wow fadeInUp">
                         <div class="contact-form">
                             <asp:Panel ID="pnlDatos" runat="server">
-                            <div>
-                                    <label for="contact-name">Trato con animales</label>
-                                    <asp:Label ID="lblTratoAnimales"
-                                        runat="server" Text="lblTratoAnimales" Width="100%"></asp:Label> 
-                                </div>
-                                <div>
-                                        <label for="contact-name">Trato con niños</label>
-                                        <asp:Label ID="lblTratoNiños"
-                                        runat="server" Text="lblTratoNiños" Width="100%"></asp:Label>                      
-                                </div>
-                                <div>
-                                    <label for="contact-name">Temperamento</label>
-                                    <asp:Label ID="lblTemperamento"
-                                        runat="server" Text="lblTemperamento" Width="100%"></asp:Label>
-                                </div>                               
+                                                         
                                 <div class="panel panel-default" style="margin-top:10px">
                                     <div class="panel-heading">
                                         Hogares

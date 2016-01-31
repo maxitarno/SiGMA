@@ -73,6 +73,11 @@ namespace SiGMA
                 pnlCorrecto.Visible = false;
                 pnlInfo.Visible = false;
                 pnlAtento.Visible = false;
+                if (mascotas.Count == 1)
+                {
+                    lstResultados.SelectedIndex = 0;
+                    lstResultados_SelectedIndexChanged(null, null);
+                }
             }
             else
             {

@@ -28,10 +28,7 @@ namespace SiGMA
                 }
                 listarPedidosVoluntariado();
                 listarPedidosBaja();
-                if (pnlPedidos.Visible == false && pnlBaja.Visible == false)
-                    pnlImagenPedidosVoluntariado.Visible = true;
-                else
-                    pnlImagenPedidosVoluntariado.Visible = false;
+                verificarPedidos();
             }
             else
             {
@@ -39,6 +36,14 @@ namespace SiGMA
                 pnlCorrecto.Visible = false;
                 pnlInfo.Visible = false;
             }
+        }
+
+        private void verificarPedidos()
+        {
+            if (pnlPedidos.Visible == false && pnlBaja.Visible == false)
+                pnlImagenPedidosVoluntariado.Visible = true;
+            else
+                pnlImagenPedidosVoluntariado.Visible = false;
         }
 
         public void listarPedidosVoluntariado(){
@@ -66,7 +71,11 @@ namespace SiGMA
                 pnlBaja.Visible = false;
             }
             else
+            {
                 pnlBaja.Visible = true;
+                lblInfo.Text = "";
+                pnlInfo.Visible = false;
+            }
         }
 
         protected void grvPedidos_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -137,6 +146,7 @@ namespace SiGMA
                     txtMensaje.Text = "";
                     txtMensaje.Visible = false;
                     lblMensaje.Visible = false;
+                    verificarPedidos();
                 }
             }
         }
@@ -207,6 +217,7 @@ namespace SiGMA
                 pnlCorrecto.Visible = true;
                 pnlAtento.Visible = false;
                 listarPedidosBaja();
+                verificarPedidos();
             }
             catch (Exception)
             {

@@ -130,15 +130,6 @@ namespace SiGMA {
         protected global::System.Web.UI.WebControls.Label lblEdad;
         
         /// <summary>
-        /// pnlDatos control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlDatos;
-        
-        /// <summary>
         /// lblTratoAnimales control.
         /// </summary>
         /// <remarks>
@@ -164,6 +155,15 @@ namespace SiGMA {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblTemperamento;
+        
+        /// <summary>
+        /// pnlDatos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlDatos;
         
         /// <summary>
         /// ddlNiños control.

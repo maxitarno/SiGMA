@@ -194,7 +194,7 @@
                         <Columns>
                             <asp:BoundField DataField="mascota.idMascota" HeaderText="Nro" />
                             <asp:BoundField DataField="mascota.nombreMascota" HeaderText="Mascota" />
-                            <asp:BoundField DataField="fecha" HeaderText="Fecha Nac" 
+                            <asp:BoundField DataField="fecha" HeaderText="Fecha Pérdida" 
                                 DataFormatString="{0:d}" />
                             <asp:BoundField DataField="usuario.user" HeaderText="Usuario" />
                             <asp:BoundField DataField="barrio.nombre" HeaderText="Barrio" />

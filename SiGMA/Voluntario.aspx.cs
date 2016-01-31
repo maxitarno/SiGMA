@@ -86,6 +86,8 @@ namespace SiGMA
                 cargarComboPerdidasBarrio(); //cargar el combo con las mascotas perdidas en el barrio del usuario logueado
                 verificarEstadoVoluntario(); //chequea que el voluntario no este con solucitud de baja / inactivo / etc
                 Session["VoluntarioCargado"] = true;
+                pnlInfo.Visible = true;
+                lblInfo.Text = "En caso de encontrar una mascota, comunicarse con la protectora para registrar el hallazgo";
             }
             else if (Session["TipoVoluntario"].ToString() == "3")
             {

@@ -47,6 +47,8 @@ namespace SiGMA
             {
                 lblInfo.Visible = true;
                 lblInfo.Text = "No hay pedidos para moderar";
+                pnlPedidos.Visible = false;
+                pnlImagenPedidoDifusion.Visible = true;
                 SetFocus(lblInfo);
             }
         }

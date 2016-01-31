@@ -50,6 +50,9 @@ namespace SiGMA
 
         private void cargarDatosMascota(EMascota mascota)
         {
+            pnlHogar.Visible = true;
+            var datos = LogicaBDHogar.buscarHogarDeMascota(mascota.idMascota);
+            lblHogarProvisorio.Text = " " + datos;
             txtNombre.Text = mascota.nombreMascota;
             txtEspecie.Text = mascota.especie.nombreEspecie;
             txtRaza.Text = mascota.raza.nombreRaza;
