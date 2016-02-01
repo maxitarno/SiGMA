@@ -43,7 +43,7 @@
                             oncheckedchanged="chkDireccion_CheckedChanged" /><br />
                         <asp:CheckBox ID="chkEmail" runat="server" Text=" Email" AutoPostBack="True" 
                             oncheckedchanged="chkEmail_CheckedChanged" /><br />
-                        <asp:CheckBox ID="chkTelefonoCel" runat="server" Text=" Telefono Celular" AutoPostBack="True" 
+                        <asp:CheckBox ID="chkTelefonoCel" runat="server" Text=" Teléfono" AutoPostBack="True" 
                             oncheckedchanged="chkTelefono_CheckedChanged" />
                         </div>
                     </div>

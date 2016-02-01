@@ -328,8 +328,8 @@ namespace AccesoADatos
                           };
             foreach (var registro in datos)
             {
-                datosHogar += registro.apellido + " ";
-                datosHogar += registro.nombre + ", ";
+                datosHogar += registro.nombre + " ";
+                datosHogar += registro.apellido + ", ";
                 datosHogar += registro.celu + ", ";
                 datosHogar += registro.telf + ", ";
                 datosHogar += registro.email + ", ";

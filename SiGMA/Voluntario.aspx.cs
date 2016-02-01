@@ -143,7 +143,7 @@ namespace SiGMA
                         //agregado
                         i++;
                         nombres += item.mascota.nombreMascota;
-                        direcciones += (item.barrio.localidad.nombre.ToLower().ToString() + " " + item.domicilio.calle.nombre.ToLower().ToString() + " " + item.domicilio.numeroCalle.ToString()).ToString();
+                        direcciones += "cordoba capital" + (item.barrio.localidad.nombre.ToLower().ToString() + " " + item.domicilio.calle.nombre.ToLower().ToString() + " " + item.domicilio.numeroCalle.ToString()).ToString();
                         if (item.mascota.cuidadoEspecial.idCuidado == 0)
                         {
                             cuidados += "0";

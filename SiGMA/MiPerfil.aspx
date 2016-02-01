@@ -182,7 +182,7 @@
                                 <%--<asp:Image ID="Image1" runat="server" ImageUrl="~/assets/calendario_dw/calendario.png" />--%>
                                 <asp:TextBox ID="txtFecha" onclick="showDate();" runat="server" />
                                 <ajaxToolkit:CalendarExtender ID="CalendarExtender1" BehaviorID="Date" 
-                                    runat="server" TargetControlID="txtFecha" PopupPosition="BottomLeft" Animated="true" >
+                                    runat="server" TargetControlID="txtFecha" PopupPosition="TopLeft" Animated="true" >
                                 </ajaxToolkit:CalendarExtender>
                                 <asp:RangeValidator ID="rnvFechaPerdida" runat="server" ErrorMessage="La fecha es inválida" 
                                 ForeColor="Red" ControlToValidate="txtFecha" SetFocusOnError="True" 

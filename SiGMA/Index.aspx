@@ -12,7 +12,7 @@
 	            		<p>Este sistema surgio de la necesidad de brindar soporte, a la gestión de los procesos 
                         de atención de mascotas por parte de las protectoras de animales, desde que se 
                         encuentren, atienden y alojen en hogares provisorios, ayudando a la difusión ante 
-                        perdidas, a la adopción de mascotas y a contar con un seguimiento de las mismas.</p>
+                        pérdidas, a la adopción de mascotas y a contar con un seguimiento de las mismas.</p>
                     </div>
                 </div>
             </div>

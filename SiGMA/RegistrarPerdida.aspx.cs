@@ -290,7 +290,7 @@ namespace SiGMA
                         pnlInfo.Visible = true;
                         lblInfo.Text = "El pedido de difusión será revisado por el encargado";
                         pnlImagenRegistrarPerdida.Visible = true;
-                        pnlImagenRegistrarPerdida.Focus();
+                        pnlCorrecto.Focus();
                     }
                 }
             }

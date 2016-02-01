@@ -140,6 +140,7 @@ namespace SiGMA
                 finally
                 {
                     listarPedidosVoluntariado();
+                    listarPedidosBaja();
                     pnlDatos.Visible = false;
                     pnlResolucion.Visible = false;
                     ddlResolucion.SelectedIndex = 0;

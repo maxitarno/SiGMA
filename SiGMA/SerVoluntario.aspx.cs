@@ -120,6 +120,7 @@ namespace SiGMA
                 pnlImagenHogar.Visible = true;
                 pnlDatoPersona.Visible = true;
                 cargarDatosHogar();
+                btnEnviar.Focus();
             }
             
             if (ddlTipoVoluntario.SelectedValue == "2")
@@ -130,6 +131,7 @@ namespace SiGMA
                 pnlImagenHogar.Visible = false;
                 pnlDatoPersona.Visible = true;
                 cargarBarrioPersona();
+                btnEnviar.Focus();
             }
             if (ddlTipoVoluntario.SelectedValue == "3")
             {
@@ -140,6 +142,7 @@ namespace SiGMA
                 pnlDatoPersona.Visible = true;
                 cargarDatosHogar();
                 cargarBarrioPersona();
+                btnEnviar.Focus();
             }
         }
 
