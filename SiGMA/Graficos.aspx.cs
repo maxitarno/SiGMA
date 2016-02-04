@@ -293,6 +293,87 @@ namespace SiGMA
                 Response.Write("window.open('" + pagina + "','_blank')");
                 Response.Write("</script>");
             }
+            if (ddlListado.SelectedValue.Equals("17"))
+            {
+                int i = 0;
+                string nombre = "";
+                string cantidad = "";
+                List<EDatos> datos = new List<EDatos>();
+                LogicaBDGraficos.AdopcionesPorRaza(ref datos);
+                foreach (var dato in datos)
+                {
+                    if (i != (datos.Count - 1))
+                    {
+                        nombre += dato.nombre + ",";
+                        cantidad += dato.cantidad + ",";
+                    }
+                    else
+                    {
+                        nombre += dato.nombre;
+                        cantidad += dato.cantidad;
+                    }
+                    i++;
+                }
+                string pagina = "AdopcionesPorRaza.htm?nombre=" + nombre + "&cant=" + cantidad;
+                //Response.Redirect(pagina);
+                Response.Write("<script>");
+                Response.Write("window.open('" + pagina + "','_blank')");
+                Response.Write("</script>");
+            }
+            if (ddlListado.SelectedValue.Equals("18"))
+            {
+                int i = 0;
+                string nombre = "";
+                string cantidad = "";
+                List<EDatos> datos = new List<EDatos>();
+                LogicaBDGraficos.HallazgosPorRaza(ref datos);
+                foreach (var dato in datos)
+                {
+                    if (i != (datos.Count - 1))
+                    {
+                        nombre += dato.nombre + ",";
+                        cantidad += dato.cantidad + ",";
+                    }
+                    else
+                    {
+                        nombre += dato.nombre;
+                        cantidad += dato.cantidad;
+                    }
+                    i++;
+                }
+                string pagina = "HallazgosPorRaza.htm?nombre=" + nombre + "&cant=" + cantidad;
+                //Response.Redirect(pagina);
+                Response.Write("<script>");
+                Response.Write("window.open('" + pagina + "','_blank')");
+                Response.Write("</script>");
+            }
+            if (ddlListado.SelectedValue.Equals("19"))
+            {
+                int i = 0;
+                string nombre = "";
+                string cantidad = "";
+                List<EDatos> datos = new List<EDatos>();
+                LogicaBDGraficos.PerdidasPorRaza(ref datos);
+                foreach (var dato in datos)
+                {
+                    if (i != (datos.Count - 1))
+                    {
+                        nombre += dato.nombre + ",";
+                        cantidad += dato.cantidad + ",";
+                    }
+                    else
+                    {
+                        nombre += dato.nombre;
+                        cantidad += dato.cantidad;
+                    }
+                    i++;
+                }
+                string pagina = "PerdidasPorRaza.htm?nombre=" + nombre + "&cant=" + cantidad;
+                //Response.Redirect(pagina);
+                Response.Write("<script>");
+                Response.Write("window.open('" + pagina + "','_blank')");
+                Response.Write("</script>");
+            }
         }
     }
 }

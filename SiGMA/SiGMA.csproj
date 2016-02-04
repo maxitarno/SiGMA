@@ -68,6 +68,7 @@
     <Content Include="AdopcionesPorBarrio.htm" />
     <Content Include="AdopcionesPorEspecie.htm" />
     <Content Include="AdopcionesPorFecha.htm" />
+    <Content Include="AdopcionesPorRaza.htm" />
     <Content Include="AdopcionesPorSexo.htm" />
     <Content Include="AsignarMascotaHogar.aspx" />
     <Content Include="AsignarPermisos.aspx" />
@@ -225,9 +226,11 @@
     <Content Include="Contrato.aspx" />
     <Content Include="DevolverASigma.aspx" />
     <Content Include="HallazgosPorEspecies.htm" />
+    <Content Include="HallazgosPorRaza.htm" />
     <Content Include="MascotasPorEspecie.htm" />
     <Content Include="PerdidasPorEspecie.htm" />
     <Content Include="PerdidasPorFecha.htm" />
+    <Content Include="PerdidasPorRaza.htm" />
     <Content Include="RegistrarBajaAVoluntario.aspx" />
     <Content Include="DefaultDueño.aspx" />
     <Content Include="DevolverADueño.aspx" />

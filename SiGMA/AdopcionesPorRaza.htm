@@ -7,6 +7,9 @@
     <script type="text/javascript" src="Scripts/jsapi.js"></script>
     <script type="text/javascript" src="Scripts/jQuery.print.js"></script>
     <script type="text/javascript">
+        var raza = [];
+        var cantidad = [];
+        var datos = [];
         // Load the Visualization API and the piechart package.
         google.load('visualization', '1.0', { 'packages': ['corechart'] });
         // Set a callback to run when the Google Visualization API is loaded.
@@ -21,39 +24,40 @@
 
             function getURLParameter(name) { return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [, ""])[1].replace(/\+/g, '%20')) || null }
             //grafico de mascotas por estado
-            var gatos = getURLParameter("cantGatos");
-            var perros = getURLParameter("cantPerros");
+            raza = getURLParameter("nombre").split(",");
+            cantidad = getURLParameter("cant").split(",");
+            datos = new Array(raza.length);
+            for (i = 0; i < raza.length; i++) {
+                datos[i] = [raza[i], parseInt(cantidad[i])];
+            }
             var data = new google.visualization.DataTable();
-            data.addColumn('string', 'Especie');
-            data.addColumn('number', 'Porcentaje');
-            data.addRows([
-                  ['Gatos', parseInt(gatos)],
-                  ['Perros', parseInt(perros)]
-                ]);
+            data.addColumn('string', 'Raza');
+            data.addColumn('number', 'Cantidad');
+            data.addRows(datos);
 
             //opciones de adopciones por especie
             // Set chart options
-            var options = { 'title': 'Porcentaje de hallazgos por especie',
+            var options = { 'title': 'Porcentaje de adopciones por raza (Historico)',
                 'width': 500,
                 'height': 500,
-                'is3D': true,
-                 //'colors': ['#000099', '#FFD700'],
-                //'pieHole': 0.4,
+//                'is3D': true,
+                //'colors': ['#000099', '#FFD700'],
+                'pieHole': 0.4,
                 'pieSliceTextStyle': {
                     color: 'white',
                 },
                 //'pieSliceText': 'label',
-                'pieStartAngle': 80,
-                slices: {  0: {offset: 0.1},
-                    1: {offset: 0},
-                },
+//                'pieStartAngle': 80,
+//                slices: {  0: {offset: 0.1},
+//                    1: {offset: 0},
+//                },
                 'tooltip':{textStyle: {color: 'blue'}, showColorCode: true}
             };
 
 
             //grafico adopciones por especie
-            var chartAdopcionesPorSexo = new google.visualization.PieChart(document.getElementById('adopciones'));
-            chartAdopcionesPorSexo.draw(data, options);
+            var chartAdopcionesPorRaza = new google.visualization.PieChart(document.getElementById('adopciones'));
+            chartAdopcionesPorRaza.draw(data, options);
         }
     </script>
 </head>
@@ -118,13 +122,14 @@
                         Estadísticas de SIGMA 
                         <br />
                         <br />
-                        <img alt="" src="imagenes/registrarhallazgo.jpg" width="70px" height="70px" />
+                        <img alt="" src="imagenes/registraradopcion.jpg" width="70px" height="70px" />
+                        <br />
                     </h4>
-                </center>
-                <center>
-                    <p style="text-align:center">
-                        Este grafico muestra los porcentajes de hallazgos por especie históricamente.
-                    </p>
+                    <center>
+                        <p style="text-align:center">
+                            Este grafico muestra los porcentajes y la cantida de adopciones por raza.
+                        </p>
+                    </center>
                 </center>
             </div>
         </div>

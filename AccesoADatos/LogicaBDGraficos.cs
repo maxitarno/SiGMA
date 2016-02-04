@@ -274,5 +274,59 @@ namespace AccesoADatos
                 }
             }
         }
+        public static void AdopcionesPorRaza(ref List<EDatos> datos)
+        {
+            SiGMAEntities mapa = Conexion.crearSegunServidor();
+            var grupos = (from AdopcionesBD in mapa.Adopciones
+                           join MascotasBD in mapa.Mascotas on AdopcionesBD.idMascota equals MascotasBD.idMascota into group1
+                           from G1 in group1.DefaultIfEmpty()
+                           join RazasBD in mapa.Razas on G1.idRaza equals RazasBD.idRaza into group2
+                           from G2 in group2.DefaultIfEmpty()
+                           select new { nombreRaza = G2.nombreRaza, id = AdopcionesBD.idAdopcion}).ToList();
+            var consulta = grupos.GroupBy(raza => raza.nombreRaza).Select(grp => new { nombreRaza = grp.Key.ToString(), cantidad = grp.Count() }).ToList();
+            foreach (var registro in consulta)
+            {
+                EDatos dato = new EDatos();
+                dato.nombre = registro.nombreRaza;
+                dato.cantidad = registro.cantidad;
+                datos.Add(dato);
+            }
+        }
+        public static void HallazgosPorRaza(ref List<EDatos> datos)
+        {
+            SiGMAEntities mapa = Conexion.crearSegunServidor();
+            var grupos = (from HallazgosBD in mapa.Hallazgos
+                          join MascotasBD in mapa.Mascotas on HallazgosBD.idMascota equals MascotasBD.idMascota into group1
+                          from G1 in group1.DefaultIfEmpty()
+                          join RazasBD in mapa.Razas on G1.idRaza equals RazasBD.idRaza into group2
+                          from G2 in group2.DefaultIfEmpty()
+                          select new { nombreRaza = G2.nombreRaza, id = HallazgosBD.idHallazgo }).ToList();
+            var consulta = grupos.GroupBy(raza => raza.nombreRaza).Select(grp => new { nombreRaza = grp.Key.ToString(), cantidad = grp.Count() }).ToList();
+            foreach (var registro in consulta)
+            {
+                EDatos dato = new EDatos();
+                dato.nombre = registro.nombreRaza;
+                dato.cantidad = registro.cantidad;
+                datos.Add(dato);
+            }
+        }
+        public static void PerdidasPorRaza(ref List<EDatos> datos)
+        {
+            SiGMAEntities mapa = Conexion.crearSegunServidor();
+            var grupos = (from PerdidasBD in mapa.Perdidas
+                          join MascotasBD in mapa.Mascotas on PerdidasBD.idMascota equals MascotasBD.idMascota into group1
+                          from G1 in group1.DefaultIfEmpty()
+                          join RazasBD in mapa.Razas on G1.idRaza equals RazasBD.idRaza into group2
+                          from G2 in group2.DefaultIfEmpty()
+                          select new { nombreRaza = G2.nombreRaza, id = PerdidasBD.idPerdida }).ToList();
+            var consulta = grupos.GroupBy(raza => raza.nombreRaza).Select(grp => new { nombreRaza = grp.Key.ToString(), cantidad = grp.Count() }).ToList();
+            foreach (var registro in consulta)
+            {
+                EDatos dato = new EDatos();
+                dato.nombre = registro.nombreRaza;
+                dato.cantidad = registro.cantidad;
+                datos.Add(dato);
+            }
+        }
     }
 }
