@@ -29,7 +29,7 @@ namespace Herramientas
 
         public string generarMensajePerdida(EPerdida perdida)
         {
-            return "Mascota perdida en " + perdida.domicilio.calle.nombre.ToLower() + " " + perdida.domicilio.numeroCalle + ", "
+            return "#MascotaPerdida en " + perdida.domicilio.calle.nombre.ToLower() + " " + perdida.domicilio.numeroCalle + ", "
                 + perdida.domicilio.barrio.nombre.ToLower();
         }
 

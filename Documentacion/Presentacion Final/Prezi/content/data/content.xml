@@ -1,0 +1,1027 @@
+<zuiprezi>
+  <version>8</version>
+  <zui-table>
+    <settings>
+      
+      <autoplay>
+        
+        <delay>4000</delay>
+        
+      </autoplay>
+      
+      <bounds x="-46852.76673606322" y="-26198.654826998238" width="93705.53347212644" height="52397.30965399647"/>
+      <aspectratio>off</aspectratio>
+      <mode type="normal"/>
+    </settings>
+    <object id="102_30863873" type="button" x="5449.866480084236" y="-358.9407459382433" r="0" s="95.57456199441133" class="invisible">
+      <type>invisible</type>
+      <size>
+        <w>867.0333210428349</w>
+        <h>524.9269351301122</h>
+      </size>
+      <meta>
+        <notModifiedByUser>from-template</notModifiedByUser>
+        <parentTemplate>finding-the-way-out2</parentTemplate>
+      </meta>
+    </object>
+    <object id="1_30863873" type="button" x="1109.4213128908818" y="-12205.375893443488" r="0" s="14.76163266903359" class="invisible">
+      <type>invisible</type>
+      <size>
+        <w>798.3772819472616</w>
+        <h>600</h>
+      </size>
+      <meta>
+        <notModifiedByUser>from-template</notModifiedByUser>
+        <parentTemplate>finding-the-way-out2</parentTemplate>
+      </meta>
+    </object>
+    <object id="456_30863873" type="shape" x="5521.157907058886" y="-15202.50509569475" r="0" s="10.143876084571797" class="poly3 poly5">
+      <geom type="circle">
+        <r>115.02721387459796</r>
+      </geom>
+      <meta>
+        <notModifiedByUser>from-template</notModifiedByUser>
+        <parentTemplate>finding-the-way-out2</parentTemplate>
+      </meta>
+    </object>
+    <object id="21_30863873" type="image" x="-8082.466235160291" y="-18560.343786924732" r="133.37514724709203" s="6.172296973806805">
+      <source w="664" h="696" bt="1136.35" bl="2299.7">1703588218<url>1703588218.swf</url></source>
+      <sourceUrl>tree01.swf</sourceUrl>
+      <meta>
+        <notModifiedByUser>from-template</notModifiedByUser>
+        <parentTemplate>finding-the-way-out2</parentTemplate>
+      </meta>
+    <resource><id>1703588218</id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/b/7/8/b79bc0ec1e869c97d7bf2dad68b09c0956890.swf</url></resource></object>
+    <object id="23_30863873" type="image" x="-6321.86091112721" y="17919.23212272747" r="-27.586936411771294" s="8.046390442466082">
+      <source w="664" h="696" bt="1148.15" bl="65.4">1703588215<url>1703588215.swf</url></source>
+      <sourceUrl>tree04.swf</sourceUrl>
+      <image>
+        <transform>
+          <flip/>
+        </transform>
+      </image>
+      <meta>
+        <notModifiedByUser>from-template</notModifiedByUser>
+        <parentTemplate>finding-the-way-out2</parentTemplate>
+      </meta>
+    <resource><id>1703588215</id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/8/9/d/f229608e061840c02383430c0d45ed76b9b2e.swf</url></resource></object>
+    <object id="27_30863873" type="image" x="-1353.156332775767" y="4103.352124122777" r="-2.775982022719535e-31" s="5.348127884200412">
+      <source w="664" h="696" bt="1148.15" bl="785.15">1703588209<url>1703588209.swf</url></source>
+      <sourceUrl>tree03.swf</sourceUrl>
+      <meta>
+        <notModifiedByUser>from-template</notModifiedByUser>
+        <parentTemplate>finding-the-way-out2</parentTemplate>
+      </meta>
+    <resource><id>1703588209</id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/e/3/b/eec26c875f14d8d2d547f10d015f218cb2c7a.swf</url></resource></object>
+    <object id="29_30863873" type="image" x="3359.3904646606375" y="1541.0683683320608" r="90.15237598073011" s="9.31153546291046">
+      <source w="664" h="696" bt="1148.15" bl="1542.75">1703588212<url>1703588212.swf</url></source>
+      <sourceUrl>tree02.swf</sourceUrl>
+      <meta>
+        <notModifiedByUser>from-template</notModifiedByUser>
+        <parentTemplate>finding-the-way-out2</parentTemplate>
+      </meta>
+    <resource><id>1703588212</id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/e/c/7/bfbd02941ba64eebd9668ef91e7916fa45c0d.swf</url></resource></object>
+    <object id="30_30863873" type="image" x="-8571.662429057582" y="2673.5580536806588" r="0" s="14.998816608445432">
+      <source w="2633" h="2546" bt="411.35" bl="65.4">1714130812<url>1714130812.swf</url></source>
+      <sourceUrl>bg.swf</sourceUrl>
+      <meta>
+        <notModifiedByUser>from-template</notModifiedByUser>
+        <parentTemplate>finding-the-way-out2</parentTemplate>
+      </meta>
+    <resource><id>1714130812</id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/1/b/2/0bd9b2c69fbd2d439aaf0e572355a203c0493.swf</url></resource></object>
+    <object id="35" type="image" x="30491.85" y="-5900.45" r="0" s="35.9532606473042">
+      <source w="625" h="592">4211663756<url>4211663756.png</url></source>
+      <sourceUrl>Sin%20t%C3%ADtulo.png</sourceUrl>
+    <resource><id>4211663756</id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/0/4/c/d182ffcd391a5487511e7a564119d2d422035.png</url></resource></object>
+    <object id="455_30863873" type="text" x="21969.905980311585" y="15427.740468400005" r="0" s="103.26588677793929" class="head">
+      <style fontFamily="custom-righteous" font-family="Righteous"/>
+      <style fontFamily="custom-righteous" font-family="Righteous"/>
+      <height>208.60546875</height>
+      <width>411.64216219715865</width>
+      <p>
+        <text color="16777215"><![CDATA[SIGMA]]></text>
+      </p>
+      <p>
+        <text color="16777215"><![CDATA[Integrantes:]]></text>
+      </p>
+      <p listType="bullet" indent="1">
+        <text color="16777215"><![CDATA[Diaz Cornejo Gonzalo]]></text>
+      </p>
+      <p listType="bullet" indent="1">
+        <text color="16777215"><![CDATA[Ferrero Carina]]></text>
+      </p>
+      <p listType="bullet" indent="1">
+        <text color="16777215"><![CDATA[Hernandez Nicolas Damian]]></text>
+      </p>
+      <p listType="bullet" indent="1">
+        <text color="16777215"><![CDATA[Tarnowski Lombardi Maximiliano]]></text>
+      </p>
+      <p>
+        <text color="16777215"><![CDATA[]]></text>
+      </p>
+    </object>
+    <object id="0_30863873" type="button" x="-11944.306014470423" y="4974.739376333718" r="0" s="11.099624233348367" class="invisible">
+      <type>invisible</type>
+      <size>
+        <w>798.7037622510275</w>
+        <h>600</h>
+      </size>
+      <meta>
+        <notModifiedByUser>from-template</notModifiedByUser>
+        <parentTemplate>finding-the-way-out2</parentTemplate>
+      </meta>
+    </object>
+    <object id="55_30863873" type="button" x="-11762.707373832336" y="5006.060517992672" r="0" s="4.9591013339444805" class="circle">
+      <type>circle</type>
+      <size>
+        <w>800</w>
+        <h>800</h>
+      </size>
+      <meta>
+        <notModifiedByUser>from-template</notModifiedByUser>
+        <parentTemplate>finding-the-way-out2</parentTemplate>
+      </meta>
+    </object>
+    <object id="56_30863873" type="button" x="-10777.107595991707" y="1268.7325715408567" r="0" s="1.8072526727202922" class="circle">
+      <type>circle</type>
+      <size>
+        <w>800</w>
+        <h>800</h>
+      </size>
+      <meta>
+        <notModifiedByUser>from-template</notModifiedByUser>
+        <parentTemplate>finding-the-way-out2</parentTemplate>
+      </meta>
+    </object>
+    <object id="57_30863873" type="button" x="-9962.600787323168" y="-421.95117235397294" r="0" s="1.8072526727202922" class="circle">
+      <type>circle</type>
+      <size>
+        <w>800</w>
+        <h>800</h>
+      </size>
+      <meta>
+        <notModifiedByUser>from-template</notModifiedByUser>
+        <parentTemplate>finding-the-way-out2</parentTemplate>
+      </meta>
+    </object>
+    <object id="58_30863873" type="button" x="-8661.869549752322" y="-1707.2055799151615" r="0" s="1.5783288502663482" class="circle">
+      <type>circle</type>
+      <size>
+        <w>800</w>
+        <h>800</h>
+      </size>
+      <meta>
+        <notModifiedByUser>from-template</notModifiedByUser>
+        <parentTemplate>finding-the-way-out2</parentTemplate>
+      </meta>
+    </object>
+    <object id="101_30863873" type="button" x="-6978.823950118917" y="-2853.1082744372143" r="0" s="1.5113757081750476" class="circle">
+      <type>circle</type>
+      <size>
+        <w>800</w>
+        <h>800</h>
+      </size>
+      <meta>
+        <notModifiedByUser>from-template</notModifiedByUser>
+        <parentTemplate>finding-the-way-out2</parentTemplate>
+      </meta>
+    </object>
+    <object id="120_30863873" type="text" x="-11784.449510465047" y="3352.6306285344317" r="-1.6017276158877867e-31" s="10.978425190923177" class="strong">
+      <style fontFamily="custom-righteous" font-family="Righteous"/>
+      <style fontFamily="custom-righteous" font-family="Righteous"/>
+      <height>59.6015625</height>
+      <width>220.4993900181616</width>
+      <p align="center">
+        <text><![CDATA[]]></text>
+      </p>
+      <p align="center">
+        <text><![CDATA[Problemática]]></text>
+      </p>
+      <layout>
+        <layout-element role="title"/>
+      </layout>
+    </object>
+    <object id="122_30863873" type="text" x="-10773.220540650536" y="686.2499604667227" r="-1.6017276158877852e-31" s="3.6439871405920794" class="strong">
+      <style fontFamily="custom-righteous" font-family="Righteous"/>
+      <style fontFamily="custom-righteous" font-family="Righteous"/>
+      <height>29.80078125</height>
+      <width>220.4993900181616</width>
+      <p align="center">
+        <text><![CDATA[Objetivo]]></text>
+      </p>
+      <layout>
+        <layout-element role="title"/>
+      </layout>
+    </object>
+    <object id="124_30863873" type="text" x="-9974.479622416771" y="-1009.7301920088971" r="-1.6017276158877852e-31" s="3.2954986170741964" class="strong">
+      <style fontFamily="custom-righteous" font-family="Righteous"/>
+      <style fontFamily="custom-righteous" font-family="Righteous"/>
+      <height>29.80078125</height>
+      <width>220.4993900181616</width>
+      <p align="center">
+        <text><![CDATA[Metodología]]></text>
+      </p>
+      <layout>
+        <layout-element role="title"/>
+      </layout>
+    </object>
+    <object id="1_136690105" type="image" x="-8656.05" y="-1712.2" r="0" s="1.134061786067742">
+      <source w="987" h="373">4225370228<url>4225370228.png</url></source>
+      <sourceUrl>WBS.png</sourceUrl>
+    <resource><id>4225370228</id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/5/2/6/21dda17e21351ec8e056e8c6ea8e2e7c102de.png</url></resource></object>
+    <object id="126_30863873" type="text" x="-8654.786784723625" y="-2093.1654212721164" r="-1.6017276158877865e-31" s="2.8780594002452875" class="strong">
+      <style fontFamily="custom-righteous" font-family="Righteous"/>
+      <style fontFamily="custom-righteous" font-family="Righteous"/>
+      <height>29.80078125</height>
+      <width>220.4993900181616</width>
+      <p align="center">
+        <text><![CDATA[1° Dimensión PUD]]></text>
+      </p>
+      <layout>
+        <layout-element role="title"/>
+      </layout>
+    </object>
+    <object id="130_30863873" type="text" x="-6960.403065541128" y="-3235.972202992999" r="-1.601727615887786e-31" s="2.7559713322616677" class="strong">
+      <style fontFamily="custom-righteous" font-family="Righteous"/>
+      <style fontFamily="custom-righteous" font-family="Righteous"/>
+      <height>29.80078125</height>
+      <width>220.4993900181616</width>
+      <p align="center">
+        <text><![CDATA[2° Dimensión PUD]]></text>
+      </p>
+      <layout>
+        <layout-element role="title"/>
+      </layout>
+    </object>
+    <object id="457_30863873" type="button" x="5521.3044972373145" y="-15202.17992066462" r="0" s="1.9474795347516638" class="circle">
+      <type>circle</type>
+      <size>
+        <w>800</w>
+        <h>800</h>
+      </size>
+      <meta>
+        <notModifiedByUser>from-template</notModifiedByUser>
+        <parentTemplate>finding-the-way-out2</parentTemplate>
+      </meta>
+    </object>
+    <object id="458_30863873" type="text" x="5537.633160945442" y="-15632.292607378247" r="0" s="5.951194054741021" class="head">
+      <style fontFamily="custom-righteous" font-family="Righteous"/>
+      <style fontFamily="custom-righteous" font-family="Righteous"/>
+      <height>29.80078125</height>
+      <width>-178.8984375</width>
+      <p>
+        <text color="3355443"><![CDATA[Muchas Gracias]]></text>
+      </p>
+      <meta>
+        <parentTemplate>finding-the-way-out2</parentTemplate>
+      </meta>
+    </object>
+    <object id="97_30863873" type="image" x="-6704.433565419013" y="-21153.250401739926" r="177.04506625192215" s="4.408783552719148">
+      <source w="664" h="696" bt="1136.35" bl="2299.7">1703588218<url>1703588218.swf</url></source>
+      <sourceUrl>tree01.swf</sourceUrl>
+      <meta>
+        <notModifiedByUser>from-template</notModifiedByUser>
+        <parentTemplate>finding-the-way-out2</parentTemplate>
+      </meta>
+    <resource><id>1703588218</id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/b/7/8/b79bc0ec1e869c97d7bf2dad68b09c0956890.swf</url></resource></object>
+    <object id="99_30863873" type="image" x="-12160.84642270949" y="-10386.606066464637" r="90.15237598073011" s="3.532723553635308">
+      <source w="664" h="696" bt="1148.15" bl="1542.75">1703588212<url>1703588212.swf</url></source>
+      <sourceUrl>tree02.swf</sourceUrl>
+      <meta>
+        <notModifiedByUser>from-template</notModifiedByUser>
+        <parentTemplate>finding-the-way-out2</parentTemplate>
+      </meta>
+    <resource><id>1703588212</id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/e/c/7/bfbd02941ba64eebd9668ef91e7916fa45c0d.swf</url></resource></object>
+    <object id="100_30863873" type="image" x="-10253.065483717979" y="-7013.24121022126" r="-2.775982022719534e-31" s="6.425514117181611">
+      <source w="664" h="696" bt="1148.15" bl="785.15">1703588209<url>1703588209.swf</url></source>
+      <sourceUrl>tree03.swf</sourceUrl>
+      <meta>
+        <notModifiedByUser>from-template</notModifiedByUser>
+        <parentTemplate>finding-the-way-out2</parentTemplate>
+      </meta>
+    <resource><id>1703588209</id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/e/3/b/eec26c875f14d8d2d547f10d015f218cb2c7a.swf</url></resource></object>
+    <object id="103_30863873" type="image" x="-16845.935808042406" y="-6291.476848839001" r="-14.403632073725069" s="8.695871033800405">
+      <source w="664" h="696" bt="1148.15" bl="785.15">1703588209<url>1703588209.swf</url></source>
+      <sourceUrl>tree03.swf</sourceUrl>
+      <meta>
+        <notModifiedByUser>from-template</notModifiedByUser>
+        <parentTemplate>finding-the-way-out2</parentTemplate>
+      </meta>
+    <resource><id>1703588209</id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/e/3/b/eec26c875f14d8d2d547f10d015f218cb2c7a.swf</url></resource></object>
+    <object id="104_30863873" type="image" x="-30350.77180471855" y="9498.549322745754" r="-27.586936411771294" s="8.046390442466082">
+      <source w="664" h="696" bt="1148.15" bl="65.4">1703588215<url>1703588215.swf</url></source>
+      <sourceUrl>tree04.swf</sourceUrl>
+      <image>
+        <transform>
+          <flip/>
+        </transform>
+      </image>
+      <meta>
+        <notModifiedByUser>from-template</notModifiedByUser>
+        <parentTemplate>finding-the-way-out2</parentTemplate>
+      </meta>
+    <resource><id>1703588215</id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/8/9/d/f229608e061840c02383430c0d45ed76b9b2e.swf</url></resource></object>
+    <object id="105_30863873" type="image" x="11978.797243891588" y="-13765.518810822108" r="177.04506625192215" s="4.408783552719148">
+      <source w="664" h="696" bt="1136.35" bl="2299.7">1703588218<url>1703588218.swf</url></source>
+      <sourceUrl>tree01.swf</sourceUrl>
+      <meta>
+        <notModifiedByUser>from-template</notModifiedByUser>
+        <parentTemplate>finding-the-way-out2</parentTemplate>
+      </meta>
+    <resource><id>1703588218</id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/b/7/8/b79bc0ec1e869c97d7bf2dad68b09c0956890.swf</url></resource></object>
+    <object id="1" type="image" x="-10777.65541295117" y="1086.0929325364104" r="0" s="1.0572706582445814">
+      <source w="509" h="613">4211481641<url>4211481641.png</url></source>
+      <sourceUrl>logoSigma.png</sourceUrl>
+    <resource><id>4211481641</id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/0/7/3/26b396402e5989a2a870439f115e500632bb8.png</url></resource></object>
+    <object id="2" type="image" x="-9962.974705988769" y="-470.79727161171735" r="0" s="1.1434848478632174">
+      <source w="821" h="607">4211484734<url>4211484734.png</url></source>
+      <sourceUrl>PUD.png</sourceUrl>
+    <resource><id>4211484734</id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/e/8/b/08fb963c6991cd545f9892d2ce3bea1053f8f.png</url></resource></object>
+    <object id="4" type="image" x="-6976.773568973336" y="-2864.3528250054605" r="0" s="0.5826055209657246">
+      <source w="1800" h="996">4211497430<url>4211497430.png</url></source>
+      <sourceUrl>DiagramasFINAL.png</sourceUrl>
+    <resource><id>4211497430</id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/0/e/9/a6b02f7711474aa58b652699e0d6e6052a223.png</url></resource></object>
+    <object id="5" type="button" x="-5101.049096686795" y="-3633.2050724341107" r="0" s="1.5113773227266913" class="circle">
+      <type>circle</type>
+      <size>
+        <w>800</w>
+        <h>800</h>
+      </size>
+    </object>
+    <object id="6" type="text" x="-5087.680937074907" y="-4081.0465558654455" r="0" s="3.492690268730591" class="body">
+      <style fontFamily="custom-righteous" font-family="Righteous"/>
+      <style fontFamily="custom-righteous" font-family="Righteous"/>
+      <height>29.80078125</height>
+      <width>194.71801861152173</width>
+      <p align="center">
+        <text><![CDATA[Plan de Riesgos]]></text>
+      </p>
+    </object>
+    <object id="7" type="image" x="-5100.935186623152" y="-3715.094203544176" r="0" s="0.7856237406582675">
+      <source w="1296" h="440">4211506472<url>4211506472.png</url></source>
+      <sourceUrl>MatrizProbImp.png</sourceUrl>
+    <resource><id>4211506472</id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/a/1/d/de5ba447ac526e8c068e67bf00252f78e3889.png</url></resource></object>
+    <object id="8" type="button" x="-3355.0885279730996" y="-4316.738682193711" r="0" s="1.3635047950316985" class="circle">
+      <type>circle</type>
+      <size>
+        <w>800</w>
+        <h>800</h>
+      </size>
+    </object>
+    <object id="9" type="text" x="-46408.42313218126" y="-26132.082341242778" r="-2.775982022719536e-31" s="4.623089288573532" class="body">
+      <height>28.8</height>
+      <width>-192.228</width>
+      <p>
+        <text><![CDATA[Riesgos Relevados]]></text>
+      </p>
+    </object>
+    <object id="11" type="button" x="-2104.384506682385" y="-5394.087859485116" r="0" s="1.166016619852956" class="circle">
+      <type>circle</type>
+      <size>
+        <w>800</w>
+        <h>800</h>
+      </size>
+    </object>
+    <object id="12" type="text" x="-2090.9471873890006" y="-5693.19941374695" r="0" s="2.0168518969257327" class="body">
+      <style fontFamily="custom-righteous" font-family="Righteous"/>
+      <style fontFamily="custom-righteous" font-family="Righteous"/>
+      <height>29.80078125</height>
+      <width>324.92323909903223</width>
+      <p>
+        <text><![CDATA[Herramientas y Tecnologías]]></text>
+      </p>
+    </object>
+    <object id="13" type="image" x="-2104.343824516798" y="-5448.2236172317325" r="0" s="0.4244142451216029">
+      <source w="1800" h="968">4211514374<url>4211514374.png</url></source>
+      <sourceUrl>HerramientasTecnologias.png</sourceUrl>
+    <resource><id>4211514374</id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/c/5/f/09542aceff30724df43147e556e3d9b404f8b.png</url></resource></object>
+    <object id="14" type="button" x="-1222.0249490494555" y="-6781.382251734171" r="0" s="1.1660137970521947" class="circle">
+      <type>circle</type>
+      <size>
+        <w>800</w>
+        <h>800</h>
+      </size>
+    </object>
+    <object id="3_136690105" type="image" x="-1224.4" y="-6867.1" r="0" s="0.3402483409984486">
+      <source w="1800" h="1380">4225373735<url>4225373735.png</url></source>
+      <sourceUrl>SeleniunPRUEBAS.png</sourceUrl>
+    <resource><id>4225373735</id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/8/e/0/395d0a57807d83e587a37bfaf7b233b2a6c45.png</url></resource></object>
+    <object id="15" type="text" x="-1224.4539405868475" y="-7136.539565938898" r="0" s="2.296692696350838" class="body">
+      <style fontFamily="custom-righteous" font-family="Righteous"/>
+      <style fontFamily="custom-righteous" font-family="Righteous"/>
+      <height>29.80078125</height>
+      <width>-182.671875</width>
+      <p>
+        <text><![CDATA[Plan de Pruebas]]></text>
+      </p>
+    </object>
+    <object id="17" type="button" x="-151.89278793318482" y="-7545.767597381369" r="0" s="0.6575849035115012" class="circle">
+      <type>circle</type>
+      <size>
+        <w>800</w>
+        <h>800</h>
+      </size>
+    </object>
+    <object id="48" type="image" x="-153.7560311170688" y="-7544.811566490075" r="0" s="0.4513615829104029">
+      <source w="961" h="524">4211785253<url>4211785253.png</url></source>
+      <sourceUrl>Demostracion.png</sourceUrl>
+    <resource><id>4211785253</id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/5/4/8/f6e42e2c4c89286417f03e6a077c073605b08.png</url></resource></object>
+    <object id="18" type="text" x="-143.1705316313318" y="-7693.797793302775" r="0" s="2.446413101214264" class="body">
+      <style fontFamily="custom-righteous" font-family="Righteous"/>
+      <style fontFamily="custom-righteous" font-family="Righteous"/>
+      <height>29.80078125</height>
+      <width>-153.66796875</width>
+      <p>
+        <text><![CDATA[Demostración]]></text>
+      </p>
+    </object>
+    <object id="19" type="button" x="-630.6161032616093" y="-9950.860612935585" r="0" s="3.0011338478828" class="circle">
+      <type>circle</type>
+      <size>
+        <w>800</w>
+        <h>800</h>
+      </size>
+    </object>
+    <object id="20" type="text" x="-630.7829001405162" y="-10806.500124210976" r="0" s="6.504300774930879" class="body">
+      <style fontFamily="custom-righteous" font-family="Righteous"/>
+      <style fontFamily="custom-righteous" font-family="Righteous"/>
+      <height>29.80078125</height>
+      <width>-205.79296875</width>
+      <p>
+        <text><![CDATA[Análisis de Costos]]></text>
+      </p>
+    </object>
+    <object id="21" type="image" x="-630.5632164463455" y="-10237.682084973587" r="0" s="4.105131351340298">
+      <source w="348" h="220">4211521328<url>4211521328.png</url></source>
+      <sourceUrl>AnalisisCostos.png</sourceUrl>
+    <resource><id>4211521328</id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/2/1/f/73db2bb0475c72669662f19a306b6824d4e33.png</url></resource></object>
+    <object id="28" type="image" x="5537.939300363522" y="-15154.866279792377" r="0" s="1.7512576918211762">
+      <source w="650" h="433">4211533532<url>4211533532.jpg</url></source>
+      <sourceUrl>Final.jpg</sourceUrl>
+    <resource><id>4211533532</id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/2/4/a/4e0a03dafc547145525f89cc4115b85d1e62a.jpg</url></resource></object>
+    <object id="29" type="text" x="-3339.771247100104" y="-4685.376139431282" r="0" s="2.8875365313271972" class="body">
+      <style fontFamily="custom-righteous" font-family="Righteous"/>
+      <style fontFamily="custom-righteous" font-family="Righteous"/>
+      <height>29.80078125</height>
+      <width>216.87989013155513</width>
+      <p>
+        <text><![CDATA[Riesgos Relevados]]></text>
+      </p>
+    </object>
+    <object id="31" type="button" x="2567.437411048111" y="-12871.315302145875" r="0" s="2.3600786822185778" class="circle">
+      <type>circle</type>
+      <size>
+        <w>800</w>
+        <h>800</h>
+      </size>
+    </object>
+    <object id="32" type="text" x="2557.8526928358137" y="-13586.483363865922" r="0" s="6.313507955504562" class="body">
+      <style fontFamily="custom-righteous" font-family="Righteous"/>
+      <style fontFamily="custom-righteous" font-family="Righteous"/>
+      <height>29.80078125</height>
+      <width>-120.046875</width>
+      <p>
+        <text><![CDATA[Conclusión]]></text>
+      </p>
+    </object>
+    <object id="33" type="image" x="2558.0235579312794" y="-12869.395103930166" r="0" s="0.7553984581829949">
+      <source w="1600" h="1599">4211597273<url>4211597273.jpg</url></source>
+      <sourceUrl>Conclusion.jpg</sourceUrl>
+    <resource><id>4211597273</id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/7/8/a/33692a5627a7372254f1c6fe1735470079ac9.jpg</url></resource></object>
+    <object id="36" type="image" x="-29554.818124087946" y="-16132.540083179081" r="0" s="51.81915251070185">
+      <source w="171" h="263">4211673797<url>4211673797.png</url></source>
+      <sourceUrl>LogoUTN.png</sourceUrl>
+    <resource><id>4211673797</id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/1/4/7/5b22326ed502de7b590c8ed2f67dd37d7e2cf.png</url></resource></object>
+    <object id="37" type="text" x="-11755.155947673447" y="6149.905504455228" r="0" s="5.837254327921498" class="strong">
+      <style fontFamily="custom-righteous" font-family="Righteous"/>
+      <style fontFamily="custom-righteous" font-family="Righteous"/>
+      <height>29.80078125</height>
+      <width>-465.890625</width>
+      <p>
+        <text><![CDATA[¿Porque elegimos realizar este proyecto?]]></text>
+      </p>
+    </object>
+    <object id="38" type="text" x="-10780.698438937077" y="1636.4005864317144" r="0" s="2.59290534029754" class="body">
+      <style fontFamily="custom-righteous" font-family="Righteous"/>
+      <style fontFamily="custom-righteous" font-family="Righteous"/>
+      <height>149.00390625</height>
+      <width>198.12974946155373</width>
+      <p listType="bullet" indent="1">
+        <text><![CDATA[Adopciones]]></text>
+      </p>
+      <p listType="bullet" indent="1">
+        <text><![CDATA[Extravíos]]></text>
+      </p>
+      <p listType="bullet" indent="1">
+        <text><![CDATA[Búsqueda]]></text>
+      </p>
+      <p listType="bullet" indent="1">
+        <text><![CDATA[Voluntariado]]></text>
+      </p>
+      <p listType="bullet" indent="1">
+        <text><![CDATA[Difusión ]]></text>
+      </p>
+    </object>
+    <object id="39" type="text" x="-9946.70590797053" y="-859.6211374259968" r="0" s="2.46137978957378" class="body">
+      <style fontFamily="custom-righteous" font-family="Righteous"/>
+      <style fontFamily="custom-righteous" font-family="Righteous"/>
+      <height>29.80078125</height>
+      <width>371.8220671894975</width>
+      <p>
+        <text><![CDATA[Proceso Unificado de Desarrollo]]></text>
+      </p>
+    </object>
+    <object id="40" type="text" x="-9958.873943697597" y="-3.0174588261948956" r="0" s="2.46137978957378" class="body">
+      <style fontFamily="custom-righteous" font-family="Righteous"/>
+      <style fontFamily="custom-righteous" font-family="Righteous"/>
+      <height>89.40234375</height>
+      <width>-292.88671875</width>
+      <p>
+        <text><![CDATA[Tiene dos dimensiones]]></text>
+      </p>
+      <p listType="bullet" indent="1">
+        <text><![CDATA[Eje Horizontal: Tiempo]]></text>
+      </p>
+      <p listType="bullet" indent="1">
+        <text><![CDATA[Eje Vertical: Disciplinas]]></text>
+      </p>
+    </object>
+    <object id="41" type="text" x="-8641.394215812388" y="-1380.4057437548174" r="0" s="2.46137978957378" class="body">
+      <style fontFamily="custom-righteous" font-family="Righteous"/>
+      <style fontFamily="custom-righteous" font-family="Righteous"/>
+      <height>59.6015625</height>
+      <width>346.57621621621894</width>
+      <p>
+        <text><![CDATA[Aspecto dinámico del proceso conforme se va desarrollando]]></text>
+      </p>
+    </object>
+    <object id="42" type="text" x="-6969.031752862126" y="-2490.2965852992606" r="0" s="2.138810006611224" class="body">
+      <style fontFamily="custom-righteous" font-family="Righteous"/>
+      <style fontFamily="custom-righteous" font-family="Righteous"/>
+      <height>59.6015625</height>
+      <width>344.2588108535273</width>
+      <p>
+        <text><![CDATA[Aspecto estático del proceso, representado a través de UML]]></text>
+      </p>
+    </object>
+    <object id="43" type="text" x="-5070.476748363113" y="-3953.0622242545974" r="0" s="2.1038135257198203" class="strong">
+      <style fontFamily="custom-righteous" font-family="Righteous"/>
+      <style fontFamily="custom-righteous" font-family="Righteous"/>
+      <height>29.80078125</height>
+      <width>389.0327826615307</width>
+      <p>
+        <text><![CDATA[Matriz de Probabilidad e Impacto]]></text>
+      </p>
+    </object>
+    <object id="44" type="text" x="-5101.232166431936" y="-3388.9005316510775" r="0" s="1.7702605120838844" class="body">
+      <style fontFamily="custom-righteous" font-family="Righteous"/>
+      <style fontFamily="custom-righteous" font-family="Righteous"/>
+      <height>119.203125</height>
+      <width>569.0082067526898</width>
+      <p listType="bullet" indent="1">
+        <text><![CDATA[Impacto: ¿Qué tan malo será si pasa?]]></text>
+      </p>
+      <p listType="bullet" indent="1">
+        <text><![CDATA[Probabilidad: Posibilidad que ocurra el evento]]></text>
+      </p>
+      <p listType="bullet" indent="1">
+        <text><![CDATA[Exposición: Probabilidad * Impacto]]></text>
+      </p>
+      <p>
+        <text><![CDATA[]]></text>
+      </p>
+    </object>
+    <object id="45" type="text" x="-3326.3181004699763" y="-4057.0196688697656" r="0" s="1.2288172074574184" class="body">
+      <style fontFamily="custom-righteous" font-family="Righteous"/>
+      <style fontFamily="custom-righteous" font-family="Righteous"/>
+      <height>89.40234375</height>
+      <width>675.8587988524883</width>
+      <p>
+        <text><![CDATA[Exposición Baja: Riesgo Asumido]]></text>
+      </p>
+      <p>
+        <text><![CDATA[Exposición Media: Retraso en entregas de correcciones]]></text>
+      </p>
+      <p>
+        <text><![CDATA[Exposición Alta: Pérdida de datos en repositorios]]></text>
+      </p>
+    </object>
+    <object id="46" type="text" x="-2093.6769606998873" y="-5168.0862249996735" r="0" s="1.4000527717992604" class="body">
+      <style fontFamily="custom-righteous" font-family="Righteous"/>
+      <style fontFamily="custom-righteous" font-family="Righteous"/>
+      <height>59.6015625</height>
+      <width>511.0350648284774</width>
+      <p>
+        <text><![CDATA[BackEnd: Componentes del lado del servidor]]></text>
+      </p>
+      <p>
+        <text><![CDATA[FrontEnd: Interfaces gráficas de usuario]]></text>
+      </p>
+    </object>
+    <object id="47" type="text" x="-1194.992040653617" y="-6542.859085273503" r="0" s="1.747120444530247" class="body">
+      <style fontFamily="custom-righteous" font-family="Righteous"/>
+      <style fontFamily="custom-righteous" font-family="Righteous"/>
+      <height>89.40234375</height>
+      <width>350.53583470608146</width>
+      <p>
+        <text><![CDATA[Automáticas: Selenium IDE]]></text>
+      </p>
+      <p>
+        <text><![CDATA[Manuales: Tester]]></text>
+      </p>
+      <p>
+        <text><![CDATA[Exploratorias: Desarrollador]]></text>
+      </p>
+    </object>
+    <object id="49" type="text" x="-617.1665793185479" y="-9544.994987956912" r="0" s="3.9142179034632134" class="body">
+      <style fontFamily="custom-righteous" font-family="Righteous"/>
+      <style fontFamily="custom-righteous" font-family="Righteous"/>
+      <height>89.40234375</height>
+      <width>435.8745954377836</width>
+      <p>
+        <text><![CDATA[Cantidad Hs      Precio Hs         Total]]></text>
+      </p>
+      <p>
+        <text><![CDATA[        1920                $ 80          $153600]]></text>
+      </p>
+      <p>
+        <text><![CDATA[        3120                $ 120         $374400  ]]></text>
+      </p>
+    </object>
+    <object id="0_136690105" type="image" x="-11755.25" y="4848.85" r="0" s="3.091845331983615">
+      <source w="900" h="700">4225369157<url>4225369157.png</url></source>
+      <sourceUrl>HogaresMascotas.png</sourceUrl>
+    <resource><id>4225369157</id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/9/e/6/724881ec9b9f3993a6cf9910761478e2741f2.png</url></resource></object>
+    <object id="2_136690105" type="image" x="-3350.8500000000004" y="-4321.3" r="0" s="0.6871394781813163">
+      <source w="1416" h="533">4225371278<url>4225371278.png</url></source>
+      <sourceUrl>RiesgosRelevados.png</sourceUrl>
+    <resource><id>4225371278</id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/4/0/2/33a25eea5127c0382fd53435ecc2e13ccd8fb.png</url></resource></object>
+    <object id="4_136690105" type="text" x="29512.85" y="-20780.55" r="0" s="103.26588677793929" class="strong">
+      <height>57.6</height>
+      <width>292.63951404642785</width>
+      <p>
+        <text><![CDATA[SISTEMA INTEGRAL DE ]]></text>
+      </p>
+      <p>
+        <text><![CDATA[GESTIÓN DE MASCOTA]]></text>
+      </p>
+    </object>
+  </zui-table>
+  <path>
+    <s>
+      <eagle o="102_30863873"/>
+    </s>
+    <s>
+      <eagle o="55_30863873"/>
+    </s>
+    <s>
+      <eagle o="56_30863873"/>
+    </s>
+    <s>
+      <eagle o="57_30863873"/>
+    </s>
+    <s>
+      <eagle o="58_30863873"/>
+    </s>
+    <s>
+      <eagle o="101_30863873"/>
+    </s>
+    <s>
+      <eagle o="5"/>
+    </s>
+    <s>
+      <eagle o="8"/>
+    </s>
+    <s>
+      <eagle o="11"/>
+    </s>
+    <s>
+      <eagle o="14"/>
+    </s>
+    <s>
+      <eagle o="17"/>
+    </s>
+    <s>
+      <eagle o="19"/>
+    </s>
+    <s>
+      <eagle o="31"/>
+    </s>
+    <s>
+      <eagle o="457_30863873"/>
+    </s>
+    <s>
+      <eagle o="102_30863873"/>
+    </s>
+  </path>
+  <style type="text/css"><![CDATA[
+@font-face
+{
+	src: url('Aleo-Regular.keg');
+	fontFamily: body;
+	font-class: body;
+	font-style: normal;
+	font-weight: normal;
+	font-family: Aleo;
+}
+
+@font-face
+{
+	src: url('Righteous-Regular.keg');
+	fontFamily: custom-righteous;
+	font-class: custom-righteous;
+	font-style: normal;
+	font-weight: normal;
+	font-family: Righteous;
+}
+
+@font-face
+{
+	src: url('PlayfairDisplay-Bold.keg');
+	fontFamily: head;
+	font-class: head;
+	font-style: normal;
+	font-weight: bold;
+	font-family: PlayfairDisplay;
+}
+
+@font-face
+{
+	src: url('Aleo-BoldItalic.keg');
+	fontFamily: strong;
+	font-class: strong;
+	font-style: italic;
+	font-weight: bold;
+	font-family: Aleo;
+}
+
+@font-face
+{
+	src: url('Aleo-Bold.keg');
+	font-style: normal;
+	font-weight: bold;
+	font-family: Aleo;
+}
+
+@font-face
+{
+	src: url('Aleo-Italic.keg');
+	font-style: italic;
+	font-weight: normal;
+	font-family: Aleo;
+}
+
+@font-face
+{
+	src: url('PlayfairDisplay-Regular.keg');
+	font-style: normal;
+	font-weight: normal;
+	font-family: PlayfairDisplay;
+}
+
+@font-face
+{
+	src: url('PlayfairDisplay-Italic.keg');
+	font-style: italic;
+	font-weight: normal;
+	font-family: PlayfairDisplay;
+}
+
+@font-face
+{
+	src: url('PlayfairDisplay-BoldItalic.keg');
+	font-style: italic;
+	font-weight: bold;
+	font-family: PlayfairDisplay;
+}
+
+.line1
+{
+	color: #111315;
+	gradEndColor: #111315;
+	gradStartColor: #111315;
+}
+
+.line2
+{
+	color: #274660;
+	gradEndColor: #274660;
+	gradStartColor: #274660;
+}
+
+.line3
+{
+	color: #33806b;
+	gradEndColor: #33806b;
+	gradStartColor: #33806b;
+}
+
+.line4
+{
+	color: #944b35;
+	gradEndColor: #944b35;
+	gradStartColor: #944b35;
+}
+
+.line5
+{
+	color: #a2cc97;
+	gradEndColor: #a2cc97;
+	gradStartColor: #a2cc97;
+}
+
+.poly1
+{
+	color: #70866d;
+	gradEndColor: #111315;
+	gradStartColor: #111315;
+}
+
+.poly2
+{
+	color: #70866d;
+	gradEndColor: #274660;
+	gradStartColor: #274660;
+}
+
+.poly3
+{
+	color: #70866d;
+	gradEndColor: #33806b;
+	gradStartColor: #33806b;
+}
+
+.poly4
+{
+	color: #70866d;
+	gradEndColor: #944b35;
+	gradStartColor: #944b35;
+}
+
+.poly5
+{
+	color: #70866d;
+	gradEndColor: #a2cc97;
+	gradStartColor: #a2cc97;
+}
+
+Background
+{
+	gradEnd: #666;
+	gradStart: #7aa675;
+}
+
+Grid
+{
+	color: #90ac8c;
+}
+
+ZArrow
+{
+	gradEndAlpha: 1;
+	gradStartAlpha: 1;
+	lockTintAlpha: 0;
+}
+
+ZCircle
+{
+	borderAlpha: 0;
+	borderThickness: 0;
+	gradEndAlpha: 1;
+	gradStartAlpha: 1;
+	lockTintAlpha: 0;
+	radius: 0;
+	thickness: 100;
+}
+
+ZCurveLine
+{
+	color: #000;
+}
+
+ZFrame.bracket
+{
+	gradEndAlpha: 1;
+	gradEndColor: #33806b;
+	gradStartAlpha: 1;
+	gradStartColor: #33806b;
+	padding: 1.03;
+	thickness: 5;
+}
+
+ZFrame.circle
+{
+	gradEndAlpha: 1;
+	gradEndColor: #fff;
+	gradStartAlpha: 1;
+	gradStartColor: #fff;
+	padding: 1.03;
+	thickness: 5;
+}
+
+ZFrame.roundrect
+{
+	borderAlpha: 0.8;
+	borderColor: #111315;
+	borderThickness: 5;
+	gradEndAlpha: 0.8;
+	gradEndColor: #555;
+	gradStartAlpha: 0.8;
+	gradStartColor: #555;
+	padding: 1.03;
+	radius: 3;
+}
+
+ZLabel
+{
+	lockTintAlpha: 0.15;
+	padding: 1.2;
+}
+
+ZLabel.body
+{
+	color: #fff;
+	fontFamily: body;
+}
+
+ZLabel.body-background
+{
+	background-alpha: 0.7;
+	background-color: #d1af35;
+	background-padding: 4;
+}
+
+ZLabel.head
+{
+	color: #d1a91a;
+	fontFamily: head;
+}
+
+ZLabel.head-background
+{
+	background-alpha: 0.7;
+	background-color: #274660;
+	background-padding: 4;
+}
+
+ZLabel.strong
+{
+	color: #fff;
+	fontFamily: strong;
+}
+
+ZLabel.strong-background
+{
+	background-alpha: 0.7;
+	background-color: #333;
+	background-padding: 4;
+}
+
+ZLine
+{
+	color: #333;
+	lockTintAlpha: 0;
+}
+
+ZMarker
+{
+	alpha: 0.65;
+	color: #d1a91a;
+}
+
+ZPath
+{
+	alpha: 1;
+	color: #40abe6;
+	textColor: #fff;
+	thickness: 3;
+}
+
+ZPath Ball.base
+{
+	alpha: 1;
+	fillColor: #40abe6;
+	radius: 12;
+}
+
+ZPath Ball.mid
+{
+	alpha: .5;
+	fillColor: #40abe6;
+	radius: 8;
+}
+
+ZPoly
+{
+	borderAlpha: 0;
+	borderThickness: 0;
+	gradEndAlpha: 1;
+	gradStartAlpha: 1;
+	lockTintAlpha: 0;
+	radius: 0;
+	thickness: 100;
+}
+
+]]></style>
+  <hash>-5b715d92</hash>
+<sync><oid>jyxsmtdv74ul</oid><title>sigma</title><hash>-5b715d92</hash></sync><config>gi5rvCGyM5LaURQO8H5gygpprlcQWpxINpgKfQpW83Kaz4WmXO1h+VDbS3xlg7w2SBifYLVK63UELm12DmJ64OW8+rQk9msidoMvSxqDy+DmPtP3T/3aQ0vD9DKJPr5zo8+/bq84pM2zg/NDBE6vZeHfvHUTJcPceCIWzbjB5F14a33gL7pbyg82RfSuQV9pd3ehM5meLXwoUVk+b6t0VsXrUClZJIySJJUWVnf7sx66/CHzxzS6Xf5y2YasdbuLY1zZle85vpqDc/V0yTwP1tdDO2cLx/AwBtW4vYmoFRCF/+blLJybysFqDIEpVrU/469JEEpLuwgDECfW6VlTzw==</config></zuiprezi>

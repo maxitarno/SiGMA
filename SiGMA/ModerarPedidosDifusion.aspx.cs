@@ -113,7 +113,7 @@ namespace SiGMA
             {
                 EPerdida entPerdida = LogicaBDPerdida.buscarPerdida(
                     Int32.Parse(grvPedidos.Rows[Int32.Parse(e.CommandArgument.ToString())].Cells[6].Text));
-                lblDatos.Text = "Mascota perdida en " + entPerdida.domicilio.calle.nombre.ToLower() + " " +
+                lblDatos.Text = "#MascotaPerdida en " + entPerdida.domicilio.calle.nombre.ToLower() + " " +
                     entPerdida.domicilio.numeroCalle + ", " + entPerdida.domicilio.barrio.nombre.ToLower();
                 if (entPerdida.mascota.imagen != null)
                 {

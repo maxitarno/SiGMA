@@ -21,7 +21,7 @@ namespace Herramientas
                 switch (cadena)
                 {
                     case "NombreMascota":
-                        datosQR += " Nombre: " + mascota.nombreMascota;
+                        datosQR += "Nombre de la Mascota: " + mascota.nombreMascota + ",";
                         break;
                     case "Raza":                    
                         datosQR += " Raza: " + mascota.raza.nombreRaza;
@@ -53,17 +53,17 @@ namespace Herramientas
                         }
                         break;
                     case "NombreDueño":
-                        datosQR += " Nombre del dueño: " + mascota.duenio.nombre + " " + mascota.duenio.apellido;
+                        datosQR += " Nombre del Dueño: " + mascota.duenio.nombre + " " + mascota.duenio.apellido + ",";
                         break;
                     case "Direccion":
-                        datosQR += " Direccion: " + mascota.duenio.domicilio.nombre.ToLower() + " " + 
-                            mascota.duenio.nroCalle + " B° " + mascota.duenio.barrio.nombre.ToLower();
+                        datosQR += " Direccion: " + mascota.duenio.domicilio.nombre.ToLower() + " " +
+                            mascota.duenio.nroCalle + " B° " + mascota.duenio.barrio.nombre.ToLower() + ",";
                         break;
                     case "Email":
-                        datosQR += " Email: " + mascota.duenio.email;
+                        datosQR += " Email: " + mascota.duenio.email + ",";
                         break;
                     case "TelefonoCel":
-                        datosQR += " Celular: " + mascota.duenio.telefonoCelular;
+                        datosQR += " Celular: " + mascota.duenio.telefonoCelular + ".";
                         break;
                 }                
             }
